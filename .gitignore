@@ -5,3 +5,7 @@
 build
 
 .idea
+
+jextract*
+logo*
+libs/lib*

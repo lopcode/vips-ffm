@@ -45,6 +45,8 @@ tasks.withType<Test> {
         events = TestLogEvent.values().toSet() - TestLogEvent.STARTED
         exceptionFormat = TestExceptionFormat.FULL
     }
+    jvmArgs("--enable-native-access=ALL-UNNAMED")
+    environment(mapOf("DYLD_LIBRARY_PATH" to "libs"))
     outputs.upToDateWhen { false }
 }
 
@@ -55,6 +57,13 @@ tasks.named("check") {
 
 tasks.named("integrationTest") {
     dependsOn(tasks.named("shadowJar"))
+}
+
+
+tasks.withType<JavaExec>().configureEach {
+    jvmArgs("--enable-native-access=ALL-UNNAMED")
+    environment(mapOf("DYLD_LIBRARY_PATH" to "libs"))
+    javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
 dependencies {}
