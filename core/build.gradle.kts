@@ -46,7 +46,7 @@ tasks.withType<Test> {
         exceptionFormat = TestExceptionFormat.FULL
     }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    environment(mapOf("DYLD_LIBRARY_PATH" to "libs"))
+    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     outputs.upToDateWhen { false }
 }
 
@@ -62,7 +62,7 @@ tasks.named("integrationTest") {
 
 tasks.withType<JavaExec>().configureEach {
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    environment(mapOf("DYLD_LIBRARY_PATH" to "libs"))
+    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 

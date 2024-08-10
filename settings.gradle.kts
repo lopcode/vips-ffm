@@ -12,4 +12,4 @@ plugins {
 }
 
 rootProject.name = "im-ffm"
-include("lib")
+include("core")
