@@ -9,3 +9,5 @@ build
 jextract*
 logo*
 libs/lib*
+includes.txt
+includes_filtered.txt

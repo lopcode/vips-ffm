@@ -69,6 +69,2051 @@ public class MagickWand_h {
     public static final AddressLayout C_POINTER = ValueLayout.ADDRESS
             .withTargetLayout(MemoryLayout.sequenceLayout(java.lang.Long.MAX_VALUE, JAVA_BYTE));
     public static final ValueLayout.OfLong C_LONG = ValueLayout.JAVA_LONG;
+    private static final int MagickPathExtent = (int)4096L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickPathExtent 4096
+     * }
+     */
+    public static int MagickPathExtent() {
+        return MagickPathExtent;
+    }
+    private static final int MagickTimeExtent = (int)26L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickTimeExtent 26
+     * }
+     */
+    public static int MagickTimeExtent() {
+        return MagickTimeExtent;
+    }
+    private static final int MagickMaxBufferExtent = (int)81920L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickMaxBufferExtent 81920
+     * }
+     */
+    public static int MagickMaxBufferExtent() {
+        return MagickMaxBufferExtent;
+    }
+    private static final int MagickMinBufferExtent = (int)16384L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickMinBufferExtent 16384
+     * }
+     */
+    public static int MagickMinBufferExtent() {
+        return MagickMinBufferExtent;
+    }
+    private static final int MagickLibVersion = (int)1809L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibVersion 1809
+     * }
+     */
+    public static int MagickLibVersion() {
+        return MagickLibVersion;
+    }
+    private static final int MagickLibInterface = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibInterface 10
+     * }
+     */
+    public static int MagickLibInterface() {
+        return MagickLibInterface;
+    }
+    private static final int MagickLibMinInterface = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibMinInterface 10
+     * }
+     */
+    public static int MagickLibMinInterface() {
+        return MagickLibMinInterface;
+    }
+    private static final int MagickppLibInterface = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickppLibInterface 5
+     * }
+     */
+    public static int MagickppLibInterface() {
+        return MagickppLibInterface;
+    }
+    private static final int MagickppLibMinInterface = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickppLibMinInterface 5
+     * }
+     */
+    public static int MagickppLibMinInterface() {
+        return MagickppLibMinInterface;
+    }
+    /**
+     * {@snippet lang=c :
+     * typedef float MagickFloatType
+     * }
+     */
+    public static final OfFloat MagickFloatType = MagickWand_h.C_FLOAT;
+    /**
+     * {@snippet lang=c :
+     * typedef double MagickDoubleType
+     * }
+     */
+    public static final OfDouble MagickDoubleType = MagickWand_h.C_DOUBLE;
+    /**
+     * {@snippet lang=c :
+     * typedef MagickDoubleType MagickRealType
+     * }
+     */
+    public static final OfDouble MagickRealType = MagickWand_h.C_DOUBLE;
+    /**
+     * {@snippet lang=c :
+     * typedef unsigned int MagickStatusType
+     * }
+     */
+    public static final OfInt MagickStatusType = MagickWand_h.C_INT;
+    /**
+     * {@snippet lang=c :
+     * typedef long long MagickOffsetType
+     * }
+     */
+    public static final OfLong MagickOffsetType = MagickWand_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef unsigned long long MagickSizeType
+     * }
+     */
+    public static final OfLong MagickSizeType = MagickWand_h.C_LONG_LONG;
+    /**
+     * {@snippet lang=c :
+     * typedef uintptr_t MagickAddressType
+     * }
+     */
+    public static final OfLong MagickAddressType = MagickWand_h.C_LONG;
+    private static final int MagickFalse = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFalse = 0
+     * }
+     */
+    public static int MagickFalse() {
+        return MagickFalse;
+    }
+    private static final int MagickTrue = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickTrue = 1
+     * }
+     */
+    public static int MagickTrue() {
+        return MagickTrue;
+    }
+
+    private static class InterpolatePixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("InterpolatePixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InterpolatePixelInfo(const Image *, const CacheView_ *, const PixelInterpolateMethod, const double, const double, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor InterpolatePixelInfo$descriptor() {
+        return InterpolatePixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InterpolatePixelInfo(const Image *, const CacheView_ *, const PixelInterpolateMethod, const double, const double, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle InterpolatePixelInfo$handle() {
+        return InterpolatePixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InterpolatePixelInfo(const Image *, const CacheView_ *, const PixelInterpolateMethod, const double, const double, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment InterpolatePixelInfo$address() {
+        return InterpolatePixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType InterpolatePixelInfo(const Image *, const CacheView_ *, const PixelInterpolateMethod, const double, const double, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static int InterpolatePixelInfo(MemorySegment x0, MemorySegment x1, int x2, double x3, double x4, MemorySegment x5, MemorySegment x6) {
+        var mh$ = InterpolatePixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("InterpolatePixelInfo", x0, x1, x2, x3, x4, x5, x6);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5, x6);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsFuzzyEquivalencePixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsFuzzyEquivalencePixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsFuzzyEquivalencePixelInfo(const PixelInfo *, const PixelInfo *)
+     * }
+     */
+    public static FunctionDescriptor IsFuzzyEquivalencePixelInfo$descriptor() {
+        return IsFuzzyEquivalencePixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsFuzzyEquivalencePixelInfo(const PixelInfo *, const PixelInfo *)
+     * }
+     */
+    public static MethodHandle IsFuzzyEquivalencePixelInfo$handle() {
+        return IsFuzzyEquivalencePixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsFuzzyEquivalencePixelInfo(const PixelInfo *, const PixelInfo *)
+     * }
+     */
+    public static MemorySegment IsFuzzyEquivalencePixelInfo$address() {
+        return IsFuzzyEquivalencePixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsFuzzyEquivalencePixelInfo(const PixelInfo *, const PixelInfo *)
+     * }
+     */
+    public static int IsFuzzyEquivalencePixelInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = IsFuzzyEquivalencePixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsFuzzyEquivalencePixelInfo", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetPixelInfoIntensity {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetPixelInfoIntensity");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickRealType GetPixelInfoIntensity(const Image *restrict, const PixelInfo *restrict)
+     * }
+     */
+    public static FunctionDescriptor GetPixelInfoIntensity$descriptor() {
+        return GetPixelInfoIntensity.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickRealType GetPixelInfoIntensity(const Image *restrict, const PixelInfo *restrict)
+     * }
+     */
+    public static MethodHandle GetPixelInfoIntensity$handle() {
+        return GetPixelInfoIntensity.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickRealType GetPixelInfoIntensity(const Image *restrict, const PixelInfo *restrict)
+     * }
+     */
+    public static MemorySegment GetPixelInfoIntensity$address() {
+        return GetPixelInfoIntensity.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickRealType GetPixelInfoIntensity(const Image *restrict, const PixelInfo *restrict)
+     * }
+     */
+    public static double GetPixelInfoIntensity(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetPixelInfoIntensity.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetPixelInfoIntensity", x0, x1);
+            }
+            return (double)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClonePixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClonePixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelInfo *ClonePixelInfo(const PixelInfo *)
+     * }
+     */
+    public static FunctionDescriptor ClonePixelInfo$descriptor() {
+        return ClonePixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelInfo *ClonePixelInfo(const PixelInfo *)
+     * }
+     */
+    public static MethodHandle ClonePixelInfo$handle() {
+        return ClonePixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelInfo *ClonePixelInfo(const PixelInfo *)
+     * }
+     */
+    public static MemorySegment ClonePixelInfo$address() {
+        return ClonePixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelInfo *ClonePixelInfo(const PixelInfo *)
+     * }
+     */
+    public static MemorySegment ClonePixelInfo(MemorySegment x0) {
+        var mh$ = ClonePixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClonePixelInfo", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ConformPixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ConformPixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ConformPixelInfo(Image *, const PixelInfo *, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ConformPixelInfo$descriptor() {
+        return ConformPixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ConformPixelInfo(Image *, const PixelInfo *, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ConformPixelInfo$handle() {
+        return ConformPixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ConformPixelInfo(Image *, const PixelInfo *, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ConformPixelInfo$address() {
+        return ConformPixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ConformPixelInfo(Image *, const PixelInfo *, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static void ConformPixelInfo(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = ConformPixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ConformPixelInfo", x0, x1, x2, x3);
+            }
+            mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetPixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetPixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void GetPixelInfo(const Image *, PixelInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetPixelInfo$descriptor() {
+        return GetPixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void GetPixelInfo(const Image *, PixelInfo *)
+     * }
+     */
+    public static MethodHandle GetPixelInfo$handle() {
+        return GetPixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void GetPixelInfo(const Image *, PixelInfo *)
+     * }
+     */
+    public static MemorySegment GetPixelInfo$address() {
+        return GetPixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void GetPixelInfo(const Image *, PixelInfo *)
+     * }
+     */
+    public static void GetPixelInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetPixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetPixelInfo", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetOneCacheViewVirtualPixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetOneCacheViewVirtualPixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneCacheViewVirtualPixelInfo(const CacheView *, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetOneCacheViewVirtualPixelInfo$descriptor() {
+        return GetOneCacheViewVirtualPixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneCacheViewVirtualPixelInfo(const CacheView *, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetOneCacheViewVirtualPixelInfo$handle() {
+        return GetOneCacheViewVirtualPixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneCacheViewVirtualPixelInfo(const CacheView *, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetOneCacheViewVirtualPixelInfo$address() {
+        return GetOneCacheViewVirtualPixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneCacheViewVirtualPixelInfo(const CacheView *, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static int GetOneCacheViewVirtualPixelInfo(MemorySegment x0, long x1, long x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = GetOneCacheViewVirtualPixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetOneCacheViewVirtualPixelInfo", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int UndefinedException = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.UndefinedException = 0
+     * }
+     */
+    public static int UndefinedException() {
+        return UndefinedException;
+    }
+    private static final int WarningException = (int)300L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WarningException = 300
+     * }
+     */
+    public static int WarningException() {
+        return WarningException;
+    }
+    private static final int FilterWarning = (int)352L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.FilterWarning = 352
+     * }
+     */
+    public static int FilterWarning() {
+        return FilterWarning;
+    }
+    private static final int WandWarning = (int)370L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WandWarning = 370
+     * }
+     */
+    public static int WandWarning() {
+        return WandWarning;
+    }
+    private static final int ErrorException = (int)400L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.ErrorException = 400
+     * }
+     */
+    public static int ErrorException() {
+        return ErrorException;
+    }
+    private static final int FilterError = (int)452L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.FilterError = 452
+     * }
+     */
+    public static int FilterError() {
+        return FilterError;
+    }
+    private static final int WandError = (int)470L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WandError = 470
+     * }
+     */
+    public static int WandError() {
+        return WandError;
+    }
+    private static final int FatalErrorException = (int)700L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.FatalErrorException = 700
+     * }
+     */
+    public static int FatalErrorException() {
+        return FatalErrorException;
+    }
+    private static final int FilterFatalError = (int)752L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.FilterFatalError = 752
+     * }
+     */
+    public static int FilterFatalError() {
+        return FilterFatalError;
+    }
+    private static final int WandFatalError = (int)770L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WandFatalError = 770
+     * }
+     */
+    public static int WandFatalError() {
+        return WandFatalError;
+    }
+
+    private static class GetExceptionMessage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetExceptionMessage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *GetExceptionMessage(const int)
+     * }
+     */
+    public static FunctionDescriptor GetExceptionMessage$descriptor() {
+        return GetExceptionMessage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *GetExceptionMessage(const int)
+     * }
+     */
+    public static MethodHandle GetExceptionMessage$handle() {
+        return GetExceptionMessage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *GetExceptionMessage(const int)
+     * }
+     */
+    public static MemorySegment GetExceptionMessage$address() {
+        return GetExceptionMessage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *GetExceptionMessage(const int)
+     * }
+     */
+    public static MemorySegment GetExceptionMessage(int x0) {
+        var mh$ = GetExceptionMessage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetExceptionMessage", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetLocaleExceptionMessage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetLocaleExceptionMessage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetLocaleExceptionMessage(const ExceptionType, const char *)
+     * }
+     */
+    public static FunctionDescriptor GetLocaleExceptionMessage$descriptor() {
+        return GetLocaleExceptionMessage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetLocaleExceptionMessage(const ExceptionType, const char *)
+     * }
+     */
+    public static MethodHandle GetLocaleExceptionMessage$handle() {
+        return GetLocaleExceptionMessage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetLocaleExceptionMessage(const ExceptionType, const char *)
+     * }
+     */
+    public static MemorySegment GetLocaleExceptionMessage$address() {
+        return GetLocaleExceptionMessage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetLocaleExceptionMessage(const ExceptionType, const char *)
+     * }
+     */
+    public static MemorySegment GetLocaleExceptionMessage(int x0, MemorySegment x1) {
+        var mh$ = GetLocaleExceptionMessage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetLocaleExceptionMessage", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireExceptionInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireExceptionInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *AcquireExceptionInfo()
+     * }
+     */
+    public static FunctionDescriptor AcquireExceptionInfo$descriptor() {
+        return AcquireExceptionInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *AcquireExceptionInfo()
+     * }
+     */
+    public static MethodHandle AcquireExceptionInfo$handle() {
+        return AcquireExceptionInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *AcquireExceptionInfo()
+     * }
+     */
+    public static MemorySegment AcquireExceptionInfo$address() {
+        return AcquireExceptionInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionInfo *AcquireExceptionInfo()
+     * }
+     */
+    public static MemorySegment AcquireExceptionInfo() {
+        var mh$ = AcquireExceptionInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireExceptionInfo");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CloneExceptionInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CloneExceptionInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *CloneExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor CloneExceptionInfo$descriptor() {
+        return CloneExceptionInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *CloneExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle CloneExceptionInfo$handle() {
+        return CloneExceptionInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *CloneExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment CloneExceptionInfo$address() {
+        return CloneExceptionInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionInfo *CloneExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment CloneExceptionInfo(MemorySegment x0) {
+        var mh$ = CloneExceptionInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CloneExceptionInfo", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyExceptionInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyExceptionInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DestroyExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor DestroyExceptionInfo$descriptor() {
+        return DestroyExceptionInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DestroyExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle DestroyExceptionInfo$handle() {
+        return DestroyExceptionInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DestroyExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment DestroyExceptionInfo$address() {
+        return DestroyExceptionInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DestroyExceptionInfo(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment DestroyExceptionInfo(MemorySegment x0) {
+        var mh$ = DestroyExceptionInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyExceptionInfo", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ThrowException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ThrowException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowException(ExceptionInfo *, const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static FunctionDescriptor ThrowException$descriptor() {
+        return ThrowException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowException(ExceptionInfo *, const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MethodHandle ThrowException$handle() {
+        return ThrowException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowException(ExceptionInfo *, const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MemorySegment ThrowException$address() {
+        return ThrowException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowException(ExceptionInfo *, const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static int ThrowException(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = ThrowException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ThrowException", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ThrowMagickExceptionList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ThrowMagickExceptionList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowMagickExceptionList(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, va_list)
+     * }
+     */
+    public static FunctionDescriptor ThrowMagickExceptionList$descriptor() {
+        return ThrowMagickExceptionList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowMagickExceptionList(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, va_list)
+     * }
+     */
+    public static MethodHandle ThrowMagickExceptionList$handle() {
+        return ThrowMagickExceptionList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowMagickExceptionList(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, va_list)
+     * }
+     */
+    public static MemorySegment ThrowMagickExceptionList$address() {
+        return ThrowMagickExceptionList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowMagickExceptionList(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, va_list)
+     * }
+     */
+    public static int ThrowMagickExceptionList(MemorySegment x0, MemorySegment x1, MemorySegment x2, long x3, int x4, MemorySegment x5, MemorySegment x6, MemorySegment x7) {
+        var mh$ = ThrowMagickExceptionList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ThrowMagickExceptionList", x0, x1, x2, x3, x4, x5, x6, x7);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5, x6, x7);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    /**
+     * Variadic invoker class for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ThrowMagickException(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, ...)
+     * }
+     */
+    public static class ThrowMagickException {
+        private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
+                MagickWand_h.C_INT,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_LONG,
+                MagickWand_h.C_INT,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER
+            );
+        private static final MemorySegment ADDR = MagickWand_h.findOrThrow("ThrowMagickException");
+
+        private final MethodHandle handle;
+        private final FunctionDescriptor descriptor;
+        private final MethodHandle spreader;
+
+        private ThrowMagickException(MethodHandle handle, FunctionDescriptor descriptor, MethodHandle spreader) {
+            this.handle = handle;
+            this.descriptor = descriptor;
+            this.spreader = spreader;
+        }
+
+        /**
+         * Variadic invoker factory for:
+         * {@snippet lang=c :
+         * extern MagickBooleanType ThrowMagickException(ExceptionInfo *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, ...)
+         * }
+         */
+        public static ThrowMagickException makeInvoker(MemoryLayout... layouts) {
+            FunctionDescriptor desc$ = BASE_DESC.appendArgumentLayouts(layouts);
+            Linker.Option fva$ = Linker.Option.firstVariadicArg(BASE_DESC.argumentLayouts().size());
+            var mh$ = Linker.nativeLinker().downcallHandle(ADDR, desc$, fva$);
+            var spreader$ = mh$.asSpreader(Object[].class, layouts.length);
+            return new ThrowMagickException(mh$, desc$, spreader$);
+        }
+
+        /**
+         * {@return the address}
+         */
+        public static MemorySegment address() {
+            return ADDR;
+        }
+
+        /**
+         * {@return the specialized method handle}
+         */
+        public MethodHandle handle() {
+            return handle;
+        }
+
+        /**
+         * {@return the specialized descriptor}
+         */
+        public FunctionDescriptor descriptor() {
+            return descriptor;
+        }
+
+        public int apply(MemorySegment x0, MemorySegment x1, MemorySegment x2, long x3, int x4, MemorySegment x5, MemorySegment x6, Object... x7) {
+            try {
+                if (TRACE_DOWNCALLS) {
+                    traceDowncall("ThrowMagickException", x0, x1, x2, x3, x4, x5, x6, x7);
+                }
+                return (int)spreader.invokeExact(x0, x1, x2, x3, x4, x5, x6, x7);
+            } catch(IllegalArgumentException | ClassCastException ex$)  {
+                throw ex$; // rethrow IAE from passing wrong number/type of args
+            } catch (Throwable ex$) {
+               throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static class CatchException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CatchException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void CatchException(ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor CatchException$descriptor() {
+        return CatchException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void CatchException(ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle CatchException$handle() {
+        return CatchException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void CatchException(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment CatchException$address() {
+        return CatchException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void CatchException(ExceptionInfo *)
+     * }
+     */
+    public static void CatchException(MemorySegment x0) {
+        var mh$ = CatchException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CatchException", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClearMagickException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClearMagickException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ClearMagickException(ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ClearMagickException$descriptor() {
+        return ClearMagickException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ClearMagickException(ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ClearMagickException$handle() {
+        return ClearMagickException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ClearMagickException(ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ClearMagickException$address() {
+        return ClearMagickException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ClearMagickException(ExceptionInfo *)
+     * }
+     */
+    public static void ClearMagickException(MemorySegment x0) {
+        var mh$ = ClearMagickException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClearMagickException", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class InheritException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("InheritException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void InheritException(ExceptionInfo *, const ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor InheritException$descriptor() {
+        return InheritException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void InheritException(ExceptionInfo *, const ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle InheritException$handle() {
+        return InheritException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void InheritException(ExceptionInfo *, const ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment InheritException$address() {
+        return InheritException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void InheritException(ExceptionInfo *, const ExceptionInfo *)
+     * }
+     */
+    public static void InheritException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = InheritException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("InheritException", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickError {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickError");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static FunctionDescriptor MagickError$descriptor() {
+        return MagickError.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MethodHandle MagickError$handle() {
+        return MagickError.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MemorySegment MagickError$address() {
+        return MagickError.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static void MagickError(int x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = MagickError.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickError", x0, x1, x2);
+            }
+            mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickFatalError {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickFatalError");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickFatalError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static FunctionDescriptor MagickFatalError$descriptor() {
+        return MagickFatalError.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickFatalError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MethodHandle MagickFatalError$handle() {
+        return MagickFatalError.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickFatalError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MemorySegment MagickFatalError$address() {
+        return MagickFatalError.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickFatalError(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static void MagickFatalError(int x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = MagickFatalError.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickFatalError", x0, x1, x2);
+            }
+            mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickWarning {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickWarning");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickWarning(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static FunctionDescriptor MagickWarning$descriptor() {
+        return MagickWarning.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickWarning(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MethodHandle MagickWarning$handle() {
+        return MagickWarning.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickWarning(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static MemorySegment MagickWarning$address() {
+        return MagickWarning.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickWarning(const ExceptionType, const char *, const char *)
+     * }
+     */
+    public static void MagickWarning(int x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = MagickWarning.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickWarning", x0, x1, x2);
+            }
+            mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetLinkedListIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetLinkedListIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetLinkedListIterator(LinkedListInfo *)
+     * }
+     */
+    public static FunctionDescriptor ResetLinkedListIterator$descriptor() {
+        return ResetLinkedListIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetLinkedListIterator(LinkedListInfo *)
+     * }
+     */
+    public static MethodHandle ResetLinkedListIterator$handle() {
+        return ResetLinkedListIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetLinkedListIterator(LinkedListInfo *)
+     * }
+     */
+    public static MemorySegment ResetLinkedListIterator$address() {
+        return ResetLinkedListIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetLinkedListIterator(LinkedListInfo *)
+     * }
+     */
+    public static void ResetLinkedListIterator(MemorySegment x0) {
+        var mh$ = ResetLinkedListIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetLinkedListIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ConcatenateMagickString {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ConcatenateMagickString");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern size_t ConcatenateMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static FunctionDescriptor ConcatenateMagickString$descriptor() {
+        return ConcatenateMagickString.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern size_t ConcatenateMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static MethodHandle ConcatenateMagickString$handle() {
+        return ConcatenateMagickString.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern size_t ConcatenateMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static MemorySegment ConcatenateMagickString$address() {
+        return ConcatenateMagickString.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern size_t ConcatenateMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static long ConcatenateMagickString(MemorySegment x0, MemorySegment x1, long x2) {
+        var mh$ = ConcatenateMagickString.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ConcatenateMagickString", x0, x1, x2);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CopyMagickString {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CopyMagickString");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern size_t CopyMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static FunctionDescriptor CopyMagickString$descriptor() {
+        return CopyMagickString.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern size_t CopyMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static MethodHandle CopyMagickString$handle() {
+        return CopyMagickString.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern size_t CopyMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static MemorySegment CopyMagickString$address() {
+        return CopyMagickString.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern size_t CopyMagickString(char *restrict, const char *restrict, const size_t)
+     * }
+     */
+    public static long CopyMagickString(MemorySegment x0, MemorySegment x1, long x2) {
+        var mh$ = CopyMagickString.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CopyMagickString", x0, x1, x2);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class StripMagickString {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("StripMagickString");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern size_t StripMagickString(char *)
+     * }
+     */
+    public static FunctionDescriptor StripMagickString$descriptor() {
+        return StripMagickString.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern size_t StripMagickString(char *)
+     * }
+     */
+    public static MethodHandle StripMagickString$handle() {
+        return StripMagickString.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern size_t StripMagickString(char *)
+     * }
+     */
+    public static MemorySegment StripMagickString$address() {
+        return StripMagickString.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern size_t StripMagickString(char *)
+     * }
+     */
+    public static long StripMagickString(MemorySegment x0) {
+        var mh$ = StripMagickString.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("StripMagickString", x0);
+            }
+            return (long)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class FormatMagickSize {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG_LONG,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("FormatMagickSize");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickSize(const MagickSizeType, const MagickBooleanType, const char *, const size_t, char *)
+     * }
+     */
+    public static FunctionDescriptor FormatMagickSize$descriptor() {
+        return FormatMagickSize.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickSize(const MagickSizeType, const MagickBooleanType, const char *, const size_t, char *)
+     * }
+     */
+    public static MethodHandle FormatMagickSize$handle() {
+        return FormatMagickSize.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickSize(const MagickSizeType, const MagickBooleanType, const char *, const size_t, char *)
+     * }
+     */
+    public static MemorySegment FormatMagickSize$address() {
+        return FormatMagickSize.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickSize(const MagickSizeType, const MagickBooleanType, const char *, const size_t, char *)
+     * }
+     */
+    public static long FormatMagickSize(long x0, int x1, MemorySegment x2, long x3, MemorySegment x4) {
+        var mh$ = FormatMagickSize.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("FormatMagickSize", x0, x1, x2, x3, x4);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetImageProfileIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetImageProfileIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetImageProfileIterator(const Image *)
+     * }
+     */
+    public static FunctionDescriptor ResetImageProfileIterator$descriptor() {
+        return ResetImageProfileIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetImageProfileIterator(const Image *)
+     * }
+     */
+    public static MethodHandle ResetImageProfileIterator$handle() {
+        return ResetImageProfileIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetImageProfileIterator(const Image *)
+     * }
+     */
+    public static MemorySegment ResetImageProfileIterator$address() {
+        return ResetImageProfileIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetImageProfileIterator(const Image *)
+     * }
+     */
+    public static void ResetImageProfileIterator(MemorySegment x0) {
+        var mh$ = ResetImageProfileIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetImageProfileIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int UndefinedFilter = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.UndefinedFilter = 0
+     * }
+     */
+    public static int UndefinedFilter() {
+        return UndefinedFilter;
+    }
+    private static final int PointFilter = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.PointFilter = 1
+     * }
+     */
+    public static int PointFilter() {
+        return PointFilter;
+    }
+    private static final int BoxFilter = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.BoxFilter = 2
+     * }
+     */
+    public static int BoxFilter() {
+        return BoxFilter;
+    }
+    private static final int TriangleFilter = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.TriangleFilter = 3
+     * }
+     */
+    public static int TriangleFilter() {
+        return TriangleFilter;
+    }
+    private static final int HermiteFilter = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.HermiteFilter = 4
+     * }
+     */
+    public static int HermiteFilter() {
+        return HermiteFilter;
+    }
+    private static final int HannFilter = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.HannFilter = 5
+     * }
+     */
+    public static int HannFilter() {
+        return HannFilter;
+    }
+    private static final int HammingFilter = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.HammingFilter = 6
+     * }
+     */
+    public static int HammingFilter() {
+        return HammingFilter;
+    }
+    private static final int BlackmanFilter = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.BlackmanFilter = 7
+     * }
+     */
+    public static int BlackmanFilter() {
+        return BlackmanFilter;
+    }
+    private static final int GaussianFilter = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.GaussianFilter = 8
+     * }
+     */
+    public static int GaussianFilter() {
+        return GaussianFilter;
+    }
+    private static final int QuadraticFilter = (int)9L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.QuadraticFilter = 9
+     * }
+     */
+    public static int QuadraticFilter() {
+        return QuadraticFilter;
+    }
+    private static final int CubicFilter = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.CubicFilter = 10
+     * }
+     */
+    public static int CubicFilter() {
+        return CubicFilter;
+    }
+    private static final int CatromFilter = (int)11L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.CatromFilter = 11
+     * }
+     */
+    public static int CatromFilter() {
+        return CatromFilter;
+    }
+    private static final int MitchellFilter = (int)12L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MitchellFilter = 12
+     * }
+     */
+    public static int MitchellFilter() {
+        return MitchellFilter;
+    }
+    private static final int JincFilter = (int)13L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.JincFilter = 13
+     * }
+     */
+    public static int JincFilter() {
+        return JincFilter;
+    }
+    private static final int SincFilter = (int)14L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.SincFilter = 14
+     * }
+     */
+    public static int SincFilter() {
+        return SincFilter;
+    }
+    private static final int SincFastFilter = (int)15L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.SincFastFilter = 15
+     * }
+     */
+    public static int SincFastFilter() {
+        return SincFastFilter;
+    }
+    private static final int KaiserFilter = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.KaiserFilter = 16
+     * }
+     */
+    public static int KaiserFilter() {
+        return KaiserFilter;
+    }
+    private static final int WelchFilter = (int)17L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WelchFilter = 17
+     * }
+     */
+    public static int WelchFilter() {
+        return WelchFilter;
+    }
+    private static final int ParzenFilter = (int)18L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.ParzenFilter = 18
+     * }
+     */
+    public static int ParzenFilter() {
+        return ParzenFilter;
+    }
+    private static final int BohmanFilter = (int)19L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.BohmanFilter = 19
+     * }
+     */
+    public static int BohmanFilter() {
+        return BohmanFilter;
+    }
+    private static final int BartlettFilter = (int)20L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.BartlettFilter = 20
+     * }
+     */
+    public static int BartlettFilter() {
+        return BartlettFilter;
+    }
+    private static final int LagrangeFilter = (int)21L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.LagrangeFilter = 21
+     * }
+     */
+    public static int LagrangeFilter() {
+        return LagrangeFilter;
+    }
     private static final int LanczosFilter = (int)22L;
     /**
      * {@snippet lang=c :
@@ -77,6 +2122,9617 @@ public class MagickWand_h {
      */
     public static int LanczosFilter() {
         return LanczosFilter;
+    }
+    private static final int LanczosSharpFilter = (int)23L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.LanczosSharpFilter = 23
+     * }
+     */
+    public static int LanczosSharpFilter() {
+        return LanczosSharpFilter;
+    }
+    private static final int Lanczos2Filter = (int)24L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.Lanczos2Filter = 24
+     * }
+     */
+    public static int Lanczos2Filter() {
+        return Lanczos2Filter;
+    }
+    private static final int Lanczos2SharpFilter = (int)25L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.Lanczos2SharpFilter = 25
+     * }
+     */
+    public static int Lanczos2SharpFilter() {
+        return Lanczos2SharpFilter;
+    }
+    private static final int RobidouxFilter = (int)26L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.RobidouxFilter = 26
+     * }
+     */
+    public static int RobidouxFilter() {
+        return RobidouxFilter;
+    }
+    private static final int RobidouxSharpFilter = (int)27L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.RobidouxSharpFilter = 27
+     * }
+     */
+    public static int RobidouxSharpFilter() {
+        return RobidouxSharpFilter;
+    }
+    private static final int CosineFilter = (int)28L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.CosineFilter = 28
+     * }
+     */
+    public static int CosineFilter() {
+        return CosineFilter;
+    }
+    private static final int SplineFilter = (int)29L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.SplineFilter = 29
+     * }
+     */
+    public static int SplineFilter() {
+        return SplineFilter;
+    }
+    private static final int LanczosRadiusFilter = (int)30L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.LanczosRadiusFilter = 30
+     * }
+     */
+    public static int LanczosRadiusFilter() {
+        return LanczosRadiusFilter;
+    }
+    private static final int CubicSplineFilter = (int)31L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.CubicSplineFilter = 31
+     * }
+     */
+    public static int CubicSplineFilter() {
+        return CubicSplineFilter;
+    }
+    private static final int SentinelFilter = (int)32L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.SentinelFilter = 32
+     * }
+     */
+    public static int SentinelFilter() {
+        return SentinelFilter;
+    }
+
+    private static class SetResampleFilterInterpolateMethod {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetResampleFilterInterpolateMethod");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterInterpolateMethod(ResampleFilter *, const PixelInterpolateMethod)
+     * }
+     */
+    public static FunctionDescriptor SetResampleFilterInterpolateMethod$descriptor() {
+        return SetResampleFilterInterpolateMethod.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterInterpolateMethod(ResampleFilter *, const PixelInterpolateMethod)
+     * }
+     */
+    public static MethodHandle SetResampleFilterInterpolateMethod$handle() {
+        return SetResampleFilterInterpolateMethod.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterInterpolateMethod(ResampleFilter *, const PixelInterpolateMethod)
+     * }
+     */
+    public static MemorySegment SetResampleFilterInterpolateMethod$address() {
+        return SetResampleFilterInterpolateMethod.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterInterpolateMethod(ResampleFilter *, const PixelInterpolateMethod)
+     * }
+     */
+    public static int SetResampleFilterInterpolateMethod(MemorySegment x0, int x1) {
+        var mh$ = SetResampleFilterInterpolateMethod.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetResampleFilterInterpolateMethod", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetResampleFilterVirtualPixelMethod {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetResampleFilterVirtualPixelMethod");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterVirtualPixelMethod(ResampleFilter *, const VirtualPixelMethod)
+     * }
+     */
+    public static FunctionDescriptor SetResampleFilterVirtualPixelMethod$descriptor() {
+        return SetResampleFilterVirtualPixelMethod.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterVirtualPixelMethod(ResampleFilter *, const VirtualPixelMethod)
+     * }
+     */
+    public static MethodHandle SetResampleFilterVirtualPixelMethod$handle() {
+        return SetResampleFilterVirtualPixelMethod.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterVirtualPixelMethod(ResampleFilter *, const VirtualPixelMethod)
+     * }
+     */
+    public static MemorySegment SetResampleFilterVirtualPixelMethod$address() {
+        return SetResampleFilterVirtualPixelMethod.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetResampleFilterVirtualPixelMethod(ResampleFilter *, const VirtualPixelMethod)
+     * }
+     */
+    public static int SetResampleFilterVirtualPixelMethod(MemorySegment x0, int x1) {
+        var mh$ = SetResampleFilterVirtualPixelMethod.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetResampleFilterVirtualPixelMethod", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireResampleFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireResampleFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *AcquireResampleFilter(const Image *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor AcquireResampleFilter$descriptor() {
+        return AcquireResampleFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *AcquireResampleFilter(const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle AcquireResampleFilter$handle() {
+        return AcquireResampleFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *AcquireResampleFilter(const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment AcquireResampleFilter$address() {
+        return AcquireResampleFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ResampleFilter *AcquireResampleFilter(const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment AcquireResampleFilter(MemorySegment x0, MemorySegment x1) {
+        var mh$ = AcquireResampleFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireResampleFilter", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyResampleFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyResampleFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *DestroyResampleFilter(ResampleFilter *)
+     * }
+     */
+    public static FunctionDescriptor DestroyResampleFilter$descriptor() {
+        return DestroyResampleFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *DestroyResampleFilter(ResampleFilter *)
+     * }
+     */
+    public static MethodHandle DestroyResampleFilter$handle() {
+        return DestroyResampleFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ResampleFilter *DestroyResampleFilter(ResampleFilter *)
+     * }
+     */
+    public static MemorySegment DestroyResampleFilter$address() {
+        return DestroyResampleFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ResampleFilter *DestroyResampleFilter(ResampleFilter *)
+     * }
+     */
+    public static MemorySegment DestroyResampleFilter(MemorySegment x0) {
+        var mh$ = DestroyResampleFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyResampleFilter", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ScaleResampleFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_DOUBLE,
+            MagickWand_h.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ScaleResampleFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ScaleResampleFilter(ResampleFilter *, const double, const double, const double, const double)
+     * }
+     */
+    public static FunctionDescriptor ScaleResampleFilter$descriptor() {
+        return ScaleResampleFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ScaleResampleFilter(ResampleFilter *, const double, const double, const double, const double)
+     * }
+     */
+    public static MethodHandle ScaleResampleFilter$handle() {
+        return ScaleResampleFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ScaleResampleFilter(ResampleFilter *, const double, const double, const double, const double)
+     * }
+     */
+    public static MemorySegment ScaleResampleFilter$address() {
+        return ScaleResampleFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ScaleResampleFilter(ResampleFilter *, const double, const double, const double, const double)
+     * }
+     */
+    public static void ScaleResampleFilter(MemorySegment x0, double x1, double x2, double x3, double x4) {
+        var mh$ = ScaleResampleFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ScaleResampleFilter", x0, x1, x2, x3, x4);
+            }
+            mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetResampleFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetResampleFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void SetResampleFilter(ResampleFilter *, const FilterType)
+     * }
+     */
+    public static FunctionDescriptor SetResampleFilter$descriptor() {
+        return SetResampleFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void SetResampleFilter(ResampleFilter *, const FilterType)
+     * }
+     */
+    public static MethodHandle SetResampleFilter$handle() {
+        return SetResampleFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void SetResampleFilter(ResampleFilter *, const FilterType)
+     * }
+     */
+    public static MemorySegment SetResampleFilter$address() {
+        return SetResampleFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void SetResampleFilter(ResampleFilter *, const FilterType)
+     * }
+     */
+    public static void SetResampleFilter(MemorySegment x0, int x1) {
+        var mh$ = SetResampleFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetResampleFilter", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class FormatMagickTime {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("FormatMagickTime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickTime(const time_t, const size_t, char *)
+     * }
+     */
+    public static FunctionDescriptor FormatMagickTime$descriptor() {
+        return FormatMagickTime.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickTime(const time_t, const size_t, char *)
+     * }
+     */
+    public static MethodHandle FormatMagickTime$handle() {
+        return FormatMagickTime.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickTime(const time_t, const size_t, char *)
+     * }
+     */
+    public static MemorySegment FormatMagickTime$address() {
+        return FormatMagickTime.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickTime(const time_t, const size_t, char *)
+     * }
+     */
+    public static long FormatMagickTime(long x0, long x1, MemorySegment x2) {
+        var mh$ = FormatMagickTime.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("FormatMagickTime", x0, x1, x2);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CatchImageException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CatchImageException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionType CatchImageException(Image *)
+     * }
+     */
+    public static FunctionDescriptor CatchImageException$descriptor() {
+        return CatchImageException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionType CatchImageException(Image *)
+     * }
+     */
+    public static MethodHandle CatchImageException$handle() {
+        return CatchImageException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionType CatchImageException(Image *)
+     * }
+     */
+    public static MemorySegment CatchImageException$address() {
+        return CatchImageException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionType CatchImageException(Image *)
+     * }
+     */
+    public static int CatchImageException(MemorySegment x0) {
+        var mh$ = CatchImageException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CatchImageException", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewMagickImage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewMagickImage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern Image *NewMagickImage(const ImageInfo *, const size_t, const size_t, const PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor NewMagickImage$descriptor() {
+        return NewMagickImage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern Image *NewMagickImage(const ImageInfo *, const size_t, const size_t, const PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle NewMagickImage$handle() {
+        return NewMagickImage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern Image *NewMagickImage(const ImageInfo *, const size_t, const size_t, const PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment NewMagickImage$address() {
+        return NewMagickImage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern Image *NewMagickImage(const ImageInfo *, const size_t, const size_t, const PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment NewMagickImage(MemorySegment x0, long x1, long x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = NewMagickImage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewMagickImage", x0, x1, x2, x3, x4);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ListMagickInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ListMagickInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ListMagickInfo$descriptor() {
+        return ListMagickInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ListMagickInfo$handle() {
+        return ListMagickInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ListMagickInfo$address() {
+        return ListMagickInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static int ListMagickInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = ListMagickInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ListMagickInfo", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class FormatMagickCaption {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("FormatMagickCaption");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickCaption(Image *, DrawInfo *, const MagickBooleanType, TypeMetric *, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor FormatMagickCaption$descriptor() {
+        return FormatMagickCaption.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickCaption(Image *, DrawInfo *, const MagickBooleanType, TypeMetric *, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle FormatMagickCaption$handle() {
+        return FormatMagickCaption.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickCaption(Image *, DrawInfo *, const MagickBooleanType, TypeMetric *, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment FormatMagickCaption$address() {
+        return FormatMagickCaption.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t FormatMagickCaption(Image *, DrawInfo *, const MagickBooleanType, TypeMetric *, char **, ExceptionInfo *)
+     * }
+     */
+    public static long FormatMagickCaption(MemorySegment x0, MemorySegment x1, int x2, MemorySegment x3, MemorySegment x4, MemorySegment x5) {
+        var mh$ = FormatMagickCaption.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("FormatMagickCaption", x0, x1, x2, x3, x4, x5);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2, x3, x4, x5);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetImageArtifactIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetImageArtifactIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetImageArtifactIterator(const Image *)
+     * }
+     */
+    public static FunctionDescriptor ResetImageArtifactIterator$descriptor() {
+        return ResetImageArtifactIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetImageArtifactIterator(const Image *)
+     * }
+     */
+    public static MethodHandle ResetImageArtifactIterator$handle() {
+        return ResetImageArtifactIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetImageArtifactIterator(const Image *)
+     * }
+     */
+    public static MemorySegment ResetImageArtifactIterator$address() {
+        return ResetImageArtifactIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetImageArtifactIterator(const Image *)
+     * }
+     */
+    public static void ResetImageArtifactIterator(MemorySegment x0) {
+        var mh$ = ResetImageArtifactIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetImageArtifactIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetOneVirtualPixelInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetOneVirtualPixelInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneVirtualPixelInfo(const Image *, const VirtualPixelMethod, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetOneVirtualPixelInfo$descriptor() {
+        return GetOneVirtualPixelInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneVirtualPixelInfo(const Image *, const VirtualPixelMethod, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetOneVirtualPixelInfo$handle() {
+        return GetOneVirtualPixelInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneVirtualPixelInfo(const Image *, const VirtualPixelMethod, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetOneVirtualPixelInfo$address() {
+        return GetOneVirtualPixelInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetOneVirtualPixelInfo(const Image *, const VirtualPixelMethod, const ssize_t, const ssize_t, PixelInfo *, ExceptionInfo *)
+     * }
+     */
+    public static int GetOneVirtualPixelInfo(MemorySegment x0, int x1, long x2, long x3, MemorySegment x4, MemorySegment x5) {
+        var mh$ = GetOneVirtualPixelInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetOneVirtualPixelInfo", x0, x1, x2, x3, x4, x5);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetDelegateCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetDelegateCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *GetDelegateCommand(const ImageInfo *, Image *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetDelegateCommand$descriptor() {
+        return GetDelegateCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *GetDelegateCommand(const ImageInfo *, Image *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetDelegateCommand$handle() {
+        return GetDelegateCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *GetDelegateCommand(const ImageInfo *, Image *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetDelegateCommand$address() {
+        return GetDelegateCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *GetDelegateCommand(const ImageInfo *, Image *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetDelegateCommand(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = GetDelegateCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetDelegateCommand", x0, x1, x2, x3, x4);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetDelegateCommands {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetDelegateCommands");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetDelegateCommands(const DelegateInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetDelegateCommands$descriptor() {
+        return GetDelegateCommands.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetDelegateCommands(const DelegateInfo *)
+     * }
+     */
+    public static MethodHandle GetDelegateCommands$handle() {
+        return GetDelegateCommands.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetDelegateCommands(const DelegateInfo *)
+     * }
+     */
+    public static MemorySegment GetDelegateCommands$address() {
+        return GetDelegateCommands.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetDelegateCommands(const DelegateInfo *)
+     * }
+     */
+    public static MemorySegment GetDelegateCommands(MemorySegment x0) {
+        var mh$ = GetDelegateCommands.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetDelegateCommands", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ExternalDelegateCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ExternalDelegateCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int ExternalDelegateCommand(const MagickBooleanType, const MagickBooleanType, const char *, char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ExternalDelegateCommand$descriptor() {
+        return ExternalDelegateCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int ExternalDelegateCommand(const MagickBooleanType, const MagickBooleanType, const char *, char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ExternalDelegateCommand$handle() {
+        return ExternalDelegateCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int ExternalDelegateCommand(const MagickBooleanType, const MagickBooleanType, const char *, char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ExternalDelegateCommand$address() {
+        return ExternalDelegateCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int ExternalDelegateCommand(const MagickBooleanType, const MagickBooleanType, const char *, char *, ExceptionInfo *)
+     * }
+     */
+    public static int ExternalDelegateCommand(int x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = ExternalDelegateCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ExternalDelegateCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char **GetMagickList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickList$descriptor() {
+        return GetMagickList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char **GetMagickList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickList$handle() {
+        return GetMagickList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char **GetMagickList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickList$address() {
+        return GetMagickList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char **GetMagickList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickList(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = GetMagickList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickList", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickDescription {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickDescription");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDescription(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickDescription$descriptor() {
+        return GetMagickDescription.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDescription(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickDescription$handle() {
+        return GetMagickDescription.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDescription(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickDescription$address() {
+        return GetMagickDescription.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickDescription(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickDescription(MemorySegment x0) {
+        var mh$ = GetMagickDescription.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickDescription", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickMimeType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickMimeType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickMimeType(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickMimeType$descriptor() {
+        return GetMagickMimeType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickMimeType(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickMimeType$handle() {
+        return GetMagickMimeType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickMimeType(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickMimeType$address() {
+        return GetMagickMimeType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickMimeType(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickMimeType(MemorySegment x0) {
+        var mh$ = GetMagickMimeType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickMimeType", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickModuleName {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickModuleName");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickModuleName(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickModuleName$descriptor() {
+        return GetMagickModuleName.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickModuleName(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickModuleName$handle() {
+        return GetMagickModuleName.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickModuleName(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickModuleName$address() {
+        return GetMagickModuleName.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickModuleName(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickModuleName(MemorySegment x0) {
+        var mh$ = GetMagickModuleName.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickModuleName", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickName {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickName");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickName(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickName$descriptor() {
+        return GetMagickName.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickName(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickName$handle() {
+        return GetMagickName.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickName(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickName$address() {
+        return GetMagickName.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickName(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickName(MemorySegment x0) {
+        var mh$ = GetMagickName.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickName", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickPrecision {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickPrecision");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int GetMagickPrecision()
+     * }
+     */
+    public static FunctionDescriptor GetMagickPrecision$descriptor() {
+        return GetMagickPrecision.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int GetMagickPrecision()
+     * }
+     */
+    public static MethodHandle GetMagickPrecision$handle() {
+        return GetMagickPrecision.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int GetMagickPrecision()
+     * }
+     */
+    public static MemorySegment GetMagickPrecision$address() {
+        return GetMagickPrecision.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int GetMagickPrecision()
+     * }
+     */
+    public static int GetMagickPrecision() {
+        var mh$ = GetMagickPrecision.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickPrecision");
+            }
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetMagickPrecision {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickPrecision");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int SetMagickPrecision(const int)
+     * }
+     */
+    public static FunctionDescriptor SetMagickPrecision$descriptor() {
+        return SetMagickPrecision.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int SetMagickPrecision(const int)
+     * }
+     */
+    public static MethodHandle SetMagickPrecision$handle() {
+        return SetMagickPrecision.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int SetMagickPrecision(const int)
+     * }
+     */
+    public static MemorySegment SetMagickPrecision$address() {
+        return SetMagickPrecision.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int SetMagickPrecision(const int)
+     * }
+     */
+    public static int SetMagickPrecision(int x0) {
+        var mh$ = SetMagickPrecision.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickPrecision", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetImageMagick {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetImageMagick");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageMagick(const unsigned char *, const size_t, char *)
+     * }
+     */
+    public static FunctionDescriptor GetImageMagick$descriptor() {
+        return GetImageMagick.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageMagick(const unsigned char *, const size_t, char *)
+     * }
+     */
+    public static MethodHandle GetImageMagick$handle() {
+        return GetImageMagick.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageMagick(const unsigned char *, const size_t, char *)
+     * }
+     */
+    public static MemorySegment GetImageMagick$address() {
+        return GetImageMagick.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageMagick(const unsigned char *, const size_t, char *)
+     * }
+     */
+    public static int GetImageMagick(MemorySegment x0, long x1, MemorySegment x2) {
+        var mh$ = GetImageMagick.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetImageMagick", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickAdjoin {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickAdjoin");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickAdjoin(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickAdjoin$descriptor() {
+        return GetMagickAdjoin.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickAdjoin(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickAdjoin$handle() {
+        return GetMagickAdjoin.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickAdjoin(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickAdjoin$address() {
+        return GetMagickAdjoin.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickAdjoin(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickAdjoin(MemorySegment x0) {
+        var mh$ = GetMagickAdjoin.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickAdjoin", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickBlobSupport {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickBlobSupport");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickBlobSupport(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickBlobSupport$descriptor() {
+        return GetMagickBlobSupport.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickBlobSupport(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickBlobSupport$handle() {
+        return GetMagickBlobSupport.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickBlobSupport(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickBlobSupport$address() {
+        return GetMagickBlobSupport.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickBlobSupport(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickBlobSupport(MemorySegment x0) {
+        var mh$ = GetMagickBlobSupport.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickBlobSupport", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickDecoderSeekableStream {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickDecoderSeekableStream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickDecoderSeekableStream$descriptor() {
+        return GetMagickDecoderSeekableStream.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickDecoderSeekableStream$handle() {
+        return GetMagickDecoderSeekableStream.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickDecoderSeekableStream$address() {
+        return GetMagickDecoderSeekableStream.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickDecoderSeekableStream(MemorySegment x0) {
+        var mh$ = GetMagickDecoderSeekableStream.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickDecoderSeekableStream", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickDecoderThreadSupport {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickDecoderThreadSupport");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickDecoderThreadSupport$descriptor() {
+        return GetMagickDecoderThreadSupport.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickDecoderThreadSupport$handle() {
+        return GetMagickDecoderThreadSupport.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickDecoderThreadSupport$address() {
+        return GetMagickDecoderThreadSupport.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickDecoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickDecoderThreadSupport(MemorySegment x0) {
+        var mh$ = GetMagickDecoderThreadSupport.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickDecoderThreadSupport", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickEncoderSeekableStream {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickEncoderSeekableStream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickEncoderSeekableStream$descriptor() {
+        return GetMagickEncoderSeekableStream.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickEncoderSeekableStream$handle() {
+        return GetMagickEncoderSeekableStream.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickEncoderSeekableStream$address() {
+        return GetMagickEncoderSeekableStream.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickEncoderSeekableStream(MemorySegment x0) {
+        var mh$ = GetMagickEncoderSeekableStream.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickEncoderSeekableStream", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickEncoderThreadSupport {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickEncoderThreadSupport");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickEncoderThreadSupport$descriptor() {
+        return GetMagickEncoderThreadSupport.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickEncoderThreadSupport$handle() {
+        return GetMagickEncoderThreadSupport.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickEncoderThreadSupport$address() {
+        return GetMagickEncoderThreadSupport.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEncoderThreadSupport(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickEncoderThreadSupport(MemorySegment x0) {
+        var mh$ = GetMagickEncoderThreadSupport.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickEncoderThreadSupport", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickEndianSupport {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickEndianSupport");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEndianSupport(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickEndianSupport$descriptor() {
+        return GetMagickEndianSupport.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEndianSupport(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickEndianSupport$handle() {
+        return GetMagickEndianSupport.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEndianSupport(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickEndianSupport$address() {
+        return GetMagickEndianSupport.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickEndianSupport(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickEndianSupport(MemorySegment x0) {
+        var mh$ = GetMagickEndianSupport.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickEndianSupport", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickRawSupport {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickRawSupport");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickRawSupport(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickRawSupport$descriptor() {
+        return GetMagickRawSupport.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickRawSupport(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickRawSupport$handle() {
+        return GetMagickRawSupport.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickRawSupport(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickRawSupport$address() {
+        return GetMagickRawSupport.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickRawSupport(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickRawSupport(MemorySegment x0) {
+        var mh$ = GetMagickRawSupport.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickRawSupport", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickStealth {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickStealth");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickStealth(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickStealth$descriptor() {
+        return GetMagickStealth.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickStealth(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickStealth$handle() {
+        return GetMagickStealth.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickStealth(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickStealth$address() {
+        return GetMagickStealth.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickStealth(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickStealth(MemorySegment x0) {
+        var mh$ = GetMagickStealth.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickStealth", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickUseExtension {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickUseExtension");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickUseExtension(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickUseExtension$descriptor() {
+        return GetMagickUseExtension.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickUseExtension(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickUseExtension$handle() {
+        return GetMagickUseExtension.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickUseExtension(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickUseExtension$address() {
+        return GetMagickUseExtension.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickUseExtension(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickUseExtension(MemorySegment x0) {
+        var mh$ = GetMagickUseExtension.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickUseExtension", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsMagickCoreInstantiated {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsMagickCoreInstantiated");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickCoreInstantiated()
+     * }
+     */
+    public static FunctionDescriptor IsMagickCoreInstantiated$descriptor() {
+        return IsMagickCoreInstantiated.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickCoreInstantiated()
+     * }
+     */
+    public static MethodHandle IsMagickCoreInstantiated$handle() {
+        return IsMagickCoreInstantiated.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickCoreInstantiated()
+     * }
+     */
+    public static MemorySegment IsMagickCoreInstantiated$address() {
+        return IsMagickCoreInstantiated.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickCoreInstantiated()
+     * }
+     */
+    public static int IsMagickCoreInstantiated() {
+        var mh$ = IsMagickCoreInstantiated.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsMagickCoreInstantiated");
+            }
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class RegisterMagickInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("RegisterMagickInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RegisterMagickInfo(MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor RegisterMagickInfo$descriptor() {
+        return RegisterMagickInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RegisterMagickInfo(MagickInfo *)
+     * }
+     */
+    public static MethodHandle RegisterMagickInfo$handle() {
+        return RegisterMagickInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RegisterMagickInfo(MagickInfo *)
+     * }
+     */
+    public static MemorySegment RegisterMagickInfo$address() {
+        return RegisterMagickInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType RegisterMagickInfo(MagickInfo *)
+     * }
+     */
+    public static int RegisterMagickInfo(MemorySegment x0) {
+        var mh$ = RegisterMagickInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("RegisterMagickInfo", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class UnregisterMagickInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("UnregisterMagickInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UnregisterMagickInfo(const char *)
+     * }
+     */
+    public static FunctionDescriptor UnregisterMagickInfo$descriptor() {
+        return UnregisterMagickInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UnregisterMagickInfo(const char *)
+     * }
+     */
+    public static MethodHandle UnregisterMagickInfo$handle() {
+        return UnregisterMagickInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UnregisterMagickInfo(const char *)
+     * }
+     */
+    public static MemorySegment UnregisterMagickInfo$address() {
+        return UnregisterMagickInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType UnregisterMagickInfo(const char *)
+     * }
+     */
+    public static int UnregisterMagickInfo(MemorySegment x0) {
+        var mh$ = UnregisterMagickInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("UnregisterMagickInfo", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const MagickInfo *GetMagickInfo(const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickInfo$descriptor() {
+        return GetMagickInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const MagickInfo *GetMagickInfo(const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickInfo$handle() {
+        return GetMagickInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const MagickInfo *GetMagickInfo(const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickInfo$address() {
+        return GetMagickInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const MagickInfo *GetMagickInfo(const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetMagickInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickInfo", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickInfoList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickInfoList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const MagickInfo **GetMagickInfoList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickInfoList$descriptor() {
+        return GetMagickInfoList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const MagickInfo **GetMagickInfoList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickInfoList$handle() {
+        return GetMagickInfoList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const MagickInfo **GetMagickInfoList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickInfoList$address() {
+        return GetMagickInfoList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const MagickInfo **GetMagickInfoList(const char *, size_t *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickInfoList(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = GetMagickInfoList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickInfoList", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireMagickInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireMagickInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickInfo *AcquireMagickInfo(const char *, const char *, const char *)
+     * }
+     */
+    public static FunctionDescriptor AcquireMagickInfo$descriptor() {
+        return AcquireMagickInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickInfo *AcquireMagickInfo(const char *, const char *, const char *)
+     * }
+     */
+    public static MethodHandle AcquireMagickInfo$handle() {
+        return AcquireMagickInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickInfo *AcquireMagickInfo(const char *, const char *, const char *)
+     * }
+     */
+    public static MemorySegment AcquireMagickInfo$address() {
+        return AcquireMagickInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickInfo *AcquireMagickInfo(const char *, const char *, const char *)
+     * }
+     */
+    public static MemorySegment AcquireMagickInfo(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = AcquireMagickInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireMagickInfo", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickCoreGenesis {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickCoreGenesis");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickCoreGenesis(const char *, const MagickBooleanType)
+     * }
+     */
+    public static FunctionDescriptor MagickCoreGenesis$descriptor() {
+        return MagickCoreGenesis.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickCoreGenesis(const char *, const MagickBooleanType)
+     * }
+     */
+    public static MethodHandle MagickCoreGenesis$handle() {
+        return MagickCoreGenesis.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickCoreGenesis(const char *, const MagickBooleanType)
+     * }
+     */
+    public static MemorySegment MagickCoreGenesis$address() {
+        return MagickCoreGenesis.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickCoreGenesis(const char *, const MagickBooleanType)
+     * }
+     */
+    public static void MagickCoreGenesis(MemorySegment x0, int x1) {
+        var mh$ = MagickCoreGenesis.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickCoreGenesis", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickCoreTerminus {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickCoreTerminus");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickCoreTerminus()
+     * }
+     */
+    public static FunctionDescriptor MagickCoreTerminus$descriptor() {
+        return MagickCoreTerminus.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickCoreTerminus()
+     * }
+     */
+    public static MethodHandle MagickCoreTerminus$handle() {
+        return MagickCoreTerminus.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickCoreTerminus()
+     * }
+     */
+    public static MemorySegment MagickCoreTerminus$address() {
+        return MagickCoreTerminus.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickCoreTerminus()
+     * }
+     */
+    public static void MagickCoreTerminus() {
+        var mh$ = MagickCoreTerminus.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickCoreTerminus");
+            }
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickSeekableStream {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickSeekableStream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickSeekableStream$descriptor() {
+        return GetMagickSeekableStream.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickSeekableStream$handle() {
+        return GetMagickSeekableStream.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickSeekableStream$address() {
+        return GetMagickSeekableStream.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetMagickSeekableStream(const MagickInfo *)
+     * }
+     */
+    public static int GetMagickSeekableStream(MemorySegment x0) {
+        var mh$ = GetMagickSeekableStream.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickSeekableStream", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class RemoteDisplayCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("RemoteDisplayCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RemoteDisplayCommand(const ImageInfo *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor RemoteDisplayCommand$descriptor() {
+        return RemoteDisplayCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RemoteDisplayCommand(const ImageInfo *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle RemoteDisplayCommand$handle() {
+        return RemoteDisplayCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType RemoteDisplayCommand(const ImageInfo *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment RemoteDisplayCommand$address() {
+        return RemoteDisplayCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType RemoteDisplayCommand(const ImageInfo *, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static int RemoteDisplayCommand(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = RemoteDisplayCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("RemoteDisplayCommand", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetImageViewException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetImageViewException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *GetImageViewException(const ImageView *, ExceptionType *)
+     * }
+     */
+    public static FunctionDescriptor GetImageViewException$descriptor() {
+        return GetImageViewException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *GetImageViewException(const ImageView *, ExceptionType *)
+     * }
+     */
+    public static MethodHandle GetImageViewException$handle() {
+        return GetImageViewException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *GetImageViewException(const ImageView *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment GetImageViewException$address() {
+        return GetImageViewException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *GetImageViewException(const ImageView *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment GetImageViewException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetImageViewException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetImageViewException", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DuplexTransferImageViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DuplexTransferImageViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferImageViewIterator(ImageView *, ImageView *, ImageView *, DuplexTransferImageViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor DuplexTransferImageViewIterator$descriptor() {
+        return DuplexTransferImageViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferImageViewIterator(ImageView *, ImageView *, ImageView *, DuplexTransferImageViewMethod, void *)
+     * }
+     */
+    public static MethodHandle DuplexTransferImageViewIterator$handle() {
+        return DuplexTransferImageViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferImageViewIterator(ImageView *, ImageView *, ImageView *, DuplexTransferImageViewMethod, void *)
+     * }
+     */
+    public static MemorySegment DuplexTransferImageViewIterator$address() {
+        return DuplexTransferImageViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferImageViewIterator(ImageView *, ImageView *, ImageView *, DuplexTransferImageViewMethod, void *)
+     * }
+     */
+    public static int DuplexTransferImageViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = DuplexTransferImageViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DuplexTransferImageViewIterator", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetImageViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetImageViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageViewIterator(ImageView *, GetImageViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor GetImageViewIterator$descriptor() {
+        return GetImageViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageViewIterator(ImageView *, GetImageViewMethod, void *)
+     * }
+     */
+    public static MethodHandle GetImageViewIterator$handle() {
+        return GetImageViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageViewIterator(ImageView *, GetImageViewMethod, void *)
+     * }
+     */
+    public static MemorySegment GetImageViewIterator$address() {
+        return GetImageViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetImageViewIterator(ImageView *, GetImageViewMethod, void *)
+     * }
+     */
+    public static int GetImageViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = GetImageViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetImageViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetImageViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetImageViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetImageViewIterator(ImageView *, SetImageViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor SetImageViewIterator$descriptor() {
+        return SetImageViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetImageViewIterator(ImageView *, SetImageViewMethod, void *)
+     * }
+     */
+    public static MethodHandle SetImageViewIterator$handle() {
+        return SetImageViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetImageViewIterator(ImageView *, SetImageViewMethod, void *)
+     * }
+     */
+    public static MemorySegment SetImageViewIterator$address() {
+        return SetImageViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetImageViewIterator(ImageView *, SetImageViewMethod, void *)
+     * }
+     */
+    public static int SetImageViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = SetImageViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetImageViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class TransferImageViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("TransferImageViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferImageViewIterator(ImageView *, ImageView *, TransferImageViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor TransferImageViewIterator$descriptor() {
+        return TransferImageViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferImageViewIterator(ImageView *, ImageView *, TransferImageViewMethod, void *)
+     * }
+     */
+    public static MethodHandle TransferImageViewIterator$handle() {
+        return TransferImageViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferImageViewIterator(ImageView *, ImageView *, TransferImageViewMethod, void *)
+     * }
+     */
+    public static MemorySegment TransferImageViewIterator$address() {
+        return TransferImageViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferImageViewIterator(ImageView *, ImageView *, TransferImageViewMethod, void *)
+     * }
+     */
+    public static int TransferImageViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = TransferImageViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("TransferImageViewIterator", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class UpdateImageViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("UpdateImageViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateImageViewIterator(ImageView *, UpdateImageViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor UpdateImageViewIterator$descriptor() {
+        return UpdateImageViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateImageViewIterator(ImageView *, UpdateImageViewMethod, void *)
+     * }
+     */
+    public static MethodHandle UpdateImageViewIterator$handle() {
+        return UpdateImageViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateImageViewIterator(ImageView *, UpdateImageViewMethod, void *)
+     * }
+     */
+    public static MemorySegment UpdateImageViewIterator$address() {
+        return UpdateImageViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateImageViewIterator(ImageView *, UpdateImageViewMethod, void *)
+     * }
+     */
+    public static int UpdateImageViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = UpdateImageViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("UpdateImageViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int ExceptionEvent = (int)256L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.ExceptionEvent = 256
+     * }
+     */
+    public static int ExceptionEvent() {
+        return ExceptionEvent;
+    }
+    private static final int WandEvent = (int)262144L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.WandEvent = 262144
+     * }
+     */
+    public static int WandEvent() {
+        return WandEvent;
+    }
+
+    /**
+     * Variadic invoker class for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType LogMagickEvent(const LogEventType, const char *, const char *, const size_t, const char *, ...)
+     * }
+     */
+    public static class LogMagickEvent {
+        private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
+                MagickWand_h.C_INT,
+                MagickWand_h.C_INT,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_LONG,
+                MagickWand_h.C_POINTER
+            );
+        private static final MemorySegment ADDR = MagickWand_h.findOrThrow("LogMagickEvent");
+
+        private final MethodHandle handle;
+        private final FunctionDescriptor descriptor;
+        private final MethodHandle spreader;
+
+        private LogMagickEvent(MethodHandle handle, FunctionDescriptor descriptor, MethodHandle spreader) {
+            this.handle = handle;
+            this.descriptor = descriptor;
+            this.spreader = spreader;
+        }
+
+        /**
+         * Variadic invoker factory for:
+         * {@snippet lang=c :
+         * extern MagickBooleanType LogMagickEvent(const LogEventType, const char *, const char *, const size_t, const char *, ...)
+         * }
+         */
+        public static LogMagickEvent makeInvoker(MemoryLayout... layouts) {
+            FunctionDescriptor desc$ = BASE_DESC.appendArgumentLayouts(layouts);
+            Linker.Option fva$ = Linker.Option.firstVariadicArg(BASE_DESC.argumentLayouts().size());
+            var mh$ = Linker.nativeLinker().downcallHandle(ADDR, desc$, fva$);
+            var spreader$ = mh$.asSpreader(Object[].class, layouts.length);
+            return new LogMagickEvent(mh$, desc$, spreader$);
+        }
+
+        /**
+         * {@return the address}
+         */
+        public static MemorySegment address() {
+            return ADDR;
+        }
+
+        /**
+         * {@return the specialized method handle}
+         */
+        public MethodHandle handle() {
+            return handle;
+        }
+
+        /**
+         * {@return the specialized descriptor}
+         */
+        public FunctionDescriptor descriptor() {
+            return descriptor;
+        }
+
+        public int apply(int x0, MemorySegment x1, MemorySegment x2, long x3, MemorySegment x4, Object... x5) {
+            try {
+                if (TRACE_DOWNCALLS) {
+                    traceDowncall("LogMagickEvent", x0, x1, x2, x3, x4, x5);
+                }
+                return (int)spreader.invokeExact(x0, x1, x2, x3, x4, x5);
+            } catch(IllegalArgumentException | ClassCastException ex$)  {
+                throw ex$; // rethrow IAE from passing wrong number/type of args
+            } catch (Throwable ex$) {
+               throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static class LogMagickEventList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("LogMagickEventList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType LogMagickEventList(const LogEventType, const char *, const char *, const size_t, const char *, va_list)
+     * }
+     */
+    public static FunctionDescriptor LogMagickEventList$descriptor() {
+        return LogMagickEventList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType LogMagickEventList(const LogEventType, const char *, const char *, const size_t, const char *, va_list)
+     * }
+     */
+    public static MethodHandle LogMagickEventList$handle() {
+        return LogMagickEventList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType LogMagickEventList(const LogEventType, const char *, const char *, const size_t, const char *, va_list)
+     * }
+     */
+    public static MemorySegment LogMagickEventList$address() {
+        return LogMagickEventList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType LogMagickEventList(const LogEventType, const char *, const char *, const size_t, const char *, va_list)
+     * }
+     */
+    public static int LogMagickEventList(int x0, MemorySegment x1, MemorySegment x2, long x3, MemorySegment x4, MemorySegment x5) {
+        var mh$ = LogMagickEventList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("LogMagickEventList", x0, x1, x2, x3, x4, x5);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CloseMagickLog {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CloseMagickLog");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void CloseMagickLog()
+     * }
+     */
+    public static FunctionDescriptor CloseMagickLog$descriptor() {
+        return CloseMagickLog.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void CloseMagickLog()
+     * }
+     */
+    public static MethodHandle CloseMagickLog$handle() {
+        return CloseMagickLog.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void CloseMagickLog()
+     * }
+     */
+    public static MemorySegment CloseMagickLog$address() {
+        return CloseMagickLog.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void CloseMagickLog()
+     * }
+     */
+    public static void CloseMagickLog() {
+        var mh$ = CloseMagickLog.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CloseMagickLog");
+            }
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireMagickMatrix {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireMagickMatrix");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double **AcquireMagickMatrix(const size_t, const size_t)
+     * }
+     */
+    public static FunctionDescriptor AcquireMagickMatrix$descriptor() {
+        return AcquireMagickMatrix.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double **AcquireMagickMatrix(const size_t, const size_t)
+     * }
+     */
+    public static MethodHandle AcquireMagickMatrix$handle() {
+        return AcquireMagickMatrix.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double **AcquireMagickMatrix(const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment AcquireMagickMatrix$address() {
+        return AcquireMagickMatrix.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double **AcquireMagickMatrix(const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment AcquireMagickMatrix(long x0, long x1) {
+        var mh$ = AcquireMagickMatrix.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireMagickMatrix", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class RelinquishMagickMatrix {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("RelinquishMagickMatrix");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double **RelinquishMagickMatrix(double **, const size_t)
+     * }
+     */
+    public static FunctionDescriptor RelinquishMagickMatrix$descriptor() {
+        return RelinquishMagickMatrix.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double **RelinquishMagickMatrix(double **, const size_t)
+     * }
+     */
+    public static MethodHandle RelinquishMagickMatrix$handle() {
+        return RelinquishMagickMatrix.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double **RelinquishMagickMatrix(double **, const size_t)
+     * }
+     */
+    public static MemorySegment RelinquishMagickMatrix$address() {
+        return RelinquishMagickMatrix.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double **RelinquishMagickMatrix(double **, const size_t)
+     * }
+     */
+    public static MemorySegment RelinquishMagickMatrix(MemorySegment x0, long x1) {
+        var mh$ = RelinquishMagickMatrix.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("RelinquishMagickMatrix", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *AcquireMagickMemory(const size_t)
+     * }
+     */
+    public static FunctionDescriptor AcquireMagickMemory$descriptor() {
+        return AcquireMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *AcquireMagickMemory(const size_t)
+     * }
+     */
+    public static MethodHandle AcquireMagickMemory$handle() {
+        return AcquireMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *AcquireMagickMemory(const size_t)
+     * }
+     */
+    public static MemorySegment AcquireMagickMemory$address() {
+        return AcquireMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *AcquireMagickMemory(const size_t)
+     * }
+     */
+    public static MemorySegment AcquireMagickMemory(long x0) {
+        var mh$ = AcquireMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireMagickMemory", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CopyMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CopyMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *CopyMagickMemory(void *restrict, const void *restrict, const size_t)
+     * }
+     */
+    public static FunctionDescriptor CopyMagickMemory$descriptor() {
+        return CopyMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *CopyMagickMemory(void *restrict, const void *restrict, const size_t)
+     * }
+     */
+    public static MethodHandle CopyMagickMemory$handle() {
+        return CopyMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *CopyMagickMemory(void *restrict, const void *restrict, const size_t)
+     * }
+     */
+    public static MemorySegment CopyMagickMemory$address() {
+        return CopyMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *CopyMagickMemory(void *restrict, const void *restrict, const size_t)
+     * }
+     */
+    public static MemorySegment CopyMagickMemory(MemorySegment x0, MemorySegment x1, long x2) {
+        var mh$ = CopyMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CopyMagickMemory", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void DestroyMagickMemory()
+     * }
+     */
+    public static FunctionDescriptor DestroyMagickMemory$descriptor() {
+        return DestroyMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void DestroyMagickMemory()
+     * }
+     */
+    public static MethodHandle DestroyMagickMemory$handle() {
+        return DestroyMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void DestroyMagickMemory()
+     * }
+     */
+    public static MemorySegment DestroyMagickMemory$address() {
+        return DestroyMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void DestroyMagickMemory()
+     * }
+     */
+    public static void DestroyMagickMemory() {
+        var mh$ = DestroyMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyMagickMemory");
+            }
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickMemoryMethods {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickMemoryMethods");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void GetMagickMemoryMethods(AcquireMemoryHandler *, ResizeMemoryHandler *, DestroyMemoryHandler *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickMemoryMethods$descriptor() {
+        return GetMagickMemoryMethods.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void GetMagickMemoryMethods(AcquireMemoryHandler *, ResizeMemoryHandler *, DestroyMemoryHandler *)
+     * }
+     */
+    public static MethodHandle GetMagickMemoryMethods$handle() {
+        return GetMagickMemoryMethods.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void GetMagickMemoryMethods(AcquireMemoryHandler *, ResizeMemoryHandler *, DestroyMemoryHandler *)
+     * }
+     */
+    public static MemorySegment GetMagickMemoryMethods$address() {
+        return GetMagickMemoryMethods.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void GetMagickMemoryMethods(AcquireMemoryHandler *, ResizeMemoryHandler *, DestroyMemoryHandler *)
+     * }
+     */
+    public static void GetMagickMemoryMethods(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = GetMagickMemoryMethods.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickMemoryMethods", x0, x1, x2);
+            }
+            mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class RelinquishMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("RelinquishMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *RelinquishMagickMemory(void *)
+     * }
+     */
+    public static FunctionDescriptor RelinquishMagickMemory$descriptor() {
+        return RelinquishMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *RelinquishMagickMemory(void *)
+     * }
+     */
+    public static MethodHandle RelinquishMagickMemory$handle() {
+        return RelinquishMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *RelinquishMagickMemory(void *)
+     * }
+     */
+    public static MemorySegment RelinquishMagickMemory$address() {
+        return RelinquishMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *RelinquishMagickMemory(void *)
+     * }
+     */
+    public static MemorySegment RelinquishMagickMemory(MemorySegment x0) {
+        var mh$ = RelinquishMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("RelinquishMagickMemory", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *ResetMagickMemory(void *, int, const size_t)
+     * }
+     */
+    public static FunctionDescriptor ResetMagickMemory$descriptor() {
+        return ResetMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *ResetMagickMemory(void *, int, const size_t)
+     * }
+     */
+    public static MethodHandle ResetMagickMemory$handle() {
+        return ResetMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *ResetMagickMemory(void *, int, const size_t)
+     * }
+     */
+    public static MemorySegment ResetMagickMemory$address() {
+        return ResetMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *ResetMagickMemory(void *, int, const size_t)
+     * }
+     */
+    public static MemorySegment ResetMagickMemory(MemorySegment x0, int x1, long x2) {
+        var mh$ = ResetMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetMagickMemory", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResizeMagickMemory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResizeMagickMemory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *ResizeMagickMemory(void *, const size_t)
+     * }
+     */
+    public static FunctionDescriptor ResizeMagickMemory$descriptor() {
+        return ResizeMagickMemory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *ResizeMagickMemory(void *, const size_t)
+     * }
+     */
+    public static MethodHandle ResizeMagickMemory$handle() {
+        return ResizeMagickMemory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *ResizeMagickMemory(void *, const size_t)
+     * }
+     */
+    public static MemorySegment ResizeMagickMemory$address() {
+        return ResizeMagickMemory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *ResizeMagickMemory(void *, const size_t)
+     * }
+     */
+    public static MemorySegment ResizeMagickMemory(MemorySegment x0, long x1) {
+        var mh$ = ResizeMagickMemory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResizeMagickMemory", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetMagickAlignedMemoryMethods {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickAlignedMemoryMethods");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void SetMagickAlignedMemoryMethods(AcquireAlignedMemoryHandler, RelinquishAlignedMemoryHandler)
+     * }
+     */
+    public static FunctionDescriptor SetMagickAlignedMemoryMethods$descriptor() {
+        return SetMagickAlignedMemoryMethods.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void SetMagickAlignedMemoryMethods(AcquireAlignedMemoryHandler, RelinquishAlignedMemoryHandler)
+     * }
+     */
+    public static MethodHandle SetMagickAlignedMemoryMethods$handle() {
+        return SetMagickAlignedMemoryMethods.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void SetMagickAlignedMemoryMethods(AcquireAlignedMemoryHandler, RelinquishAlignedMemoryHandler)
+     * }
+     */
+    public static MemorySegment SetMagickAlignedMemoryMethods$address() {
+        return SetMagickAlignedMemoryMethods.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void SetMagickAlignedMemoryMethods(AcquireAlignedMemoryHandler, RelinquishAlignedMemoryHandler)
+     * }
+     */
+    public static void SetMagickAlignedMemoryMethods(MemorySegment x0, MemorySegment x1) {
+        var mh$ = SetMagickAlignedMemoryMethods.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickAlignedMemoryMethods", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetMagickMemoryMethods {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickMemoryMethods");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void SetMagickMemoryMethods(AcquireMemoryHandler, ResizeMemoryHandler, DestroyMemoryHandler)
+     * }
+     */
+    public static FunctionDescriptor SetMagickMemoryMethods$descriptor() {
+        return SetMagickMemoryMethods.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void SetMagickMemoryMethods(AcquireMemoryHandler, ResizeMemoryHandler, DestroyMemoryHandler)
+     * }
+     */
+    public static MethodHandle SetMagickMemoryMethods$handle() {
+        return SetMagickMemoryMethods.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void SetMagickMemoryMethods(AcquireMemoryHandler, ResizeMemoryHandler, DestroyMemoryHandler)
+     * }
+     */
+    public static MemorySegment SetMagickMemoryMethods$address() {
+        return SetMagickMemoryMethods.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void SetMagickMemoryMethods(AcquireMemoryHandler, ResizeMemoryHandler, DestroyMemoryHandler)
+     * }
+     */
+    public static void SetMagickMemoryMethods(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = SetMagickMemoryMethods.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickMemoryMethods", x0, x1, x2);
+            }
+            mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickHomeURL {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickHomeURL");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *GetMagickHomeURL()
+     * }
+     */
+    public static FunctionDescriptor GetMagickHomeURL$descriptor() {
+        return GetMagickHomeURL.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *GetMagickHomeURL()
+     * }
+     */
+    public static MethodHandle GetMagickHomeURL$handle() {
+        return GetMagickHomeURL.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *GetMagickHomeURL()
+     * }
+     */
+    public static MemorySegment GetMagickHomeURL$address() {
+        return GetMagickHomeURL.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *GetMagickHomeURL()
+     * }
+     */
+    public static MemorySegment GetMagickHomeURL() {
+        var mh$ = GetMagickHomeURL.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickHomeURL");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickCopyright {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickCopyright");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickCopyright()
+     * }
+     */
+    public static FunctionDescriptor GetMagickCopyright$descriptor() {
+        return GetMagickCopyright.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickCopyright()
+     * }
+     */
+    public static MethodHandle GetMagickCopyright$handle() {
+        return GetMagickCopyright.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickCopyright()
+     * }
+     */
+    public static MemorySegment GetMagickCopyright$address() {
+        return GetMagickCopyright.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickCopyright()
+     * }
+     */
+    public static MemorySegment GetMagickCopyright() {
+        var mh$ = GetMagickCopyright.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickCopyright");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickDelegates {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickDelegates");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDelegates()
+     * }
+     */
+    public static FunctionDescriptor GetMagickDelegates$descriptor() {
+        return GetMagickDelegates.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDelegates()
+     * }
+     */
+    public static MethodHandle GetMagickDelegates$handle() {
+        return GetMagickDelegates.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickDelegates()
+     * }
+     */
+    public static MemorySegment GetMagickDelegates$address() {
+        return GetMagickDelegates.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickDelegates()
+     * }
+     */
+    public static MemorySegment GetMagickDelegates() {
+        var mh$ = GetMagickDelegates.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickDelegates");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickFeatures {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickFeatures");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickFeatures()
+     * }
+     */
+    public static FunctionDescriptor GetMagickFeatures$descriptor() {
+        return GetMagickFeatures.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickFeatures()
+     * }
+     */
+    public static MethodHandle GetMagickFeatures$handle() {
+        return GetMagickFeatures.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickFeatures()
+     * }
+     */
+    public static MemorySegment GetMagickFeatures$address() {
+        return GetMagickFeatures.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickFeatures()
+     * }
+     */
+    public static MemorySegment GetMagickFeatures() {
+        var mh$ = GetMagickFeatures.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickFeatures");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickLicense {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickLicense");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickLicense()
+     * }
+     */
+    public static FunctionDescriptor GetMagickLicense$descriptor() {
+        return GetMagickLicense.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickLicense()
+     * }
+     */
+    public static MethodHandle GetMagickLicense$handle() {
+        return GetMagickLicense.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickLicense()
+     * }
+     */
+    public static MemorySegment GetMagickLicense$address() {
+        return GetMagickLicense.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickLicense()
+     * }
+     */
+    public static MemorySegment GetMagickLicense() {
+        var mh$ = GetMagickLicense.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickLicense");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickPackageName {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickPackageName");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickPackageName()
+     * }
+     */
+    public static FunctionDescriptor GetMagickPackageName$descriptor() {
+        return GetMagickPackageName.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickPackageName()
+     * }
+     */
+    public static MethodHandle GetMagickPackageName$handle() {
+        return GetMagickPackageName.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickPackageName()
+     * }
+     */
+    public static MemorySegment GetMagickPackageName$address() {
+        return GetMagickPackageName.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickPackageName()
+     * }
+     */
+    public static MemorySegment GetMagickPackageName() {
+        var mh$ = GetMagickPackageName.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickPackageName");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickQuantumDepth {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickQuantumDepth");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumDepth(size_t *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickQuantumDepth$descriptor() {
+        return GetMagickQuantumDepth.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumDepth(size_t *)
+     * }
+     */
+    public static MethodHandle GetMagickQuantumDepth$handle() {
+        return GetMagickQuantumDepth.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumDepth(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickQuantumDepth$address() {
+        return GetMagickQuantumDepth.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumDepth(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickQuantumDepth(MemorySegment x0) {
+        var mh$ = GetMagickQuantumDepth.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickQuantumDepth", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickQuantumRange {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickQuantumRange");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumRange(size_t *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickQuantumRange$descriptor() {
+        return GetMagickQuantumRange.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumRange(size_t *)
+     * }
+     */
+    public static MethodHandle GetMagickQuantumRange$handle() {
+        return GetMagickQuantumRange.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumRange(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickQuantumRange$address() {
+        return GetMagickQuantumRange.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickQuantumRange(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickQuantumRange(MemorySegment x0) {
+        var mh$ = GetMagickQuantumRange.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickQuantumRange", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickReleaseDate {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickReleaseDate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickReleaseDate()
+     * }
+     */
+    public static FunctionDescriptor GetMagickReleaseDate$descriptor() {
+        return GetMagickReleaseDate.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickReleaseDate()
+     * }
+     */
+    public static MethodHandle GetMagickReleaseDate$handle() {
+        return GetMagickReleaseDate.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickReleaseDate()
+     * }
+     */
+    public static MemorySegment GetMagickReleaseDate$address() {
+        return GetMagickReleaseDate.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickReleaseDate()
+     * }
+     */
+    public static MemorySegment GetMagickReleaseDate() {
+        var mh$ = GetMagickReleaseDate.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickReleaseDate");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickVersion {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickVersion");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickVersion(size_t *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickVersion$descriptor() {
+        return GetMagickVersion.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickVersion(size_t *)
+     * }
+     */
+    public static MethodHandle GetMagickVersion$handle() {
+        return GetMagickVersion.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickVersion(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickVersion$address() {
+        return GetMagickVersion.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickVersion(size_t *)
+     * }
+     */
+    public static MemorySegment GetMagickVersion(MemorySegment x0) {
+        var mh$ = GetMagickVersion.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickVersion", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ListMagickVersion {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ListMagickVersion");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ListMagickVersion(FILE *)
+     * }
+     */
+    public static FunctionDescriptor ListMagickVersion$descriptor() {
+        return ListMagickVersion.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ListMagickVersion(FILE *)
+     * }
+     */
+    public static MethodHandle ListMagickVersion$handle() {
+        return ListMagickVersion.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ListMagickVersion(FILE *)
+     * }
+     */
+    public static MemorySegment ListMagickVersion$address() {
+        return ListMagickVersion.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ListMagickVersion(FILE *)
+     * }
+     */
+    public static void ListMagickVersion(MemorySegment x0) {
+        var mh$ = ListMagickVersion.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ListMagickVersion", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int MagickImageCoderModule = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickImageCoderModule = 0
+     * }
+     */
+    public static int MagickImageCoderModule() {
+        return MagickImageCoderModule;
+    }
+    private static final int MagickImageFilterModule = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickImageFilterModule = 1
+     * }
+     */
+    public static int MagickImageFilterModule() {
+        return MagickImageFilterModule;
+    }
+
+    private static class InvokeDynamicImageFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("InvokeDynamicImageFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeDynamicImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor InvokeDynamicImageFilter$descriptor() {
+        return InvokeDynamicImageFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeDynamicImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle InvokeDynamicImageFilter$handle() {
+        return InvokeDynamicImageFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeDynamicImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment InvokeDynamicImageFilter$address() {
+        return InvokeDynamicImageFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeDynamicImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static int InvokeDynamicImageFilter(MemorySegment x0, MemorySegment x1, int x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = InvokeDynamicImageFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("InvokeDynamicImageFilter", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickToMime {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickToMime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *MagickToMime(const char *)
+     * }
+     */
+    public static FunctionDescriptor MagickToMime$descriptor() {
+        return MagickToMime.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *MagickToMime(const char *)
+     * }
+     */
+    public static MethodHandle MagickToMime$handle() {
+        return MagickToMime.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *MagickToMime(const char *)
+     * }
+     */
+    public static MemorySegment MagickToMime$address() {
+        return MagickToMime.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *MagickToMime(const char *)
+     * }
+     */
+    public static MemorySegment MagickToMime(MemorySegment x0) {
+        var mh$ = MagickToMime.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickToMime", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MontageImages {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MontageImages");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern Image *MontageImages(const Image *, const MontageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MontageImages$descriptor() {
+        return MontageImages.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern Image *MontageImages(const Image *, const MontageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MontageImages$handle() {
+        return MontageImages.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern Image *MontageImages(const Image *, const MontageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MontageImages$address() {
+        return MontageImages.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern Image *MontageImages(const Image *, const MontageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MontageImages(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = MontageImages.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MontageImages", x0, x1, x2);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MontageImageList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MontageImageList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern Image *MontageImageList(const ImageInfo *, const MontageInfo *, const Image *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MontageImageList$descriptor() {
+        return MontageImageList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern Image *MontageImageList(const ImageInfo *, const MontageInfo *, const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MontageImageList$handle() {
+        return MontageImageList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern Image *MontageImageList(const ImageInfo *, const MontageInfo *, const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MontageImageList$address() {
+        return MontageImageList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern Image *MontageImageList(const ImageInfo *, const MontageInfo *, const Image *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MontageImageList(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = MontageImageList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MontageImageList", x0, x1, x2, x3);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CloneMontageInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CloneMontageInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MontageInfo *CloneMontageInfo(const ImageInfo *, const MontageInfo *)
+     * }
+     */
+    public static FunctionDescriptor CloneMontageInfo$descriptor() {
+        return CloneMontageInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MontageInfo *CloneMontageInfo(const ImageInfo *, const MontageInfo *)
+     * }
+     */
+    public static MethodHandle CloneMontageInfo$handle() {
+        return CloneMontageInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MontageInfo *CloneMontageInfo(const ImageInfo *, const MontageInfo *)
+     * }
+     */
+    public static MemorySegment CloneMontageInfo$address() {
+        return CloneMontageInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MontageInfo *CloneMontageInfo(const ImageInfo *, const MontageInfo *)
+     * }
+     */
+    public static MemorySegment CloneMontageInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = CloneMontageInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CloneMontageInfo", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyMontageInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyMontageInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MontageInfo *DestroyMontageInfo(MontageInfo *)
+     * }
+     */
+    public static FunctionDescriptor DestroyMontageInfo$descriptor() {
+        return DestroyMontageInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MontageInfo *DestroyMontageInfo(MontageInfo *)
+     * }
+     */
+    public static MethodHandle DestroyMontageInfo$handle() {
+        return DestroyMontageInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MontageInfo *DestroyMontageInfo(MontageInfo *)
+     * }
+     */
+    public static MemorySegment DestroyMontageInfo$address() {
+        return DestroyMontageInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MontageInfo *DestroyMontageInfo(MontageInfo *)
+     * }
+     */
+    public static MemorySegment DestroyMontageInfo(MemorySegment x0) {
+        var mh$ = DestroyMontageInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyMontageInfo", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMontageInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMontageInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void GetMontageInfo(const ImageInfo *, MontageInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMontageInfo$descriptor() {
+        return GetMontageInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void GetMontageInfo(const ImageInfo *, MontageInfo *)
+     * }
+     */
+    public static MethodHandle GetMontageInfo$handle() {
+        return GetMontageInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void GetMontageInfo(const ImageInfo *, MontageInfo *)
+     * }
+     */
+    public static MemorySegment GetMontageInfo$address() {
+        return GetMontageInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void GetMontageInfo(const ImageInfo *, MontageInfo *)
+     * }
+     */
+    public static void GetMontageInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetMontageInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMontageInfo", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    /**
+     * {@snippet lang=c :
+     * typedef struct _MagickCLDevice *MagickCLDevice
+     * }
+     */
+    public static final AddressLayout MagickCLDevice = MagickWand_h.C_POINTER;
+    private static final int MagickUndefinedOptions = (int)-1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickUndefinedOptions = -1
+     * }
+     */
+    public static int MagickUndefinedOptions() {
+        return MagickUndefinedOptions;
+    }
+    private static final int MagickAlignOptions = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickAlignOptions = 0
+     * }
+     */
+    public static int MagickAlignOptions() {
+        return MagickAlignOptions;
+    }
+    private static final int MagickAlphaChannelOptions = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickAlphaChannelOptions = 1
+     * }
+     */
+    public static int MagickAlphaChannelOptions() {
+        return MagickAlphaChannelOptions;
+    }
+    private static final int MagickBooleanOptions = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickBooleanOptions = 2
+     * }
+     */
+    public static int MagickBooleanOptions() {
+        return MagickBooleanOptions;
+    }
+    private static final int MagickCacheOptions = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickCacheOptions = 3
+     * }
+     */
+    public static int MagickCacheOptions() {
+        return MagickCacheOptions;
+    }
+    private static final int MagickChannelOptions = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickChannelOptions = 4
+     * }
+     */
+    public static int MagickChannelOptions() {
+        return MagickChannelOptions;
+    }
+    private static final int MagickClassOptions = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickClassOptions = 5
+     * }
+     */
+    public static int MagickClassOptions() {
+        return MagickClassOptions;
+    }
+    private static final int MagickClipPathOptions = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickClipPathOptions = 6
+     * }
+     */
+    public static int MagickClipPathOptions() {
+        return MagickClipPathOptions;
+    }
+    private static final int MagickCoderOptions = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickCoderOptions = 7
+     * }
+     */
+    public static int MagickCoderOptions() {
+        return MagickCoderOptions;
+    }
+    private static final int MagickColorOptions = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickColorOptions = 8
+     * }
+     */
+    public static int MagickColorOptions() {
+        return MagickColorOptions;
+    }
+    private static final int MagickColorspaceOptions = (int)9L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickColorspaceOptions = 9
+     * }
+     */
+    public static int MagickColorspaceOptions() {
+        return MagickColorspaceOptions;
+    }
+    private static final int MagickCommandOptions = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickCommandOptions = 10
+     * }
+     */
+    public static int MagickCommandOptions() {
+        return MagickCommandOptions;
+    }
+    private static final int MagickComplexOptions = (int)11L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickComplexOptions = 11
+     * }
+     */
+    public static int MagickComplexOptions() {
+        return MagickComplexOptions;
+    }
+    private static final int MagickComplianceOptions = (int)12L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickComplianceOptions = 12
+     * }
+     */
+    public static int MagickComplianceOptions() {
+        return MagickComplianceOptions;
+    }
+    private static final int MagickComposeOptions = (int)13L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickComposeOptions = 13
+     * }
+     */
+    public static int MagickComposeOptions() {
+        return MagickComposeOptions;
+    }
+    private static final int MagickCompressOptions = (int)14L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickCompressOptions = 14
+     * }
+     */
+    public static int MagickCompressOptions() {
+        return MagickCompressOptions;
+    }
+    private static final int MagickConfigureOptions = (int)15L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickConfigureOptions = 15
+     * }
+     */
+    public static int MagickConfigureOptions() {
+        return MagickConfigureOptions;
+    }
+    private static final int MagickDataTypeOptions = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDataTypeOptions = 16
+     * }
+     */
+    public static int MagickDataTypeOptions() {
+        return MagickDataTypeOptions;
+    }
+    private static final int MagickDebugOptions = (int)17L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDebugOptions = 17
+     * }
+     */
+    public static int MagickDebugOptions() {
+        return MagickDebugOptions;
+    }
+    private static final int MagickDecorateOptions = (int)18L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDecorateOptions = 18
+     * }
+     */
+    public static int MagickDecorateOptions() {
+        return MagickDecorateOptions;
+    }
+    private static final int MagickDelegateOptions = (int)19L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDelegateOptions = 19
+     * }
+     */
+    public static int MagickDelegateOptions() {
+        return MagickDelegateOptions;
+    }
+    private static final int MagickDirectionOptions = (int)20L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDirectionOptions = 20
+     * }
+     */
+    public static int MagickDirectionOptions() {
+        return MagickDirectionOptions;
+    }
+    private static final int MagickDisposeOptions = (int)21L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDisposeOptions = 21
+     * }
+     */
+    public static int MagickDisposeOptions() {
+        return MagickDisposeOptions;
+    }
+    private static final int MagickDistortOptions = (int)22L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDistortOptions = 22
+     * }
+     */
+    public static int MagickDistortOptions() {
+        return MagickDistortOptions;
+    }
+    private static final int MagickDitherOptions = (int)23L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickDitherOptions = 23
+     * }
+     */
+    public static int MagickDitherOptions() {
+        return MagickDitherOptions;
+    }
+    private static final int MagickEndianOptions = (int)24L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickEndianOptions = 24
+     * }
+     */
+    public static int MagickEndianOptions() {
+        return MagickEndianOptions;
+    }
+    private static final int MagickEvaluateOptions = (int)25L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickEvaluateOptions = 25
+     * }
+     */
+    public static int MagickEvaluateOptions() {
+        return MagickEvaluateOptions;
+    }
+    private static final int MagickFillRuleOptions = (int)26L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFillRuleOptions = 26
+     * }
+     */
+    public static int MagickFillRuleOptions() {
+        return MagickFillRuleOptions;
+    }
+    private static final int MagickFilterOptions = (int)27L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFilterOptions = 27
+     * }
+     */
+    public static int MagickFilterOptions() {
+        return MagickFilterOptions;
+    }
+    private static final int MagickFontOptions = (int)28L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFontOptions = 28
+     * }
+     */
+    public static int MagickFontOptions() {
+        return MagickFontOptions;
+    }
+    private static final int MagickFontsOptions = (int)29L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFontsOptions = 29
+     * }
+     */
+    public static int MagickFontsOptions() {
+        return MagickFontsOptions;
+    }
+    private static final int MagickFormatOptions = (int)30L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFormatOptions = 30
+     * }
+     */
+    public static int MagickFormatOptions() {
+        return MagickFormatOptions;
+    }
+    private static final int MagickFunctionOptions = (int)31L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickFunctionOptions = 31
+     * }
+     */
+    public static int MagickFunctionOptions() {
+        return MagickFunctionOptions;
+    }
+    private static final int MagickGradientOptions = (int)32L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickGradientOptions = 32
+     * }
+     */
+    public static int MagickGradientOptions() {
+        return MagickGradientOptions;
+    }
+    private static final int MagickGravityOptions = (int)33L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickGravityOptions = 33
+     * }
+     */
+    public static int MagickGravityOptions() {
+        return MagickGravityOptions;
+    }
+    private static final int MagickIntensityOptions = (int)34L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickIntensityOptions = 34
+     * }
+     */
+    public static int MagickIntensityOptions() {
+        return MagickIntensityOptions;
+    }
+    private static final int MagickIntentOptions = (int)35L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickIntentOptions = 35
+     * }
+     */
+    public static int MagickIntentOptions() {
+        return MagickIntentOptions;
+    }
+    private static final int MagickInterlaceOptions = (int)36L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickInterlaceOptions = 36
+     * }
+     */
+    public static int MagickInterlaceOptions() {
+        return MagickInterlaceOptions;
+    }
+    private static final int MagickInterpolateOptions = (int)37L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickInterpolateOptions = 37
+     * }
+     */
+    public static int MagickInterpolateOptions() {
+        return MagickInterpolateOptions;
+    }
+    private static final int MagickKernelOptions = (int)38L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickKernelOptions = 38
+     * }
+     */
+    public static int MagickKernelOptions() {
+        return MagickKernelOptions;
+    }
+    private static final int MagickLayerOptions = (int)39L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLayerOptions = 39
+     * }
+     */
+    public static int MagickLayerOptions() {
+        return MagickLayerOptions;
+    }
+    private static final int MagickLineCapOptions = (int)40L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLineCapOptions = 40
+     * }
+     */
+    public static int MagickLineCapOptions() {
+        return MagickLineCapOptions;
+    }
+    private static final int MagickLineJoinOptions = (int)41L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLineJoinOptions = 41
+     * }
+     */
+    public static int MagickLineJoinOptions() {
+        return MagickLineJoinOptions;
+    }
+    private static final int MagickListOptions = (int)42L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickListOptions = 42
+     * }
+     */
+    public static int MagickListOptions() {
+        return MagickListOptions;
+    }
+    private static final int MagickLocaleOptions = (int)43L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLocaleOptions = 43
+     * }
+     */
+    public static int MagickLocaleOptions() {
+        return MagickLocaleOptions;
+    }
+    private static final int MagickLogEventOptions = (int)44L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLogEventOptions = 44
+     * }
+     */
+    public static int MagickLogEventOptions() {
+        return MagickLogEventOptions;
+    }
+    private static final int MagickLogOptions = (int)45L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickLogOptions = 45
+     * }
+     */
+    public static int MagickLogOptions() {
+        return MagickLogOptions;
+    }
+    private static final int MagickMagicOptions = (int)46L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickMagicOptions = 46
+     * }
+     */
+    public static int MagickMagicOptions() {
+        return MagickMagicOptions;
+    }
+    private static final int MagickMethodOptions = (int)47L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickMethodOptions = 47
+     * }
+     */
+    public static int MagickMethodOptions() {
+        return MagickMethodOptions;
+    }
+    private static final int MagickMetricOptions = (int)48L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickMetricOptions = 48
+     * }
+     */
+    public static int MagickMetricOptions() {
+        return MagickMetricOptions;
+    }
+    private static final int MagickMimeOptions = (int)49L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickMimeOptions = 49
+     * }
+     */
+    public static int MagickMimeOptions() {
+        return MagickMimeOptions;
+    }
+    private static final int MagickModeOptions = (int)50L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickModeOptions = 50
+     * }
+     */
+    public static int MagickModeOptions() {
+        return MagickModeOptions;
+    }
+    private static final int MagickModuleOptions = (int)51L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickModuleOptions = 51
+     * }
+     */
+    public static int MagickModuleOptions() {
+        return MagickModuleOptions;
+    }
+    private static final int MagickMorphologyOptions = (int)52L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickMorphologyOptions = 52
+     * }
+     */
+    public static int MagickMorphologyOptions() {
+        return MagickMorphologyOptions;
+    }
+    private static final int MagickNoiseOptions = (int)53L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickNoiseOptions = 53
+     * }
+     */
+    public static int MagickNoiseOptions() {
+        return MagickNoiseOptions;
+    }
+    private static final int MagickOrientationOptions = (int)54L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickOrientationOptions = 54
+     * }
+     */
+    public static int MagickOrientationOptions() {
+        return MagickOrientationOptions;
+    }
+    private static final int MagickPixelChannelOptions = (int)55L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPixelChannelOptions = 55
+     * }
+     */
+    public static int MagickPixelChannelOptions() {
+        return MagickPixelChannelOptions;
+    }
+    private static final int MagickPixelIntensityOptions = (int)56L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPixelIntensityOptions = 56
+     * }
+     */
+    public static int MagickPixelIntensityOptions() {
+        return MagickPixelIntensityOptions;
+    }
+    private static final int MagickPixelMaskOptions = (int)57L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPixelMaskOptions = 57
+     * }
+     */
+    public static int MagickPixelMaskOptions() {
+        return MagickPixelMaskOptions;
+    }
+    private static final int MagickPixelTraitOptions = (int)58L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPixelTraitOptions = 58
+     * }
+     */
+    public static int MagickPixelTraitOptions() {
+        return MagickPixelTraitOptions;
+    }
+    private static final int MagickPolicyOptions = (int)59L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPolicyOptions = 59
+     * }
+     */
+    public static int MagickPolicyOptions() {
+        return MagickPolicyOptions;
+    }
+    private static final int MagickPolicyDomainOptions = (int)60L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPolicyDomainOptions = 60
+     * }
+     */
+    public static int MagickPolicyDomainOptions() {
+        return MagickPolicyDomainOptions;
+    }
+    private static final int MagickPolicyRightsOptions = (int)61L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPolicyRightsOptions = 61
+     * }
+     */
+    public static int MagickPolicyRightsOptions() {
+        return MagickPolicyRightsOptions;
+    }
+    private static final int MagickPreviewOptions = (int)62L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPreviewOptions = 62
+     * }
+     */
+    public static int MagickPreviewOptions() {
+        return MagickPreviewOptions;
+    }
+    private static final int MagickPrimitiveOptions = (int)63L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPrimitiveOptions = 63
+     * }
+     */
+    public static int MagickPrimitiveOptions() {
+        return MagickPrimitiveOptions;
+    }
+    private static final int MagickQuantumFormatOptions = (int)64L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickQuantumFormatOptions = 64
+     * }
+     */
+    public static int MagickQuantumFormatOptions() {
+        return MagickQuantumFormatOptions;
+    }
+    private static final int MagickResolutionOptions = (int)65L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickResolutionOptions = 65
+     * }
+     */
+    public static int MagickResolutionOptions() {
+        return MagickResolutionOptions;
+    }
+    private static final int MagickResourceOptions = (int)66L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickResourceOptions = 66
+     * }
+     */
+    public static int MagickResourceOptions() {
+        return MagickResourceOptions;
+    }
+    private static final int MagickSparseColorOptions = (int)67L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickSparseColorOptions = 67
+     * }
+     */
+    public static int MagickSparseColorOptions() {
+        return MagickSparseColorOptions;
+    }
+    private static final int MagickStatisticOptions = (int)68L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickStatisticOptions = 68
+     * }
+     */
+    public static int MagickStatisticOptions() {
+        return MagickStatisticOptions;
+    }
+    private static final int MagickStorageOptions = (int)69L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickStorageOptions = 69
+     * }
+     */
+    public static int MagickStorageOptions() {
+        return MagickStorageOptions;
+    }
+    private static final int MagickStretchOptions = (int)70L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickStretchOptions = 70
+     * }
+     */
+    public static int MagickStretchOptions() {
+        return MagickStretchOptions;
+    }
+    private static final int MagickStyleOptions = (int)71L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickStyleOptions = 71
+     * }
+     */
+    public static int MagickStyleOptions() {
+        return MagickStyleOptions;
+    }
+    private static final int MagickThresholdOptions = (int)72L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickThresholdOptions = 72
+     * }
+     */
+    public static int MagickThresholdOptions() {
+        return MagickThresholdOptions;
+    }
+    private static final int MagickTypeOptions = (int)73L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickTypeOptions = 73
+     * }
+     */
+    public static int MagickTypeOptions() {
+        return MagickTypeOptions;
+    }
+    private static final int MagickValidateOptions = (int)74L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickValidateOptions = 74
+     * }
+     */
+    public static int MagickValidateOptions() {
+        return MagickValidateOptions;
+    }
+    private static final int MagickVirtualPixelOptions = (int)75L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickVirtualPixelOptions = 75
+     * }
+     */
+    public static int MagickVirtualPixelOptions() {
+        return MagickVirtualPixelOptions;
+    }
+    private static final int MagickWeightOptions = (int)76L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickWeightOptions = 76
+     * }
+     */
+    public static int MagickWeightOptions() {
+        return MagickWeightOptions;
+    }
+    private static final int MagickAutoThresholdOptions = (int)77L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickAutoThresholdOptions = 77
+     * }
+     */
+    public static int MagickAutoThresholdOptions() {
+        return MagickAutoThresholdOptions;
+    }
+    private static final int MagickToolOptions = (int)78L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickToolOptions = 78
+     * }
+     */
+    public static int MagickToolOptions() {
+        return MagickToolOptions;
+    }
+    private static final int MagickCLIOptions = (int)79L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickCLIOptions = 79
+     * }
+     */
+    public static int MagickCLIOptions() {
+        return MagickCLIOptions;
+    }
+    private static final int MagickIlluminantOptions = (int)80L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickIlluminantOptions = 80
+     * }
+     */
+    public static int MagickIlluminantOptions() {
+        return MagickIlluminantOptions;
+    }
+    private static final int MagickWordBreakOptions = (int)81L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickWordBreakOptions = 81
+     * }
+     */
+    public static int MagickWordBreakOptions() {
+        return MagickWordBreakOptions;
+    }
+    private static final int MagickPagesizeOptions = (int)82L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPagesizeOptions = 82
+     * }
+     */
+    public static int MagickPagesizeOptions() {
+        return MagickPagesizeOptions;
+    }
+    private static final int MontageValidate = (int)512L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MontageValidate = 512
+     * }
+     */
+    public static int MontageValidate() {
+        return MontageValidate;
+    }
+    private static final int MagickValidate = (int)2048L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickValidate = 2048
+     * }
+     */
+    public static int MagickValidate() {
+        return MagickValidate;
+    }
+    private static final int NonMagickOptionFlag = (int)4096L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.NonMagickOptionFlag = 4096
+     * }
+     */
+    public static int NonMagickOptionFlag() {
+        return NonMagickOptionFlag;
+    }
+
+    private static class GetCommandOptions {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetCommandOptions");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char **GetCommandOptions(const CommandOption)
+     * }
+     */
+    public static FunctionDescriptor GetCommandOptions$descriptor() {
+        return GetCommandOptions.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char **GetCommandOptions(const CommandOption)
+     * }
+     */
+    public static MethodHandle GetCommandOptions$handle() {
+        return GetCommandOptions.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char **GetCommandOptions(const CommandOption)
+     * }
+     */
+    public static MemorySegment GetCommandOptions$address() {
+        return GetCommandOptions.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char **GetCommandOptions(const CommandOption)
+     * }
+     */
+    public static MemorySegment GetCommandOptions(int x0) {
+        var mh$ = GetCommandOptions.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetCommandOptions", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsCommandOption {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsCommandOption");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsCommandOption(const char *)
+     * }
+     */
+    public static FunctionDescriptor IsCommandOption$descriptor() {
+        return IsCommandOption.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsCommandOption(const char *)
+     * }
+     */
+    public static MethodHandle IsCommandOption$handle() {
+        return IsCommandOption.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsCommandOption(const char *)
+     * }
+     */
+    public static MemorySegment IsCommandOption$address() {
+        return IsCommandOption.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsCommandOption(const char *)
+     * }
+     */
+    public static int IsCommandOption(MemorySegment x0) {
+        var mh$ = IsCommandOption.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsCommandOption", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ListCommandOptions {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ListCommandOptions");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListCommandOptions(FILE *, const CommandOption, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ListCommandOptions$descriptor() {
+        return ListCommandOptions.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListCommandOptions(FILE *, const CommandOption, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ListCommandOptions$handle() {
+        return ListCommandOptions.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListCommandOptions(FILE *, const CommandOption, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ListCommandOptions$address() {
+        return ListCommandOptions.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListCommandOptions(FILE *, const CommandOption, ExceptionInfo *)
+     * }
+     */
+    public static int ListCommandOptions(MemorySegment x0, int x1, MemorySegment x2) {
+        var mh$ = ListCommandOptions.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ListCommandOptions", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetCommandOptionFlags {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetCommandOptionFlags");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t GetCommandOptionFlags(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static FunctionDescriptor GetCommandOptionFlags$descriptor() {
+        return GetCommandOptionFlags.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t GetCommandOptionFlags(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static MethodHandle GetCommandOptionFlags$handle() {
+        return GetCommandOptionFlags.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t GetCommandOptionFlags(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static MemorySegment GetCommandOptionFlags$address() {
+        return GetCommandOptionFlags.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t GetCommandOptionFlags(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static long GetCommandOptionFlags(int x0, int x1, MemorySegment x2) {
+        var mh$ = GetCommandOptionFlags.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetCommandOptionFlags", x0, x1, x2);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ParseCommandOption {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ParseCommandOption");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t ParseCommandOption(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static FunctionDescriptor ParseCommandOption$descriptor() {
+        return ParseCommandOption.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t ParseCommandOption(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static MethodHandle ParseCommandOption$handle() {
+        return ParseCommandOption.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t ParseCommandOption(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static MemorySegment ParseCommandOption$address() {
+        return ParseCommandOption.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t ParseCommandOption(const CommandOption, const MagickBooleanType, const char *)
+     * }
+     */
+    public static long ParseCommandOption(int x0, int x1, MemorySegment x2) {
+        var mh$ = ParseCommandOption.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ParseCommandOption", x0, x1, x2);
+            }
+            return (long)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetImageOptionIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetImageOptionIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetImageOptionIterator(const ImageInfo *)
+     * }
+     */
+    public static FunctionDescriptor ResetImageOptionIterator$descriptor() {
+        return ResetImageOptionIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetImageOptionIterator(const ImageInfo *)
+     * }
+     */
+    public static MethodHandle ResetImageOptionIterator$handle() {
+        return ResetImageOptionIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetImageOptionIterator(const ImageInfo *)
+     * }
+     */
+    public static MemorySegment ResetImageOptionIterator$address() {
+        return ResetImageOptionIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetImageOptionIterator(const ImageInfo *)
+     * }
+     */
+    public static void ResetImageOptionIterator(MemorySegment x0) {
+        var mh$ = ResetImageOptionIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetImageOptionIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetCommandOptionInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetCommandOptionInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const OptionInfo *GetCommandOptionInfo(const char *value)
+     * }
+     */
+    public static FunctionDescriptor GetCommandOptionInfo$descriptor() {
+        return GetCommandOptionInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const OptionInfo *GetCommandOptionInfo(const char *value)
+     * }
+     */
+    public static MethodHandle GetCommandOptionInfo$handle() {
+        return GetCommandOptionInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const OptionInfo *GetCommandOptionInfo(const char *value)
+     * }
+     */
+    public static MemorySegment GetCommandOptionInfo$address() {
+        return GetCommandOptionInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const OptionInfo *GetCommandOptionInfo(const char *value)
+     * }
+     */
+    public static MemorySegment GetCommandOptionInfo(MemorySegment value) {
+        var mh$ = GetCommandOptionInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetCommandOptionInfo", value);
+            }
+            return (MemorySegment)mh$.invokeExact(value);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int FilterPolicyDomain = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.FilterPolicyDomain = 3
+     * }
+     */
+    public static int FilterPolicyDomain() {
+        return FilterPolicyDomain;
+    }
+
+    private static class SetMagickSecurityPolicy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickSecurityPolicy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicy(const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor SetMagickSecurityPolicy$descriptor() {
+        return SetMagickSecurityPolicy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicy(const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle SetMagickSecurityPolicy$handle() {
+        return SetMagickSecurityPolicy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicy(const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment SetMagickSecurityPolicy$address() {
+        return SetMagickSecurityPolicy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicy(const char *, ExceptionInfo *)
+     * }
+     */
+    public static int SetMagickSecurityPolicy(MemorySegment x0, MemorySegment x1) {
+        var mh$ = SetMagickSecurityPolicy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickSecurityPolicy", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetMagickSecurityPolicyValue {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickSecurityPolicyValue");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicyValue(const PolicyDomain, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor SetMagickSecurityPolicyValue$descriptor() {
+        return SetMagickSecurityPolicyValue.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicyValue(const PolicyDomain, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle SetMagickSecurityPolicyValue$handle() {
+        return SetMagickSecurityPolicyValue.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicyValue(const PolicyDomain, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment SetMagickSecurityPolicyValue$address() {
+        return SetMagickSecurityPolicyValue.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickSecurityPolicyValue(const PolicyDomain, const char *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static int SetMagickSecurityPolicyValue(int x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = SetMagickSecurityPolicyValue.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickSecurityPolicyValue", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickProperty {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickProperty");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickProperty(ImageInfo *, Image *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor GetMagickProperty$descriptor() {
+        return GetMagickProperty.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickProperty(ImageInfo *, Image *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle GetMagickProperty$handle() {
+        return GetMagickProperty.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *GetMagickProperty(ImageInfo *, Image *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickProperty$address() {
+        return GetMagickProperty.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *GetMagickProperty(ImageInfo *, Image *, const char *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment GetMagickProperty(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = GetMagickProperty.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickProperty", x0, x1, x2, x3);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetImagePropertyIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetImagePropertyIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetImagePropertyIterator(const Image *)
+     * }
+     */
+    public static FunctionDescriptor ResetImagePropertyIterator$descriptor() {
+        return ResetImagePropertyIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetImagePropertyIterator(const Image *)
+     * }
+     */
+    public static MethodHandle ResetImagePropertyIterator$handle() {
+        return ResetImagePropertyIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetImagePropertyIterator(const Image *)
+     * }
+     */
+    public static MemorySegment ResetImagePropertyIterator$address() {
+        return ResetImagePropertyIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetImagePropertyIterator(const Image *)
+     * }
+     */
+    public static void ResetImagePropertyIterator(MemorySegment x0) {
+        var mh$ = ResetImagePropertyIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetImagePropertyIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetImageRegistryIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetImageRegistryIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetImageRegistryIterator()
+     * }
+     */
+    public static FunctionDescriptor ResetImageRegistryIterator$descriptor() {
+        return ResetImageRegistryIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetImageRegistryIterator()
+     * }
+     */
+    public static MethodHandle ResetImageRegistryIterator$handle() {
+        return ResetImageRegistryIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetImageRegistryIterator()
+     * }
+     */
+    public static MemorySegment ResetImageRegistryIterator$address() {
+        return ResetImageRegistryIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetImageRegistryIterator()
+     * }
+     */
+    public static void ResetImageRegistryIterator() {
+        var mh$ = ResetImageRegistryIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetImageRegistryIterator");
+            }
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireMagickResource {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_LONG_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireMagickResource");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AcquireMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static FunctionDescriptor AcquireMagickResource$descriptor() {
+        return AcquireMagickResource.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AcquireMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MethodHandle AcquireMagickResource$handle() {
+        return AcquireMagickResource.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AcquireMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MemorySegment AcquireMagickResource$address() {
+        return AcquireMagickResource.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType AcquireMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static int AcquireMagickResource(int x0, long x1) {
+        var mh$ = AcquireMagickResource.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireMagickResource", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ListMagickResourceInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ListMagickResourceInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickResourceInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ListMagickResourceInfo$descriptor() {
+        return ListMagickResourceInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickResourceInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ListMagickResourceInfo$handle() {
+        return ListMagickResourceInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickResourceInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ListMagickResourceInfo$address() {
+        return ListMagickResourceInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ListMagickResourceInfo(FILE *, ExceptionInfo *)
+     * }
+     */
+    public static int ListMagickResourceInfo(MemorySegment x0, MemorySegment x1) {
+        var mh$ = ListMagickResourceInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ListMagickResourceInfo", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetMagickResourceLimit {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_LONG_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetMagickResourceLimit");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickResourceLimit(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static FunctionDescriptor SetMagickResourceLimit$descriptor() {
+        return SetMagickResourceLimit.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickResourceLimit(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MethodHandle SetMagickResourceLimit$handle() {
+        return SetMagickResourceLimit.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickResourceLimit(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MemorySegment SetMagickResourceLimit$address() {
+        return SetMagickResourceLimit.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetMagickResourceLimit(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static int SetMagickResourceLimit(int x0, long x1) {
+        var mh$ = SetMagickResourceLimit.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetMagickResourceLimit", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickResource {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG_LONG,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickResource");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResource(const ResourceType)
+     * }
+     */
+    public static FunctionDescriptor GetMagickResource$descriptor() {
+        return GetMagickResource.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResource(const ResourceType)
+     * }
+     */
+    public static MethodHandle GetMagickResource$handle() {
+        return GetMagickResource.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResource(const ResourceType)
+     * }
+     */
+    public static MemorySegment GetMagickResource$address() {
+        return GetMagickResource.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResource(const ResourceType)
+     * }
+     */
+    public static long GetMagickResource(int x0) {
+        var mh$ = GetMagickResource.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickResource", x0);
+            }
+            return (long)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetMagickResourceLimit {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG_LONG,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetMagickResourceLimit");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResourceLimit(const ResourceType)
+     * }
+     */
+    public static FunctionDescriptor GetMagickResourceLimit$descriptor() {
+        return GetMagickResourceLimit.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResourceLimit(const ResourceType)
+     * }
+     */
+    public static MethodHandle GetMagickResourceLimit$handle() {
+        return GetMagickResourceLimit.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResourceLimit(const ResourceType)
+     * }
+     */
+    public static MemorySegment GetMagickResourceLimit$address() {
+        return GetMagickResourceLimit.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickSizeType GetMagickResourceLimit(const ResourceType)
+     * }
+     */
+    public static long GetMagickResourceLimit(int x0) {
+        var mh$ = GetMagickResourceLimit.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetMagickResourceLimit", x0);
+            }
+            return (long)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class RelinquishMagickResource {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_LONG_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("RelinquishMagickResource");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void RelinquishMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static FunctionDescriptor RelinquishMagickResource$descriptor() {
+        return RelinquishMagickResource.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void RelinquishMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MethodHandle RelinquishMagickResource$handle() {
+        return RelinquishMagickResource.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void RelinquishMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static MemorySegment RelinquishMagickResource$address() {
+        return RelinquishMagickResource.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void RelinquishMagickResource(const ResourceType, const MagickSizeType)
+     * }
+     */
+    public static void RelinquishMagickResource(int x0, long x1) {
+        var mh$ = RelinquishMagickResource.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("RelinquishMagickResource", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ResetSplayTreeIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ResetSplayTreeIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ResetSplayTreeIterator(SplayTreeInfo *)
+     * }
+     */
+    public static FunctionDescriptor ResetSplayTreeIterator$descriptor() {
+        return ResetSplayTreeIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ResetSplayTreeIterator(SplayTreeInfo *)
+     * }
+     */
+    public static MethodHandle ResetSplayTreeIterator$handle() {
+        return ResetSplayTreeIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ResetSplayTreeIterator(SplayTreeInfo *)
+     * }
+     */
+    public static MemorySegment ResetSplayTreeIterator$address() {
+        return ResetSplayTreeIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ResetSplayTreeIterator(SplayTreeInfo *)
+     * }
+     */
+    public static void ResetSplayTreeIterator(MemorySegment x0) {
+        var mh$ = ResetSplayTreeIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ResetSplayTreeIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class InvokeStaticImageFilter {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("InvokeStaticImageFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeStaticImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor InvokeStaticImageFilter$descriptor() {
+        return InvokeStaticImageFilter.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeStaticImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle InvokeStaticImageFilter$handle() {
+        return InvokeStaticImageFilter.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeStaticImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment InvokeStaticImageFilter$address() {
+        return InvokeStaticImageFilter.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType InvokeStaticImageFilter(const char *, Image **, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static int InvokeStaticImageFilter(MemorySegment x0, MemorySegment x1, int x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = InvokeStaticImageFilter.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("InvokeStaticImageFilter", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int MagickPath = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.MagickPath = 1
+     * }
+     */
+    public static int MagickPath() {
+        return MagickPath;
+    }
+
+    private static class MagickDelay {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_LONG_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickDelay");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void MagickDelay(const MagickSizeType)
+     * }
+     */
+    public static FunctionDescriptor MagickDelay$descriptor() {
+        return MagickDelay.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void MagickDelay(const MagickSizeType)
+     * }
+     */
+    public static MethodHandle MagickDelay$handle() {
+        return MagickDelay.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void MagickDelay(const MagickSizeType)
+     * }
+     */
+    public static MemorySegment MagickDelay$address() {
+        return MagickDelay.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void MagickDelay(const MagickSizeType)
+     * }
+     */
+    public static void MagickDelay(long x0) {
+        var mh$ = MagickDelay.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickDelay", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AnimateImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AnimateImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AnimateImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor AnimateImageCommand$descriptor() {
+        return AnimateImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AnimateImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle AnimateImageCommand$handle() {
+        return AnimateImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType AnimateImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment AnimateImageCommand$address() {
+        return AnimateImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType AnimateImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int AnimateImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = AnimateImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AnimateImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CompareImagesCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CompareImagesCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompareImagesCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor CompareImagesCommand$descriptor() {
+        return CompareImagesCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompareImagesCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle CompareImagesCommand$handle() {
+        return CompareImagesCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompareImagesCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment CompareImagesCommand$address() {
+        return CompareImagesCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompareImagesCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int CompareImagesCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = CompareImagesCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CompareImagesCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CompositeImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CompositeImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompositeImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor CompositeImageCommand$descriptor() {
+        return CompositeImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompositeImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle CompositeImageCommand$handle() {
+        return CompositeImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompositeImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment CompositeImageCommand$address() {
+        return CompositeImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType CompositeImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int CompositeImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = CompositeImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CompositeImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ConjureImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ConjureImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConjureImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ConjureImageCommand$descriptor() {
+        return ConjureImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConjureImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ConjureImageCommand$handle() {
+        return ConjureImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConjureImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ConjureImageCommand$address() {
+        return ConjureImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConjureImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int ConjureImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = ConjureImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ConjureImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *PixelGetException(const PixelWand *, ExceptionType *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetException$descriptor() {
+        return PixelGetException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *PixelGetException(const PixelWand *, ExceptionType *)
+     * }
+     */
+    public static MethodHandle PixelGetException$handle() {
+        return PixelGetException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *PixelGetException(const PixelWand *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment PixelGetException$address() {
+        return PixelGetException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *PixelGetException(const PixelWand *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment PixelGetException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetException", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetExceptionType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetExceptionType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetExceptionType(const PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetExceptionType$descriptor() {
+        return PixelGetExceptionType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetExceptionType(const PixelWand *)
+     * }
+     */
+    public static MethodHandle PixelGetExceptionType$handle() {
+        return PixelGetExceptionType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetExceptionType(const PixelWand *)
+     * }
+     */
+    public static MemorySegment PixelGetExceptionType$address() {
+        return PixelGetExceptionType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetExceptionType(const PixelWand *)
+     * }
+     */
+    public static int PixelGetExceptionType(MemorySegment x0) {
+        var mh$ = PixelGetExceptionType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetExceptionType", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsPixelWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsPixelWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWand(const PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor IsPixelWand$descriptor() {
+        return IsPixelWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWand(const PixelWand *)
+     * }
+     */
+    public static MethodHandle IsPixelWand$handle() {
+        return IsPixelWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWand(const PixelWand *)
+     * }
+     */
+    public static MemorySegment IsPixelWand$address() {
+        return IsPixelWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWand(const PixelWand *)
+     * }
+     */
+    public static int IsPixelWand(MemorySegment x0) {
+        var mh$ = IsPixelWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsPixelWand", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsPixelWandSimilar {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsPixelWandSimilar");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWandSimilar(PixelWand *, PixelWand *, const double)
+     * }
+     */
+    public static FunctionDescriptor IsPixelWandSimilar$descriptor() {
+        return IsPixelWandSimilar.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWandSimilar(PixelWand *, PixelWand *, const double)
+     * }
+     */
+    public static MethodHandle IsPixelWandSimilar$handle() {
+        return IsPixelWandSimilar.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWandSimilar(PixelWand *, PixelWand *, const double)
+     * }
+     */
+    public static MemorySegment IsPixelWandSimilar$address() {
+        return IsPixelWandSimilar.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelWandSimilar(PixelWand *, PixelWand *, const double)
+     * }
+     */
+    public static int IsPixelWandSimilar(MemorySegment x0, MemorySegment x1, double x2) {
+        var mh$ = IsPixelWandSimilar.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsPixelWandSimilar", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelClearException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelClearException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearException(PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor PixelClearException$descriptor() {
+        return PixelClearException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearException(PixelWand *)
+     * }
+     */
+    public static MethodHandle PixelClearException$handle() {
+        return PixelClearException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearException(PixelWand *)
+     * }
+     */
+    public static MemorySegment PixelClearException$address() {
+        return PixelClearException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearException(PixelWand *)
+     * }
+     */
+    public static int PixelClearException(MemorySegment x0) {
+        var mh$ = PixelClearException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelClearException", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClonePixelWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClonePixelWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand *ClonePixelWand(const PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor ClonePixelWand$descriptor() {
+        return ClonePixelWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand *ClonePixelWand(const PixelWand *)
+     * }
+     */
+    public static MethodHandle ClonePixelWand$handle() {
+        return ClonePixelWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand *ClonePixelWand(const PixelWand *)
+     * }
+     */
+    public static MemorySegment ClonePixelWand$address() {
+        return ClonePixelWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand *ClonePixelWand(const PixelWand *)
+     * }
+     */
+    public static MemorySegment ClonePixelWand(MemorySegment x0) {
+        var mh$ = ClonePixelWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClonePixelWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClonePixelWands {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClonePixelWands");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **ClonePixelWands(const PixelWand **, const size_t)
+     * }
+     */
+    public static FunctionDescriptor ClonePixelWands$descriptor() {
+        return ClonePixelWands.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **ClonePixelWands(const PixelWand **, const size_t)
+     * }
+     */
+    public static MethodHandle ClonePixelWands$handle() {
+        return ClonePixelWands.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **ClonePixelWands(const PixelWand **, const size_t)
+     * }
+     */
+    public static MemorySegment ClonePixelWands$address() {
+        return ClonePixelWands.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **ClonePixelWands(const PixelWand **, const size_t)
+     * }
+     */
+    public static MemorySegment ClonePixelWands(MemorySegment x0, long x1) {
+        var mh$ = ClonePixelWands.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClonePixelWands", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyPixelWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyPixelWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand *DestroyPixelWand(PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor DestroyPixelWand$descriptor() {
+        return DestroyPixelWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand *DestroyPixelWand(PixelWand *)
+     * }
+     */
+    public static MethodHandle DestroyPixelWand$handle() {
+        return DestroyPixelWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand *DestroyPixelWand(PixelWand *)
+     * }
+     */
+    public static MemorySegment DestroyPixelWand$address() {
+        return DestroyPixelWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand *DestroyPixelWand(PixelWand *)
+     * }
+     */
+    public static MemorySegment DestroyPixelWand(MemorySegment x0) {
+        var mh$ = DestroyPixelWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyPixelWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyPixelWands {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyPixelWands");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **DestroyPixelWands(PixelWand **, const size_t)
+     * }
+     */
+    public static FunctionDescriptor DestroyPixelWands$descriptor() {
+        return DestroyPixelWands.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **DestroyPixelWands(PixelWand **, const size_t)
+     * }
+     */
+    public static MethodHandle DestroyPixelWands$handle() {
+        return DestroyPixelWands.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **DestroyPixelWands(PixelWand **, const size_t)
+     * }
+     */
+    public static MemorySegment DestroyPixelWands$address() {
+        return DestroyPixelWands.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **DestroyPixelWands(PixelWand **, const size_t)
+     * }
+     */
+    public static MemorySegment DestroyPixelWands(MemorySegment x0, long x1) {
+        var mh$ = DestroyPixelWands.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyPixelWands", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewPixelWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewPixelWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand *NewPixelWand()
+     * }
+     */
+    public static FunctionDescriptor NewPixelWand$descriptor() {
+        return NewPixelWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand *NewPixelWand()
+     * }
+     */
+    public static MethodHandle NewPixelWand$handle() {
+        return NewPixelWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand *NewPixelWand()
+     * }
+     */
+    public static MemorySegment NewPixelWand$address() {
+        return NewPixelWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand *NewPixelWand()
+     * }
+     */
+    public static MemorySegment NewPixelWand() {
+        var mh$ = NewPixelWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewPixelWand");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewPixelWands {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewPixelWands");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **NewPixelWands(const size_t)
+     * }
+     */
+    public static FunctionDescriptor NewPixelWands$descriptor() {
+        return NewPixelWands.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **NewPixelWands(const size_t)
+     * }
+     */
+    public static MethodHandle NewPixelWands$handle() {
+        return NewPixelWands.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **NewPixelWands(const size_t)
+     * }
+     */
+    public static MemorySegment NewPixelWands$address() {
+        return NewPixelWands.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **NewPixelWands(const size_t)
+     * }
+     */
+    public static MemorySegment NewPixelWands(long x0) {
+        var mh$ = NewPixelWands.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewPixelWands", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClearPixelWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClearPixelWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ClearPixelWand(PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor ClearPixelWand$descriptor() {
+        return ClearPixelWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ClearPixelWand(PixelWand *)
+     * }
+     */
+    public static MethodHandle ClearPixelWand$handle() {
+        return ClearPixelWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ClearPixelWand(PixelWand *)
+     * }
+     */
+    public static MemorySegment ClearPixelWand$address() {
+        return ClearPixelWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ClearPixelWand(PixelWand *)
+     * }
+     */
+    public static void ClearPixelWand(MemorySegment x0) {
+        var mh$ = ClearPixelWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClearPixelWand", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetMagickColor {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetMagickColor");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void PixelGetMagickColor(const PixelWand *, PixelInfo *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetMagickColor$descriptor() {
+        return PixelGetMagickColor.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void PixelGetMagickColor(const PixelWand *, PixelInfo *)
+     * }
+     */
+    public static MethodHandle PixelGetMagickColor$handle() {
+        return PixelGetMagickColor.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void PixelGetMagickColor(const PixelWand *, PixelInfo *)
+     * }
+     */
+    public static MemorySegment PixelGetMagickColor$address() {
+        return PixelGetMagickColor.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void PixelGetMagickColor(const PixelWand *, PixelInfo *)
+     * }
+     */
+    public static void PixelGetMagickColor(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetMagickColor.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetMagickColor", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelSetColorFromWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelSetColorFromWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void PixelSetColorFromWand(PixelWand *, const PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor PixelSetColorFromWand$descriptor() {
+        return PixelSetColorFromWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void PixelSetColorFromWand(PixelWand *, const PixelWand *)
+     * }
+     */
+    public static MethodHandle PixelSetColorFromWand$handle() {
+        return PixelSetColorFromWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void PixelSetColorFromWand(PixelWand *, const PixelWand *)
+     * }
+     */
+    public static MemorySegment PixelSetColorFromWand$address() {
+        return PixelSetColorFromWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void PixelSetColorFromWand(PixelWand *, const PixelWand *)
+     * }
+     */
+    public static void PixelSetColorFromWand(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelSetColorFromWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelSetColorFromWand", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ConvertImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ConvertImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConvertImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ConvertImageCommand$descriptor() {
+        return ConvertImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConvertImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ConvertImageCommand$handle() {
+        return ConvertImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConvertImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ConvertImageCommand$address() {
+        return ConvertImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ConvertImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int ConvertImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = ConvertImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ConvertImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickGetImageAlphaColor {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickGetImageAlphaColor");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickGetImageAlphaColor(MagickWand *, PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor MagickGetImageAlphaColor$descriptor() {
+        return MagickGetImageAlphaColor.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickGetImageAlphaColor(MagickWand *, PixelWand *)
+     * }
+     */
+    public static MethodHandle MagickGetImageAlphaColor$handle() {
+        return MagickGetImageAlphaColor.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickGetImageAlphaColor(MagickWand *, PixelWand *)
+     * }
+     */
+    public static MemorySegment MagickGetImageAlphaColor$address() {
+        return MagickGetImageAlphaColor.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickGetImageAlphaColor(MagickWand *, PixelWand *)
+     * }
+     */
+    public static int MagickGetImageAlphaColor(MemorySegment x0, MemorySegment x1) {
+        var mh$ = MagickGetImageAlphaColor.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickGetImageAlphaColor", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickSetImageAlphaColor {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickSetImageAlphaColor");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetImageAlphaColor(MagickWand *, const PixelWand *)
+     * }
+     */
+    public static FunctionDescriptor MagickSetImageAlphaColor$descriptor() {
+        return MagickSetImageAlphaColor.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetImageAlphaColor(MagickWand *, const PixelWand *)
+     * }
+     */
+    public static MethodHandle MagickSetImageAlphaColor$handle() {
+        return MagickSetImageAlphaColor.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetImageAlphaColor(MagickWand *, const PixelWand *)
+     * }
+     */
+    public static MemorySegment MagickSetImageAlphaColor$address() {
+        return MagickSetImageAlphaColor.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetImageAlphaColor(MagickWand *, const PixelWand *)
+     * }
+     */
+    public static int MagickSetImageAlphaColor(MemorySegment x0, MemorySegment x1) {
+        var mh$ = MagickSetImageAlphaColor.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickSetImageAlphaColor", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DisplayImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DisplayImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DisplayImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor DisplayImageCommand$descriptor() {
+        return DisplayImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DisplayImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle DisplayImageCommand$handle() {
+        return DisplayImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DisplayImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment DisplayImageCommand$address() {
+        return DisplayImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType DisplayImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int DisplayImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = DisplayImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DisplayImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DrawGetException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DrawGetException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *DrawGetException(const DrawingWand *, ExceptionType *)
+     * }
+     */
+    public static FunctionDescriptor DrawGetException$descriptor() {
+        return DrawGetException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *DrawGetException(const DrawingWand *, ExceptionType *)
+     * }
+     */
+    public static MethodHandle DrawGetException$handle() {
+        return DrawGetException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *DrawGetException(const DrawingWand *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment DrawGetException$address() {
+        return DrawGetException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *DrawGetException(const DrawingWand *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment DrawGetException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = DrawGetException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DrawGetException", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PeekDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PeekDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern DrawInfo *PeekDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor PeekDrawingWand$descriptor() {
+        return PeekDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern DrawInfo *PeekDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MethodHandle PeekDrawingWand$handle() {
+        return PeekDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern DrawInfo *PeekDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment PeekDrawingWand$address() {
+        return PeekDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern DrawInfo *PeekDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment PeekDrawingWand(MemorySegment x0) {
+        var mh$ = PeekDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PeekDrawingWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern DrawingWand *AcquireDrawingWand(const DrawInfo *, Image *)
+     * }
+     */
+    public static FunctionDescriptor AcquireDrawingWand$descriptor() {
+        return AcquireDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern DrawingWand *AcquireDrawingWand(const DrawInfo *, Image *)
+     * }
+     */
+    public static MethodHandle AcquireDrawingWand$handle() {
+        return AcquireDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern DrawingWand *AcquireDrawingWand(const DrawInfo *, Image *)
+     * }
+     */
+    public static MemorySegment AcquireDrawingWand$address() {
+        return AcquireDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern DrawingWand *AcquireDrawingWand(const DrawInfo *, Image *)
+     * }
+     */
+    public static MemorySegment AcquireDrawingWand(MemorySegment x0, MemorySegment x1) {
+        var mh$ = AcquireDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireDrawingWand", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CloneDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CloneDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern DrawingWand *CloneDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor CloneDrawingWand$descriptor() {
+        return CloneDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern DrawingWand *CloneDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MethodHandle CloneDrawingWand$handle() {
+        return CloneDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern DrawingWand *CloneDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment CloneDrawingWand$address() {
+        return CloneDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern DrawingWand *CloneDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment CloneDrawingWand(MemorySegment x0) {
+        var mh$ = CloneDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CloneDrawingWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern DrawingWand *DestroyDrawingWand(DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor DestroyDrawingWand$descriptor() {
+        return DestroyDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern DrawingWand *DestroyDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MethodHandle DestroyDrawingWand$handle() {
+        return DestroyDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern DrawingWand *DestroyDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MemorySegment DestroyDrawingWand$address() {
+        return DestroyDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern DrawingWand *DestroyDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MemorySegment DestroyDrawingWand(MemorySegment x0) {
+        var mh$ = DestroyDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyDrawingWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern DrawingWand *NewDrawingWand()
+     * }
+     */
+    public static FunctionDescriptor NewDrawingWand$descriptor() {
+        return NewDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern DrawingWand *NewDrawingWand()
+     * }
+     */
+    public static MethodHandle NewDrawingWand$handle() {
+        return NewDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern DrawingWand *NewDrawingWand()
+     * }
+     */
+    public static MemorySegment NewDrawingWand$address() {
+        return NewDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern DrawingWand *NewDrawingWand()
+     * }
+     */
+    public static MemorySegment NewDrawingWand() {
+        var mh$ = NewDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewDrawingWand");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DrawCloneExceptionInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DrawCloneExceptionInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DrawCloneExceptionInfo(const DrawingWand *wand)
+     * }
+     */
+    public static FunctionDescriptor DrawCloneExceptionInfo$descriptor() {
+        return DrawCloneExceptionInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DrawCloneExceptionInfo(const DrawingWand *wand)
+     * }
+     */
+    public static MethodHandle DrawCloneExceptionInfo$handle() {
+        return DrawCloneExceptionInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DrawCloneExceptionInfo(const DrawingWand *wand)
+     * }
+     */
+    public static MemorySegment DrawCloneExceptionInfo$address() {
+        return DrawCloneExceptionInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionInfo *DrawCloneExceptionInfo(const DrawingWand *wand)
+     * }
+     */
+    public static MemorySegment DrawCloneExceptionInfo(MemorySegment wand) {
+        var mh$ = DrawCloneExceptionInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DrawCloneExceptionInfo", wand);
+            }
+            return (MemorySegment)mh$.invokeExact(wand);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DrawGetExceptionType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DrawGetExceptionType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionType DrawGetExceptionType(const DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor DrawGetExceptionType$descriptor() {
+        return DrawGetExceptionType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionType DrawGetExceptionType(const DrawingWand *)
+     * }
+     */
+    public static MethodHandle DrawGetExceptionType$handle() {
+        return DrawGetExceptionType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionType DrawGetExceptionType(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment DrawGetExceptionType$address() {
+        return DrawGetExceptionType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionType DrawGetExceptionType(const DrawingWand *)
+     * }
+     */
+    public static int DrawGetExceptionType(MemorySegment x0) {
+        var mh$ = DrawGetExceptionType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DrawGetExceptionType", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DrawClearException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DrawClearException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DrawClearException(DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor DrawClearException$descriptor() {
+        return DrawClearException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DrawClearException(DrawingWand *)
+     * }
+     */
+    public static MethodHandle DrawClearException$handle() {
+        return DrawClearException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DrawClearException(DrawingWand *)
+     * }
+     */
+    public static MemorySegment DrawClearException$address() {
+        return DrawClearException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType DrawClearException(DrawingWand *)
+     * }
+     */
+    public static int DrawClearException(MemorySegment x0) {
+        var mh$ = DrawClearException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DrawClearException", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor IsDrawingWand$descriptor() {
+        return IsDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MethodHandle IsDrawingWand$handle() {
+        return IsDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static MemorySegment IsDrawingWand$address() {
+        return IsDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsDrawingWand(const DrawingWand *)
+     * }
+     */
+    public static int IsDrawingWand(MemorySegment x0) {
+        var mh$ = IsDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsDrawingWand", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PopDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PopDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PopDrawingWand(DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor PopDrawingWand$descriptor() {
+        return PopDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PopDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MethodHandle PopDrawingWand$handle() {
+        return PopDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PopDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MemorySegment PopDrawingWand$address() {
+        return PopDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PopDrawingWand(DrawingWand *)
+     * }
+     */
+    public static int PopDrawingWand(MemorySegment x0) {
+        var mh$ = PopDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PopDrawingWand", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PushDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PushDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PushDrawingWand(DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor PushDrawingWand$descriptor() {
+        return PushDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PushDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MethodHandle PushDrawingWand$handle() {
+        return PushDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PushDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MemorySegment PushDrawingWand$address() {
+        return PushDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PushDrawingWand(DrawingWand *)
+     * }
+     */
+    public static int PushDrawingWand(MemorySegment x0) {
+        var mh$ = PushDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PushDrawingWand", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClearDrawingWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClearDrawingWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ClearDrawingWand(DrawingWand *)
+     * }
+     */
+    public static FunctionDescriptor ClearDrawingWand$descriptor() {
+        return ClearDrawingWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ClearDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MethodHandle ClearDrawingWand$handle() {
+        return ClearDrawingWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ClearDrawingWand(DrawingWand *)
+     * }
+     */
+    public static MemorySegment ClearDrawingWand$address() {
+        return ClearDrawingWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ClearDrawingWand(DrawingWand *)
+     * }
+     */
+    public static void ClearDrawingWand(MemorySegment x0) {
+        var mh$ = ClearDrawingWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClearDrawingWand", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IdentifyImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IdentifyImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IdentifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor IdentifyImageCommand$descriptor() {
+        return IdentifyImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IdentifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle IdentifyImageCommand$handle() {
+        return IdentifyImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IdentifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment IdentifyImageCommand$address() {
+        return IdentifyImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IdentifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int IdentifyImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = IdentifyImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IdentifyImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ImportImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ImportImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ImportImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor ImportImageCommand$descriptor() {
+        return ImportImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ImportImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle ImportImageCommand$handle() {
+        return ImportImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType ImportImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment ImportImageCommand$address() {
+        return ImportImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType ImportImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int ImportImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = ImportImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ImportImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class AcquireMagickCLI {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("AcquireMagickCLI");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickCLI *AcquireMagickCLI(ImageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor AcquireMagickCLI$descriptor() {
+        return AcquireMagickCLI.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickCLI *AcquireMagickCLI(ImageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle AcquireMagickCLI$handle() {
+        return AcquireMagickCLI.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickCLI *AcquireMagickCLI(ImageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment AcquireMagickCLI$address() {
+        return AcquireMagickCLI.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickCLI *AcquireMagickCLI(ImageInfo *, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment AcquireMagickCLI(MemorySegment x0, MemorySegment x1) {
+        var mh$ = AcquireMagickCLI.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("AcquireMagickCLI", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyMagickCLI {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyMagickCLI");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickCLI *DestroyMagickCLI(MagickCLI *)
+     * }
+     */
+    public static FunctionDescriptor DestroyMagickCLI$descriptor() {
+        return DestroyMagickCLI.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickCLI *DestroyMagickCLI(MagickCLI *)
+     * }
+     */
+    public static MethodHandle DestroyMagickCLI$handle() {
+        return DestroyMagickCLI.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickCLI *DestroyMagickCLI(MagickCLI *)
+     * }
+     */
+    public static MemorySegment DestroyMagickCLI$address() {
+        return DestroyMagickCLI.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickCLI *DestroyMagickCLI(MagickCLI *)
+     * }
+     */
+    public static MemorySegment DestroyMagickCLI(MemorySegment x0) {
+        var mh$ = DestroyMagickCLI.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyMagickCLI", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CLICatchException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CLICatchException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CLICatchException(MagickCLI *, const MagickBooleanType)
+     * }
+     */
+    public static FunctionDescriptor CLICatchException$descriptor() {
+        return CLICatchException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CLICatchException(MagickCLI *, const MagickBooleanType)
+     * }
+     */
+    public static MethodHandle CLICatchException$handle() {
+        return CLICatchException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CLICatchException(MagickCLI *, const MagickBooleanType)
+     * }
+     */
+    public static MemorySegment CLICatchException$address() {
+        return CLICatchException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType CLICatchException(MagickCLI *, const MagickBooleanType)
+     * }
+     */
+    public static int CLICatchException(MemorySegment x0, int x1) {
+        var mh$ = CLICatchException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CLICatchException", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    /**
+     * Variadic invoker class for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType CLIThrowException(MagickCLI *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, ...)
+     * }
+     */
+    public static class CLIThrowException {
+        private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
+                MagickWand_h.C_INT,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_LONG,
+                MagickWand_h.C_INT,
+                MagickWand_h.C_POINTER,
+                MagickWand_h.C_POINTER
+            );
+        private static final MemorySegment ADDR = MagickWand_h.findOrThrow("CLIThrowException");
+
+        private final MethodHandle handle;
+        private final FunctionDescriptor descriptor;
+        private final MethodHandle spreader;
+
+        private CLIThrowException(MethodHandle handle, FunctionDescriptor descriptor, MethodHandle spreader) {
+            this.handle = handle;
+            this.descriptor = descriptor;
+            this.spreader = spreader;
+        }
+
+        /**
+         * Variadic invoker factory for:
+         * {@snippet lang=c :
+         * extern MagickBooleanType CLIThrowException(MagickCLI *, const char *, const char *, const size_t, const ExceptionType, const char *, const char *, ...)
+         * }
+         */
+        public static CLIThrowException makeInvoker(MemoryLayout... layouts) {
+            FunctionDescriptor desc$ = BASE_DESC.appendArgumentLayouts(layouts);
+            Linker.Option fva$ = Linker.Option.firstVariadicArg(BASE_DESC.argumentLayouts().size());
+            var mh$ = Linker.nativeLinker().downcallHandle(ADDR, desc$, fva$);
+            var spreader$ = mh$.asSpreader(Object[].class, layouts.length);
+            return new CLIThrowException(mh$, desc$, spreader$);
+        }
+
+        /**
+         * {@return the address}
+         */
+        public static MemorySegment address() {
+            return ADDR;
+        }
+
+        /**
+         * {@return the specialized method handle}
+         */
+        public MethodHandle handle() {
+            return handle;
+        }
+
+        /**
+         * {@return the specialized descriptor}
+         */
+        public FunctionDescriptor descriptor() {
+            return descriptor;
+        }
+
+        public int apply(MemorySegment x0, MemorySegment x1, MemorySegment x2, long x3, int x4, MemorySegment x5, MemorySegment x6, Object... x7) {
+            try {
+                if (TRACE_DOWNCALLS) {
+                    traceDowncall("CLIThrowException", x0, x1, x2, x3, x4, x5, x6, x7);
+                }
+                return (int)spreader.invokeExact(x0, x1, x2, x3, x4, x5, x6, x7);
+            } catch(IllegalArgumentException | ClassCastException ex$)  {
+                throw ex$; // rethrow IAE from passing wrong number/type of args
+            } catch (Throwable ex$) {
+               throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static class ProcessCommandOptions {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ProcessCommandOptions");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int ProcessCommandOptions(MagickCLI *, int, char **, int)
+     * }
+     */
+    public static FunctionDescriptor ProcessCommandOptions$descriptor() {
+        return ProcessCommandOptions.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int ProcessCommandOptions(MagickCLI *, int, char **, int)
+     * }
+     */
+    public static MethodHandle ProcessCommandOptions$handle() {
+        return ProcessCommandOptions.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int ProcessCommandOptions(MagickCLI *, int, char **, int)
+     * }
+     */
+    public static MemorySegment ProcessCommandOptions$address() {
+        return ProcessCommandOptions.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int ProcessCommandOptions(MagickCLI *, int, char **, int)
+     * }
+     */
+    public static int ProcessCommandOptions(MemorySegment x0, int x1, MemorySegment x2, int x3) {
+        var mh$ = ProcessCommandOptions.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ProcessCommandOptions", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickCommandGenesis {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickCommandGenesis");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickCommandGenesis(ImageInfo *, MagickCommand, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MagickCommandGenesis$descriptor() {
+        return MagickCommandGenesis.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickCommandGenesis(ImageInfo *, MagickCommand, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MagickCommandGenesis$handle() {
+        return MagickCommandGenesis.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickCommandGenesis(ImageInfo *, MagickCommand, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MagickCommandGenesis$address() {
+        return MagickCommandGenesis.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickCommandGenesis(ImageInfo *, MagickCommand, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int MagickCommandGenesis(MemorySegment x0, MemorySegment x1, int x2, MemorySegment x3, MemorySegment x4, MemorySegment x5) {
+        var mh$ = MagickCommandGenesis.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickCommandGenesis", x0, x1, x2, x3, x4, x5);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MagickImageCommand$descriptor() {
+        return MagickImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MagickImageCommand$handle() {
+        return MagickImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MagickImageCommand$address() {
+        return MagickImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int MagickImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = MagickImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
     }
 
     private static class MagickGetFilename {
@@ -4206,6 +15862,65 @@ public class MagickWand_h {
         }
     }
 
+    private static class MagickSetType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickSetType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetType(MagickWand *, const ImageType)
+     * }
+     */
+    public static FunctionDescriptor MagickSetType$descriptor() {
+        return MagickSetType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetType(MagickWand *, const ImageType)
+     * }
+     */
+    public static MethodHandle MagickSetType$handle() {
+        return MagickSetType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetType(MagickWand *, const ImageType)
+     * }
+     */
+    public static MemorySegment MagickSetType$address() {
+        return MagickSetType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickSetType(MagickWand *, const ImageType)
+     * }
+     */
+    public static int MagickSetType(MemorySegment x0, int x1) {
+        var mh$ = MagickSetType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickSetType", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class MagickSetProgressMonitor {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             MagickWand_h.C_POINTER,
@@ -4435,6 +16150,64 @@ public class MagickWand_h {
                 traceDowncall("MagickGetBackgroundColor", x0);
             }
             return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickGetOrientationType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickGetOrientationType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern OrientationType MagickGetOrientationType(MagickWand *)
+     * }
+     */
+    public static FunctionDescriptor MagickGetOrientationType$descriptor() {
+        return MagickGetOrientationType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern OrientationType MagickGetOrientationType(MagickWand *)
+     * }
+     */
+    public static MethodHandle MagickGetOrientationType$handle() {
+        return MagickGetOrientationType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern OrientationType MagickGetOrientationType(MagickWand *)
+     * }
+     */
+    public static MemorySegment MagickGetOrientationType$address() {
+        return MagickGetOrientationType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern OrientationType MagickGetOrientationType(MagickWand *)
+     * }
+     */
+    public static int MagickGetOrientationType(MemorySegment x0) {
+        var mh$ = MagickGetOrientationType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickGetOrientationType", x0);
+            }
+            return (int)mh$.invokeExact(x0);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12199,6 +23972,65 @@ public class MagickWand_h {
         }
     }
 
+    private static class MagickModeImage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickModeImage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickModeImage(MagickWand *, const double)
+     * }
+     */
+    public static FunctionDescriptor MagickModeImage$descriptor() {
+        return MagickModeImage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickModeImage(MagickWand *, const double)
+     * }
+     */
+    public static MethodHandle MagickModeImage$handle() {
+        return MagickModeImage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickModeImage(MagickWand *, const double)
+     * }
+     */
+    public static MemorySegment MagickModeImage$address() {
+        return MagickModeImage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickModeImage(MagickWand *, const double)
+     * }
+     */
+    public static int MagickModeImage(MemorySegment x0, double x1) {
+        var mh$ = MagickModeImage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickModeImage", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class MagickModulateImage {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             MagickWand_h.C_INT,
@@ -13878,6 +25710,65 @@ public class MagickWand_h {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("MagickReadImageFile", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickReduceNoiseImage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickReduceNoiseImage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickReduceNoiseImage(MagickWand *, const double)
+     * }
+     */
+    public static FunctionDescriptor MagickReduceNoiseImage$descriptor() {
+        return MagickReduceNoiseImage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickReduceNoiseImage(MagickWand *, const double)
+     * }
+     */
+    public static MethodHandle MagickReduceNoiseImage$handle() {
+        return MagickReduceNoiseImage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickReduceNoiseImage(MagickWand *, const double)
+     * }
+     */
+    public static MemorySegment MagickReduceNoiseImage$address() {
+        return MagickReduceNoiseImage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickReduceNoiseImage(MagickWand *, const double)
+     * }
+     */
+    public static int MagickReduceNoiseImage(MemorySegment x0, double x1) {
+        var mh$ = MagickReduceNoiseImage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickReduceNoiseImage", x0, x1);
             }
             return (int)mh$.invokeExact(x0, x1);
         } catch (Throwable ex$) {
@@ -18242,6 +30133,66 @@ public class MagickWand_h {
         }
     }
 
+    private static class MagickThresholdImageChannel {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickThresholdImageChannel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickThresholdImageChannel(MagickWand *, const ChannelType, const double)
+     * }
+     */
+    public static FunctionDescriptor MagickThresholdImageChannel$descriptor() {
+        return MagickThresholdImageChannel.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickThresholdImageChannel(MagickWand *, const ChannelType, const double)
+     * }
+     */
+    public static MethodHandle MagickThresholdImageChannel$handle() {
+        return MagickThresholdImageChannel.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickThresholdImageChannel(MagickWand *, const ChannelType, const double)
+     * }
+     */
+    public static MemorySegment MagickThresholdImageChannel$address() {
+        return MagickThresholdImageChannel.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickThresholdImageChannel(MagickWand *, const ChannelType, const double)
+     * }
+     */
+    public static int MagickThresholdImageChannel(MemorySegment x0, int x1, double x2) {
+        var mh$ = MagickThresholdImageChannel.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickThresholdImageChannel", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class MagickThumbnailImage {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             MagickWand_h.C_INT,
@@ -18959,6 +30910,65 @@ public class MagickWand_h {
         }
     }
 
+    private static class MagickWriteImagesFile {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickWriteImagesFile");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickWriteImagesFile(MagickWand *, FILE *)
+     * }
+     */
+    public static FunctionDescriptor MagickWriteImagesFile$descriptor() {
+        return MagickWriteImagesFile.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickWriteImagesFile(MagickWand *, FILE *)
+     * }
+     */
+    public static MethodHandle MagickWriteImagesFile$handle() {
+        return MagickWriteImagesFile.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickWriteImagesFile(MagickWand *, FILE *)
+     * }
+     */
+    public static MemorySegment MagickWriteImagesFile$address() {
+        return MagickWriteImagesFile.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MagickWriteImagesFile(MagickWand *, FILE *)
+     * }
+     */
+    public static int MagickWriteImagesFile(MemorySegment x0, MemorySegment x1) {
+        var mh$ = MagickWriteImagesFile.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickWriteImagesFile", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class MagickSetImageProgressMonitor {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             MagickWand_h.C_POINTER,
@@ -19486,6 +31496,65 @@ public class MagickWand_h {
                 traceDowncall("MagickDeconstructImages", x0);
             }
             return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MagickEvaluateImages {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MagickEvaluateImages");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickWand *MagickEvaluateImages(MagickWand *, const MagickEvaluateOperator)
+     * }
+     */
+    public static FunctionDescriptor MagickEvaluateImages$descriptor() {
+        return MagickEvaluateImages.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickWand *MagickEvaluateImages(MagickWand *, const MagickEvaluateOperator)
+     * }
+     */
+    public static MethodHandle MagickEvaluateImages$handle() {
+        return MagickEvaluateImages.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickWand *MagickEvaluateImages(MagickWand *, const MagickEvaluateOperator)
+     * }
+     */
+    public static MemorySegment MagickEvaluateImages$address() {
+        return MagickEvaluateImages.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickWand *MagickEvaluateImages(MagickWand *, const MagickEvaluateOperator)
+     * }
+     */
+    public static MemorySegment MagickEvaluateImages(MemorySegment x0, int x1) {
+        var mh$ = MagickEvaluateImages.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MagickEvaluateImages", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21376,6 +33445,2435 @@ public class MagickWand_h {
         }
     }
 
+    private static class MogrifyImage {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MogrifyImage");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImage(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MogrifyImage$descriptor() {
+        return MogrifyImage.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImage(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MogrifyImage$handle() {
+        return MogrifyImage.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImage(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MogrifyImage$address() {
+        return MogrifyImage.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImage(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static int MogrifyImage(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = MogrifyImage.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MogrifyImage", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MogrifyImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MogrifyImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MogrifyImageCommand$descriptor() {
+        return MogrifyImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MogrifyImageCommand$handle() {
+        return MogrifyImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MogrifyImageCommand$address() {
+        return MogrifyImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int MogrifyImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = MogrifyImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MogrifyImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MogrifyImageInfo {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MogrifyImageInfo");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageInfo(ImageInfo *, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MogrifyImageInfo$descriptor() {
+        return MogrifyImageInfo.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageInfo(ImageInfo *, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MogrifyImageInfo$handle() {
+        return MogrifyImageInfo.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageInfo(ImageInfo *, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MogrifyImageInfo$address() {
+        return MogrifyImageInfo.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageInfo(ImageInfo *, const int, const char **, ExceptionInfo *)
+     * }
+     */
+    public static int MogrifyImageInfo(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = MogrifyImageInfo.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MogrifyImageInfo", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MogrifyImageList {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MogrifyImageList");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageList(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MogrifyImageList$descriptor() {
+        return MogrifyImageList.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageList(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MogrifyImageList$handle() {
+        return MogrifyImageList.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageList(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MogrifyImageList$address() {
+        return MogrifyImageList.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImageList(ImageInfo *, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static int MogrifyImageList(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = MogrifyImageList.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MogrifyImageList", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MogrifyImages {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MogrifyImages");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImages(ImageInfo *, const MagickBooleanType, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MogrifyImages$descriptor() {
+        return MogrifyImages.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImages(ImageInfo *, const MagickBooleanType, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MogrifyImages$handle() {
+        return MogrifyImages.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImages(ImageInfo *, const MagickBooleanType, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MogrifyImages$address() {
+        return MogrifyImages.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MogrifyImages(ImageInfo *, const MagickBooleanType, const int, const char **, Image **, ExceptionInfo *)
+     * }
+     */
+    public static int MogrifyImages(MemorySegment x0, int x1, int x2, MemorySegment x3, MemorySegment x4, MemorySegment x5) {
+        var mh$ = MogrifyImages.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MogrifyImages", x0, x1, x2, x3, x4, x5);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4, x5);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class MontageImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("MontageImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MontageImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor MontageImageCommand$descriptor() {
+        return MontageImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MontageImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle MontageImageCommand$handle() {
+        return MontageImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType MontageImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment MontageImageCommand$address() {
+        return MontageImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType MontageImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int MontageImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = MontageImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("MontageImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetIteratorException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetIteratorException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *PixelGetIteratorException(const PixelIterator *, ExceptionType *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetIteratorException$descriptor() {
+        return PixelGetIteratorException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *PixelGetIteratorException(const PixelIterator *, ExceptionType *)
+     * }
+     */
+    public static MethodHandle PixelGetIteratorException$handle() {
+        return PixelGetIteratorException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *PixelGetIteratorException(const PixelIterator *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment PixelGetIteratorException$address() {
+        return PixelGetIteratorException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *PixelGetIteratorException(const PixelIterator *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment PixelGetIteratorException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetIteratorException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetIteratorException", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetIteratorExceptionType {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetIteratorExceptionType");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetIteratorExceptionType(const PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetIteratorExceptionType$descriptor() {
+        return PixelGetIteratorExceptionType.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetIteratorExceptionType(const PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelGetIteratorExceptionType$handle() {
+        return PixelGetIteratorExceptionType.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetIteratorExceptionType(const PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelGetIteratorExceptionType$address() {
+        return PixelGetIteratorExceptionType.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ExceptionType PixelGetIteratorExceptionType(const PixelIterator *)
+     * }
+     */
+    public static int PixelGetIteratorExceptionType(MemorySegment x0) {
+        var mh$ = PixelGetIteratorExceptionType.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetIteratorExceptionType", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsPixelIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsPixelIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelIterator(const PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor IsPixelIterator$descriptor() {
+        return IsPixelIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelIterator(const PixelIterator *)
+     * }
+     */
+    public static MethodHandle IsPixelIterator$handle() {
+        return IsPixelIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelIterator(const PixelIterator *)
+     * }
+     */
+    public static MemorySegment IsPixelIterator$address() {
+        return IsPixelIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsPixelIterator(const PixelIterator *)
+     * }
+     */
+    public static int IsPixelIterator(MemorySegment x0) {
+        var mh$ = IsPixelIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsPixelIterator", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelClearIteratorException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelClearIteratorException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearIteratorException(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelClearIteratorException$descriptor() {
+        return PixelClearIteratorException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearIteratorException(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelClearIteratorException$handle() {
+        return PixelClearIteratorException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearIteratorException(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelClearIteratorException$address() {
+        return PixelClearIteratorException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelClearIteratorException(PixelIterator *)
+     * }
+     */
+    public static int PixelClearIteratorException(MemorySegment x0) {
+        var mh$ = PixelClearIteratorException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelClearIteratorException", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelSetIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelSetIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSetIteratorRow(PixelIterator *, const ssize_t)
+     * }
+     */
+    public static FunctionDescriptor PixelSetIteratorRow$descriptor() {
+        return PixelSetIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSetIteratorRow(PixelIterator *, const ssize_t)
+     * }
+     */
+    public static MethodHandle PixelSetIteratorRow$handle() {
+        return PixelSetIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSetIteratorRow(PixelIterator *, const ssize_t)
+     * }
+     */
+    public static MemorySegment PixelSetIteratorRow$address() {
+        return PixelSetIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSetIteratorRow(PixelIterator *, const ssize_t)
+     * }
+     */
+    public static int PixelSetIteratorRow(MemorySegment x0, long x1) {
+        var mh$ = PixelSetIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelSetIteratorRow", x0, x1);
+            }
+            return (int)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelSyncIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelSyncIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSyncIterator(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelSyncIterator$descriptor() {
+        return PixelSyncIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSyncIterator(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelSyncIterator$handle() {
+        return PixelSyncIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSyncIterator(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelSyncIterator$address() {
+        return PixelSyncIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType PixelSyncIterator(PixelIterator *)
+     * }
+     */
+    public static int PixelSyncIterator(MemorySegment x0) {
+        var mh$ = PixelSyncIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelSyncIterator", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClonePixelIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClonePixelIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelIterator *ClonePixelIterator(const PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor ClonePixelIterator$descriptor() {
+        return ClonePixelIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelIterator *ClonePixelIterator(const PixelIterator *)
+     * }
+     */
+    public static MethodHandle ClonePixelIterator$handle() {
+        return ClonePixelIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelIterator *ClonePixelIterator(const PixelIterator *)
+     * }
+     */
+    public static MemorySegment ClonePixelIterator$address() {
+        return ClonePixelIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelIterator *ClonePixelIterator(const PixelIterator *)
+     * }
+     */
+    public static MemorySegment ClonePixelIterator(MemorySegment x0) {
+        var mh$ = ClonePixelIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClonePixelIterator", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyPixelIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyPixelIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelIterator *DestroyPixelIterator(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor DestroyPixelIterator$descriptor() {
+        return DestroyPixelIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelIterator *DestroyPixelIterator(PixelIterator *)
+     * }
+     */
+    public static MethodHandle DestroyPixelIterator$handle() {
+        return DestroyPixelIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelIterator *DestroyPixelIterator(PixelIterator *)
+     * }
+     */
+    public static MemorySegment DestroyPixelIterator$address() {
+        return DestroyPixelIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelIterator *DestroyPixelIterator(PixelIterator *)
+     * }
+     */
+    public static MemorySegment DestroyPixelIterator(MemorySegment x0) {
+        var mh$ = DestroyPixelIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyPixelIterator", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewPixelIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewPixelIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelIterator(MagickWand *)
+     * }
+     */
+    public static FunctionDescriptor NewPixelIterator$descriptor() {
+        return NewPixelIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelIterator(MagickWand *)
+     * }
+     */
+    public static MethodHandle NewPixelIterator$handle() {
+        return NewPixelIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelIterator(MagickWand *)
+     * }
+     */
+    public static MemorySegment NewPixelIterator$address() {
+        return NewPixelIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelIterator(MagickWand *)
+     * }
+     */
+    public static MemorySegment NewPixelIterator(MemorySegment x0) {
+        var mh$ = NewPixelIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewPixelIterator", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewPixelRegionIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewPixelRegionIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelRegionIterator(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static FunctionDescriptor NewPixelRegionIterator$descriptor() {
+        return NewPixelRegionIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelRegionIterator(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MethodHandle NewPixelRegionIterator$handle() {
+        return NewPixelRegionIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelRegionIterator(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment NewPixelRegionIterator$address() {
+        return NewPixelRegionIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelIterator *NewPixelRegionIterator(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment NewPixelRegionIterator(MemorySegment x0, long x1, long x2, long x3, long x4) {
+        var mh$ = NewPixelRegionIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewPixelRegionIterator", x0, x1, x2, x3, x4);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetCurrentIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetCurrentIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetCurrentIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetCurrentIteratorRow$descriptor() {
+        return PixelGetCurrentIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetCurrentIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MethodHandle PixelGetCurrentIteratorRow$handle() {
+        return PixelGetCurrentIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetCurrentIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetCurrentIteratorRow$address() {
+        return PixelGetCurrentIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetCurrentIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetCurrentIteratorRow(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetCurrentIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetCurrentIteratorRow", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetNextIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetNextIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetNextIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetNextIteratorRow$descriptor() {
+        return PixelGetNextIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetNextIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MethodHandle PixelGetNextIteratorRow$handle() {
+        return PixelGetNextIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetNextIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetNextIteratorRow$address() {
+        return PixelGetNextIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetNextIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetNextIteratorRow(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetNextIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetNextIteratorRow", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetPreviousIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetPreviousIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetPreviousIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetPreviousIteratorRow$descriptor() {
+        return PixelGetPreviousIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetPreviousIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MethodHandle PixelGetPreviousIteratorRow$handle() {
+        return PixelGetPreviousIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetPreviousIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetPreviousIteratorRow$address() {
+        return PixelGetPreviousIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **PixelGetPreviousIteratorRow(PixelIterator *, size_t *)
+     * }
+     */
+    public static MemorySegment PixelGetPreviousIteratorRow(MemorySegment x0, MemorySegment x1) {
+        var mh$ = PixelGetPreviousIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetPreviousIteratorRow", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelGetIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelGetIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern ssize_t PixelGetIteratorRow(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelGetIteratorRow$descriptor() {
+        return PixelGetIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern ssize_t PixelGetIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelGetIteratorRow$handle() {
+        return PixelGetIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern ssize_t PixelGetIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelGetIteratorRow$address() {
+        return PixelGetIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern ssize_t PixelGetIteratorRow(PixelIterator *)
+     * }
+     */
+    public static long PixelGetIteratorRow(MemorySegment x0) {
+        var mh$ = PixelGetIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelGetIteratorRow", x0);
+            }
+            return (long)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class ClearPixelIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("ClearPixelIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void ClearPixelIterator(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor ClearPixelIterator$descriptor() {
+        return ClearPixelIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void ClearPixelIterator(PixelIterator *)
+     * }
+     */
+    public static MethodHandle ClearPixelIterator$handle() {
+        return ClearPixelIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void ClearPixelIterator(PixelIterator *)
+     * }
+     */
+    public static MemorySegment ClearPixelIterator$address() {
+        return ClearPixelIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void ClearPixelIterator(PixelIterator *)
+     * }
+     */
+    public static void ClearPixelIterator(MemorySegment x0) {
+        var mh$ = ClearPixelIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ClearPixelIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelResetIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelResetIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void PixelResetIterator(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelResetIterator$descriptor() {
+        return PixelResetIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void PixelResetIterator(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelResetIterator$handle() {
+        return PixelResetIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void PixelResetIterator(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelResetIterator$address() {
+        return PixelResetIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void PixelResetIterator(PixelIterator *)
+     * }
+     */
+    public static void PixelResetIterator(MemorySegment x0) {
+        var mh$ = PixelResetIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelResetIterator", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelSetFirstIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelSetFirstIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void PixelSetFirstIteratorRow(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelSetFirstIteratorRow$descriptor() {
+        return PixelSetFirstIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void PixelSetFirstIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelSetFirstIteratorRow$handle() {
+        return PixelSetFirstIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void PixelSetFirstIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelSetFirstIteratorRow$address() {
+        return PixelSetFirstIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void PixelSetFirstIteratorRow(PixelIterator *)
+     * }
+     */
+    public static void PixelSetFirstIteratorRow(MemorySegment x0) {
+        var mh$ = PixelSetFirstIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelSetFirstIteratorRow", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class PixelSetLastIteratorRow {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("PixelSetLastIteratorRow");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void PixelSetLastIteratorRow(PixelIterator *)
+     * }
+     */
+    public static FunctionDescriptor PixelSetLastIteratorRow$descriptor() {
+        return PixelSetLastIteratorRow.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void PixelSetLastIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MethodHandle PixelSetLastIteratorRow$handle() {
+        return PixelSetLastIteratorRow.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void PixelSetLastIteratorRow(PixelIterator *)
+     * }
+     */
+    public static MemorySegment PixelSetLastIteratorRow$address() {
+        return PixelSetLastIteratorRow.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void PixelSetLastIteratorRow(PixelIterator *)
+     * }
+     */
+    public static void PixelSetLastIteratorRow(MemorySegment x0) {
+        var mh$ = PixelSetLastIteratorRow.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("PixelSetLastIteratorRow", x0);
+            }
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class StreamImageCommand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("StreamImageCommand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType StreamImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static FunctionDescriptor StreamImageCommand$descriptor() {
+        return StreamImageCommand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType StreamImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MethodHandle StreamImageCommand$handle() {
+        return StreamImageCommand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType StreamImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static MemorySegment StreamImageCommand$address() {
+        return StreamImageCommand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType StreamImageCommand(ImageInfo *, int, char **, char **, ExceptionInfo *)
+     * }
+     */
+    public static int StreamImageCommand(MemorySegment x0, int x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = StreamImageCommand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("StreamImageCommand", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetWandViewException {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetWandViewException");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *GetWandViewException(const WandView *, ExceptionType *)
+     * }
+     */
+    public static FunctionDescriptor GetWandViewException$descriptor() {
+        return GetWandViewException.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *GetWandViewException(const WandView *, ExceptionType *)
+     * }
+     */
+    public static MethodHandle GetWandViewException$handle() {
+        return GetWandViewException.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *GetWandViewException(const WandView *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment GetWandViewException$address() {
+        return GetWandViewException.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *GetWandViewException(const WandView *, ExceptionType *)
+     * }
+     */
+    public static MemorySegment GetWandViewException(MemorySegment x0, MemorySegment x1) {
+        var mh$ = GetWandViewException.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetWandViewException", x0, x1);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DuplexTransferWandViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DuplexTransferWandViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferWandViewIterator(WandView *, WandView *, WandView *, DuplexTransferWandViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor DuplexTransferWandViewIterator$descriptor() {
+        return DuplexTransferWandViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferWandViewIterator(WandView *, WandView *, WandView *, DuplexTransferWandViewMethod, void *)
+     * }
+     */
+    public static MethodHandle DuplexTransferWandViewIterator$handle() {
+        return DuplexTransferWandViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferWandViewIterator(WandView *, WandView *, WandView *, DuplexTransferWandViewMethod, void *)
+     * }
+     */
+    public static MemorySegment DuplexTransferWandViewIterator$address() {
+        return DuplexTransferWandViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType DuplexTransferWandViewIterator(WandView *, WandView *, WandView *, DuplexTransferWandViewMethod, void *)
+     * }
+     */
+    public static int DuplexTransferWandViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3, MemorySegment x4) {
+        var mh$ = DuplexTransferWandViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DuplexTransferWandViewIterator", x0, x1, x2, x3, x4);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetWandViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetWandViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetWandViewIterator(WandView *, GetWandViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor GetWandViewIterator$descriptor() {
+        return GetWandViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetWandViewIterator(WandView *, GetWandViewMethod, void *)
+     * }
+     */
+    public static MethodHandle GetWandViewIterator$handle() {
+        return GetWandViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetWandViewIterator(WandView *, GetWandViewMethod, void *)
+     * }
+     */
+    public static MemorySegment GetWandViewIterator$address() {
+        return GetWandViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType GetWandViewIterator(WandView *, GetWandViewMethod, void *)
+     * }
+     */
+    public static int GetWandViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = GetWandViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetWandViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsWandView {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsWandView");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsWandView(const WandView *)
+     * }
+     */
+    public static FunctionDescriptor IsWandView$descriptor() {
+        return IsWandView.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsWandView(const WandView *)
+     * }
+     */
+    public static MethodHandle IsWandView$handle() {
+        return IsWandView.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsWandView(const WandView *)
+     * }
+     */
+    public static MemorySegment IsWandView$address() {
+        return IsWandView.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsWandView(const WandView *)
+     * }
+     */
+    public static int IsWandView(MemorySegment x0) {
+        var mh$ = IsWandView.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsWandView", x0);
+            }
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetWandViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetWandViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetWandViewIterator(WandView *, SetWandViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor SetWandViewIterator$descriptor() {
+        return SetWandViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetWandViewIterator(WandView *, SetWandViewMethod, void *)
+     * }
+     */
+    public static MethodHandle SetWandViewIterator$handle() {
+        return SetWandViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetWandViewIterator(WandView *, SetWandViewMethod, void *)
+     * }
+     */
+    public static MemorySegment SetWandViewIterator$address() {
+        return SetWandViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType SetWandViewIterator(WandView *, SetWandViewMethod, void *)
+     * }
+     */
+    public static int SetWandViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = SetWandViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetWandViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class TransferWandViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("TransferWandViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferWandViewIterator(WandView *, WandView *, TransferWandViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor TransferWandViewIterator$descriptor() {
+        return TransferWandViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferWandViewIterator(WandView *, WandView *, TransferWandViewMethod, void *)
+     * }
+     */
+    public static MethodHandle TransferWandViewIterator$handle() {
+        return TransferWandViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferWandViewIterator(WandView *, WandView *, TransferWandViewMethod, void *)
+     * }
+     */
+    public static MemorySegment TransferWandViewIterator$address() {
+        return TransferWandViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType TransferWandViewIterator(WandView *, WandView *, TransferWandViewMethod, void *)
+     * }
+     */
+    public static int TransferWandViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2, MemorySegment x3) {
+        var mh$ = TransferWandViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("TransferWandViewIterator", x0, x1, x2, x3);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2, x3);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class UpdateWandViewIterator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("UpdateWandViewIterator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateWandViewIterator(WandView *, UpdateWandViewMethod, void *)
+     * }
+     */
+    public static FunctionDescriptor UpdateWandViewIterator$descriptor() {
+        return UpdateWandViewIterator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateWandViewIterator(WandView *, UpdateWandViewMethod, void *)
+     * }
+     */
+    public static MethodHandle UpdateWandViewIterator$handle() {
+        return UpdateWandViewIterator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateWandViewIterator(WandView *, UpdateWandViewMethod, void *)
+     * }
+     */
+    public static MemorySegment UpdateWandViewIterator$address() {
+        return UpdateWandViewIterator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType UpdateWandViewIterator(WandView *, UpdateWandViewMethod, void *)
+     * }
+     */
+    public static int UpdateWandViewIterator(MemorySegment x0, MemorySegment x1, MemorySegment x2) {
+        var mh$ = UpdateWandViewIterator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("UpdateWandViewIterator", x0, x1, x2);
+            }
+            return (int)mh$.invokeExact(x0, x1, x2);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetWandViewWand {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetWandViewWand");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickWand *GetWandViewWand(const WandView *)
+     * }
+     */
+    public static FunctionDescriptor GetWandViewWand$descriptor() {
+        return GetWandViewWand.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickWand *GetWandViewWand(const WandView *)
+     * }
+     */
+    public static MethodHandle GetWandViewWand$handle() {
+        return GetWandViewWand.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickWand *GetWandViewWand(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewWand$address() {
+        return GetWandViewWand.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickWand *GetWandViewWand(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewWand(MemorySegment x0) {
+        var mh$ = GetWandViewWand.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetWandViewWand", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetWandViewPixels {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetWandViewPixels");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern PixelWand **GetWandViewPixels(const WandView *)
+     * }
+     */
+    public static FunctionDescriptor GetWandViewPixels$descriptor() {
+        return GetWandViewPixels.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern PixelWand **GetWandViewPixels(const WandView *)
+     * }
+     */
+    public static MethodHandle GetWandViewPixels$handle() {
+        return GetWandViewPixels.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern PixelWand **GetWandViewPixels(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewPixels$address() {
+        return GetWandViewPixels.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern PixelWand **GetWandViewPixels(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewPixels(MemorySegment x0) {
+        var mh$ = GetWandViewPixels.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetWandViewPixels", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class GetWandViewExtent {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            _RectangleInfo.layout(),
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("GetWandViewExtent");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern RectangleInfo GetWandViewExtent(const WandView *)
+     * }
+     */
+    public static FunctionDescriptor GetWandViewExtent$descriptor() {
+        return GetWandViewExtent.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern RectangleInfo GetWandViewExtent(const WandView *)
+     * }
+     */
+    public static MethodHandle GetWandViewExtent$handle() {
+        return GetWandViewExtent.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern RectangleInfo GetWandViewExtent(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewExtent$address() {
+        return GetWandViewExtent.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern RectangleInfo GetWandViewExtent(const WandView *)
+     * }
+     */
+    public static MemorySegment GetWandViewExtent(SegmentAllocator allocator, MemorySegment x0) {
+        var mh$ = GetWandViewExtent.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("GetWandViewExtent", allocator, x0);
+            }
+            return (MemorySegment)mh$.invokeExact(allocator, x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetWandViewDescription {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetWandViewDescription");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void SetWandViewDescription(WandView *, const char *)
+     * }
+     */
+    public static FunctionDescriptor SetWandViewDescription$descriptor() {
+        return SetWandViewDescription.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void SetWandViewDescription(WandView *, const char *)
+     * }
+     */
+    public static MethodHandle SetWandViewDescription$handle() {
+        return SetWandViewDescription.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void SetWandViewDescription(WandView *, const char *)
+     * }
+     */
+    public static MemorySegment SetWandViewDescription$address() {
+        return SetWandViewDescription.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void SetWandViewDescription(WandView *, const char *)
+     * }
+     */
+    public static void SetWandViewDescription(MemorySegment x0, MemorySegment x1) {
+        var mh$ = SetWandViewDescription.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetWandViewDescription", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class SetWandViewThreads {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("SetWandViewThreads");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void SetWandViewThreads(WandView *, const size_t)
+     * }
+     */
+    public static FunctionDescriptor SetWandViewThreads$descriptor() {
+        return SetWandViewThreads.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void SetWandViewThreads(WandView *, const size_t)
+     * }
+     */
+    public static MethodHandle SetWandViewThreads$handle() {
+        return SetWandViewThreads.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void SetWandViewThreads(WandView *, const size_t)
+     * }
+     */
+    public static MemorySegment SetWandViewThreads$address() {
+        return SetWandViewThreads.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void SetWandViewThreads(WandView *, const size_t)
+     * }
+     */
+    public static void SetWandViewThreads(MemorySegment x0, long x1) {
+        var mh$ = SetWandViewThreads.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("SetWandViewThreads", x0, x1);
+            }
+            mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class CloneWandView {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("CloneWandView");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern WandView *CloneWandView(const WandView *)
+     * }
+     */
+    public static FunctionDescriptor CloneWandView$descriptor() {
+        return CloneWandView.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern WandView *CloneWandView(const WandView *)
+     * }
+     */
+    public static MethodHandle CloneWandView$handle() {
+        return CloneWandView.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern WandView *CloneWandView(const WandView *)
+     * }
+     */
+    public static MemorySegment CloneWandView$address() {
+        return CloneWandView.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern WandView *CloneWandView(const WandView *)
+     * }
+     */
+    public static MemorySegment CloneWandView(MemorySegment x0) {
+        var mh$ = CloneWandView.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("CloneWandView", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class DestroyWandView {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("DestroyWandView");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern WandView *DestroyWandView(WandView *)
+     * }
+     */
+    public static FunctionDescriptor DestroyWandView$descriptor() {
+        return DestroyWandView.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern WandView *DestroyWandView(WandView *)
+     * }
+     */
+    public static MethodHandle DestroyWandView$handle() {
+        return DestroyWandView.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern WandView *DestroyWandView(WandView *)
+     * }
+     */
+    public static MemorySegment DestroyWandView$address() {
+        return DestroyWandView.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern WandView *DestroyWandView(WandView *)
+     * }
+     */
+    public static MemorySegment DestroyWandView(MemorySegment x0) {
+        var mh$ = DestroyWandView.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("DestroyWandView", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewWandView {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewWandView");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandView(MagickWand *)
+     * }
+     */
+    public static FunctionDescriptor NewWandView$descriptor() {
+        return NewWandView.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandView(MagickWand *)
+     * }
+     */
+    public static MethodHandle NewWandView$handle() {
+        return NewWandView.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandView(MagickWand *)
+     * }
+     */
+    public static MemorySegment NewWandView$address() {
+        return NewWandView.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern WandView *NewWandView(MagickWand *)
+     * }
+     */
+    public static MemorySegment NewWandView(MemorySegment x0) {
+        var mh$ = NewWandView.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewWandView", x0);
+            }
+            return (MemorySegment)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class NewWandViewExtent {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_POINTER,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG,
+            MagickWand_h.C_LONG
+        );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("NewWandViewExtent");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandViewExtent(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static FunctionDescriptor NewWandViewExtent$descriptor() {
+        return NewWandViewExtent.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandViewExtent(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MethodHandle NewWandViewExtent$handle() {
+        return NewWandViewExtent.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern WandView *NewWandViewExtent(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment NewWandViewExtent$address() {
+        return NewWandViewExtent.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern WandView *NewWandViewExtent(MagickWand *, const ssize_t, const ssize_t, const size_t, const size_t)
+     * }
+     */
+    public static MemorySegment NewWandViewExtent(MemorySegment x0, long x1, long x2, long x3, long x4) {
+        var mh$ = NewWandViewExtent.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("NewWandViewExtent", x0, x1, x2, x3, x4);
+            }
+            return (MemorySegment)mh$.invokeExact(x0, x1, x2, x3, x4);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class MagickGetException {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             MagickWand_h.C_POINTER,
@@ -21546,6 +36044,62 @@ public class MagickWand_h {
                 traceDowncall("IsMagickWand", x0);
             }
             return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class IsMagickWandInstantiated {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            MagickWand_h.C_INT    );
+
+        public static final MemorySegment ADDR = MagickWand_h.findOrThrow("IsMagickWandInstantiated");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickWandInstantiated()
+     * }
+     */
+    public static FunctionDescriptor IsMagickWandInstantiated$descriptor() {
+        return IsMagickWandInstantiated.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickWandInstantiated()
+     * }
+     */
+    public static MethodHandle IsMagickWandInstantiated$handle() {
+        return IsMagickWandInstantiated.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickWandInstantiated()
+     * }
+     */
+    public static MemorySegment IsMagickWandInstantiated$address() {
+        return IsMagickWandInstantiated.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern MagickBooleanType IsMagickWandInstantiated()
+     * }
+     */
+    public static int IsMagickWandInstantiated() {
+        var mh$ = IsMagickWandInstantiated.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("IsMagickWandInstantiated");
+            }
+            return (int)mh$.invokeExact();
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22350,6 +36904,351 @@ public class MagickWand_h {
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
+    }
+    private static final long MagickWandSignature = 2880220587L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickWandSignature 2880220587
+     * }
+     */
+    public static long MagickWandSignature() {
+        return MagickWandSignature;
+    }
+    private static final long MagickCoreSignature = 2880220587L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickCoreSignature 2880220587
+     * }
+     */
+    public static long MagickCoreSignature() {
+        return MagickCoreSignature;
+    }
+    private static final double MagickEpsilon = 1.0E-12d;
+    /**
+     * {@snippet lang=c :
+     * #define MagickEpsilon 1.0E-12
+     * }
+     */
+    public static double MagickEpsilon() {
+        return MagickEpsilon;
+    }
+    private static final double MagickMaximumValue = 1.7976931348623157E308d;
+    /**
+     * {@snippet lang=c :
+     * #define MagickMaximumValue 1.7976931348623157E308
+     * }
+     */
+    public static double MagickMaximumValue() {
+        return MagickMaximumValue;
+    }
+    private static final double MagickMinimumValue = 2.2250738585072014E-308d;
+    /**
+     * {@snippet lang=c :
+     * #define MagickMinimumValue 2.2250738585072014E-308
+     * }
+     */
+    public static double MagickMinimumValue() {
+        return MagickMinimumValue;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickOffsetFormat "lld"
+     * }
+     */
+    public static MemorySegment MagickOffsetFormat() {
+        class Holder {
+            static final MemorySegment MagickOffsetFormat
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("lld");
+        }
+        return Holder.MagickOffsetFormat;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickSizeFormat "llu"
+     * }
+     */
+    public static MemorySegment MagickSizeFormat() {
+        class Holder {
+            static final MemorySegment MagickSizeFormat
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("llu");
+        }
+        return Holder.MagickSizeFormat;
+    }
+    private static final int BesselFilter = (int)13L;
+    /**
+     * {@snippet lang=c :
+     * #define BesselFilter 13
+     * }
+     */
+    public static int BesselFilter() {
+        return BesselFilter;
+    }
+    private static final int WelshFilter = (int)17L;
+    /**
+     * {@snippet lang=c :
+     * #define WelshFilter 17
+     * }
+     */
+    public static int WelshFilter() {
+        return WelshFilter;
+    }
+    private static final int HanningFilter = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * #define HanningFilter 5
+     * }
+     */
+    public static int HanningFilter() {
+        return HanningFilter;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickLogFilename "log.xml"
+     * }
+     */
+    public static MemorySegment MagickLogFilename() {
+        class Holder {
+            static final MemorySegment MagickLogFilename
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("log.xml");
+        }
+        return Holder.MagickLogFilename;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickPackageName "ImageMagick"
+     * }
+     */
+    public static MemorySegment MagickPackageName() {
+        class Holder {
+            static final MemorySegment MagickPackageName
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("ImageMagick");
+        }
+        return Holder.MagickPackageName;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickCopyright "(C) 1999 ImageMagick Studio LLC"
+     * }
+     */
+    public static MemorySegment MagickCopyright() {
+        class Holder {
+            static final MemorySegment MagickCopyright
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("(C) 1999 ImageMagick Studio LLC");
+        }
+        return Holder.MagickCopyright;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibVersionText "7.1.1"
+     * }
+     */
+    public static MemorySegment MagickLibVersionText() {
+        class Holder {
+            static final MemorySegment MagickLibVersionText
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("7.1.1");
+        }
+        return Holder.MagickLibVersionText;
+    }
+    private static final int MagickLibVersionNumber = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibVersionNumber 10
+     * }
+     */
+    public static int MagickLibVersionNumber() {
+        return MagickLibVersionNumber;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickLibAddendum "-36"
+     * }
+     */
+    public static MemorySegment MagickLibAddendum() {
+        class Holder {
+            static final MemorySegment MagickLibAddendum
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("-36");
+        }
+        return Holder.MagickLibAddendum;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickPlatform "aarch64"
+     * }
+     */
+    public static MemorySegment MagickPlatform() {
+        class Holder {
+            static final MemorySegment MagickPlatform
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("aarch64");
+        }
+        return Holder.MagickPlatform;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickppLibVersionText "7.1.1"
+     * }
+     */
+    public static MemorySegment MagickppLibVersionText() {
+        class Holder {
+            static final MemorySegment MagickppLibVersionText
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("7.1.1");
+        }
+        return Holder.MagickppLibVersionText;
+    }
+    private static final int MagickppLibVersionNumber = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickppLibVersionNumber 5
+     * }
+     */
+    public static int MagickppLibVersionNumber() {
+        return MagickppLibVersionNumber;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickppLibAddendum "-36"
+     * }
+     */
+    public static MemorySegment MagickppLibAddendum() {
+        class Holder {
+            static final MemorySegment MagickppLibAddendum
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("-36");
+        }
+        return Holder.MagickppLibAddendum;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickGitRevision "22352"
+     * }
+     */
+    public static MemorySegment MagickGitRevision() {
+        class Holder {
+            static final MemorySegment MagickGitRevision
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("22352");
+        }
+        return Holder.MagickGitRevision;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickReleaseDate "2024-07-27"
+     * }
+     */
+    public static MemorySegment MagickReleaseDate() {
+        class Holder {
+            static final MemorySegment MagickReleaseDate
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("2024-07-27");
+        }
+        return Holder.MagickReleaseDate;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickAuthoritativeLicense "https://imagemagick.org/script/license.php"
+     * }
+     */
+    public static MemorySegment MagickAuthoritativeLicense() {
+        class Holder {
+            static final MemorySegment MagickAuthoritativeLicense
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("https://imagemagick.org/script/license.php");
+        }
+        return Holder.MagickAuthoritativeLicense;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickAuthoritativeURL "https://imagemagick.org"
+     * }
+     */
+    public static MemorySegment MagickAuthoritativeURL() {
+        class Holder {
+            static final MemorySegment MagickAuthoritativeURL
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("https://imagemagick.org");
+        }
+        return Holder.MagickAuthoritativeURL;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickHomeURL "file:///opt/homebrew/Cellar/imagemagick/7.1.1-36/share/doc/ImageMagick-7/index.html"
+     * }
+     */
+    public static MemorySegment MagickHomeURL() {
+        class Holder {
+            static final MemorySegment MagickHomeURL
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("file:///opt/homebrew/Cellar/imagemagick/7.1.1-36/share/doc/ImageMagick-7/index.html");
+        }
+        return Holder.MagickHomeURL;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickQuantumDepth "Q16"
+     * }
+     */
+    public static MemorySegment MagickQuantumDepth() {
+        class Holder {
+            static final MemorySegment MagickQuantumDepth
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("Q16");
+        }
+        return Holder.MagickQuantumDepth;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickQuantumRange "65535"
+     * }
+     */
+    public static MemorySegment MagickQuantumRange() {
+        class Holder {
+            static final MemorySegment MagickQuantumRange
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("65535");
+        }
+        return Holder.MagickQuantumRange;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickHDRISupport "-HDRI"
+     * }
+     */
+    public static MemorySegment MagickHDRISupport() {
+        class Holder {
+            static final MemorySegment MagickHDRISupport
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("-HDRI");
+        }
+        return Holder.MagickHDRISupport;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define MagickVersion "ImageMagick 7.1.1-36 Q16-HDRI aarch64 22352 https://imagemagick.org"
+     * }
+     */
+    public static MemorySegment MagickVersion() {
+        class Holder {
+            static final MemorySegment MagickVersion
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("ImageMagick 7.1.1-36 Q16-HDRI aarch64 22352 https://imagemagick.org");
+        }
+        return Holder.MagickVersion;
+    }
+    private static final long MagickImageCoderSignature = 2576L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickImageCoderSignature 2576
+     * }
+     */
+    public static long MagickImageCoderSignature() {
+        return MagickImageCoderSignature;
+    }
+    private static final long MagickImageFilterSignature = 2576L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickImageFilterSignature 2576
+     * }
+     */
+    public static long MagickImageFilterSignature() {
+        return MagickImageFilterSignature;
+    }
+    private static final long MagickResourceInfinity = 9223372036854775807L;
+    /**
+     * {@snippet lang=c :
+     * #define MagickResourceInfinity 9223372036854775807
+     * }
+     */
+    public static long MagickResourceInfinity() {
+        return MagickResourceInfinity;
     }
 }
 
