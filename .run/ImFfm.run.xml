@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ImFfm" type="Application" factoryName="Application" nameIsGenerated="true">
     <envs>
-      <env name="DYLD_LIBRARY_PATH" value="libs" />
+      <env name="DYLD_LIBRARY_PATH" value="native_libs" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="app.photofox.imffm.ImFfm" />
-    <module name="im-ffm.lib.main" />
+    <module name="im-ffm.core" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="app.photofox.imffm.*" />

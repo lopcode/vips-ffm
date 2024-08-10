@@ -16,7 +16,7 @@ JEXTRACT_DOWNLOAD_URL=https://download.java.net/java/early_access/jextract/22/5/
 JEXTRACT_ZIP_CHECKSUM_SHA256=2a4411c32aedb064c3e432eb8a2791e6e60fea452330c71386f6573dc4c9c850
 JEXTRACT_DOWNLOAD_PATH=jextract-22
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract --version || (echo "Downloading jextract..." \
-&& curl --output jextract.tar.gz https://download.java.net/java/early_access/jextract/22/5/openjdk-22-jextract+5-33_macos-aarch64_bin.tar.gz \
+&& curl --output jextract.tar.gz "$JEXTRACT_DOWNLOAD_URL" \
 && (echo "$JEXTRACT_ZIP_CHECKSUM_SHA256" jextract.tar.gz | sha256sum --check --status) \
 && tar -xvzf jextract.tar.gz)
 
@@ -47,17 +47,22 @@ echo "Dumping all discovered includes..."
 
 echo "Filtering includes..."
 
-grep -E ' [A-Za-z0-9_]*Magick[A-Za-z0-9]*' includes.txt > includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*Exception[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*Filter[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*Mogrify[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*Montage[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*(Pixel|Rectangle|Point|Segment|Image)Info' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*Wand[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]+Command[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]+Iterator[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]+Handler' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]+Type' includes.txt >> includes_filtered.txt
+rm includes_filtered.txt
+touch includes_filtered.txt
+
+{
+  grep -E ' [A-Za-z0-9_]*Magick[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]*Exception[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]*Filter[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]*Mogrify[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]*Montage[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]*(Pixel|Rectangle|Point|Segment|Image)Info' includes.txt
+  grep -E ' [A-Za-z0-9_]*Wand[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]+Command[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]+Iterator[A-Za-z0-9]*' includes.txt
+  grep -E ' [A-Za-z0-9_]+Handler' includes.txt
+  grep -E ' [A-Za-z0-9_]+Type' includes.txt
+} >> includes_filtered.txt
 
 echo "Running jextract..."
 
