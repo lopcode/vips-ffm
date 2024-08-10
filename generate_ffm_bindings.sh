@@ -52,11 +52,12 @@ grep -E ' [A-Za-z0-9_]*Exception[A-Za-z0-9]*' includes.txt >> includes_filtered.
 grep -E ' [A-Za-z0-9_]*Filter[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
 grep -E ' [A-Za-z0-9_]*Mogrify[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
 grep -E ' [A-Za-z0-9_]*Montage[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*PixelInfo[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
-grep -E ' [A-Za-z0-9_]*RectangleInfo[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
+grep -E ' [A-Za-z0-9_]*(Pixel|Rectangle|Point|Segment|Image)Info' includes.txt >> includes_filtered.txt
 grep -E ' [A-Za-z0-9_]*Wand[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
 grep -E ' [A-Za-z0-9_]+Command[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
 grep -E ' [A-Za-z0-9_]+Iterator[A-Za-z0-9]*' includes.txt >> includes_filtered.txt
+grep -E ' [A-Za-z0-9_]+Handler' includes.txt >> includes_filtered.txt
+grep -E ' [A-Za-z0-9_]+Type' includes.txt >> includes_filtered.txt
 
 echo "Running jextract..."
 
