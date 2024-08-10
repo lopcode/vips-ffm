@@ -5,6 +5,7 @@
     </envs>
     <option name="MAIN_CLASS_NAME" value="app.photofox.imffm.ImFfm" />
     <module name="im-ffm.core" />
+    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="app.photofox.imffm.*" />
