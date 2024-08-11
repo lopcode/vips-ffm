@@ -17,6 +17,9 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up ImageMagick source..."
 
+# when imagemagick ship prebuilts in GitHub releases we can just use those instead of configuring
+# https://github.com/ImageMagick/ImageMagick/issues/7493
+
 IMAGEMAGICK_SOURCE_PATH="ImageMagick-$IMAGEMAGICK_TAG"
 IMAGEMAGICK_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH"
 MAGICKWAND_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH/MagickWand"
