@@ -29,12 +29,12 @@ if [ ! -f "$MAGICKWAND_ENTRY_PATH" ] || [ ! -f "$MAGICKWAND_CONFIG_PATH" ]; then
   IMAGEMAGICK_ZIP_PATH="ImageMagick-$IMAGEMAGICK_TAG.zip"
   rm -rf "$IMAGEMAGICK_SOURCE_PATH"
   echo "$IMAGEMAGICK_ZIP_SHA" "$IMAGEMAGICK_ZIP_PATH" | sha256sum --check --status
-  unzip "$IMAGEMAGICK_ZIP_PATH"
+  unzip -q "$IMAGEMAGICK_ZIP_PATH"
   (cd "ImageMagick-$IMAGEMAGICK_TAG"; ./configure)
 fi
 
-echo "  Found ImageMagick headers at \"$IMAGEMAGICK_INCLUDES_PATH\"..."
-echo "  Found MagickWand headers at \"$MAGICKWAND_INCLUDES_PATH\"..."
+echo "Found ImageMagick headers at \"$IMAGEMAGICK_INCLUDES_PATH\"..."
+echo "Found MagickWand headers at \"$MAGICKWAND_INCLUDES_PATH\"..."
 
 echo "Clearing generated files..."
 
