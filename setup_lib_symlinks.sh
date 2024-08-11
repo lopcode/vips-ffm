@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-echo "Finding ImageMagick lib folder..."
-IMAGEMAGICK_LIB_PATH=$(find -s /opt/homebrew/Cellar/imagemagick/7*/lib -type d -depth 0 | head -n 1)
-echo "  Found at \"$IMAGEMAGICK_LIB_PATH\""
-
-if test -f native_libs/libMagickWand-7.Q16HDRI.dylib; then
+if test -f native_libs/libvips.dylib; then
   echo "Symlink already set up" && exit 0
 fi
 
 echo "Setting up symlinks..."
-ln -s "$IMAGEMAGICK_LIB_PATH"/libMagickWand-7.Q16HDRI.dylib native_libs/libMagickWand-7.Q16HDRI.dylib
-ln -s "$IMAGEMAGICK_LIB_PATH"/libMagickCore-7.Q16HDRI.dylib native_libs/libMagickCore-7.Q16HDRI.dylib
+ln -s "/opt/homebrew/lib/libvips.dylib" native_libs/libvips.dylib
 
 echo "Done!"

@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="VipsFfm" type="JetRunConfigurationType">
+    <envs>
+      <env name="DYLD_LIBRARY_PATH" value="native_libs" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="vipsffm.VipsFfm" />
+    <module name="vips-ffm.sample.main" />
+    <shortenClasspath name="NONE" />
+    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
