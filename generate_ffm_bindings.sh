@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-# check imagemagick 7 is installed
-echo "Checking if ImageMagick 7 is installed..."
-magick --version | grep --quiet "ImageMagick 7" || (echo "ImageMagick 7 not installed" && exit 1)
-
-# check at least JDK 22 used
-echo "Checking JDK version >= 22..."
-java --version | grep --quiet "build 22" || (echo "Not using JDK 22 or above" && exit 1)
+IMAGEMAGICK_TAG="7.1.1-36"
+IMAGEMAGICK_ZIP_SHA="3fbbb468ad6b08cf77846e439ce0d3e1559d399cf3797f3d985eeb7765a7bbd4"
 
 # check if jextract is installed
 # https://jdk.java.net/jextract/
@@ -20,15 +15,24 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 && (echo "$JEXTRACT_ZIP_CHECKSUM_SHA256" jextract.tar.gz | sha256sum --check --status) \
 && tar -xvzf jextract.tar.gz)
 
-# todo: better way of finding these headers not reliant on macos/brew
-echo "Finding MagickWand headers..."
-IMAGEMAGICK_INCLUDES_PATH=$(find -s /opt/homebrew/Cellar/imagemagick/7*/include/ImageMagick-7 -type d -depth 0 | head -n 1)
-MAGICKWAND_INCLUDES_PATH=$(find "$IMAGEMAGICK_INCLUDES_PATH" -name MagickWand -type d -depth 1 | head -n 1)
-MAGICKWAND_ENTRY_PATH="$MAGICKWAND_INCLUDES_PATH"/MagickWand.h
+echo "Setting up ImageMagick source..."
 
-if ! test -f "$MAGICKWAND_ENTRY_PATH"; then
-  echo "Failed to find MagickWand.h" && exit 1
+IMAGEMAGICK_SOURCE_PATH="ImageMagick-$IMAGEMAGICK_TAG"
+IMAGEMAGICK_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH"
+MAGICKWAND_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH/MagickWand"
+MAGICKWAND_ENTRY_PATH="$MAGICKWAND_INCLUDES_PATH"/MagickWand.h
+MAGICKWAND_CONFIG_PATH="$IMAGEMAGICK_INCLUDES_PATH"/MagickCore/magick-baseconfig.h
+
+if [ ! -f "$MAGICKWAND_ENTRY_PATH" ] || [ ! -f "$MAGICKWAND_CONFIG_PATH" ]; then
+  echo "  Downloading ImageMagick $IMAGEMAGICK_TAG..."
+  gh release download --repo imagemagick/imagemagick "$IMAGEMAGICK_TAG" --archive=zip --skip-existing
+  IMAGEMAGICK_ZIP_PATH="ImageMagick-$IMAGEMAGICK_TAG.zip"
+  rm -rf "$IMAGEMAGICK_SOURCE_PATH"
+  echo "$IMAGEMAGICK_ZIP_SHA" "$IMAGEMAGICK_ZIP_PATH" | sha256sum --check --status
+  unzip "$IMAGEMAGICK_ZIP_PATH"
+  (cd "ImageMagick-$IMAGEMAGICK_TAG"; ./configure)
 fi
+
 echo "  Found ImageMagick headers at \"$IMAGEMAGICK_INCLUDES_PATH\"..."
 echo "  Found MagickWand headers at \"$MAGICKWAND_INCLUDES_PATH\"..."
 

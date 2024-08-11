@@ -39336,25 +39336,25 @@ public class MagickWand_h {
     }
     /**
      * {@snippet lang=c :
-     * #define MagickGitRevision "22352"
+     * #define MagickGitRevision "58ddb87ca:20240726"
      * }
      */
     public static MemorySegment MagickGitRevision() {
         class Holder {
             static final MemorySegment MagickGitRevision
-                = MagickWand_h.LIBRARY_ARENA.allocateFrom("22352");
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("58ddb87ca:20240726");
         }
         return Holder.MagickGitRevision;
     }
     /**
      * {@snippet lang=c :
-     * #define MagickReleaseDate "2024-07-27"
+     * #define MagickReleaseDate "2024-07-26"
      * }
      */
     public static MemorySegment MagickReleaseDate() {
         class Holder {
             static final MemorySegment MagickReleaseDate
-                = MagickWand_h.LIBRARY_ARENA.allocateFrom("2024-07-27");
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("2024-07-26");
         }
         return Holder.MagickReleaseDate;
     }
@@ -39384,13 +39384,13 @@ public class MagickWand_h {
     }
     /**
      * {@snippet lang=c :
-     * #define MagickHomeURL "file:///opt/homebrew/Cellar/imagemagick/7.1.1-36/share/doc/ImageMagick-7/index.html"
+     * #define MagickHomeURL "file:///usr/local/share/doc/ImageMagick-7/index.html"
      * }
      */
     public static MemorySegment MagickHomeURL() {
         class Holder {
             static final MemorySegment MagickHomeURL
-                = MagickWand_h.LIBRARY_ARENA.allocateFrom("file:///opt/homebrew/Cellar/imagemagick/7.1.1-36/share/doc/ImageMagick-7/index.html");
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("file:///usr/local/share/doc/ImageMagick-7/index.html");
         }
         return Holder.MagickHomeURL;
     }
@@ -39432,13 +39432,13 @@ public class MagickWand_h {
     }
     /**
      * {@snippet lang=c :
-     * #define MagickVersion "ImageMagick 7.1.1-36 Q16-HDRI aarch64 22352 https://imagemagick.org"
+     * #define MagickVersion "ImageMagick 7.1.1-36 Q16-HDRI aarch64 58ddb87ca:20240726 https://imagemagick.org"
      * }
      */
     public static MemorySegment MagickVersion() {
         class Holder {
             static final MemorySegment MagickVersion
-                = MagickWand_h.LIBRARY_ARENA.allocateFrom("ImageMagick 7.1.1-36 Q16-HDRI aarch64 22352 https://imagemagick.org");
+                = MagickWand_h.LIBRARY_ARENA.allocateFrom("ImageMagick 7.1.1-36 Q16-HDRI aarch64 58ddb87ca:20240726 https://imagemagick.org");
         }
         return Holder.MagickVersion;
     }
