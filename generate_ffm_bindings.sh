@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-IMAGEMAGICK_TAG="7.1.1-36"
-IMAGEMAGICK_ZIP_SHA="3fbbb468ad6b08cf77846e439ce0d3e1559d399cf3797f3d985eeb7765a7bbd4"
-
 # check if jextract is installed
 # https://jdk.java.net/jextract/
 echo "Checking jextract exists..."
@@ -15,69 +12,55 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 && (echo "$JEXTRACT_ZIP_CHECKSUM_SHA256" jextract.tar.gz | sha256sum --check --status) \
 && tar -xvzf jextract.tar.gz)
 
-echo "Setting up ImageMagick source..."
+echo "Setting up libvips..."
 
-# when imagemagick ship prebuilts in GitHub releases we can just use those instead of configuring
-# https://github.com/ImageMagick/ImageMagick/issues/7493
+vips --version
 
-IMAGEMAGICK_SOURCE_PATH="ImageMagick-$IMAGEMAGICK_TAG"
-IMAGEMAGICK_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH"
-MAGICKWAND_INCLUDES_PATH="$IMAGEMAGICK_SOURCE_PATH/MagickWand"
-MAGICKWAND_ENTRY_PATH="$MAGICKWAND_INCLUDES_PATH"/MagickWand.h
-MAGICKWAND_CONFIG_PATH="$IMAGEMAGICK_INCLUDES_PATH"/MagickCore/magick-baseconfig.h
+LIBVIPS_INCLUDES_PATH="/opt/homebrew/include"
+LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
-if [ ! -f "$MAGICKWAND_ENTRY_PATH" ] || [ ! -f "$MAGICKWAND_CONFIG_PATH" ]; then
-  echo "  Downloading ImageMagick $IMAGEMAGICK_TAG..."
-  gh release download --repo imagemagick/imagemagick "$IMAGEMAGICK_TAG" --archive=zip --skip-existing
-  IMAGEMAGICK_ZIP_PATH="ImageMagick-$IMAGEMAGICK_TAG.zip"
-  rm -rf "$IMAGEMAGICK_SOURCE_PATH"
-  echo "$IMAGEMAGICK_ZIP_SHA" "$IMAGEMAGICK_ZIP_PATH" | sha256sum --check --status
-  unzip -q "$IMAGEMAGICK_ZIP_PATH"
-  (cd "ImageMagick-$IMAGEMAGICK_TAG"; ./configure)
+if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
+  echo "Failed to find libvips headers at \"$LIBVIPS_ENTRY_PATH\""
 fi
 
-echo "Found ImageMagick headers at \"$IMAGEMAGICK_INCLUDES_PATH\"..."
-echo "Found MagickWand headers at \"$MAGICKWAND_INCLUDES_PATH\"..."
+echo "Found libvips headers at \"$LIBVIPS_INCLUDES_PATH\"..."
+echo "Found libvips entry at \"$LIBVIPS_ENTRY_PATH\"..."
 
 echo "Clearing generated files..."
 
-rm -rf lib/src/main/java/app/photofox/imffm/generated || true
+rm -rf core/src/main/java/app/photofox/vipsffm/generated || true
 
 echo "Dumping all discovered includes..."
 
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
---define-macro MAGICKCORE_HDRI_ENABLE \
---include-dir "$IMAGEMAGICK_INCLUDES_PATH" \
---library "MagickWand-7.Q16HDRI" \
+--include-dir "/opt/homebrew/include/vips/" \
+--include-dir "/opt/homebrew/include/" \
+--include-dir "/opt/homebrew/include/glib-2.0" \
+--include-dir "/opt/homebrew/lib/glib-2.0/include" \
+--library "vips" \
 --dump-includes includes.txt \
-"$MAGICKWAND_ENTRY_PATH"
+"$LIBVIPS_ENTRY_PATH"
 
 echo "Filtering includes..."
 
-rm includes_filtered.txt
+rm includes_filtered.txt || true
 touch includes_filtered.txt
 
 {
-  grep -E ' [A-Za-z0-9_]*Magick[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]*Exception[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]*Filter[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]*Mogrify[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]*Montage[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]*(Pixel|Rectangle|Point|Segment|Image)Info' includes.txt
-  grep -E ' [A-Za-z0-9_]*Wand[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]+Command[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]+Iterator[A-Za-z0-9]*' includes.txt
-  grep -E ' [A-Za-z0-9_]+Handler' includes.txt
-  grep -E ' [A-Za-z0-9_]+Type' includes.txt
+  grep -iE ' (_)?vips[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass)' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."
 
+set -x
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
---define-macro MAGICKCORE_HDRI_ENABLE \
---include-dir "$IMAGEMAGICK_INCLUDES_PATH" \
---output lib/src/main/java \
---target-package "app.photofox.imffm.generated" \
---library "MagickWand-7.Q16HDRI" \
+--include-dir "/opt/homebrew/include/vips/" \
+--include-dir "/opt/homebrew/include/" \
+--include-dir "/opt/homebrew/include/glib-2.0" \
+--include-dir "/opt/homebrew/lib/glib-2.0/include" \
+--output core/src/main/java \
+--target-package "app.photofox.vipsffm.generated" \
+--library "vips" \
 @includes_filtered.txt \
-"$MAGICKWAND_ENTRY_PATH"
+"$LIBVIPS_ENTRY_PATH"

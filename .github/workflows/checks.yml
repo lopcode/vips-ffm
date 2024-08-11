@@ -28,9 +28,7 @@ jobs:
       - name: Run checks
         run: ./gradlew build check shadowJar
 
-# todo: disabled whilst investigating libvips
-#      - name: Run samples
-#        run: |
-#          sudo apt install imagemagick
-#          magick --version
-#          ./run_samples.sh
+      - name: Run samples
+        run: |
+          vips --version || (sudo apt update && sudo apt install libvips-dev)
+          ./run_samples.sh

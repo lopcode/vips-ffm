@@ -56,7 +56,7 @@ tasks.withType<Jar>().configureEach {
 }
 
 application {
-    mainClass = "imffm.ImFfm"
+    mainClass = "vipsffm.VipsFfm"
     applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
     // todo: figure out how to set DYLD_LIBRARY_PATH here
 }
