@@ -14,7 +14,8 @@ object VipsFfm {
     @JvmStatic
     fun main(args: Array<String>) {
         val samples = listOf(
-            GetVersionSample
+            GetVersionSample,
+            CreateThumbnailSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {
