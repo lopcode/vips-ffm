@@ -31,9 +31,9 @@ public class VipsTypeMapFn {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        vips_h.C_POINTER,
-        vips_h.C_LONG,
-        vips_h.C_POINTER
+        VipsRaw.C_POINTER,
+        VipsRaw.C_LONG,
+        VipsRaw.C_POINTER
     );
 
     /**
@@ -43,7 +43,7 @@ public class VipsTypeMapFn {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = vips_h.upcallHandle(VipsTypeMapFn.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = VipsRaw.upcallHandle(VipsTypeMapFn.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

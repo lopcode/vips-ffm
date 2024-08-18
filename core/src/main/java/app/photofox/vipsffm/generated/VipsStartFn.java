@@ -31,10 +31,10 @@ public class VipsStartFn {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER
     );
 
     /**
@@ -44,7 +44,7 @@ public class VipsStartFn {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = vips_h.upcallHandle(VipsStartFn.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = VipsRaw.upcallHandle(VipsStartFn.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

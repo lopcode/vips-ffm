@@ -1,9 +1,10 @@
 # vips-ffm
 
 [libvips](https://github.com/libvips/libvips) bindings for JVM projects, using the "Foreign Function & Memory API"
-([JEP 454](https://openjdk.org/jeps/454)) released in JDK 22. The combination of libvips and FFM makes for performant, safe, and ergonomic image
-manipulation in JVM systems, supporting a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more.
-Pronounced "vips (like zips) eff-eff-emm".
+([JEP 454](https://openjdk.org/jeps/454)), and the "Class-File API" ([JEP 457](https://openjdk.org/jeps/457)) released in JDK 22. The combination
+of libvips, FFM, and auto-generated helpers makes for performant, safe, and ergonomic image manipulation in JVM systems.
+Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
+eff-eff-emm".
 
 Bindings are automatically generated using `jextract`, and enhanced with some helpful wrapper functions to make usage
 more idiomatic.
@@ -18,7 +19,9 @@ Incubating in [Photo Fox](https://github.com/lopcode/photo-fox).
   upstream changes can be rapidly integrated ✅
 * Core module should only include this automated output, with a minimum of extra things that can break as upstreams
   change ✅
-* If helpers are required, publish in another artifact
+* If helpers are required, publish in another artifact ✅
+  * Generate these too, if possible
+* Keep generated APIs as similar to the original as possible
 * Incubate in Photo Fox with some "real world" usage
 
 ## Samples
@@ -40,9 +43,12 @@ To get set up to run samples (on macOS):
 [main] INFO vipsffm.VipsFfm - running sample "GetVersionSample"...
 [main] INFO vipsffm.GetVersionSample - libvips version: "8.15.2"
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
-[main] INFO vipsffm.VipsFfm - running sample "CreateThumbnailSample"...
+[main] INFO vipsffm.VipsFfm - running sample "RawCreateThumbnailSample"...
 [main] INFO vipsffm.GetVersionSample - source image size: 2490 x 3084
 [main] INFO vipsffm.GetVersionSample - output image size: 323 x 400
+[main] INFO vipsffm.VipsFfm - validation succeeded ✅
+[main] INFO vipsffm.VipsFfm - running sample "HelperCreateThumbnailSample"...
+[main] INFO vipsffm.GetVersionSample - source image size: 2490 x 3084
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
 [main] INFO vipsffm.VipsFfm - all samples ran successfully 🎉
 ```

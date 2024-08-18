@@ -30,9 +30,9 @@ public class _VipsOperation {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObject.layout().withName("parent_instance"),
-        vips_h.C_INT.withName("hash"),
-        vips_h.C_INT.withName("found_hash"),
-        vips_h.C_INT.withName("pixels"),
+        VipsRaw.C_INT.withName("hash"),
+        VipsRaw.C_INT.withName("found_hash"),
+        VipsRaw.C_INT.withName("pixels"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsOperation");
 

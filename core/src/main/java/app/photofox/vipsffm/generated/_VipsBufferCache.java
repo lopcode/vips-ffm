@@ -31,12 +31,12 @@ public class _VipsBufferCache {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("buffers"),
-        vips_h.C_POINTER.withName("thread"),
-        vips_h.C_POINTER.withName("im"),
-        vips_h.C_POINTER.withName("buffer_thread"),
-        vips_h.C_POINTER.withName("reserve"),
-        vips_h.C_INT.withName("n_reserve"),
+        VipsRaw.C_POINTER.withName("buffers"),
+        VipsRaw.C_POINTER.withName("thread"),
+        VipsRaw.C_POINTER.withName("im"),
+        VipsRaw.C_POINTER.withName("buffer_thread"),
+        VipsRaw.C_POINTER.withName("reserve"),
+        VipsRaw.C_INT.withName("n_reserve"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsBufferCache");
 

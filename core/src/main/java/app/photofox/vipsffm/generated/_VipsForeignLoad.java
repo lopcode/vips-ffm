@@ -39,18 +39,18 @@ public class _VipsForeignLoad {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsForeign.layout().withName("parent_object"),
-        vips_h.C_INT.withName("memory"),
-        vips_h.C_INT.withName("access"),
-        vips_h.C_INT.withName("flags"),
-        vips_h.C_INT.withName("fail_on"),
-        vips_h.C_INT.withName("fail"),
-        vips_h.C_INT.withName("sequential"),
-        vips_h.C_POINTER.withName("out"),
-        vips_h.C_POINTER.withName("real"),
-        vips_h.C_INT.withName("nocache"),
-        vips_h.C_INT.withName("disc"),
-        vips_h.C_INT.withName("error"),
-        vips_h.C_INT.withName("revalidate")
+        VipsRaw.C_INT.withName("memory"),
+        VipsRaw.C_INT.withName("access"),
+        VipsRaw.C_INT.withName("flags"),
+        VipsRaw.C_INT.withName("fail_on"),
+        VipsRaw.C_INT.withName("fail"),
+        VipsRaw.C_INT.withName("sequential"),
+        VipsRaw.C_POINTER.withName("out"),
+        VipsRaw.C_POINTER.withName("real"),
+        VipsRaw.C_INT.withName("nocache"),
+        VipsRaw.C_INT.withName("disc"),
+        VipsRaw.C_INT.withName("error"),
+        VipsRaw.C_INT.withName("revalidate")
     ).withName("_VipsForeignLoad");
 
     /**

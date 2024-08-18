@@ -31,11 +31,11 @@ public class _VipsConnection {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObject.layout().withName("parent_object"),
-        vips_h.C_INT.withName("descriptor"),
-        vips_h.C_INT.withName("tracked_descriptor"),
-        vips_h.C_INT.withName("close_descriptor"),
+        VipsRaw.C_INT.withName("descriptor"),
+        VipsRaw.C_INT.withName("tracked_descriptor"),
+        VipsRaw.C_INT.withName("close_descriptor"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("filename")
+        VipsRaw.C_POINTER.withName("filename")
     ).withName("_VipsConnection");
 
     /**

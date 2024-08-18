@@ -41,20 +41,20 @@ public class _GObjectClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _GTypeClass.layout().withName("g_type_class"),
-        vips_h.C_POINTER.withName("construct_properties"),
-        vips_h.C_POINTER.withName("constructor"),
-        vips_h.C_POINTER.withName("set_property"),
-        vips_h.C_POINTER.withName("get_property"),
-        vips_h.C_POINTER.withName("dispose"),
-        vips_h.C_POINTER.withName("finalize"),
-        vips_h.C_POINTER.withName("dispatch_properties_changed"),
-        vips_h.C_POINTER.withName("notify"),
-        vips_h.C_POINTER.withName("constructed"),
-        vips_h.C_LONG.withName("flags"),
-        vips_h.C_LONG.withName("n_construct_properties"),
-        vips_h.C_POINTER.withName("pspecs"),
-        vips_h.C_LONG.withName("n_pspecs"),
-        MemoryLayout.sequenceLayout(3, vips_h.C_POINTER).withName("pdummy")
+        VipsRaw.C_POINTER.withName("construct_properties"),
+        VipsRaw.C_POINTER.withName("constructor"),
+        VipsRaw.C_POINTER.withName("set_property"),
+        VipsRaw.C_POINTER.withName("get_property"),
+        VipsRaw.C_POINTER.withName("dispose"),
+        VipsRaw.C_POINTER.withName("finalize"),
+        VipsRaw.C_POINTER.withName("dispatch_properties_changed"),
+        VipsRaw.C_POINTER.withName("notify"),
+        VipsRaw.C_POINTER.withName("constructed"),
+        VipsRaw.C_LONG.withName("flags"),
+        VipsRaw.C_LONG.withName("n_construct_properties"),
+        VipsRaw.C_POINTER.withName("pspecs"),
+        VipsRaw.C_LONG.withName("n_pspecs"),
+        MemoryLayout.sequenceLayout(3, VipsRaw.C_POINTER).withName("pdummy")
     ).withName("_GObjectClass");
 
     /**
@@ -171,10 +171,10 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER,
-            vips_h.C_LONG,
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -184,7 +184,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(constructor.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(constructor.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -271,10 +271,10 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -284,7 +284,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(set_property.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(set_property.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -371,10 +371,10 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -384,7 +384,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_property.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_property.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -471,7 +471,7 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -481,7 +481,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(dispose.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(dispose.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -568,7 +568,7 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -578,7 +578,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(finalize.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(finalize.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -665,9 +665,9 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -677,7 +677,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(dispatch_properties_changed.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(dispatch_properties_changed.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -764,8 +764,8 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -775,7 +775,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(notify.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(notify.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -862,7 +862,7 @@ public class _GObjectClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -872,7 +872,7 @@ public class _GObjectClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(constructed.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(constructed.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

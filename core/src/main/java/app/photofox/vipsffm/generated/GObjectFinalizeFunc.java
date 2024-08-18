@@ -31,7 +31,7 @@ public class GObjectFinalizeFunc {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        vips_h.C_POINTER
+        VipsRaw.C_POINTER
     );
 
     /**
@@ -41,7 +41,7 @@ public class GObjectFinalizeFunc {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = vips_h.upcallHandle(GObjectFinalizeFunc.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = VipsRaw.upcallHandle(GObjectFinalizeFunc.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

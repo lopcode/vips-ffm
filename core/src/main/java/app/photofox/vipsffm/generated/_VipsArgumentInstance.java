@@ -32,12 +32,12 @@ public class _VipsArgumentInstance {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsArgument.layout().withName("parent"),
-        vips_h.C_POINTER.withName("argument_class"),
-        vips_h.C_POINTER.withName("object"),
-        vips_h.C_INT.withName("assigned"),
+        VipsRaw.C_POINTER.withName("argument_class"),
+        VipsRaw.C_POINTER.withName("object"),
+        VipsRaw.C_INT.withName("assigned"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_LONG.withName("close_id"),
-        vips_h.C_LONG.withName("invalidate_id")
+        VipsRaw.C_LONG.withName("close_id"),
+        VipsRaw.C_LONG.withName("invalidate_id")
     ).withName("_VipsArgumentInstance");
 
     /**

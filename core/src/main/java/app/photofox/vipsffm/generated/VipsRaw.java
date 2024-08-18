@@ -12,10 +12,1040 @@ import java.util.stream.*;
 import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
-public class vips_h extends vips_h_1 {
+public class VipsRaw extends VipsRaw_1 {
 
-    vips_h() {
+    VipsRaw() {
         // Should not be called directly
+    }
+
+    private static class vips_interpretation_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_interpretation_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_interpretation_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_interpretation_get_type$descriptor() {
+        return vips_interpretation_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_interpretation_get_type()
+     * }
+     */
+    public static MethodHandle vips_interpretation_get_type$handle() {
+        return vips_interpretation_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_interpretation_get_type()
+     * }
+     */
+    public static MemorySegment vips_interpretation_get_type$address() {
+        return vips_interpretation_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_interpretation_get_type()
+     * }
+     */
+    public static long vips_interpretation_get_type() {
+        var mh$ = vips_interpretation_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_interpretation_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_band_format_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_band_format_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_band_format_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_band_format_get_type$descriptor() {
+        return vips_band_format_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_band_format_get_type()
+     * }
+     */
+    public static MethodHandle vips_band_format_get_type$handle() {
+        return vips_band_format_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_band_format_get_type()
+     * }
+     */
+    public static MemorySegment vips_band_format_get_type$address() {
+        return vips_band_format_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_band_format_get_type()
+     * }
+     */
+    public static long vips_band_format_get_type() {
+        var mh$ = vips_band_format_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_band_format_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_coding_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_coding_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_coding_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_coding_get_type$descriptor() {
+        return vips_coding_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_coding_get_type()
+     * }
+     */
+    public static MethodHandle vips_coding_get_type$handle() {
+        return vips_coding_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_coding_get_type()
+     * }
+     */
+    public static MemorySegment vips_coding_get_type$address() {
+        return vips_coding_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_coding_get_type()
+     * }
+     */
+    public static long vips_coding_get_type() {
+        var mh$ = vips_coding_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_coding_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_access_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_access_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_access_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_access_get_type$descriptor() {
+        return vips_access_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_access_get_type()
+     * }
+     */
+    public static MethodHandle vips_access_get_type$handle() {
+        return vips_access_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_access_get_type()
+     * }
+     */
+    public static MemorySegment vips_access_get_type$address() {
+        return vips_access_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_access_get_type()
+     * }
+     */
+    public static long vips_access_get_type() {
+        var mh$ = vips_access_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_access_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_operation_morphology_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_operation_morphology_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_morphology_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_operation_morphology_get_type$descriptor() {
+        return vips_operation_morphology_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_morphology_get_type()
+     * }
+     */
+    public static MethodHandle vips_operation_morphology_get_type$handle() {
+        return vips_operation_morphology_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_morphology_get_type()
+     * }
+     */
+    public static MemorySegment vips_operation_morphology_get_type$address() {
+        return vips_operation_morphology_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_operation_morphology_get_type()
+     * }
+     */
+    public static long vips_operation_morphology_get_type() {
+        var mh$ = vips_operation_morphology_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_operation_morphology_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_argument_flags_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_argument_flags_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_argument_flags_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_argument_flags_get_type$descriptor() {
+        return vips_argument_flags_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_argument_flags_get_type()
+     * }
+     */
+    public static MethodHandle vips_argument_flags_get_type$handle() {
+        return vips_argument_flags_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_argument_flags_get_type()
+     * }
+     */
+    public static MemorySegment vips_argument_flags_get_type$address() {
+        return vips_argument_flags_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_argument_flags_get_type()
+     * }
+     */
+    public static long vips_argument_flags_get_type() {
+        var mh$ = vips_argument_flags_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_argument_flags_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_operation_flags_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_operation_flags_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_flags_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_operation_flags_get_type$descriptor() {
+        return vips_operation_flags_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_flags_get_type()
+     * }
+     */
+    public static MethodHandle vips_operation_flags_get_type$handle() {
+        return vips_operation_flags_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_operation_flags_get_type()
+     * }
+     */
+    public static MemorySegment vips_operation_flags_get_type$address() {
+        return vips_operation_flags_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_operation_flags_get_type()
+     * }
+     */
+    public static long vips_operation_flags_get_type() {
+        var mh$ = vips_operation_flags_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_operation_flags_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_region_shrink_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_region_shrink_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_region_shrink_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_region_shrink_get_type$descriptor() {
+        return vips_region_shrink_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_region_shrink_get_type()
+     * }
+     */
+    public static MethodHandle vips_region_shrink_get_type$handle() {
+        return vips_region_shrink_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_region_shrink_get_type()
+     * }
+     */
+    public static MemorySegment vips_region_shrink_get_type$address() {
+        return vips_region_shrink_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_region_shrink_get_type()
+     * }
+     */
+    public static long vips_region_shrink_get_type() {
+        var mh$ = vips_region_shrink_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_region_shrink_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_kernel_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_kernel_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_kernel_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_kernel_get_type$descriptor() {
+        return vips_kernel_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_kernel_get_type()
+     * }
+     */
+    public static MethodHandle vips_kernel_get_type$handle() {
+        return vips_kernel_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_kernel_get_type()
+     * }
+     */
+    public static MemorySegment vips_kernel_get_type$address() {
+        return vips_kernel_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_kernel_get_type()
+     * }
+     */
+    public static long vips_kernel_get_type() {
+        var mh$ = vips_kernel_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_kernel_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_size_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_size_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_size_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_size_get_type$descriptor() {
+        return vips_size_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_size_get_type()
+     * }
+     */
+    public static MethodHandle vips_size_get_type$handle() {
+        return vips_size_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_size_get_type()
+     * }
+     */
+    public static MemorySegment vips_size_get_type$address() {
+        return vips_size_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_size_get_type()
+     * }
+     */
+    public static long vips_size_get_type() {
+        var mh$ = vips_size_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_size_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_token_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_token_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_token_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_token_get_type$descriptor() {
+        return vips_token_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_token_get_type()
+     * }
+     */
+    public static MethodHandle vips_token_get_type$handle() {
+        return vips_token_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_token_get_type()
+     * }
+     */
+    public static MemorySegment vips_token_get_type$address() {
+        return vips_token_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_token_get_type()
+     * }
+     */
+    public static long vips_token_get_type() {
+        var mh$ = vips_token_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_token_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    private static final int VIPS_OPERATION_MATH_SIN = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_SIN = 0
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_SIN() {
+        return VIPS_OPERATION_MATH_SIN;
+    }
+    private static final int VIPS_OPERATION_MATH_COS = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_COS = 1
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_COS() {
+        return VIPS_OPERATION_MATH_COS;
+    }
+    private static final int VIPS_OPERATION_MATH_TAN = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_TAN = 2
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_TAN() {
+        return VIPS_OPERATION_MATH_TAN;
+    }
+    private static final int VIPS_OPERATION_MATH_ASIN = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ASIN = 3
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ASIN() {
+        return VIPS_OPERATION_MATH_ASIN;
+    }
+    private static final int VIPS_OPERATION_MATH_ACOS = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ACOS = 4
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ACOS() {
+        return VIPS_OPERATION_MATH_ACOS;
+    }
+    private static final int VIPS_OPERATION_MATH_ATAN = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ATAN = 5
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ATAN() {
+        return VIPS_OPERATION_MATH_ATAN;
+    }
+    private static final int VIPS_OPERATION_MATH_LOG = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_LOG = 6
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_LOG() {
+        return VIPS_OPERATION_MATH_LOG;
+    }
+    private static final int VIPS_OPERATION_MATH_LOG10 = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_LOG10 = 7
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_LOG10() {
+        return VIPS_OPERATION_MATH_LOG10;
+    }
+    private static final int VIPS_OPERATION_MATH_EXP = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_EXP = 8
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_EXP() {
+        return VIPS_OPERATION_MATH_EXP;
+    }
+    private static final int VIPS_OPERATION_MATH_EXP10 = (int)9L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_EXP10 = 9
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_EXP10() {
+        return VIPS_OPERATION_MATH_EXP10;
+    }
+    private static final int VIPS_OPERATION_MATH_SINH = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_SINH = 10
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_SINH() {
+        return VIPS_OPERATION_MATH_SINH;
+    }
+    private static final int VIPS_OPERATION_MATH_COSH = (int)11L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_COSH = 11
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_COSH() {
+        return VIPS_OPERATION_MATH_COSH;
+    }
+    private static final int VIPS_OPERATION_MATH_TANH = (int)12L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_TANH = 12
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_TANH() {
+        return VIPS_OPERATION_MATH_TANH;
+    }
+    private static final int VIPS_OPERATION_MATH_ASINH = (int)13L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ASINH = 13
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ASINH() {
+        return VIPS_OPERATION_MATH_ASINH;
+    }
+    private static final int VIPS_OPERATION_MATH_ACOSH = (int)14L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ACOSH = 14
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ACOSH() {
+        return VIPS_OPERATION_MATH_ACOSH;
+    }
+    private static final int VIPS_OPERATION_MATH_ATANH = (int)15L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_ATANH = 15
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_ATANH() {
+        return VIPS_OPERATION_MATH_ATANH;
+    }
+    private static final int VIPS_OPERATION_MATH_LAST = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH_LAST = 16
+     * }
+     */
+    public static int VIPS_OPERATION_MATH_LAST() {
+        return VIPS_OPERATION_MATH_LAST;
+    }
+    private static final int VIPS_OPERATION_MATH2_POW = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH2_POW = 0
+     * }
+     */
+    public static int VIPS_OPERATION_MATH2_POW() {
+        return VIPS_OPERATION_MATH2_POW;
+    }
+    private static final int VIPS_OPERATION_MATH2_WOP = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH2_WOP = 1
+     * }
+     */
+    public static int VIPS_OPERATION_MATH2_WOP() {
+        return VIPS_OPERATION_MATH2_WOP;
+    }
+    private static final int VIPS_OPERATION_MATH2_ATAN2 = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH2_ATAN2 = 2
+     * }
+     */
+    public static int VIPS_OPERATION_MATH2_ATAN2() {
+        return VIPS_OPERATION_MATH2_ATAN2;
+    }
+    private static final int VIPS_OPERATION_MATH2_LAST = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_MATH2_LAST = 3
+     * }
+     */
+    public static int VIPS_OPERATION_MATH2_LAST() {
+        return VIPS_OPERATION_MATH2_LAST;
+    }
+    private static final int VIPS_OPERATION_ROUND_RINT = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_ROUND_RINT = 0
+     * }
+     */
+    public static int VIPS_OPERATION_ROUND_RINT() {
+        return VIPS_OPERATION_ROUND_RINT;
+    }
+    private static final int VIPS_OPERATION_ROUND_CEIL = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_ROUND_CEIL = 1
+     * }
+     */
+    public static int VIPS_OPERATION_ROUND_CEIL() {
+        return VIPS_OPERATION_ROUND_CEIL;
+    }
+    private static final int VIPS_OPERATION_ROUND_FLOOR = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_ROUND_FLOOR = 2
+     * }
+     */
+    public static int VIPS_OPERATION_ROUND_FLOOR() {
+        return VIPS_OPERATION_ROUND_FLOOR;
+    }
+    private static final int VIPS_OPERATION_ROUND_LAST = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_ROUND_LAST = 3
+     * }
+     */
+    public static int VIPS_OPERATION_ROUND_LAST() {
+        return VIPS_OPERATION_ROUND_LAST;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_EQUAL = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_EQUAL = 0
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_EQUAL() {
+        return VIPS_OPERATION_RELATIONAL_EQUAL;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_NOTEQ = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_NOTEQ = 1
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_NOTEQ() {
+        return VIPS_OPERATION_RELATIONAL_NOTEQ;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_LESS = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_LESS = 2
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_LESS() {
+        return VIPS_OPERATION_RELATIONAL_LESS;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_LESSEQ = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_LESSEQ = 3
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_LESSEQ() {
+        return VIPS_OPERATION_RELATIONAL_LESSEQ;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_MORE = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_MORE = 4
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_MORE() {
+        return VIPS_OPERATION_RELATIONAL_MORE;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_MOREEQ = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_MOREEQ = 5
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_MOREEQ() {
+        return VIPS_OPERATION_RELATIONAL_MOREEQ;
+    }
+    private static final int VIPS_OPERATION_RELATIONAL_LAST = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_RELATIONAL_LAST = 6
+     * }
+     */
+    public static int VIPS_OPERATION_RELATIONAL_LAST() {
+        return VIPS_OPERATION_RELATIONAL_LAST;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_AND = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_AND = 0
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_AND() {
+        return VIPS_OPERATION_BOOLEAN_AND;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_OR = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_OR = 1
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_OR() {
+        return VIPS_OPERATION_BOOLEAN_OR;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_EOR = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_EOR = 2
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_EOR() {
+        return VIPS_OPERATION_BOOLEAN_EOR;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_LSHIFT = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_LSHIFT = 3
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_LSHIFT() {
+        return VIPS_OPERATION_BOOLEAN_LSHIFT;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_RSHIFT = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_RSHIFT = 4
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_RSHIFT() {
+        return VIPS_OPERATION_BOOLEAN_RSHIFT;
+    }
+    private static final int VIPS_OPERATION_BOOLEAN_LAST = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_BOOLEAN_LAST = 5
+     * }
+     */
+    public static int VIPS_OPERATION_BOOLEAN_LAST() {
+        return VIPS_OPERATION_BOOLEAN_LAST;
+    }
+    private static final int VIPS_OPERATION_COMPLEX_POLAR = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX_POLAR = 0
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX_POLAR() {
+        return VIPS_OPERATION_COMPLEX_POLAR;
+    }
+    private static final int VIPS_OPERATION_COMPLEX_RECT = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX_RECT = 1
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX_RECT() {
+        return VIPS_OPERATION_COMPLEX_RECT;
+    }
+    private static final int VIPS_OPERATION_COMPLEX_CONJ = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX_CONJ = 2
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX_CONJ() {
+        return VIPS_OPERATION_COMPLEX_CONJ;
+    }
+    private static final int VIPS_OPERATION_COMPLEX_LAST = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX_LAST = 3
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX_LAST() {
+        return VIPS_OPERATION_COMPLEX_LAST;
+    }
+    private static final int VIPS_OPERATION_COMPLEX2_CROSS_PHASE = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX2_CROSS_PHASE = 0
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX2_CROSS_PHASE() {
+        return VIPS_OPERATION_COMPLEX2_CROSS_PHASE;
+    }
+    private static final int VIPS_OPERATION_COMPLEX2_LAST = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEX2_LAST = 1
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEX2_LAST() {
+        return VIPS_OPERATION_COMPLEX2_LAST;
+    }
+    private static final int VIPS_OPERATION_COMPLEXGET_REAL = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEXGET_REAL = 0
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEXGET_REAL() {
+        return VIPS_OPERATION_COMPLEXGET_REAL;
+    }
+    private static final int VIPS_OPERATION_COMPLEXGET_IMAG = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_OPERATION_COMPLEXGET_IMAG = 1
+     * }
+     */
+    public static int VIPS_OPERATION_COMPLEXGET_IMAG() {
+        return VIPS_OPERATION_COMPLEXGET_IMAG;
     }
     private static final int VIPS_OPERATION_COMPLEXGET_LAST = (int)2L;
     /**
@@ -35,12 +1065,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_add {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_add");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_add");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -109,12 +1139,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sum {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sum");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sum");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -183,12 +1213,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_subtract {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_subtract");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_subtract");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -257,12 +1287,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_multiply {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_multiply");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_multiply");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -331,12 +1361,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_divide {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_divide");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_divide");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -405,14 +1435,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_linear {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_linear");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_linear");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -481,13 +1511,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_linear1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_linear1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_linear1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -556,12 +1586,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_remainder {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_remainder");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_remainder");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -630,13 +1660,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_remainder_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_remainder_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_remainder_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -705,12 +1735,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_remainder_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_remainder_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_remainder_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -779,11 +1809,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_invert {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_invert");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_invert");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -852,11 +1882,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_abs {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_abs");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_abs");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -925,11 +1955,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sign {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sign");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sign");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -998,12 +2028,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_round {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_round");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_round");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1072,11 +2102,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_floor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_floor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_floor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1145,11 +2175,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_ceil {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_ceil");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_ceil");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1218,11 +2248,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rint {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rint");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rint");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1291,12 +2321,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_math {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_math");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_math");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1365,11 +2395,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sin {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sin");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sin");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1438,11 +2468,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cos {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cos");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cos");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1511,11 +2541,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_tan {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_tan");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_tan");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1584,11 +2614,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_asin {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_asin");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_asin");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1657,11 +2687,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_acos {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_acos");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_acos");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1730,11 +2760,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_atan {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_atan");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_atan");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1803,11 +2833,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_exp {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_exp");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_exp");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1876,11 +2906,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_exp10 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_exp10");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_exp10");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -1949,11 +2979,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_log {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_log");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_log");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2022,11 +3052,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_log10 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_log10");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_log10");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2095,11 +3125,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sinh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sinh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sinh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2168,11 +3198,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cosh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cosh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cosh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2241,11 +3271,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_tanh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_tanh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_tanh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2314,11 +3344,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_asinh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_asinh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_asinh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2387,11 +3417,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_acosh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_acosh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_acosh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2460,11 +3490,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_atanh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_atanh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_atanh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2533,12 +3563,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_complex {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_complex");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_complex");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2607,11 +3637,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_polar {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_polar");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_polar");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2680,11 +3710,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rect {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rect");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rect");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2753,11 +3783,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_conj {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_conj");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_conj");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2826,13 +3856,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_complex2 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_complex2");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_complex2");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2901,12 +3931,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cross_phase {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cross_phase");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cross_phase");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -2975,12 +4005,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_complexget {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_complexget");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_complexget");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3049,11 +4079,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_real {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_real");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_real");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3122,11 +4152,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_imag {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_imag");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_imag");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3195,12 +4225,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_complexform {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_complexform");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_complexform");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3269,13 +4299,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_relational {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_relational");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_relational");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3344,12 +4374,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_equal {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_equal");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_equal");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3418,12 +4448,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_notequal {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_notequal");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_notequal");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3492,12 +4522,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_less {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_less");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_less");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3566,12 +4596,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lesseq {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lesseq");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lesseq");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3640,12 +4670,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_more {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_more");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_more");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3714,12 +4744,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_moreeq {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_moreeq");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_moreeq");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3788,14 +4818,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_relational_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_relational_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_relational_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3864,13 +4894,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_equal_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_equal_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_equal_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -3939,13 +4969,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_notequal_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_notequal_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_notequal_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4014,13 +5044,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_less_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_less_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_less_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4089,13 +5119,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lesseq_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lesseq_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lesseq_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4164,13 +5194,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_more_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_more_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_more_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4239,13 +5269,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_moreeq_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_moreeq_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_moreeq_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4314,13 +5344,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_relational_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_relational_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_relational_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4389,12 +5419,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_equal_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_equal_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_equal_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4463,12 +5493,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_notequal_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_notequal_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_notequal_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4537,12 +5567,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_less_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_less_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_less_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4611,12 +5641,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lesseq_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lesseq_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lesseq_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4685,12 +5715,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_more_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_more_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_more_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4759,12 +5789,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_moreeq_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_moreeq_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_moreeq_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4833,13 +5863,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_boolean {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_boolean");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_boolean");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4908,12 +5938,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_andimage {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_andimage");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_andimage");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -4982,12 +6012,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_orimage {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_orimage");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_orimage");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5056,12 +6086,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_eorimage {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_eorimage");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_eorimage");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5130,12 +6160,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lshift {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lshift");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lshift");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5204,12 +6234,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rshift {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rshift");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rshift");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5278,14 +6308,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_boolean_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_boolean_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_boolean_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5354,13 +6384,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_andimage_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_andimage_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_andimage_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5429,13 +6459,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_orimage_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_orimage_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_orimage_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5504,13 +6534,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_eorimage_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_eorimage_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_eorimage_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5579,13 +6609,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lshift_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lshift_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lshift_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5654,13 +6684,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rshift_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rshift_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rshift_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5729,13 +6759,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_boolean_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_boolean_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_boolean_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5804,12 +6834,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_andimage_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_andimage_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_andimage_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5878,12 +6908,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_orimage_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_orimage_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_orimage_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -5952,12 +6982,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_eorimage_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_eorimage_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_eorimage_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6026,12 +7056,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_lshift_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_lshift_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_lshift_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6100,12 +7130,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rshift_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rshift_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rshift_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6174,13 +7204,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_math2 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_math2");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_math2");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6249,12 +7279,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_pow {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_pow");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_pow");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6323,12 +7353,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_wop {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_wop");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_wop");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6397,12 +7427,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_atan2 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_atan2");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_atan2");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6471,14 +7501,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_math2_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_math2_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_math2_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6547,13 +7577,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_pow_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_pow_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_pow_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6622,13 +7652,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_wop_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_wop_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_wop_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6697,13 +7727,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_atan2_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_atan2_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_atan2_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6772,13 +7802,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_math2_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_math2_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_math2_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6847,12 +7877,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_pow_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_pow_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_pow_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6921,12 +7951,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_wop_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_wop_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_wop_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -6995,12 +8025,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_atan2_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_atan2_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_atan2_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7069,11 +8099,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_avg {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_avg");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_avg");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7142,11 +8172,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_deviate {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_deviate");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_deviate");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7215,11 +8245,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_min {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_min");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_min");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7288,11 +8318,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_max {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_max");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_max");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7361,11 +8391,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_stats {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_stats");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_stats");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7434,13 +8464,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_measure {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_measure");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_measure");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7509,14 +8539,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_find_trim {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_find_trim");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_find_trim");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7585,14 +8615,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_getpoint {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_getpoint");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_getpoint");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7661,11 +8691,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_find {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_find");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_find");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7734,11 +8764,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_find_ndim {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_find_ndim");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_find_ndim");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7807,12 +8837,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_find_indexed {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_find_indexed");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_find_indexed");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7881,11 +8911,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hough_line {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hough_line");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hough_line");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -7954,11 +8984,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hough_circle {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hough_circle");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hough_circle");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -8027,12 +9057,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_project {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_project");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_project");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -8101,12 +9131,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_profile {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_profile");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_profile");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -8823,11 +9853,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_copy {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_copy");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_copy");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -8896,11 +9926,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_tilecache {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_tilecache");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_tilecache");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -8969,11 +9999,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_linecache {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_linecache");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_linecache");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9042,11 +10072,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sequential {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sequential");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sequential");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9115,11 +10145,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cache {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cache");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cache");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9188,11 +10218,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_copy_file {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_copy_file");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_copy_file");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9261,15 +10291,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_embed {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_embed");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_embed");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9338,14 +10368,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_gravity {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_gravity");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_gravity");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9414,12 +10444,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_flip {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_flip");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_flip");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9488,14 +10518,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_insert {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_insert");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_insert");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9564,13 +10594,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_join {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_join");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_join");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9639,12 +10669,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_arrayjoin {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_arrayjoin");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_arrayjoin");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9713,15 +10743,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_extract_area {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_extract_area");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_extract_area");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9790,15 +10820,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_crop {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_crop");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_crop");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9867,13 +10897,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_smartcrop {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_smartcrop");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_smartcrop");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -9942,12 +10972,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_extract_band {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_extract_band");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_extract_band");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10016,13 +11046,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_replicate {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_replicate");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_replicate");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10091,14 +11121,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_grid {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_grid");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_grid");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10167,11 +11197,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_transpose3d {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_transpose3d");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_transpose3d");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10240,11 +11270,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_wrap {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_wrap");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_wrap");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10313,12 +11343,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rot {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rot");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rot");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10387,11 +11417,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rot90 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rot90");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rot90");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10460,11 +11490,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rot180 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rot180");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rot180");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10533,11 +11563,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rot270 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rot270");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rot270");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10606,11 +11636,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rot45 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rot45");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rot45");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10673,10 +11703,10 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_autorot_remove_angle {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_autorot_remove_angle");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_autorot_remove_angle");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10736,11 +11766,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_autorot {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_autorot");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_autorot");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10809,13 +11839,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_zoom {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_zoom");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_zoom");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10884,13 +11914,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_subsample {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_subsample");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_subsample");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -10959,12 +11989,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11033,11 +12063,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_uchar {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_uchar");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_uchar");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11106,11 +12136,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_char {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_char");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_char");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11179,11 +12209,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_ushort {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_ushort");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_ushort");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11252,11 +12282,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_short {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_short");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_short");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11325,11 +12355,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_uint {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_uint");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_uint");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11398,11 +12428,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_int {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_int");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_int");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11471,11 +12501,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_float {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_float");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_float");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11544,11 +12574,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_double {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_double");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_double");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11617,11 +12647,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_complex {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_complex");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_complex");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11690,11 +12720,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_cast_dpcomplex {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_cast_dpcomplex");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_cast_dpcomplex");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11763,11 +12793,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_scale {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_scale");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_scale");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11836,11 +12866,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_msb {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_msb");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_msb");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11909,11 +12939,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_byteswap {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_byteswap");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_byteswap");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -11982,12 +13012,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandjoin {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandjoin");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandjoin");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12056,12 +13086,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandjoin2 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandjoin2");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandjoin2");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12130,13 +13160,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandjoin_const {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandjoin_const");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandjoin_const");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12205,12 +13235,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandjoin_const1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandjoin_const1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandjoin_const1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12279,12 +13309,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandrank {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandrank");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandrank");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12353,11 +13383,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandfold {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandfold");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandfold");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12426,11 +13456,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandunfold {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandunfold");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandunfold");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12499,12 +13529,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandbool {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandbool");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandbool");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12573,11 +13603,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandand {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandand");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandand");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12646,11 +13676,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12719,11 +13749,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandeor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandeor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandeor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12792,11 +13822,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_bandmean {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_bandmean");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_bandmean");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12865,12 +13895,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_recomb {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_recomb");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_recomb");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -12939,13 +13969,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_ifthenelse {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_ifthenelse");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_ifthenelse");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13014,12 +14044,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_switch {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_switch");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_switch");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13088,11 +14118,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_flatten {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_flatten");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_flatten");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13161,11 +14191,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_addalpha {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_addalpha");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_addalpha");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13234,11 +14264,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_premultiply {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_premultiply");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_premultiply");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13307,11 +14337,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_unpremultiply {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_unpremultiply");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_unpremultiply");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13380,13 +14410,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_composite {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_composite");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_composite");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13455,13 +14485,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_composite2 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_composite2");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_composite2");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13530,11 +14560,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_falsecolour {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_falsecolour");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_falsecolour");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13603,11 +14633,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_gamma {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_gamma");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_gamma");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13712,12 +14742,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_conv {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_conv");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_conv");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13786,12 +14816,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_convf {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_convf");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_convf");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13860,12 +14890,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_convi {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_convi");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_convi");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -13934,12 +14964,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_conva {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_conva");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_conva");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14008,12 +15038,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_convsep {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_convsep");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_convsep");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14082,12 +15112,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_convasep {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_convasep");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_convasep");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14156,12 +15186,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_compass {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_compass");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_compass");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14230,12 +15260,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_gaussblur {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_gaussblur");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_gaussblur");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14304,11 +15334,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sharpen {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sharpen");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sharpen");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14377,12 +15407,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_spcor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_spcor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_spcor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14451,12 +15481,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_fastcor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_fastcor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_fastcor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14525,11 +15555,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sobel {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sobel");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sobel");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14598,11 +15628,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_scharr {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_scharr");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_scharr");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14671,11 +15701,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_prewitt {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_prewitt");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_prewitt");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14744,11 +15774,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_canny {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_canny");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_canny");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14844,13 +15874,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_morph {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_morph");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_morph");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14919,14 +15949,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rank {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rank");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rank");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -14995,12 +16025,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_median {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_median");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_median");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15069,12 +16099,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_countlines {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_countlines");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_countlines");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15143,11 +16173,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_labelregions {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_labelregions");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_labelregions");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15216,11 +16246,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_fill_nearest {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_fill_nearest");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_fill_nearest");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15289,15 +16319,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_merge {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_merge");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_merge");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15366,17 +16396,17 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mosaic {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mosaic");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mosaic");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15445,21 +16475,21 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mosaic1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mosaic1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mosaic1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15528,20 +16558,20 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_match {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_match");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_match");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15610,11 +16640,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_globalbalance {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_globalbalance");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_globalbalance");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15683,13 +16713,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_remosaic {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_remosaic");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_remosaic");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15758,11 +16788,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_matrixinvert {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_matrixinvert");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_matrixinvert");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15831,12 +16861,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_maplut {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_maplut");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_maplut");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15905,12 +16935,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_percent {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_percent");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_percent");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15979,13 +17009,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_stdif {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_stdif");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_stdif");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16054,11 +17084,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_cum {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_cum");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_cum");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16127,11 +17157,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_norm {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_norm");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_norm");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16200,11 +17230,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_equal {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_equal");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_equal");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16273,11 +17303,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_plot {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_plot");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_plot");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16346,12 +17376,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_match {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_match");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_match");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16420,13 +17450,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_local {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_local");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_local");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16495,11 +17525,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_ismonotonic {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_ismonotonic");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_ismonotonic");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16568,11 +17598,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_hist_entropy {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_hist_entropy");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_hist_entropy");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16641,13 +17671,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_case {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_case");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_case");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16716,11 +17746,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_fwfft {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_fwfft");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_fwfft");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16789,11 +17819,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_invfft {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_invfft");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_invfft");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16862,12 +17892,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_freqmult {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_freqmult");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_freqmult");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -16936,11 +17966,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_spectrum {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_spectrum");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_spectrum");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17009,12 +18039,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_phasecor {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_phasecor");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_phasecor");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17191,13 +18221,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_shrink {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_shrink");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_shrink");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17266,12 +18296,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_shrinkh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_shrinkh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_shrinkh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17340,12 +18370,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_shrinkv {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_shrinkv");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_shrinkv");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17414,13 +18444,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_reduce {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_reduce");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_reduce");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17489,12 +18519,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_reduceh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_reduceh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_reduceh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17563,12 +18593,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_reducev {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_reducev");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_reducev");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17637,12 +18667,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_thumbnail {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_thumbnail");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_thumbnail");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17711,13 +18741,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_thumbnail_buffer {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_LONG,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_LONG,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_thumbnail_buffer");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_thumbnail_buffer");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17786,12 +18816,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_thumbnail_image {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_thumbnail_image");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_thumbnail_image");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17860,12 +18890,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_thumbnail_source {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_thumbnail_source");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_thumbnail_source");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -17934,11 +18964,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_similarity {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_similarity");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_similarity");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18007,12 +19037,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rotate {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rotate");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rotate");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18081,15 +19111,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_affine {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_affine");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_affine");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18158,12 +19188,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_resize {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_resize");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_resize");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18232,12 +19262,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mapim {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mapim");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mapim");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18306,12 +19336,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_quadratic {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_quadratic");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_quadratic");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18446,11 +19476,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_colourspace_issupported {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_colourspace_issupported");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_colourspace_issupported");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18510,12 +19540,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_colourspace {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_colourspace");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_colourspace");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18584,11 +19614,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LabQ2sRGB {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LabQ2sRGB");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LabQ2sRGB");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18657,11 +19687,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_rad2float {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_rad2float");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_rad2float");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18730,11 +19760,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_float2rad {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_float2rad");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_float2rad");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18803,11 +19833,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LabS2LabQ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LabS2LabQ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LabS2LabQ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18876,11 +19906,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LabQ2LabS {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LabQ2LabS");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LabQ2LabS");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -18949,11 +19979,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LabQ2Lab {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LabQ2Lab");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LabQ2Lab");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19022,11 +20052,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Lab2LabQ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Lab2LabQ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Lab2LabQ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19095,11 +20125,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LCh2Lab {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LCh2Lab");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LCh2Lab");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19168,11 +20198,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Lab2LCh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Lab2LCh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Lab2LCh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19241,11 +20271,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Yxy2Lab {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Yxy2Lab");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Yxy2Lab");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19314,11 +20344,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_CMC2XYZ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_CMC2XYZ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_CMC2XYZ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19387,11 +20417,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Lab2XYZ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Lab2XYZ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Lab2XYZ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19460,11 +20490,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_XYZ2Lab {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_XYZ2Lab");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_XYZ2Lab");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19533,11 +20563,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_XYZ2scRGB {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_XYZ2scRGB");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_XYZ2scRGB");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19606,11 +20636,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_scRGB2sRGB {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_scRGB2sRGB");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_scRGB2sRGB");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19679,11 +20709,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_scRGB2BW {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_scRGB2BW");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_scRGB2BW");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19752,11 +20782,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sRGB2scRGB {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sRGB2scRGB");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sRGB2scRGB");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19825,11 +20855,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_scRGB2XYZ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_scRGB2XYZ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_scRGB2XYZ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19898,11 +20928,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_HSV2sRGB {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_HSV2sRGB");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_HSV2sRGB");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -19971,11 +21001,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sRGB2HSV {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sRGB2HSV");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sRGB2HSV");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20044,11 +21074,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LCh2CMC {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LCh2CMC");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LCh2CMC");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20117,11 +21147,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_CMC2LCh {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_CMC2LCh");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_CMC2LCh");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20190,11 +21220,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_XYZ2Yxy {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_XYZ2Yxy");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_XYZ2Yxy");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20263,11 +21293,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Yxy2XYZ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Yxy2XYZ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Yxy2XYZ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20336,11 +21366,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_LabS2Lab {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_LabS2Lab");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_LabS2Lab");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20409,11 +21439,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_Lab2LabS {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_Lab2LabS");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_Lab2LabS");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20482,11 +21512,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_CMYK2XYZ {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_CMYK2XYZ");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_CMYK2XYZ");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20555,11 +21585,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_XYZ2CMYK {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_XYZ2CMYK");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_XYZ2CMYK");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20628,11 +21658,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_profile_load {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_profile_load");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_profile_load");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20695,9 +21725,9 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_icc_present {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT    );
+            VipsRaw.C_INT    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_present");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_present");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20757,12 +21787,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_icc_transform {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_transform");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_transform");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20831,11 +21861,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_icc_import {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_import");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_import");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20904,11 +21934,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_icc_export {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_export");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_export");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -20971,13 +22001,13 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_icc_ac2rc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_ac2rc");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_ac2rc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21031,13 +22061,13 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_icc_is_compatible_profile {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_LONG
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_icc_is_compatible_profile");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_icc_is_compatible_profile");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21097,12 +22127,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_dE76 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_dE76");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_dE76");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -21171,12 +22201,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_dE00 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_dE00");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_dE00");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -21245,12 +22275,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_dECMC {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_dECMC");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_dECMC");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -21313,15 +22343,15 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Lab2XYZ {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Lab2XYZ");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Lab2XYZ");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21375,15 +22405,15 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_XYZ2Lab {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_XYZ2Lab");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_XYZ2Lab");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21437,12 +22467,12 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_ab2h {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_DOUBLE,
-            vips_h.C_DOUBLE,
-            vips_h.C_DOUBLE
+            VipsRaw.C_DOUBLE,
+            VipsRaw.C_DOUBLE,
+            VipsRaw.C_DOUBLE
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_ab2h");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_ab2h");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21496,13 +22526,13 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_ab2Ch {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_ab2Ch");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_ab2Ch");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21556,13 +22586,13 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Ch2ab {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Ch2ab");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Ch2ab");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21616,11 +22646,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_L2Lcmc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_L2Lcmc");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_L2Lcmc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21674,11 +22704,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_C2Ccmc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_C2Ccmc");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_C2Ccmc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21732,12 +22762,12 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Ch2hcmc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Ch2hcmc");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Ch2hcmc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21792,7 +22822,7 @@ public class vips_h extends vips_h_1 {
     private static class vips_col_make_tables_CMC {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_make_tables_CMC");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_make_tables_CMC");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21846,11 +22876,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Lcmc2L {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Lcmc2L");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Lcmc2L");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21904,11 +22934,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Ccmc2C {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Ccmc2C");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Ccmc2C");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21962,12 +22992,12 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_Chcmc2h {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_Chcmc2h");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_Chcmc2h");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22021,16 +23051,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_sRGB2scRGB_8 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_sRGB2scRGB_8");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_sRGB2scRGB_8");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22084,16 +23114,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_sRGB2scRGB_16 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_sRGB2scRGB_16");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_sRGB2scRGB_16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22147,16 +23177,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_sRGB2scRGB_8_noclip {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_sRGB2scRGB_8_noclip");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_sRGB2scRGB_8_noclip");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22210,16 +23240,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_sRGB2scRGB_16_noclip {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_sRGB2scRGB_16_noclip");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_sRGB2scRGB_16_noclip");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22273,16 +23303,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_scRGB2XYZ {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_scRGB2XYZ");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_scRGB2XYZ");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22336,16 +23366,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_XYZ2scRGB {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_XYZ2scRGB");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_XYZ2scRGB");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22399,17 +23429,17 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_scRGB2sRGB_8 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_scRGB2sRGB_8");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_scRGB2sRGB_8");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22463,17 +23493,17 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_scRGB2sRGB_16 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_scRGB2sRGB_16");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_scRGB2sRGB_16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22527,15 +23557,15 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_scRGB2BW_16 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_scRGB2BW_16");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_scRGB2BW_16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22589,15 +23619,15 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_scRGB2BW_8 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_scRGB2BW_8");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_scRGB2BW_8");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22651,16 +23681,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_pythagoras {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_pythagoras");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_pythagoras");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22714,16 +23744,16 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_col_dE00 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT,
-            vips_h.C_FLOAT
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT,
+            VipsRaw.C_FLOAT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_col_dE00");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_col_dE00");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22810,16 +23840,16 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_rect {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_rect");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_rect");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -22888,15 +23918,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_rect1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_rect1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_rect1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -22965,14 +23995,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_point {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_point");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_point");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23041,13 +24071,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_point1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_point1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_point1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23116,13 +24146,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_image {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_image");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_image");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23191,15 +24221,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_mask {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_mask");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_mask");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23268,14 +24298,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_mask1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_mask1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_mask1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23344,16 +24374,16 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_line {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_line");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_line");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23422,15 +24452,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_line1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_line1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_line1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23499,15 +24529,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_circle {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_circle");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_circle");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23576,14 +24606,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_circle1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_circle1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_circle1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23652,14 +24682,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_flood {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_flood");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_flood");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23728,13 +24758,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_flood1 {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_flood1");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_flood1");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23803,14 +24833,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_draw_smudge {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_draw_smudge");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_draw_smudge");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23924,12 +24954,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_black {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_black");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_black");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -23998,12 +25028,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_xyz {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_xyz");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_xyz");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24072,12 +25102,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_grey {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_grey");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_grey");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24146,12 +25176,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_gaussmat {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_gaussmat");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_gaussmat");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24220,12 +25250,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_logmat {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_logmat");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_logmat");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24294,11 +25324,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_text {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_text");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_text");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24367,12 +25397,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_gaussnoise {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_gaussnoise");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_gaussnoise");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24441,12 +25471,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_eye {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_eye");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_eye");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24515,12 +25545,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_sines {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_sines");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_sines");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24589,12 +25619,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_zone {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_zone");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_zone");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24663,10 +25693,10 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_identity {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_identity");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_identity");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24735,11 +25765,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_buildlut {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_buildlut");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_buildlut");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24808,11 +25838,11 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_invertlut {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_invertlut");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_invertlut");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24881,10 +25911,10 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_tonelut {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_tonelut");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_tonelut");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -24953,13 +25983,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_ideal {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_ideal");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_ideal");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25028,14 +26058,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_ideal_ring {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_ideal_ring");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_ideal_ring");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25104,15 +26134,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_ideal_band {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_ideal_band");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_ideal_band");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25181,15 +26211,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_butterworth {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_butterworth");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_butterworth");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25258,16 +26288,16 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_butterworth_ring {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_butterworth_ring");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_butterworth_ring");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25336,17 +26366,17 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_butterworth_band {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_butterworth_band");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_butterworth_band");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25415,14 +26445,14 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_gaussian {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_gaussian");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_gaussian");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25491,15 +26521,15 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_gaussian_ring {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_gaussian_ring");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_gaussian_ring");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25568,16 +26598,16 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_gaussian_band {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_gaussian_band");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_gaussian_band");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25646,13 +26676,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_mask_fractal {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_mask_fractal");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_mask_fractal");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25721,13 +26751,13 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_fractsurf {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT,
-                vips_h.C_DOUBLE
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT,
+                VipsRaw.C_DOUBLE
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_fractsurf");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_fractsurf");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25796,12 +26826,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_worley {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_worley");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_worley");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25870,12 +26900,12 @@ public class vips_h extends vips_h_1 {
      */
     public static class vips_perlin {
         private static final FunctionDescriptor BASE_DESC = FunctionDescriptor.of(
-                vips_h.C_INT,
-                vips_h.C_POINTER,
-                vips_h.C_INT,
-                vips_h.C_INT
+                VipsRaw.C_INT,
+                VipsRaw.C_POINTER,
+                VipsRaw.C_INT,
+                VipsRaw.C_INT
             );
-        private static final MemorySegment ADDR = vips_h.findOrThrow("vips_perlin");
+        private static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_perlin");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -25938,11 +26968,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_init {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_init");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_init");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -25996,9 +27026,9 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_get_argv0 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER    );
+            VipsRaw.C_POINTER    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_get_argv0");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_get_argv0");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26052,9 +27082,9 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_get_prgname {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER    );
+            VipsRaw.C_POINTER    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_get_prgname");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_get_prgname");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26109,7 +27139,7 @@ public class vips_h extends vips_h_1 {
     private static class vips_shutdown {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_shutdown");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_shutdown");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26164,7 +27194,7 @@ public class vips_h extends vips_h_1 {
     private static class vips_thread_shutdown {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_thread_shutdown");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_thread_shutdown");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26218,10 +27248,10 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_add_option_entries {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_add_option_entries");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_add_option_entries");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26275,10 +27305,10 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_leak_set {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_INT
+            VipsRaw.C_INT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_leak_set");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_leak_set");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26332,10 +27362,10 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_block_untrusted_set {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_INT
+            VipsRaw.C_INT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_block_untrusted_set");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_block_untrusted_set");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26389,9 +27419,9 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_version_string {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER    );
+            VipsRaw.C_POINTER    );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_version_string");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_version_string");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26445,11 +27475,11 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_version {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_INT
+            VipsRaw.C_INT,
+            VipsRaw.C_INT
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_version");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_version");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26503,12 +27533,12 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_guess_prefix {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_guess_prefix");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_guess_prefix");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26562,12 +27592,12 @@ public class vips_h extends vips_h_1 {
 
     private static class vips_guess_libdir {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
-        public static final MemorySegment ADDR = vips_h.findOrThrow("vips_guess_libdir");
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_guess_libdir");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -26707,7 +27737,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = vips_h.LIBRARY_ARENA.allocateFrom("8.15.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.2");
         }
         return Holder.VIPS_VERSION;
     }
@@ -26719,7 +27749,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = vips_h.LIBRARY_ARENA.allocateFrom("8.15.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.2");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -26823,7 +27853,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_CONFIG() {
         class Holder {
             static final MemorySegment VIPS_CONFIG
-                = vips_h.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable cplusplus: true\nenable RAD load/save: true\nenable Analyze7 load/save: true\nenable PPM load/save: true\nenable GIF load: true\nuse fftw for FFTs: true\nSIMD support with highway: true\naccelerate loops with ORC: false\nICC profile support with lcms: true\nzlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with OpenJPEG: true\nPNG load/save with libspng: true\nPNG load/save with libpng: false\nselected quantisation package: imagequant\nTIFF load/save with libtiff: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with PDFium: false\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg: true\nEXR load with OpenEXR: true\nOpenSlide load: true (dynamic module: true)\nMatlab load with libmatio: true\nNIfTI load/save with niftiio: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nselected Magick package: MagickCore (dynamic module: true)\nMagick API version: magick7\nMagick load: true\nMagick save: true");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable cplusplus: true\nenable RAD load/save: true\nenable Analyze7 load/save: true\nenable PPM load/save: true\nenable GIF load: true\nuse fftw for FFTs: true\nSIMD support with highway: true\naccelerate loops with ORC: false\nICC profile support with lcms: true\nzlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with OpenJPEG: true\nPNG load/save with libspng: true\nPNG load/save with libpng: false\nselected quantisation package: imagequant\nTIFF load/save with libtiff: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with PDFium: false\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg: true\nEXR load with OpenEXR: true\nOpenSlide load: true (dynamic module: true)\nMatlab load with libmatio: true\nNIfTI load/save with niftiio: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nselected Magick package: MagickCore (dynamic module: true)\nMagick API version: magick7\nMagick load: true\nMagick save: true");
         }
         return Holder.VIPS_CONFIG;
     }
@@ -26970,7 +28000,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_EXIF_NAME() {
         class Holder {
             static final MemorySegment VIPS_META_EXIF_NAME
-                = vips_h.LIBRARY_ARENA.allocateFrom("exif-data");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("exif-data");
         }
         return Holder.VIPS_META_EXIF_NAME;
     }
@@ -26982,7 +28012,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_XMP_NAME() {
         class Holder {
             static final MemorySegment VIPS_META_XMP_NAME
-                = vips_h.LIBRARY_ARENA.allocateFrom("xmp-data");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("xmp-data");
         }
         return Holder.VIPS_META_XMP_NAME;
     }
@@ -26994,7 +28024,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_IPTC_NAME() {
         class Holder {
             static final MemorySegment VIPS_META_IPTC_NAME
-                = vips_h.LIBRARY_ARENA.allocateFrom("iptc-data");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("iptc-data");
         }
         return Holder.VIPS_META_IPTC_NAME;
     }
@@ -27006,7 +28036,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_PHOTOSHOP_NAME() {
         class Holder {
             static final MemorySegment VIPS_META_PHOTOSHOP_NAME
-                = vips_h.LIBRARY_ARENA.allocateFrom("photoshop-data");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("photoshop-data");
         }
         return Holder.VIPS_META_PHOTOSHOP_NAME;
     }
@@ -27018,7 +28048,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_ICC_NAME() {
         class Holder {
             static final MemorySegment VIPS_META_ICC_NAME
-                = vips_h.LIBRARY_ARENA.allocateFrom("icc-profile-data");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("icc-profile-data");
         }
         return Holder.VIPS_META_ICC_NAME;
     }
@@ -27030,7 +28060,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_IMAGEDESCRIPTION() {
         class Holder {
             static final MemorySegment VIPS_META_IMAGEDESCRIPTION
-                = vips_h.LIBRARY_ARENA.allocateFrom("image-description");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("image-description");
         }
         return Holder.VIPS_META_IMAGEDESCRIPTION;
     }
@@ -27042,7 +28072,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_RESOLUTION_UNIT() {
         class Holder {
             static final MemorySegment VIPS_META_RESOLUTION_UNIT
-                = vips_h.LIBRARY_ARENA.allocateFrom("resolution-unit");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("resolution-unit");
         }
         return Holder.VIPS_META_RESOLUTION_UNIT;
     }
@@ -27054,7 +28084,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_BITS_PER_SAMPLE() {
         class Holder {
             static final MemorySegment VIPS_META_BITS_PER_SAMPLE
-                = vips_h.LIBRARY_ARENA.allocateFrom("bits-per-sample");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("bits-per-sample");
         }
         return Holder.VIPS_META_BITS_PER_SAMPLE;
     }
@@ -27066,7 +28096,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_LOADER() {
         class Holder {
             static final MemorySegment VIPS_META_LOADER
-                = vips_h.LIBRARY_ARENA.allocateFrom("vips-loader");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("vips-loader");
         }
         return Holder.VIPS_META_LOADER;
     }
@@ -27078,7 +28108,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_SEQUENTIAL() {
         class Holder {
             static final MemorySegment VIPS_META_SEQUENTIAL
-                = vips_h.LIBRARY_ARENA.allocateFrom("vips-sequential");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("vips-sequential");
         }
         return Holder.VIPS_META_SEQUENTIAL;
     }
@@ -27090,7 +28120,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_ORIENTATION() {
         class Holder {
             static final MemorySegment VIPS_META_ORIENTATION
-                = vips_h.LIBRARY_ARENA.allocateFrom("orientation");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("orientation");
         }
         return Holder.VIPS_META_ORIENTATION;
     }
@@ -27102,7 +28132,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_PAGE_HEIGHT() {
         class Holder {
             static final MemorySegment VIPS_META_PAGE_HEIGHT
-                = vips_h.LIBRARY_ARENA.allocateFrom("page-height");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("page-height");
         }
         return Holder.VIPS_META_PAGE_HEIGHT;
     }
@@ -27114,7 +28144,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_N_PAGES() {
         class Holder {
             static final MemorySegment VIPS_META_N_PAGES
-                = vips_h.LIBRARY_ARENA.allocateFrom("n-pages");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("n-pages");
         }
         return Holder.VIPS_META_N_PAGES;
     }
@@ -27126,7 +28156,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_N_SUBIFDS() {
         class Holder {
             static final MemorySegment VIPS_META_N_SUBIFDS
-                = vips_h.LIBRARY_ARENA.allocateFrom("n-subifds");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("n-subifds");
         }
         return Holder.VIPS_META_N_SUBIFDS;
     }
@@ -27138,7 +28168,7 @@ public class vips_h extends vips_h_1 {
     public static MemorySegment VIPS_META_CONCURRENCY() {
         class Holder {
             static final MemorySegment VIPS_META_CONCURRENCY
-                = vips_h.LIBRARY_ARENA.allocateFrom("concurrency");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("concurrency");
         }
         return Holder.VIPS_META_CONCURRENCY;
     }

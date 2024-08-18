@@ -29,9 +29,9 @@ public class _VipsForeignClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsOperationClass.layout().withName("parent_class"),
-        vips_h.C_INT.withName("priority"),
+        VipsRaw.C_INT.withName("priority"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("suffs")
+        VipsRaw.C_POINTER.withName("suffs")
     ).withName("_VipsForeignClass");
 
     /**

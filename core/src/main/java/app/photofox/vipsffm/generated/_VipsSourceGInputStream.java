@@ -30,9 +30,9 @@ public class _VipsSourceGInputStream {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsSource.layout().withName("parent_instance"),
-        vips_h.C_POINTER.withName("stream"),
-        vips_h.C_POINTER.withName("seekable"),
-        vips_h.C_POINTER.withName("info")
+        VipsRaw.C_POINTER.withName("stream"),
+        VipsRaw.C_POINTER.withName("seekable"),
+        VipsRaw.C_POINTER.withName("info")
     ).withName("_VipsSourceGInputStream");
 
     /**

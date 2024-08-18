@@ -31,12 +31,12 @@ public class _VipsBuf {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("base"),
-        vips_h.C_INT.withName("mx"),
-        vips_h.C_INT.withName("i"),
-        vips_h.C_INT.withName("full"),
-        vips_h.C_INT.withName("lasti"),
-        vips_h.C_INT.withName("dynamic"),
+        VipsRaw.C_POINTER.withName("base"),
+        VipsRaw.C_INT.withName("mx"),
+        VipsRaw.C_INT.withName("i"),
+        VipsRaw.C_INT.withName("full"),
+        VipsRaw.C_INT.withName("lasti"),
+        VipsRaw.C_INT.withName("dynamic"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsBuf");
 

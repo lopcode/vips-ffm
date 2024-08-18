@@ -31,10 +31,10 @@ public class _VipsArgumentClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsArgument.layout().withName("parent"),
-        vips_h.C_POINTER.withName("object_class"),
-        vips_h.C_INT.withName("flags"),
-        vips_h.C_INT.withName("priority"),
-        vips_h.C_INT.withName("offset"),
+        VipsRaw.C_POINTER.withName("object_class"),
+        VipsRaw.C_INT.withName("flags"),
+        VipsRaw.C_INT.withName("priority"),
+        VipsRaw.C_INT.withName("offset"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsArgumentClass");
 

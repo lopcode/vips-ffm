@@ -41,20 +41,20 @@ public class _GInputStreamClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _GObjectClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("read_fn"),
-        vips_h.C_POINTER.withName("skip"),
-        vips_h.C_POINTER.withName("close_fn"),
-        vips_h.C_POINTER.withName("read_async"),
-        vips_h.C_POINTER.withName("read_finish"),
-        vips_h.C_POINTER.withName("skip_async"),
-        vips_h.C_POINTER.withName("skip_finish"),
-        vips_h.C_POINTER.withName("close_async"),
-        vips_h.C_POINTER.withName("close_finish"),
-        vips_h.C_POINTER.withName("_g_reserved1"),
-        vips_h.C_POINTER.withName("_g_reserved2"),
-        vips_h.C_POINTER.withName("_g_reserved3"),
-        vips_h.C_POINTER.withName("_g_reserved4"),
-        vips_h.C_POINTER.withName("_g_reserved5")
+        VipsRaw.C_POINTER.withName("read_fn"),
+        VipsRaw.C_POINTER.withName("skip"),
+        VipsRaw.C_POINTER.withName("close_fn"),
+        VipsRaw.C_POINTER.withName("read_async"),
+        VipsRaw.C_POINTER.withName("read_finish"),
+        VipsRaw.C_POINTER.withName("skip_async"),
+        VipsRaw.C_POINTER.withName("skip_finish"),
+        VipsRaw.C_POINTER.withName("close_async"),
+        VipsRaw.C_POINTER.withName("close_finish"),
+        VipsRaw.C_POINTER.withName("_g_reserved1"),
+        VipsRaw.C_POINTER.withName("_g_reserved2"),
+        VipsRaw.C_POINTER.withName("_g_reserved3"),
+        VipsRaw.C_POINTER.withName("_g_reserved4"),
+        VipsRaw.C_POINTER.withName("_g_reserved5")
     ).withName("_GInputStreamClass");
 
     /**
@@ -127,12 +127,12 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -142,7 +142,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(read_fn.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(read_fn.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -229,11 +229,11 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -243,7 +243,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(skip.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(skip.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -330,10 +330,10 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -343,7 +343,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(close_fn.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(close_fn.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -430,13 +430,13 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_LONG,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -446,7 +446,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(read_async.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(read_async.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -533,10 +533,10 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -546,7 +546,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(read_finish.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(read_finish.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -633,12 +633,12 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_LONG,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -648,7 +648,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(skip_async.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(skip_async.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -735,10 +735,10 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -748,7 +748,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(skip_finish.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(skip_finish.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -835,11 +835,11 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -849,7 +849,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(close_async.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(close_async.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -936,10 +936,10 @@ public class _GInputStreamClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -949,7 +949,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(close_finish.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(close_finish.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -1044,7 +1044,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(_g_reserved1.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(_g_reserved1.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -1139,7 +1139,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(_g_reserved2.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(_g_reserved2.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -1234,7 +1234,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(_g_reserved3.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(_g_reserved3.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -1329,7 +1329,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(_g_reserved4.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(_g_reserved4.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -1424,7 +1424,7 @@ public class _GInputStreamClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(_g_reserved5.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(_g_reserved5.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

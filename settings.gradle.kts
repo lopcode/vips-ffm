@@ -12,5 +12,4 @@ plugins {
 }
 
 rootProject.name = "vips-ffm"
-include("core", "sample")
-include("sample")
+include("core", "helper", "sample")

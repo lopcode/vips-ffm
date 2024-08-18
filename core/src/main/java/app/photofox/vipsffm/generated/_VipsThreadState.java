@@ -35,15 +35,15 @@ public class _VipsThreadState {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObject.layout().withName("parent_object"),
-        vips_h.C_POINTER.withName("im"),
-        vips_h.C_POINTER.withName("reg"),
+        VipsRaw.C_POINTER.withName("im"),
+        VipsRaw.C_POINTER.withName("reg"),
         _VipsRect.layout().withName("pos"),
-        vips_h.C_INT.withName("x"),
-        vips_h.C_INT.withName("y"),
-        vips_h.C_INT.withName("stop"),
+        VipsRaw.C_INT.withName("x"),
+        VipsRaw.C_INT.withName("y"),
+        VipsRaw.C_INT.withName("stop"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("a"),
-        vips_h.C_INT.withName("stall"),
+        VipsRaw.C_POINTER.withName("a"),
+        VipsRaw.C_INT.withName("stall"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsThreadState");
 
