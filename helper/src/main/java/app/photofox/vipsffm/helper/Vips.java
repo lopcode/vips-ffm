@@ -14,15 +14,21 @@ public class Vips {
     private final Arena arena;
 
     public Vips(Arena arena) {
-        this.arena = arena;
+        this(arena, "vips-ffm", false);
     }
 
-    public void init(String argv0) throws VipsError {
+    public Vips(Arena arena, String name, boolean allowUntrusted) {
+        this.arena = arena;
+        Vips.init(arena, name, allowUntrusted);
+    }
+
+    public static void init(Arena arena, String argv0, boolean allowUntrusted) throws VipsError {
         var nameCString = arena.allocateFrom(argv0);
         var result = VipsRaw.vips_init(nameCString);
         if (!isValidResult(result)) {
             throwVipsError("vips_init");
         }
+        VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
     }
 
     public MemorySegment imageNewFromFile(String name, VipsOption... args) throws VipsError {
@@ -99,15 +105,15 @@ public class Vips {
         return invokeArgs.toArray(Object[]::new);
     }
 
-    private boolean isValidPointer(MemorySegment memorySegment) {
+    static boolean isValidPointer(MemorySegment memorySegment) {
         return memorySegment != MemorySegment.NULL && memorySegment.address() != 0;
     }
 
-    private boolean isValidResult(int result) {
+    static boolean isValidResult(int result) {
         return result == 0;
     }
 
-    private void throwVipsError(String commandName) throws VipsError {
+    static void throwVipsError(String commandName) throws VipsError {
         var errorBuffer = VipsRaw.vips_error_buffer();
         if (!isValidPointer(errorBuffer)) {
             throw new VipsError("failed to run vips command " + commandName);
