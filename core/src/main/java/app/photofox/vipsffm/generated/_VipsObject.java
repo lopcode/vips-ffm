@@ -36,16 +36,16 @@ public class _VipsObject {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _GObject.layout().withName("parent_instance"),
-        vips_h.C_INT.withName("constructed"),
-        vips_h.C_INT.withName("static_object"),
-        vips_h.C_POINTER.withName("argument_table"),
-        vips_h.C_POINTER.withName("nickname"),
-        vips_h.C_POINTER.withName("description"),
-        vips_h.C_INT.withName("preclose"),
-        vips_h.C_INT.withName("close"),
-        vips_h.C_INT.withName("postclose"),
+        VipsRaw.C_INT.withName("constructed"),
+        VipsRaw.C_INT.withName("static_object"),
+        VipsRaw.C_POINTER.withName("argument_table"),
+        VipsRaw.C_POINTER.withName("nickname"),
+        VipsRaw.C_POINTER.withName("description"),
+        VipsRaw.C_INT.withName("preclose"),
+        VipsRaw.C_INT.withName("close"),
+        VipsRaw.C_INT.withName("postclose"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_LONG.withName("local_memory")
+        VipsRaw.C_LONG.withName("local_memory")
     ).withName("_VipsObject");
 
     /**

@@ -26,7 +26,7 @@ public class _VipsThing {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_INT.withName("i")
+        VipsRaw.C_INT.withName("i")
     ).withName("_VipsThing");
 
     /**

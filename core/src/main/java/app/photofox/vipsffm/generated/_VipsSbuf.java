@@ -32,12 +32,12 @@ public class _VipsSbuf {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObject.layout().withName("parent_object"),
-        vips_h.C_POINTER.withName("source"),
-        MemoryLayout.sequenceLayout(4097, vips_h.C_CHAR).withName("input_buffer"),
+        VipsRaw.C_POINTER.withName("source"),
+        MemoryLayout.sequenceLayout(4097, VipsRaw.C_CHAR).withName("input_buffer"),
         MemoryLayout.paddingLayout(3),
-        vips_h.C_INT.withName("chars_in_buffer"),
-        vips_h.C_INT.withName("read_point"),
-        MemoryLayout.sequenceLayout(4097, vips_h.C_CHAR).withName("line"),
+        VipsRaw.C_INT.withName("chars_in_buffer"),
+        VipsRaw.C_INT.withName("read_point"),
+        MemoryLayout.sequenceLayout(4097, VipsRaw.C_CHAR).withName("line"),
         MemoryLayout.paddingLayout(3)
     ).withName("_VipsSbuf");
 

@@ -29,11 +29,11 @@ public class VipsSemaphore {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("name"),
-        vips_h.C_INT.withName("v"),
+        VipsRaw.C_POINTER.withName("name"),
+        VipsRaw.C_INT.withName("v"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("mutex"),
-        vips_h.C_POINTER.withName("cond")
+        VipsRaw.C_POINTER.withName("mutex"),
+        VipsRaw.C_POINTER.withName("cond")
     ).withName("$anon$50:9");
 
     /**

@@ -34,13 +34,13 @@ public class _VipsForeignLoadClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsForeignClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("is_a"),
-        vips_h.C_POINTER.withName("is_a_buffer"),
-        vips_h.C_POINTER.withName("is_a_source"),
-        vips_h.C_POINTER.withName("get_flags_filename"),
-        vips_h.C_POINTER.withName("get_flags"),
-        vips_h.C_POINTER.withName("header"),
-        vips_h.C_POINTER.withName("load")
+        VipsRaw.C_POINTER.withName("is_a"),
+        VipsRaw.C_POINTER.withName("is_a_buffer"),
+        VipsRaw.C_POINTER.withName("is_a_source"),
+        VipsRaw.C_POINTER.withName("get_flags_filename"),
+        VipsRaw.C_POINTER.withName("get_flags"),
+        VipsRaw.C_POINTER.withName("header"),
+        VipsRaw.C_POINTER.withName("load")
     ).withName("_VipsForeignLoadClass");
 
     /**
@@ -113,8 +113,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -124,7 +124,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(is_a.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(is_a.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -211,9 +211,9 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_LONG
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
         );
 
         /**
@@ -223,7 +223,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(is_a_buffer.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(is_a_buffer.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -310,8 +310,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -321,7 +321,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(is_a_source.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(is_a_source.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -408,8 +408,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -419,7 +419,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_flags_filename.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_flags_filename.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -506,8 +506,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -517,7 +517,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_flags.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_flags.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -604,8 +604,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -615,7 +615,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(header.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(header.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -702,8 +702,8 @@ public class _VipsForeignLoadClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -713,7 +713,7 @@ public class _VipsForeignLoadClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(load.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(load.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

@@ -28,7 +28,7 @@ public class _GInputStream {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _GObject.layout().withName("parent_instance"),
-        vips_h.C_POINTER.withName("priv")
+        VipsRaw.C_POINTER.withName("priv")
     ).withName("_GInputStream");
 
     /**

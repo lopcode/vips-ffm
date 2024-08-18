@@ -29,8 +29,8 @@ public class _VipsSourceCustomClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsSourceClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("read"),
-        vips_h.C_POINTER.withName("seek")
+        VipsRaw.C_POINTER.withName("read"),
+        VipsRaw.C_POINTER.withName("seek")
     ).withName("_VipsSourceCustomClass");
 
     /**
@@ -103,10 +103,10 @@ public class _VipsSourceCustomClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER,
-            vips_h.C_LONG_LONG
+            VipsRaw.C_LONG_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG_LONG
         );
 
         /**
@@ -116,7 +116,7 @@ public class _VipsSourceCustomClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(read.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(read.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -203,10 +203,10 @@ public class _VipsSourceCustomClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_LONG_LONG,
-            vips_h.C_POINTER,
-            vips_h.C_LONG_LONG,
-            vips_h.C_INT
+            VipsRaw.C_LONG_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG_LONG,
+            VipsRaw.C_INT
         );
 
         /**
@@ -216,7 +216,7 @@ public class _VipsSourceCustomClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(seek.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(seek.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

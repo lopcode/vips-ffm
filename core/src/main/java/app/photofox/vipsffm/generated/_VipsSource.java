@@ -38,18 +38,18 @@ public class _VipsSource {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsConnection.layout().withName("parent_object"),
-        vips_h.C_INT.withName("decode"),
-        vips_h.C_INT.withName("have_tested_seek"),
-        vips_h.C_INT.withName("is_pipe"),
+        VipsRaw.C_INT.withName("decode"),
+        VipsRaw.C_INT.withName("have_tested_seek"),
+        VipsRaw.C_INT.withName("is_pipe"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_LONG_LONG.withName("read_position"),
-        vips_h.C_LONG_LONG.withName("length"),
-        vips_h.C_POINTER.withName("data"),
-        vips_h.C_POINTER.withName("header_bytes"),
-        vips_h.C_POINTER.withName("sniff"),
-        vips_h.C_POINTER.withName("blob"),
-        vips_h.C_POINTER.withName("mmap_baseaddr"),
-        vips_h.C_LONG.withName("mmap_length")
+        VipsRaw.C_LONG_LONG.withName("read_position"),
+        VipsRaw.C_LONG_LONG.withName("length"),
+        VipsRaw.C_POINTER.withName("data"),
+        VipsRaw.C_POINTER.withName("header_bytes"),
+        VipsRaw.C_POINTER.withName("sniff"),
+        VipsRaw.C_POINTER.withName("blob"),
+        VipsRaw.C_POINTER.withName("mmap_baseaddr"),
+        VipsRaw.C_LONG.withName("mmap_length")
     ).withName("_VipsSource");
 
     /**

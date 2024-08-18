@@ -15,7 +15,8 @@ object VipsFfm {
     fun main(args: Array<String>) {
         val samples = listOf(
             GetVersionSample,
-            CreateThumbnailSample
+            RawCreateThumbnailSample,
+            HelperCreateThumbnailSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

@@ -26,7 +26,7 @@ public class _VipsArgument {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("pspec")
+        VipsRaw.C_POINTER.withName("pspec")
     ).withName("_VipsArgument");
 
     /**

@@ -36,16 +36,16 @@ public class _VipsTarget {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsConnection.layout().withName("parent_object"),
-        vips_h.C_INT.withName("memory"),
-        vips_h.C_INT.withName("ended"),
-        vips_h.C_POINTER.withName("memory_buffer"),
-        vips_h.C_POINTER.withName("blob"),
-        MemoryLayout.sequenceLayout(8500, vips_h.C_CHAR).withName("output_buffer"),
-        vips_h.C_INT.withName("write_point"),
-        vips_h.C_LONG_LONG.withName("position"),
-        vips_h.C_INT.withName("delete_on_close"),
+        VipsRaw.C_INT.withName("memory"),
+        VipsRaw.C_INT.withName("ended"),
+        VipsRaw.C_POINTER.withName("memory_buffer"),
+        VipsRaw.C_POINTER.withName("blob"),
+        MemoryLayout.sequenceLayout(8500, VipsRaw.C_CHAR).withName("output_buffer"),
+        VipsRaw.C_INT.withName("write_point"),
+        VipsRaw.C_LONG_LONG.withName("position"),
+        VipsRaw.C_INT.withName("delete_on_close"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("delete_on_close_filename")
+        VipsRaw.C_POINTER.withName("delete_on_close_filename")
     ).withName("_VipsTarget");
 
     /**

@@ -26,7 +26,7 @@ public class _GTypeInstance {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("g_class")
+        VipsRaw.C_POINTER.withName("g_class")
     ).withName("_GTypeInstance");
 
     /**

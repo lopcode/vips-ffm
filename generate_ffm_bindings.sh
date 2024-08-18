@@ -48,7 +48,8 @@ touch includes_filtered.txt
 
 {
   grep -iE ' (_)?vips[A-Za-z0-9_]*' includes.txt
-  grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass)' includes.txt
+  grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue)' includes.txt
+  grep -iE ' g_object' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."
@@ -61,6 +62,7 @@ set -x
 --include-dir "/opt/homebrew/lib/glib-2.0/include" \
 --output core/src/main/java \
 --target-package "app.photofox.vipsffm.generated" \
+--header-class-name "VipsRaw" \
 --library "vips" \
 @includes_filtered.txt \
 "$LIBVIPS_ENTRY_PATH"

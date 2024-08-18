@@ -30,10 +30,10 @@ public class _VipsForeignSaveClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsForeignClass.layout().withName("parent_class"),
-        vips_h.C_INT.withName("saveable"),
+        VipsRaw.C_INT.withName("saveable"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("format_table"),
-        MemoryLayout.sequenceLayout(7, vips_h.C_INT).withName("coding"),
+        VipsRaw.C_POINTER.withName("format_table"),
+        MemoryLayout.sequenceLayout(7, VipsRaw.C_INT).withName("coding"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsForeignSaveClass");
 

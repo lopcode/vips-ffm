@@ -32,12 +32,12 @@ public class _VipsInterpolateClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObjectClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("interpolate"),
-        vips_h.C_POINTER.withName("get_window_size"),
-        vips_h.C_INT.withName("window_size"),
+        VipsRaw.C_POINTER.withName("interpolate"),
+        VipsRaw.C_POINTER.withName("get_window_size"),
+        VipsRaw.C_INT.withName("window_size"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("get_window_offset"),
-        vips_h.C_INT.withName("window_offset"),
+        VipsRaw.C_POINTER.withName("get_window_offset"),
+        VipsRaw.C_INT.withName("window_offset"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsInterpolateClass");
 
@@ -155,8 +155,8 @@ public class _VipsInterpolateClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -166,7 +166,7 @@ public class _VipsInterpolateClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_window_size.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_window_size.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -297,8 +297,8 @@ public class _VipsInterpolateClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -308,7 +308,7 @@ public class _VipsInterpolateClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_window_offset.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_window_offset.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

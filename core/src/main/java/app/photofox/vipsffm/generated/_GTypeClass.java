@@ -26,7 +26,7 @@ public class _GTypeClass {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_LONG.withName("g_type")
+        VipsRaw.C_LONG.withName("g_type")
     ).withName("_GTypeClass");
 
     /**

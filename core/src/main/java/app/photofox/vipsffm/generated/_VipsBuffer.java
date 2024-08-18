@@ -32,15 +32,15 @@ public class _VipsBuffer {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_INT.withName("ref_count"),
+        VipsRaw.C_INT.withName("ref_count"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("im"),
+        VipsRaw.C_POINTER.withName("im"),
         _VipsRect.layout().withName("area"),
-        vips_h.C_INT.withName("done"),
+        VipsRaw.C_INT.withName("done"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("cache"),
-        vips_h.C_POINTER.withName("buf"),
-        vips_h.C_LONG.withName("bsize")
+        VipsRaw.C_POINTER.withName("cache"),
+        VipsRaw.C_POINTER.withName("buf"),
+        VipsRaw.C_LONG.withName("bsize")
     ).withName("_VipsBuffer");
 
     /**

@@ -27,8 +27,8 @@ public class _GObjectConstructParam {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("pspec"),
-        vips_h.C_POINTER.withName("value")
+        VipsRaw.C_POINTER.withName("pspec"),
+        VipsRaw.C_POINTER.withName("value")
     ).withName("_GObjectConstructParam");
 
     /**

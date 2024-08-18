@@ -34,14 +34,14 @@ public class _VipsForeignSave {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsForeign.layout().withName("parent_object"),
-        vips_h.C_INT.withName("strip"),
-        vips_h.C_INT.withName("keep"),
-        vips_h.C_POINTER.withName("profile"),
-        vips_h.C_POINTER.withName("background"),
-        vips_h.C_INT.withName("page_height"),
+        VipsRaw.C_INT.withName("strip"),
+        VipsRaw.C_INT.withName("keep"),
+        VipsRaw.C_POINTER.withName("profile"),
+        VipsRaw.C_POINTER.withName("background"),
+        VipsRaw.C_INT.withName("page_height"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("in"),
-        vips_h.C_POINTER.withName("ready")
+        VipsRaw.C_POINTER.withName("in"),
+        VipsRaw.C_POINTER.withName("ready")
     ).withName("_VipsForeignSave");
 
     /**

@@ -37,18 +37,18 @@ public class _VipsRegion {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObject.layout().withName("parent_object"),
-        vips_h.C_POINTER.withName("im"),
+        VipsRaw.C_POINTER.withName("im"),
         _VipsRect.layout().withName("valid"),
-        vips_h.C_INT.withName("type"),
+        VipsRaw.C_INT.withName("type"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("data"),
-        vips_h.C_INT.withName("bpl"),
+        VipsRaw.C_POINTER.withName("data"),
+        VipsRaw.C_INT.withName("bpl"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("seq"),
-        vips_h.C_POINTER.withName("thread"),
-        vips_h.C_POINTER.withName("window"),
-        vips_h.C_POINTER.withName("buffer"),
-        vips_h.C_INT.withName("invalid"),
+        VipsRaw.C_POINTER.withName("seq"),
+        VipsRaw.C_POINTER.withName("thread"),
+        VipsRaw.C_POINTER.withName("window"),
+        VipsRaw.C_POINTER.withName("buffer"),
+        VipsRaw.C_INT.withName("invalid"),
         MemoryLayout.paddingLayout(4)
     ).withName("_VipsRegion");
 

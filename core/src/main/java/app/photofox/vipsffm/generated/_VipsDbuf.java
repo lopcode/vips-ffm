@@ -29,10 +29,10 @@ public class _VipsDbuf {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("data"),
-        vips_h.C_LONG.withName("allocated_size"),
-        vips_h.C_LONG.withName("data_size"),
-        vips_h.C_LONG.withName("write_point")
+        VipsRaw.C_POINTER.withName("data"),
+        VipsRaw.C_LONG.withName("allocated_size"),
+        VipsRaw.C_LONG.withName("data_size"),
+        VipsRaw.C_LONG.withName("write_point")
     ).withName("_VipsDbuf");
 
     /**

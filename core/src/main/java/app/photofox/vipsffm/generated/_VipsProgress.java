@@ -32,14 +32,14 @@ public class _VipsProgress {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("im"),
-        vips_h.C_INT.withName("run"),
-        vips_h.C_INT.withName("eta"),
-        vips_h.C_LONG_LONG.withName("tpels"),
-        vips_h.C_LONG_LONG.withName("npels"),
-        vips_h.C_INT.withName("percent"),
+        VipsRaw.C_POINTER.withName("im"),
+        VipsRaw.C_INT.withName("run"),
+        VipsRaw.C_INT.withName("eta"),
+        VipsRaw.C_LONG_LONG.withName("tpels"),
+        VipsRaw.C_LONG_LONG.withName("npels"),
+        VipsRaw.C_INT.withName("percent"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("start")
+        VipsRaw.C_POINTER.withName("start")
     ).withName("_VipsProgress");
 
     /**

@@ -34,15 +34,15 @@ public class _VipsArea {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("data"),
-        vips_h.C_LONG.withName("length"),
-        vips_h.C_INT.withName("n"),
-        vips_h.C_INT.withName("count"),
-        vips_h.C_POINTER.withName("lock"),
-        vips_h.C_POINTER.withName("free_fn"),
-        vips_h.C_POINTER.withName("client"),
-        vips_h.C_LONG.withName("type"),
-        vips_h.C_LONG.withName("sizeof_type")
+        VipsRaw.C_POINTER.withName("data"),
+        VipsRaw.C_LONG.withName("length"),
+        VipsRaw.C_INT.withName("n"),
+        VipsRaw.C_INT.withName("count"),
+        VipsRaw.C_POINTER.withName("lock"),
+        VipsRaw.C_POINTER.withName("free_fn"),
+        VipsRaw.C_POINTER.withName("client"),
+        VipsRaw.C_LONG.withName("type"),
+        VipsRaw.C_LONG.withName("sizeof_type")
     ).withName("_VipsArea");
 
     /**

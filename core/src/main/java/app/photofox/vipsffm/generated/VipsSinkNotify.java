@@ -31,9 +31,9 @@ public class VipsSinkNotify {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER
     );
 
     /**
@@ -43,7 +43,7 @@ public class VipsSinkNotify {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = vips_h.upcallHandle(VipsSinkNotify.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = VipsRaw.upcallHandle(VipsSinkNotify.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

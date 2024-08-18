@@ -29,9 +29,9 @@ public class _GObject {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _GTypeInstance.layout().withName("g_type_instance"),
-        vips_h.C_INT.withName("ref_count"),
+        VipsRaw.C_INT.withName("ref_count"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("qdata")
+        VipsRaw.C_POINTER.withName("qdata")
     ).withName("_GObject");
 
     /**

@@ -34,14 +34,14 @@ public class _VipsFormatClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObjectClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("is_a"),
-        vips_h.C_POINTER.withName("header"),
-        vips_h.C_POINTER.withName("load"),
-        vips_h.C_POINTER.withName("save"),
-        vips_h.C_POINTER.withName("get_flags"),
-        vips_h.C_INT.withName("priority"),
+        VipsRaw.C_POINTER.withName("is_a"),
+        VipsRaw.C_POINTER.withName("header"),
+        VipsRaw.C_POINTER.withName("load"),
+        VipsRaw.C_POINTER.withName("save"),
+        VipsRaw.C_POINTER.withName("get_flags"),
+        VipsRaw.C_INT.withName("priority"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("suffs")
+        VipsRaw.C_POINTER.withName("suffs")
     ).withName("_VipsFormatClass");
 
     /**
@@ -114,8 +114,8 @@ public class _VipsFormatClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -125,7 +125,7 @@ public class _VipsFormatClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(is_a.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(is_a.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -212,9 +212,9 @@ public class _VipsFormatClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -224,7 +224,7 @@ public class _VipsFormatClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(header.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(header.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -311,9 +311,9 @@ public class _VipsFormatClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -323,7 +323,7 @@ public class _VipsFormatClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(load.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(load.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -410,9 +410,9 @@ public class _VipsFormatClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -422,7 +422,7 @@ public class _VipsFormatClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(save.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(save.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -509,8 +509,8 @@ public class _VipsFormatClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -520,7 +520,7 @@ public class _VipsFormatClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_flags.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_flags.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

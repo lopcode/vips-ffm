@@ -31,11 +31,11 @@ public class _VipsOperationClass {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         _VipsObjectClass.layout().withName("parent_class"),
-        vips_h.C_POINTER.withName("usage"),
-        vips_h.C_POINTER.withName("get_flags"),
-        vips_h.C_INT.withName("flags"),
+        VipsRaw.C_POINTER.withName("usage"),
+        VipsRaw.C_POINTER.withName("get_flags"),
+        VipsRaw.C_INT.withName("flags"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("invalidate")
+        VipsRaw.C_POINTER.withName("invalidate")
     ).withName("_VipsOperationClass");
 
     /**
@@ -108,8 +108,8 @@ public class _VipsOperationClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER,
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -119,7 +119,7 @@ public class _VipsOperationClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(usage.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(usage.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -206,8 +206,8 @@ public class _VipsOperationClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            vips_h.C_INT,
-            vips_h.C_POINTER
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -217,7 +217,7 @@ public class _VipsOperationClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(get_flags.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(get_flags.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
@@ -348,7 +348,7 @@ public class _VipsOperationClass {
         }
 
         private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            vips_h.C_POINTER
+            VipsRaw.C_POINTER
         );
 
         /**
@@ -358,7 +358,7 @@ public class _VipsOperationClass {
             return $DESC;
         }
 
-        private static final MethodHandle UP$MH = vips_h.upcallHandle(invalidate.Function.class, "apply", $DESC);
+        private static final MethodHandle UP$MH = VipsRaw.upcallHandle(invalidate.Function.class, "apply", $DESC);
 
         /**
          * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

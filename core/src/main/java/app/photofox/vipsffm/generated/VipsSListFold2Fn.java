@@ -31,11 +31,11 @@ public class VipsSListFold2Fn {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER,
-        vips_h.C_POINTER
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER,
+        VipsRaw.C_POINTER
     );
 
     /**
@@ -45,7 +45,7 @@ public class VipsSListFold2Fn {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = vips_h.upcallHandle(VipsSListFold2Fn.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = VipsRaw.upcallHandle(VipsSListFold2Fn.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.

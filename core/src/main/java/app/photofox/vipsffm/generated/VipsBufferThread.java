@@ -27,8 +27,8 @@ public class VipsBufferThread {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("hash"),
-        vips_h.C_POINTER.withName("thread")
+        VipsRaw.C_POINTER.withName("hash"),
+        VipsRaw.C_POINTER.withName("thread")
     ).withName("$anon$81:9");
 
     /**

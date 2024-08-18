@@ -26,7 +26,7 @@ public class _VipsSaveString {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_POINTER.withName("s")
+        VipsRaw.C_POINTER.withName("s")
     ).withName("_VipsSaveString");
 
     /**

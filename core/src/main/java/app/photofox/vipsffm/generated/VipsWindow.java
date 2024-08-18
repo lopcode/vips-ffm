@@ -32,14 +32,14 @@ public class VipsWindow {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_INT.withName("ref_count"),
+        VipsRaw.C_INT.withName("ref_count"),
         MemoryLayout.paddingLayout(4),
-        vips_h.C_POINTER.withName("im"),
-        vips_h.C_INT.withName("top"),
-        vips_h.C_INT.withName("height"),
-        vips_h.C_POINTER.withName("data"),
-        vips_h.C_POINTER.withName("baseaddr"),
-        vips_h.C_LONG.withName("length")
+        VipsRaw.C_POINTER.withName("im"),
+        VipsRaw.C_INT.withName("top"),
+        VipsRaw.C_INT.withName("height"),
+        VipsRaw.C_POINTER.withName("data"),
+        VipsRaw.C_POINTER.withName("baseaddr"),
+        VipsRaw.C_LONG.withName("length")
     ).withName("$anon$62:9");
 
     /**

@@ -29,10 +29,10 @@ public class _VipsRect {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        vips_h.C_INT.withName("left"),
-        vips_h.C_INT.withName("top"),
-        vips_h.C_INT.withName("width"),
-        vips_h.C_INT.withName("height")
+        VipsRaw.C_INT.withName("left"),
+        VipsRaw.C_INT.withName("top"),
+        VipsRaw.C_INT.withName("width"),
+        VipsRaw.C_INT.withName("height")
     ).withName("_VipsRect");
 
     /**
