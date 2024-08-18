@@ -52,3 +52,35 @@ To get set up to run samples (on macOS):
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
 [main] INFO vipsffm.VipsFfm - all samples ran successfully 🎉
 ```
+
+### Thumbnail sample
+
+To get a feeling for the bindings, here's an indicative sample written in Kotlin (using the Java bindings) that:
+* Loads an original JPEG image from disk
+* Writes a copy of it to disk
+* Creates a 400px thumbnail from the original, and writes that to disk 
+
+```kt
+Arena.ofConfined().use { arena ->
+    val vips = Vips(arena)
+
+    val sourceImage = vips.imageNewFromFile(
+        "sample/src/main/resources/sample_images/rabbit.jpg",
+        VipsIntOption("access", VipsRaw.VIPS_ACCESS_SEQUENTIAL())
+    )
+    val sourceWidth = VipsImage.Xsize(sourceImage)
+    val sourceHeight = VipsImage.Ysize(sourceImage)
+    logger.info("source image size: $sourceWidth x $sourceHeight")
+
+    val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
+    vips.imageWriteToFile(sourceImage, outputPath.absolutePathString())
+
+    val thumbnailImage = vips.thumbnail("sample/src/main/resources/sample_images/rabbit.jpg", 400)
+    val thumbnailPath = workingDirectory.resolve("rabbit_thumbnail_400.jpg")
+    vips.imageWriteToFile(thumbnailImage, thumbnailPath.absolutePathString())
+
+    val thumbnailWidth = VipsImage.Xsize(thumbnailImage)
+    val thumbnailHeight = VipsImage.Ysize(thumbnailImage)
+    logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
+}
+```

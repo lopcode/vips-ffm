@@ -29,6 +29,10 @@ object HelperCreateThumbnailSample: RunnableSample {
         val thumbnailPath = workingDirectory.resolve("rabbit_thumbnail_400.jpg")
         vips.imageWriteToFile(thumbnailImage, thumbnailPath.absolutePathString())
 
+        val thumbnailWidth = VipsImage.Xsize(thumbnailImage)
+        val thumbnailHeight = VipsImage.Ysize(thumbnailImage)
+        logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
+
         return VipsHelper.validate(
             thumbnailPath,
             expectedSizeBoundsKb = 20L..100L
