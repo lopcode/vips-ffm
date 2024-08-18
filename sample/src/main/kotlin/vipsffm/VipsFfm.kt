@@ -1,5 +1,6 @@
 package vipsffm
 
+import app.photofox.vipsffm.helper.Vips
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.nio.file.Files
@@ -27,6 +28,8 @@ object VipsFfm {
         Files.createDirectory(sampleParentRunPath)
 
         Arena.ofConfined().use { arena ->
+            Vips(arena) // initialise for safety
+
             samples.forEach { sample ->
                 val sampleName = sample::class.simpleName!!
                 logger.info("running sample \"$sampleName\"...")

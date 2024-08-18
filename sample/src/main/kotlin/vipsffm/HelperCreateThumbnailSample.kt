@@ -13,7 +13,6 @@ object HelperCreateThumbnailSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val vips = Vips(arena)
-        vips.init("vips-ffm")
 
         val sourceImage = vips.imageNewFromFile(
             "sample/src/main/resources/sample_images/rabbit.jpg",
