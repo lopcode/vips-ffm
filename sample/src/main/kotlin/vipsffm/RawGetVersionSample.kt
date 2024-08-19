@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.nio.file.Path
 
-object GetVersionSample : RunnableSample {
+object RawGetVersionSample : RunnableSample {
 
-    val logger = LoggerFactory.getLogger(GetVersionSample::class.java)
+    val logger = LoggerFactory.getLogger(RawGetVersionSample::class.java)
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val result = VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))

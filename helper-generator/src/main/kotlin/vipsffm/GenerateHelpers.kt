@@ -3,23 +3,24 @@ package vipsffm
 import app.photofox.vipsffm.generated.VipsRaw
 import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeSpec
+import org.slf4j.LoggerFactory
 import java.lang.classfile.ClassFile
+import java.lang.classfile.ClassModel
+import java.lang.classfile.MethodModel
 import java.lang.classfile.attribute.InnerClassesAttribute
 import java.lang.constant.ClassDesc
+import java.lang.constant.MethodTypeDesc
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.Locale
-import javax.lang.model.element.Modifier
-import com.squareup.javapoet.CodeBlock
-import org.slf4j.LoggerFactory
-import java.lang.classfile.ClassModel
-import java.lang.classfile.MethodModel
 import javax.lang.model.SourceVersion
+import javax.lang.model.element.Modifier
 
 object GenerateHelpers {
 
@@ -28,6 +29,7 @@ object GenerateHelpers {
     private val vipsInvokerType = ClassName.get("app.photofox.vipsffm.helper", "VipsInvoker")
     private val vipsErrorType = ClassName.get("app.photofox.vipsffm.helper", "VipsError")
     private val vipsOptionType = ClassName.get("app.photofox.vipsffm.helper", "VipsOption")
+    private val vipsOutputPointerType = ClassName.get("app.photofox.vipsffm.helper", "VipsOutputPointer")
     private val vipsRawType = ClassName.get("app.photofox.vipsffm.generated", "VipsRaw")
     private val memorySegmentType = ClassName.get("java.lang.foreign", "MemorySegment")
     private val stringType = ClassName.get("java.lang", "String")
@@ -78,7 +80,6 @@ object GenerateHelpers {
         basePath: Path,
         vipsSourceExternDefinitions: Set<String>
     ): List<MethodSpec> {
-
         val candidateClasses = vipsRawClassModel.elementList().mapNotNull {
             if (it is InnerClassesAttribute) {
                 return@mapNotNull it.classes().filter {
@@ -103,8 +104,9 @@ object GenerateHelpers {
             val rawMethodName = it.innerName().get().stringValue()
             val externMetadata = findExternMetadata(rawMethodName, vipsSourceExternDefinitions)
 
-            return@mapNotNull buildVariadicMethod(
+            return@mapNotNull buildVipsMethod(
                 rawMethodName,
+                true,
                 applyMethod,
                 externMetadata
             )
@@ -112,42 +114,38 @@ object GenerateHelpers {
         return variadicMethods
     }
 
-    private fun buildVariadicMethod(
+    private fun buildVipsMethod(
         rawMethodName: String,
-        applyMethod: MethodModel,
+        isVariadic: Boolean,
+        methodModel: MethodModel,
         externMetadata: ExternFunctionMetadata
     ): MethodSpec? {
         val newName = rawMethodName
             .removePrefix("vips_")
             .fromSnakeToJavaStyle()
-        val qualifiedReturnType = applyMethod.methodTypeSymbol().returnType()
+        val qualifiedReturnType = methodModel.methodTypeSymbol().returnType()
         val typeDisplayName = qualifiedReturnType.displayName()
-        var returnPoetType = classDescToPoetType(qualifiedReturnType, typeDisplayName)
+        val defaultReturnPoetType = classDescToPoetType(qualifiedReturnType, typeDisplayName)
 
-        val args = applyMethod.methodTypeSymbol().parameterArray().mapIndexedNotNull { index, parameter ->
-            val externArgMetadata = externMetadata.arguments[index]
-            if (externArgMetadata.type == "...") {
-                ParameterSpec.builder(vipsOptionArrayType, "options").build()
-            } else if (parameter.displayName() == "MemorySegment" &&
-                externArgMetadata.type == "const char" &&
-                externArgMetadata.pointerDepth == 1) {
-                ParameterSpec.builder(stringType, "${externArgMetadata.name}String").build()
-            } else {
-                val typeName = classDescToPoetType(parameter, parameter.displayName())
-                ParameterSpec.builder(typeName, externMetadata.arguments[index].name).build()
-            }
+        val methodTypeSymbol = methodModel.methodTypeSymbol()
+        val args = buildPoetArgs(methodTypeSymbol, externMetadata)
+
+        val vipsFunctionArgs = args.toMutableList()
+        if (isVariadic) {
+            vipsFunctionArgs.removeLast()
+            vipsFunctionArgs += ParameterSpec.builder(vipsOptionArrayType, "invokerArgs").build()
         }
-
-        val invokerArgs = args.dropLast(1).toMutableList()
-        invokerArgs += ParameterSpec.builder(vipsOptionArrayType, "invokerArgs").build()
-        val invokerArgsJoined = invokerArgs.joinToString {
+        val vipsFunctionArgsJoined = vipsFunctionArgs.joinToString {
             if (it.type == stringType) {
                 it.name.removeSuffix("String")
+            } else if (it.name == "out") {
+                "${it.name}Pointer"
             } else {
                 it.name
             }
         }
 
+        var returnPoetType = defaultReturnPoetType
         val methodBuilder = MethodSpec.methodBuilder(newName)
             .addJavadoc(
             """
@@ -160,34 +158,46 @@ object GenerateHelpers {
             .addParameters(args)
             .addException(vipsErrorType)
             .addModifiers(Modifier.PUBLIC)
-            .varargs(true)
             .returns(returnPoetType)
+
+        if (isVariadic) {
+            methodBuilder.varargs(true)
+        }
 
         args.forEachIndexed { index, parameter ->
             val externArgMetadata = externMetadata.arguments[index]
-            if (externArgMetadata.pointerDepth == 1) {
+            if (externArgMetadata.name == "out") {
+                methodBuilder.addStatement("var outPointer = out.pointerOrNull\$\$internal()")
+            } else if (externArgMetadata.pointerDepth == 1) {
                 if (parameter.type == stringType) {
                     val newName = parameter.name.removeSuffix("String")
                     methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name})")
                 } else {
                     methodBuilder.addCode(
-                        makeInputValidatorCodeBlock(externArgMetadata, vipsValidatorType, rawMethodName)
+                        makeInputValidatorCodeBlock(parameter.name, vipsValidatorType, rawMethodName)
                     )
                 }
             }
         }
 
-        methodBuilder.addCode(
-            CodeBlock.builder()
-                .addStatement("var layouts = \$T.makeInvokerVarargLayouts(options)", vipsInvokerType)
-                .addStatement("var invoker = \$T.$rawMethodName.makeInvoker(layouts)", vipsRawType)
-                .addStatement("var invokerArgs = \$T.makeInvokerVarargObjects(arena, options)", vipsInvokerType)
-                .build()
-        )
+        if (isVariadic) {
+            methodBuilder.addCode(
+                CodeBlock.builder()
+                    .addStatement("var layouts = \$T.makeInvokerVarargLayouts(options)", vipsInvokerType)
+                    .addStatement("var invoker = \$T.$rawMethodName.makeInvoker(layouts)", vipsRawType)
+                    .addStatement("var invokerArgs = \$T.makeInvokerVarargObjects(arena, options)", vipsInvokerType)
+                    .build()
+            )
+        }
 
         if (returnPoetType != TypeName.VOID) {
-            methodBuilder
-                .addStatement("var result = invoker.apply($invokerArgsJoined)")
+            if (isVariadic) {
+                methodBuilder
+                    .addStatement("var result = invoker.apply($vipsFunctionArgsJoined)")
+            } else {
+                methodBuilder
+                    .addStatement("var result = \$T.$rawMethodName($vipsFunctionArgsJoined)", VipsRaw::class.java)
+            }
 
             if (returnPoetType == TypeName.INT) {
                 // int return types denote a success/failure
@@ -215,21 +225,74 @@ object GenerateHelpers {
 
             val externType = externMetadata.returnType
             addDeallocCodeblockIfOutType(externType, "result", methodBuilder)
+        } else {
+            if (isVariadic) {
+                methodBuilder
+                    .addStatement("invoker.apply($vipsFunctionArgsJoined)")
+            } else {
+                methodBuilder
+                    .addStatement("\$T.$rawMethodName($vipsFunctionArgsJoined)", VipsRaw::class.java)
+            }
+        }
 
-            if (returnPoetType != TypeName.VOID) {
+        args.forEachIndexed { index, parameterSpec ->
+            val externArgMetadata = externMetadata.arguments[index]
+            if (parameterSpec.type == vipsOutputPointerType) {
+                methodBuilder.addStatement("var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0)")
+                val type = ClassName.get("app.photofox.vipsffm.generated", externArgMetadata.type)
+                if (externArgMetadata.pointerDepth == 2) {
+                    methodBuilder.addStatement(
+                        "var reinterpretedOutPointer = \$T.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref)",
+                        type
+                    )
+                    methodBuilder.addStatement("out.setReinterpretedPointer\$\$internal(reinterpretedOutPointer)")
+                } else if (externArgMetadata.pointerDepth == 1) {
+                    // todo: how do unknown types get reinterpreted?
+                    methodBuilder.addStatement("out.setReinterpretedPointer\$\$internal(resultingOutPointer)")
+                } else {
+                    throw RuntimeException("unexpected pointer depth: ${externArgMetadata.pointerDepth}")
+                }
+            }
+        }
+
+        if (returnPoetType != TypeName.VOID) {
+            if (externMetadata.returnType.type == "const char" && externMetadata.returnType.pointerDepth == 1) {
+                methodBuilder.addStatement("return result.getString(0)") // todo: charset
+                methodBuilder.returns(stringType)
+            } else {
                 methodBuilder.addStatement("return result")
             }
-        } else {
-            methodBuilder
-                .addStatement("invoker.apply($invokerArgsJoined)")
         }
 
         return methodBuilder.build()
     }
 
+    private fun buildPoetArgs(
+        methodTypeSymbol: MethodTypeDesc,
+        externMetadata: ExternFunctionMetadata
+    ): List<ParameterSpec> {
+        val args = methodTypeSymbol.parameterArray().mapIndexedNotNull { index, parameter ->
+            val externArgMetadata = externMetadata.arguments[index]
+            if (externArgMetadata.type == "...") {
+                ParameterSpec.builder(vipsOptionArrayType, "options").build()
+            } else if (externArgMetadata.pointerDepth > 0 && externArgMetadata.name == "out") {
+                ParameterSpec.builder(vipsOutputPointerType, externArgMetadata.name).build()
+            } else if (parameter.displayName() == "MemorySegment" &&
+                externArgMetadata.type == "const char" &&
+                externArgMetadata.pointerDepth == 1
+            ) {
+                ParameterSpec.builder(stringType, "${externArgMetadata.name}String").build()
+            } else {
+                val typeName = classDescToPoetType(parameter, parameter.displayName())
+                ParameterSpec.builder(typeName, externArgMetadata.name).build()
+            }
+        }
+        return args
+    }
+
     private fun addDeallocCodeblockIfOutType(
         externType: ExternType,
-        argumentName: String,
+        parameterName: String,
         methodBuilder: MethodSpec.Builder
     ) {
         if (primitivesToPoetTypes.keys.contains(externType.type)) {
@@ -238,13 +301,13 @@ object GenerateHelpers {
         }
 
         // newly allocated return types have a depth of 1
-        val isNewReturnAlloc = (externType.name.isBlank() && externType.pointerDepth == 1)
+        val isNewReturnAlloc = (externType.name.isBlank() && externType.pointerDepth == 1 && externType.type != "const char")
 
         if (isNewReturnAlloc) {
             methodBuilder.addCode(
                 CodeBlock.builder()
                     .addStatement(
-                        "${externType.type}.reinterpret($argumentName, arena, \$T::g_object_unref)",
+                        "${externType.type}.reinterpret($parameterName, arena, \$T::g_object_unref)",
                         vipsRawType
                     )
                     .build()
@@ -317,70 +380,28 @@ object GenerateHelpers {
         model: ClassModel,
         vipsSourceExternDefinitions: Set<String>
     ): List<MethodSpec> {
-        val vipsValidatorType = ClassName.get("app.photofox.vipsffm.helper", "VipsValidation")
-        val vipsErrorType = ClassName.get("app.photofox.vipsffm.helper", "VipsError")
         val simpleMethods = model.methods().filter {
             it.methodName().startsWith("vips_")
                 && !it.methodName().contains("$")
         }.map {
-            // todo: reconcile with variadic generator
             val externMetadata = findExternMetadata(it.methodName().stringValue(), vipsSourceExternDefinitions)
 
             val rawMethodName = it.methodName().stringValue()
-            val newName = rawMethodName
-                .removePrefix("vips_")
-                .fromSnakeToJavaStyle()
             val qualifiedReturnType = it.methodTypeSymbol().returnType()
-            val typeDisplayName = qualifiedReturnType.displayName()
-            val poetType = classDescToPoetType(qualifiedReturnType, typeDisplayName)
-            val passthroughParameters = it.methodTypeSymbol().parameterArray().mapIndexed { index, parameter ->
-                val typeName = classDescToPoetType(parameter, parameter.displayName())
-                ParameterSpec.builder(typeName, externMetadata.arguments[index].name).build()
-            }
 
-            val methodBuilder = MethodSpec.methodBuilder(newName)
-                .addJavadoc(
-                """
-                    Binding for:
-                    {@snippet lang=c :
-                    ${externMetadata.rawExternDefinition}
-                    }
-                """.trimIndent()
-                )
-                .addParameters(passthroughParameters)
-                .addException(vipsErrorType)
-                .addModifiers(Modifier.PUBLIC)
-                .returns(poetType)
-
-            it.methodTypeSymbol().parameterArray().forEachIndexed { index, parameter ->
-                val externArgMetadata = externMetadata.arguments[index]
-                if (externArgMetadata.pointerDepth == 1) {
-                    methodBuilder.addCode(
-                        makeInputValidatorCodeBlock(externArgMetadata, vipsValidatorType, rawMethodName)
-                    )
-                }
-            }
-
-            val argumentsString = externMetadata.arguments.map { it.name }.joinToString()
-            if (poetType != TypeName.VOID) {
-                methodBuilder.addStatement("return \$T.$rawMethodName($argumentsString)", VipsRaw::class.java)
-            } else {
-                methodBuilder.addStatement("\$T.$rawMethodName($argumentsString)", VipsRaw::class.java)
-            }
-
-            return@map methodBuilder.build()
+            return@map buildVipsMethod(rawMethodName, false, it, externMetadata)!!
         }
         return simpleMethods
     }
 
     private fun makeInputValidatorCodeBlock(
-        externArgMetadata: ExternType,
+        argName: String,
         vipsValidatorType: ClassName?,
         rawMethodName: String?
     ): CodeBlock? = CodeBlock.builder()
-        .beginControlFlow("if(!\$T.isValidPointer(${externArgMetadata.name}))", vipsValidatorType)
+        .beginControlFlow("if(!\$T.isValidPointer($argName))", vipsValidatorType)
         .addStatement(
-            "\$T.throwInvalidInputError(\"${rawMethodName}\", \"${externArgMetadata.name}\")",
+            "\$T.throwInvalidInputError(\"${rawMethodName}\", \"$argName\")",
             vipsValidatorType
         )
         .endControlFlow()

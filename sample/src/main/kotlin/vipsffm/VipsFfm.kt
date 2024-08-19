@@ -15,7 +15,8 @@ object VipsFfm {
     @JvmStatic
     fun main(args: Array<String>) {
         val samples = listOf(
-            GetVersionSample,
+            RawGetVersionSample,
+            HelperGetVersionSample,
             RawCreateThumbnailSample,
             HelperCreateThumbnailSample
         )
