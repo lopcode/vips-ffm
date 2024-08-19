@@ -3,7 +3,7 @@ package vipsffm
 import app.photofox.vipsffm.generated.VipsImage
 import app.photofox.vipsffm.generated.VipsRaw
 import app.photofox.vipsffm.generated.VipsRaw_1
-import vipsffm.GetVersionSample.logger
+import vipsffm.RawGetVersionSample.logger
 import vipsffm.VipsHelper.validate
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment

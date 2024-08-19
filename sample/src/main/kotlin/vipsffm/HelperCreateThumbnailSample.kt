@@ -4,9 +4,9 @@ import app.photofox.vipsffm.generated.Vips
 import app.photofox.vipsffm.generated.VipsImage
 import app.photofox.vipsffm.generated.VipsRaw
 import app.photofox.vipsffm.helper.VipsIntOption
-import vipsffm.GetVersionSample.logger
+import app.photofox.vipsffm.helper.VipsOutputPointer
+import vipsffm.RawGetVersionSample.logger
 import java.lang.foreign.Arena
-import java.lang.foreign.ValueLayout
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
@@ -26,14 +26,13 @@ object HelperCreateThumbnailSample: RunnableSample {
         val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
         vips.imageWriteToFile(sourceImage, outputPath.absolutePathString())
 
-        val out = arena.allocate(ValueLayout.ADDRESS)
+        val outputImagePointer = VipsOutputPointer(arena)
         vips.thumbnail(
             "sample/src/main/resources/sample_images/rabbit.jpg",
-            out,
+            outputImagePointer,
             400
         )
-        val resultingPointer = out.get(VipsRaw.C_POINTER, 0)
-        val thumbnailImage = VipsImage.reinterpret(resultingPointer, arena, VipsRaw::g_object_unref)
+        val thumbnailImage = outputImagePointer.dereferencedOrThrow()
 
         val thumbnailPath = workingDirectory.resolve("rabbit_thumbnail_400.jpg")
         vips.imageWriteToFile(thumbnailImage, thumbnailPath.absolutePathString())

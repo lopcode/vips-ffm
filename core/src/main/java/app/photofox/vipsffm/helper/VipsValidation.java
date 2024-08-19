@@ -7,6 +7,9 @@ import java.lang.foreign.*;
 public class VipsValidation {
 
     public static boolean isValidPointer(MemorySegment memorySegment) {
+        if (memorySegment == null) {
+            return false;
+        }
         return memorySegment != MemorySegment.NULL && memorySegment.address() != 0;
     }
 

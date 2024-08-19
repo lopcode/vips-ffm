@@ -40,15 +40,19 @@ To get set up to run samples (on macOS):
 
 ```
 [main] INFO vipsffm.VipsFfm - clearing sample run directory at path "sample_run"
-[main] INFO vipsffm.VipsFfm - running sample "GetVersionSample"...
-[main] INFO vipsffm.GetVersionSample - libvips version: "8.15.2"
+[main] INFO vipsffm.VipsFfm - running sample "RawGetVersionSample"...
+[main] INFO vipsffm.RawGetVersionSample - libvips version: "8.15.2"
+[main] INFO vipsffm.VipsFfm - validation succeeded ✅
+[main] INFO vipsffm.VipsFfm - running sample "HelperGetVersionSample"...
+[main] INFO vipsffm.HelperGetVersionSample - libvips version: "8.15.2"
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
 [main] INFO vipsffm.VipsFfm - running sample "RawCreateThumbnailSample"...
-[main] INFO vipsffm.GetVersionSample - source image size: 2490 x 3084
-[main] INFO vipsffm.GetVersionSample - output image size: 323 x 400
+[main] INFO vipsffm.RawGetVersionSample - source image size: 2490 x 3084
+[main] INFO vipsffm.RawGetVersionSample - output image size: 323 x 400
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
 [main] INFO vipsffm.VipsFfm - running sample "HelperCreateThumbnailSample"...
-[main] INFO vipsffm.GetVersionSample - source image size: 2490 x 3084
+[main] INFO vipsffm.RawGetVersionSample - source image size: 2490 x 3084
+[main] INFO vipsffm.RawGetVersionSample - thumbnail image size: 323 x 400
 [main] INFO vipsffm.VipsFfm - validation succeeded ✅
 [main] INFO vipsffm.VipsFfm - all samples ran successfully 🎉
 ```
@@ -75,7 +79,9 @@ Arena.ofConfined().use { arena ->
     val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
     vips.imageWriteToFile(sourceImage, outputPath.absolutePathString())
 
-    val thumbnailImage = vips.thumbnail("sample/src/main/resources/sample_images/rabbit.jpg", 400)
+    val outputImagePointer = VipsOutputPointer(arena)
+    vips.thumbnail("sample/src/main/resources/sample_images/rabbit.jpg", outputImagePointer, 400)
+    val thumbnailImage = outputImagePointer.dereferencedOrThrow()
     val thumbnailPath = workingDirectory.resolve("rabbit_thumbnail_400.jpg")
     vips.imageWriteToFile(thumbnailImage, thumbnailPath.absolutePathString())
 
