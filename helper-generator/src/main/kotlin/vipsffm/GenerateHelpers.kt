@@ -30,6 +30,7 @@ object GenerateHelpers {
     private val vipsOptionType = ClassName.get("app.photofox.vipsffm.helper", "VipsOption")
     private val vipsRawType = ClassName.get("app.photofox.vipsffm.generated", "VipsRaw")
     private val memorySegmentType = ClassName.get("java.lang.foreign", "MemorySegment")
+    private val stringType = ClassName.get("java.lang", "String")
     private val vipsOptionArrayType = ArrayTypeName.of(vipsOptionType)
 
     @JvmStatic
@@ -124,8 +125,13 @@ object GenerateHelpers {
         var returnPoetType = classDescToPoetType(qualifiedReturnType, typeDisplayName)
 
         val args = applyMethod.methodTypeSymbol().parameterArray().mapIndexedNotNull { index, parameter ->
-            if (externMetadata.arguments[index].type == "...") {
+            val externArgMetadata = externMetadata.arguments[index]
+            if (externArgMetadata.type == "...") {
                 ParameterSpec.builder(vipsOptionArrayType, "options").build()
+            } else if (parameter.displayName() == "MemorySegment" &&
+                externArgMetadata.type == "const char" &&
+                externArgMetadata.pointerDepth == 1) {
+                ParameterSpec.builder(stringType, "${externArgMetadata.name}String").build()
             } else {
                 val typeName = classDescToPoetType(parameter, parameter.displayName())
                 ParameterSpec.builder(typeName, externMetadata.arguments[index].name).build()
@@ -134,7 +140,13 @@ object GenerateHelpers {
 
         val invokerArgs = args.dropLast(1).toMutableList()
         invokerArgs += ParameterSpec.builder(vipsOptionArrayType, "invokerArgs").build()
-        val invokerArgsJoined = invokerArgs.joinToString { it.name }
+        val invokerArgsJoined = invokerArgs.joinToString {
+            if (it.type == stringType) {
+                it.name.removeSuffix("String")
+            } else {
+                it.name
+            }
+        }
 
         val methodBuilder = MethodSpec.methodBuilder(newName)
             .addJavadoc(
@@ -154,9 +166,14 @@ object GenerateHelpers {
         args.forEachIndexed { index, parameter ->
             val externArgMetadata = externMetadata.arguments[index]
             if (externArgMetadata.pointerDepth == 1) {
-                methodBuilder.addCode(
-                    makeInputValidatorCodeBlock(externArgMetadata, vipsValidatorType, rawMethodName)
-                )
+                if (parameter.type == stringType) {
+                    val newName = parameter.name.removeSuffix("String")
+                    methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name})")
+                } else {
+                    methodBuilder.addCode(
+                        makeInputValidatorCodeBlock(externArgMetadata, vipsValidatorType, rawMethodName)
+                    )
+                }
             }
         }
 

@@ -1091,10 +1091,8 @@ public final class Vips {
    * int vips_text(VipsImage **out, const char *text, ...)
    * }
    */
-  public void text(MemorySegment out, MemorySegment text, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(text)) {
-      VipsValidation.throwInvalidInputError("vips_text", "text");
-    }
+  public void text(MemorySegment out, String textString, VipsOption... options) throws VipsError {
+    var text = arena.allocateFrom(textString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_text.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -1611,14 +1609,12 @@ public final class Vips {
    * int vips_icc_transform(VipsImage *in, VipsImage **out, const char *output_profile, ...)
    * }
    */
-  public void iccTransform(MemorySegment in, MemorySegment out, MemorySegment output_profile,
+  public void iccTransform(MemorySegment in, MemorySegment out, String output_profileString,
       VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_icc_transform", "in");
     }
-    if(!VipsValidation.isValidPointer(output_profile)) {
-      VipsValidation.throwInvalidInputError("vips_icc_transform", "output_profile");
-    }
+    var output_profile = arena.allocateFrom(output_profileString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_icc_transform.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -1634,11 +1630,9 @@ public final class Vips {
    * int vips_profile_load(const char *name, VipsBlob **profile, ...)
    * }
    */
-  public void profileLoad(MemorySegment name, MemorySegment profile, VipsOption... options) throws
+  public void profileLoad(String nameString, MemorySegment profile, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_profile_load", "name");
-    }
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_profile_load.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -2410,11 +2404,9 @@ public final class Vips {
    * int vips_thumbnail(const char *filename, VipsImage **out, int width, ...)
    * }
    */
-  public void thumbnail(MemorySegment filename, MemorySegment out, int width, VipsOption... options)
+  public void thumbnail(String filenameString, MemorySegment out, int width, VipsOption... options)
       throws VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_thumbnail", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_thumbnail.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -2928,17 +2920,13 @@ public final class Vips {
    * int vips_remosaic(VipsImage *in, VipsImage **out, const char *old_str, const char *new_str, ...)
    * }
    */
-  public void remosaic(MemorySegment in, MemorySegment out, MemorySegment old_str,
-      MemorySegment new_str, VipsOption... options) throws VipsError {
+  public void remosaic(MemorySegment in, MemorySegment out, String old_strString,
+      String new_strString, VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_remosaic", "in");
     }
-    if(!VipsValidation.isValidPointer(old_str)) {
-      VipsValidation.throwInvalidInputError("vips_remosaic", "old_str");
-    }
-    if(!VipsValidation.isValidPointer(new_str)) {
-      VipsValidation.throwInvalidInputError("vips_remosaic", "new_str");
-    }
+    var old_str = arena.allocateFrom(old_strString);
+    var new_str = arena.allocateFrom(new_strString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_remosaic.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7188,13 +7176,11 @@ public final class Vips {
    * int vips_dzsave(VipsImage *in, const char *name, ...)
    * }
    */
-  public void dzsave(MemorySegment in, MemorySegment name, VipsOption... options) throws VipsError {
+  public void dzsave(MemorySegment in, String nameString, VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_dzsave", "in");
     }
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_dzsave", "name");
-    }
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_dzsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7256,14 +7242,12 @@ public final class Vips {
    * int vips_jxlsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void jxlsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void jxlsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jxlsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jxlsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jxlsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7279,11 +7263,9 @@ public final class Vips {
    * int vips_jxlload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void jxlload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void jxlload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jxlload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jxlload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7385,14 +7367,12 @@ public final class Vips {
    * int vips_jp2ksave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void jp2ksave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void jp2ksave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jp2ksave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jp2ksave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jp2ksave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7448,11 +7428,9 @@ public final class Vips {
    * int vips_jp2kload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void jp2kload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void jp2kload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jp2kload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jp2kload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7468,14 +7446,12 @@ public final class Vips {
    * int vips_niftisave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void niftisave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void niftisave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_niftisave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_niftisave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_niftisave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7511,11 +7487,9 @@ public final class Vips {
    * int vips_niftiload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void niftiload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void niftiload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_niftiload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_niftiload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7577,14 +7551,12 @@ public final class Vips {
    * int vips_heifsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void heifsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void heifsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_heifsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_heifsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_heifsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7640,11 +7612,9 @@ public final class Vips {
    * int vips_heifload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void heifload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void heifload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_heifload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_heifload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7706,14 +7676,12 @@ public final class Vips {
    * int vips_gifsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void gifsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void gifsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_gifsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_gifsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7769,11 +7737,9 @@ public final class Vips {
    * int vips_gifload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void gifload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void gifload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_gifload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_gifload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7809,11 +7775,9 @@ public final class Vips {
    * int vips_svgload_string(const char *str, VipsImage **out, ...)
    * }
    */
-  public void svgloadString(MemorySegment str, MemorySegment out, VipsOption... options) throws
+  public void svgloadString(String strString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(str)) {
-      VipsValidation.throwInvalidInputError("vips_svgload_string", "str");
-    }
+    var str = arena.allocateFrom(strString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_svgload_string.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7849,11 +7813,9 @@ public final class Vips {
    * int vips_svgload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void svgload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void svgload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_svgload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_svgload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7909,11 +7871,9 @@ public final class Vips {
    * int vips_pdfload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void pdfload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void pdfload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_pdfload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_pdfload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -7975,14 +7935,12 @@ public final class Vips {
    * int vips_radsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void radsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void radsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_radsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_radsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_radsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8018,11 +7976,9 @@ public final class Vips {
    * int vips_radload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void radload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void radload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_radload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_radload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8058,11 +8014,9 @@ public final class Vips {
    * int vips_matload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void matload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void matload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_matload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_matload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8101,14 +8055,12 @@ public final class Vips {
    * int vips_ppmsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void ppmsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void ppmsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_ppmsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_ppmsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_ppmsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8144,11 +8096,9 @@ public final class Vips {
    * int vips_ppmload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void ppmload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void ppmload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_ppmload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_ppmload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8187,14 +8137,12 @@ public final class Vips {
    * int vips_pngsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void pngsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void pngsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_pngsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_pngsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_pngsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8253,11 +8201,9 @@ public final class Vips {
    * int vips_pngload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void pngload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void pngload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_pngload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_pngload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8316,14 +8262,12 @@ public final class Vips {
    * int vips_magicksave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void magicksave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void magicksave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_magicksave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_magicksave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_magicksave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8359,11 +8303,9 @@ public final class Vips {
    * int vips_magickload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void magickload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void magickload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_magickload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_magickload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8421,14 +8363,12 @@ public final class Vips {
    * int vips_matrixsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void matrixsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void matrixsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_matrixsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_matrixsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_matrixsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8464,11 +8404,9 @@ public final class Vips {
    * int vips_matrixload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void matrixload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void matrixload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_matrixload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_matrixload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8507,14 +8445,12 @@ public final class Vips {
    * int vips_csvsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void csvsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void csvsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_csvsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_csvsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_csvsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8550,11 +8486,9 @@ public final class Vips {
    * int vips_csvload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void csvload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void csvload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_csvload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_csvload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8589,14 +8523,12 @@ public final class Vips {
    * int vips_rawsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void rawsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void rawsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_rawsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_rawsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_rawsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8612,11 +8544,9 @@ public final class Vips {
    * int vips_rawload(const char *filename, VipsImage **out, int width, int height, int bands, ...)
    * }
    */
-  public void rawload(MemorySegment filename, MemorySegment out, int width, int height, int bands,
+  public void rawload(String filenameString, MemorySegment out, int width, int height, int bands,
       VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_rawload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_rawload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8632,11 +8562,9 @@ public final class Vips {
    * int vips_analyzeload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void analyzeload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void analyzeload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_analyzeload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_analyzeload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8652,14 +8580,12 @@ public final class Vips {
    * int vips_fitssave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void fitssave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void fitssave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_fitssave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_fitssave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_fitssave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8675,11 +8601,9 @@ public final class Vips {
    * int vips_fitsload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void fitsload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void fitsload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_fitsload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_fitsload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8695,11 +8619,9 @@ public final class Vips {
    * int vips_openexrload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void openexrload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void openexrload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_openexrload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_openexrload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8761,14 +8683,12 @@ public final class Vips {
    * int vips_tiffsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void tiffsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void tiffsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_tiffsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_tiffsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_tiffsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8824,11 +8744,9 @@ public final class Vips {
    * int vips_tiffload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void tiffload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void tiffload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_tiffload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_tiffload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8886,14 +8804,12 @@ public final class Vips {
    * int vips_webpsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void webpsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void webpsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_webpsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_webpsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_webpsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -8952,11 +8868,9 @@ public final class Vips {
    * int vips_webpload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void webpload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void webpload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_webpload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_webpload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9034,14 +8948,12 @@ public final class Vips {
    * int vips_jpegsave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void jpegsave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void jpegsave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jpegsave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jpegsave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jpegsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9120,11 +9032,9 @@ public final class Vips {
    * int vips_jpegload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void jpegload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void jpegload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_jpegload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_jpegload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9160,11 +9070,9 @@ public final class Vips {
    * int vips_openslideload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void openslideload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void openslideload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_openslideload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_openslideload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9203,14 +9111,12 @@ public final class Vips {
    * int vips_vipssave(VipsImage *in, const char *filename, ...)
    * }
    */
-  public void vipssave(MemorySegment in, MemorySegment filename, VipsOption... options) throws
+  public void vipssave(MemorySegment in, String filenameString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_vipssave", "in");
     }
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_vipssave", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_vipssave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9246,11 +9152,9 @@ public final class Vips {
    * int vips_vipsload(const char *filename, VipsImage **out, ...)
    * }
    */
-  public void vipsload(MemorySegment filename, MemorySegment out, VipsOption... options) throws
+  public void vipsload(String filenameString, MemorySegment out, VipsOption... options) throws
       VipsError {
-    if(!VipsValidation.isValidPointer(filename)) {
-      VipsValidation.throwInvalidInputError("vips_vipsload", "filename");
-    }
+    var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_vipsload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9266,14 +9170,10 @@ public final class Vips {
    * int vips_call_split_option_string(const char *operation_name, const char *option_string, va_list optional, ...)
    * }
    */
-  public void callSplitOptionString(MemorySegment operation_name, MemorySegment option_string,
+  public void callSplitOptionString(String operation_nameString, String option_stringString,
       MemorySegment optional, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(operation_name)) {
-      VipsValidation.throwInvalidInputError("vips_call_split_option_string", "operation_name");
-    }
-    if(!VipsValidation.isValidPointer(option_string)) {
-      VipsValidation.throwInvalidInputError("vips_call_split_option_string", "option_string");
-    }
+    var operation_name = arena.allocateFrom(operation_nameString);
+    var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_call_split_option_string.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9289,11 +9189,9 @@ public final class Vips {
    * int vips_call_split(const char *operation_name, va_list optional, ...)
    * }
    */
-  public void callSplit(MemorySegment operation_name, MemorySegment optional, VipsOption... options)
+  public void callSplit(String operation_nameString, MemorySegment optional, VipsOption... options)
       throws VipsError {
-    if(!VipsValidation.isValidPointer(operation_name)) {
-      VipsValidation.throwInvalidInputError("vips_call_split", "operation_name");
-    }
+    var operation_name = arena.allocateFrom(operation_nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_call_split.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9309,10 +9207,8 @@ public final class Vips {
    * int vips_call(const char *operation_name, ...)
    * }
    */
-  public void call(MemorySegment operation_name, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(operation_name)) {
-      VipsValidation.throwInvalidInputError("vips_call", "operation_name");
-    }
+  public void call(String operation_nameString, VipsOption... options) throws VipsError {
+    var operation_name = arena.allocateFrom(operation_nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_call.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9328,14 +9224,12 @@ public final class Vips {
    * int vips_image_history_printf(VipsImage *image, const char *format, ...)
    * }
    */
-  public void imageHistoryPrintf(MemorySegment image, MemorySegment format, VipsOption... options)
+  public void imageHistoryPrintf(MemorySegment image, String formatString, VipsOption... options)
       throws VipsError {
     if(!VipsValidation.isValidPointer(image)) {
       VipsValidation.throwInvalidInputError("vips_image_history_printf", "image");
     }
-    if(!VipsValidation.isValidPointer(format)) {
-      VipsValidation.throwInvalidInputError("vips_image_history_printf", "format");
-    }
+    var format = arena.allocateFrom(formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_image_history_printf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9392,10 +9286,8 @@ public final class Vips {
    * void vips_error_exit(const char *fmt, ...)
    * }
    */
-  public void errorExit(MemorySegment fmt, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_error_exit", "fmt");
-    }
+  public void errorExit(String fmtString, VipsOption... options) throws VipsError {
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_error_exit.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9408,14 +9300,10 @@ public final class Vips {
    * void vips_error_system(int err, const char *domain, const char *fmt, ...)
    * }
    */
-  public void errorSystem(int err, MemorySegment domain, MemorySegment fmt, VipsOption... options)
+  public void errorSystem(int err, String domainString, String fmtString, VipsOption... options)
       throws VipsError {
-    if(!VipsValidation.isValidPointer(domain)) {
-      VipsValidation.throwInvalidInputError("vips_error_system", "domain");
-    }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_error_system", "fmt");
-    }
+    var domain = arena.allocateFrom(domainString);
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_error_system.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9428,14 +9316,9 @@ public final class Vips {
    * void vips_error(const char *domain, const char *fmt, ...)
    * }
    */
-  public void error(MemorySegment domain, MemorySegment fmt, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(domain)) {
-      VipsValidation.throwInvalidInputError("vips_error", "domain");
-    }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_error", "fmt");
-    }
+  public void error(String domainString, String fmtString, VipsOption... options) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_error.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9466,10 +9349,8 @@ public final class Vips {
    * int vips_system(const char *cmd_format, ...)
    * }
    */
-  public void system(MemorySegment cmd_format, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(cmd_format)) {
-      VipsValidation.throwInvalidInputError("vips_system", "cmd_format");
-    }
+  public void system(String cmd_formatString, VipsOption... options) throws VipsError {
+    var cmd_format = arena.allocateFrom(cmd_formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_system.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9485,14 +9366,12 @@ public final class Vips {
    * int vips_image_write_to_target(VipsImage *in, const char *suffix, VipsTarget *target, ...)
    * }
    */
-  public void imageWriteToTarget(MemorySegment in, MemorySegment suffix, MemorySegment target,
+  public void imageWriteToTarget(MemorySegment in, String suffixString, MemorySegment target,
       VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_target", "in");
     }
-    if(!VipsValidation.isValidPointer(suffix)) {
-      VipsValidation.throwInvalidInputError("vips_image_write_to_target", "suffix");
-    }
+    var suffix = arena.allocateFrom(suffixString);
     if(!VipsValidation.isValidPointer(target)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_target", "target");
     }
@@ -9511,14 +9390,12 @@ public final class Vips {
    * int vips_image_write_to_buffer(VipsImage *in, const char *suffix, void **buf, size_t *size, ...)
    * }
    */
-  public void imageWriteToBuffer(MemorySegment in, MemorySegment suffix, MemorySegment buf,
+  public void imageWriteToBuffer(MemorySegment in, String suffixString, MemorySegment buf,
       MemorySegment size, VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "in");
     }
-    if(!VipsValidation.isValidPointer(suffix)) {
-      VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "suffix");
-    }
+    var suffix = arena.allocateFrom(suffixString);
     if(!VipsValidation.isValidPointer(size)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "size");
     }
@@ -9537,14 +9414,12 @@ public final class Vips {
    * int vips_image_write_to_file(VipsImage *image, const char *name, ...)
    * }
    */
-  public void imageWriteToFile(MemorySegment image, MemorySegment name, VipsOption... options)
-      throws VipsError {
+  public void imageWriteToFile(MemorySegment image, String nameString, VipsOption... options) throws
+      VipsError {
     if(!VipsValidation.isValidPointer(image)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_file", "image");
     }
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_image_write_to_file", "name");
-    }
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_image_write_to_file.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9579,14 +9454,12 @@ public final class Vips {
    * VipsImage *vips_image_new_from_source(VipsSource *source, const char *option_string, ...)
    * }
    */
-  public MemorySegment imageNewFromSource(MemorySegment source, MemorySegment option_string,
+  public MemorySegment imageNewFromSource(MemorySegment source, String option_stringString,
       VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(source)) {
       VipsValidation.throwInvalidInputError("vips_image_new_from_source", "source");
     }
-    if(!VipsValidation.isValidPointer(option_string)) {
-      VipsValidation.throwInvalidInputError("vips_image_new_from_source", "option_string");
-    }
+    var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_image_new_from_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9604,14 +9477,12 @@ public final class Vips {
    * VipsImage *vips_image_new_from_buffer(const void *buf, size_t len, const char *option_string, ...)
    * }
    */
-  public MemorySegment imageNewFromBuffer(MemorySegment buf, long len, MemorySegment option_string,
+  public MemorySegment imageNewFromBuffer(MemorySegment buf, long len, String option_stringString,
       VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(buf)) {
       VipsValidation.throwInvalidInputError("vips_image_new_from_buffer", "buf");
     }
-    if(!VipsValidation.isValidPointer(option_string)) {
-      VipsValidation.throwInvalidInputError("vips_image_new_from_buffer", "option_string");
-    }
+    var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_image_new_from_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9629,11 +9500,8 @@ public final class Vips {
    * VipsImage *vips_image_new_from_file(const char *name, ...)
    * }
    */
-  public MemorySegment imageNewFromFile(MemorySegment name, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_image_new_from_file", "name");
-    }
+  public MemorySegment imageNewFromFile(String nameString, VipsOption... options) throws VipsError {
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_image_new_from_file.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9651,14 +9519,12 @@ public final class Vips {
    * int vips_target_writef(VipsTarget *target, const char *fmt, ...)
    * }
    */
-  public void targetWritef(MemorySegment target, MemorySegment fmt, VipsOption... options) throws
+  public void targetWritef(MemorySegment target, String fmtString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(target)) {
       VipsValidation.throwInvalidInputError("vips_target_writef", "target");
     }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_target_writef", "fmt");
-    }
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_target_writef.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9674,14 +9540,12 @@ public final class Vips {
    * void vips_value_set_save_stringf(GValue *value, const char *fmt, ...)
    * }
    */
-  public void valueSetSaveStringf(MemorySegment value, MemorySegment fmt, VipsOption... options)
+  public void valueSetSaveStringf(MemorySegment value, String fmtString, VipsOption... options)
       throws VipsError {
     if(!VipsValidation.isValidPointer(value)) {
       VipsValidation.throwInvalidInputError("vips_value_set_save_stringf", "value");
     }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_value_set_save_stringf", "fmt");
-    }
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_value_set_save_stringf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9749,10 +9613,8 @@ public final class Vips {
    * int vips_rmdirf(const char *name, ...)
    * }
    */
-  public void rmdirf(MemorySegment name, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_rmdirf", "name");
-    }
+  public void rmdirf(String nameString, VipsOption... options) throws VipsError {
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_rmdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9768,10 +9630,8 @@ public final class Vips {
    * int vips_mkdirf(const char *name, ...)
    * }
    */
-  public void mkdirf(MemorySegment name, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_mkdirf", "name");
-    }
+  public void mkdirf(String nameString, VipsOption... options) throws VipsError {
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_mkdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9787,10 +9647,8 @@ public final class Vips {
    * int vips_isdirf(const char *name, ...)
    * }
    */
-  public void isdirf(MemorySegment name, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_isdirf", "name");
-    }
+  public void isdirf(String nameString, VipsOption... options) throws VipsError {
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_isdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9806,10 +9664,8 @@ public final class Vips {
    * int vips_existsf(const char *name, ...)
    * }
    */
-  public void existsf(MemorySegment name, VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(name)) {
-      VipsValidation.throwInvalidInputError("vips_existsf", "name");
-    }
+  public void existsf(String nameString, VipsOption... options) throws VipsError {
+    var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_existsf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9825,14 +9681,12 @@ public final class Vips {
    * int vips_snprintf(char *str, size_t size, const char *format, ...)
    * }
    */
-  public void snprintf(MemorySegment str, long size, MemorySegment format, VipsOption... options)
+  public void snprintf(MemorySegment str, long size, String formatString, VipsOption... options)
       throws VipsError {
     if(!VipsValidation.isValidPointer(str)) {
       VipsValidation.throwInvalidInputError("vips_snprintf", "str");
     }
-    if(!VipsValidation.isValidPointer(format)) {
-      VipsValidation.throwInvalidInputError("vips_snprintf", "format");
-    }
+    var format = arena.allocateFrom(formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_snprintf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9848,14 +9702,12 @@ public final class Vips {
    * gboolean vips_dbuf_writef(VipsDbuf *dbuf, const char *fmt, ...)
    * }
    */
-  public void dbufWritef(MemorySegment dbuf, MemorySegment fmt, VipsOption... options) throws
+  public void dbufWritef(MemorySegment dbuf, String fmtString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(dbuf)) {
       VipsValidation.throwInvalidInputError("vips_dbuf_writef", "dbuf");
     }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_dbuf_writef", "fmt");
-    }
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_dbuf_writef.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -9871,14 +9723,12 @@ public final class Vips {
    * gboolean vips_buf_appendf(VipsBuf *buf, const char *fmt, ...)
    * }
    */
-  public void bufAppendf(MemorySegment buf, MemorySegment fmt, VipsOption... options) throws
+  public void bufAppendf(MemorySegment buf, String fmtString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(buf)) {
       VipsValidation.throwInvalidInputError("vips_buf_appendf", "buf");
     }
-    if(!VipsValidation.isValidPointer(fmt)) {
-      VipsValidation.throwInvalidInputError("vips_buf_appendf", "fmt");
-    }
+    var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_buf_appendf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);

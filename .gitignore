@@ -14,3 +14,4 @@ includes_filtered.txt
 hs_err*
 
 sample_run
+.kotlin
