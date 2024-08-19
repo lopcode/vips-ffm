@@ -5,7 +5,6 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     kotlin("jvm")
-    id("com.github.johnrengelman.shadow") version "8.1.1"
     application
 }
 
@@ -15,8 +14,8 @@ repositories {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":helper"))
     implementation(platform("org.slf4j:slf4j-bom:2.0.16"))
+    implementation("com.squareup:javapoet:1.13.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
@@ -41,23 +40,11 @@ tasks.withType<Test> {
         events = TestLogEvent.values().toSet() - TestLogEvent.STARTED
         exceptionFormat = TestExceptionFormat.FULL
     }
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     outputs.upToDateWhen { false }
 }
 
-tasks.withType<JavaExec>().configureEach {
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
-    javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
-}
-
-tasks.withType<Jar>().configureEach {
-    manifest {
-        attributes("Enable-Native-Access" to "ALL-UNNAMED")
-    }
-}
-
 application {
-    mainClass = "vipsffm.VipsFfm"
-    applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
-    // todo: figure out how to set DYLD_LIBRARY_PATH here
+    mainClass = "vipsffm.GenerateHelpers"
+    applicationDefaultJvmArgs = listOf("--enable-preview")
+    tasks.run.get().workingDir = rootProject.projectDir
 }
