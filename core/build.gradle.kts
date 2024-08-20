@@ -73,7 +73,7 @@ dependencies {}
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            groupId = "app.photofox.vipsffm"
+            groupId = "app.photofox.vips-ffm"
             artifactId = "vips-ffm-core"
             version = System.getenv("GITHUB_VERSION")?.removePrefix("v")
 
