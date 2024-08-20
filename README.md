@@ -13,8 +13,23 @@ Like what you've read so far? Please give the repo a star 🌟️!
 
 ## Usage
 
-This is still a work-in-progress, and there aren't any packages published yet. As the project uses the FFM API, it must
-target JDK 22+.
+Experimental packages are published to [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package):
+
+```kotlin
+maven {
+    url = uri("https://maven.pkg.github.com/lopcode/vips-ffm")
+    credentials {
+        username = project.findProperty("gpr.user") as String
+        password = project.findProperty("gpr.key") as String
+    }
+}
+
+dependencies {
+    implementation("app.photofox.vips-ffm:vips-ffm-core:0.0.4")
+}
+```
+
+As the project uses the FFM API, it must target JDK 22+.
 
 The libvips API is exposed via a Java helper class, `Vips`. You must provide an [Arena][1] during initialisation. This
 Arena constrains the lifetime of objects generated during usage of the vips-ffm API, so be careful to only keep it in
