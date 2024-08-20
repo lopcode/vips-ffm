@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SampleRunner" type="JetRunConfigurationType">
+  <configuration default="false" name="Run samples" type="JetRunConfigurationType">
     <envs>
       <env name="DYLD_LIBRARY_PATH" value="native_libs" />
     </envs>

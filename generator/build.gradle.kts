@@ -44,7 +44,7 @@ tasks.withType<Test> {
 }
 
 application {
-    mainClass = "vipsffm.GenerateHelpers"
+    mainClass = "vipsffm.GenerateVipsClass"
     applicationDefaultJvmArgs = listOf("--enable-preview")
     tasks.run.get().workingDir = rootProject.projectDir
 }

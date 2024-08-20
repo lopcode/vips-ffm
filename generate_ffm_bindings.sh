@@ -67,4 +67,4 @@ set -x
 @includes_filtered.txt \
 "$LIBVIPS_ENTRY_PATH"
 
-./gradlew clean helper-generator:run
+./gradlew clean generator:run
