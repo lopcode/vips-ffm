@@ -11,7 +11,7 @@ import kotlin.system.exitProcess
 
 object SampleRunner {
 
-    val logger = LoggerFactory.getLogger(SampleRunner::class.java)
+    private val logger = LoggerFactory.getLogger(SampleRunner::class.java)
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -31,7 +31,7 @@ object SampleRunner {
 
         Arena.ofConfined().use { arena ->
             val vips = Vips(arena)
-            vips.leakSet(1)
+            vips.leakSet(true)
 
             samples.forEach { sample ->
                 val sampleName = sample::class.simpleName!!
