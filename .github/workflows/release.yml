@@ -1,0 +1,40 @@
+name: Publish to GitHub Packages
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 22
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.9
+
+      - name: Run checks
+        run: ./gradlew build check shadowJar
+
+      - name: Run samples
+        run: |
+          vips --version || (sudo apt update && sudo apt install libvips-dev)
+          ./run_samples.sh
+
+      - name: Publish
+        run: ./gradlew core:publish
+        env:
+          GITHUB_VERSION: ${{ github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
