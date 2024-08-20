@@ -16,3 +16,5 @@ if grep --quiet "objects alive:" sample_output.log; then
   echo "failure - detected a memory leak!"
   exit 1
 fi
+
+echo "no leaks detected 🎉"

@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Generate helpers" type="JetRunConfigurationType">
-    <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateHelpers" />
-    <module name="vips-ffm.helper-generator.main" />
+  <configuration default="false" name="Generate Vips class" type="JetRunConfigurationType">
+    <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVipsClass" />
+    <module name="vips-ffm.generator.main" />
     <shortenClasspath name="NONE" />
     <option name="VM_PARAMETERS" value="--enable-preview" />
     <method v="2">

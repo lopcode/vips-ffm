@@ -22,9 +22,9 @@ import java.util.Locale
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Modifier
 
-object GenerateHelpers {
+object GenerateVipsClass {
 
-    private val logger = LoggerFactory.getLogger(GenerateHelpers::class.java)
+    private val logger = LoggerFactory.getLogger(GenerateVipsClass::class.java)
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm.helper", "VipsValidation")
     private val vipsInvokerType = ClassName.get("app.photofox.vipsffm.helper", "VipsInvoker")
     private val vipsErrorType = ClassName.get("app.photofox.vipsffm.helper", "VipsError")
@@ -372,7 +372,7 @@ object GenerateHelpers {
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm.generated", vipsClass)
             .build()
-        val targetGeneratedSourceRoot = Path.of("helper/src/main/java/")
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/")
         javaFile.writeToPath(targetGeneratedSourceRoot, Charsets.UTF_8)
     }
 
