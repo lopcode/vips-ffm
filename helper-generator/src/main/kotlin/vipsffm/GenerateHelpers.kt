@@ -135,15 +135,18 @@ object GenerateHelpers {
             vipsFunctionArgs.removeLast()
             vipsFunctionArgs += ParameterSpec.builder(vipsOptionArrayType, "invokerArgs").build()
         }
-        val vipsFunctionArgsJoined = vipsFunctionArgs.joinToString {
-            if (it.type == stringType) {
-                it.name.removeSuffix("String")
-            } else if (it.name == "out") {
-                "${it.name}Pointer"
+        val vipsFunctionArgsJoined = vipsFunctionArgs.mapIndexed { index, parameterSpec ->
+            val externArgMetadata = externMetadata.arguments.getOrNull(index)
+            if (parameterSpec.type == stringType) {
+                parameterSpec.name.removeSuffix("String")
+            } else if (parameterSpec.name == "out") {
+                "${parameterSpec.name}Pointer"
+            } else if (externArgMetadata?.type == "gboolean" && externArgMetadata.pointerDepth == 0) {
+                parameterSpec.name.removeSuffix("Boolean")
             } else {
-                it.name
+                parameterSpec.name
             }
-        }
+        }.joinToString()
 
         var returnPoetType = defaultReturnPoetType
         val methodBuilder = MethodSpec.methodBuilder(newName)
@@ -168,6 +171,8 @@ object GenerateHelpers {
             val externArgMetadata = externMetadata.arguments[index]
             if (externArgMetadata.name == "out") {
                 methodBuilder.addStatement("var outPointer = out.pointerOrNull\$\$internal()")
+            } else if(externArgMetadata.type == "gboolean" && parameter.type == TypeName.BOOLEAN) {
+                methodBuilder.addStatement("var ${parameter.name.removeSuffix("Boolean")} = ${parameter.name} ? 1 : 0")
             } else if (externArgMetadata.pointerDepth == 1) {
                 if (parameter.type == stringType) {
                     val newName = parameter.name.removeSuffix("String")
@@ -282,6 +287,8 @@ object GenerateHelpers {
                 externArgMetadata.pointerDepth == 1
             ) {
                 ParameterSpec.builder(stringType, "${externArgMetadata.name}String").build()
+            } else if (externArgMetadata.type == "gboolean" && externArgMetadata.pointerDepth == 0) {
+                ParameterSpec.builder(TypeName.BOOLEAN, "${externArgMetadata.name}Boolean").build()
             } else {
                 val typeName = classDescToPoetType(parameter, parameter.displayName())
                 ParameterSpec.builder(typeName, externArgMetadata.name).build()

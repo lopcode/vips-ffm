@@ -34,7 +34,9 @@ object RawCreateThumbnailSample: RunnableSample {
         val sourceImage = newImageFromFileInvoker.apply(
             arena.allocateFrom(sourcePath.absolutePathString()),
             MemorySegment.NULL
-        )
+        ).let {
+            VipsImage.reinterpret(it, arena, VipsRaw::g_object_unref)
+        }
         if (sourceImage == MemorySegment.NULL) {
             val error = VipsRaw.vips_error_buffer().getString(0)
             logger.error("failed to load image at $sourcePath, error: {}", error)

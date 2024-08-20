@@ -729,7 +729,8 @@ public final class Vips {
    * void vips_leak_set(gboolean leak)
    * }
    */
-  public void leakSet(int leak) throws VipsError {
+  public void leakSet(boolean leakBoolean) throws VipsError {
+    var leak = leakBoolean ? 1 : 0;
     VipsRaw.vips_leak_set(leak);
   }
 
@@ -739,7 +740,8 @@ public final class Vips {
    * void vips_block_untrusted_set(gboolean state)
    * }
    */
-  public void blockUntrustedSet(int state) throws VipsError {
+  public void blockUntrustedSet(boolean stateBoolean) throws VipsError {
+    var state = stateBoolean ? 1 : 0;
     VipsRaw.vips_block_untrusted_set(state);
   }
 
