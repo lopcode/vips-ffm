@@ -2,10 +2,12 @@
 
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import java.net.URI
 
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     `java-library`
+    `maven-publish`
 }
 
 repositories {
@@ -67,3 +69,31 @@ tasks.withType<JavaExec>().configureEach {
 }
 
 dependencies {}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "app.photofox.vipsffm"
+            artifactId = "vips-ffm-core"
+            version = System.getenv("GITHUB_VERSION")
+
+            from(components["java"])
+
+            pom {
+                name.set("vips-ffm-core")
+                description.set("libvips bindings for JVM projects, using JDK 22's FFM and Class-File APIs, for performant, safe, and ergonomic image manipulation")
+                url.set("https://github.com/lopcode/vips-ffm")
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = URI.create("https://maven.pkg.github.com/lopcode/vips-ffm")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
