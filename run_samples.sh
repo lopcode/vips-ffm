@@ -9,4 +9,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 echo "running samples..."
-java -jar sample/build/libs/sample-all.jar
+java -jar sample/build/libs/sample-all.jar 2>&1 | tee sample_output.log
+
+echo "checking for leaks..."
+if grep --quiet "objects alive:" sample_output.log; then
+  echo "failure - detected a memory leak!"
+  exit 1
+fi

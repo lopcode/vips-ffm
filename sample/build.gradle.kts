@@ -57,7 +57,7 @@ tasks.withType<Jar>().configureEach {
 }
 
 application {
-    mainClass = "vipsffm.VipsFfm"
+    mainClass = "vipsffm.SampleRunner"
     applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
     // todo: figure out how to set DYLD_LIBRARY_PATH here
 }

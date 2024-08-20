@@ -1,6 +1,7 @@
 package vipsffm
 
 import app.photofox.vipsffm.generated.Vips
+import app.photofox.vipsffm.generated.VipsRaw
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.nio.file.Files
@@ -8,9 +9,9 @@ import java.nio.file.Paths
 import java.util.Locale
 import kotlin.system.exitProcess
 
-object VipsFfm {
+object SampleRunner {
 
-    val logger = LoggerFactory.getLogger(VipsFfm::class.java)
+    val logger = LoggerFactory.getLogger(SampleRunner::class.java)
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -29,7 +30,8 @@ object VipsFfm {
         Files.createDirectory(sampleParentRunPath)
 
         Arena.ofConfined().use { arena ->
-            Vips(arena) // initialise for safety
+            val vips = Vips(arena)
+            vips.leakSet(1)
 
             samples.forEach { sample ->
                 val sampleName = sample::class.simpleName!!
@@ -46,6 +48,8 @@ object VipsFfm {
                 logger.info("validation succeeded ✅")
             }
         }
+        logger.info("shutting down vips to check for memory leaks...")
+        VipsRaw.vips_shutdown()
         logger.info("all samples ran successfully 🎉")
         exitProcess(0)
     }
