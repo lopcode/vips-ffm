@@ -62,6 +62,12 @@ tasks.withType<JavaExec>().configureEach {
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
+tasks.withType<Jar>().configureEach {
+    manifest {
+        attributes("Enable-Native-Access" to "ALL-UNNAMED")
+    }
+}
+
 dependencies {}
 
 publishing {
