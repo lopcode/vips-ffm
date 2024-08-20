@@ -5,7 +5,6 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import java.net.URI
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "8.1.1"
     `java-library`
     `maven-publish`
 }
@@ -56,11 +55,6 @@ tasks.named("check") {
     dependsOn(testing.suites.named("test"))
     dependsOn(testing.suites.named("integrationTest"))
 }
-
-tasks.named("integrationTest") {
-    dependsOn(tasks.named("shadowJar"))
-}
-
 
 tasks.withType<JavaExec>().configureEach {
     jvmArgs("--enable-native-access=ALL-UNNAMED")
