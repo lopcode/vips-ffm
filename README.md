@@ -35,8 +35,6 @@ To get a feeling for the bindings, here's an indicative sample written in Kotlin
 * Writes a copy of it to disk
 * Creates a 400px thumbnail from the original, and writes that to disk
 
-<img align="right" width="200" src="sample/src/main/resources/sample_images/rabbit.jpg">
-
 ```kotlin
 import app.photofox.vipsffm.generated.Vips
 import java.lang.foreign.Arena
