@@ -10,6 +10,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      GITHUB_VERSION: ${{ github.ref_name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,8 +35,7 @@ jobs:
           vips --version || (sudo apt update && sudo apt install libvips-dev)
           ./run_samples.sh
 
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: ./gradlew core:publish
         env:
-          GITHUB_VERSION: ${{ github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

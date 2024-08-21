@@ -133,4 +133,12 @@ memory: high-water mark 36.55 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 ```
 
+## Releasing
+
+* GitHub Releases automatically result in a deployment to GitHub Packages
+* Maven Central releases happen manually 
+  * This can only be done by @lopcode
+  * And only after a GitHub Release is made
+  * Run `./publish_release_to_maven_central.sh <version matching github release version>` 
+
 [1]: https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html

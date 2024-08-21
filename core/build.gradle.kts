@@ -7,6 +7,7 @@ import java.net.URI
 plugins {
     `java-library`
     `maven-publish`
+    signing
 }
 
 repositories {
@@ -17,6 +18,8 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(22))
     }
+    withJavadocJar()
+    withSourcesJar()
 }
 
 testing {
@@ -70,12 +73,16 @@ tasks.withType<Jar>().configureEach {
 
 dependencies {}
 
+val githubVersion = System.getenv("GITHUB_VERSION") ?: null
+val mavenVersion = githubVersion?.removePrefix("v") ?: "local"
+val releasePath = "repos/release-${githubVersion}"
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             groupId = "app.photofox.vips-ffm"
             artifactId = "vips-ffm-core"
-            version = System.getenv("GITHUB_VERSION")?.removePrefix("v")
+            version = mavenVersion
 
             from(components["java"])
 
@@ -83,6 +90,18 @@ publishing {
                 name.set("vips-ffm-core")
                 description.set("libvips bindings for JVM projects, using JDK 22's FFM and Class-File APIs, for performant, safe, and ergonomic image manipulation")
                 url.set("https://github.com/lopcode/vips-ffm")
+                licenses {
+                    license {
+                        name = "Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0"
+                    }
+                }
+                developers {
+                    developer {
+                        name = "lopcode"
+                        url = "https://github.com/lopcode"
+                    }
+                }
             }
         }
     }
@@ -95,5 +114,35 @@ publishing {
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
+        maven {
+            name = "Local"
+            url = uri(layout.buildDirectory.dir(releasePath))
+        }
     }
+}
+
+val signingKey = System.getenv("SIGNING_KEY_ID") ?: null
+val signingKeyPassphrase = System.getenv("SIGNING_KEY_PASSPHRASE") ?: null
+
+if (!signingKey.isNullOrBlank()) {
+    project.ext["signing.gnupg.keyName"] = signingKey
+    project.ext["signing.gnupg.passphrase"] = signingKeyPassphrase
+    project.ext["signing.gnupg.executable"] = "/usr/local/bin/gpg"
+
+    signing {
+        useGpgCmd()
+        sign(publishing.publications)
+    }
+}
+
+tasks.register<Zip>("packageMavenCentralRelease") {
+    dependsOn("publishMavenJavaPublicationToLocalRepository")
+
+    archiveFileName.set("release-${githubVersion}.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("repos"))
+
+    // exclude hidden files
+    exclude("*/.*")
+
+    from(layout.buildDirectory.dir(releasePath))
 }
