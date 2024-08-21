@@ -87,9 +87,9 @@ publishing {
             from(components["java"])
 
             pom {
-                name.set("vips-ffm-core")
-                description.set("libvips bindings for JVM projects, using JDK 22's FFM and Class-File APIs, for performant, safe, and ergonomic image manipulation")
-                url.set("https://github.com/lopcode/vips-ffm")
+                name = "vips-ffm-core"
+                description = "libvips bindings for JVM projects, using JDK 22's FFM and Class-File APIs, for performant, safe, and ergonomic image manipulation"
+                url = "https://github.com/lopcode/vips-ffm"
                 licenses {
                     license {
                         name = "Apache License, Version 2.0"
@@ -101,6 +101,11 @@ publishing {
                         name = "lopcode"
                         url = "https://github.com/lopcode"
                     }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/lopcode/vips-ffm.git"
+                    developerConnection = "scm:git:https://github.com:lopcode/vips-ffm.git"
+                    url = "https://github.com/lopcode/vips-ffm/tree/main"
                 }
             }
         }
