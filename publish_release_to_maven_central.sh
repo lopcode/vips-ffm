@@ -11,9 +11,11 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
-(gh release list --json tagName,isDraft,isPrerelease | jq -e ".[] | select(.tagName == \"$1\" and .isDraft == false and .isPrerelease == false)") || (echo "couldn't find release" && exit 1)
+export GITHUB_VERSION=$1
+
+(gh release list --json tagName,isDraft,isPrerelease | jq -e ".[] | select(.tagName == \"$GITHUB_VERSION\" and .isDraft == false and .isPrerelease == false)") || (echo "couldn't find release" && exit 1)
 git fetch --tags
-git checkout tags/"$1"
+git checkout tags/"$GITHUB_VERSION"
 git describe --exact-match --tags
 
 SIGNING_KEY_ID=$(op read "op://Private/Sonatype GPG/key id") \
@@ -27,5 +29,5 @@ BEARER_TOKEN=$(echo "$MAVEN_CENTRAL_USER:$MAVEN_CENTRAL_TOKEN" | base64)
 curl --request POST \
   --verbose \
   --header "Authorization: Bearer $BEARER_TOKEN" \
-  --form bundle=@core/build/repos/release-"$VERSION".zip \
-  https://central.sonatype.com/api/v1/publisher/upload?name="$VERSION"\&publishingType=USER_MANAGED
+  --form bundle=@core/build/repos/release-"$GITHUB_VERSION".zip \
+  https://central.sonatype.com/api/v1/publisher/upload?name="$GITHUB_VERSION"\&publishingType=USER_MANAGED
