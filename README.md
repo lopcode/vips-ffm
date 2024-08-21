@@ -13,19 +13,13 @@ Like what you've read so far? Please give the repo a star 🌟️!
 
 ## Usage
 
-Experimental packages are published to [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package):
-
 ```kotlin
-maven {
-    url = uri("https://maven.pkg.github.com/lopcode/vips-ffm")
-    credentials {
-        username = project.findProperty("gpr.user") as String
-        password = project.findProperty("gpr.key") as String
-    }
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:0.0.4")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:0.0.7")
 }
 ```
 
