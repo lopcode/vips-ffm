@@ -79,6 +79,353 @@ public class VipsRaw_1 {
         return VIPS_ENABLE_DEPRECATED;
     }
 
+    private static class g_free {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void (g_free)(gpointer mem)
+     * }
+     */
+    public static FunctionDescriptor g_free$descriptor() {
+        return g_free.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void (g_free)(gpointer mem)
+     * }
+     */
+    public static MethodHandle g_free$handle() {
+        return g_free.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void (g_free)(gpointer mem)
+     * }
+     */
+    public static MemorySegment g_free$address() {
+        return g_free.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void (g_free)(gpointer mem)
+     * }
+     */
+    public static void g_free(MemorySegment mem) {
+        var mh$ = g_free.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_free", mem);
+            }
+            mh$.invokeExact(mem);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_free_sized {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_free_sized");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_free_sized(gpointer mem, size_t size)
+     * }
+     */
+    public static FunctionDescriptor g_free_sized$descriptor() {
+        return g_free_sized.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_free_sized(gpointer mem, size_t size)
+     * }
+     */
+    public static MethodHandle g_free_sized$handle() {
+        return g_free_sized.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_free_sized(gpointer mem, size_t size)
+     * }
+     */
+    public static MemorySegment g_free_sized$address() {
+        return g_free_sized.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_free_sized(gpointer mem, size_t size)
+     * }
+     */
+    public static void g_free_sized(MemorySegment mem, long size) {
+        var mh$ = g_free_sized.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_free_sized", mem, size);
+            }
+            mh$.invokeExact(mem, size);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_string_free {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_string_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gchar *(g_string_free)(GString *string, gboolean free_segment)
+     * }
+     */
+    public static FunctionDescriptor g_string_free$descriptor() {
+        return g_string_free.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gchar *(g_string_free)(GString *string, gboolean free_segment)
+     * }
+     */
+    public static MethodHandle g_string_free$handle() {
+        return g_string_free.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gchar *(g_string_free)(GString *string, gboolean free_segment)
+     * }
+     */
+    public static MemorySegment g_string_free$address() {
+        return g_string_free.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gchar *(g_string_free)(GString *string, gboolean free_segment)
+     * }
+     */
+    public static MemorySegment g_string_free(MemorySegment string, int free_segment) {
+        var mh$ = g_string_free.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_string_free", string, free_segment);
+            }
+            return (MemorySegment)mh$.invokeExact(string, free_segment);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_string_free_and_steal {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_string_free_and_steal");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gchar *g_string_free_and_steal(GString *string)
+     * }
+     */
+    public static FunctionDescriptor g_string_free_and_steal$descriptor() {
+        return g_string_free_and_steal.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gchar *g_string_free_and_steal(GString *string)
+     * }
+     */
+    public static MethodHandle g_string_free_and_steal$handle() {
+        return g_string_free_and_steal.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gchar *g_string_free_and_steal(GString *string)
+     * }
+     */
+    public static MemorySegment g_string_free_and_steal$address() {
+        return g_string_free_and_steal.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gchar *g_string_free_and_steal(GString *string)
+     * }
+     */
+    public static MemorySegment g_string_free_and_steal(MemorySegment string) {
+        var mh$ = g_string_free_and_steal.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_string_free_and_steal", string);
+            }
+            return (MemorySegment)mh$.invokeExact(string);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_string_free_to_bytes {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_string_free_to_bytes");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GBytes *g_string_free_to_bytes(GString *string)
+     * }
+     */
+    public static FunctionDescriptor g_string_free_to_bytes$descriptor() {
+        return g_string_free_to_bytes.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GBytes *g_string_free_to_bytes(GString *string)
+     * }
+     */
+    public static MethodHandle g_string_free_to_bytes$handle() {
+        return g_string_free_to_bytes.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GBytes *g_string_free_to_bytes(GString *string)
+     * }
+     */
+    public static MemorySegment g_string_free_to_bytes$address() {
+        return g_string_free_to_bytes.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GBytes *g_string_free_to_bytes(GString *string)
+     * }
+     */
+    public static MemorySegment g_string_free_to_bytes(MemorySegment string) {
+        var mh$ = g_string_free_to_bytes.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_string_free_to_bytes", string);
+            }
+            return (MemorySegment)mh$.invokeExact(string);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_test_log_msg_free {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_test_log_msg_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_test_log_msg_free(GTestLogMsg *tmsg)
+     * }
+     */
+    public static FunctionDescriptor g_test_log_msg_free$descriptor() {
+        return g_test_log_msg_free.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_test_log_msg_free(GTestLogMsg *tmsg)
+     * }
+     */
+    public static MethodHandle g_test_log_msg_free$handle() {
+        return g_test_log_msg_free.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_test_log_msg_free(GTestLogMsg *tmsg)
+     * }
+     */
+    public static MemorySegment g_test_log_msg_free$address() {
+        return g_test_log_msg_free.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_test_log_msg_free(GTestLogMsg *tmsg)
+     * }
+     */
+    public static void g_test_log_msg_free(MemorySegment tmsg) {
+        var mh$ = g_test_log_msg_free.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_test_log_msg_free", tmsg);
+            }
+            mh$.invokeExact(tmsg);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class g_object_class_install_property {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             VipsRaw.C_POINTER,
@@ -49924,342 +50271,6 @@ public class VipsRaw_1 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("vips_foreign_dz_layout_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_foreign_dz_depth_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_dz_depth_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_depth_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_foreign_dz_depth_get_type$descriptor() {
-        return vips_foreign_dz_depth_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_depth_get_type()
-     * }
-     */
-    public static MethodHandle vips_foreign_dz_depth_get_type$handle() {
-        return vips_foreign_dz_depth_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_depth_get_type()
-     * }
-     */
-    public static MemorySegment vips_foreign_dz_depth_get_type$address() {
-        return vips_foreign_dz_depth_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_depth_get_type()
-     * }
-     */
-    public static long vips_foreign_dz_depth_get_type() {
-        var mh$ = vips_foreign_dz_depth_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_foreign_dz_depth_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_foreign_dz_container_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_dz_container_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_container_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_foreign_dz_container_get_type$descriptor() {
-        return vips_foreign_dz_container_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_container_get_type()
-     * }
-     */
-    public static MethodHandle vips_foreign_dz_container_get_type$handle() {
-        return vips_foreign_dz_container_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_container_get_type()
-     * }
-     */
-    public static MemorySegment vips_foreign_dz_container_get_type$address() {
-        return vips_foreign_dz_container_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_foreign_dz_container_get_type()
-     * }
-     */
-    public static long vips_foreign_dz_container_get_type() {
-        var mh$ = vips_foreign_dz_container_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_foreign_dz_container_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_foreign_heif_compression_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_heif_compression_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_compression_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_foreign_heif_compression_get_type$descriptor() {
-        return vips_foreign_heif_compression_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_compression_get_type()
-     * }
-     */
-    public static MethodHandle vips_foreign_heif_compression_get_type$handle() {
-        return vips_foreign_heif_compression_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_compression_get_type()
-     * }
-     */
-    public static MemorySegment vips_foreign_heif_compression_get_type$address() {
-        return vips_foreign_heif_compression_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_compression_get_type()
-     * }
-     */
-    public static long vips_foreign_heif_compression_get_type() {
-        var mh$ = vips_foreign_heif_compression_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_foreign_heif_compression_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_foreign_heif_encoder_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_heif_encoder_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_encoder_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_foreign_heif_encoder_get_type$descriptor() {
-        return vips_foreign_heif_encoder_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_encoder_get_type()
-     * }
-     */
-    public static MethodHandle vips_foreign_heif_encoder_get_type$handle() {
-        return vips_foreign_heif_encoder_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_encoder_get_type()
-     * }
-     */
-    public static MemorySegment vips_foreign_heif_encoder_get_type$address() {
-        return vips_foreign_heif_encoder_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_foreign_heif_encoder_get_type()
-     * }
-     */
-    public static long vips_foreign_heif_encoder_get_type() {
-        var mh$ = vips_foreign_heif_encoder_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_foreign_heif_encoder_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_demand_style_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_demand_style_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_demand_style_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_demand_style_get_type$descriptor() {
-        return vips_demand_style_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_demand_style_get_type()
-     * }
-     */
-    public static MethodHandle vips_demand_style_get_type$handle() {
-        return vips_demand_style_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_demand_style_get_type()
-     * }
-     */
-    public static MemorySegment vips_demand_style_get_type$address() {
-        return vips_demand_style_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_demand_style_get_type()
-     * }
-     */
-    public static long vips_demand_style_get_type() {
-        var mh$ = vips_demand_style_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_demand_style_get_type");
-            }
-            return (long)mh$.invokeExact();
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class vips_image_type_get_type {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            VipsRaw.C_LONG    );
-
-        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_type_get_type");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern GType vips_image_type_get_type()
-     * }
-     */
-    public static FunctionDescriptor vips_image_type_get_type$descriptor() {
-        return vips_image_type_get_type.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern GType vips_image_type_get_type()
-     * }
-     */
-    public static MethodHandle vips_image_type_get_type$handle() {
-        return vips_image_type_get_type.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern GType vips_image_type_get_type()
-     * }
-     */
-    public static MemorySegment vips_image_type_get_type$address() {
-        return vips_image_type_get_type.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern GType vips_image_type_get_type()
-     * }
-     */
-    public static long vips_image_type_get_type() {
-        var mh$ = vips_image_type_get_type.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_image_type_get_type");
             }
             return (long)mh$.invokeExact();
         } catch (Throwable ex$) {

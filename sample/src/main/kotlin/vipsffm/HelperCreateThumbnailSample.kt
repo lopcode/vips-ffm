@@ -41,6 +41,13 @@ object HelperCreateThumbnailSample: RunnableSample {
         val thumbnailHeight = VipsImage.Ysize(thumbnailImage)
         logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
 
+        val hasAlpha = vips.imageHasalpha(thumbnailImage)
+        if (hasAlpha) {
+            return Result.failure(
+                RuntimeException("unexpected alpha in image")
+            )
+        }
+
         return VipsHelper.validate(
             thumbnailPath,
             expectedSizeBoundsKb = 20L..100L
