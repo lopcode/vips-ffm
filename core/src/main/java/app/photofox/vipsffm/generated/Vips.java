@@ -8,6 +8,7 @@ import app.photofox.vipsffm.helper.VipsValidation;
 import java.lang.String;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.util.List;
 
 public final class Vips {
   private Arena arena;
@@ -28,6 +29,72 @@ public final class Vips {
       VipsValidation.throwVipsError("vips_init");
     }
     VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_dz_depth_get_type()
+   * }
+   */
+  public long foreignDzDepthGetType() throws VipsError {
+    var result = VipsRaw.vips_foreign_dz_depth_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_dz_container_get_type()
+   * }
+   */
+  public long foreignDzContainerGetType() throws VipsError {
+    var result = VipsRaw.vips_foreign_dz_container_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_heif_compression_get_type()
+   * }
+   */
+  public long foreignHeifCompressionGetType() throws VipsError {
+    var result = VipsRaw.vips_foreign_heif_compression_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_heif_encoder_get_type()
+   * }
+   */
+  public long foreignHeifEncoderGetType() throws VipsError {
+    var result = VipsRaw.vips_foreign_heif_encoder_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_demand_style_get_type()
+   * }
+   */
+  public long demandStyleGetType() throws VipsError {
+    var result = VipsRaw.vips_demand_style_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_image_type_get_type()
+   * }
+   */
+  public long imageTypeGetType() throws VipsError {
+    var result = VipsRaw.vips_image_type_get_type();
+    return result;
   }
 
   /**
@@ -170,14 +237,12 @@ public final class Vips {
    * gboolean vips_colourspace_issupported(const VipsImage *image)
    * }
    */
-  public void colourspaceIssupported(MemorySegment image) throws VipsError {
+  public boolean colourspaceIssupported(MemorySegment image) throws VipsError {
     if(!VipsValidation.isValidPointer(image)) {
       VipsValidation.throwInvalidInputError("vips_colourspace_issupported", "image");
     }
     var result = VipsRaw.vips_colourspace_issupported(image);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_colourspace_issupported");
-    }
+    return result == 1;
   }
 
   /**
@@ -221,7 +286,7 @@ public final class Vips {
    * gboolean vips_icc_is_compatible_profile(VipsImage *image, const void *data, size_t data_length)
    * }
    */
-  public void iccIsCompatibleProfile(MemorySegment image, MemorySegment data, long data_length)
+  public boolean iccIsCompatibleProfile(MemorySegment image, MemorySegment data, long data_length)
       throws VipsError {
     if(!VipsValidation.isValidPointer(image)) {
       VipsValidation.throwInvalidInputError("vips_icc_is_compatible_profile", "image");
@@ -230,9 +295,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_icc_is_compatible_profile", "data");
     }
     var result = VipsRaw.vips_icc_is_compatible_profile(image, data, data_length);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_icc_is_compatible_profile");
-    }
+    return result == 1;
   }
 
   /**
@@ -665,34 +728,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * const char *vips_get_argv0()
-   * }
-   */
-  public String getArgv0() throws VipsError {
-    var result = VipsRaw.vips_get_argv0();
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_get_argv0", "result");
-    }
-    return result.getString(0);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * const char *vips_get_prgname()
-   * }
-   */
-  public String getPrgname() throws VipsError {
-    var result = VipsRaw.vips_get_prgname();
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_get_prgname", "result");
-    }
-    return result.getString(0);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * void vips_shutdown()
    * }
    */
@@ -775,15 +810,14 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * const char *vips_guess_prefix(const char *argv0, const char *env_name)
+   * char *vips_path_filename7(const char *path)
    * }
    */
-  public String guessPrefix(String argv0String, String env_nameString) throws VipsError {
-    var argv0 = arena.allocateFrom(argv0String);
-    var env_name = arena.allocateFrom(env_nameString);
-    var result = VipsRaw.vips_guess_prefix(argv0, env_name);
+  public String pathFilename7(String pathString) throws VipsError {
+    var path = arena.allocateFrom(pathString);
+    var result = VipsRaw_1.vips_path_filename7(path);
     if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_guess_prefix", "result");
+      VipsValidation.throwInvalidOutputError("vips_path_filename7", "result");
     }
     return result.getString(0);
   }
@@ -791,17 +825,7882 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * const char *vips_guess_libdir(const char *argv0, const char *env_name)
+   * char *vips_path_mode7(const char *path)
    * }
    */
-  public String guessLibdir(String argv0String, String env_nameString) throws VipsError {
-    var argv0 = arena.allocateFrom(argv0String);
-    var env_name = arena.allocateFrom(env_nameString);
-    var result = VipsRaw.vips_guess_libdir(argv0, env_name);
+  public String pathMode7(String pathString) throws VipsError {
+    var path = arena.allocateFrom(pathString);
+    var result = VipsRaw_1.vips_path_mode7(path);
     if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_guess_libdir", "result");
+      VipsValidation.throwInvalidOutputError("vips_path_mode7", "result");
     }
     return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_rewind(VipsBuf *buf)
+   * }
+   */
+  public void bufRewind(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_rewind", "buf");
+    }
+    VipsRaw_1.vips_buf_rewind(buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_destroy(VipsBuf *buf)
+   * }
+   */
+  public void bufDestroy(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_destroy", "buf");
+    }
+    VipsRaw_1.vips_buf_destroy(buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_init(VipsBuf *buf)
+   * }
+   */
+  public void bufInit(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_init", "buf");
+    }
+    VipsRaw_1.vips_buf_init(buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_set_static(VipsBuf *buf, char *base, int mx)
+   * }
+   */
+  public void bufSetStatic(MemorySegment buf, String baseString, int mx) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_set_static", "buf");
+    }
+    var base = arena.allocateFrom(baseString);
+    VipsRaw_1.vips_buf_set_static(buf, base, mx);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_set_dynamic(VipsBuf *buf, int mx)
+   * }
+   */
+  public void bufSetDynamic(MemorySegment buf, int mx) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_set_dynamic", "buf");
+    }
+    VipsRaw_1.vips_buf_set_dynamic(buf, mx);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_init_static(VipsBuf *buf, char *base, int mx)
+   * }
+   */
+  public void bufInitStatic(MemorySegment buf, String baseString, int mx) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_init_static", "buf");
+    }
+    var base = arena.allocateFrom(baseString);
+    VipsRaw_1.vips_buf_init_static(buf, base, mx);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buf_init_dynamic(VipsBuf *buf, int mx)
+   * }
+   */
+  public void bufInitDynamic(MemorySegment buf, int mx) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_init_dynamic", "buf");
+    }
+    VipsRaw_1.vips_buf_init_dynamic(buf, mx);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendns(VipsBuf *buf, const char *str, int sz)
+   * }
+   */
+  public boolean bufAppendns(MemorySegment buf, String strString, int sz) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendns", "buf");
+    }
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_buf_appendns(buf, str, sz);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appends(VipsBuf *buf, const char *str)
+   * }
+   */
+  public boolean bufAppends(MemorySegment buf, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appends", "buf");
+    }
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_buf_appends(buf, str);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_vappendf(VipsBuf *buf, const char *fmt, va_list ap)
+   * }
+   */
+  public boolean bufVappendf(MemorySegment buf, String fmtString, MemorySegment ap) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_vappendf", "buf");
+    }
+    var fmt = arena.allocateFrom(fmtString);
+    var result = VipsRaw_1.vips_buf_vappendf(buf, fmt, ap);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendc(VipsBuf *buf, char ch)
+   * }
+   */
+  public boolean bufAppendc(MemorySegment buf, byte ch) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendc", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_appendc(buf, ch);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendsc(VipsBuf *buf, gboolean quote, const char *str)
+   * }
+   */
+  public boolean bufAppendsc(MemorySegment buf, boolean quoteBoolean, String strString) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendsc", "buf");
+    }
+    var quote = quoteBoolean ? 1 : 0;
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_buf_appendsc(buf, quote, str);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendgv(VipsBuf *buf, GValue *value)
+   * }
+   */
+  public boolean bufAppendgv(MemorySegment buf, MemorySegment value) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendgv", "buf");
+    }
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendgv", "value");
+    }
+    var result = VipsRaw_1.vips_buf_appendgv(buf, value);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_append_size(VipsBuf *buf, size_t n)
+   * }
+   */
+  public boolean bufAppendSize(MemorySegment buf, long n) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_append_size", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_append_size(buf, n);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_removec(VipsBuf *buf, char ch)
+   * }
+   */
+  public boolean bufRemovec(MemorySegment buf, byte ch) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_removec", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_removec(buf, ch);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_change(VipsBuf *buf, const char *o, const char *n)
+   * }
+   */
+  public boolean bufChange(MemorySegment buf, String oString, String nString) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_change", "buf");
+    }
+    var o = arena.allocateFrom(oString);
+    var n = arena.allocateFrom(nString);
+    var result = VipsRaw_1.vips_buf_change(buf, o, n);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_is_empty(VipsBuf *buf)
+   * }
+   */
+  public boolean bufIsEmpty(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_is_empty", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_is_empty(buf);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_is_full(VipsBuf *buf)
+   * }
+   */
+  public boolean bufIsFull(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_is_full", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_is_full(buf);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_buf_all(VipsBuf *buf)
+   * }
+   */
+  public String bufAll(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_all", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_all(buf);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_buf_all", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_buf_firstline(VipsBuf *buf)
+   * }
+   */
+  public String bufFirstline(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_firstline", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_firstline(buf);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_buf_firstline", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendg(VipsBuf *buf, double g)
+   * }
+   */
+  public boolean bufAppendg(MemorySegment buf, double g) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendg", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_appendg(buf, g);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_buf_appendd(VipsBuf *buf, int d)
+   * }
+   */
+  public boolean bufAppendd(MemorySegment buf, int d) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_appendd", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_appendd(buf, d);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_buf_len(VipsBuf *buf)
+   * }
+   */
+  public void bufLen(MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_buf_len", "buf");
+    }
+    var result = VipsRaw_1.vips_buf_len(buf);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_buf_len");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_enum_string(GType enm, int value)
+   * }
+   */
+  public String enumString(long enm, int value) throws VipsError {
+    var result = VipsRaw_1.vips_enum_string(enm, value);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_enum_string", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_enum_nick(GType enm, int value)
+   * }
+   */
+  public String enumNick(long enm, int value) throws VipsError {
+    var result = VipsRaw_1.vips_enum_nick(enm, value);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_enum_nick", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_enum_from_nick(const char *domain, GType type, const char *str)
+   * }
+   */
+  public void enumFromNick(String domainString, long type, String strString) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_enum_from_nick(domain, type, str);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_enum_from_nick");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_flags_from_nick(const char *domain, GType type, const char *nick)
+   * }
+   */
+  public void flagsFromNick(String domainString, long type, String nickString) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var nick = arena.allocateFrom(nickString);
+    var result = VipsRaw_1.vips_flags_from_nick(domain, type, nick);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_flags_from_nick");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_slist_equal(GSList *l1, GSList *l2)
+   * }
+   */
+  public boolean slistEqual(MemorySegment l1, MemorySegment l2) throws VipsError {
+    if(!VipsValidation.isValidPointer(l1)) {
+      VipsValidation.throwInvalidInputError("vips_slist_equal", "l1");
+    }
+    if(!VipsValidation.isValidPointer(l2)) {
+      VipsValidation.throwInvalidInputError("vips_slist_equal", "l2");
+    }
+    var result = VipsRaw_1.vips_slist_equal(l1, l2);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_slist_free_all(GSList *list)
+   * }
+   */
+  public void slistFreeAll(MemorySegment list) throws VipsError {
+    if(!VipsValidation.isValidPointer(list)) {
+      VipsValidation.throwInvalidInputError("vips_slist_free_all", "list");
+    }
+    VipsRaw_1.vips_slist_free_all(list);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_map_equal(void *a, void *b)
+   * }
+   */
+  public MemorySegment mapEqual(MemorySegment a, MemorySegment b) throws VipsError {
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_map_equal", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_map_equal", "b");
+    }
+    var result = VipsRaw_1.vips_map_equal(a, b);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_map_equal", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_strncpy(char *dest, const char *src, int n)
+   * }
+   */
+  public String strncpy(String destString, String srcString, int n) throws VipsError {
+    var dest = arena.allocateFrom(destString);
+    var src = arena.allocateFrom(srcString);
+    var result = VipsRaw_1.vips_strncpy(dest, src, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_strncpy", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_strrstr(const char *haystack, const char *needle)
+   * }
+   */
+  public String strrstr(String haystackString, String needleString) throws VipsError {
+    var haystack = arena.allocateFrom(haystackString);
+    var needle = arena.allocateFrom(needleString);
+    var result = VipsRaw_1.vips_strrstr(haystack, needle);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_strrstr", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_ispostfix(const char *a, const char *b)
+   * }
+   */
+  public boolean ispostfix(String aString, String bString) throws VipsError {
+    var a = arena.allocateFrom(aString);
+    var b = arena.allocateFrom(bString);
+    var result = VipsRaw_1.vips_ispostfix(a, b);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_iscasepostfix(const char *a, const char *b)
+   * }
+   */
+  public boolean iscasepostfix(String aString, String bString) throws VipsError {
+    var a = arena.allocateFrom(aString);
+    var b = arena.allocateFrom(bString);
+    var result = VipsRaw_1.vips_iscasepostfix(a, b);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_isprefix(const char *a, const char *b)
+   * }
+   */
+  public boolean isprefix(String aString, String bString) throws VipsError {
+    var a = arena.allocateFrom(aString);
+    var b = arena.allocateFrom(bString);
+    var result = VipsRaw_1.vips_isprefix(a, b);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_break_token(char *str, const char *brk)
+   * }
+   */
+  public String breakToken(String strString, String brkString) throws VipsError {
+    var str = arena.allocateFrom(strString);
+    var brk = arena.allocateFrom(brkString);
+    var result = VipsRaw_1.vips_break_token(str, brk);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_break_token", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_vsnprintf(char *str, size_t size, const char *format, va_list ap)
+   * }
+   */
+  public void vsnprintf(String strString, long size, String formatString, MemorySegment ap) throws
+      VipsError {
+    var str = arena.allocateFrom(strString);
+    var format = arena.allocateFrom(formatString);
+    var result = VipsRaw_1.vips_vsnprintf(str, size, format, ap);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_vsnprintf");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_filename_suffix_match(const char *path, const char *suffixes[])
+   * }
+   */
+  public void filenameSuffixMatch(String pathString, List<String> suffixesStringArray) throws
+      VipsError {
+    var path = arena.allocateFrom(pathString);
+    var suffixes = VipsInvoker.makeCharStarArray(arena, suffixesStringArray);
+    var result = VipsRaw_1.vips_filename_suffix_match(path, suffixes);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_filename_suffix_match");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_file_length(int fd)
+   * }
+   */
+  public long fileLength(int fd) throws VipsError {
+    var result = VipsRaw_1.vips_file_length(fd);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_rename(const char *old_name, const char *new_name)
+   * }
+   */
+  public void rename(String old_nameString, String new_nameString) throws VipsError {
+    var old_name = arena.allocateFrom(old_nameString);
+    var new_name = arena.allocateFrom(new_nameString);
+    var result = VipsRaw_1.vips_rename(old_name, new_name);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_rename");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_ispoweroftwo(int p)
+   * }
+   */
+  public void ispoweroftwo(int p) throws VipsError {
+    var result = VipsRaw_1.vips_ispoweroftwo(p);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_ispoweroftwo");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_amiMSBfirst()
+   * }
+   */
+  public void amiMSBfirst() throws VipsError {
+    var result = VipsRaw_1.vips_amiMSBfirst();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_amiMSBfirst");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_realpath(const char *path)
+   * }
+   */
+  public String realpath(String pathString) throws VipsError {
+    var path = arena.allocateFrom(pathString);
+    var result = VipsRaw_1.vips_realpath(path);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_realpath", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_strtod(const char *str, double *out)
+   * }
+   */
+  public void strtod(String strString, VipsOutputPointer out) throws VipsError {
+    var str = arena.allocateFrom(strString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_strtod(str, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_strtod");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_argument_get_id()
+   * }
+   */
+  public void argumentGetId() throws VipsError {
+    var result = VipsRaw_1.vips_argument_get_id();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_argument_get_id");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_get_args(VipsObject *object, const char ***names, int **flags, int *n_args)
+   * }
+   */
+  public void objectGetArgs(MemorySegment object, MemorySegment names, MemorySegment flags,
+      MemorySegment n_args) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_args", "object");
+    }
+    if(!VipsValidation.isValidPointer(names)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_args", "names");
+    }
+    if(!VipsValidation.isValidPointer(flags)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_args", "flags");
+    }
+    if(!VipsValidation.isValidPointer(n_args)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_args", "n_args");
+    }
+    var result = VipsRaw_1.vips_object_get_args(object, names, flags, n_args);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_get_args");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_argument_class_needsstring(VipsArgumentClass *argument_class)
+   * }
+   */
+  public boolean argumentClassNeedsstring(MemorySegment argument_class) throws VipsError {
+    if(!VipsValidation.isValidPointer(argument_class)) {
+      VipsValidation.throwInvalidInputError("vips_argument_class_needsstring", "argument_class");
+    }
+    var result = VipsRaw_1.vips_argument_class_needsstring(argument_class);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_get_argument(VipsObject *object, const char *name, GParamSpec **pspec, VipsArgumentClass **argument_class, VipsArgumentInstance **argument_instance)
+   * }
+   */
+  public void objectGetArgument(MemorySegment object, String nameString, MemorySegment pspec,
+      MemorySegment argument_class, MemorySegment argument_instance) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(pspec)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument", "pspec");
+    }
+    if(!VipsValidation.isValidPointer(argument_class)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument", "argument_class");
+    }
+    if(!VipsValidation.isValidPointer(argument_instance)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument", "argument_instance");
+    }
+    var result = VipsRaw_1.vips_object_get_argument(object, name, pspec, argument_class, argument_instance);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_get_argument");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_object_argument_isset(VipsObject *object, const char *name)
+   * }
+   */
+  public boolean objectArgumentIsset(MemorySegment object, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_argument_isset", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_object_argument_isset(object, name);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArgumentFlags vips_object_get_argument_flags(VipsObject *object, const char *name)
+   * }
+   */
+  public void objectGetArgumentFlags(MemorySegment object, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument_flags", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_object_get_argument_flags(object, name);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_get_argument_flags");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_get_argument_priority(VipsObject *object, const char *name)
+   * }
+   */
+  public void objectGetArgumentPriority(MemorySegment object, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument_priority", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_object_get_argument_priority(object, name);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_get_argument_priority");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_value_is_null(GParamSpec *psoec, const GValue *value)
+   * }
+   */
+  public boolean valueIsNull(MemorySegment psoec, MemorySegment value) throws VipsError {
+    if(!VipsValidation.isValidPointer(psoec)) {
+      VipsValidation.throwInvalidInputError("vips_value_is_null", "psoec");
+    }
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_is_null", "value");
+    }
+    var result = VipsRaw_1.vips_value_is_null(psoec, value);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_set_property(GObject *gobject, guint property_id, const GValue *value, GParamSpec *pspec)
+   * }
+   */
+  public void objectSetProperty(MemorySegment gobject, int property_id, MemorySegment value,
+      MemorySegment pspec) throws VipsError {
+    if(!VipsValidation.isValidPointer(gobject)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_property", "gobject");
+    }
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_property", "value");
+    }
+    if(!VipsValidation.isValidPointer(pspec)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_property", "pspec");
+    }
+    VipsRaw_1.vips_object_set_property(gobject, property_id, value, pspec);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_get_property(GObject *gobject, guint property_id, GValue *value, GParamSpec *pspec)
+   * }
+   */
+  public void objectGetProperty(MemorySegment gobject, int property_id, MemorySegment value,
+      MemorySegment pspec) throws VipsError {
+    if(!VipsValidation.isValidPointer(gobject)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_property", "gobject");
+    }
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_property", "value");
+    }
+    if(!VipsValidation.isValidPointer(pspec)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_property", "pspec");
+    }
+    VipsRaw_1.vips_object_get_property(gobject, property_id, value, pspec);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_preclose(VipsObject *object)
+   * }
+   */
+  public void objectPreclose(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_preclose", "object");
+    }
+    VipsRaw_1.vips_object_preclose(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_build(VipsObject *object)
+   * }
+   */
+  public void objectBuild(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_build", "object");
+    }
+    var result = VipsRaw_1.vips_object_build(object);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_build");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_summary_class(VipsObjectClass *klass, VipsBuf *buf)
+   * }
+   */
+  public void objectSummaryClass(MemorySegment klass, MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(klass)) {
+      VipsValidation.throwInvalidInputError("vips_object_summary_class", "klass");
+    }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_object_summary_class", "buf");
+    }
+    VipsRaw_1.vips_object_summary_class(klass, buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_summary(VipsObject *object, VipsBuf *buf)
+   * }
+   */
+  public void objectSummary(MemorySegment object, MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_summary", "object");
+    }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_object_summary", "buf");
+    }
+    VipsRaw_1.vips_object_summary(object, buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_dump(VipsObject *object, VipsBuf *buf)
+   * }
+   */
+  public void objectDump(MemorySegment object, MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_dump", "object");
+    }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_object_dump", "buf");
+    }
+    VipsRaw_1.vips_object_dump(object, buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_print_summary_class(VipsObjectClass *klass)
+   * }
+   */
+  public void objectPrintSummaryClass(MemorySegment klass) throws VipsError {
+    if(!VipsValidation.isValidPointer(klass)) {
+      VipsValidation.throwInvalidInputError("vips_object_print_summary_class", "klass");
+    }
+    VipsRaw_1.vips_object_print_summary_class(klass);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_print_summary(VipsObject *object)
+   * }
+   */
+  public void objectPrintSummary(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_print_summary", "object");
+    }
+    VipsRaw_1.vips_object_print_summary(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_print_dump(VipsObject *object)
+   * }
+   */
+  public void objectPrintDump(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_print_dump", "object");
+    }
+    VipsRaw_1.vips_object_print_dump(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_print_name(VipsObject *object)
+   * }
+   */
+  public void objectPrintName(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_print_name", "object");
+    }
+    VipsRaw_1.vips_object_print_name(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_object_sanity(VipsObject *object)
+   * }
+   */
+  public boolean objectSanity(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_sanity", "object");
+    }
+    var result = VipsRaw_1.vips_object_sanity(object);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_object_get_type()
+   * }
+   */
+  public long objectGetType() throws VipsError {
+    var result = VipsRaw_1.vips_object_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_class_install_argument(VipsObjectClass *cls, GParamSpec *pspec, VipsArgumentFlags flags, int priority, guint offset)
+   * }
+   */
+  public void objectClassInstallArgument(MemorySegment cls, MemorySegment pspec, int flags,
+      int priority, int offset) throws VipsError {
+    if(!VipsValidation.isValidPointer(cls)) {
+      VipsValidation.throwInvalidInputError("vips_object_class_install_argument", "cls");
+    }
+    if(!VipsValidation.isValidPointer(pspec)) {
+      VipsValidation.throwInvalidInputError("vips_object_class_install_argument", "pspec");
+    }
+    VipsRaw_1.vips_object_class_install_argument(cls, pspec, flags, priority, offset);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_set_argument_from_string(VipsObject *object, const char *name, const char *value)
+   * }
+   */
+  public void objectSetArgumentFromString(MemorySegment object, String nameString,
+      String valueString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_argument_from_string", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var value = arena.allocateFrom(valueString);
+    var result = VipsRaw_1.vips_object_set_argument_from_string(object, name, value);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_set_argument_from_string");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_object_argument_needsstring(VipsObject *object, const char *name)
+   * }
+   */
+  public boolean objectArgumentNeedsstring(MemorySegment object, String nameString) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_argument_needsstring", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_object_argument_needsstring(object, name);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_get_argument_to_string(VipsObject *object, const char *name, const char *arg)
+   * }
+   */
+  public void objectGetArgumentToString(MemorySegment object, String nameString, String argString)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_argument_to_string", "object");
+    }
+    var name = arena.allocateFrom(nameString);
+    var arg = arena.allocateFrom(argString);
+    var result = VipsRaw_1.vips_object_get_argument_to_string(object, name, arg);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_get_argument_to_string");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_set_required(VipsObject *object, const char *value)
+   * }
+   */
+  public void objectSetRequired(MemorySegment object, String valueString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_required", "object");
+    }
+    var value = arena.allocateFrom(valueString);
+    var result = VipsRaw_1.vips_object_set_required(object, value);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_set_required");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsObject *vips_object_new(GType type, VipsObjectSetArguments set, void *a, void *b)
+   * }
+   */
+  public MemorySegment objectNew(long type, MemorySegment set, MemorySegment a, MemorySegment b)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_object_new", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_object_new", "b");
+    }
+    var result = VipsRaw_1.vips_object_new(type, set, a, b);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_object_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_set_valist(VipsObject *object, va_list ap)
+   * }
+   */
+  public void objectSetValist(MemorySegment object, MemorySegment ap) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_valist", "object");
+    }
+    var result = VipsRaw_1.vips_object_set_valist(object, ap);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_set_valist");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_object_set_from_string(VipsObject *object, const char *string)
+   * }
+   */
+  public void objectSetFromString(MemorySegment object, String stringString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_from_string", "object");
+    }
+    var string = arena.allocateFrom(stringString);
+    var result = VipsRaw_1.vips_object_set_from_string(object, string);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_object_set_from_string");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsObject *vips_object_new_from_string(VipsObjectClass *object_class, const char *p)
+   * }
+   */
+  public MemorySegment objectNewFromString(MemorySegment object_class, String pString) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(object_class)) {
+      VipsValidation.throwInvalidInputError("vips_object_new_from_string", "object_class");
+    }
+    var p = arena.allocateFrom(pString);
+    var result = VipsRaw_1.vips_object_new_from_string(object_class, p);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_object_new_from_string", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_to_string(VipsObject *object, VipsBuf *buf)
+   * }
+   */
+  public void objectToString(MemorySegment object, MemorySegment buf) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_to_string", "object");
+    }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_object_to_string", "buf");
+    }
+    VipsRaw_1.vips_object_to_string(object, buf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_type_depth(GType type)
+   * }
+   */
+  public void typeDepth(long type) throws VipsError {
+    var result = VipsRaw_1.vips_type_depth(type);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_type_depth");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_type_find(const char *basename, const char *nickname)
+   * }
+   */
+  public long typeFind(String basenameString, String nicknameString) throws VipsError {
+    var basename = arena.allocateFrom(basenameString);
+    var nickname = arena.allocateFrom(nicknameString);
+    var result = VipsRaw_1.vips_type_find(basename, nickname);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_nickname_find(GType type)
+   * }
+   */
+  public String nicknameFind(long type) throws VipsError {
+    var result = VipsRaw_1.vips_nickname_find(type);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_nickname_find", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const VipsObjectClass *vips_class_find(const char *basename, const char *nickname)
+   * }
+   */
+  public MemorySegment classFind(String basenameString, String nicknameString) throws VipsError {
+    var basename = arena.allocateFrom(basenameString);
+    var nickname = arena.allocateFrom(nicknameString);
+    var result = VipsRaw_1.vips_class_find(basename, nickname);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_class_find", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsObject **vips_object_local_array(VipsObject *parent, int n)
+   * }
+   */
+  public MemorySegment objectLocalArray(MemorySegment parent, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(parent)) {
+      VipsValidation.throwInvalidInputError("vips_object_local_array", "parent");
+    }
+    var result = VipsRaw_1.vips_object_local_array(parent, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_object_local_array", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_local_cb(VipsObject *vobject, GObject *gobject)
+   * }
+   */
+  public void objectLocalCb(MemorySegment vobject, MemorySegment gobject) throws VipsError {
+    if(!VipsValidation.isValidPointer(vobject)) {
+      VipsValidation.throwInvalidInputError("vips_object_local_cb", "vobject");
+    }
+    if(!VipsValidation.isValidPointer(gobject)) {
+      VipsValidation.throwInvalidInputError("vips_object_local_cb", "gobject");
+    }
+    VipsRaw_1.vips_object_local_cb(vobject, gobject);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_set_static(VipsObject *object, gboolean static_object)
+   * }
+   */
+  public void objectSetStatic(MemorySegment object, boolean static_objectBoolean) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_set_static", "object");
+    }
+    var static_object = static_objectBoolean ? 1 : 0;
+    VipsRaw_1.vips_object_set_static(object, static_object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_print_all()
+   * }
+   */
+  public void objectPrintAll() throws VipsError {
+    VipsRaw_1.vips_object_print_all();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_sanity_all()
+   * }
+   */
+  public void objectSanityAll() throws VipsError {
+    VipsRaw_1.vips_object_sanity_all();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_rewind(VipsObject *object)
+   * }
+   */
+  public void objectRewind(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_rewind", "object");
+    }
+    VipsRaw_1.vips_object_rewind(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_object_unref_outputs(VipsObject *object)
+   * }
+   */
+  public void objectUnrefOutputs(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_unref_outputs", "object");
+    }
+    VipsRaw_1.vips_object_unref_outputs(object);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_object_get_description(VipsObject *object)
+   * }
+   */
+  public String objectGetDescription(MemorySegment object) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_object_get_description", "object");
+    }
+    var result = VipsRaw_1.vips_object_get_description(object);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_object_get_description", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_thing_get_type()
+   * }
+   */
+  public long thingGetType() throws VipsError {
+    var result = VipsRaw_1.vips_thing_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsThing *vips_thing_new(int i)
+   * }
+   */
+  public MemorySegment thingNew(int i) throws VipsError {
+    var result = VipsRaw_1.vips_thing_new(i);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_thing_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArea *vips_area_copy(VipsArea *area)
+   * }
+   */
+  public MemorySegment areaCopy(MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_copy", "area");
+    }
+    var result = VipsRaw_1.vips_area_copy(area);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_copy", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_area_free_cb(void *mem, VipsArea *area)
+   * }
+   */
+  public void areaFreeCb(MemorySegment mem, MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(mem)) {
+      VipsValidation.throwInvalidInputError("vips_area_free_cb", "mem");
+    }
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_free_cb", "area");
+    }
+    var result = VipsRaw_1.vips_area_free_cb(mem, area);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_area_free_cb");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_area_unref(VipsArea *area)
+   * }
+   */
+  public void areaUnref(MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_unref", "area");
+    }
+    VipsRaw_1.vips_area_unref(area);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArea *vips_area_new(VipsCallbackFn free_fn, void *data)
+   * }
+   */
+  public MemorySegment areaNew(MemorySegment free_fn, MemorySegment data) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_area_new", "data");
+    }
+    var result = VipsRaw_1.vips_area_new(free_fn, data);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArea *vips_area_new_array(GType type, size_t sizeof_type, int n)
+   * }
+   */
+  public MemorySegment areaNewArray(long type, long sizeof_type, int n) throws VipsError {
+    var result = VipsRaw_1.vips_area_new_array(type, sizeof_type, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_new_array", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArea *vips_area_new_array_object(int n)
+   * }
+   */
+  public MemorySegment areaNewArrayObject(int n) throws VipsError {
+    var result = VipsRaw_1.vips_area_new_array_object(n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_new_array_object", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_area_get_data(VipsArea *area, size_t *length, int *n, GType *type, size_t *sizeof_type)
+   * }
+   */
+  public MemorySegment areaGetData(MemorySegment area, MemorySegment length, MemorySegment n,
+      MemorySegment type, MemorySegment sizeof_type) throws VipsError {
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_get_data", "area");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_area_get_data", "length");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_area_get_data", "n");
+    }
+    if(!VipsValidation.isValidPointer(type)) {
+      VipsValidation.throwInvalidInputError("vips_area_get_data", "type");
+    }
+    if(!VipsValidation.isValidPointer(sizeof_type)) {
+      VipsValidation.throwInvalidInputError("vips_area_get_data", "sizeof_type");
+    }
+    var result = VipsRaw_1.vips_area_get_data(area, length, n, type, sizeof_type);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_get_data", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_area_get_type()
+   * }
+   */
+  public long areaGetType() throws VipsError {
+    var result = VipsRaw_1.vips_area_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_save_string_get_type()
+   * }
+   */
+  public long saveStringGetType() throws VipsError {
+    var result = VipsRaw_1.vips_save_string_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsRefString *vips_ref_string_new(const char *str)
+   * }
+   */
+  public MemorySegment refStringNew(String strString) throws VipsError {
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_ref_string_new(str);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_ref_string_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_ref_string_get(VipsRefString *refstr, size_t *length)
+   * }
+   */
+  public String refStringGet(MemorySegment refstr, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(refstr)) {
+      VipsValidation.throwInvalidInputError("vips_ref_string_get", "refstr");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_ref_string_get", "length");
+    }
+    var result = VipsRaw_1.vips_ref_string_get(refstr, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_ref_string_get", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_ref_string_get_type()
+   * }
+   */
+  public long refStringGetType() throws VipsError {
+    var result = VipsRaw_1.vips_ref_string_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBlob *vips_blob_new(VipsCallbackFn free_fn, const void *data, size_t length)
+   * }
+   */
+  public MemorySegment blobNew(MemorySegment free_fn, MemorySegment data, long length) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_blob_new", "data");
+    }
+    var result = VipsRaw_1.vips_blob_new(free_fn, data, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_blob_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBlob *vips_blob_copy(const void *data, size_t length)
+   * }
+   */
+  public MemorySegment blobCopy(MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_blob_copy", "data");
+    }
+    var result = VipsRaw_1.vips_blob_copy(data, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_blob_copy", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const void *vips_blob_get(VipsBlob *blob, size_t *length)
+   * }
+   */
+  public MemorySegment blobGet(MemorySegment blob, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(blob)) {
+      VipsValidation.throwInvalidInputError("vips_blob_get", "blob");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_blob_get", "length");
+    }
+    var result = VipsRaw_1.vips_blob_get(blob, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_blob_get", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_blob_set(VipsBlob *blob, VipsCallbackFn free_fn, const void *data, size_t length)
+   * }
+   */
+  public void blobSet(MemorySegment blob, MemorySegment free_fn, MemorySegment data, long length)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(blob)) {
+      VipsValidation.throwInvalidInputError("vips_blob_set", "blob");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_blob_set", "data");
+    }
+    VipsRaw_1.vips_blob_set(blob, free_fn, data, length);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_blob_get_type()
+   * }
+   */
+  public long blobGetType() throws VipsError {
+    var result = VipsRaw_1.vips_blob_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayDouble *vips_array_double_new(const double *array, int n)
+   * }
+   */
+  public MemorySegment arrayDoubleNew(MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_double_new", "array");
+    }
+    var result = VipsRaw_1.vips_array_double_new(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_double_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double *vips_array_double_get(VipsArrayDouble *array, int *n)
+   * }
+   */
+  public MemorySegment arrayDoubleGet(MemorySegment array, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_double_get", "array");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_array_double_get", "n");
+    }
+    var result = VipsRaw_1.vips_array_double_get(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_double_get", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_array_double_get_type()
+   * }
+   */
+  public long arrayDoubleGetType() throws VipsError {
+    var result = VipsRaw_1.vips_array_double_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayInt *vips_array_int_new(const int *array, int n)
+   * }
+   */
+  public MemorySegment arrayIntNew(MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_int_new", "array");
+    }
+    var result = VipsRaw_1.vips_array_int_new(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_int_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int *vips_array_int_get(VipsArrayInt *array, int *n)
+   * }
+   */
+  public MemorySegment arrayIntGet(MemorySegment array, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_int_get", "array");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_array_int_get", "n");
+    }
+    var result = VipsRaw_1.vips_array_int_get(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_int_get", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_array_int_get_type()
+   * }
+   */
+  public long arrayIntGetType() throws VipsError {
+    var result = VipsRaw_1.vips_array_int_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_array_image_get_type()
+   * }
+   */
+  public long arrayImageGetType() throws VipsError {
+    var result = VipsRaw_1.vips_array_image_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_area(GValue *value, VipsCallbackFn free_fn, void *data)
+   * }
+   */
+  public void valueSetArea(MemorySegment value, MemorySegment free_fn, MemorySegment data) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_area", "value");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_area", "data");
+    }
+    VipsRaw_1.vips_value_set_area(value, free_fn, data);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_value_get_area(const GValue *value, size_t *length)
+   * }
+   */
+  public MemorySegment valueGetArea(MemorySegment value, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_area", "value");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_area", "length");
+    }
+    var result = VipsRaw_1.vips_value_get_area(value, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_area", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_value_get_save_string(const GValue *value)
+   * }
+   */
+  public String valueGetSaveString(MemorySegment value) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_save_string", "value");
+    }
+    var result = VipsRaw_1.vips_value_get_save_string(value);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_save_string", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_save_string(GValue *value, const char *str)
+   * }
+   */
+  public void valueSetSaveString(MemorySegment value, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_save_string", "value");
+    }
+    var str = arena.allocateFrom(strString);
+    VipsRaw_1.vips_value_set_save_string(value, str);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_value_get_ref_string(const GValue *value, size_t *length)
+   * }
+   */
+  public String valueGetRefString(MemorySegment value, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_ref_string", "value");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_ref_string", "length");
+    }
+    var result = VipsRaw_1.vips_value_get_ref_string(value, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_ref_string", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_ref_string(GValue *value, const char *str)
+   * }
+   */
+  public void valueSetRefString(MemorySegment value, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_ref_string", "value");
+    }
+    var str = arena.allocateFrom(strString);
+    VipsRaw_1.vips_value_set_ref_string(value, str);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_value_get_blob(const GValue *value, size_t *length)
+   * }
+   */
+  public MemorySegment valueGetBlob(MemorySegment value, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_blob", "value");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_blob", "length");
+    }
+    var result = VipsRaw_1.vips_value_get_blob(value, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_blob", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_blob(GValue *value, VipsCallbackFn free_fn, const void *data, size_t length)
+   * }
+   */
+  public void valueSetBlob(MemorySegment value, MemorySegment free_fn, MemorySegment data,
+      long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_blob", "value");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_blob", "data");
+    }
+    VipsRaw_1.vips_value_set_blob(value, free_fn, data, length);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_blob_free(GValue *value, void *data, size_t length)
+   * }
+   */
+  public void valueSetBlobFree(MemorySegment value, MemorySegment data, long length) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_blob_free", "value");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_blob_free", "data");
+    }
+    VipsRaw_1.vips_value_set_blob_free(value, data, length);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_array(GValue *value, int n, GType type, size_t sizeof_type)
+   * }
+   */
+  public void valueSetArray(MemorySegment value, int n, long type, long sizeof_type) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array", "value");
+    }
+    VipsRaw_1.vips_value_set_array(value, n, type, sizeof_type);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_value_get_array(const GValue *value, int *n, GType *type, size_t *sizeof_type)
+   * }
+   */
+  public MemorySegment valueGetArray(MemorySegment value, MemorySegment n, MemorySegment type,
+      MemorySegment sizeof_type) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array", "value");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array", "n");
+    }
+    if(!VipsValidation.isValidPointer(type)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array", "type");
+    }
+    if(!VipsValidation.isValidPointer(sizeof_type)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array", "sizeof_type");
+    }
+    var result = VipsRaw_1.vips_value_get_array(value, n, type, sizeof_type);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_array", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double *vips_value_get_array_double(const GValue *value, int *n)
+   * }
+   */
+  public MemorySegment valueGetArrayDouble(MemorySegment value, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_double", "value");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_double", "n");
+    }
+    var result = VipsRaw_1.vips_value_get_array_double(value, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_array_double", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_array_double(GValue *value, const double *array, int n)
+   * }
+   */
+  public void valueSetArrayDouble(MemorySegment value, MemorySegment array, int n) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_double", "value");
+    }
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_double", "array");
+    }
+    VipsRaw_1.vips_value_set_array_double(value, array, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int *vips_value_get_array_int(const GValue *value, int *n)
+   * }
+   */
+  public MemorySegment valueGetArrayInt(MemorySegment value, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_int", "value");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_int", "n");
+    }
+    var result = VipsRaw_1.vips_value_get_array_int(value, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_array_int", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_array_int(GValue *value, const int *array, int n)
+   * }
+   */
+  public void valueSetArrayInt(MemorySegment value, MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_int", "value");
+    }
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_int", "array");
+    }
+    VipsRaw_1.vips_value_set_array_int(value, array, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GObject **vips_value_get_array_object(const GValue *value, int *n)
+   * }
+   */
+  public MemorySegment valueGetArrayObject(MemorySegment value, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_object", "value");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_object", "n");
+    }
+    var result = VipsRaw_1.vips_value_get_array_object(value, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_array_object", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_array_object(GValue *value, int n)
+   * }
+   */
+  public void valueSetArrayObject(MemorySegment value, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_object", "value");
+    }
+    VipsRaw_1.vips_value_set_array_object(value, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_profile_set(gboolean profile)
+   * }
+   */
+  public void profileSet(boolean profileBoolean) throws VipsError {
+    var profile = profileBoolean ? 1 : 0;
+    VipsRaw_1.vips_profile_set(profile);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_connection_get_type()
+   * }
+   */
+  public long connectionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_connection_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_connection_filename(VipsConnection *connection)
+   * }
+   */
+  public String connectionFilename(MemorySegment connection) throws VipsError {
+    if(!VipsValidation.isValidPointer(connection)) {
+      VipsValidation.throwInvalidInputError("vips_connection_filename", "connection");
+    }
+    var result = VipsRaw_1.vips_connection_filename(connection);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_connection_filename", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_connection_nick(VipsConnection *connection)
+   * }
+   */
+  public String connectionNick(MemorySegment connection) throws VipsError {
+    if(!VipsValidation.isValidPointer(connection)) {
+      VipsValidation.throwInvalidInputError("vips_connection_nick", "connection");
+    }
+    var result = VipsRaw_1.vips_connection_nick(connection);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_connection_nick", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_pipe_read_limit_set(gint64 limit)
+   * }
+   */
+  public void pipeReadLimitSet(long limit) throws VipsError {
+    VipsRaw_1.vips_pipe_read_limit_set(limit);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_source_get_type()
+   * }
+   */
+  public long sourceGetType() throws VipsError {
+    var result = VipsRaw_1.vips_source_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_descriptor(int descriptor)
+   * }
+   */
+  public MemorySegment sourceNewFromDescriptor(int descriptor) throws VipsError {
+    var result = VipsRaw_1.vips_source_new_from_descriptor(descriptor);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_descriptor", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_file(const char *filename)
+   * }
+   */
+  public MemorySegment sourceNewFromFile(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_source_new_from_file(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_file", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_blob(VipsBlob *blob)
+   * }
+   */
+  public MemorySegment sourceNewFromBlob(MemorySegment blob) throws VipsError {
+    if(!VipsValidation.isValidPointer(blob)) {
+      VipsValidation.throwInvalidInputError("vips_source_new_from_blob", "blob");
+    }
+    var result = VipsRaw_1.vips_source_new_from_blob(blob);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_blob", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_target(VipsTarget *target)
+   * }
+   */
+  public MemorySegment sourceNewFromTarget(MemorySegment target) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_source_new_from_target", "target");
+    }
+    var result = VipsRaw_1.vips_source_new_from_target(target);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_target", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_memory(const void *data, size_t size)
+   * }
+   */
+  public MemorySegment sourceNewFromMemory(MemorySegment data, long size) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_source_new_from_memory", "data");
+    }
+    var result = VipsRaw_1.vips_source_new_from_memory(data, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSource *vips_source_new_from_options(const char *options)
+   * }
+   */
+  public MemorySegment sourceNewFromOptions(String optionsString) throws VipsError {
+    var options = arena.allocateFrom(optionsString);
+    var result = VipsRaw_1.vips_source_new_from_options(options);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_new_from_options", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_source_minimise(VipsSource *source)
+   * }
+   */
+  public void sourceMinimise(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_minimise", "source");
+    }
+    VipsRaw_1.vips_source_minimise(source);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_source_unminimise(VipsSource *source)
+   * }
+   */
+  public void sourceUnminimise(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_unminimise", "source");
+    }
+    var result = VipsRaw_1.vips_source_unminimise(source);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_source_unminimise");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_source_decode(VipsSource *source)
+   * }
+   */
+  public void sourceDecode(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_decode", "source");
+    }
+    var result = VipsRaw_1.vips_source_decode(source);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_source_decode");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_source_read(VipsSource *source, void *data, size_t length)
+   * }
+   */
+  public long sourceRead(MemorySegment source, MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_read", "source");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_source_read", "data");
+    }
+    var result = VipsRaw_1.vips_source_read(source, data, length);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_source_is_mappable(VipsSource *source)
+   * }
+   */
+  public boolean sourceIsMappable(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_is_mappable", "source");
+    }
+    var result = VipsRaw_1.vips_source_is_mappable(source);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_source_is_file(VipsSource *source)
+   * }
+   */
+  public boolean sourceIsFile(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_is_file", "source");
+    }
+    var result = VipsRaw_1.vips_source_is_file(source);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const void *vips_source_map(VipsSource *source, size_t *length)
+   * }
+   */
+  public MemorySegment sourceMap(MemorySegment source, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_map", "source");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_source_map", "length");
+    }
+    var result = VipsRaw_1.vips_source_map(source, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_map", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBlob *vips_source_map_blob(VipsSource *source)
+   * }
+   */
+  public MemorySegment sourceMapBlob(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_map_blob", "source");
+    }
+    var result = VipsRaw_1.vips_source_map_blob(source);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_map_blob", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_source_seek(VipsSource *source, gint64 offset, int whence)
+   * }
+   */
+  public long sourceSeek(MemorySegment source, long offset, int whence) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_seek", "source");
+    }
+    var result = VipsRaw_1.vips_source_seek(source, offset, whence);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_source_rewind(VipsSource *source)
+   * }
+   */
+  public void sourceRewind(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_rewind", "source");
+    }
+    var result = VipsRaw_1.vips_source_rewind(source);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_source_rewind");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_source_sniff_at_most(VipsSource *source, unsigned char **data, size_t length)
+   * }
+   */
+  public long sourceSniffAtMost(MemorySegment source, MemorySegment data, long length) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_sniff_at_most", "source");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_source_sniff_at_most", "data");
+    }
+    var result = VipsRaw_1.vips_source_sniff_at_most(source, data, length);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * unsigned char *vips_source_sniff(VipsSource *source, size_t length)
+   * }
+   */
+  public MemorySegment sourceSniff(MemorySegment source, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_sniff", "source");
+    }
+    var result = VipsRaw_1.vips_source_sniff(source, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_sniff", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_source_length(VipsSource *source)
+   * }
+   */
+  public long sourceLength(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_source_length", "source");
+    }
+    var result = VipsRaw_1.vips_source_length(source);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_source_custom_get_type()
+   * }
+   */
+  public long sourceCustomGetType() throws VipsError {
+    var result = VipsRaw_1.vips_source_custom_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSourceCustom *vips_source_custom_new()
+   * }
+   */
+  public MemorySegment sourceCustomNew() throws VipsError {
+    var result = VipsRaw_1.vips_source_custom_new();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_custom_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSourceGInputStream *vips_source_g_input_stream_new(GInputStream *stream)
+   * }
+   */
+  public MemorySegment sourceGInputStreamNew(MemorySegment stream) throws VipsError {
+    if(!VipsValidation.isValidPointer(stream)) {
+      VipsValidation.throwInvalidInputError("vips_source_g_input_stream_new", "stream");
+    }
+    var result = VipsRaw_1.vips_source_g_input_stream_new(stream);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_g_input_stream_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_target_get_type()
+   * }
+   */
+  public long targetGetType() throws VipsError {
+    var result = VipsRaw_1.vips_target_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTarget *vips_target_new_to_descriptor(int descriptor)
+   * }
+   */
+  public MemorySegment targetNewToDescriptor(int descriptor) throws VipsError {
+    var result = VipsRaw_1.vips_target_new_to_descriptor(descriptor);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_new_to_descriptor", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTarget *vips_target_new_to_file(const char *filename)
+   * }
+   */
+  public MemorySegment targetNewToFile(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_target_new_to_file(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_new_to_file", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTarget *vips_target_new_to_memory()
+   * }
+   */
+  public MemorySegment targetNewToMemory() throws VipsError {
+    var result = VipsRaw_1.vips_target_new_to_memory();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_new_to_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTarget *vips_target_new_temp(VipsTarget *target)
+   * }
+   */
+  public MemorySegment targetNewTemp(MemorySegment target) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_new_temp", "target");
+    }
+    var result = VipsRaw_1.vips_target_new_temp(target);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_new_temp", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_target_write(VipsTarget *target, const void *data, size_t length)
+   * }
+   */
+  public void targetWrite(MemorySegment target, MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_write", "target");
+    }
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_target_write", "data");
+    }
+    var result = VipsRaw_1.vips_target_write(target, data, length);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_target_write");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_target_read(VipsTarget *target, void *buffer, size_t length)
+   * }
+   */
+  public long targetRead(MemorySegment target, MemorySegment buffer, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_read", "target");
+    }
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_target_read", "buffer");
+    }
+    var result = VipsRaw_1.vips_target_read(target, buffer, length);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gint64 vips_target_seek(VipsTarget *target, gint64 offset, int whence)
+   * }
+   */
+  public long targetSeek(MemorySegment target, long offset, int whence) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_seek", "target");
+    }
+    var result = VipsRaw_1.vips_target_seek(target, offset, whence);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_target_end(VipsTarget *target)
+   * }
+   */
+  public void targetEnd(MemorySegment target) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_end", "target");
+    }
+    var result = VipsRaw_1.vips_target_end(target);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_target_end");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_target_finish(VipsTarget *target)
+   * }
+   */
+  public void targetFinish(MemorySegment target) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_finish", "target");
+    }
+    VipsRaw_1.vips_target_finish(target);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * unsigned char *vips_target_steal(VipsTarget *target, size_t *length)
+   * }
+   */
+  public MemorySegment targetSteal(MemorySegment target, MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_steal", "target");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_target_steal", "length");
+    }
+    var result = VipsRaw_1.vips_target_steal(target, length);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_steal", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_target_steal_text(VipsTarget *target)
+   * }
+   */
+  public String targetStealText(MemorySegment target) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_steal_text", "target");
+    }
+    var result = VipsRaw_1.vips_target_steal_text(target);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_steal_text", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_target_putc(VipsTarget *target, int ch)
+   * }
+   */
+  public void targetPutc(MemorySegment target, int ch) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_putc", "target");
+    }
+    var result = VipsRaw_1.vips_target_putc(target, ch);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_target_putc");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_target_writes(VipsTarget *target, const char *str)
+   * }
+   */
+  public void targetWrites(MemorySegment target, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_writes", "target");
+    }
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_target_writes(target, str);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_target_writes");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_target_write_amp(VipsTarget *target, const char *str)
+   * }
+   */
+  public void targetWriteAmp(MemorySegment target, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_target_write_amp", "target");
+    }
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_target_write_amp(target, str);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_target_write_amp");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_target_custom_get_type()
+   * }
+   */
+  public long targetCustomGetType() throws VipsError {
+    var result = VipsRaw_1.vips_target_custom_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTargetCustom *vips_target_custom_new()
+   * }
+   */
+  public MemorySegment targetCustomNew() throws VipsError {
+    var result = VipsRaw_1.vips_target_custom_new();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_custom_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_sbuf_get_type()
+   * }
+   */
+  public long sbufGetType() throws VipsError {
+    var result = VipsRaw_1.vips_sbuf_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsSbuf *vips_sbuf_new_from_source(VipsSource *source)
+   * }
+   */
+  public MemorySegment sbufNewFromSource(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_new_from_source", "source");
+    }
+    var result = VipsRaw_1.vips_sbuf_new_from_source(source);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_sbuf_new_from_source", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_sbuf_unbuffer(VipsSbuf *sbuf)
+   * }
+   */
+  public void sbufUnbuffer(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_unbuffer", "sbuf");
+    }
+    VipsRaw_1.vips_sbuf_unbuffer(sbuf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sbuf_getc(VipsSbuf *sbuf)
+   * }
+   */
+  public void sbufGetc(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_getc", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_getc(sbuf);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sbuf_getc");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_sbuf_ungetc(VipsSbuf *sbuf)
+   * }
+   */
+  public void sbufUngetc(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_ungetc", "sbuf");
+    }
+    VipsRaw_1.vips_sbuf_ungetc(sbuf);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sbuf_require(VipsSbuf *sbuf, int require)
+   * }
+   */
+  public void sbufRequire(MemorySegment sbuf, int require) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_require", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_require(sbuf, require);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sbuf_require");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_sbuf_get_line(VipsSbuf *sbuf)
+   * }
+   */
+  public String sbufGetLine(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_get_line", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_get_line(sbuf);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_sbuf_get_line", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_sbuf_get_line_copy(VipsSbuf *sbuf)
+   * }
+   */
+  public String sbufGetLineCopy(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_get_line_copy", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_get_line_copy(sbuf);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_sbuf_get_line_copy", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_sbuf_get_non_whitespace(VipsSbuf *sbuf)
+   * }
+   */
+  public String sbufGetNonWhitespace(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_get_non_whitespace", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_get_non_whitespace(sbuf);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_sbuf_get_non_whitespace", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sbuf_skip_whitespace(VipsSbuf *sbuf)
+   * }
+   */
+  public void sbufSkipWhitespace(MemorySegment sbuf) throws VipsError {
+    if(!VipsValidation.isValidPointer(sbuf)) {
+      VipsValidation.throwInvalidInputError("vips_sbuf_skip_whitespace", "sbuf");
+    }
+    var result = VipsRaw_1.vips_sbuf_skip_whitespace(sbuf);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sbuf_skip_whitespace");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_rect_isempty(const VipsRect *r)
+   * }
+   */
+  public boolean rectIsempty(MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_rect_isempty", "r");
+    }
+    var result = VipsRaw_1.vips_rect_isempty(r);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_rect_includespoint(const VipsRect *r, int x, int y)
+   * }
+   */
+  public boolean rectIncludespoint(MemorySegment r, int x, int y) throws VipsError {
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_rect_includespoint", "r");
+    }
+    var result = VipsRaw_1.vips_rect_includespoint(r, x, y);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_rect_includesrect(const VipsRect *r1, const VipsRect *r2)
+   * }
+   */
+  public boolean rectIncludesrect(MemorySegment r1, MemorySegment r2) throws VipsError {
+    if(!VipsValidation.isValidPointer(r1)) {
+      VipsValidation.throwInvalidInputError("vips_rect_includesrect", "r1");
+    }
+    if(!VipsValidation.isValidPointer(r2)) {
+      VipsValidation.throwInvalidInputError("vips_rect_includesrect", "r2");
+    }
+    var result = VipsRaw_1.vips_rect_includesrect(r1, r2);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_rect_equalsrect(const VipsRect *r1, const VipsRect *r2)
+   * }
+   */
+  public boolean rectEqualsrect(MemorySegment r1, MemorySegment r2) throws VipsError {
+    if(!VipsValidation.isValidPointer(r1)) {
+      VipsValidation.throwInvalidInputError("vips_rect_equalsrect", "r1");
+    }
+    if(!VipsValidation.isValidPointer(r2)) {
+      VipsValidation.throwInvalidInputError("vips_rect_equalsrect", "r2");
+    }
+    var result = VipsRaw_1.vips_rect_equalsrect(r1, r2);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_rect_overlapsrect(const VipsRect *r1, const VipsRect *r2)
+   * }
+   */
+  public boolean rectOverlapsrect(MemorySegment r1, MemorySegment r2) throws VipsError {
+    if(!VipsValidation.isValidPointer(r1)) {
+      VipsValidation.throwInvalidInputError("vips_rect_overlapsrect", "r1");
+    }
+    if(!VipsValidation.isValidPointer(r2)) {
+      VipsValidation.throwInvalidInputError("vips_rect_overlapsrect", "r2");
+    }
+    var result = VipsRaw_1.vips_rect_overlapsrect(r1, r2);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_rect_marginadjust(VipsRect *r, int n)
+   * }
+   */
+  public void rectMarginadjust(MemorySegment r, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_rect_marginadjust", "r");
+    }
+    VipsRaw_1.vips_rect_marginadjust(r, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_rect_intersectrect(const VipsRect *r1, const VipsRect *r2, VipsRect *out)
+   * }
+   */
+  public void rectIntersectrect(MemorySegment r1, MemorySegment r2, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(r1)) {
+      VipsValidation.throwInvalidInputError("vips_rect_intersectrect", "r1");
+    }
+    if(!VipsValidation.isValidPointer(r2)) {
+      VipsValidation.throwInvalidInputError("vips_rect_intersectrect", "r2");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    VipsRaw_1.vips_rect_intersectrect(r1, r2, outPointer);
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_rect_unionrect(const VipsRect *r1, const VipsRect *r2, VipsRect *out)
+   * }
+   */
+  public void rectUnionrect(MemorySegment r1, MemorySegment r2, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(r1)) {
+      VipsValidation.throwInvalidInputError("vips_rect_unionrect", "r1");
+    }
+    if(!VipsValidation.isValidPointer(r2)) {
+      VipsValidation.throwInvalidInputError("vips_rect_unionrect", "r2");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    VipsRaw_1.vips_rect_unionrect(r1, r2, outPointer);
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsRect *vips_rect_dup(const VipsRect *r)
+   * }
+   */
+  public MemorySegment rectDup(MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_rect_dup", "r");
+    }
+    var result = VipsRaw_1.vips_rect_dup(r);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_rect_dup", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_rect_normalise(VipsRect *r)
+   * }
+   */
+  public void rectNormalise(MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_rect_normalise", "r");
+    }
+    VipsRaw_1.vips_rect_normalise(r);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_window_unref(VipsWindow *window)
+   * }
+   */
+  public void windowUnref(MemorySegment window) throws VipsError {
+    if(!VipsValidation.isValidPointer(window)) {
+      VipsValidation.throwInvalidInputError("vips_window_unref", "window");
+    }
+    var result = VipsRaw_1.vips_window_unref(window);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_window_unref");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_window_print(VipsWindow *window)
+   * }
+   */
+  public void windowPrint(MemorySegment window) throws VipsError {
+    if(!VipsValidation.isValidPointer(window)) {
+      VipsValidation.throwInvalidInputError("vips_window_print", "window");
+    }
+    VipsRaw_1.vips_window_print(window);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buffer_dump_all()
+   * }
+   */
+  public void bufferDumpAll() throws VipsError {
+    VipsRaw_1.vips_buffer_dump_all();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buffer_done(VipsBuffer *buffer)
+   * }
+   */
+  public void bufferDone(MemorySegment buffer) throws VipsError {
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_done", "buffer");
+    }
+    VipsRaw_1.vips_buffer_done(buffer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buffer_undone(VipsBuffer *buffer)
+   * }
+   */
+  public void bufferUndone(MemorySegment buffer) throws VipsError {
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_undone", "buffer");
+    }
+    VipsRaw_1.vips_buffer_undone(buffer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buffer_unref(VipsBuffer *buffer)
+   * }
+   */
+  public void bufferUnref(MemorySegment buffer) throws VipsError {
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_unref", "buffer");
+    }
+    VipsRaw_1.vips_buffer_unref(buffer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBuffer *vips_buffer_new(struct _VipsImage *im, VipsRect *area)
+   * }
+   */
+  public MemorySegment bufferNew(MemorySegment im, MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_new", "im");
+    }
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_new", "area");
+    }
+    var result = VipsRaw_1.vips_buffer_new(im, area);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_buffer_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBuffer *vips_buffer_ref(struct _VipsImage *im, VipsRect *area)
+   * }
+   */
+  public MemorySegment bufferRef(MemorySegment im, MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_ref", "im");
+    }
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_ref", "area");
+    }
+    var result = VipsRaw_1.vips_buffer_ref(im, area);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_buffer_ref", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBuffer *vips_buffer_unref_ref(VipsBuffer *buffer, struct _VipsImage *im, VipsRect *area)
+   * }
+   */
+  public MemorySegment bufferUnrefRef(MemorySegment buffer, MemorySegment im, MemorySegment area)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_unref_ref", "buffer");
+    }
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_unref_ref", "im");
+    }
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_unref_ref", "area");
+    }
+    var result = VipsRaw_1.vips_buffer_unref_ref(buffer, im, area);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_buffer_unref_ref", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_buffer_print(VipsBuffer *buffer)
+   * }
+   */
+  public void bufferPrint(MemorySegment buffer) throws VipsError {
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_buffer_print", "buffer");
+    }
+    VipsRaw_1.vips_buffer_print(buffer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_dump_all()
+   * }
+   */
+  public void regionDumpAll() throws VipsError {
+    VipsRaw_1.vips_region_dump_all();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_prepare_many(struct _VipsRegion **reg, const VipsRect *r)
+   * }
+   */
+  public void regionPrepareMany(MemorySegment reg, MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare_many", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare_many", "r");
+    }
+    var result = VipsRaw_1.vips_region_prepare_many(reg, r);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_prepare_many");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_region_get_type()
+   * }
+   */
+  public long regionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_region_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsRegion *vips_region_new(VipsImage *image)
+   * }
+   */
+  public MemorySegment regionNew(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_region_new", "image");
+    }
+    var result = VipsRaw_1.vips_region_new(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_region_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_buffer(VipsRegion *reg, const VipsRect *r)
+   * }
+   */
+  public void regionBuffer(MemorySegment reg, MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_buffer", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_buffer", "r");
+    }
+    var result = VipsRaw_1.vips_region_buffer(reg, r);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_buffer");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_image(VipsRegion *reg, const VipsRect *r)
+   * }
+   */
+  public void regionImage(MemorySegment reg, MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_image", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_image", "r");
+    }
+    var result = VipsRaw_1.vips_region_image(reg, r);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_image");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_region(VipsRegion *reg, VipsRegion *dest, const VipsRect *r, int x, int y)
+   * }
+   */
+  public void regionRegion(MemorySegment reg, MemorySegment dest, MemorySegment r, int x, int y)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_region", "reg");
+    }
+    if(!VipsValidation.isValidPointer(dest)) {
+      VipsValidation.throwInvalidInputError("vips_region_region", "dest");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_region", "r");
+    }
+    var result = VipsRaw_1.vips_region_region(reg, dest, r, x, y);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_region");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_equalsregion(VipsRegion *reg1, VipsRegion *reg2)
+   * }
+   */
+  public void regionEqualsregion(MemorySegment reg1, MemorySegment reg2) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg1)) {
+      VipsValidation.throwInvalidInputError("vips_region_equalsregion", "reg1");
+    }
+    if(!VipsValidation.isValidPointer(reg2)) {
+      VipsValidation.throwInvalidInputError("vips_region_equalsregion", "reg2");
+    }
+    var result = VipsRaw_1.vips_region_equalsregion(reg1, reg2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_equalsregion");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_position(VipsRegion *reg, int x, int y)
+   * }
+   */
+  public void regionPosition(MemorySegment reg, int x, int y) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_position", "reg");
+    }
+    var result = VipsRaw_1.vips_region_position(reg, x, y);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_position");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_paint(VipsRegion *reg, const VipsRect *r, int value)
+   * }
+   */
+  public void regionPaint(MemorySegment reg, MemorySegment r, int value) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_paint", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_paint", "r");
+    }
+    VipsRaw_1.vips_region_paint(reg, r, value);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_paint_pel(VipsRegion *reg, const VipsRect *r, const VipsPel *ink)
+   * }
+   */
+  public void regionPaintPel(MemorySegment reg, MemorySegment r, MemorySegment ink) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_paint_pel", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_paint_pel", "r");
+    }
+    if(!VipsValidation.isValidPointer(ink)) {
+      VipsValidation.throwInvalidInputError("vips_region_paint_pel", "ink");
+    }
+    VipsRaw_1.vips_region_paint_pel(reg, r, ink);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_black(VipsRegion *reg)
+   * }
+   */
+  public void regionBlack(MemorySegment reg) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_black", "reg");
+    }
+    VipsRaw_1.vips_region_black(reg);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_copy(VipsRegion *reg, VipsRegion *dest, const VipsRect *r, int x, int y)
+   * }
+   */
+  public void regionCopy(MemorySegment reg, MemorySegment dest, MemorySegment r, int x, int y)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_copy", "reg");
+    }
+    if(!VipsValidation.isValidPointer(dest)) {
+      VipsValidation.throwInvalidInputError("vips_region_copy", "dest");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_copy", "r");
+    }
+    VipsRaw_1.vips_region_copy(reg, dest, r, x, y);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_shrink_method(VipsRegion *from, VipsRegion *to, const VipsRect *target, VipsRegionShrink method)
+   * }
+   */
+  public void regionShrinkMethod(MemorySegment from, MemorySegment to, MemorySegment target,
+      int method) throws VipsError {
+    if(!VipsValidation.isValidPointer(from)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink_method", "from");
+    }
+    if(!VipsValidation.isValidPointer(to)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink_method", "to");
+    }
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink_method", "target");
+    }
+    var result = VipsRaw_1.vips_region_shrink_method(from, to, target, method);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_shrink_method");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_shrink(VipsRegion *from, VipsRegion *to, const VipsRect *target)
+   * }
+   */
+  public void regionShrink(MemorySegment from, MemorySegment to, MemorySegment target) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(from)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink", "from");
+    }
+    if(!VipsValidation.isValidPointer(to)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink", "to");
+    }
+    if(!VipsValidation.isValidPointer(target)) {
+      VipsValidation.throwInvalidInputError("vips_region_shrink", "target");
+    }
+    var result = VipsRaw_1.vips_region_shrink(from, to, target);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_shrink");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_prepare(VipsRegion *reg, const VipsRect *r)
+   * }
+   */
+  public void regionPrepare(MemorySegment reg, MemorySegment r) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare", "reg");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare", "r");
+    }
+    var result = VipsRaw_1.vips_region_prepare(reg, r);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_prepare");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_prepare_to(VipsRegion *reg, VipsRegion *dest, const VipsRect *r, int x, int y)
+   * }
+   */
+  public void regionPrepareTo(MemorySegment reg, MemorySegment dest, MemorySegment r, int x, int y)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare_to", "reg");
+    }
+    if(!VipsValidation.isValidPointer(dest)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare_to", "dest");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_region_prepare_to", "r");
+    }
+    var result = VipsRaw_1.vips_region_prepare_to(reg, dest, r, x, y);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_prepare_to");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsPel *vips_region_fetch(VipsRegion *region, int left, int top, int width, int height, size_t *len)
+   * }
+   */
+  public MemorySegment regionFetch(MemorySegment region, int left, int top, int width, int height,
+      MemorySegment len) throws VipsError {
+    if(!VipsValidation.isValidPointer(region)) {
+      VipsValidation.throwInvalidInputError("vips_region_fetch", "region");
+    }
+    if(!VipsValidation.isValidPointer(len)) {
+      VipsValidation.throwInvalidInputError("vips_region_fetch", "len");
+    }
+    var result = VipsRaw_1.vips_region_fetch(region, left, top, width, height, len);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_region_fetch", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_width(VipsRegion *region)
+   * }
+   */
+  public void regionWidth(MemorySegment region) throws VipsError {
+    if(!VipsValidation.isValidPointer(region)) {
+      VipsValidation.throwInvalidInputError("vips_region_width", "region");
+    }
+    var result = VipsRaw_1.vips_region_width(region);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_width");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_region_height(VipsRegion *region)
+   * }
+   */
+  public void regionHeight(MemorySegment region) throws VipsError {
+    if(!VipsValidation.isValidPointer(region)) {
+      VipsValidation.throwInvalidInputError("vips_region_height", "region");
+    }
+    var result = VipsRaw_1.vips_region_height(region);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_region_height");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_region_invalidate(VipsRegion *reg)
+   * }
+   */
+  public void regionInvalidate(MemorySegment reg) throws VipsError {
+    if(!VipsValidation.isValidPointer(reg)) {
+      VipsValidation.throwInvalidInputError("vips_region_invalidate", "reg");
+    }
+    VipsRaw_1.vips_region_invalidate(reg);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_image_get_type()
+   * }
+   */
+  public long imageGetType() throws VipsError {
+    var result = VipsRaw_1.vips_image_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_progress_set(gboolean progress)
+   * }
+   */
+  public void progressSet(boolean progressBoolean) throws VipsError {
+    var progress = progressBoolean ? 1 : 0;
+    VipsRaw_1.vips_progress_set(progress);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_invalidate_all(VipsImage *image)
+   * }
+   */
+  public void imageInvalidateAll(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_invalidate_all", "image");
+    }
+    VipsRaw_1.vips_image_invalidate_all(image);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_minimise_all(VipsImage *image)
+   * }
+   */
+  public void imageMinimiseAll(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_minimise_all", "image");
+    }
+    VipsRaw_1.vips_image_minimise_all(image);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_is_sequential(VipsImage *image)
+   * }
+   */
+  public boolean imageIsSequential(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_is_sequential", "image");
+    }
+    var result = VipsRaw_1.vips_image_is_sequential(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_progress(VipsImage *image, gboolean progress)
+   * }
+   */
+  public void imageSetProgress(MemorySegment image, boolean progressBoolean) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_progress", "image");
+    }
+    var progress = progressBoolean ? 1 : 0;
+    VipsRaw_1.vips_image_set_progress(image, progress);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_iskilled(VipsImage *image)
+   * }
+   */
+  public boolean imageIskilled(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_iskilled", "image");
+    }
+    var result = VipsRaw_1.vips_image_iskilled(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_kill(VipsImage *image, gboolean kill)
+   * }
+   */
+  public void imageSetKill(MemorySegment image, boolean killBoolean) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_kill", "image");
+    }
+    var kill = killBoolean ? 1 : 0;
+    VipsRaw_1.vips_image_set_kill(image, kill);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_filename_get_filename(const char *vips_filename)
+   * }
+   */
+  public String filenameGetFilename(String vips_filenameString) throws VipsError {
+    var vips_filename = arena.allocateFrom(vips_filenameString);
+    var result = VipsRaw_1.vips_filename_get_filename(vips_filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_filename_get_filename", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_filename_get_options(const char *vips_filename)
+   * }
+   */
+  public String filenameGetOptions(String vips_filenameString) throws VipsError {
+    var vips_filename = arena.allocateFrom(vips_filenameString);
+    var result = VipsRaw_1.vips_filename_get_options(vips_filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_filename_get_options", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new()
+   * }
+   */
+  public MemorySegment imageNew() throws VipsError {
+    var result = VipsRaw_1.vips_image_new();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_memory()
+   * }
+   */
+  public MemorySegment imageNewMemory() throws VipsError {
+    var result = VipsRaw_1.vips_image_new_memory();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_memory()
+   * }
+   */
+  public MemorySegment imageMemory() throws VipsError {
+    var result = VipsRaw_1.vips_image_memory();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_file_RW(const char *filename)
+   * }
+   */
+  public MemorySegment imageNewFromFileRW(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_image_new_from_file_RW(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_file_RW", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_file_raw(const char *filename, int xsize, int ysize, int bands, guint64 offset)
+   * }
+   */
+  public MemorySegment imageNewFromFileRaw(String filenameString, int xsize, int ysize, int bands,
+      long offset) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_image_new_from_file_raw(filename, xsize, ysize, bands, offset);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_file_raw", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+   * }
+   */
+  public MemorySegment imageNewFromMemory(MemorySegment data, long size, int width, int height,
+      int bands, int format) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_memory", "data");
+    }
+    var result = VipsRaw_1.vips_image_new_from_memory(data, size, width, height, bands, format);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+   * }
+   */
+  public MemorySegment imageNewFromMemoryCopy(MemorySegment data, long size, int width, int height,
+      int bands, int format) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_memory_copy", "data");
+    }
+    var result = VipsRaw_1.vips_image_new_from_memory_copy(data, size, width, height, bands, format);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_memory_copy", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_matrix(int width, int height)
+   * }
+   */
+  public MemorySegment imageNewMatrix(int width, int height) throws VipsError {
+    var result = VipsRaw_1.vips_image_new_matrix(width, height);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_matrix", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_matrix_from_array(int width, int height, const double *array, int size)
+   * }
+   */
+  public MemorySegment imageNewMatrixFromArray(int width, int height, MemorySegment array, int size)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_matrix_from_array", "array");
+    }
+    var result = VipsRaw_1.vips_image_new_matrix_from_array(width, height, array, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_matrix_from_array", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_matrix_from_array(int width, int height, const double *array, int size)
+   * }
+   */
+  public MemorySegment imageMatrixFromArray(int width, int height, MemorySegment array, int size)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_matrix_from_array", "array");
+    }
+    var result = VipsRaw_1.vips_image_matrix_from_array(width, height, array, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_matrix_from_array", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_image(VipsImage *image, const double *c, int n)
+   * }
+   */
+  public MemorySegment imageNewFromImage(MemorySegment image, MemorySegment c, int n) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_image", "image");
+    }
+    if(!VipsValidation.isValidPointer(c)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_image", "c");
+    }
+    var result = VipsRaw_1.vips_image_new_from_image(image, c, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_image", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_from_image1(VipsImage *image, double c)
+   * }
+   */
+  public MemorySegment imageNewFromImage1(MemorySegment image, double c) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_image1", "image");
+    }
+    var result = VipsRaw_1.vips_image_new_from_image1(image, c);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_image1", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+   * }
+   */
+  public void imageSetDeleteOnClose(MemorySegment image, boolean delete_on_closeBoolean) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_delete_on_close", "image");
+    }
+    var delete_on_close = delete_on_closeBoolean ? 1 : 0;
+    VipsRaw_1.vips_image_set_delete_on_close(image, delete_on_close);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_new_temp_file(const char *format)
+   * }
+   */
+  public MemorySegment imageNewTempFile(String formatString) throws VipsError {
+    var format = arena.allocateFrom(formatString);
+    var result = VipsRaw_1.vips_image_new_temp_file(format);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_temp_file", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_write(VipsImage *image, VipsImage *out)
+   * }
+   */
+  public void imageWrite(MemorySegment image, VipsOutputPointer out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_write", "image");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_write(image, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_write");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+   * }
+   */
+  public MemorySegment imageWriteToMemory(MemorySegment in, MemorySegment size) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_to_memory", "in");
+    }
+    if(!VipsValidation.isValidPointer(size)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_to_memory", "size");
+    }
+    var result = VipsRaw_1.vips_image_write_to_memory(in, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_write_to_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_decode_predict(VipsImage *in, int *bands, VipsBandFormat *format)
+   * }
+   */
+  public void imageDecodePredict(MemorySegment in, MemorySegment bands, MemorySegment format) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_decode_predict", "in");
+    }
+    if(!VipsValidation.isValidPointer(bands)) {
+      VipsValidation.throwInvalidInputError("vips_image_decode_predict", "bands");
+    }
+    if(!VipsValidation.isValidPointer(format)) {
+      VipsValidation.throwInvalidInputError("vips_image_decode_predict", "format");
+    }
+    var result = VipsRaw_1.vips_image_decode_predict(in, bands, format);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_decode_predict");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_decode(VipsImage *in, VipsImage **out)
+   * }
+   */
+  public void imageDecode(MemorySegment in, VipsOutputPointer out) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_decode", "in");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_decode(in, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_decode");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_encode(VipsImage *in, VipsImage **out, VipsCoding coding)
+   * }
+   */
+  public void imageEncode(MemorySegment in, VipsOutputPointer out, int coding) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_encode", "in");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_encode(in, outPointer, coding);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_encode");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_isMSBfirst(VipsImage *image)
+   * }
+   */
+  public boolean imageIsMSBfirst(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_isMSBfirst", "image");
+    }
+    var result = VipsRaw_1.vips_image_isMSBfirst(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_isfile(VipsImage *image)
+   * }
+   */
+  public boolean imageIsfile(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_isfile", "image");
+    }
+    var result = VipsRaw_1.vips_image_isfile(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_ispartial(VipsImage *image)
+   * }
+   */
+  public boolean imageIspartial(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_ispartial", "image");
+    }
+    var result = VipsRaw_1.vips_image_ispartial(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_hasalpha(VipsImage *image)
+   * }
+   */
+  public boolean imageHasalpha(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_hasalpha", "image");
+    }
+    var result = VipsRaw_1.vips_image_hasalpha(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage *vips_image_copy_memory(VipsImage *image)
+   * }
+   */
+  public MemorySegment imageCopyMemory(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_copy_memory", "image");
+    }
+    var result = VipsRaw_1.vips_image_copy_memory(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_copy_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_wio_input(VipsImage *image)
+   * }
+   */
+  public void imageWioInput(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_wio_input", "image");
+    }
+    var result = VipsRaw_1.vips_image_wio_input(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_wio_input");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_pio_input(VipsImage *image)
+   * }
+   */
+  public void imagePioInput(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_pio_input", "image");
+    }
+    var result = VipsRaw_1.vips_image_pio_input(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_pio_input");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_pio_output(VipsImage *image)
+   * }
+   */
+  public void imagePioOutput(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_pio_output", "image");
+    }
+    var result = VipsRaw_1.vips_image_pio_output(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_pio_output");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_inplace(VipsImage *image)
+   * }
+   */
+  public void imageInplace(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_inplace", "image");
+    }
+    var result = VipsRaw_1.vips_image_inplace(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_inplace");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_write_prepare(VipsImage *image)
+   * }
+   */
+  public void imageWritePrepare(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_prepare", "image");
+    }
+    var result = VipsRaw_1.vips_image_write_prepare(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_write_prepare");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_write_line(VipsImage *image, int ypos, VipsPel *linebuffer)
+   * }
+   */
+  public void imageWriteLine(MemorySegment image, int ypos, MemorySegment linebuffer) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_line", "image");
+    }
+    if(!VipsValidation.isValidPointer(linebuffer)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_line", "linebuffer");
+    }
+    var result = VipsRaw_1.vips_image_write_line(image, ypos, linebuffer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_write_line");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_band_format_isint(VipsBandFormat format)
+   * }
+   */
+  public boolean bandFormatIsint(int format) throws VipsError {
+    var result = VipsRaw_1.vips_band_format_isint(format);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_band_format_isuint(VipsBandFormat format)
+   * }
+   */
+  public boolean bandFormatIsuint(int format) throws VipsError {
+    var result = VipsRaw_1.vips_band_format_isuint(format);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_band_format_is8bit(VipsBandFormat format)
+   * }
+   */
+  public boolean bandFormatIs8bit(int format) throws VipsError {
+    var result = VipsRaw_1.vips_band_format_is8bit(format);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_band_format_isfloat(VipsBandFormat format)
+   * }
+   */
+  public boolean bandFormatIsfloat(int format) throws VipsError {
+    var result = VipsRaw_1.vips_band_format_isfloat(format);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_band_format_iscomplex(VipsBandFormat format)
+   * }
+   */
+  public boolean bandFormatIscomplex(int format) throws VipsError {
+    var result = VipsRaw_1.vips_band_format_iscomplex(format);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayImage *vips_array_image_new(VipsImage **array, int n)
+   * }
+   */
+  public MemorySegment arrayImageNew(MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_image_new", "array");
+    }
+    var result = VipsRaw_1.vips_array_image_new(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_image_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayImage *vips_array_image_new_from_string(const char *string, VipsAccess flags)
+   * }
+   */
+  public MemorySegment arrayImageNewFromString(String stringString, int flags) throws VipsError {
+    var string = arena.allocateFrom(stringString);
+    var result = VipsRaw_1.vips_array_image_new_from_string(string, flags);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_image_new_from_string", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayImage *vips_array_image_empty()
+   * }
+   */
+  public MemorySegment arrayImageEmpty() throws VipsError {
+    var result = VipsRaw_1.vips_array_image_empty();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_image_empty", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsArrayImage *vips_array_image_append(VipsArrayImage *array, VipsImage *image)
+   * }
+   */
+  public MemorySegment arrayImageAppend(MemorySegment array, MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_image_append", "array");
+    }
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_array_image_append", "image");
+    }
+    var result = VipsRaw_1.vips_array_image_append(array, image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_image_append", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage **vips_array_image_get(VipsArrayImage *array, int *n)
+   * }
+   */
+  public MemorySegment arrayImageGet(MemorySegment array, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_array_image_get", "array");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_array_image_get", "n");
+    }
+    var result = VipsRaw_1.vips_array_image_get(array, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_array_image_get", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsImage **vips_value_get_array_image(const GValue *value, int *n)
+   * }
+   */
+  public MemorySegment valueGetArrayImage(MemorySegment value, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_image", "value");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_value_get_array_image", "n");
+    }
+    var result = VipsRaw_1.vips_value_get_array_image(value, n);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_value_get_array_image", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_value_set_array_image(GValue *value, int n)
+   * }
+   */
+  public void valueSetArrayImage(MemorySegment value, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_value_set_array_image", "value");
+    }
+    VipsRaw_1.vips_value_set_array_image(value, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_reorder_prepare_many(VipsImage *image, VipsRegion **regions, VipsRect *r)
+   * }
+   */
+  public void reorderPrepareMany(MemorySegment image, MemorySegment regions, MemorySegment r) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_reorder_prepare_many", "image");
+    }
+    if(!VipsValidation.isValidPointer(regions)) {
+      VipsValidation.throwInvalidInputError("vips_reorder_prepare_many", "regions");
+    }
+    if(!VipsValidation.isValidPointer(r)) {
+      VipsValidation.throwInvalidInputError("vips_reorder_prepare_many", "r");
+    }
+    var result = VipsRaw_1.vips_reorder_prepare_many(image, regions, r);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_reorder_prepare_many");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_reorder_margin_hint(VipsImage *image, int margin)
+   * }
+   */
+  public void reorderMarginHint(MemorySegment image, int margin) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_reorder_margin_hint", "image");
+    }
+    VipsRaw_1.vips_reorder_margin_hint(image, margin);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_free_buffer(VipsImage *image, void *buffer)
+   * }
+   */
+  public void imageFreeBuffer(MemorySegment image, MemorySegment buffer) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_free_buffer", "image");
+    }
+    if(!VipsValidation.isValidPointer(buffer)) {
+      VipsValidation.throwInvalidInputError("vips_image_free_buffer", "buffer");
+    }
+    VipsRaw_1.vips_image_free_buffer(image, buffer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_malloc(VipsObject *object, size_t size)
+   * }
+   */
+  public MemorySegment malloc(MemorySegment object, long size) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_malloc", "object");
+    }
+    var result = VipsRaw_1.vips_malloc(object, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_malloc", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_strdup(VipsObject *object, const char *str)
+   * }
+   */
+  public String strdup(MemorySegment object, String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_strdup", "object");
+    }
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw_1.vips_strdup(object, str);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_strdup", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_tracked_free(void *s)
+   * }
+   */
+  public void trackedFree(MemorySegment s) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_tracked_free", "s");
+    }
+    VipsRaw_1.vips_tracked_free(s);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_tracked_aligned_free(void *s)
+   * }
+   */
+  public void trackedAlignedFree(MemorySegment s) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_tracked_aligned_free", "s");
+    }
+    VipsRaw_1.vips_tracked_aligned_free(s);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_tracked_malloc(size_t size)
+   * }
+   */
+  public MemorySegment trackedMalloc(long size) throws VipsError {
+    var result = VipsRaw_1.vips_tracked_malloc(size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_tracked_malloc", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_tracked_aligned_alloc(size_t size, size_t align)
+   * }
+   */
+  public MemorySegment trackedAlignedAlloc(long size, long align) throws VipsError {
+    var result = VipsRaw_1.vips_tracked_aligned_alloc(size, align);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_tracked_aligned_alloc", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * size_t vips_tracked_get_mem()
+   * }
+   */
+  public long trackedGetMem() throws VipsError {
+    var result = VipsRaw_1.vips_tracked_get_mem();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * size_t vips_tracked_get_mem_highwater()
+   * }
+   */
+  public long trackedGetMemHighwater() throws VipsError {
+    var result = VipsRaw_1.vips_tracked_get_mem_highwater();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_tracked_get_allocs()
+   * }
+   */
+  public void trackedGetAllocs() throws VipsError {
+    var result = VipsRaw_1.vips_tracked_get_allocs();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_tracked_get_allocs");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_tracked_open(const char *pathname, int flags, int mode)
+   * }
+   */
+  public void trackedOpen(String pathnameString, int flags, int mode) throws VipsError {
+    var pathname = arena.allocateFrom(pathnameString);
+    var result = VipsRaw_1.vips_tracked_open(pathname, flags, mode);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_tracked_open");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_tracked_close(int fd)
+   * }
+   */
+  public void trackedClose(int fd) throws VipsError {
+    var result = VipsRaw_1.vips_tracked_close(fd);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_tracked_close");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_tracked_get_files()
+   * }
+   */
+  public void trackedGetFiles() throws VipsError {
+    var result = VipsRaw_1.vips_tracked_get_files();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_tracked_get_files");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_error_buffer()
+   * }
+   */
+  public String errorBuffer() throws VipsError {
+    var result = VipsRaw_1.vips_error_buffer();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_error_buffer", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * char *vips_error_buffer_copy()
+   * }
+   */
+  public String errorBufferCopy() throws VipsError {
+    var result = VipsRaw_1.vips_error_buffer_copy();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_error_buffer_copy", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_error_clear()
+   * }
+   */
+  public void errorClear() throws VipsError {
+    VipsRaw_1.vips_error_clear();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_error_freeze()
+   * }
+   */
+  public void errorFreeze() throws VipsError {
+    VipsRaw_1.vips_error_freeze();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_error_thaw()
+   * }
+   */
+  public void errorThaw() throws VipsError {
+    VipsRaw_1.vips_error_thaw();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_verror(const char *domain, const char *fmt, va_list ap)
+   * }
+   */
+  public void verror(String domainString, String fmtString, MemorySegment ap) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var fmt = arena.allocateFrom(fmtString);
+    VipsRaw_1.vips_verror(domain, fmt, ap);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_verror_system(int err, const char *domain, const char *fmt, va_list ap)
+   * }
+   */
+  public void verrorSystem(int err, String domainString, String fmtString, MemorySegment ap) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var fmt = arena.allocateFrom(fmtString);
+    VipsRaw_1.vips_verror_system(err, domain, fmt, ap);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_error_g(GError **error)
+   * }
+   */
+  public void errorG(MemorySegment error) throws VipsError {
+    if(!VipsValidation.isValidPointer(error)) {
+      VipsValidation.throwInvalidInputError("vips_error_g", "error");
+    }
+    VipsRaw_1.vips_error_g(error);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_uncoded(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkUncoded(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_uncoded", "im");
+    }
+    var result = VipsRaw_1.vips_check_uncoded(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_uncoded");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_coding(const char *domain, VipsImage *im, VipsCoding coding)
+   * }
+   */
+  public void checkCoding(String domainString, MemorySegment im, int coding) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_coding", "im");
+    }
+    var result = VipsRaw_1.vips_check_coding(domain, im, coding);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_coding");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_coding_known(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkCodingKnown(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_coding_known", "im");
+    }
+    var result = VipsRaw_1.vips_check_coding_known(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_coding_known");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_coding_noneorlabq(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkCodingNoneorlabq(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_coding_noneorlabq", "im");
+    }
+    var result = VipsRaw_1.vips_check_coding_noneorlabq(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_coding_noneorlabq");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_coding_same(const char *domain, VipsImage *im1, VipsImage *im2)
+   * }
+   */
+  public void checkCodingSame(String domainString, MemorySegment im1, MemorySegment im2) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im1)) {
+      VipsValidation.throwInvalidInputError("vips_check_coding_same", "im1");
+    }
+    if(!VipsValidation.isValidPointer(im2)) {
+      VipsValidation.throwInvalidInputError("vips_check_coding_same", "im2");
+    }
+    var result = VipsRaw_1.vips_check_coding_same(domain, im1, im2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_coding_same");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_mono(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkMono(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_mono", "im");
+    }
+    var result = VipsRaw_1.vips_check_mono(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_mono");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands(const char *domain, VipsImage *im, int bands)
+   * }
+   */
+  public void checkBands(String domainString, MemorySegment im, int bands) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands", "im");
+    }
+    var result = VipsRaw_1.vips_check_bands(domain, im, bands);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands_1or3(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkBands1or3(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_1or3", "im");
+    }
+    var result = VipsRaw_1.vips_check_bands_1or3(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands_1or3");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands_atleast(const char *domain, VipsImage *im, int bands)
+   * }
+   */
+  public void checkBandsAtleast(String domainString, MemorySegment im, int bands) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_atleast", "im");
+    }
+    var result = VipsRaw_1.vips_check_bands_atleast(domain, im, bands);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands_atleast");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands_1orn(const char *domain, VipsImage *im1, VipsImage *im2)
+   * }
+   */
+  public void checkBands1orn(String domainString, MemorySegment im1, MemorySegment im2) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im1)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_1orn", "im1");
+    }
+    if(!VipsValidation.isValidPointer(im2)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_1orn", "im2");
+    }
+    var result = VipsRaw_1.vips_check_bands_1orn(domain, im1, im2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands_1orn");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands_1orn_unary(const char *domain, VipsImage *im, int n)
+   * }
+   */
+  public void checkBands1ornUnary(String domainString, MemorySegment im, int n) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_1orn_unary", "im");
+    }
+    var result = VipsRaw_1.vips_check_bands_1orn_unary(domain, im, n);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands_1orn_unary");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bands_same(const char *domain, VipsImage *im1, VipsImage *im2)
+   * }
+   */
+  public void checkBandsSame(String domainString, MemorySegment im1, MemorySegment im2) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im1)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_same", "im1");
+    }
+    if(!VipsValidation.isValidPointer(im2)) {
+      VipsValidation.throwInvalidInputError("vips_check_bands_same", "im2");
+    }
+    var result = VipsRaw_1.vips_check_bands_same(domain, im1, im2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bands_same");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_bandno(const char *domain, VipsImage *im, int bandno)
+   * }
+   */
+  public void checkBandno(String domainString, MemorySegment im, int bandno) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_bandno", "im");
+    }
+    var result = VipsRaw_1.vips_check_bandno(domain, im, bandno);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_bandno");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_int(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkInt(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_int", "im");
+    }
+    var result = VipsRaw_1.vips_check_int(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_int");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_uint(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkUint(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_uint", "im");
+    }
+    var result = VipsRaw_1.vips_check_uint(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_uint");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_uintorf(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkUintorf(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_uintorf", "im");
+    }
+    var result = VipsRaw_1.vips_check_uintorf(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_uintorf");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_noncomplex(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkNoncomplex(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_noncomplex", "im");
+    }
+    var result = VipsRaw_1.vips_check_noncomplex(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_noncomplex");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_complex(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkComplex(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_complex", "im");
+    }
+    var result = VipsRaw_1.vips_check_complex(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_complex");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_twocomponents(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkTwocomponents(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_twocomponents", "im");
+    }
+    var result = VipsRaw_1.vips_check_twocomponents(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_twocomponents");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_format(const char *domain, VipsImage *im, VipsBandFormat fmt)
+   * }
+   */
+  public void checkFormat(String domainString, MemorySegment im, int fmt) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_format", "im");
+    }
+    var result = VipsRaw_1.vips_check_format(domain, im, fmt);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_format");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_u8or16(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkU8or16(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_u8or16", "im");
+    }
+    var result = VipsRaw_1.vips_check_u8or16(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_u8or16");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_8or16(const char *domain, VipsImage *im)
+   * }
+   */
+  public void check8or16(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_8or16", "im");
+    }
+    var result = VipsRaw_1.vips_check_8or16(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_8or16");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_u8or16orf(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkU8or16orf(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_u8or16orf", "im");
+    }
+    var result = VipsRaw_1.vips_check_u8or16orf(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_u8or16orf");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_format_same(const char *domain, VipsImage *im1, VipsImage *im2)
+   * }
+   */
+  public void checkFormatSame(String domainString, MemorySegment im1, MemorySegment im2) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im1)) {
+      VipsValidation.throwInvalidInputError("vips_check_format_same", "im1");
+    }
+    if(!VipsValidation.isValidPointer(im2)) {
+      VipsValidation.throwInvalidInputError("vips_check_format_same", "im2");
+    }
+    var result = VipsRaw_1.vips_check_format_same(domain, im1, im2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_format_same");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_size_same(const char *domain, VipsImage *im1, VipsImage *im2)
+   * }
+   */
+  public void checkSizeSame(String domainString, MemorySegment im1, MemorySegment im2) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im1)) {
+      VipsValidation.throwInvalidInputError("vips_check_size_same", "im1");
+    }
+    if(!VipsValidation.isValidPointer(im2)) {
+      VipsValidation.throwInvalidInputError("vips_check_size_same", "im2");
+    }
+    var result = VipsRaw_1.vips_check_size_same(domain, im1, im2);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_size_same");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_oddsquare(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkOddsquare(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_oddsquare", "im");
+    }
+    var result = VipsRaw_1.vips_check_oddsquare(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_oddsquare");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_vector_length(const char *domain, int n, int len)
+   * }
+   */
+  public void checkVectorLength(String domainString, int n, int len) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var result = VipsRaw_1.vips_check_vector_length(domain, n, len);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_vector_length");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_vector(const char *domain, int n, VipsImage *im)
+   * }
+   */
+  public void checkVector(String domainString, int n, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_vector", "im");
+    }
+    var result = VipsRaw_1.vips_check_vector(domain, n, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_vector");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_hist(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkHist(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_hist", "im");
+    }
+    var result = VipsRaw_1.vips_check_hist(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_hist");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_matrix(const char *domain, VipsImage *im, VipsImage **out)
+   * }
+   */
+  public void checkMatrix(String domainString, MemorySegment im, VipsOutputPointer out) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_matrix", "im");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_check_matrix(domain, im, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_matrix");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_separable(const char *domain, VipsImage *im)
+   * }
+   */
+  public void checkSeparable(String domainString, MemorySegment im) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_check_separable", "im");
+    }
+    var result = VipsRaw_1.vips_check_separable(domain, im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_separable");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_check_precision_intfloat(const char *domain, VipsPrecision precision)
+   * }
+   */
+  public void checkPrecisionIntfloat(String domainString, int precision) throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var result = VipsRaw_1.vips_check_precision_intfloat(domain, precision);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_check_precision_intfloat");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_format_get_type()
+   * }
+   */
+  public long formatGetType() throws VipsError {
+    var result = VipsRaw_1.vips_format_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsFormatClass *vips_format_for_file(const char *filename)
+   * }
+   */
+  public MemorySegment formatForFile(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_format_for_file(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_format_for_file", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsFormatClass *vips_format_for_name(const char *filename)
+   * }
+   */
+  public MemorySegment formatForName(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_format_for_name(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_format_for_name", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsFormatFlags vips_format_get_flags(VipsFormatClass *format, const char *filename)
+   * }
+   */
+  public void formatGetFlags(MemorySegment format, String filenameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(format)) {
+      VipsValidation.throwInvalidInputError("vips_format_get_flags", "format");
+    }
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_format_get_flags(format, filename);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_format_get_flags");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_format_read(const char *filename, VipsImage *out)
+   * }
+   */
+  public void formatRead(String filenameString, VipsOutputPointer out) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_format_read(filename, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_format_read");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_format_write(VipsImage *in, const char *filename)
+   * }
+   */
+  public void formatWrite(MemorySegment in, String filenameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_format_write", "in");
+    }
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_format_write(in, filename);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_format_write");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sink_disc(VipsImage *im, VipsRegionWrite write_fn, void *a)
+   * }
+   */
+  public void sinkDisc(MemorySegment im, MemorySegment write_fn, MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_sink_disc", "im");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_sink_disc", "a");
+    }
+    var result = VipsRaw_1.vips_sink_disc(im, write_fn, a);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sink_disc");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sink(VipsImage *im, VipsStartFn start_fn, VipsGenerateFn generate_fn, VipsStopFn stop_fn, void *a, void *b)
+   * }
+   */
+  public void sink(MemorySegment im, MemorySegment start_fn, MemorySegment generate_fn,
+      MemorySegment stop_fn, MemorySegment a, MemorySegment b) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_sink", "im");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_sink", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_sink", "b");
+    }
+    var result = VipsRaw_1.vips_sink(im, start_fn, generate_fn, stop_fn, a, b);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sink");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sink_tile(VipsImage *im, int tile_width, int tile_height, VipsStartFn start_fn, VipsGenerateFn generate_fn, VipsStopFn stop_fn, void *a, void *b)
+   * }
+   */
+  public void sinkTile(MemorySegment im, int tile_width, int tile_height, MemorySegment start_fn,
+      MemorySegment generate_fn, MemorySegment stop_fn, MemorySegment a, MemorySegment b) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_sink_tile", "im");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_sink_tile", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_sink_tile", "b");
+    }
+    var result = VipsRaw_1.vips_sink_tile(im, tile_width, tile_height, start_fn, generate_fn, stop_fn, a, b);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sink_tile");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sink_screen(VipsImage *in, VipsImage *out, VipsImage *mask, int tile_width, int tile_height, int max_tiles, int priority, VipsSinkNotify notify_fn, void *a)
+   * }
+   */
+  public void sinkScreen(MemorySegment in, VipsOutputPointer out, MemorySegment mask,
+      int tile_width, int tile_height, int max_tiles, int priority, MemorySegment notify_fn,
+      MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_sink_screen", "in");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(mask)) {
+      VipsValidation.throwInvalidInputError("vips_sink_screen", "mask");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_sink_screen", "a");
+    }
+    var result = VipsRaw_1.vips_sink_screen(in, outPointer, mask, tile_width, tile_height, max_tiles, priority, notify_fn, a);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sink_screen");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_sink_memory(VipsImage *im)
+   * }
+   */
+  public void sinkMemory(MemorySegment im) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_sink_memory", "im");
+    }
+    var result = VipsRaw_1.vips_sink_memory(im);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_sink_memory");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_start_one(VipsImage *out, void *a, void *b)
+   * }
+   */
+  public MemorySegment startOne(VipsOutputPointer out, MemorySegment a, MemorySegment b) throws
+      VipsError {
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_start_one", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_start_one", "b");
+    }
+    var result = VipsRaw_1.vips_start_one(outPointer, a, b);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_start_one", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_stop_one(void *seq, void *a, void *b)
+   * }
+   */
+  public void stopOne(MemorySegment seq, MemorySegment a, MemorySegment b) throws VipsError {
+    if(!VipsValidation.isValidPointer(seq)) {
+      VipsValidation.throwInvalidInputError("vips_stop_one", "seq");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_stop_one", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_stop_one", "b");
+    }
+    var result = VipsRaw_1.vips_stop_one(seq, a, b);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_stop_one");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_start_many(VipsImage *out, void *a, void *b)
+   * }
+   */
+  public MemorySegment startMany(VipsOutputPointer out, MemorySegment a, MemorySegment b) throws
+      VipsError {
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_start_many", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_start_many", "b");
+    }
+    var result = VipsRaw_1.vips_start_many(outPointer, a, b);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_start_many", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_stop_many(void *seq, void *a, void *b)
+   * }
+   */
+  public void stopMany(MemorySegment seq, MemorySegment a, MemorySegment b) throws VipsError {
+    if(!VipsValidation.isValidPointer(seq)) {
+      VipsValidation.throwInvalidInputError("vips_stop_many", "seq");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_stop_many", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_stop_many", "b");
+    }
+    var result = VipsRaw_1.vips_stop_many(seq, a, b);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_stop_many");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_generate(VipsImage *image, VipsStartFn start_fn, VipsGenerateFn generate_fn, VipsStopFn stop_fn, void *a, void *b)
+   * }
+   */
+  public void imageGenerate(MemorySegment image, MemorySegment start_fn, MemorySegment generate_fn,
+      MemorySegment stop_fn, MemorySegment a, MemorySegment b) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_generate", "image");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_image_generate", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_image_generate", "b");
+    }
+    var result = VipsRaw_1.vips_image_generate(image, start_fn, generate_fn, stop_fn, a, b);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_generate");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_pipeline_array(VipsImage *image, VipsDemandStyle hint, VipsImage **in)
+   * }
+   */
+  public void imagePipelineArray(MemorySegment image, int hint, MemorySegment in) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_pipeline_array", "image");
+    }
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_pipeline_array", "in");
+    }
+    var result = VipsRaw_1.vips_image_pipeline_array(image, hint, in);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_pipeline_array");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_interpolate_get_type()
+   * }
+   */
+  public long interpolateGetType() throws VipsError {
+    var result = VipsRaw_1.vips_interpolate_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_interpolate(VipsInterpolate *interpolate, void *out, VipsRegion *in, double x, double y)
+   * }
+   */
+  public void interpolate(MemorySegment interpolate, VipsOutputPointer out, MemorySegment in,
+      double x, double y) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate", "interpolate");
+    }
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate", "in");
+    }
+    VipsRaw_1.vips_interpolate(interpolate, outPointer, in, x, y);
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolateMethod vips_interpolate_get_method(VipsInterpolate *interpolate)
+   * }
+   */
+  public MemorySegment interpolateGetMethod(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_method", "interpolate");
+    }
+    var result = VipsRaw_1.vips_interpolate_get_method(interpolate);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_get_method", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_interpolate_get_window_size(VipsInterpolate *interpolate)
+   * }
+   */
+  public void interpolateGetWindowSize(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_window_size", "interpolate");
+    }
+    var result = VipsRaw_1.vips_interpolate_get_window_size(interpolate);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_interpolate_get_window_size");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_interpolate_get_window_offset(VipsInterpolate *interpolate)
+   * }
+   */
+  public void interpolateGetWindowOffset(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_window_offset", "interpolate");
+    }
+    var result = VipsRaw_1.vips_interpolate_get_window_offset(interpolate);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_interpolate_get_window_offset");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_nearest_static()
+   * }
+   */
+  public MemorySegment interpolateNearestStatic() throws VipsError {
+    var result = VipsRaw_1.vips_interpolate_nearest_static();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_nearest_static", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_bilinear_static()
+   * }
+   */
+  public MemorySegment interpolateBilinearStatic() throws VipsError {
+    var result = VipsRaw_1.vips_interpolate_bilinear_static();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_bilinear_static", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_new(const char *nickname)
+   * }
+   */
+  public MemorySegment interpolateNew(String nicknameString) throws VipsError {
+    var nickname = arena.allocateFrom(nicknameString);
+    var result = VipsRaw_1.vips_interpolate_new(nickname);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_thread_isvips()
+   * }
+   */
+  public boolean threadIsvips() throws VipsError {
+    var result = VipsRaw_1.vips_thread_isvips();
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_thread_execute(const char *domain, GFunc func, gpointer data)
+   * }
+   */
+  public void threadExecute(String domainString, MemorySegment func, MemorySegment data) throws
+      VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var result = VipsRaw_1.vips_thread_execute(domain, func, data);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_thread_execute");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_semaphore_up(VipsSemaphore *s)
+   * }
+   */
+  public void semaphoreUp(MemorySegment s) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_up", "s");
+    }
+    var result = VipsRaw_1.vips_semaphore_up(s);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_semaphore_up");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_semaphore_upn(VipsSemaphore *s, int n)
+   * }
+   */
+  public void semaphoreUpn(MemorySegment s, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_upn", "s");
+    }
+    var result = VipsRaw_1.vips_semaphore_upn(s, n);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_semaphore_upn");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_semaphore_down(VipsSemaphore *s)
+   * }
+   */
+  public void semaphoreDown(MemorySegment s) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_down", "s");
+    }
+    var result = VipsRaw_1.vips_semaphore_down(s);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_semaphore_down");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_semaphore_downn(VipsSemaphore *s, int n)
+   * }
+   */
+  public void semaphoreDownn(MemorySegment s, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_downn", "s");
+    }
+    var result = VipsRaw_1.vips_semaphore_downn(s, n);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_semaphore_downn");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_semaphore_down_timeout(VipsSemaphore *s, gint64 timeout)
+   * }
+   */
+  public void semaphoreDownTimeout(MemorySegment s, long timeout) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_down_timeout", "s");
+    }
+    var result = VipsRaw_1.vips_semaphore_down_timeout(s, timeout);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_semaphore_down_timeout");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_semaphore_destroy(VipsSemaphore *s)
+   * }
+   */
+  public void semaphoreDestroy(MemorySegment s) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_destroy", "s");
+    }
+    VipsRaw_1.vips_semaphore_destroy(s);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_semaphore_init(VipsSemaphore *s, int v, char *name)
+   * }
+   */
+  public void semaphoreInit(MemorySegment s, int v, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(s)) {
+      VipsValidation.throwInvalidInputError("vips_semaphore_init", "s");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw_1.vips_semaphore_init(s, v, name);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void *vips_thread_state_set(VipsObject *object, void *a, void *b)
+   * }
+   */
+  public MemorySegment threadStateSet(MemorySegment object, MemorySegment a, MemorySegment b) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(object)) {
+      VipsValidation.throwInvalidInputError("vips_thread_state_set", "object");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_thread_state_set", "a");
+    }
+    if(!VipsValidation.isValidPointer(b)) {
+      VipsValidation.throwInvalidInputError("vips_thread_state_set", "b");
+    }
+    var result = VipsRaw_1.vips_thread_state_set(object, a, b);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_thread_state_set", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_thread_state_get_type()
+   * }
+   */
+  public long threadStateGetType() throws VipsError {
+    var result = VipsRaw_1.vips_thread_state_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsThreadState *vips_thread_state_new(VipsImage *im, void *a)
+   * }
+   */
+  public MemorySegment threadStateNew(MemorySegment im, MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_thread_state_new", "im");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_thread_state_new", "a");
+    }
+    var result = VipsRaw_1.vips_thread_state_new(im, a);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_thread_state_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_threadpool_run(VipsImage *im, VipsThreadStartFn start, VipsThreadpoolAllocateFn allocate, VipsThreadpoolWorkFn work, VipsThreadpoolProgressFn progress, void *a)
+   * }
+   */
+  public void threadpoolRun(MemorySegment im, MemorySegment start, MemorySegment allocate,
+      MemorySegment work, MemorySegment progress, MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_threadpool_run", "im");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_threadpool_run", "a");
+    }
+    var result = VipsRaw_1.vips_threadpool_run(im, start, allocate, work, progress, a);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_threadpool_run");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * guint64 vips_format_sizeof(VipsBandFormat format)
+   * }
+   */
+  public long formatSizeof(int format) throws VipsError {
+    var result = VipsRaw_1.vips_format_sizeof(format);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * guint64 vips_format_sizeof_unsafe(VipsBandFormat format)
+   * }
+   */
+  public long formatSizeofUnsafe(int format) throws VipsError {
+    var result = VipsRaw_1.vips_format_sizeof_unsafe(format);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_interpretation_max_alpha(VipsInterpretation interpretation)
+   * }
+   */
+  public double interpretationMaxAlpha(int interpretation) throws VipsError {
+    var result = VipsRaw_1.vips_interpretation_max_alpha(interpretation);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_width(const VipsImage *image)
+   * }
+   */
+  public void imageGetWidth(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_width", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_width(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_width");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_height(const VipsImage *image)
+   * }
+   */
+  public void imageGetHeight(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_height", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_height(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_height");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_bands(const VipsImage *image)
+   * }
+   */
+  public void imageGetBands(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_bands", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_bands(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_bands");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBandFormat vips_image_get_format(const VipsImage *image)
+   * }
+   */
+  public void imageGetFormat(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_format", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_format(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_format");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_format_max(VipsBandFormat format)
+   * }
+   */
+  public double imageGetFormatMax(int format) throws VipsError {
+    var result = VipsRaw_1.vips_image_get_format_max(format);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsBandFormat vips_image_guess_format(const VipsImage *image)
+   * }
+   */
+  public void imageGuessFormat(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_guess_format", "image");
+    }
+    var result = VipsRaw_1.vips_image_guess_format(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_guess_format");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsCoding vips_image_get_coding(const VipsImage *image)
+   * }
+   */
+  public void imageGetCoding(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_coding", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_coding(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_coding");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpretation vips_image_get_interpretation(const VipsImage *image)
+   * }
+   */
+  public void imageGetInterpretation(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_interpretation", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_interpretation(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_interpretation");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpretation vips_image_guess_interpretation(const VipsImage *image)
+   * }
+   */
+  public void imageGuessInterpretation(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_guess_interpretation", "image");
+    }
+    var result = VipsRaw_1.vips_image_guess_interpretation(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_guess_interpretation");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_xres(const VipsImage *image)
+   * }
+   */
+  public double imageGetXres(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_xres", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_xres(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_yres(const VipsImage *image)
+   * }
+   */
+  public double imageGetYres(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_yres", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_yres(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_xoffset(const VipsImage *image)
+   * }
+   */
+  public void imageGetXoffset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_xoffset", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_xoffset(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_xoffset");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_yoffset(const VipsImage *image)
+   * }
+   */
+  public void imageGetYoffset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_yoffset", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_yoffset(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_yoffset");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_filename(const VipsImage *image)
+   * }
+   */
+  public String imageGetFilename(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_filename", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_filename(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_filename", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_mode(const VipsImage *image)
+   * }
+   */
+  public String imageGetMode(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_mode", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_mode(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_mode", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_scale(const VipsImage *image)
+   * }
+   */
+  public double imageGetScale(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_scale", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_scale(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_offset(const VipsImage *image)
+   * }
+   */
+  public double imageGetOffset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_offset", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_offset(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_page_height(VipsImage *image)
+   * }
+   */
+  public void imageGetPageHeight(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_page_height", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_page_height(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_page_height");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_n_pages(VipsImage *image)
+   * }
+   */
+  public void imageGetNPages(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_n_pages", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_n_pages(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_n_pages");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_n_subifds(VipsImage *image)
+   * }
+   */
+  public void imageGetNSubifds(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_n_subifds", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_n_subifds(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_n_subifds");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_orientation(VipsImage *image)
+   * }
+   */
+  public void imageGetOrientation(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_orientation", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_orientation(image);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_orientation");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_get_orientation_swap(VipsImage *image)
+   * }
+   */
+  public boolean imageGetOrientationSwap(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_orientation_swap", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_orientation_swap(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_concurrency(VipsImage *image, int default_concurrency)
+   * }
+   */
+  public void imageGetConcurrency(MemorySegment image, int default_concurrency) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_concurrency", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_concurrency(image, default_concurrency);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_concurrency");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const void *vips_image_get_data(VipsImage *image)
+   * }
+   */
+  public MemorySegment imageGetData(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_data", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_data(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_data", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_init_fields(VipsImage *image, int xsize, int ysize, int bands, VipsBandFormat format, VipsCoding coding, VipsInterpretation interpretation, double xres, double yres)
+   * }
+   */
+  public void imageInitFields(MemorySegment image, int xsize, int ysize, int bands, int format,
+      int coding, int interpretation, double xres, double yres) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_init_fields", "image");
+    }
+    VipsRaw_1.vips_image_init_fields(image, xsize, ysize, bands, format, coding, interpretation, xres, yres);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set(VipsImage *image, const char *name, GValue *value)
+   * }
+   */
+  public void imageSet(MemorySegment image, String nameString, MemorySegment value) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(value)) {
+      VipsValidation.throwInvalidInputError("vips_image_set", "value");
+    }
+    VipsRaw_1.vips_image_set(image, name, value);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get(const VipsImage *image, const char *name, GValue *value_copy)
+   * }
+   */
+  public void imageGet(MemorySegment image, String nameString, MemorySegment value_copy) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(value_copy)) {
+      VipsValidation.throwInvalidInputError("vips_image_get", "value_copy");
+    }
+    var result = VipsRaw_1.vips_image_get(image, name, value_copy);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_as_string(const VipsImage *image, const char *name, char **out)
+   * }
+   */
+  public void imageGetAsString(MemorySegment image, String nameString, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_as_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_get_as_string(image, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_as_string");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = resultingOutPointer.reinterpret(arena, VipsRaw::g_free);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_image_get_typeof(const VipsImage *image, const char *name)
+   * }
+   */
+  public long imageGetTypeof(MemorySegment image, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_typeof", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_image_get_typeof(image, name);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_remove(VipsImage *image, const char *name)
+   * }
+   */
+  public boolean imageRemove(MemorySegment image, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_remove", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_image_remove(image, name);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gchar **vips_image_get_fields(VipsImage *image)
+   * }
+   */
+  public MemorySegment imageGetFields(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_fields", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_fields(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_fields", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+   * }
+   */
+  public void imageSetArea(MemorySegment image, String nameString, MemorySegment free_fn,
+      MemorySegment data) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_area", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_area", "data");
+    }
+    VipsRaw_1.vips_image_set_area(image, name, free_fn, data);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_area(const VipsImage *image, const char *name, const void **data)
+   * }
+   */
+  public void imageGetArea(MemorySegment image, String nameString, MemorySegment data) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_area", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_area", "data");
+    }
+    var result = VipsRaw_1.vips_image_get_area(image, name, data);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_area");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+   * }
+   */
+  public void imageSetBlob(MemorySegment image, String nameString, MemorySegment free_fn,
+      MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob", "data");
+    }
+    VipsRaw_1.vips_image_set_blob(image, name, free_fn, data, length);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+   * }
+   */
+  public void imageSetBlobCopy(MemorySegment image, String nameString, MemorySegment data,
+      long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob_copy", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob_copy", "data");
+    }
+    VipsRaw_1.vips_image_set_blob_copy(image, name, data, length);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_blob(const VipsImage *image, const char *name, const void **data, size_t *length)
+   * }
+   */
+  public void imageGetBlob(MemorySegment image, String nameString, MemorySegment data,
+      MemorySegment length) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_blob", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_blob", "data");
+    }
+    if(!VipsValidation.isValidPointer(length)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_blob", "length");
+    }
+    var result = VipsRaw_1.vips_image_get_blob(image, name, data, length);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_blob");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_int(const VipsImage *image, const char *name, int *out)
+   * }
+   */
+  public void imageGetInt(MemorySegment image, String nameString, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_get_int(image, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_int");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_int(VipsImage *image, const char *name, int i)
+   * }
+   */
+  public void imageSetInt(MemorySegment image, String nameString, int i) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw_1.vips_image_set_int(image, name, i);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_double(const VipsImage *image, const char *name, double *out)
+   * }
+   */
+  public void imageGetDouble(MemorySegment image, String nameString, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_get_double(image, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_double");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    out.setReinterpretedPointer$internal(resultingOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_double(VipsImage *image, const char *name, double d)
+   * }
+   */
+  public void imageSetDouble(MemorySegment image, String nameString, double d) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw_1.vips_image_set_double(image, name, d);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_string(const VipsImage *image, const char *name, const char **out)
+   * }
+   */
+  public void imageGetString(MemorySegment image, String nameString, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_get_string(image, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_string");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = resultingOutPointer.reinterpret(arena, VipsRaw::g_free);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+   * }
+   */
+  public void imageSetString(MemorySegment image, String nameString, String strString) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var str = arena.allocateFrom(strString);
+    VipsRaw_1.vips_image_set_string(image, name, str);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_print_field(const VipsImage *image, const char *name)
+   * }
+   */
+  public void imagePrintField(MemorySegment image, String nameString) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_print_field", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw_1.vips_image_print_field(image, name);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_image(const VipsImage *image, const char *name, VipsImage **out)
+   * }
+   */
+  public void imageGetImage(MemorySegment image, String nameString, VipsOutputPointer out) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_image", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    var result = VipsRaw_1.vips_image_get_image(image, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_image");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+   * }
+   */
+  public void imageSetImage(MemorySegment image, String nameString, MemorySegment im) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_image", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_image", "im");
+    }
+    VipsRaw_1.vips_image_set_image(image, name, im);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+   * }
+   */
+  public void imageSetArrayInt(MemorySegment image, String nameString, MemorySegment array, int n)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_int", "array");
+    }
+    VipsRaw_1.vips_image_set_array_int(image, name, array, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_array_int(VipsImage *image, const char *name, int **out, int *n)
+   * }
+   */
+  public void imageGetArrayInt(MemorySegment image, String nameString, VipsOutputPointer out,
+      MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_int", "n");
+    }
+    var result = VipsRaw_1.vips_image_get_array_int(image, name, outPointer, n);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_array_int");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = resultingOutPointer.reinterpret(arena, VipsRaw::g_free);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_array_double(VipsImage *image, const char *name, double **out, int *n)
+   * }
+   */
+  public void imageGetArrayDouble(MemorySegment image, String nameString, VipsOutputPointer out,
+      MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var outPointer = out.pointerOrNull$internal();
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_double", "n");
+    }
+    var result = VipsRaw_1.vips_image_get_array_double(image, name, outPointer, n);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_get_array_double");
+    }
+    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
+    var reinterpretedOutPointer = resultingOutPointer.reinterpret(arena, VipsRaw::g_free);
+    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+   * }
+   */
+  public void imageSetArrayDouble(MemorySegment image, String nameString, MemorySegment array,
+      int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_double", "array");
+    }
+    VipsRaw_1.vips_image_set_array_double(image, name, array, n);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_history_args(VipsImage *image, const char *name, int argc, char *argv[])
+   * }
+   */
+  public void imageHistoryArgs(MemorySegment image, String nameString, int argc,
+      List<String> argvStringArray) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_history_args", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var argv = VipsInvoker.makeCharStarArray(arena, argvStringArray);
+    var result = VipsRaw_1.vips_image_history_args(image, name, argc, argv);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_image_history_args");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_history(VipsImage *image)
+   * }
+   */
+  public String imageGetHistory(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_history", "image");
+    }
+    var result = VipsRaw_1.vips_image_get_history(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_history", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_get_type()
+   * }
+   */
+  public long operationGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsOperationFlags vips_operation_get_flags(VipsOperation *operation)
+   * }
+   */
+  public void operationGetFlags(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_operation_get_flags", "operation");
+    }
+    var result = VipsRaw_1.vips_operation_get_flags(operation);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_operation_get_flags");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_operation_class_print_usage(VipsOperationClass *operation_class)
+   * }
+   */
+  public void operationClassPrintUsage(MemorySegment operation_class) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation_class)) {
+      VipsValidation.throwInvalidInputError("vips_operation_class_print_usage", "operation_class");
+    }
+    VipsRaw_1.vips_operation_class_print_usage(operation_class);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_operation_invalidate(VipsOperation *operation)
+   * }
+   */
+  public void operationInvalidate(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_operation_invalidate", "operation");
+    }
+    VipsRaw_1.vips_operation_invalidate(operation);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_operation_call_valist(VipsOperation *operation, va_list ap)
+   * }
+   */
+  public void operationCallValist(MemorySegment operation, MemorySegment ap) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_operation_call_valist", "operation");
+    }
+    var result = VipsRaw_1.vips_operation_call_valist(operation, ap);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_operation_call_valist");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsOperation *vips_operation_new(const char *name)
+   * }
+   */
+  public MemorySegment operationNew(String nameString) throws VipsError {
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw_1.vips_operation_new(name);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_operation_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_call_required_optional(VipsOperation **operation, va_list required, va_list optional)
+   * }
+   */
+  public void callRequiredOptional(MemorySegment operation, MemorySegment required,
+      MemorySegment optional) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_call_required_optional", "operation");
+    }
+    var result = VipsRaw_1.vips_call_required_optional(operation, required, optional);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_call_required_optional");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_call_options(GOptionGroup *group, VipsOperation *operation)
+   * }
+   */
+  public void callOptions(MemorySegment group, MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(group)) {
+      VipsValidation.throwInvalidInputError("vips_call_options", "group");
+    }
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_call_options", "operation");
+    }
+    VipsRaw_1.vips_call_options(group, operation);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_call_argv(VipsOperation *operation, int argc, char **argv)
+   * }
+   */
+  public void callArgv(MemorySegment operation, int argc, MemorySegment argv) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_call_argv", "operation");
+    }
+    if(!VipsValidation.isValidPointer(argv)) {
+      VipsValidation.throwInvalidInputError("vips_call_argv", "argv");
+    }
+    var result = VipsRaw_1.vips_call_argv(operation, argc, argv);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_call_argv");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_drop_all()
+   * }
+   */
+  public void cacheDropAll() throws VipsError {
+    VipsRaw_1.vips_cache_drop_all();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsOperation *vips_cache_operation_lookup(VipsOperation *operation)
+   * }
+   */
+  public MemorySegment cacheOperationLookup(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_cache_operation_lookup", "operation");
+    }
+    var result = VipsRaw_1.vips_cache_operation_lookup(operation);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_cache_operation_lookup", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_operation_add(VipsOperation *operation)
+   * }
+   */
+  public void cacheOperationAdd(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_cache_operation_add", "operation");
+    }
+    VipsRaw_1.vips_cache_operation_add(operation);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_cache_operation_buildp(VipsOperation **operation)
+   * }
+   */
+  public void cacheOperationBuildp(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_cache_operation_buildp", "operation");
+    }
+    var result = VipsRaw_1.vips_cache_operation_buildp(operation);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_cache_operation_buildp");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsOperation *vips_cache_operation_build(VipsOperation *operation)
+   * }
+   */
+  public MemorySegment cacheOperationBuild(MemorySegment operation) throws VipsError {
+    if(!VipsValidation.isValidPointer(operation)) {
+      VipsValidation.throwInvalidInputError("vips_cache_operation_build", "operation");
+    }
+    var result = VipsRaw_1.vips_cache_operation_build(operation);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_cache_operation_build", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_print()
+   * }
+   */
+  public void cachePrint() throws VipsError {
+    VipsRaw_1.vips_cache_print();
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_set_max(int max)
+   * }
+   */
+  public void cacheSetMax(int max) throws VipsError {
+    VipsRaw_1.vips_cache_set_max(max);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_set_max_mem(size_t max_mem)
+   * }
+   */
+  public void cacheSetMaxMem(long max_mem) throws VipsError {
+    VipsRaw_1.vips_cache_set_max_mem(max_mem);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_cache_get_max()
+   * }
+   */
+  public void cacheGetMax() throws VipsError {
+    var result = VipsRaw_1.vips_cache_get_max();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_cache_get_max");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_cache_get_size()
+   * }
+   */
+  public void cacheGetSize() throws VipsError {
+    var result = VipsRaw_1.vips_cache_get_size();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_cache_get_size");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * size_t vips_cache_get_max_mem()
+   * }
+   */
+  public long cacheGetMaxMem() throws VipsError {
+    var result = VipsRaw_1.vips_cache_get_max_mem();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_cache_get_max_files()
+   * }
+   */
+  public void cacheGetMaxFiles() throws VipsError {
+    var result = VipsRaw_1.vips_cache_get_max_files();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_cache_get_max_files");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_set_max_files(int max_files)
+   * }
+   */
+  public void cacheSetMaxFiles(int max_files) throws VipsError {
+    VipsRaw_1.vips_cache_set_max_files(max_files);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_set_dump(gboolean dump)
+   * }
+   */
+  public void cacheSetDump(boolean dumpBoolean) throws VipsError {
+    var dump = dumpBoolean ? 1 : 0;
+    VipsRaw_1.vips_cache_set_dump(dump);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_cache_set_trace(gboolean trace)
+   * }
+   */
+  public void cacheSetTrace(boolean traceBoolean) throws VipsError {
+    var trace = traceBoolean ? 1 : 0;
+    VipsRaw_1.vips_cache_set_trace(trace);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_concurrency_set(int concurrency)
+   * }
+   */
+  public void concurrencySet(int concurrency) throws VipsError {
+    VipsRaw_1.vips_concurrency_set(concurrency);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_concurrency_get()
+   * }
+   */
+  public void concurrencyGet() throws VipsError {
+    var result = VipsRaw_1.vips_concurrency_get();
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_concurrency_get");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_operation_block_set(const char *name, gboolean state)
+   * }
+   */
+  public void operationBlockSet(String nameString, boolean stateBoolean) throws VipsError {
+    var name = arena.allocateFrom(nameString);
+    var state = stateBoolean ? 1 : 0;
+    VipsRaw_1.vips_operation_block_set(name, state);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_get_type()
+   * }
+   */
+  public long foreignGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_load_get_type()
+   * }
+   */
+  public long foreignLoadGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_load_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_load(const char *filename)
+   * }
+   */
+  public String foreignFindLoad(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_foreign_find_load(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_load", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_load_buffer(const void *data, size_t size)
+   * }
+   */
+  public String foreignFindLoadBuffer(MemorySegment data, long size) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_foreign_find_load_buffer", "data");
+    }
+    var result = VipsRaw_1.vips_foreign_find_load_buffer(data, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_load_buffer", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_load_source(VipsSource *source)
+   * }
+   */
+  public String foreignFindLoadSource(MemorySegment source) throws VipsError {
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_foreign_find_load_source", "source");
+    }
+    var result = VipsRaw_1.vips_foreign_find_load_source(source);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_load_source", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsForeignFlags vips_foreign_flags(const char *loader, const char *filename)
+   * }
+   */
+  public void foreignFlags(String loaderString, String filenameString) throws VipsError {
+    var loader = arena.allocateFrom(loaderString);
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_foreign_flags(loader, filename);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("vips_foreign_flags");
+    }
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_foreign_is_a(const char *loader, const char *filename)
+   * }
+   */
+  public boolean foreignIsA(String loaderString, String filenameString) throws VipsError {
+    var loader = arena.allocateFrom(loaderString);
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_foreign_is_a(loader, filename);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_foreign_is_a_buffer(const char *loader, const void *data, size_t size)
+   * }
+   */
+  public boolean foreignIsABuffer(String loaderString, MemorySegment data, long size) throws
+      VipsError {
+    var loader = arena.allocateFrom(loaderString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_foreign_is_a_buffer", "data");
+    }
+    var result = VipsRaw_1.vips_foreign_is_a_buffer(loader, data, size);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_foreign_is_a_source(const char *loader, VipsSource *source)
+   * }
+   */
+  public boolean foreignIsASource(String loaderString, MemorySegment source) throws VipsError {
+    var loader = arena.allocateFrom(loaderString);
+    if(!VipsValidation.isValidPointer(source)) {
+      VipsValidation.throwInvalidInputError("vips_foreign_is_a_source", "source");
+    }
+    var result = VipsRaw_1.vips_foreign_is_a_source(loader, source);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_foreign_load_invalidate(VipsImage *image)
+   * }
+   */
+  public void foreignLoadInvalidate(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_foreign_load_invalidate", "image");
+    }
+    VipsRaw_1.vips_foreign_load_invalidate(image);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_save_get_type()
+   * }
+   */
+  public long foreignSaveGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_save_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_save(const char *filename)
+   * }
+   */
+  public String foreignFindSave(String filenameString) throws VipsError {
+    var filename = arena.allocateFrom(filenameString);
+    var result = VipsRaw_1.vips_foreign_find_save(filename);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_save", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gchar **vips_foreign_get_suffixes()
+   * }
+   */
+  public MemorySegment foreignGetSuffixes() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_get_suffixes();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_get_suffixes", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_save_buffer(const char *suffix)
+   * }
+   */
+  public String foreignFindSaveBuffer(String suffixString) throws VipsError {
+    var suffix = arena.allocateFrom(suffixString);
+    var result = VipsRaw_1.vips_foreign_find_save_buffer(suffix);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_save_buffer", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_foreign_find_save_target(const char *suffix)
+   * }
+   */
+  public String foreignFindSaveTarget(String suffixString) throws VipsError {
+    var suffix = arena.allocateFrom(suffixString);
+    var result = VipsRaw_1.vips_foreign_find_save_target(suffix);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_foreign_find_save_target", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_math_get_type()
+   * }
+   */
+  public long operationMathGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_math_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_math2_get_type()
+   * }
+   */
+  public long operationMath2GetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_math2_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_round_get_type()
+   * }
+   */
+  public long operationRoundGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_round_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_relational_get_type()
+   * }
+   */
+  public long operationRelationalGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_relational_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_boolean_get_type()
+   * }
+   */
+  public long operationBooleanGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_boolean_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_complex_get_type()
+   * }
+   */
+  public long operationComplexGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_complex_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_complex2_get_type()
+   * }
+   */
+  public long operationComplex2GetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_complex2_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_operation_complexget_get_type()
+   * }
+   */
+  public long operationComplexgetGetType() throws VipsError {
+    var result = VipsRaw_1.vips_operation_complexget_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_precision_get_type()
+   * }
+   */
+  public long precisionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_precision_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_intent_get_type()
+   * }
+   */
+  public long intentGetType() throws VipsError {
+    var result = VipsRaw_1.vips_intent_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_pcs_get_type()
+   * }
+   */
+  public long pcsGetType() throws VipsError {
+    var result = VipsRaw_1.vips_pcs_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_extend_get_type()
+   * }
+   */
+  public long extendGetType() throws VipsError {
+    var result = VipsRaw_1.vips_extend_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_compass_direction_get_type()
+   * }
+   */
+  public long compassDirectionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_compass_direction_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_direction_get_type()
+   * }
+   */
+  public long directionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_direction_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_align_get_type()
+   * }
+   */
+  public long alignGetType() throws VipsError {
+    var result = VipsRaw_1.vips_align_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_angle_get_type()
+   * }
+   */
+  public long angleGetType() throws VipsError {
+    var result = VipsRaw_1.vips_angle_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_angle45_get_type()
+   * }
+   */
+  public long angle45GetType() throws VipsError {
+    var result = VipsRaw_1.vips_angle45_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_interesting_get_type()
+   * }
+   */
+  public long interestingGetType() throws VipsError {
+    var result = VipsRaw_1.vips_interesting_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_blend_mode_get_type()
+   * }
+   */
+  public long blendModeGetType() throws VipsError {
+    var result = VipsRaw_1.vips_blend_mode_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_combine_get_type()
+   * }
+   */
+  public long combineGetType() throws VipsError {
+    var result = VipsRaw_1.vips_combine_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_text_wrap_get_type()
+   * }
+   */
+  public long textWrapGetType() throws VipsError {
+    var result = VipsRaw_1.vips_text_wrap_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_combine_mode_get_type()
+   * }
+   */
+  public long combineModeGetType() throws VipsError {
+    var result = VipsRaw_1.vips_combine_mode_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_flags_get_type()
+   * }
+   */
+  public long foreignFlagsGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_flags_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_fail_on_get_type()
+   * }
+   */
+  public long failOnGetType() throws VipsError {
+    var result = VipsRaw_1.vips_fail_on_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_saveable_get_type()
+   * }
+   */
+  public long saveableGetType() throws VipsError {
+    var result = VipsRaw_1.vips_saveable_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_keep_get_type()
+   * }
+   */
+  public long foreignKeepGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_keep_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_subsample_get_type()
+   * }
+   */
+  public long foreignSubsampleGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_subsample_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_jpeg_subsample_get_type()
+   * }
+   */
+  public long foreignJpegSubsampleGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_jpeg_subsample_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_webp_preset_get_type()
+   * }
+   */
+  public long foreignWebpPresetGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_webp_preset_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_tiff_compression_get_type()
+   * }
+   */
+  public long foreignTiffCompressionGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_tiff_compression_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_tiff_predictor_get_type()
+   * }
+   */
+  public long foreignTiffPredictorGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_tiff_predictor_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_tiff_resunit_get_type()
+   * }
+   */
+  public long foreignTiffResunitGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_tiff_resunit_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_png_filter_get_type()
+   * }
+   */
+  public long foreignPngFilterGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_png_filter_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_ppm_format_get_type()
+   * }
+   */
+  public long foreignPpmFormatGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_ppm_format_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_foreign_dz_layout_get_type()
+   * }
+   */
+  public long foreignDzLayoutGetType() throws VipsError {
+    var result = VipsRaw_1.vips_foreign_dz_layout_get_type();
+    return result;
   }
 
   /**
@@ -1235,27 +9134,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * int vips_gaussnoise(VipsImage **out, int width, int height, ...)
-   * }
-   */
-  public void gaussnoise(VipsOutputPointer out, int width, int height, VipsOption... options) throws
-      VipsError {
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gaussnoise.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(outPointer, width, height, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gaussnoise");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * int vips_text(VipsImage **out, const char *text, ...)
    * }
    */
@@ -1290,48 +9168,6 @@ public final class Vips {
     var result = invoker.apply(outPointer, sigma, min_ampl, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_logmat");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gaussmat(VipsImage **out, double sigma, double min_ampl, ...)
-   * }
-   */
-  public void gaussmat(VipsOutputPointer out, double sigma, double min_ampl, VipsOption... options)
-      throws VipsError {
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gaussmat.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(outPointer, sigma, min_ampl, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gaussmat");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_grey(VipsImage **out, int width, int height, ...)
-   * }
-   */
-  public void grey(VipsOutputPointer out, int width, int height, VipsOption... options) throws
-      VipsError {
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_grey.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(outPointer, width, height, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_grey");
     }
     var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
     var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
@@ -1850,6 +9686,9 @@ public final class Vips {
   public void profileLoad(String nameString, MemorySegment profile, VipsOption... options) throws
       VipsError {
     var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(profile)) {
+      VipsValidation.throwInvalidInputError("vips_profile_load", "profile");
+    }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_profile_load.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -3080,6 +10919,9 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(index)) {
       VipsValidation.throwInvalidInputError("vips_case", "index");
     }
+    if(!VipsValidation.isValidPointer(cases)) {
+      VipsValidation.throwInvalidInputError("vips_case", "cases");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_case.makeInvoker(layouts);
@@ -3413,30 +11255,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * int vips_globalbalance(VipsImage *in, VipsImage **out, ...)
-   * }
-   */
-  public void globalbalance(MemorySegment in, VipsOutputPointer out, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_globalbalance", "in");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_globalbalance.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, outPointer, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_globalbalance");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * int vips_match(VipsImage *ref, VipsImage *sec, VipsImage **out, int xr1, int yr1, int xs1, int ys1, int xr2, int yr2, int xs2, int ys2, ...)
    * }
    */
@@ -3578,6 +11396,9 @@ public final class Vips {
       VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_labelregions", "in");
+    }
+    if(!VipsValidation.isValidPointer(mask)) {
+      VipsValidation.throwInvalidInputError("vips_labelregions", "mask");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_labelregions.makeInvoker(layouts);
@@ -3863,30 +11684,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * int vips_gaussblur(VipsImage *in, VipsImage **out, double sigma, ...)
-   * }
-   */
-  public void gaussblur(MemorySegment in, VipsOutputPointer out, double sigma,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gaussblur", "in");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gaussblur.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, outPointer, sigma, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gaussblur");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * int vips_compass(VipsImage *in, VipsImage **out, VipsImage *mask, ...)
    * }
    */
@@ -4076,30 +11873,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * int vips_gamma(VipsImage *in, VipsImage **out, ...)
-   * }
-   */
-  public void gamma(MemorySegment in, VipsOutputPointer out, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gamma", "in");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gamma.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, outPointer, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gamma");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * int vips_falsecolour(VipsImage *in, VipsImage **out, ...)
    * }
    */
@@ -4156,6 +11929,9 @@ public final class Vips {
    */
   public void composite(MemorySegment in, VipsOutputPointer out, int n, MemorySegment mode,
       VipsOption... options) throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_composite", "in");
+    }
     var outPointer = out.pointerOrNull$internal();
     if(!VipsValidation.isValidPointer(mode)) {
       VipsValidation.throwInvalidInputError("vips_composite", "mode");
@@ -4276,6 +12052,9 @@ public final class Vips {
    */
   public void switch1(MemorySegment tests, VipsOutputPointer out, int n, VipsOption... options)
       throws VipsError {
+    if(!VipsValidation.isValidPointer(tests)) {
+      VipsValidation.throwInvalidInputError("vips_switch", "tests");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_switch.makeInvoker(layouts);
@@ -4522,6 +12301,9 @@ public final class Vips {
    */
   public void bandrank(MemorySegment in, VipsOutputPointer out, int n, VipsOption... options) throws
       VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_bandrank", "in");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_bandrank.makeInvoker(layouts);
@@ -4621,6 +12403,9 @@ public final class Vips {
    */
   public void bandjoin(MemorySegment in, VipsOutputPointer out, int n, VipsOption... options) throws
       VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_bandjoin", "in");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_bandjoin.makeInvoker(layouts);
@@ -5212,30 +12997,6 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * int vips_grid(VipsImage *in, VipsImage **out, int tile_height, int across, int down, ...)
-   * }
-   */
-  public void grid(MemorySegment in, VipsOutputPointer out, int tile_height, int across, int down,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_grid", "in");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_grid.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, outPointer, tile_height, across, down, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_grid");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * int vips_replicate(VipsImage *in, VipsImage **out, int across, int down, ...)
    * }
    */
@@ -5361,6 +13122,9 @@ public final class Vips {
    */
   public void arrayjoin(MemorySegment in, VipsOutputPointer out, int n, VipsOption... options)
       throws VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_arrayjoin", "in");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_arrayjoin.makeInvoker(layouts);
@@ -5446,30 +13210,6 @@ public final class Vips {
     var result = invoker.apply(in, outPointer, direction, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_flip");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gravity(VipsImage *in, VipsImage **out, VipsCompassDirection direction, int width, int height, ...)
-   * }
-   */
-  public void gravity(MemorySegment in, VipsOutputPointer out, int direction, int width, int height,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gravity", "in");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gravity.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, outPointer, direction, width, height, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gravity");
     }
     var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
     var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
@@ -5655,6 +13395,12 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_profile", "in");
     }
+    if(!VipsValidation.isValidPointer(columns)) {
+      VipsValidation.throwInvalidInputError("vips_profile", "columns");
+    }
+    if(!VipsValidation.isValidPointer(rows)) {
+      VipsValidation.throwInvalidInputError("vips_profile", "rows");
+    }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_profile.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
@@ -5674,6 +13420,12 @@ public final class Vips {
       VipsOption... options) throws VipsError {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_project", "in");
+    }
+    if(!VipsValidation.isValidPointer(columns)) {
+      VipsValidation.throwInvalidInputError("vips_project", "columns");
+    }
+    if(!VipsValidation.isValidPointer(rows)) {
+      VipsValidation.throwInvalidInputError("vips_project", "rows");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_project.makeInvoker(layouts);
@@ -5805,29 +13557,6 @@ public final class Vips {
     var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
     var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
     out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_getpoint(VipsImage *in, double **vector, int *n, int x, int y, ...)
-   * }
-   */
-  public void getpoint(MemorySegment in, MemorySegment vector, MemorySegment n, int x, int y,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_getpoint", "in");
-    }
-    if(!VipsValidation.isValidPointer(n)) {
-      VipsValidation.throwInvalidInputError("vips_getpoint", "n");
-    }
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_getpoint.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, vector, n, x, y, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_getpoint");
-    }
   }
 
   /**
@@ -8365,6 +16094,9 @@ public final class Vips {
    */
   public void sum(MemorySegment in, VipsOutputPointer out, int n, VipsOption... options) throws
       VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_sum", "in");
+    }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
     var invoker = VipsRaw.vips_sum.makeInvoker(layouts);
@@ -8420,7 +16152,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_dzsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_dzsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_dzsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8439,11 +16171,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_dzsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_dzsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_dzsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_dzsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_dzsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8463,7 +16198,7 @@ public final class Vips {
     }
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_dzsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_dzsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8486,7 +16221,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_jxlsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8505,11 +16240,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jxlsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_jxlsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_jxlsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8530,7 +16268,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8549,7 +16287,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8573,7 +16311,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8597,7 +16335,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jxlload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jxlload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8623,7 +16361,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_jp2ksave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2ksave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2ksave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8642,11 +16380,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jp2ksave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_jp2ksave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_jp2ksave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2ksave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2ksave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8667,7 +16408,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2ksave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2ksave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8688,7 +16429,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2kload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2kload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8712,7 +16453,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2kload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2kload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8734,7 +16475,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jp2kload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jp2kload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8758,7 +16499,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_niftisave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_niftisave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8779,7 +16520,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_niftiload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_niftiload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8801,7 +16542,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_niftiload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_niftiload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8827,7 +16568,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_heifsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8846,11 +16587,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_heifsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_heifsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_heifsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8871,7 +16615,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8892,7 +16636,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8916,7 +16660,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -8938,148 +16682,11 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_heifload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_heifload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_heifload");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifsave_target(VipsImage *in, VipsTarget *target, ...)
-   * }
-   */
-  public void gifsaveTarget(MemorySegment in, MemorySegment target, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave_target", "in");
-    }
-    if(!VipsValidation.isValidPointer(target)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave_target", "target");
-    }
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifsave_target.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, target, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifsave_target");
-    }
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifsave_buffer(VipsImage *in, void **buf, size_t *len, ...)
-   * }
-   */
-  public void gifsaveBuffer(MemorySegment in, MemorySegment buf, MemorySegment len,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave_buffer", "in");
-    }
-    if(!VipsValidation.isValidPointer(len)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave_buffer", "len");
-    }
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifsave_buffer.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, buf, len, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifsave_buffer");
-    }
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifsave(VipsImage *in, const char *filename, ...)
-   * }
-   */
-  public void gifsave(MemorySegment in, String filenameString, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(in)) {
-      VipsValidation.throwInvalidInputError("vips_gifsave", "in");
-    }
-    var filename = arena.allocateFrom(filenameString);
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifsave.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(in, filename, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifsave");
-    }
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifload_source(VipsSource *source, VipsImage **out, ...)
-   * }
-   */
-  public void gifloadSource(MemorySegment source, VipsOutputPointer out, VipsOption... options)
-      throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_gifload_source", "source");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifload_source.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(source, outPointer, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifload_source");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifload_buffer(void *buf, size_t len, VipsImage **out, ...)
-   * }
-   */
-  public void gifloadBuffer(MemorySegment buf, long len, VipsOutputPointer out,
-      VipsOption... options) throws VipsError {
-    if(!VipsValidation.isValidPointer(buf)) {
-      VipsValidation.throwInvalidInputError("vips_gifload_buffer", "buf");
-    }
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifload_buffer.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(buf, len, outPointer, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifload_buffer");
-    }
-    var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
-    var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
-    out.setReinterpretedPointer$internal(reinterpretedOutPointer);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_gifload(const char *filename, VipsImage **out, ...)
-   * }
-   */
-  public void gifload(String filenameString, VipsOutputPointer out, VipsOption... options) throws
-      VipsError {
-    var filename = arena.allocateFrom(filenameString);
-    var outPointer = out.pointerOrNull$internal();
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_gifload.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(filename, outPointer, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_gifload");
     }
     var resultingOutPointer = outPointer.get(VipsRaw.C_POINTER, 0);
     var reinterpretedOutPointer = VipsImage.reinterpret(resultingOutPointer, arena, VipsRaw::g_object_unref);
@@ -9099,7 +16706,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_svgload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_svgload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9121,7 +16728,7 @@ public final class Vips {
     var str = arena.allocateFrom(strString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_svgload_string.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_svgload_string.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(str, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9145,7 +16752,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_svgload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_svgload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9167,7 +16774,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_svgload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_svgload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9191,7 +16798,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pdfload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pdfload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9215,7 +16822,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pdfload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pdfload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9237,7 +16844,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pdfload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pdfload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9263,7 +16870,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_radsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9282,11 +16889,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_radsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_radsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_radsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9307,7 +16917,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9328,7 +16938,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9350,7 +16960,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9374,7 +16984,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_radload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_radload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9396,7 +17006,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9422,7 +17032,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_ppmsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_ppmsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_ppmsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9443,7 +17053,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_ppmsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_ppmsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9464,7 +17074,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_ppmload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_ppmload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9486,7 +17096,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_ppmload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_ppmload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9508,11 +17118,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_pngsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_pngsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_pngsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9533,7 +17146,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9556,7 +17169,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_pngsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9577,7 +17190,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9599,7 +17212,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9623,7 +17236,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_pngload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_pngload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9645,11 +17258,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_magicksave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_magicksave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_magicksave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_magicksave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_magicksave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9670,7 +17286,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_magicksave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_magicksave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9691,7 +17307,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_magickload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_magickload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9713,7 +17329,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_magickload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_magickload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9735,7 +17351,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_matrixprint", "in");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matrixprint.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matrixprint.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9758,7 +17374,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_matrixsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matrixsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matrixsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9779,7 +17395,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matrixsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matrixsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9800,7 +17416,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matrixload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matrixload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9822,7 +17438,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_matrixload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_matrixload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9848,7 +17464,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_csvsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_csvsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_csvsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9869,7 +17485,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_csvsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_csvsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9890,7 +17506,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_csvload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_csvload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9912,7 +17528,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_csvload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_csvload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9934,7 +17550,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_rawsave_fd", "in");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_rawsave_fd.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_rawsave_fd.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, fd, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9955,7 +17571,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_rawsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_rawsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9974,7 +17590,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_rawload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_rawload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, width, height, bands, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -9996,7 +17612,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_analyzeload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_analyzeload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10020,7 +17636,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_fitssave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_fitssave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10039,7 +17655,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_fitsload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_fitsload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10061,7 +17677,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_openexrload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_openexrload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10087,7 +17703,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_tiffsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10106,11 +17722,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_tiffsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_tiffsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_tiffsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10131,7 +17750,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10152,7 +17771,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10176,7 +17795,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10198,7 +17817,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_tiffload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_tiffload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10220,7 +17839,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_webpsave_mime", "in");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpsave_mime.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpsave_mime.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10239,11 +17858,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_webpsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_webpsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_webpsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10264,7 +17886,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10287,7 +17909,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_webpsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10308,7 +17930,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10330,7 +17952,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10354,7 +17976,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_webpload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_webpload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10376,7 +17998,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_jpegsave_mime", "in");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegsave_mime.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegsave_mime.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10395,11 +18017,14 @@ public final class Vips {
     if(!VipsValidation.isValidPointer(in)) {
       VipsValidation.throwInvalidInputError("vips_jpegsave_buffer", "in");
     }
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_jpegsave_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(len)) {
       VipsValidation.throwInvalidInputError("vips_jpegsave_buffer", "len");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegsave_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegsave_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, buf, len, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10420,7 +18045,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegsave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegsave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10443,7 +18068,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_jpegsave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegsave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegsave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10464,7 +18089,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10488,7 +18113,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegload_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegload_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10510,7 +18135,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_jpegload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_jpegload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10534,7 +18159,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_openslideload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_openslideload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10556,7 +18181,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_openslideload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_openslideload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10582,7 +18207,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_vipssave_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_vipssave_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_vipssave_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10603,7 +18228,7 @@ public final class Vips {
     }
     var filename = arena.allocateFrom(filenameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_vipssave.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_vipssave.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, filename, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10624,7 +18249,7 @@ public final class Vips {
     }
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_vipsload_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_vipsload_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10646,7 +18271,7 @@ public final class Vips {
     var filename = arena.allocateFrom(filenameString);
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_vipsload.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_vipsload.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(filename, outPointer, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10668,7 +18293,7 @@ public final class Vips {
     var operation_name = arena.allocateFrom(operation_nameString);
     var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_call_split_option_string.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_call_split_option_string.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(operation_name, option_string, optional, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10686,7 +18311,7 @@ public final class Vips {
       throws VipsError {
     var operation_name = arena.allocateFrom(operation_nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_call_split.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_call_split.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(operation_name, optional, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10703,7 +18328,7 @@ public final class Vips {
   public void call(String operation_nameString, VipsOption... options) throws VipsError {
     var operation_name = arena.allocateFrom(operation_nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_call.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_call.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(operation_name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10724,7 +18349,7 @@ public final class Vips {
     }
     var format = arena.allocateFrom(formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_history_printf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_history_printf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(image, format, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10744,7 +18369,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_image_pipelinev", "image");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_pipelinev.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_pipelinev.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(image, hint, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10762,7 +18387,7 @@ public final class Vips {
       VipsError {
     var outPointer = out.pointerOrNull$internal();
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_allocate_input_array.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_allocate_input_array.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(outPointer, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
@@ -10782,7 +18407,7 @@ public final class Vips {
   public void errorExit(String fmtString, VipsOption... options) throws VipsError {
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_error_exit.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_error_exit.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     invoker.apply(fmt, invokerArgs);
   }
@@ -10798,7 +18423,7 @@ public final class Vips {
     var domain = arena.allocateFrom(domainString);
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_error_system.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_error_system.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     invoker.apply(err, domain, fmt, invokerArgs);
   }
@@ -10813,7 +18438,7 @@ public final class Vips {
     var domain = arena.allocateFrom(domainString);
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_error.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_error.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     invoker.apply(domain, fmt, invokerArgs);
   }
@@ -10826,13 +18451,13 @@ public final class Vips {
    */
   public MemorySegment arrayImageNewv(int n, VipsOption... options) throws VipsError {
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_array_image_newv.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_array_image_newv.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(n, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_array_image_newv", "result");
     }
-    VipsArrayImage.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -10845,7 +18470,7 @@ public final class Vips {
   public void system(String cmd_formatString, VipsOption... options) throws VipsError {
     var cmd_format = arena.allocateFrom(cmd_formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_system.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_system.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(cmd_format, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10869,7 +18494,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_image_write_to_target", "target");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_write_to_target.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_write_to_target.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, suffix, target, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10889,11 +18514,14 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "in");
     }
     var suffix = arena.allocateFrom(suffixString);
+    if(!VipsValidation.isValidPointer(buf)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "buf");
+    }
     if(!VipsValidation.isValidPointer(size)) {
       VipsValidation.throwInvalidInputError("vips_image_write_to_buffer", "size");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_write_to_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_write_to_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(in, suffix, buf, size, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10914,7 +18542,7 @@ public final class Vips {
     }
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_write_to_file.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_write_to_file.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(image, name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -10931,13 +18559,13 @@ public final class Vips {
   public MemorySegment imageNewMatrixv(int width, int height, VipsOption... options) throws
       VipsError {
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_new_matrixv.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_new_matrixv.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(width, height, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_new_matrixv", "result");
     }
-    VipsImage.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -10954,13 +18582,13 @@ public final class Vips {
     }
     var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_new_from_source.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_new_from_source.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(source, option_string, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_new_from_source", "result");
     }
-    VipsImage.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -10977,13 +18605,13 @@ public final class Vips {
     }
     var option_string = arena.allocateFrom(option_stringString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_new_from_buffer.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_new_from_buffer.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, len, option_string, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_new_from_buffer", "result");
     }
-    VipsImage.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -10996,13 +18624,13 @@ public final class Vips {
   public MemorySegment imageNewFromFile(String nameString, VipsOption... options) throws VipsError {
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_image_new_from_file.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_image_new_from_file.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(name, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_new_from_file", "result");
     }
-    VipsImage.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -11019,7 +18647,7 @@ public final class Vips {
     }
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_target_writef.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_target_writef.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(target, fmt, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11040,7 +18668,7 @@ public final class Vips {
     }
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_value_set_save_stringf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_value_set_save_stringf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     invoker.apply(value, fmt, invokerArgs);
   }
@@ -11053,13 +18681,13 @@ public final class Vips {
    */
   public MemorySegment arrayIntNewv(int n, VipsOption... options) throws VipsError {
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_array_int_newv.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_array_int_newv.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(n, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_array_int_newv", "result");
     }
-    VipsArrayInt.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -11071,13 +18699,13 @@ public final class Vips {
    */
   public MemorySegment arrayDoubleNewv(int n, VipsOption... options) throws VipsError {
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_array_double_newv.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_array_double_newv.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(n, invokerArgs);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_array_double_newv", "result");
     }
-    VipsArrayDouble.reinterpret(result, arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -11092,7 +18720,7 @@ public final class Vips {
       VipsValidation.throwInvalidInputError("vips_object_set", "object");
     }
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_object_set.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_object_set.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(object, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11109,7 +18737,7 @@ public final class Vips {
   public void rmdirf(String nameString, VipsOption... options) throws VipsError {
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_rmdirf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_rmdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11126,7 +18754,7 @@ public final class Vips {
   public void mkdirf(String nameString, VipsOption... options) throws VipsError {
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_mkdirf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_mkdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11143,7 +18771,7 @@ public final class Vips {
   public void isdirf(String nameString, VipsOption... options) throws VipsError {
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_isdirf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_isdirf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11160,7 +18788,7 @@ public final class Vips {
   public void existsf(String nameString, VipsOption... options) throws VipsError {
     var name = arena.allocateFrom(nameString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_existsf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_existsf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(name, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11174,14 +18802,12 @@ public final class Vips {
    * int vips_snprintf(char *str, size_t size, const char *format, ...)
    * }
    */
-  public void snprintf(MemorySegment str, long size, String formatString, VipsOption... options)
+  public void snprintf(String strString, long size, String formatString, VipsOption... options)
       throws VipsError {
-    if(!VipsValidation.isValidPointer(str)) {
-      VipsValidation.throwInvalidInputError("vips_snprintf", "str");
-    }
+    var str = arena.allocateFrom(strString);
     var format = arena.allocateFrom(formatString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_snprintf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_snprintf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(str, size, format, invokerArgs);
     if (!VipsValidation.isValidResult(result)) {
@@ -11192,42 +18818,19 @@ public final class Vips {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * gboolean vips_dbuf_writef(VipsDbuf *dbuf, const char *fmt, ...)
-   * }
-   */
-  public void dbufWritef(MemorySegment dbuf, String fmtString, VipsOption... options) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(dbuf)) {
-      VipsValidation.throwInvalidInputError("vips_dbuf_writef", "dbuf");
-    }
-    var fmt = arena.allocateFrom(fmtString);
-    var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_dbuf_writef.makeInvoker(layouts);
-    var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
-    var result = invoker.apply(dbuf, fmt, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_dbuf_writef");
-    }
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * gboolean vips_buf_appendf(VipsBuf *buf, const char *fmt, ...)
    * }
    */
-  public void bufAppendf(MemorySegment buf, String fmtString, VipsOption... options) throws
+  public boolean bufAppendf(MemorySegment buf, String fmtString, VipsOption... options) throws
       VipsError {
     if(!VipsValidation.isValidPointer(buf)) {
       VipsValidation.throwInvalidInputError("vips_buf_appendf", "buf");
     }
     var fmt = arena.allocateFrom(fmtString);
     var layouts = VipsInvoker.makeInvokerVarargLayouts(options);
-    var invoker = VipsRaw.vips_buf_appendf.makeInvoker(layouts);
+    var invoker = VipsRaw_1.vips_buf_appendf.makeInvoker(layouts);
     var invokerArgs = VipsInvoker.makeInvokerVarargObjects(arena, options);
     var result = invoker.apply(buf, fmt, invokerArgs);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("vips_buf_appendf");
-    }
+    return result == 1;
   }
 }

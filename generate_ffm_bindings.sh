@@ -49,7 +49,7 @@ touch includes_filtered.txt
 {
   grep -iE ' (_)?vips[A-Za-z0-9_]*' includes.txt
   grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue)' includes.txt
-  grep -iE ' g_object' includes.txt
+  grep -iE ' g_object|g_free' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."

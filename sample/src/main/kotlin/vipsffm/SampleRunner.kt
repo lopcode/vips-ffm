@@ -47,6 +47,7 @@ object SampleRunner {
                 }
                 logger.info("validation succeeded ✅")
             }
+            logger.info("arena closing...")
         }
         logger.info("shutting down vips to check for memory leaks...")
         VipsRaw.vips_shutdown()
