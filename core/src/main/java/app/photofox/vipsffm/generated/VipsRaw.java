@@ -18,6 +18,118 @@ public class VipsRaw extends VipsRaw_1 {
         // Should not be called directly
     }
 
+    private static class vips_foreign_ppm_format_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_ppm_format_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_ppm_format_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_ppm_format_get_type$descriptor() {
+        return vips_foreign_ppm_format_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_ppm_format_get_type()
+     * }
+     */
+    public static MethodHandle vips_foreign_ppm_format_get_type$handle() {
+        return vips_foreign_ppm_format_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_ppm_format_get_type()
+     * }
+     */
+    public static MemorySegment vips_foreign_ppm_format_get_type$address() {
+        return vips_foreign_ppm_format_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_foreign_ppm_format_get_type()
+     * }
+     */
+    public static long vips_foreign_ppm_format_get_type() {
+        var mh$ = vips_foreign_ppm_format_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_ppm_format_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_foreign_dz_layout_get_type {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_dz_layout_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_dz_layout_get_type()
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_dz_layout_get_type$descriptor() {
+        return vips_foreign_dz_layout_get_type.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_dz_layout_get_type()
+     * }
+     */
+    public static MethodHandle vips_foreign_dz_layout_get_type$handle() {
+        return vips_foreign_dz_layout_get_type.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GType vips_foreign_dz_layout_get_type()
+     * }
+     */
+    public static MemorySegment vips_foreign_dz_layout_get_type$address() {
+        return vips_foreign_dz_layout_get_type.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GType vips_foreign_dz_layout_get_type()
+     * }
+     */
+    public static long vips_foreign_dz_layout_get_type() {
+        var mh$ = vips_foreign_dz_layout_get_type.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_dz_layout_get_type");
+            }
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_foreign_dz_depth_get_type {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_LONG    );
@@ -28067,25 +28179,25 @@ public class VipsRaw extends VipsRaw_1 {
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION "8.15.2"
+     * #define VIPS_VERSION "8.15.3"
      * }
      */
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.3");
         }
         return Holder.VIPS_VERSION;
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION_STRING "8.15.2"
+     * #define VIPS_VERSION_STRING "8.15.3"
      * }
      */
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.3");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -28107,10 +28219,10 @@ public class VipsRaw extends VipsRaw_1 {
     public static int VIPS_MINOR_VERSION() {
         return VIPS_MINOR_VERSION;
     }
-    private static final int VIPS_MICRO_VERSION = (int)2L;
+    private static final int VIPS_MICRO_VERSION = (int)3L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MICRO_VERSION 2
+     * #define VIPS_MICRO_VERSION 3
      * }
      */
     public static int VIPS_MICRO_VERSION() {
@@ -28125,10 +28237,10 @@ public class VipsRaw extends VipsRaw_1 {
     public static int VIPS_LIBRARY_CURRENT() {
         return VIPS_LIBRARY_CURRENT;
     }
-    private static final int VIPS_LIBRARY_REVISION = (int)2L;
+    private static final int VIPS_LIBRARY_REVISION = (int)3L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_REVISION 2
+     * #define VIPS_LIBRARY_REVISION 3
      * }
      */
     public static int VIPS_LIBRARY_REVISION() {
