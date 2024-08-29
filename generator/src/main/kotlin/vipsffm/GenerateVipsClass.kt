@@ -142,11 +142,6 @@ object GenerateVipsClass {
         methodModel: MethodModel,
         externMetadata: ExternFunctionMetadata
     ): MethodSpec? {
-        if (externMetadata.arguments.any { it.name == "fn" }) {
-            logger.info("skipping ${rawMethodName} - unsupported function argument")
-            return null
-        }
-
         val newName = rawMethodName
             .removePrefix("vips_")
             .fromSnakeToJavaStyle()
