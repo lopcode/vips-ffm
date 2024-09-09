@@ -71,6 +71,10 @@ tasks.withType<Jar>().configureEach {
     }
 }
 
+tasks.withType<Javadoc> {
+    (options as StandardJavadocDocletOptions).tags("optionalArg")
+}
+
 dependencies {}
 
 val githubVersion = System.getenv("GITHUB_VERSION") ?: null

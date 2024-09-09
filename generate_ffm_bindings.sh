@@ -28,7 +28,7 @@ echo "Found libvips entry at \"$LIBVIPS_ENTRY_PATH\"..."
 
 echo "Clearing generated files..."
 
-rm -rf core/src/main/java/app/photofox/vipsffm/generated || true
+rm -rf core/src/main/java/app/photofox/vipsffm/jextract || true
 
 echo "Dumping all discovered includes..."
 
@@ -47,9 +47,10 @@ rm includes_filtered.txt || true
 touch includes_filtered.txt
 
 {
-  grep -iE ' (_)?vips[A-Za-z0-9_]*' includes.txt
-  grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue)' includes.txt
-  grep -iE ' g_object|g_free|g_type_from_name|g_param_spec_get_blurb' includes.txt
+  grep -iE ' (_)?(vips_image|vips_init|vips_nick|vips_source|vips_target|vips_blob|vips_object|vips_block|vips_operation|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_cache|vips_array|vips_value)[A-Za-z0-9_]*' includes.txt
+  grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
+  grep -iE ' (_)?(GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue|GParamSpec|G_TYPE)' includes.txt
+  grep -iE ' g_object|g_free|g_type_from_name|g_type_name|g_param_spec_get_blurb|g_object_set|g_object_get|g_value' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."
@@ -61,10 +62,12 @@ set -x
 --include-dir "/opt/homebrew/include/glib-2.0" \
 --include-dir "/opt/homebrew/lib/glib-2.0/include" \
 --output core/src/main/java \
---target-package "app.photofox.vipsffm.generated" \
+--target-package "app.photofox.vipsffm.jextract" \
 --header-class-name "VipsRaw" \
 --library "vips" \
 @includes_filtered.txt \
 "$LIBVIPS_ENTRY_PATH"
+
+export DYLD_LIBRARY_PATH="native_libs"
 
 ./gradlew clean generator:run

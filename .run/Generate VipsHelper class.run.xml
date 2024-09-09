@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Generate VipsHelper class" type="JetRunConfigurationType">
+    <envs>
+      <env name="DYLD_LIBRARY_PATH" value="native_libs" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVipsHelperClass" />
+    <module name="vips-ffm.generator.main" />
+    <shortenClasspath name="NONE" />
+    <option name="VM_PARAMETERS" value="--enable-preview --enable-native-access=ALL-UNNAMED" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="" />
+    </method>
+  </configuration>
+</component>

@@ -1,7 +1,6 @@
 package vipsffm
 
-import app.photofox.vipsffm.generated.Vips
-import app.photofox.vipsffm.generated.VipsRaw
+import app.photofox.vipsffm.VipsHelper
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.nio.file.Files
@@ -18,8 +17,10 @@ object SampleRunner {
         val samples = listOf(
             RawGetVersionSample,
             HelperGetVersionSample,
-            RawCreateThumbnailSample,
-            HelperCreateThumbnailSample
+            VImageCreateThumbnailSample,
+            VImageChainSample,
+            VSourceTargetSample,
+            VImageCopyWriteSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {
@@ -30,8 +31,8 @@ object SampleRunner {
         Files.createDirectory(sampleParentRunPath)
 
         Arena.ofConfined().use { arena ->
-            val vips = Vips(arena)
-            vips.leakSet(true)
+            VipsHelper.init(arena, "vips-ffm", false)
+            VipsHelper.leak_set(true)
 
             samples.forEach { sample ->
                 val sampleName = sample::class.simpleName!!
@@ -47,10 +48,9 @@ object SampleRunner {
                 }
                 logger.info("validation succeeded ✅")
             }
-            logger.info("arena closing...")
         }
         logger.info("shutting down vips to check for memory leaks...")
-        VipsRaw.vips_shutdown()
+        VipsHelper.shutdown()
         logger.info("all samples ran successfully 🎉")
         exitProcess(0)
     }
