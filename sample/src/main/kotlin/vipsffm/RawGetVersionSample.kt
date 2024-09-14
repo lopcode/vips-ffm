@@ -1,6 +1,6 @@
 package vipsffm
 
-import app.photofox.vipsffm.generated.VipsRaw
+import app.photofox.vipsffm.jextract.VipsRaw
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.nio.file.Path
