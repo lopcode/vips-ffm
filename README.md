@@ -2,14 +2,13 @@
 
 [libvips](https://github.com/libvips/libvips) bindings for JVM projects, using the "Foreign Function & Memory API"
 ([JEP 454](https://openjdk.org/jeps/454)), and the "Class-File API" ([JEP 457](https://openjdk.org/jeps/457)) released in JDK 22. The combination
-of libvips, FFM, and auto-generated helpers makes for fast and safe image manipulation in JVM systems.
+of libvips, FFM, and auto-generated helpers means these bindings are complete (supporting all libvips operations), safe,
+and fast.
+
 Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
 eff-eff-emm".
 
-Bindings are automatically generated using `jextract`, then used to introspect the `libvips` operations API and generate
-lightweight "helpers" to allow for safe, idiomatic usage.
-
-Like what you've read so far? Please give the repo a star 🌟️!
+Used the library, or just like what you've read so far? Please give the repo a star 🌟️!
 
 ## Usage
 
