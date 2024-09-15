@@ -92,7 +92,7 @@ publishing {
 
             pom {
                 name = "vips-ffm-core"
-                description = "libvips bindings for JVM projects, using JDK 22's FFM and Class-File APIs, for performant, safe, and ergonomic image manipulation"
+                description = "libvips for JVM projects, using JDK 22's FFM and Class-File APIs to generate complete, safe, and fast bindings for image manipulation"
                 url = "https://github.com/lopcode/vips-ffm"
                 licenses {
                     license {
