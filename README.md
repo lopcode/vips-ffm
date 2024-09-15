@@ -51,6 +51,8 @@ import java.lang.foreign.Arena
 // ...
 
 Arena.ofConfined().use { arena ->
+    VipsHelper.init(arena, "vips-ffm", false)
+
     val sourceImage = VImage.newFromFile(
       arena,
       "sample/src/main/resources/sample_images/rabbit.jpg",
@@ -71,6 +73,8 @@ Arena.ofConfined().use { arena ->
     val thumbnailHeight = thumbnail.height
     logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
 }
+
+VipsHelper.shutdown()
 ```
 
 The project has several samples, [described below](#samples).
