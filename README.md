@@ -18,11 +18,11 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:0.0.8")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:0.1.0")
 }
 ```
 
-As the project uses the FFM API, it must target JDK 22+.
+As the project uses the FFM API, it must target JDK 22+. The bindings are currently generated from libvips `8.15.3`.
 
 All libvips operations are exposed via helper classes, like `VImage`. You must provide an [Arena][1] to operations like
 `VImage.newFromFile`, and this constrains the lifetime of objects generated during usage. Be careful to only keep the 
