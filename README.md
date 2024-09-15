@@ -45,7 +45,8 @@ To get a feeling for the bindings, here's an indicative sample written in Kotlin
 * Creates a 400px thumbnail from the original, and writes that to disk
 
 ```kotlin
-import app.photofox.vipsffm.generated.Vips
+import app.photofox.vipsffm.VipsHelper
+import app.photofox.vipsffm.VImage
 import java.lang.foreign.Arena
 
 // ...
