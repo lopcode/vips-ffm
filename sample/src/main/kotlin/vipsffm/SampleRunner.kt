@@ -1,5 +1,6 @@
 package vipsffm
 
+import app.photofox.vipsffm.Vips
 import app.photofox.vipsffm.VipsHelper
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
@@ -30,10 +31,8 @@ object SampleRunner {
         Files.deleteIfExists(sampleParentRunPath)
         Files.createDirectory(sampleParentRunPath)
 
-        Arena.ofConfined().use { arena ->
-            VipsHelper.init(arena, "vips-ffm", false)
-            VipsHelper.leak_set(true)
-
+        Vips.init(false, true)
+        Vips.run { arena ->
             samples.forEach { sample ->
                 val sampleName = sample::class.simpleName!!
                 logger.info("running sample \"$sampleName\"...")
@@ -50,7 +49,7 @@ object SampleRunner {
             }
         }
         logger.info("shutting down vips to check for memory leaks...")
-        VipsHelper.shutdown()
+        Vips.shutdown()
         logger.info("all samples ran successfully 🎉")
         exitProcess(0)
     }
