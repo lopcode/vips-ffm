@@ -50,8 +50,10 @@ import app.photofox.vipsffm.VImage
 
 // ...
 
+// Call once to initialise libvips when your program starts
 Vips.init()
 
+// Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 Vips.run { arena ->
     val sourceImage = VImage.newFromFile(
       arena,
@@ -74,6 +76,7 @@ Vips.run { arena ->
     logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
 }
 
+// Optionally call at the end of your program, for memory leak detection
 Vips.shutdown()
 ```
 
