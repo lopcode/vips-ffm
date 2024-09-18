@@ -45,15 +45,15 @@ To get a feeling for the bindings, here's an indicative sample written in Kotlin
 * Creates a 400px thumbnail from the original, and writes that to disk
 
 ```kotlin
-import app.photofox.vipsffm.VipsHelper
+import app.photofox.vipsffm.Vips
 import app.photofox.vipsffm.VImage
 import java.lang.foreign.Arena
 
 // ...
 
-Arena.ofConfined().use { arena ->
-    VipsHelper.init(arena, "vips-ffm", false)
+Vips.init()
 
+Vips.run { arena ->
     val sourceImage = VImage.newFromFile(
       arena,
       "sample/src/main/resources/sample_images/rabbit.jpg",
@@ -75,7 +75,7 @@ Arena.ofConfined().use { arena ->
     logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
 }
 
-VipsHelper.shutdown()
+Vips.shutdown()
 ```
 
 The project has several samples, [described below](#samples).

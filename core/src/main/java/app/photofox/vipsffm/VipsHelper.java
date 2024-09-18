@@ -8,16 +8,58 @@ import java.util.List;
 
 /**
  * Generated helpers to wrap {@link VipsRaw} JExtract definitions
- * Validation of input pointers is performed, but prefer usage of {@link VImage} which does not expose raw pointers
+ * Validation of input pointers is performed, but prefer usage of {@link VImage} and friends which do not expose raw pointers
  */
 public final class VipsHelper {
-  public static void init(Arena arena, String argv0, boolean allowUntrusted) {
-    var nameCString = arena.allocateFrom(argv0);
+  public static void init(Arena arena, boolean allowUntrusted) {
+    var nameCString = arena.allocateFrom("vips-ffm");
     var result = VipsRaw.vips_init(nameCString);
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_init");
     }
     VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_enum_string(GType enm, int value)
+   * }
+   */
+  public static String enum_string(long enm, int value) throws VipsError {
+    var result = VipsRaw.vips_enum_string(enm, value);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_enum_string", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_enum_nick(GType enm, int value)
+   * }
+   */
+  public static String enum_nick(long enm, int value) throws VipsError {
+    var result = VipsRaw.vips_enum_nick(enm, value);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_enum_nick", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_enum_from_nick(const char *domain, GType type, const char *str)
+   * }
+   */
+  public static int enum_from_nick(Arena arena, String domainString, long type, String strString)
+      throws VipsError {
+    var domain = arena.allocateFrom(domainString);
+    var str = arena.allocateFrom(strString);
+    var result = VipsRaw.vips_enum_from_nick(domain, type, str);
+    return result;
   }
 
   /**

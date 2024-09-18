@@ -356,18 +356,16 @@ object GenerateVipsHelperClass {
     ) {
         logger.info("writing file...")
 
-        val stringType = ClassName.get("java.lang", "String")
         val initHelper = MethodSpec.methodBuilder("init")
             .returns(TypeName.VOID)
             .addParameters(
                 listOf(
                     ParameterSpec.builder(arenaType, "arena").build(),
-                    ParameterSpec.builder(stringType, "argv0").build(),
                     ParameterSpec.builder(TypeName.BOOLEAN, "allowUntrusted").build()
                 )
             )
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-            .addStatement("var nameCString = arena.allocateFrom(argv0)")
+            .addStatement("var nameCString = arena.allocateFrom(\"vips-ffm\")")
             .addStatement("var result = VipsRaw.vips_init(nameCString)")
             .addCode(
                 makeResultValidatorCodeBlock(vipsValidatorType, "vips_init")

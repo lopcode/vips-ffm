@@ -13792,6 +13792,184 @@ public class VipsRaw {
     public static int VIPS_PRECISION_LAST() {
         return VIPS_PRECISION_LAST;
     }
+
+    private static class vips_enum_string {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_enum_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_string(GType enm, int value)
+     * }
+     */
+    public static FunctionDescriptor vips_enum_string$descriptor() {
+        return vips_enum_string.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_string(GType enm, int value)
+     * }
+     */
+    public static MethodHandle vips_enum_string$handle() {
+        return vips_enum_string.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_string(GType enm, int value)
+     * }
+     */
+    public static MemorySegment vips_enum_string$address() {
+        return vips_enum_string.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_enum_string(GType enm, int value)
+     * }
+     */
+    public static MemorySegment vips_enum_string(long enm, int value) {
+        var mh$ = vips_enum_string.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_enum_string", enm, value);
+            }
+            return (MemorySegment)mh$.invokeExact(enm, value);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_enum_nick {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_enum_nick");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_nick(GType enm, int value)
+     * }
+     */
+    public static FunctionDescriptor vips_enum_nick$descriptor() {
+        return vips_enum_nick.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_nick(GType enm, int value)
+     * }
+     */
+    public static MethodHandle vips_enum_nick$handle() {
+        return vips_enum_nick.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_enum_nick(GType enm, int value)
+     * }
+     */
+    public static MemorySegment vips_enum_nick$address() {
+        return vips_enum_nick.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_enum_nick(GType enm, int value)
+     * }
+     */
+    public static MemorySegment vips_enum_nick(long enm, int value) {
+        var mh$ = vips_enum_nick.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_enum_nick", enm, value);
+            }
+            return (MemorySegment)mh$.invokeExact(enm, value);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_enum_from_nick {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_enum_from_nick");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int vips_enum_from_nick(const char *domain, GType type, const char *str)
+     * }
+     */
+    public static FunctionDescriptor vips_enum_from_nick$descriptor() {
+        return vips_enum_from_nick.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int vips_enum_from_nick(const char *domain, GType type, const char *str)
+     * }
+     */
+    public static MethodHandle vips_enum_from_nick$handle() {
+        return vips_enum_from_nick.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int vips_enum_from_nick(const char *domain, GType type, const char *str)
+     * }
+     */
+    public static MemorySegment vips_enum_from_nick$address() {
+        return vips_enum_from_nick.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int vips_enum_from_nick(const char *domain, GType type, const char *str)
+     * }
+     */
+    public static int vips_enum_from_nick(MemorySegment domain, long type, MemorySegment str) {
+        var mh$ = vips_enum_from_nick.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_enum_from_nick", domain, type, str);
+            }
+            return (int)mh$.invokeExact(domain, type, str);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
     private static final int VIPS_TOKEN_LEFT = (int)1L;
     /**
      * {@snippet lang=c :
