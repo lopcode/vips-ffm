@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:0.1.0")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:0.2.0")
 }
 ```
 
@@ -47,7 +47,6 @@ To get a feeling for the bindings, here's an indicative sample written in Kotlin
 ```kotlin
 import app.photofox.vipsffm.Vips
 import app.photofox.vipsffm.VImage
-import java.lang.foreign.Arena
 
 // ...
 
