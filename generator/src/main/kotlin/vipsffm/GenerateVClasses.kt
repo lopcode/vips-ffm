@@ -430,6 +430,7 @@ object GenerateVClasses {
         val genumclass = VipsRaw.g_type_class_ref(gtype)
         val numValues = GEnumClass.n_values(genumclass)
         val valuesPointer = GEnumClass.values(genumclass)
+
         val values = (0 ..< numValues).map { index ->
             val enumValuePointer = valuesPointer.asSlice(index * GEnumValue.layout().byteSize())
             val enumValueName = GEnumValue.value_name(enumValuePointer).getString(0)
