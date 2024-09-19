@@ -208,7 +208,7 @@ object GenerateVClasses {
                 return@forEach
             }
             val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
-            val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, spec)
+            val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
             var optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
             if (it.isEnum) {
                 optionName += " {@link app.photofox.vipsffm.enums.${(it.type as GValueType.Unknown).rawName}}"
@@ -219,7 +219,7 @@ object GenerateVClasses {
         poetArguments.forEachIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
             val poetArgType = poetArg.type
-            val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, spec)
+            val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
             if (argSpec.isOutput) {
                 method.addStatement("var ${poetArg.name}Option = \$T(\"${poetArg.name}\")", vipsOptionType)
             } else if (argSpec.isInput) {
@@ -253,7 +253,7 @@ object GenerateVClasses {
 
     private fun mapPoetTypeToVipsOptionType(
         poetArgType: TypeName,
-        spec: VipsOperation
+        spec: VipsOperationArgument
     ): ClassName {
         val vipsOptionType = when (poetArgType) {
             stringType -> vipsOptionStringType
@@ -274,10 +274,12 @@ object GenerateVClasses {
                         boxedDoubleType -> vipsOptionArrayDoubleType
                         boxedIntType -> vipsOptionArrayIntType
                         vimageType -> vipsOptionArrayImageType
-                        else -> throw RuntimeException("unknown array type for option in operation \"${spec.nickname}\": ${poetArgType}")
+                        else -> throw RuntimeException("unknown array type for option \"${spec.name}\": $poetArgType")
                     }
+                } else if (spec.isEnum) {
+                    vipsOptionEnumType
                 } else {
-                    throw RuntimeException("unknown type for option in operation \"${spec.nickname}\": ${poetArgType}")
+                    throw RuntimeException("unknown type for option \"${spec.name}\": $poetArgType")
                 }
             }
         }
@@ -307,7 +309,7 @@ object GenerateVClasses {
             is GValueType.VipsInterpolate -> vInterpolateType
             is GValueType.Unknown -> {
                 if (it.isEnum) {
-                    vEnumType
+                    ClassName.get("app.photofox.vipsffm.enums", it.type.rawName)
                 } else if (it.type.rawName.startsWith("Vips")) {
                     // presume unknown, non-enum types are flags
                     TypeName.INT
