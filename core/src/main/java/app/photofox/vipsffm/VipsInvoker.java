@@ -109,6 +109,16 @@ public class VipsInvoker {
                         var vipsArrayPointer = VipsRaw.vips_value_get_array_image(gvaluePointer, MemorySegment.NULL);
                         vipsArrayPointer.set(C_POINTER, 0, arrayPointer);
                     }
+                    case VipsOption.Interpolate o -> {
+                        var value = o.valueOrThrow();
+                        VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
+                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
+                    }
+                    case VipsOption.Enum o -> {
+                        var value = o.valueOrThrow();
+                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                        VipsRaw.g_value_set_int(gvaluePointer, value.getRawValue());
+                    }
                 }
                 VipsRaw.g_object_set_property(operation, keyCString, gvaluePointer);
             }));
@@ -235,6 +245,21 @@ public class VipsInvoker {
                         }
                         o.setValue(list);
                     }
+                    case VipsOption.Interpolate o -> {
+                        VipsRaw.g_value_init(gvaluePointer, vips_interpolate_get_type());
+                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                        var vipsPointer = g_value_get_object(gvaluePointer);
+                        VipsRaw.g_object_ref(vipsPointer);
+                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                        var vipsObject = new VInterpolate(vipsPointer);
+                        o.setValue(vipsObject);
+                    }
+                    case VipsOption.Enum o -> {
+                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                        var value = VipsRaw.g_value_get_int(gvaluePointer);
+                        o.setValue(new VEnum.Raw(value));
+                    }
                 }
             }));
     }
@@ -267,6 +292,8 @@ public class VipsInvoker {
                 case VipsOption.Blob _ -> layouts.add(VipsRaw.C_POINTER);
                 case VipsOption.Source _ -> layouts.add(VipsRaw.C_POINTER);
                 case VipsOption.Target _ -> layouts.add(VipsRaw.C_POINTER);
+                case VipsOption.Interpolate _ -> layouts.add(VipsRaw.C_POINTER);
+                case VipsOption.Enum _ -> layouts.add(VipsRaw.C_INT);
             }
         });
         layouts.add(VipsRaw.C_POINTER);
@@ -332,6 +359,12 @@ public class VipsInvoker {
                 }
                 case VipsOption.Target o -> {
                     invokeArgs.add(o.valueOrThrow().address);
+                }
+                case VipsOption.Interpolate o -> {
+                    invokeArgs.add(o.valueOrThrow().address);
+                }
+                case VipsOption.Enum o -> {
+                    invokeArgs.add(o.valueOrThrow().getRawValue());
                 }
             }
         });

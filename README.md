@@ -47,6 +47,8 @@ To get a feeling for the bindings, here's an indicative sample written in Kotlin
 ```kotlin
 import app.photofox.vipsffm.Vips
 import app.photofox.vipsffm.VImage
+import app.photofox.vipsffm.VipsOption
+import app.photofox.vipsffm.enums.VipsAccess
 
 // ...
 
@@ -58,7 +60,7 @@ Vips.run { arena ->
     val sourceImage = VImage.newFromFile(
       arena,
       "sample/src/main/resources/sample_images/rabbit.jpg",
-      VipsOption.Int("access", VipsRaw.VIPS_ACCESS_SEQUENTIAL())
+      VipsOption.Enum("access", VipsAccess.ACCESS_SEQUENTIAL)
     )
     val sourceWidth = sourceImage.width
     val sourceHeight = sourceImage.height

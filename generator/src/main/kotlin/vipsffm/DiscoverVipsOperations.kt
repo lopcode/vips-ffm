@@ -1,8 +1,11 @@
 package vipsffm
 
 import app.photofox.vipsffm.jextract.GParamSpec
+import app.photofox.vipsffm.jextract.GTypeClass
+import app.photofox.vipsffm.jextract.GTypeInstance
 import app.photofox.vipsffm.jextract.VipsRaw
 import app.photofox.vipsffm.jextract.VipsRaw.C_INT
+import app.photofox.vipsffm.jextract.VipsRaw.C_LONG
 import app.photofox.vipsffm.jextract.VipsRaw.C_POINTER
 import app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_DEPRECATED
 import app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_INPUT
@@ -38,6 +41,7 @@ sealed class GValueType {
     data object VipsBlob: GValueType()
     data object VipsSource: GValueType()
     data object VipsTarget: GValueType()
+    data object VipsInterpolate: GValueType()
     data class Unknown(val rawName: String): GValueType()
 }
 
@@ -59,6 +63,7 @@ fun String.toGValueType(): GValueType {
         "VipsBlob" -> GValueType.VipsBlob
         "VipsSource" -> GValueType.VipsSource
         "VipsTarget" -> GValueType.VipsTarget
+        "VipsInterpolate" -> GValueType.VipsInterpolate
         else -> GValueType.Unknown(this)
     }
 }
@@ -72,7 +77,8 @@ data class VipsOperationArgument(
     val isInput: Boolean,
     val isOutput: Boolean,
     val isDeprecated: Boolean,
-    val isModify: Boolean
+    val isModify: Boolean,
+    val isEnum: Boolean
 )
 
 private val logger = LoggerFactory.getLogger(DiscoverVipsOperations::class.java)
@@ -94,6 +100,7 @@ object DiscoverVipsOperations {
         VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))
 
         val baseObjectGtype = VipsRaw.g_type_from_name(arena.allocateFrom("VipsObject"))
+        val paramEnumGType = discoverParamEnumGType()
 
         val candidateOperations = mutableListOf<VipsOperation>()
         lateinit var callbackPointer: MemorySegment
@@ -156,7 +163,8 @@ object DiscoverVipsOperations {
                         isInput = flags and VIPS_ARGUMENT_INPUT() == VIPS_ARGUMENT_INPUT(),
                         isOutput = flags and VIPS_ARGUMENT_OUTPUT() == VIPS_ARGUMENT_OUTPUT(),
                         isDeprecated = flags and VIPS_ARGUMENT_DEPRECATED() == VIPS_ARGUMENT_DEPRECATED(),
-                        isModify = flags and VIPS_ARGUMENT_MODIFY() == VIPS_ARGUMENT_MODIFY()
+                        isModify = flags and VIPS_ARGUMENT_MODIFY() == VIPS_ARGUMENT_MODIFY(),
+                        isEnum = isParamSpecAnEnum(pspec, paramEnumGType)
                     )
                 }
 
@@ -175,5 +183,26 @@ object DiscoverVipsOperations {
         VipsRaw.vips_type_map(baseObjectGtype, callbackPointer, MemorySegment.NULL, MemorySegment.NULL)
 
         return candidateOperations.sortedBy { it.nickname }
+    }
+
+    private fun discoverParamEnumGType(): Long {
+        val paramSpecArrayPointer = VipsRaw.g_param_spec_types()
+        for (i in 0L..16L) {
+            val gtype = paramSpecArrayPointer.get(C_LONG, i * C_LONG.byteSize())
+            val name = VipsRaw.g_type_name(gtype).getString(0)
+            if (name == "GParamEnum") {
+                return gtype
+            }
+        }
+        throw RuntimeException("failed to find GParamEnum type - is glib loaded?")
+    }
+
+    private fun isParamSpecAnEnum(paramSpec: MemorySegment, paramSpecEnumGType: Long): Boolean {
+        val gclass = GTypeInstance.g_class(paramSpec)
+        val gtype = GTypeClass.g_type(gclass)
+        if (gtype == paramSpecEnumGType) {
+            return true
+        }
+        return VipsRaw.g_type_check_instance_is_a(paramSpec, paramSpecEnumGType) == 1
     }
 }
