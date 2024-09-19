@@ -1,8 +1,12 @@
 package vipsffm
 
+import app.photofox.vipsffm.jextract.GEnumClass
+import app.photofox.vipsffm.jextract.GEnumValue
+import app.photofox.vipsffm.jextract.VipsRaw
 import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
+import com.squareup.javapoet.FieldSpec
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
@@ -33,6 +37,8 @@ object GenerateVClasses {
     private val vimageType = ClassName.get("app.photofox.vipsffm", "VImage")
     private val vsourceType = ClassName.get("app.photofox.vipsffm", "VSource")
     private val vtargetType = ClassName.get("app.photofox.vipsffm", "VTarget")
+    private val vInterpolateType = ClassName.get("app.photofox.vipsffm", "VInterpolate")
+    private val vEnumType = ClassName.get("app.photofox.vipsffm", "VEnum")
     private val vblobType = ClassName.get("app.photofox.vipsffm", "VBlob")
     private val listStringType = ParameterizedTypeName.get(listType, stringType)
     private val boxedBooleanType = ClassName.get("java.lang", "Boolean")
@@ -51,7 +57,10 @@ object GenerateVClasses {
     private val vipsOptionArrayDoubleType = ClassName.get("app.photofox.vipsffm", "VipsOption.ArrayDouble")
     private val vipsOptionArrayIntType = ClassName.get("app.photofox.vipsffm", "VipsOption.ArrayInt")
     private val vipsOptionArrayImageType = ClassName.get("app.photofox.vipsffm", "VipsOption.ArrayImage")
+    private val vipsOptionInterpolateType = ClassName.get("app.photofox.vipsffm", "VipsOption.Interpolate")
+    private val vipsOptionEnumType = ClassName.get("app.photofox.vipsffm", "VipsOption.Enum")
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm", "VipsValidation")
+    private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
 
     @JvmStatic fun main(args: Array<String>) {
         System.loadLibrary("vips")
@@ -66,6 +75,20 @@ object GenerateVClasses {
             val outputArgs = op.args.filter { it.isOutput }
             val optionalArgs = op.args.filter { !it.isRequired }
             logger.info("  ${op.nickname} - args: ${inputArgs.size} input, ${outputArgs.size} output, ${optionalArgs.size} optional")
+        }
+
+        val enums = operations.map {
+            it.args
+        }.flatten().filter {
+            it.isEnum
+        }.map {
+            (it.type as GValueType.Unknown).rawName
+        }.toSet()
+
+        Arena.ofConfined().use { arena ->
+            enums.forEach {
+                buildEnumClass(arena, it)
+            }
         }
 
         generateVImageClass(operations)
@@ -134,6 +157,7 @@ object GenerateVClasses {
     }
 
     private fun buildOperationMethod(spec: VipsOperation): MethodSpec {
+        logger.info("building operation $spec")
         val requiredArguments = spec.args.filter { it.isRequired }
         val methodName = spec.nickname.fromSnakeToJavaStyle()
         val method = MethodSpec.methodBuilder(methodName)
@@ -172,16 +196,23 @@ object GenerateVClasses {
                 return@forEachIndexed
             }
             val argSpec = requiredArguments[index]
-            method.addJavadoc("\n@param ${poetArg.name} ${argSpec.blurb.capitalizeVipsText()}")
+            var argNameSection = poetArg.name
+            if (argSpec.isEnum) {
+                argNameSection += " {@link app.photofox.vipsffm.enums.${(argSpec.type as GValueType.Unknown).rawName}}"
+            }
+            method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
         }
         method.addJavadoc("\n@param args Array of VipsOption to apply to this operation")
         spec.args.forEach {
             if (it.isRequired || it.name == "nickname" || it.name == "description") {
                 return@forEach
             }
-            val poetType = mapArgSpecToPoetType(it)!!
+            val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, spec)
-            val optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
+            var optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
+            if (it.isEnum) {
+                optionName += " {@link app.photofox.vipsffm.enums.${(it.type as GValueType.Unknown).rawName}}"
+            }
             method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
         }
 
@@ -194,6 +225,11 @@ object GenerateVClasses {
             } else if (argSpec.isInput) {
                 if (poetArg.type == vimageType) {
                     method.addStatement("var ${poetArg.name}Option = \$T(\"${poetArg.name}\", this)", vipsOptionType)
+                } else if (poetArg.type == vEnumType) {
+                    method.addStatement(
+                        "var ${poetArg.name}Option = \$T(\"${poetArg.name}\", ${poetArg.name}.getRawValue())",
+                        vipsOptionType
+                    )
                 } else {
                     method.addStatement(
                         "var ${poetArg.name}Option = \$T(\"${poetArg.name}\", ${poetArg.name})",
@@ -228,6 +264,8 @@ object GenerateVClasses {
             vimageType -> vipsOptionImageType
             vsourceType -> vipsOptionSourceType
             vtargetType -> vipsOptionTargetType
+            vInterpolateType -> vipsOptionInterpolateType
+            vEnumType -> vipsOptionEnumType
             vblobType -> vipsOptionBlobType
             else -> {
                 if (poetArgType is ParameterizedTypeName && poetArgType.rawType == listType) {
@@ -266,9 +304,12 @@ object GenerateVClasses {
             is GValueType.VipsBlob -> vblobType
             is GValueType.VipsSource -> vsourceType
             is GValueType.VipsTarget -> vtargetType
+            is GValueType.VipsInterpolate -> vInterpolateType
             is GValueType.Unknown -> {
-                if (it.type.rawName.startsWith("Vips")) {
-                    // presume enum type
+                if (it.isEnum) {
+                    vEnumType
+                } else if (it.type.rawName.startsWith("Vips")) {
+                    // presume unknown, non-enum types are flags
                     TypeName.INT
                 } else {
                     null
@@ -371,6 +412,112 @@ object GenerateVClasses {
             writeToTargetMethod,
             newImageMethod
         )
+    }
+
+    data class DiscoveredEnum(
+        val name: String,
+        val values: List<EnumValue>
+    )
+
+    data class EnumValue(
+        val name: String,
+        val nickname: String,
+        val rawValue: Int
+    )
+
+    private fun buildEnumClass(arena: Arena, parentName: String) {
+        val gtype = VipsRaw.g_type_from_name(arena.allocateFrom(parentName))
+        val genumclass = VipsRaw.g_type_class_ref(gtype)
+        val numValues = GEnumClass.n_values(genumclass)
+        val valuesPointer = GEnumClass.values(genumclass)
+
+        val values = (0 ..< numValues).map { index ->
+            val enumValuePointer = valuesPointer.asSlice(index * GEnumValue.layout().byteSize())
+            val enumValueName = GEnumValue.value_name(enumValuePointer).getString(0)
+            val enumValueRawValue = GEnumValue.value(enumValuePointer)
+            val enumValueNickname = GEnumValue.value_nick(enumValuePointer).getString(0)
+
+            EnumValue(
+                name = enumValueName,
+                nickname = enumValueNickname,
+                rawValue = enumValueRawValue
+            )
+        }
+        val spec = DiscoveredEnum(
+            name = parentName,
+            values = values
+        )
+        logger.info("generating enum $parentName: $spec")
+
+        val enumClassBuilder = TypeSpec.enumBuilder(parentName)
+            .addModifiers(Modifier.PUBLIC)
+            .addField(
+                FieldSpec.builder(stringType, "parentName")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
+                    .initializer("\$S", parentName)
+                    .build()
+            )
+            .addField(
+                FieldSpec.builder(stringType, "vipsName")
+                    .addModifiers(Modifier.PRIVATE, Modifier.FINAL)
+                    .build()
+            )
+            .addField(
+                FieldSpec.builder(stringType, "vipsNickname")
+                    .addModifiers(Modifier.PRIVATE, Modifier.FINAL)
+                    .build()
+            )
+            .addField(
+                FieldSpec.builder(TypeName.INT, "rawValue")
+                    .addModifiers(Modifier.PRIVATE, Modifier.FINAL)
+                    .build()
+            )
+            .addSuperinterface(vNamedEnumType)
+            .addMethod(
+                MethodSpec.constructorBuilder()
+                    .addParameter(ParameterSpec.builder(stringType, "vipsName").build())
+                    .addParameter(ParameterSpec.builder(stringType, "vipsNickname").build())
+                    .addParameter(ParameterSpec.builder(TypeName.INT, "rawValue").build())
+                    .addStatement("this.vipsName = vipsName")
+                    .addStatement("this.vipsNickname = vipsNickname")
+                    .addStatement("this.rawValue = rawValue")
+                    .build()
+            )
+            .addMethod(
+                MethodSpec.methodBuilder("getName")
+                    .addModifiers(Modifier.PUBLIC)
+                    .addAnnotation(Override::class.java)
+                    .returns(stringType)
+                    .addStatement("return this.vipsName")
+                    .build()
+            )
+            .addMethod(
+                MethodSpec.methodBuilder("getNickname")
+                    .addModifiers(Modifier.PUBLIC)
+                    .addAnnotation(Override::class.java)
+                    .returns(stringType)
+                    .addStatement("return this.vipsNickname")
+                    .build()
+            )
+            .addMethod(
+                MethodSpec.methodBuilder("getRawValue")
+                    .addModifiers(Modifier.PUBLIC)
+                    .addAnnotation(Override::class.java)
+                    .returns(TypeName.INT)
+                    .addStatement("return this.rawValue")
+                    .build()
+            )
+        spec.values.forEach {
+            enumClassBuilder.addEnumConstant(
+                it.name.removePrefix("VIPS_"),
+                TypeSpec.anonymousClassBuilder("\$S, \$S, \$L",it.name, it.nickname, it.rawValue).build()
+            )
+        }
+        val enumClass = enumClassBuilder.build()
+        val enumFile = JavaFile.builder("app.photofox.vipsffm.enums", enumClass)
+            .build()
+        val targetedGeneratedSourceRoot = Path.of("core/src/main/java")
+        enumFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
     }
 }
 

@@ -1395,257 +1395,6 @@ public final class VipsHelper {
   /**
    * Binding for:
    * {@snippet lang=c :
-   * void vips_source_minimise(VipsSource *source)
-   * }
-   */
-  public static void source_minimise(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_minimise", "source");
-    }
-    VipsRaw.vips_source_minimise(source);
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_source_unminimise(VipsSource *source)
-   * }
-   */
-  public static int source_unminimise(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_unminimise", "source");
-    }
-    var result = VipsRaw.vips_source_unminimise(source);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_source_decode(VipsSource *source)
-   * }
-   */
-  public static int source_decode(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_decode", "source");
-    }
-    var result = VipsRaw.vips_source_decode(source);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gint64 vips_source_read(VipsSource *source, void *data, size_t length)
-   * }
-   */
-  public static long source_read(MemorySegment source, MemorySegment data, long length) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_read", "source");
-    }
-    if(!VipsValidation.isValidPointer(data)) {
-      VipsValidation.throwInvalidInputError("vips_source_read", "data");
-    }
-    var result = VipsRaw.vips_source_read(source, data, length);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gboolean vips_source_is_mappable(VipsSource *source)
-   * }
-   */
-  public static boolean source_is_mappable(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_is_mappable", "source");
-    }
-    var result = VipsRaw.vips_source_is_mappable(source);
-    return result == 1;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gboolean vips_source_is_file(VipsSource *source)
-   * }
-   */
-  public static boolean source_is_file(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_is_file", "source");
-    }
-    var result = VipsRaw.vips_source_is_file(source);
-    return result == 1;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * const void *vips_source_map(VipsSource *source, size_t *length)
-   * }
-   */
-  public static MemorySegment source_map(Arena arena, MemorySegment source, MemorySegment length)
-      throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_map", "source");
-    }
-    if(!VipsValidation.isValidPointer(length)) {
-      VipsValidation.throwInvalidInputError("vips_source_map", "length");
-    }
-    var result = VipsRaw.vips_source_map(source, length);
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_source_map", "result");
-    }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * VipsBlob *vips_source_map_blob(VipsSource *source)
-   * }
-   */
-  public static MemorySegment source_map_blob(Arena arena, MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_map_blob", "source");
-    }
-    var result = VipsRaw.vips_source_map_blob(source);
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_source_map_blob", "result");
-    }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gint64 vips_source_seek(VipsSource *source, gint64 offset, int whence)
-   * }
-   */
-  public static long source_seek(MemorySegment source, long offset, int whence) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_seek", "source");
-    }
-    var result = VipsRaw.vips_source_seek(source, offset, whence);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * int vips_source_rewind(VipsSource *source)
-   * }
-   */
-  public static int source_rewind(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_rewind", "source");
-    }
-    var result = VipsRaw.vips_source_rewind(source);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gint64 vips_source_sniff_at_most(VipsSource *source, unsigned char **data, size_t length)
-   * }
-   */
-  public static long source_sniff_at_most(MemorySegment source, MemorySegment data, long length)
-      throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_sniff_at_most", "source");
-    }
-    if(!VipsValidation.isValidPointer(data)) {
-      VipsValidation.throwInvalidInputError("vips_source_sniff_at_most", "data");
-    }
-    var result = VipsRaw.vips_source_sniff_at_most(source, data, length);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * unsigned char *vips_source_sniff(VipsSource *source, size_t length)
-   * }
-   */
-  public static MemorySegment source_sniff(Arena arena, MemorySegment source, long length) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_sniff", "source");
-    }
-    var result = VipsRaw.vips_source_sniff(source, length);
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_source_sniff", "result");
-    }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * gint64 vips_source_length(VipsSource *source)
-   * }
-   */
-  public static long source_length(MemorySegment source) throws VipsError {
-    if(!VipsValidation.isValidPointer(source)) {
-      VipsValidation.throwInvalidInputError("vips_source_length", "source");
-    }
-    var result = VipsRaw.vips_source_length(source);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * GType vips_source_custom_get_type()
-   * }
-   */
-  public static long source_custom_get_type() throws VipsError {
-    var result = VipsRaw.vips_source_custom_get_type();
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * VipsSourceCustom *vips_source_custom_new()
-   * }
-   */
-  public static MemorySegment source_custom_new(Arena arena) throws VipsError {
-    var result = VipsRaw.vips_source_custom_new();
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_source_custom_new", "result");
-    }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
-   * VipsSourceGInputStream *vips_source_g_input_stream_new(GInputStream *stream)
-   * }
-   */
-  public static MemorySegment source_g_input_stream_new(Arena arena, MemorySegment stream) throws
-      VipsError {
-    if(!VipsValidation.isValidPointer(stream)) {
-      VipsValidation.throwInvalidInputError("vips_source_g_input_stream_new", "stream");
-    }
-    var result = VipsRaw.vips_source_g_input_stream_new(stream);
-    if(!VipsValidation.isValidPointer(result)) {
-      VipsValidation.throwInvalidOutputError("vips_source_g_input_stream_new", "result");
-    }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
-    return result;
-  }
-
-  /**
-   * Binding for:
-   * {@snippet lang=c :
    * GType vips_target_get_type()
    * }
    */
@@ -2754,6 +2503,128 @@ public final class VipsHelper {
       VipsValidation.throwInvalidInputError("vips_image_pipeline_array", "in");
     }
     var result = VipsRaw.vips_image_pipeline_array(image, hint, in);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * GType vips_interpolate_get_type()
+   * }
+   */
+  public static long interpolate_get_type() throws VipsError {
+    var result = VipsRaw.vips_interpolate_get_type();
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_interpolate(VipsInterpolate *interpolate, void *out, VipsRegion *in, double x, double y)
+   * }
+   */
+  public static void interpolate(MemorySegment interpolate, MemorySegment out, MemorySegment in,
+      double x, double y) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate", "interpolate");
+    }
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate", "out");
+    }
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate", "in");
+    }
+    VipsRaw.vips_interpolate(interpolate, out, in, x, y);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolateMethod vips_interpolate_get_method(VipsInterpolate *interpolate)
+   * }
+   */
+  public static MemorySegment interpolate_get_method(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_method", "interpolate");
+    }
+    var result = VipsRaw.vips_interpolate_get_method(interpolate);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_get_method", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_interpolate_get_window_size(VipsInterpolate *interpolate)
+   * }
+   */
+  public static int interpolate_get_window_size(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_window_size", "interpolate");
+    }
+    var result = VipsRaw.vips_interpolate_get_window_size(interpolate);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_interpolate_get_window_offset(VipsInterpolate *interpolate)
+   * }
+   */
+  public static int interpolate_get_window_offset(MemorySegment interpolate) throws VipsError {
+    if(!VipsValidation.isValidPointer(interpolate)) {
+      VipsValidation.throwInvalidInputError("vips_interpolate_get_window_offset", "interpolate");
+    }
+    var result = VipsRaw.vips_interpolate_get_window_offset(interpolate);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_nearest_static()
+   * }
+   */
+  public static MemorySegment interpolate_nearest_static(Arena arena) throws VipsError {
+    var result = VipsRaw.vips_interpolate_nearest_static();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_nearest_static", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_bilinear_static()
+   * }
+   */
+  public static MemorySegment interpolate_bilinear_static(Arena arena) throws VipsError {
+    var result = VipsRaw.vips_interpolate_bilinear_static();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_bilinear_static", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpolate *vips_interpolate_new(const char *nickname)
+   * }
+   */
+  public static MemorySegment interpolate_new(Arena arena, String nicknameString) throws VipsError {
+    var nickname = arena.allocateFrom(nicknameString);
+    var result = VipsRaw.vips_interpolate_new(nickname);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_interpolate_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 

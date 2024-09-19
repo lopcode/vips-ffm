@@ -1,11 +1,10 @@
 package app.photofox.vipsffm;
 
-import java.lang.foreign.MemorySegment;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
-public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, VipsOption.Long, VipsOption.Boolean, VipsOption.String, VipsOption.Image, VipsOption.Source, VipsOption.Target, VipsOption.Blob, VipsOption.ArrayDouble, VipsOption.ArrayInt, VipsOption.ArrayImage {
+public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, VipsOption.Long, VipsOption.Boolean, VipsOption.String, VipsOption.Image, VipsOption.Source, VipsOption.Target, VipsOption.Blob, VipsOption.ArrayDouble, VipsOption.ArrayInt, VipsOption.ArrayImage, VipsOption.Interpolate, VipsOption.Enum {
 
     java.lang.String key();
     boolean hasValue();
@@ -226,6 +225,42 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
+    record Interpolate(java.lang.String key, AtomicReference<Optional<VInterpolate>> box) implements VipsOption {
+
+        public VInterpolate valueOrThrow() throws VipsError {
+            var optionalValue = box.get();
+            return optionalValue.orElseThrow(
+                () -> new VipsError("unexpected empty value")
+            );
+        }
+
+        public boolean hasValue() {
+            return box.get().isPresent();
+        }
+
+        void setValue(VInterpolate value) {
+            this.box.set(Optional.of(value));
+        }
+    }
+
+    record Enum(java.lang.String key, AtomicReference<Optional<VEnum>> box) implements VipsOption {
+
+        public VEnum valueOrThrow() throws VipsError {
+            var optionalValue = box.get();
+            return optionalValue.orElseThrow(
+                () -> new VipsError("unexpected empty value")
+            );
+        }
+
+        public boolean hasValue() {
+            return box.get().isPresent();
+        }
+
+        void setValue(VEnum value) {
+            this.box.set(Optional.of(value));
+        }
+    }
+
     static VipsOption.Int Int(java.lang.String key, Integer value) {
         return new VipsOption.Int(key, new AtomicReference<>(Optional.of(value)));
     }
@@ -320,5 +355,26 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
 
     static VipsOption.ArrayImage ArrayImage(java.lang.String key) {
         return new VipsOption.ArrayImage(key, new AtomicReference<>(Optional.empty()));
+    }
+
+    static VipsOption.Interpolate Interpolate(java.lang.String key, VInterpolate value) {
+        return new VipsOption.Interpolate(key, new AtomicReference<>(Optional.of(value)));
+    }
+
+    static VipsOption.Interpolate Interpolate(java.lang.String key) {
+        return new VipsOption.Interpolate(key, new AtomicReference<>(Optional.empty()));
+    }
+
+    static VipsOption.Enum Enum(java.lang.String key, int value) {
+        var boxedValue = new VEnum.Raw(value);
+        return new VipsOption.Enum(key, new AtomicReference<>(Optional.of(boxedValue)));
+    }
+
+    static VipsOption.Enum Enum(java.lang.String key, VEnum value) {
+        return new VipsOption.Enum(key, new AtomicReference<>(Optional.of(value)));
+    }
+
+    static VipsOption.Enum Enum(java.lang.String key) {
+        return new VipsOption.Enum(key, new AtomicReference<>(Optional.empty()));
     }
 }

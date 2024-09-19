@@ -2,7 +2,7 @@ package vipsffm
 
 import app.photofox.vipsffm.VImage
 import app.photofox.vipsffm.VipsOption
-import app.photofox.vipsffm.jextract.VipsRaw
+import app.photofox.vipsffm.enums.VipsAccess
 import vipsffm.RawGetVersionSample.logger
 import java.lang.foreign.Arena
 import java.nio.file.Path
@@ -14,7 +14,7 @@ object VImageCreateThumbnailSample: RunnableSample {
         val sourceImage = VImage.newFromFile(
             arena,
             "sample/src/main/resources/sample_images/rabbit.jpg",
-            VipsOption.Int("access", VipsRaw.VIPS_ACCESS_SEQUENTIAL())
+            VipsOption.Enum("access", VipsAccess.ACCESS_SEQUENTIAL)
         )
         val sourceWidth = sourceImage.width
         val sourceHeight = sourceImage.height
