@@ -2,6 +2,8 @@ package vipsffm
 
 import app.photofox.vipsffm.VImage
 import app.photofox.vipsffm.VipsOption
+import app.photofox.vipsffm.enums.VipsDirection
+import app.photofox.vipsffm.enums.VipsInterpretation
 import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
@@ -20,6 +22,8 @@ object VImageChainSample: RunnableSample {
             )
             .invert()
             .rotate(90.0)
+            .colourspace(VipsInterpretation.INTERPRETATION_CMYK)
+            .flip(VipsDirection.DIRECTION_HORIZONTAL)
 
         image.writeToFile(outputPath.absolutePathString())
 
@@ -33,7 +37,7 @@ object VImageChainSample: RunnableSample {
 
         return SampleHelper.validate(
             outputPath,
-            expectedSizeBoundsKb = 20L..100L
+            expectedSizeBoundsKb = 20L..1500L
         )
     }
 }

@@ -1,5 +1,20 @@
 package app.photofox.vipsffm;
 
+import app.photofox.vipsffm.enums.VipsAngle;
+import app.photofox.vipsffm.enums.VipsBandFormat;
+import app.photofox.vipsffm.enums.VipsBlendMode;
+import app.photofox.vipsffm.enums.VipsCompassDirection;
+import app.photofox.vipsffm.enums.VipsDirection;
+import app.photofox.vipsffm.enums.VipsInterpretation;
+import app.photofox.vipsffm.enums.VipsOperationBoolean;
+import app.photofox.vipsffm.enums.VipsOperationComplex;
+import app.photofox.vipsffm.enums.VipsOperationComplex2;
+import app.photofox.vipsffm.enums.VipsOperationComplexget;
+import app.photofox.vipsffm.enums.VipsOperationMath;
+import app.photofox.vipsffm.enums.VipsOperationMath2;
+import app.photofox.vipsffm.enums.VipsOperationMorphology;
+import app.photofox.vipsffm.enums.VipsOperationRelational;
+import app.photofox.vipsffm.enums.VipsOperationRound;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -451,10 +466,10 @@ public final class VImage {
    * @param boolean1 {@link app.photofox.vipsffm.enums.VipsOperationBoolean} Boolean to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage bandbool(VEnum boolean1, VipsOption... args) throws VipsError {
+  public VImage bandbool(VipsOperationBoolean boolean1, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1.getRawValue());
+    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -579,11 +594,11 @@ public final class VImage {
    * @param boolean1 {@link app.photofox.vipsffm.enums.VipsOperationBoolean} Boolean to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage boolean1(VEnum boolean1, VipsOption... args) throws VipsError {
+  public VImage boolean1(VipsOperationBoolean boolean1, VipsOption... args) throws VipsError {
     var leftOption = VipsOption.Image("left", this);
     var rightOption = VipsOption.Image("right", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1.getRawValue());
+    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
@@ -599,10 +614,11 @@ public final class VImage {
    * @param c Array of constants
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage booleanConst(VEnum boolean1, List<Double> c, VipsOption... args) throws VipsError {
+  public VImage booleanConst(VipsOperationBoolean boolean1, List<Double> c, VipsOption... args)
+      throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1.getRawValue());
+    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
@@ -697,10 +713,10 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shift {@link VipsOption.Boolean} Shift integer values up and down
    */
-  public VImage cast(VEnum format, VipsOption... args) throws VipsError {
+  public VImage cast(VipsBandFormat format, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var formatOption = VipsOption.Enum("format", format.getRawValue());
+    var formatOption = VipsOption.Enum("format", format);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -715,10 +731,10 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg source-space {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInterpretation} Source color space
    */
-  public VImage colourspace(VEnum space, VipsOption... args) throws VipsError {
+  public VImage colourspace(VipsInterpretation space, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var spaceOption = VipsOption.Enum("space", space.getRawValue());
+    var spaceOption = VipsOption.Enum("space", space);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -754,10 +770,10 @@ public final class VImage {
    * @param cmplx {@link app.photofox.vipsffm.enums.VipsOperationComplex} Complex to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage complex(VEnum cmplx, VipsOption... args) throws VipsError {
+  public VImage complex(VipsOperationComplex cmplx, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var cmplxOption = VipsOption.Enum("cmplx", cmplx.getRawValue());
+    var cmplxOption = VipsOption.Enum("cmplx", cmplx);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -771,11 +787,11 @@ public final class VImage {
    * @param cmplx {@link app.photofox.vipsffm.enums.VipsOperationComplex2} Binary complex operation to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage complex2(VEnum cmplx, VipsOption... args) throws VipsError {
+  public VImage complex2(VipsOperationComplex2 cmplx, VipsOption... args) throws VipsError {
     var leftOption = VipsOption.Image("left", this);
     var rightOption = VipsOption.Image("right", this);
     var outOption = VipsOption.Image("out");
-    var cmplxOption = VipsOption.Enum("cmplx", cmplx.getRawValue());
+    var cmplxOption = VipsOption.Enum("cmplx", cmplx);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
@@ -806,10 +822,10 @@ public final class VImage {
    * @param get {@link app.photofox.vipsffm.enums.VipsOperationComplexget} Complex to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage complexget(VEnum get, VipsOption... args) throws VipsError {
+  public VImage complexget(VipsOperationComplexget get, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var getOption = VipsOption.Enum("get", get.getRawValue());
+    var getOption = VipsOption.Enum("get", get);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -850,11 +866,11 @@ public final class VImage {
    * @optionalArg compositing-space {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInterpretation} Composite images in this colour space
    * @optionalArg premultiplied {@link VipsOption.Boolean} Images have premultiplied alpha
    */
-  public VImage composite2(VEnum mode, VipsOption... args) throws VipsError {
+  public VImage composite2(VipsBlendMode mode, VipsOption... args) throws VipsError {
     var baseOption = VipsOption.Image("base", this);
     var overlayOption = VipsOption.Image("overlay", this);
     var outOption = VipsOption.Image("out");
-    var modeOption = VipsOption.Enum("mode", mode.getRawValue());
+    var modeOption = VipsOption.Enum("mode", mode);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(baseOption);
     callArgs.add(overlayOption);
@@ -999,10 +1015,10 @@ public final class VImage {
    * @param direction {@link app.photofox.vipsffm.enums.VipsDirection} Countlines left-right or up-down
    * @param args Array of VipsOption to apply to this operation
    */
-  public double countlines(VEnum direction, VipsOption... args) throws VipsError {
+  public double countlines(VipsDirection direction, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var nolinesOption = VipsOption.Double("nolines");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(nolinesOption);
@@ -1719,10 +1735,10 @@ public final class VImage {
    * @param direction {@link app.photofox.vipsffm.enums.VipsDirection} Direction to flip image
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage flip(VEnum direction, VipsOption... args) throws VipsError {
+  public VImage flip(VipsDirection direction, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -2074,11 +2090,11 @@ public final class VImage {
    * @optionalArg extend {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsExtend} How to generate the extra pixels
    * @optionalArg background {@link VipsOption.ArrayDouble} Color for background pixels
    */
-  public VImage gravity(VEnum direction, int width, int height, VipsOption... args) throws
-      VipsError {
+  public VImage gravity(VipsCompassDirection direction, int width, int height, VipsOption... args)
+      throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2672,11 +2688,11 @@ public final class VImage {
    * @optionalArg background {@link VipsOption.ArrayDouble} Colour for new pixels
    * @optionalArg align {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAlign} Align on the low, centre or high coordinate edge
    */
-  public VImage join(VEnum direction, VipsOption... args) throws VipsError {
+  public VImage join(VipsDirection direction, VipsOption... args) throws VipsError {
     var in1Option = VipsOption.Image("in1", this);
     var in2Option = VipsOption.Image("in2", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(in1Option);
     callArgs.add(in2Option);
@@ -3742,10 +3758,10 @@ public final class VImage {
    * @param math {@link app.photofox.vipsffm.enums.VipsOperationMath} Math to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage math(VEnum math, VipsOption... args) throws VipsError {
+  public VImage math(VipsOperationMath math, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var mathOption = VipsOption.Enum("math", math.getRawValue());
+    var mathOption = VipsOption.Enum("math", math);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -3759,11 +3775,11 @@ public final class VImage {
    * @param math2 {@link app.photofox.vipsffm.enums.VipsOperationMath2} Math to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage math2(VEnum math2, VipsOption... args) throws VipsError {
+  public VImage math2(VipsOperationMath2 math2, VipsOption... args) throws VipsError {
     var leftOption = VipsOption.Image("left", this);
     var rightOption = VipsOption.Image("right", this);
     var outOption = VipsOption.Image("out");
-    var math2Option = VipsOption.Enum("math2", math2.getRawValue());
+    var math2Option = VipsOption.Enum("math2", math2);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
@@ -3779,10 +3795,11 @@ public final class VImage {
    * @param c Array of constants
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage math2Const(VEnum math2, List<Double> c, VipsOption... args) throws VipsError {
+  public VImage math2Const(VipsOperationMath2 math2, List<Double> c, VipsOption... args) throws
+      VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var math2Option = VipsOption.Enum("math2", math2.getRawValue());
+    var math2Option = VipsOption.Enum("math2", math2);
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
@@ -3982,11 +3999,12 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg mblend {@link VipsOption.Int} Maximum blend size
    */
-  public VImage merge(VEnum direction, int dx, int dy, VipsOption... args) throws VipsError {
+  public VImage merge(VipsDirection direction, int dx, int dy, VipsOption... args) throws
+      VipsError {
     var refOption = VipsOption.Image("ref", this);
     var secOption = VipsOption.Image("sec", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var dxOption = VipsOption.Int("dx", dx);
     var dyOption = VipsOption.Int("dy", dy);
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4025,11 +4043,11 @@ public final class VImage {
    * @param morph {@link app.photofox.vipsffm.enums.VipsOperationMorphology} Morphological operation to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage morph(VEnum morph, VipsOption... args) throws VipsError {
+  public VImage morph(VipsOperationMorphology morph, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
     var maskOption = VipsOption.Image("mask", this);
-    var morphOption = VipsOption.Enum("morph", morph.getRawValue());
+    var morphOption = VipsOption.Enum("morph", morph);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -4058,12 +4076,12 @@ public final class VImage {
    * @optionalArg dy1 {@link VipsOption.Double} Detected first-order displacement
    * @optionalArg dx1 {@link VipsOption.Double} Detected first-order displacement
    */
-  public VImage mosaic(VEnum direction, int xref, int yref, int xsec, int ysec, VipsOption... args)
-      throws VipsError {
+  public VImage mosaic(VipsDirection direction, int xref, int yref, int xsec, int ysec,
+      VipsOption... args) throws VipsError {
     var refOption = VipsOption.Image("ref", this);
     var secOption = VipsOption.Image("sec", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var xrefOption = VipsOption.Int("xref", xref);
     var yrefOption = VipsOption.Int("yref", yref);
     var xsecOption = VipsOption.Int("xsec", xsec);
@@ -4100,12 +4118,12 @@ public final class VImage {
    * @optionalArg mblend {@link VipsOption.Int} Maximum blend size
    * @optionalArg bandno {@link VipsOption.Int} Band to search for features on
    */
-  public VImage mosaic1(VEnum direction, int xr1, int yr1, int xs1, int ys1, int xr2, int yr2,
-      int xs2, int ys2, VipsOption... args) throws VipsError {
+  public VImage mosaic1(VipsDirection direction, int xr1, int yr1, int xs1, int ys1, int xr2,
+      int yr2, int xs2, int ys2, VipsOption... args) throws VipsError {
     var refOption = VipsOption.Image("ref", this);
     var secOption = VipsOption.Image("sec", this);
     var outOption = VipsOption.Image("out");
-    var directionOption = VipsOption.Enum("direction", direction.getRawValue());
+    var directionOption = VipsOption.Enum("direction", direction);
     var xr1Option = VipsOption.Int("xr1", xr1);
     var yr1Option = VipsOption.Int("yr1", yr1);
     var xs1Option = VipsOption.Int("xs1", xs1);
@@ -5042,11 +5060,12 @@ public final class VImage {
    * @param relational {@link app.photofox.vipsffm.enums.VipsOperationRelational} Relational to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage relational(VEnum relational, VipsOption... args) throws VipsError {
+  public VImage relational(VipsOperationRelational relational, VipsOption... args) throws
+      VipsError {
     var leftOption = VipsOption.Image("left", this);
     var rightOption = VipsOption.Image("right", this);
     var outOption = VipsOption.Image("out");
-    var relationalOption = VipsOption.Enum("relational", relational.getRawValue());
+    var relationalOption = VipsOption.Enum("relational", relational);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
@@ -5062,11 +5081,11 @@ public final class VImage {
    * @param c Array of constants
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage relationalConst(VEnum relational, List<Double> c, VipsOption... args) throws
-      VipsError {
+  public VImage relationalConst(VipsOperationRelational relational, List<Double> c,
+      VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var relationalOption = VipsOption.Enum("relational", relational.getRawValue());
+    var relationalOption = VipsOption.Enum("relational", relational);
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
@@ -5159,10 +5178,10 @@ public final class VImage {
    * @param angle {@link app.photofox.vipsffm.enums.VipsAngle} Angle to rotate image
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage rot(VEnum angle, VipsOption... args) throws VipsError {
+  public VImage rot(VipsAngle angle, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var angleOption = VipsOption.Enum("angle", angle.getRawValue());
+    var angleOption = VipsOption.Enum("angle", angle);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -5214,10 +5233,10 @@ public final class VImage {
    * @param round {@link app.photofox.vipsffm.enums.VipsOperationRound} Rounding operation to perform
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage round(VEnum round, VipsOption... args) throws VipsError {
+  public VImage round(VipsOperationRound round, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var roundOption = VipsOption.Enum("round", round.getRawValue());
+    var roundOption = VipsOption.Enum("round", round);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
