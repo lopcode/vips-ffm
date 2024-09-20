@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Generate V classes" type="JetRunConfigurationType">
     <envs>
-      <env name="DYLD_LIBRARY_PATH" value="native_libs" />
+      <env name="DYLD_LIBRARY_PATH" value="/opt/homebrew/lib" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVClasses" />
     <module name="vips-ffm.generator.main" />

@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Generate VipsHelper class" type="JetRunConfigurationType">
     <envs>
-      <env name="DYLD_LIBRARY_PATH" value="native_libs" />
+      <env name="DYLD_LIBRARY_PATH" value="/opt/homebrew/lib" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVipsHelperClass" />
     <module name="vips-ffm.generator.main" />

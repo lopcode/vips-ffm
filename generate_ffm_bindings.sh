@@ -68,6 +68,4 @@ set -x
 @includes_filtered.txt \
 "$LIBVIPS_ENTRY_PATH"
 
-export DYLD_LIBRARY_PATH="native_libs"
-
 ./gradlew clean generator:run

@@ -50,7 +50,6 @@ tasks.withType<Test> {
         exceptionFormat = TestExceptionFormat.FULL
     }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     outputs.upToDateWhen { false }
 }
 
@@ -61,7 +60,6 @@ tasks.named("check") {
 
 tasks.withType<JavaExec>().configureEach {
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
