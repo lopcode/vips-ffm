@@ -8,7 +8,6 @@ build
 
 jextract*
 logo*
-native_libs/lib*
 includes.txt
 includes_filtered.txt
 hs_err*

@@ -23,7 +23,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.9
+          gradle-version: 8.10.1
 
       - name: Run checks
         run: ./gradlew build check shadowJar
@@ -32,3 +32,32 @@ jobs:
         run: |
           vips --version || (sudo apt update && sudo apt install libvips-dev)
           ./run_samples.sh
+
+  windows-sense-check:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 22
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10.1
+
+      - name: Run samples
+        shell: pwsh
+        run: |
+          Invoke-WebRequest "https://github.com/libvips/build-win64-mxe/releases/download/v8.15.3/vips-dev-w64-web-8.15.3-static-ffi.zip" -OutFile "vips_w64.zip"
+          (Get-FileHash .\vips_w64.zip).Hash -eq "60500d990c6063a1e95f1ff29a540c5943537ccbed4dd55711947b68229774ee"
+          Expand-Archive vips_w64.zip
+          $env:Path = "$pwd\vips_w64\vips-dev-8.15;$pwd\vips_w64\vips-dev-8.15\bin;" + $env:Path 
+          Write-Output $env:Path
+          Get-ChildItem .\vips_w64\vips-dev-8.15
+          .\gradlew.bat sample:clean sample:shadowJar
+          java -jar sample/build/libs/sample-all.jar

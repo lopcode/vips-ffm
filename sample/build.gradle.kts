@@ -40,12 +40,10 @@ tasks.withType<Test> {
         events = TestLogEvent.values().toSet() - TestLogEvent.STARTED
         exceptionFormat = TestExceptionFormat.FULL
     }
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     outputs.upToDateWhen { false }
 }
 
 tasks.withType<JavaExec>().configureEach {
-    environment(mapOf("DYLD_LIBRARY_PATH" to "native_libs"))
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
@@ -58,5 +56,4 @@ tasks.withType<Jar>().configureEach {
 application {
     mainClass = "vipsffm.SampleRunner"
     applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
-    // todo: figure out how to set DYLD_LIBRARY_PATH here
 }

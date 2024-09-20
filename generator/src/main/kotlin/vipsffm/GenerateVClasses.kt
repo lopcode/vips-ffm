@@ -63,8 +63,6 @@ object GenerateVClasses {
     private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
 
     @JvmStatic fun main(args: Array<String>) {
-        System.loadLibrary("vips")
-
         val operations = Arena.ofConfined().use {
             DiscoverVipsOperations.run(it)
         }

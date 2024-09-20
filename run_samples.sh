@@ -5,7 +5,7 @@ echo "building samples..."
 ./gradlew sample:clean sample:shadowJar
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export DYLD_LIBRARY_PATH=native_libs
+  export DYLD_LIBRARY_PATH=/opt/homebrew/lib
 fi
 
 echo "running samples..."

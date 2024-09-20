@@ -45,6 +45,9 @@ tasks.withType<Test> {
 
 application {
     mainClass = "vipsffm.MainKt"
-    applicationDefaultJvmArgs = listOf("--enable-preview", "--enable-native-access=ALL-UNNAMED", "-Xlog:library", "-Djava.library.path=${rootProject.projectDir}/native_libs")
+    applicationDefaultJvmArgs = listOf(
+        "--enable-preview",
+        "--enable-native-access=ALL-UNNAMED"
+    )
     tasks.run.get().workingDir = rootProject.projectDir
 }
