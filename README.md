@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:0.5.0")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:0.5.1")
 }
 ```
 

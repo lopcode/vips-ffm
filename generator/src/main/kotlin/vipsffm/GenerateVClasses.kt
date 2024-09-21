@@ -219,18 +219,18 @@ object GenerateVClasses {
             val poetArgType = poetArg.type
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
             if (argSpec.isOutput) {
-                method.addStatement("var ${poetArg.name}Option = \$T(\"${poetArg.name}\")", vipsOptionType)
+                method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
             } else if (argSpec.isInput) {
                 if (poetArg.type == vimageType) {
-                    method.addStatement("var ${poetArg.name}Option = \$T(\"${poetArg.name}\", this)", vipsOptionType)
+                    method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
                 } else if (poetArg.type == vEnumType) {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${poetArg.name}\", ${poetArg.name}.getRawValue())",
+                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name}.getRawValue())",
                         vipsOptionType
                     )
                 } else {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${poetArg.name}\", ${poetArg.name})",
+                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name})",
                         vipsOptionType
                     )
                 }

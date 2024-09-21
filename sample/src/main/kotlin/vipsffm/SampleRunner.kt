@@ -1,9 +1,7 @@
 package vipsffm
 
 import app.photofox.vipsffm.Vips
-import app.photofox.vipsffm.VipsHelper
 import org.slf4j.LoggerFactory
-import java.lang.foreign.Arena
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.Locale
@@ -21,7 +19,8 @@ object SampleRunner {
             VImageCreateThumbnailSample,
             VImageChainSample,
             VSourceTargetSample,
-            VImageCopyWriteSample
+            VImageCopyWriteSample,
+            VOptionHyphenSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

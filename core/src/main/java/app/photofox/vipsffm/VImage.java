@@ -469,7 +469,7 @@ public final class VImage {
   public VImage bandbool(VipsOperationBoolean boolean1, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
+    var boolean1Option = VipsOption.Enum("boolean", boolean1);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -598,7 +598,7 @@ public final class VImage {
     var leftOption = VipsOption.Image("left", this);
     var rightOption = VipsOption.Image("right", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
+    var boolean1Option = VipsOption.Enum("boolean", boolean1);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
@@ -618,7 +618,7 @@ public final class VImage {
       throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var boolean1Option = VipsOption.Enum("boolean1", boolean1);
+    var boolean1Option = VipsOption.Enum("boolean", boolean1);
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
@@ -1773,7 +1773,7 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var fractalDimensionOption = VipsOption.Double("fractalDimension", fractalDimension);
+    var fractalDimensionOption = VipsOption.Double("fractal-dimension", fractalDimension);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -1859,7 +1859,7 @@ public final class VImage {
   public VImage gaussmat(double sigma, double minAmpl, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var sigmaOption = VipsOption.Double("sigma", sigma);
-    var minAmplOption = VipsOption.Double("minAmpl", minAmpl);
+    var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(sigmaOption);
@@ -1897,7 +1897,7 @@ public final class VImage {
    */
   public List<Double> getpoint(int x, int y, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
-    var outArrayOption = VipsOption.ArrayDouble("outArray");
+    var outArrayOption = VipsOption.ArrayDouble("out-array");
     var xOption = VipsOption.Int("x", x);
     var yOption = VipsOption.Int("y", y);
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2136,7 +2136,7 @@ public final class VImage {
   public VImage grid(int tileHeight, int across, int down, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var tileHeightOption = VipsOption.Int("tileHeight", tileHeight);
+    var tileHeightOption = VipsOption.Int("tile-height", tileHeight);
     var acrossOption = VipsOption.Int("across", across);
     var downOption = VipsOption.Int("down", down);
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2568,7 +2568,7 @@ public final class VImage {
   public VImage iccTransform(String outputProfile, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
-    var outputProfileOption = VipsOption.String("outputProfile", outputProfile);
+    var outputProfileOption = VipsOption.String("output-profile", outputProfile);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
     callArgs.add(outOption);
@@ -3244,7 +3244,7 @@ public final class VImage {
   public VImage logmat(double sigma, double minAmpl, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var sigmaOption = VipsOption.Double("sigma", sigma);
-    var minAmplOption = VipsOption.Double("minAmpl", minAmpl);
+    var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(sigmaOption);
@@ -3411,8 +3411,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var orderOption = VipsOption.Double("order", order);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3446,10 +3446,10 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var orderOption = VipsOption.Double("order", order);
-    var frequencyCutoffXOption = VipsOption.Double("frequencyCutoffX", frequencyCutoffX);
-    var frequencyCutoffYOption = VipsOption.Double("frequencyCutoffY", frequencyCutoffY);
+    var frequencyCutoffXOption = VipsOption.Double("frequency-cutoff-x", frequencyCutoffX);
+    var frequencyCutoffYOption = VipsOption.Double("frequency-cutoff-y", frequencyCutoffY);
     var radiusOption = VipsOption.Double("radius", radius);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3483,8 +3483,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var orderOption = VipsOption.Double("order", order);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
@@ -3514,7 +3514,7 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var fractalDimensionOption = VipsOption.Double("fractalDimension", fractalDimension);
+    var fractalDimensionOption = VipsOption.Double("fractal-dimension", fractalDimension);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3541,8 +3541,8 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3573,10 +3573,10 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffXOption = VipsOption.Double("frequencyCutoffX", frequencyCutoffX);
-    var frequencyCutoffYOption = VipsOption.Double("frequencyCutoffY", frequencyCutoffY);
+    var frequencyCutoffXOption = VipsOption.Double("frequency-cutoff-x", frequencyCutoffX);
+    var frequencyCutoffYOption = VipsOption.Double("frequency-cutoff-y", frequencyCutoffY);
     var radiusOption = VipsOption.Double("radius", radius);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3607,8 +3607,8 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
-    var amplitudeCutoffOption = VipsOption.Double("amplitudeCutoff", amplitudeCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
+    var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
@@ -3637,7 +3637,7 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
     callArgs.add(widthOption);
@@ -3665,8 +3665,8 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffXOption = VipsOption.Double("frequencyCutoffX", frequencyCutoffX);
-    var frequencyCutoffYOption = VipsOption.Double("frequencyCutoffY", frequencyCutoffY);
+    var frequencyCutoffXOption = VipsOption.Double("frequency-cutoff-x", frequencyCutoffX);
+    var frequencyCutoffYOption = VipsOption.Double("frequency-cutoff-y", frequencyCutoffY);
     var radiusOption = VipsOption.Double("radius", radius);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
@@ -3696,7 +3696,7 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
-    var frequencyCutoffOption = VipsOption.Double("frequencyCutoff", frequencyCutoff);
+    var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
