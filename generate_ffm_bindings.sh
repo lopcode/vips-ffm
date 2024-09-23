@@ -47,7 +47,7 @@ rm includes_filtered.txt || true
 touch includes_filtered.txt
 
 {
-  grep -iE ' (_)?(vips_image|vips_init|vips_nick|vips_source_new|vips_source_get_type|vips_target|vips_blob|vips_object|vips_block|vips_operation|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_cache|vips_array|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_foreign_find|vips_filename|vips_image|vips_init|vips_nick|vips_source_new|vips_source_get_type|vips_target|vips_blob|vips_object|vips_block|vips_operation|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_cache|vips_array|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
   grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
   grep -iE ' (_)?(GClass|GEnum|GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue|GParamSpec|G_TYPE)' includes.txt
   grep -iE ' g_object_(un)?ref|g_free|g_type_from_name|g_type_name|g_param_spec_get_blurb|g_param_spec_types|g_object_set|g_object_get|g_value' includes.txt
