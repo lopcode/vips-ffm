@@ -9,7 +9,10 @@ public final class VBlob {
 
     final MemorySegment address;
 
-    VBlob(MemorySegment address) {
+    VBlob(MemorySegment address) throws VipsError {
+        if (!VipsValidation.isValidPointer(address)) {
+            throw new VipsError("invalid pointer used for creation");
+        }
         this.address = address;
     }
 

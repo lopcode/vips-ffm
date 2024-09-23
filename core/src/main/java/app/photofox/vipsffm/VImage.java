@@ -36,7 +36,10 @@ public final class VImage {
 
   final MemorySegment address;
 
-  VImage(Arena arena, MemorySegment address) {
+  VImage(Arena arena, MemorySegment address) throws VipsError {
+    if (!VipsValidation.isValidPointer(address)) {
+      throw new VipsError("invalid pointer used for creation");
+    }
     this.arena = arena;
     this.address = address;
   }

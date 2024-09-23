@@ -8,7 +8,10 @@ public class VInterpolate {
 
     MemorySegment address;
 
-    VInterpolate(MemorySegment address) {
+    VInterpolate(MemorySegment address) throws VipsError {
+        if (!VipsValidation.isValidPointer(address)) {
+            throw new VipsError("invalid pointer used for creation");
+        }
         this.address = address;
     }
 
