@@ -33,6 +33,31 @@ jobs:
           vips --version || (sudo apt update && sudo apt install libvips-dev)
           ./run_samples.sh
 
+  macos-sense-check:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 22
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10.1
+
+      - name: Run checks
+        run: ./gradlew build check shadowJar
+
+      - name: Run samples
+        run: |
+          vips --version || brew install vips
+          ./run_samples.sh
+
   windows-sense-check:
     runs-on: windows-latest
     steps:
