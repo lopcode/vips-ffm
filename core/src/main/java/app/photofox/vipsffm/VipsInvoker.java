@@ -86,8 +86,7 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
-                VipsRaw.g_object_ref(vipsPointer);
-                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
                 var vipsObject = new VImage(arena, vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -95,8 +94,7 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
-                VipsRaw.g_object_ref(vipsPointer);
-                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
                 var vipsObject = new VSource(vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -104,8 +102,7 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_target_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
-                VipsRaw.g_object_ref(vipsPointer);
-                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
                 var vipsObject = new VTarget(vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -113,8 +110,7 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
-                VipsRaw.g_object_ref(vipsPointer);
-                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
                 var vipsObject = new VBlob(vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -162,8 +158,7 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_interpolate_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
-                VipsRaw.g_object_ref(vipsPointer);
-                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
                 var vipsObject = new VInterpolate(vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -186,7 +181,11 @@ public class VipsInvoker {
             .forEach((option -> setInputOption(arena, operation, option)));
     }
 
-    private static void setInputOption(Arena arena, MemorySegment operation, VipsOption option) {
+    private static void setInputOption(
+        Arena arena,
+        MemorySegment operation,
+        VipsOption option
+    ) {
         var optionKey = option.key();
         var keyCString = arena.allocateFrom(optionKey);
         var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
@@ -262,8 +261,8 @@ public class VipsInvoker {
                 VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
                 var arrayPointer = arena.allocate(C_POINTER, valueSize);
                 for (int i = 0; i < valueSize; i++) {
-                    var imageAddress = value.get(i).address.reinterpret(arena, VipsRaw::g_object_unref);
-                    VipsRaw.g_object_ref(imageAddress);
+                    var imageAddress = value.get(i).address;
+                    imageAddress = refGObjectToArenaScope(arena, imageAddress);
                     arrayPointer.setAtIndex(C_POINTER, i, imageAddress);
                 }
                 VipsRaw.vips_value_set_array_image(gvaluePointer, valueSize);
@@ -390,5 +389,16 @@ public class VipsInvoker {
         });
         invokeArgs.add(MemorySegment.NULL);
         return invokeArgs.toArray(Object[]::new);
+    }
+
+    private static MemorySegment refGObjectToArenaScope(
+        Arena arena,
+        MemorySegment gobjectPointer
+    ) {
+        if (!VipsValidation.isValidPointer(gobjectPointer)) {
+            throw new VipsError("attempted to ref invalid pointer");
+        }
+        VipsRaw.g_object_ref(gobjectPointer);
+        return gobjectPointer.reinterpret(arena, VipsRaw::g_object_unref);
     }
 }
