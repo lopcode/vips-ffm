@@ -5,10 +5,13 @@ import app.photofox.vipsffm.VipsLibLookup;
 
 import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
 import java.util.*;
+import java.util.function.*;
 import java.util.stream.*;
 
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 public class VipsRaw {
 
@@ -11680,6 +11683,65 @@ public class VipsRaw {
            throw new AssertionError("should not reach here", ex$);
         }
     }
+
+    private static class vips_filename_suffix_match {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_filename_suffix_match");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern int vips_filename_suffix_match(const char *path, const char *suffixes[])
+     * }
+     */
+    public static FunctionDescriptor vips_filename_suffix_match$descriptor() {
+        return vips_filename_suffix_match.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern int vips_filename_suffix_match(const char *path, const char *suffixes[])
+     * }
+     */
+    public static MethodHandle vips_filename_suffix_match$handle() {
+        return vips_filename_suffix_match.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int vips_filename_suffix_match(const char *path, const char *suffixes[])
+     * }
+     */
+    public static MemorySegment vips_filename_suffix_match$address() {
+        return vips_filename_suffix_match.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern int vips_filename_suffix_match(const char *path, const char *suffixes[])
+     * }
+     */
+    public static int vips_filename_suffix_match(MemorySegment path, MemorySegment suffixes) {
+        var mh$ = vips_filename_suffix_match.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_filename_suffix_match", path, suffixes);
+            }
+            return (int)mh$.invokeExact(path, suffixes);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
     private static final int VIPS_TOKEN_LEFT = (int)1L;
     /**
      * {@snippet lang=c :
@@ -18797,6 +18859,122 @@ public class VipsRaw {
                 traceDowncall("vips_image_set_kill", image, kill);
             }
             mh$.invokeExact(image, kill);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_filename_get_filename {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_filename_get_filename");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_filename(const char *vips_filename)
+     * }
+     */
+    public static FunctionDescriptor vips_filename_get_filename$descriptor() {
+        return vips_filename_get_filename.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_filename(const char *vips_filename)
+     * }
+     */
+    public static MethodHandle vips_filename_get_filename$handle() {
+        return vips_filename_get_filename.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_filename(const char *vips_filename)
+     * }
+     */
+    public static MemorySegment vips_filename_get_filename$address() {
+        return vips_filename_get_filename.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_filename(const char *vips_filename)
+     * }
+     */
+    public static MemorySegment vips_filename_get_filename(MemorySegment vips_filename) {
+        var mh$ = vips_filename_get_filename.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_filename_get_filename", vips_filename);
+            }
+            return (MemorySegment)mh$.invokeExact(vips_filename);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_filename_get_options {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_filename_get_options");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_options(const char *vips_filename)
+     * }
+     */
+    public static FunctionDescriptor vips_filename_get_options$descriptor() {
+        return vips_filename_get_options.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_options(const char *vips_filename)
+     * }
+     */
+    public static MethodHandle vips_filename_get_options$handle() {
+        return vips_filename_get_options.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_options(const char *vips_filename)
+     * }
+     */
+    public static MemorySegment vips_filename_get_options$address() {
+        return vips_filename_get_options.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern char *vips_filename_get_options(const char *vips_filename)
+     * }
+     */
+    public static MemorySegment vips_filename_get_options(MemorySegment vips_filename) {
+        var mh$ = vips_filename_get_options.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_filename_get_options", vips_filename);
+            }
+            return (MemorySegment)mh$.invokeExact(vips_filename);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -27413,6 +27591,181 @@ public class VipsRaw {
     public static int VIPS_FAIL_ON_LAST() {
         return VIPS_FAIL_ON_LAST;
     }
+
+    private static class vips_foreign_find_load {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_load");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load(const char *filename)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_load$descriptor() {
+        return vips_foreign_find_load.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load(const char *filename)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_load$handle() {
+        return vips_foreign_find_load.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load(const char *filename)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load$address() {
+        return vips_foreign_find_load.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load(const char *filename)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load(MemorySegment filename) {
+        var mh$ = vips_foreign_find_load.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_load", filename);
+            }
+            return (MemorySegment)mh$.invokeExact(filename);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_foreign_find_load_buffer {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_load_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_buffer(const void *data, size_t size)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_load_buffer$descriptor() {
+        return vips_foreign_find_load_buffer.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_buffer(const void *data, size_t size)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_load_buffer$handle() {
+        return vips_foreign_find_load_buffer.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_buffer(const void *data, size_t size)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load_buffer$address() {
+        return vips_foreign_find_load_buffer.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_buffer(const void *data, size_t size)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load_buffer(MemorySegment data, long size) {
+        var mh$ = vips_foreign_find_load_buffer.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_load_buffer", data, size);
+            }
+            return (MemorySegment)mh$.invokeExact(data, size);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_foreign_find_load_source {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_load_source");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_source(VipsSource *source)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_load_source$descriptor() {
+        return vips_foreign_find_load_source.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_source(VipsSource *source)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_load_source$handle() {
+        return vips_foreign_find_load_source.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_source(VipsSource *source)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load_source$address() {
+        return vips_foreign_find_load_source.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_load_source(VipsSource *source)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_load_source(MemorySegment source) {
+        var mh$ = vips_foreign_find_load_source.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_load_source", source);
+            }
+            return (MemorySegment)mh$.invokeExact(source);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
     private static final int VIPS_SAVEABLE_MONO = (int)0L;
     /**
      * {@snippet lang=c :
@@ -27538,6 +27891,180 @@ public class VipsRaw {
      */
     public static int VIPS_FOREIGN_KEEP_ALL() {
         return VIPS_FOREIGN_KEEP_ALL;
+    }
+
+    private static class vips_foreign_find_save {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_save");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save(const char *filename)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_save$descriptor() {
+        return vips_foreign_find_save.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save(const char *filename)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_save$handle() {
+        return vips_foreign_find_save.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save(const char *filename)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save$address() {
+        return vips_foreign_find_save.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save(const char *filename)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save(MemorySegment filename) {
+        var mh$ = vips_foreign_find_save.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_save", filename);
+            }
+            return (MemorySegment)mh$.invokeExact(filename);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_foreign_find_save_buffer {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_save_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_buffer(const char *suffix)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_save_buffer$descriptor() {
+        return vips_foreign_find_save_buffer.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_buffer(const char *suffix)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_save_buffer$handle() {
+        return vips_foreign_find_save_buffer.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_buffer(const char *suffix)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save_buffer$address() {
+        return vips_foreign_find_save_buffer.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_buffer(const char *suffix)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save_buffer(MemorySegment suffix) {
+        var mh$ = vips_foreign_find_save_buffer.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_save_buffer", suffix);
+            }
+            return (MemorySegment)mh$.invokeExact(suffix);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_foreign_find_save_target {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_foreign_find_save_target");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_target(const char *suffix)
+     * }
+     */
+    public static FunctionDescriptor vips_foreign_find_save_target$descriptor() {
+        return vips_foreign_find_save_target.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_target(const char *suffix)
+     * }
+     */
+    public static MethodHandle vips_foreign_find_save_target$handle() {
+        return vips_foreign_find_save_target.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_target(const char *suffix)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save_target$address() {
+        return vips_foreign_find_save_target.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern const char *vips_foreign_find_save_target(const char *suffix)
+     * }
+     */
+    public static MemorySegment vips_foreign_find_save_target(MemorySegment suffix) {
+        var mh$ = vips_foreign_find_save_target.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_foreign_find_save_target", suffix);
+            }
+            return (MemorySegment)mh$.invokeExact(suffix);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
     }
     private static final int VIPS_FOREIGN_SUBSAMPLE_AUTO = (int)0L;
     /**

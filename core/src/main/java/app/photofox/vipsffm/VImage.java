@@ -6578,18 +6578,40 @@ public final class VImage {
 
   public static VImage newFromFile(Arena arena, String path, VipsOption... options) throws
       VipsError {
-    var address = VipsHelper.image_new_from_file(arena, path, options);
-    return new VImage(arena, address);
+    var filename = VipsHelper.filename_get_filename(arena, path);
+    var filenameOptions = VipsHelper.filename_get_options(arena, filename);
+    var loader = VipsHelper.foreign_find_load(arena, filename);
+    var filenameOption = VipsOption.String("filename", filename);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(options));
+    callArgs.add(filenameOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, loader, filenameOptions, callArgs);
+    return outOption.valueOrThrow();
   }
 
   public static VImage newFromSource(Arena arena, VSource source, String optionString,
       VipsOption... options) throws VipsError {
-    var address = VipsHelper.image_new_from_source(arena, source.address, optionString, options);
-    return new VImage(arena, address);
+    var loader = VipsHelper.foreign_find_load_source(source.address);
+    var sourceOption = VipsOption.Source("source", source);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(options));
+    callArgs.add(sourceOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, loader, optionString, callArgs);
+    return outOption.valueOrThrow();
   }
 
   public void writeToFile(String path, VipsOption... options) throws VipsError {
-    VipsHelper.image_write_to_file(this.arena, this.address, path, options);
+    var filename = VipsHelper.filename_get_filename(arena, path);
+    var filenameOptions = VipsHelper.filename_get_options(arena, filename);
+    var loader = VipsHelper.foreign_find_save(arena, filename);
+    var filenameOption = VipsOption.String("filename", filename);
+    var inOption = VipsOption.Image("in", this);
+    var callArgs = new ArrayList<>(Arrays.asList(options));
+    callArgs.add(filenameOption);
+    callArgs.add(inOption);
+    VipsInvoker.invokeOperation(arena, loader, filenameOptions, callArgs);
   }
 
   public VImage write(VImage out) throws VipsError {
@@ -6598,10 +6620,13 @@ public final class VImage {
   }
 
   public void writeToTarget(VTarget target, String suffix, VipsOption... options) throws VipsError {
-    var result = VipsHelper.image_write_to_target(this.arena, this.address, suffix, target.address, options);
-    if (!VipsValidation.isValidResult(result)) {
-      VipsValidation.throwVipsError("writeToTarget");
-    }
+    var loader = VipsHelper.foreign_find_save_target(arena, suffix);
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(options));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, loader, callArgs);
   }
 
   public static VImage newImage(Arena arena) throws VipsError {

@@ -15,13 +15,29 @@ import static app.photofox.vipsffm.jextract.VipsRaw.*;
 
 public class VipsInvoker {
 
-    public static void invokeOperation(Arena arena, String nickname, List<? extends VipsOption> args) throws VipsError {
+    public static void invokeOperation(
+        Arena arena,
+        String nickname,
+        List<? extends VipsOption> args
+    ) throws VipsError {
+        invokeOperation(arena, nickname, null, args);
+    }
+
+    public static void invokeOperation(
+        Arena arena,
+        String nickname,
+        String stringOptions,
+        List<? extends VipsOption> args
+    ) throws VipsError {
         // https://www.libvips.org/API/current/binding.html
         var rawOperation = VipsRaw.vips_operation_new(arena.allocateFrom(nickname));
         if (!VipsValidation.isValidPointer(rawOperation)) {
             VipsValidation.throwVipsError(String.format("failed to create operation for %s", nickname));
         }
         final var operation = rawOperation.reinterpret(arena, VipsRaw::g_object_unref);
+        if (stringOptions != null && !stringOptions.isBlank()) {
+            VipsHelper.object_set_from_string(arena, operation, stringOptions);
+        }
 
         setInputOptions(arena, args, operation);
 
