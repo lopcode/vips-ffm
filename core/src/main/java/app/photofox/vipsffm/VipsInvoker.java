@@ -23,105 +23,7 @@ public class VipsInvoker {
         }
         final var operation = rawOperation.reinterpret(arena, VipsRaw::g_object_unref);
 
-        args.stream()
-            .filter(VipsOption::hasValue)
-            .forEach((option -> {
-                var optionKey = option.key();
-                var keyCString = arena.allocateFrom(optionKey);
-                var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
-                switch (option) {
-                    case VipsOption.Int o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
-                        VipsRaw.g_value_set_int(gvaluePointer, value);
-                    }
-                    case VipsOption.Double o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_DOUBLE());
-                        VipsRaw.g_value_set_double(gvaluePointer, value);
-                    }
-                    case VipsOption.Long o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_LONG());
-                        VipsRaw.g_value_set_long(gvaluePointer, value);
-                    }
-                    case VipsOption.Boolean o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_BOOLEAN());
-                        VipsRaw.g_value_set_boolean(gvaluePointer, value ? 1 : 0);
-                    }
-                    case VipsOption.String o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_STRING());
-                        VipsRaw.g_value_set_string(gvaluePointer, arena.allocateFrom(value));
-                    }
-                    case VipsOption.Image o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
-                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
-                    }
-                    case VipsOption.Source o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
-                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
-                    }
-                    case VipsOption.Target o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, vips_target_get_type());
-                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
-                    }
-                    case VipsOption.Blob o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
-                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
-                    }
-                    case VipsOption.ArrayDouble o -> {
-                        var value = o.valueOrThrow();
-                        var valueSize = value.size();
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_double_get_type());
-                        var arrayPointer = arena.allocate(C_DOUBLE, valueSize);
-                        for (int i = 0; i < valueSize; i++) {
-                            arrayPointer.setAtIndex(C_DOUBLE, i, value.get(i));
-                        }
-                        VipsRaw.vips_value_set_array_double(gvaluePointer, arrayPointer, valueSize);
-                    }
-                    case VipsOption.ArrayInt o -> {
-                        var value = o.valueOrThrow();
-                        var valueSize = value.size();
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_int_get_type());
-                        var arrayPointer = arena.allocate(C_INT, valueSize);
-                        for (int i = 0; i < valueSize; i++) {
-                            arrayPointer.setAtIndex(C_INT, i, value.get(i));
-                        }
-                        VipsRaw.vips_value_set_array_int(gvaluePointer, arrayPointer, valueSize);
-                    }
-                    case VipsOption.ArrayImage o -> {
-                        var value = o.valueOrThrow();
-                        var valueSize = value.size();
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
-                        var arrayPointer = arena.allocate(C_POINTER, valueSize);
-                        for (int i = 0; i < valueSize; i++) {
-                            var imageAddress = value.get(i).address.reinterpret(arena, VipsRaw::g_object_unref);
-                            VipsRaw.g_object_ref(imageAddress);
-                            arrayPointer.setAtIndex(C_POINTER, i, imageAddress);
-                        }
-                        VipsRaw.vips_value_set_array_image(gvaluePointer, valueSize);
-                        var vipsArrayPointer = VipsRaw.vips_value_get_array_image(gvaluePointer, MemorySegment.NULL);
-                        vipsArrayPointer.set(C_POINTER, 0, arrayPointer);
-                    }
-                    case VipsOption.Interpolate o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
-                        VipsRaw.g_value_set_object(gvaluePointer, value.address);
-                    }
-                    case VipsOption.Enum o -> {
-                        var value = o.valueOrThrow();
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
-                        VipsRaw.g_value_set_int(gvaluePointer, value.getRawValue());
-                    }
-                }
-                VipsRaw.g_object_set_property(operation, keyCString, gvaluePointer);
-            }));
+        setInputOptions(arena, args, operation);
 
         var operationResult = VipsRaw.vips_cache_operation_build(operation);
         if (!VipsValidation.isValidPointer(operationResult)) {
@@ -132,136 +34,254 @@ public class VipsInvoker {
             VipsRaw.g_object_unref(it);
         });
 
+        readOutputOptions(arena, args, operationResult);
+    }
+
+    private static void readOutputOptions(
+        Arena arena,
+        List<? extends VipsOption> args,
+        MemorySegment operation
+    ) {
         args.stream()
             .filter((option) -> !option.hasValue())
-            .forEach((option -> {
-                var optionKey = option.key();
-                var keyCString = arena.allocateFrom(optionKey);
-                var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
-                switch (option) {
-                    case VipsOption.Int o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = VipsRaw.g_value_get_int(gvaluePointer);
-                        o.setValue(value);
-                    }
-                    case VipsOption.Double o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_DOUBLE());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = VipsRaw.g_value_get_double(gvaluePointer);
-                        o.setValue(value);
-                    }
-                    case VipsOption.Long o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_LONG());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = VipsRaw.g_value_get_long(gvaluePointer);
-                        o.setValue(value);
-                    }
-                    case VipsOption.Boolean o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_BOOLEAN());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = VipsRaw.g_value_get_boolean(gvaluePointer);
-                        o.setValue(value == 1);
-                    }
-                    case VipsOption.String o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_STRING());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = g_value_get_string(gvaluePointer).getString(0);
-                        o.setValue(value);
-                    }
-                    case VipsOption.Image o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var vipsPointer = g_value_get_object(gvaluePointer);
-                        VipsRaw.g_object_ref(vipsPointer);
-                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
-                        var vipsObject = new VImage(arena, vipsPointer);
-                        o.setValue(vipsObject);
-                    }
-                    case VipsOption.Source o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var vipsPointer = g_value_get_object(gvaluePointer);
-                        VipsRaw.g_object_ref(vipsPointer);
-                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
-                        var vipsObject = new VSource(vipsPointer);
-                        o.setValue(vipsObject);
-                    }
-                    case VipsOption.Target o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_target_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var vipsPointer = g_value_get_object(gvaluePointer);
-                        VipsRaw.g_object_ref(vipsPointer);
-                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
-                        var vipsObject = new VTarget(vipsPointer);
-                        o.setValue(vipsObject);
-                    }
-                    case VipsOption.Blob o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var vipsPointer = g_value_get_object(gvaluePointer);
-                        VipsRaw.g_object_ref(vipsPointer);
-                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
-                        var vipsObject = new VBlob(vipsPointer);
-                        o.setValue(vipsObject);
-                    }
-                    case VipsOption.ArrayInt o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_int_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var numberOfValuesPointer = arena.allocate(C_INT);
-                        var valuesPointer = VipsRaw.vips_value_get_array_int(gvaluePointer, numberOfValuesPointer);
-                        var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
-                        var list = new ArrayList<Integer>();
-                        for (int i = 0; i < numberOfElements; i++) {
-                            var value = valuesPointer.get(C_INT, i);
-                            list.add(value);
-                        }
-                        o.setValue(list);
-                    }
-                    case VipsOption.ArrayDouble o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_double_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var numberOfValuesPointer = arena.allocate(C_INT);
-                        var valuesPointer = VipsRaw.vips_value_get_array_double(gvaluePointer, numberOfValuesPointer);
-                        var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
-                        var list = new ArrayList<Double>();
-                        for (int i = 0; i < numberOfElements; i++) {
-                            var value = valuesPointer.get(C_DOUBLE, i);
-                            list.add(value);
-                        }
-                        o.setValue(list);
-                    }
-                    case VipsOption.ArrayImage o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var numberOfValuesPointer = arena.allocate(C_INT);
-                        var valuesPointer = VipsRaw.vips_value_get_array_double(gvaluePointer, numberOfValuesPointer);
-                        var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
-                        var list = new ArrayList<VImage>();
-                        for (int i = 0; i < numberOfElements; i++) {
-                            var pointer = valuesPointer.get(C_POINTER, i);
-                            var value = new VImage(arena, pointer);
-                            list.add(value);
-                        }
-                        o.setValue(list);
-                    }
-                    case VipsOption.Interpolate o -> {
-                        VipsRaw.g_value_init(gvaluePointer, vips_interpolate_get_type());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var vipsPointer = g_value_get_object(gvaluePointer);
-                        VipsRaw.g_object_ref(vipsPointer);
-                        vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
-                        var vipsObject = new VInterpolate(vipsPointer);
-                        o.setValue(vipsObject);
-                    }
-                    case VipsOption.Enum o -> {
-                        VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
-                        VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                        var value = VipsRaw.g_value_get_int(gvaluePointer);
-                        o.setValue(new VEnum.Raw(value));
-                    }
+            .forEach((option -> readOutputOption(arena, operation, option)));
+    }
+
+    private static void readOutputOption(Arena arena, MemorySegment operation, VipsOption option) {
+        var optionKey = option.key();
+        var keyCString = arena.allocateFrom(optionKey);
+        var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
+        switch (option) {
+            case VipsOption.Int o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = VipsRaw.g_value_get_int(gvaluePointer);
+                o.setValue(value);
+            }
+            case VipsOption.Double o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_DOUBLE());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = VipsRaw.g_value_get_double(gvaluePointer);
+                o.setValue(value);
+            }
+            case VipsOption.Long o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_LONG());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = VipsRaw.g_value_get_long(gvaluePointer);
+                o.setValue(value);
+            }
+            case VipsOption.Boolean o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_BOOLEAN());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = VipsRaw.g_value_get_boolean(gvaluePointer);
+                o.setValue(value == 1);
+            }
+            case VipsOption.String o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_STRING());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = g_value_get_string(gvaluePointer).getString(0);
+                o.setValue(value);
+            }
+            case VipsOption.Image o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var vipsPointer = g_value_get_object(gvaluePointer);
+                VipsRaw.g_object_ref(vipsPointer);
+                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                var vipsObject = new VImage(arena, vipsPointer);
+                o.setValue(vipsObject);
+            }
+            case VipsOption.Source o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var vipsPointer = g_value_get_object(gvaluePointer);
+                VipsRaw.g_object_ref(vipsPointer);
+                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                var vipsObject = new VSource(vipsPointer);
+                o.setValue(vipsObject);
+            }
+            case VipsOption.Target o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_target_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var vipsPointer = g_value_get_object(gvaluePointer);
+                VipsRaw.g_object_ref(vipsPointer);
+                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                var vipsObject = new VTarget(vipsPointer);
+                o.setValue(vipsObject);
+            }
+            case VipsOption.Blob o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var vipsPointer = g_value_get_object(gvaluePointer);
+                VipsRaw.g_object_ref(vipsPointer);
+                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                var vipsObject = new VBlob(vipsPointer);
+                o.setValue(vipsObject);
+            }
+            case VipsOption.ArrayInt o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_array_int_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var numberOfValuesPointer = arena.allocate(C_INT);
+                var valuesPointer = VipsRaw.vips_value_get_array_int(gvaluePointer, numberOfValuesPointer);
+                var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
+                var list = new ArrayList<Integer>();
+                for (int i = 0; i < numberOfElements; i++) {
+                    var value = valuesPointer.get(C_INT, i);
+                    list.add(value);
                 }
-            }));
+                o.setValue(list);
+            }
+            case VipsOption.ArrayDouble o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_array_double_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var numberOfValuesPointer = arena.allocate(C_INT);
+                var valuesPointer = VipsRaw.vips_value_get_array_double(gvaluePointer, numberOfValuesPointer);
+                var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
+                var list = new ArrayList<Double>();
+                for (int i = 0; i < numberOfElements; i++) {
+                    var value = valuesPointer.get(C_DOUBLE, i);
+                    list.add(value);
+                }
+                o.setValue(list);
+            }
+            case VipsOption.ArrayImage o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var numberOfValuesPointer = arena.allocate(C_INT);
+                var valuesPointer = VipsRaw.vips_value_get_array_double(gvaluePointer, numberOfValuesPointer);
+                var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
+                var list = new ArrayList<VImage>();
+                for (int i = 0; i < numberOfElements; i++) {
+                    var pointer = valuesPointer.get(C_POINTER, i);
+                    var value = new VImage(arena, pointer);
+                    list.add(value);
+                }
+                o.setValue(list);
+            }
+            case VipsOption.Interpolate o -> {
+                VipsRaw.g_value_init(gvaluePointer, vips_interpolate_get_type());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var vipsPointer = g_value_get_object(gvaluePointer);
+                VipsRaw.g_object_ref(vipsPointer);
+                vipsPointer = vipsPointer.reinterpret(arena, VipsRaw::g_object_unref);
+                var vipsObject = new VInterpolate(vipsPointer);
+                o.setValue(vipsObject);
+            }
+            case VipsOption.Enum o -> {
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
+                var value = VipsRaw.g_value_get_int(gvaluePointer);
+                o.setValue(new VEnum.Raw(value));
+            }
+        }
+    }
+
+    private static void setInputOptions(
+        Arena arena,
+        List<? extends VipsOption> args,
+        MemorySegment operation
+    ) {
+        args.stream()
+            .filter(VipsOption::hasValue)
+            .forEach((option -> setInputOption(arena, operation, option)));
+    }
+
+    private static void setInputOption(Arena arena, MemorySegment operation, VipsOption option) {
+        var optionKey = option.key();
+        var keyCString = arena.allocateFrom(optionKey);
+        var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
+        switch (option) {
+            case VipsOption.Int o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                VipsRaw.g_value_set_int(gvaluePointer, value);
+            }
+            case VipsOption.Double o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_DOUBLE());
+                VipsRaw.g_value_set_double(gvaluePointer, value);
+            }
+            case VipsOption.Long o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_LONG());
+                VipsRaw.g_value_set_long(gvaluePointer, value);
+            }
+            case VipsOption.Boolean o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_BOOLEAN());
+                VipsRaw.g_value_set_boolean(gvaluePointer, value ? 1 : 0);
+            }
+            case VipsOption.String o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_STRING());
+                VipsRaw.g_value_set_string(gvaluePointer, arena.allocateFrom(value));
+            }
+            case VipsOption.Image o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
+                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+            }
+            case VipsOption.Source o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
+                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+            }
+            case VipsOption.Target o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, vips_target_get_type());
+                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+            }
+            case VipsOption.Blob o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
+                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+            }
+            case VipsOption.ArrayDouble o -> {
+                var value = o.valueOrThrow();
+                var valueSize = value.size();
+                VipsRaw.g_value_init(gvaluePointer, vips_array_double_get_type());
+                var arrayPointer = arena.allocate(C_DOUBLE, valueSize);
+                for (int i = 0; i < valueSize; i++) {
+                    arrayPointer.setAtIndex(C_DOUBLE, i, value.get(i));
+                }
+                VipsRaw.vips_value_set_array_double(gvaluePointer, arrayPointer, valueSize);
+            }
+            case VipsOption.ArrayInt o -> {
+                var value = o.valueOrThrow();
+                var valueSize = value.size();
+                VipsRaw.g_value_init(gvaluePointer, vips_array_int_get_type());
+                var arrayPointer = arena.allocate(C_INT, valueSize);
+                for (int i = 0; i < valueSize; i++) {
+                    arrayPointer.setAtIndex(C_INT, i, value.get(i));
+                }
+                VipsRaw.vips_value_set_array_int(gvaluePointer, arrayPointer, valueSize);
+            }
+            case VipsOption.ArrayImage o -> {
+                var value = o.valueOrThrow();
+                var valueSize = value.size();
+                VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
+                var arrayPointer = arena.allocate(C_POINTER, valueSize);
+                for (int i = 0; i < valueSize; i++) {
+                    var imageAddress = value.get(i).address.reinterpret(arena, VipsRaw::g_object_unref);
+                    VipsRaw.g_object_ref(imageAddress);
+                    arrayPointer.setAtIndex(C_POINTER, i, imageAddress);
+                }
+                VipsRaw.vips_value_set_array_image(gvaluePointer, valueSize);
+                var vipsArrayPointer = VipsRaw.vips_value_get_array_image(gvaluePointer, MemorySegment.NULL);
+                vipsArrayPointer.set(C_POINTER, 0, arrayPointer);
+            }
+            case VipsOption.Interpolate o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, vips_source_get_type());
+                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+            }
+            case VipsOption.Enum o -> {
+                var value = o.valueOrThrow();
+                VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
+                VipsRaw.g_value_set_int(gvaluePointer, value.getRawValue());
+            }
+        }
+        VipsRaw.g_object_set_property(operation, keyCString, gvaluePointer);
     }
 
     public static MemorySegment makeCharStarArray(Arena arena, List<String> strings) {

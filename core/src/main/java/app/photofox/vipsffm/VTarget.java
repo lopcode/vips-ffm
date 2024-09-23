@@ -10,7 +10,10 @@ public class VTarget {
 
     final MemorySegment address;
 
-    VTarget(MemorySegment address) {
+    VTarget(MemorySegment address) throws VipsError {
+        if (!VipsValidation.isValidPointer(address)) {
+            throw new VipsError("invalid pointer used for creation");
+        }
         this.address = address;
     }
 
