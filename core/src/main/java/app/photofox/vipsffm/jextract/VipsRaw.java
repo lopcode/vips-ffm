@@ -14468,6 +14468,121 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_area_copy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_area_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern VipsArea *vips_area_copy(VipsArea *area)
+     * }
+     */
+    public static FunctionDescriptor vips_area_copy$descriptor() {
+        return vips_area_copy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern VipsArea *vips_area_copy(VipsArea *area)
+     * }
+     */
+    public static MethodHandle vips_area_copy$handle() {
+        return vips_area_copy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern VipsArea *vips_area_copy(VipsArea *area)
+     * }
+     */
+    public static MemorySegment vips_area_copy$address() {
+        return vips_area_copy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern VipsArea *vips_area_copy(VipsArea *area)
+     * }
+     */
+    public static MemorySegment vips_area_copy(MemorySegment area) {
+        var mh$ = vips_area_copy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_area_copy", area);
+            }
+            return (MemorySegment)mh$.invokeExact(area);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_area_unref {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_area_unref");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_area_unref(VipsArea *area)
+     * }
+     */
+    public static FunctionDescriptor vips_area_unref$descriptor() {
+        return vips_area_unref.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_area_unref(VipsArea *area)
+     * }
+     */
+    public static MethodHandle vips_area_unref$handle() {
+        return vips_area_unref.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_area_unref(VipsArea *area)
+     * }
+     */
+    public static MemorySegment vips_area_unref$address() {
+        return vips_area_unref.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_area_unref(VipsArea *area)
+     * }
+     */
+    public static void vips_area_unref(MemorySegment area) {
+        var mh$ = vips_area_unref.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_area_unref", area);
+            }
+            mh$.invokeExact(area);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_blob_new {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_POINTER,

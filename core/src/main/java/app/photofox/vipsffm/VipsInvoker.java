@@ -95,8 +95,11 @@ public class VipsInvoker {
             case VipsOption.String o -> {
                 VipsRaw.g_value_init(gvaluePointer, G_TYPE_STRING());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                var value = g_value_get_string(gvaluePointer).getString(0);
-                o.setValue(value);
+                var stringPointer = g_value_get_string(gvaluePointer);
+                if (!VipsValidation.isValidPointer(stringPointer)) {
+                    throw new VipsError("attempted to make string from invalid reference");
+                }
+                o.setValue(stringPointer.getString(0));
             }
             case VipsOption.Image o -> {
                 VipsRaw.g_value_init(gvaluePointer, vips_image_get_type());
@@ -125,8 +128,10 @@ public class VipsInvoker {
             case VipsOption.Blob o -> {
                 VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
-                var vipsPointer = g_value_get_object(gvaluePointer);
-                vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
+                var vipsPointer = g_value_get_boxed(gvaluePointer);
+                // https://docs.gtk.org/gobject/boxed.html#reference-counting
+                // https://github.com/libvips/libvips/blob/b6428d89f35240d9c6ce92aa7d1c58db1cef9114/libvips/iofuncs/type.c#L429
+                vipsPointer = refVipsAreaToArenaScope(arena, vipsPointer);
                 var vipsObject = new VBlob(vipsPointer);
                 o.setValue(vipsObject);
             }
@@ -165,6 +170,7 @@ public class VipsInvoker {
                 var list = new ArrayList<VImage>();
                 for (int i = 0; i < numberOfElements; i++) {
                     var pointer = valuesPointer.get(C_POINTER, i);
+                    pointer = refGObjectToArenaScope(arena, pointer);
                     var value = new VImage(arena, pointer);
                     list.add(value);
                 }
@@ -249,7 +255,7 @@ public class VipsInvoker {
             case VipsOption.Blob o -> {
                 var value = o.valueOrThrow();
                 VipsRaw.g_value_init(gvaluePointer, vips_blob_get_type());
-                VipsRaw.g_value_set_object(gvaluePointer, value.address);
+                VipsRaw.g_value_set_boxed(gvaluePointer, value.address);
             }
             case VipsOption.ArrayDouble o -> {
                 var value = o.valueOrThrow();
@@ -278,7 +284,6 @@ public class VipsInvoker {
                 var arrayPointer = arena.allocate(C_POINTER, valueSize);
                 for (int i = 0; i < valueSize; i++) {
                     var imageAddress = value.get(i).address;
-                    imageAddress = refGObjectToArenaScope(arena, imageAddress);
                     arrayPointer.setAtIndex(C_POINTER, i, imageAddress);
                 }
                 VipsRaw.vips_value_set_array_image(gvaluePointer, valueSize);
@@ -414,7 +419,18 @@ public class VipsInvoker {
         if (!VipsValidation.isValidPointer(gobjectPointer)) {
             throw new VipsError("attempted to ref invalid pointer");
         }
-        VipsRaw.g_object_ref(gobjectPointer);
-        return gobjectPointer.reinterpret(arena, VipsRaw::g_object_unref);
+        var newPointer = VipsRaw.g_object_ref(gobjectPointer);
+        return newPointer.reinterpret(arena, VipsRaw::g_object_unref);
+    }
+
+    private static MemorySegment refVipsAreaToArenaScope(
+        Arena arena,
+        MemorySegment areaPointer
+    ) {
+        if (!VipsValidation.isValidPointer(areaPointer)) {
+            throw new VipsError("attempted to ref invalid pointer");
+        }
+        var newPointer = VipsRaw.vips_area_copy(areaPointer);
+        return newPointer.reinterpret(arena, VipsRaw::vips_area_unref);
     }
 }

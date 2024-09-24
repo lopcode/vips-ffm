@@ -771,6 +771,37 @@ public final class VipsHelper {
   /**
    * Binding for:
    * {@snippet lang=c :
+   * VipsArea *vips_area_copy(VipsArea *area)
+   * }
+   */
+  public static MemorySegment area_copy(Arena arena, MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_copy", "area");
+    }
+    var result = VipsRaw.vips_area_copy(area);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_area_copy", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * void vips_area_unref(VipsArea *area)
+   * }
+   */
+  public static void area_unref(MemorySegment area) throws VipsError {
+    if(!VipsValidation.isValidPointer(area)) {
+      VipsValidation.throwInvalidInputError("vips_area_unref", "area");
+    }
+    VipsRaw.vips_area_unref(area);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
    * VipsBlob *vips_blob_new(VipsCallbackFn free_fn, const void *data, size_t length)
    * }
    */
