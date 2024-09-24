@@ -1,7 +1,6 @@
 package app.photofox.vipsffm;
 
-import app.photofox.vipsffm.jextract.GValue;
-import app.photofox.vipsffm.jextract.VipsRaw;
+import app.photofox.vipsffm.jextract.*;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
@@ -30,27 +29,37 @@ public class VipsInvoker {
         List<? extends VipsOption> args
     ) throws VipsError {
         // https://www.libvips.org/API/current/binding.html
-        var rawOperation = VipsRaw.vips_operation_new(arena.allocateFrom(nickname));
-        if (!VipsValidation.isValidPointer(rawOperation)) {
+        var operation = VipsRaw.vips_operation_new(arena.allocateFrom(nickname));
+        if (!VipsValidation.isValidPointer(operation)) {
             VipsValidation.throwVipsError(String.format("failed to create operation for %s", nickname));
         }
-        final var operation = rawOperation.reinterpret(arena, VipsRaw::g_object_unref);
+
         if (stringOptions != null && !stringOptions.isBlank()) {
-            VipsHelper.object_set_from_string(arena, operation, stringOptions);
+            var result = VipsHelper.object_set_from_string(arena, operation, stringOptions);
+            if (!VipsValidation.isValidResult(result)) {
+                VipsHelper.object_unref_outputs(operation);
+                VipsRaw.g_object_unref(operation);
+                VipsValidation.throwVipsError(String.format("failed to create cached operation for %s", nickname));
+            }
         }
 
         setInputOptions(arena, args, operation);
 
-        var operationResult = VipsRaw.vips_cache_operation_build(operation);
-        if (!VipsValidation.isValidPointer(operationResult)) {
+        var cachedOperation = VipsRaw.vips_cache_operation_build(operation);
+        if (!VipsValidation.isValidPointer(cachedOperation)) {
+            VipsHelper.object_unref_outputs(operation);
+            VipsRaw.g_object_unref(operation);
             VipsValidation.throwVipsError(String.format("failed to create cached operation for %s", nickname));
         }
-        operationResult.reinterpret(arena, (it) -> {
-            VipsHelper.object_unref_outputs(it);
-            VipsRaw.g_object_unref(it);
-        });
+        VipsRaw.g_object_unref(operation);
+        operation = cachedOperation;
 
-        readOutputOptions(arena, args, operationResult);
+        try {
+            readOutputOptions(arena, args, operation);
+        } finally {
+            VipsHelper.object_unref_outputs(operation);
+            VipsRaw.g_object_unref(operation);
+        }
     }
 
     private static void readOutputOptions(
@@ -66,7 +75,21 @@ public class VipsInvoker {
     private static void readOutputOption(Arena arena, MemorySegment operation, VipsOption option) {
         var optionKey = option.key();
         var keyCString = arena.allocateFrom(optionKey);
-        var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
+        var gvaluePointer = GValue.allocate(arena);
+        try {
+            readGValueAndSetOptionValue(arena, operation, option, gvaluePointer, keyCString);
+        } finally {
+            VipsRaw.g_value_unset(gvaluePointer);
+        }
+    }
+
+    private static void readGValueAndSetOptionValue(
+        Arena arena,
+        MemorySegment operation,
+        VipsOption option,
+        MemorySegment gvaluePointer,
+        MemorySegment keyCString
+    ) {
         switch (option) {
             case VipsOption.Int o -> {
                 VipsRaw.g_value_init(gvaluePointer, G_TYPE_INT());
@@ -210,7 +233,20 @@ public class VipsInvoker {
     ) {
         var optionKey = option.key();
         var keyCString = arena.allocateFrom(optionKey);
-        var gvaluePointer = GValue.allocate(arena).reinterpret(arena, VipsRaw::g_value_unset);
+        var gvaluePointer = GValue.allocate(arena);
+        try {
+            setGValueFromOption(arena, option, gvaluePointer);
+            VipsRaw.g_object_set_property(operation, keyCString, gvaluePointer);
+        } finally {
+            VipsRaw.g_value_unset(gvaluePointer);
+        }
+    }
+
+    private static void setGValueFromOption(
+        Arena arena,
+        VipsOption option,
+        MemorySegment gvaluePointer
+    ) {
         switch (option) {
             case VipsOption.Int o -> {
                 var value = o.valueOrThrow();
@@ -281,14 +317,15 @@ public class VipsInvoker {
                 var value = o.valueOrThrow();
                 var valueSize = value.size();
                 VipsRaw.g_value_init(gvaluePointer, vips_array_image_get_type());
-                var arrayPointer = arena.allocate(C_POINTER, valueSize);
-                for (int i = 0; i < valueSize; i++) {
-                    var imageAddress = value.get(i).address;
-                    arrayPointer.setAtIndex(C_POINTER, i, imageAddress);
-                }
                 VipsRaw.vips_value_set_array_image(gvaluePointer, valueSize);
                 var vipsArrayPointer = VipsRaw.vips_value_get_array_image(gvaluePointer, MemorySegment.NULL);
-                vipsArrayPointer.set(C_POINTER, 0, arrayPointer);
+                for (int i = 0; i < valueSize; i++) {
+                    var imageAddress = value.get(i).address;
+                    // we must ref inputs to vips_array_image_get_type
+                    // it should not be unreffed here - it will get unreffed above
+                    VipsRaw.g_object_ref(imageAddress);
+                    vipsArrayPointer.setAtIndex(C_POINTER, i, imageAddress);
+                }
             }
             case VipsOption.Interpolate o -> {
                 var value = o.valueOrThrow();
@@ -301,7 +338,6 @@ public class VipsInvoker {
                 VipsRaw.g_value_set_int(gvaluePointer, value.getRawValue());
             }
         }
-        VipsRaw.g_object_set_property(operation, keyCString, gvaluePointer);
     }
 
     public static MemorySegment makeCharStarArray(Arena arena, List<String> strings) {
