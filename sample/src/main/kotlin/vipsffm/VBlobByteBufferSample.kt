@@ -1,10 +1,9 @@
 package vipsffm
 
 import app.photofox.vipsffm.VImage
+import java.io.FileOutputStream
 import java.lang.foreign.Arena
-import java.lang.foreign.ValueLayout
 import java.nio.file.Path
-import kotlin.io.path.absolutePathString
 
 object VBlobByteBufferSample: RunnableSample {
 
@@ -35,6 +34,14 @@ object VBlobByteBufferSample: RunnableSample {
             )
         }
 
-        return Result.success(Unit)
+        val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
+        val outputChannel = FileOutputStream(outputPath.toFile()).channel
+        outputChannel.write(bytes)
+        outputChannel.close()
+
+        return SampleHelper.validate(
+            outputPath,
+            expectedSizeBoundsKb = 20L..100L
+        )
     }
 }
