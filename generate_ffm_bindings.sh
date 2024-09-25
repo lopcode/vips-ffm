@@ -47,10 +47,19 @@ rm includes_filtered.txt || true
 touch includes_filtered.txt
 
 {
-  grep -iE ' (_)?(vips_area_copy|vips_area_unref|vips_foreign_find|vips_filename|vips_image|vips_init|vips_nick|vips_source_new|vips_source_get_type|vips_target|vips_blob|vips_object|vips_block|vips_operation|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_cache|vips_array|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_area_get|vips_area_copy|vips_area_unref|vips_foreign_find|vips_filename|vips_init|vips_nick|vips_source_new|vips_blob|vips_object_set_from_string|vips_object_unref_outputs|vips_block|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_image_get_width|vips_image_get_height|vips_image_has|vips_image_write|vips_image_new)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' [A-Za-z0-9_]*?(vips_(source|image|target|array_int|array_double|array_image|image)_get_type)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_object_get_args|vips_object_get_description|vips_object_get_argument)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_source_new|vips_target_new)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_cache_set|vips_block_operation|vips_cache_operation_build|vips_operation_new|vips_operation_get_flags)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_foreign_find|vips_filename_get)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_init|vips_leak|vips_shutdown|vips_version|vips_version_string|vips_block)[A-Za-z0-9_]*' includes.txt
+  grep -iE ' (_)?(vips_interpolate_new)[A-Za-z0-9_]*' includes.txt
   grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
+  grep -E ' (_)?(VipsArea)' includes.txt
   grep -iE ' (_)?(GClass|GEnum|GObject|GObjectClass|GInputStream|GInputStreamClass|GTypeInstance|GTypeClass|GValue|GParamSpec|G_TYPE)' includes.txt
-  grep -iE ' g_object_(un)?ref|g_free|g_type_from_name|g_type_name|g_param_spec_get_blurb|g_param_spec_types|g_object_set|g_object_get|g_value' includes.txt
+  grep -iE ' g_object_(un)?ref|g_free|g_type_from_name|g_type_name|g_param_spec_get_blurb|g_param_spec_types|g_object_set_property|g_object_get_property|g_value_(init|unset)|g_value_(set|get)_(int|long|string|object|boolean|boxed|double)' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."

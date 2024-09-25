@@ -23,7 +23,8 @@ object SampleRunner {
             VOptionHyphenSample,
             VImageCachingSample,
             VImageBlobSample,
-            VImageArrayJoinSample
+            VImageArrayJoinSample,
+            VBlobByteBufferSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {
