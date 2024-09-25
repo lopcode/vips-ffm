@@ -65,7 +65,7 @@ tasks.withType<JavaExec>().configureEach {
 
 tasks.withType<Jar>().configureEach {
     manifest {
-        attributes("Enable-Native-Access" to "ALL-UNNAMED")
+        attributes("Automatic-Module-Name" to "app.photofox.vipsffm")
     }
 }
 
