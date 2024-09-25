@@ -2,6 +2,7 @@ package vipsffm
 
 import app.photofox.vipsffm.VImage
 import java.lang.foreign.Arena
+import java.lang.foreign.ValueLayout
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
@@ -18,6 +19,7 @@ object VBlobByteBufferSample: RunnableSample {
 
         val blob = image.jpegsaveBuffer()
         val bytes = blob.asByteBuffer()
+        val rawDataSegment = blob.unsafeDataAddress
         val rawByteSize = blob.byteSize().toInt()
 
         val remainingBytes = bytes.remaining()
@@ -27,9 +29,9 @@ object VBlobByteBufferSample: RunnableSample {
             )
         }
 
-        if (remainingBytes != rawByteSize) {
+        if (remainingBytes != rawByteSize || remainingBytes != rawDataSegment.byteSize().toInt()) {
             return Result.failure(
-                RuntimeException("unexpected difference in raw byte size vs bytebuffer remaining $rawByteSize $remainingBytes")
+                RuntimeException("unexpected difference in raw byte size vs bytebuffer remaining $rawByteSize $remainingBytes ${rawDataSegment.byteSize()}")
             )
         }
 
