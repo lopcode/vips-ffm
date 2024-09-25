@@ -155,7 +155,7 @@ public class VipsInvoker {
                 // https://docs.gtk.org/gobject/boxed.html#reference-counting
                 // https://github.com/libvips/libvips/blob/b6428d89f35240d9c6ce92aa7d1c58db1cef9114/libvips/iofuncs/type.c#L429
                 vipsPointer = refVipsAreaToArenaScope(arena, vipsPointer);
-                var vipsObject = new VBlob(vipsPointer);
+                var vipsObject = new VBlob(arena, vipsPointer);
                 o.setValue(vipsObject);
             }
             case VipsOption.ArrayInt o -> {
