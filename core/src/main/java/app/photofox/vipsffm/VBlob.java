@@ -37,17 +37,33 @@ public final class VBlob {
         return this.address;
     }
 
-    public long byteSize() {
-        return VipsArea.length(this.address);
-    }
-
-    public ByteBuffer asByteBuffer() {
+    /**
+     * Not recommended for use, use {@link #asByteBuffer()} instead
+     * Gets the raw [MemorySegment] (C pointer) for the data in this blob
+     * Sliced to the length of the data, which isn't always null terminated
+     */
+    public MemorySegment getUnsafeDataAddress() {
         var lengthOutPointer = arena.allocate(C_LONG);
         var dataPointer = VipsRaw.vips_area_get_data(this.address, lengthOutPointer, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL);
         var length = lengthOutPointer.get(C_LONG, 0);
         if (length < 0) {
             throw new VipsError("unexpected length of vblob data " + length);
         }
-        return dataPointer.asSlice(0, length).asByteBuffer();
+        return dataPointer.asSlice(0, length);
+    }
+
+    /**
+     * Size of the data in this blob
+     */
+    public long byteSize() {
+        return VipsArea.length(this.address);
+    }
+
+    /**
+     * ByteBuffer representation of the data in this blob
+     * Likely mapped to native memory, hence does not make a copy
+     */
+    public ByteBuffer asByteBuffer() {
+        return this.getUnsafeDataAddress().asByteBuffer();
     }
 }
