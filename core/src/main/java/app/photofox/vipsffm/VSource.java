@@ -17,11 +17,37 @@ public final class VSource {
         this.address = address;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof VSource vSource)) return false;
+
+        return address.equals(vSource.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return address.hashCode();
+    }
+
     /**
-     * Gets the raw [MemorySegment] (C pointer) for this source
-     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]
+     * @deprecated See {@link #getUnsafeStructAddress}
      */
+    @Deprecated(
+        since = "0.5.10",
+        forRemoval = true
+    )
     public MemorySegment getUnsafeAddress() {
+        return this.getUnsafeStructAddress();
+    }
+
+    /**
+     * Gets the raw {@link MemorySegment} (C pointer) for this VipsSource struct
+     * The memory address' lifetime is bound to the scope of the arena that created it
+     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
+     * you need to use it with {@link VipsHelper}
+     */
+    public MemorySegment getUnsafeStructAddress() {
         return this.address;
     }
 

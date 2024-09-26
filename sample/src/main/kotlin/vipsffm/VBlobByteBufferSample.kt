@@ -17,7 +17,7 @@ object VBlobByteBufferSample: RunnableSample {
             .thumbnailImage(400)
 
         val blob = image.jpegsaveBuffer()
-        val bytes = blob.asByteBuffer()
+        val bytes = blob.asClonedByteBuffer()
         val rawDataSegment = blob.unsafeDataAddress
         val rawByteSize = blob.byteSize().toInt()
 

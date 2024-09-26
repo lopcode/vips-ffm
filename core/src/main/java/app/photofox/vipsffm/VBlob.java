@@ -29,22 +29,38 @@ public final class VBlob {
     }
 
     /**
-     * Gets the raw [MemorySegment] (C pointer) for this blob
-     * The memory address' lifetime is bound to the scope of the [arena]
-     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]
+     * @deprecated Replaced by {@link #getUnsafeStructAddress()}
      */
-    public MemorySegment getUnsafeAddress() {
+    @Deprecated(since = "0.5.10", forRemoval = true)
+    public MemorySegment getUnsafeAddress() throws VipsError {
+        return this.getUnsafeStructAddress();
+    }
+
+    /**
+     * Gets the raw {@link MemorySegment} (C pointer) for this VipsBlob struct
+     * You might want the data address instead {@link #getUnsafeDataAddress()}
+     * The memory address' lifetime is bound to the scope of the {@link #arena}
+     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you
+     * need to use it with {@link VipsHelper}
+     */
+    public MemorySegment getUnsafeStructAddress() throws VipsError {
         return this.address;
     }
 
     /**
      * Not recommended for use, use {@link #asByteBuffer()} instead
-     * Gets the raw [MemorySegment] (C pointer) for the data in this blob
+     * Gets the raw {@link MemorySegment} (C pointer) for the data in this blob
      * Sliced to the length of the data, which isn't always null terminated
      */
-    public MemorySegment getUnsafeDataAddress() {
+    public MemorySegment getUnsafeDataAddress() throws VipsError {
         var lengthOutPointer = arena.allocate(C_LONG);
-        var dataPointer = VipsRaw.vips_area_get_data(this.address, lengthOutPointer, MemorySegment.NULL, MemorySegment.NULL, MemorySegment.NULL);
+        var dataPointer = VipsRaw.vips_area_get_data(
+            this.address,
+            lengthOutPointer,
+            MemorySegment.NULL,
+            MemorySegment.NULL,
+            MemorySegment.NULL
+        );
         var length = lengthOutPointer.get(C_LONG, 0);
         if (length < 0) {
             throw new VipsError("unexpected length of vblob data " + length);
@@ -60,10 +76,35 @@ public final class VBlob {
     }
 
     /**
-     * ByteBuffer representation of the data in this blob
-     * Likely mapped to native memory, hence does not make a copy
+     * @deprecated Replaced by {@link #asArenaScopedByteBuffer()}
      */
+    @Deprecated(since = "0.5.10", forRemoval = true)
     public ByteBuffer asByteBuffer() {
+        return this.asArenaScopedByteBuffer();
+    }
+
+    /**
+     * ByteBuffer representation of the data in this blob
+     * Mapped to native memory via {@link java.nio.DirectByteBuffer}, hence does not make a copy, so the data has the
+     * same data lifetime as {@link #arena}
+     */
+    public ByteBuffer asArenaScopedByteBuffer() {
         return this.getUnsafeDataAddress().asByteBuffer();
+    }
+
+    /**
+     * ByteBuffer representation of the data in this blob
+     * A full copy of the data is taken, so that its contents are not coupled to the scope of {@link #arena}
+     */
+    public ByteBuffer asClonedByteBuffer() {
+        var buffer = this.asArenaScopedByteBuffer();
+        if (buffer.capacity() == 0) {
+            return ByteBuffer.allocate(0);
+        }
+        buffer.rewind();
+        var newBuffer = ByteBuffer.allocate(buffer.capacity());
+        buffer.put(newBuffer);
+        newBuffer.rewind();
+        return newBuffer;
     }
 }
