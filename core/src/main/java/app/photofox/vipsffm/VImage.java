@@ -15,6 +15,7 @@ import app.photofox.vipsffm.enums.VipsOperationMath2;
 import app.photofox.vipsffm.enums.VipsOperationMorphology;
 import app.photofox.vipsffm.enums.VipsOperationRelational;
 import app.photofox.vipsffm.enums.VipsOperationRound;
+import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -57,11 +58,22 @@ public final class VImage {
   }
 
   /**
-   * Gets the raw [MemorySegment] (C pointer) for this image
-   * The memory address' lifetime is bound to the scope of the [arena]
-   * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]
+   * @deprecated See {@link #getUnsafeStructAddress}
    */
+  @Deprecated(
+      since = "0.5.10",
+      forRemoval = true
+  )
   public MemorySegment getUnsafeAddress() {
+    return this.getUnsafeStructAddress();
+  }
+
+  /**
+   * Gets the raw {@link MemorySegment} (C pointer) for this VipsImage struct
+   * The memory address' lifetime is bound to the scope of the {@link #arena}
+   * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with {@link VipsHelper}
+   */
+  public MemorySegment getUnsafeStructAddress() {
     return this.address;
   }
 

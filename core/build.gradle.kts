@@ -63,12 +63,6 @@ tasks.withType<JavaExec>().configureEach {
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
-tasks.withType<Jar>().configureEach {
-    manifest {
-        attributes("Automatic-Module-Name" to "app.photofox.vipsffm")
-    }
-}
-
 tasks.withType<Javadoc> {
     (options as StandardJavadocDocletOptions).tags("optionalArg")
 }

@@ -3,6 +3,7 @@ package vipsffm
 import app.photofox.vipsffm.jextract.GEnumClass
 import app.photofox.vipsffm.jextract.GEnumValue
 import app.photofox.vipsffm.jextract.VipsRaw
+import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
@@ -135,10 +136,22 @@ object GenerateVClasses {
             .addStatement("if (!(o instanceof \$T vImage)) return false", vimageType)
             .addStatement("return Objects.equals(arena, vImage.arena) && Objects.equals(address, vImage.address)")
             .build()
-        val unsafeAddress = MethodSpec.methodBuilder("getUnsafeAddress")
-            .addJavadoc("Gets the raw [MemorySegment] (C pointer) for this image")
-            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the [arena]")
-            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]")
+        val unsafeDeprecatedAddress = MethodSpec.methodBuilder("getUnsafeAddress")
+            .addJavadoc("@deprecated See {@link #getUnsafeStructAddress}")
+            .addStatement("return this.getUnsafeStructAddress()")
+            .returns(memorySegmentType)
+            .addModifiers(Modifier.PUBLIC)
+            .addAnnotation(
+                AnnotationSpec.builder(ClassName.get("java.lang", "Deprecated"))
+                    .addMember("since", "\"0.5.10\"")
+                    .addMember("forRemoval", "true")
+                    .build()
+            )
+            .build()
+        val unsafeStructAddress = MethodSpec.methodBuilder("getUnsafeStructAddress")
+            .addJavadoc("Gets the raw {@link MemorySegment} (C pointer) for this VipsImage struct")
+            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the {@link #arena}")
+            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with {@link VipsHelper}")
             .addStatement("return this.address")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
@@ -150,7 +163,8 @@ object GenerateVClasses {
             .addMethod(ctor)
             .addMethod(hashCode)
             .addMethod(equals)
-            .addMethod(unsafeAddress)
+            .addMethod(unsafeDeprecatedAddress)
+            .addMethod(unsafeStructAddress)
             .addMethods(operationMethods)
             .addMethods(imageMethods)
             .addField(arenaType, "arena", Modifier.PRIVATE, Modifier.FINAL)
