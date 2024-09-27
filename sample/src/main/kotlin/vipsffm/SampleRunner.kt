@@ -2,6 +2,15 @@ package vipsffm
 
 import app.photofox.vipsffm.Vips
 import org.slf4j.LoggerFactory
+import vipsffm.sample.VBlobByteBufferSample
+import vipsffm.sample.VImageArrayJoinSample
+import vipsffm.sample.VImageBlobSample
+import vipsffm.sample.VImageCachingSample
+import vipsffm.sample.VImageChainSample
+import vipsffm.sample.VImageCopyWriteSample
+import vipsffm.sample.VImageCreateThumbnailSample
+import vipsffm.sample.VOptionHyphenSample
+import vipsffm.sample.VSourceTargetSample
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.Locale
