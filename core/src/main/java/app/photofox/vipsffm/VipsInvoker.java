@@ -145,7 +145,7 @@ public class VipsInvoker {
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
                 vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
-                var vipsObject = new VTarget(vipsPointer);
+                var vipsObject = new VTarget(arena, vipsPointer);
                 o.setValue(vipsObject);
             }
             case VipsOption.Blob o -> {
