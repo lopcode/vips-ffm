@@ -6,7 +6,8 @@ of libvips, FFM, and auto-generated helpers means these bindings are complete (s
 and [faster](https://github.com/lopcode/vips-ffm/issues/59#issuecomment-2367634956) than AWT or JNI-based alternatives.
 
 Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
-eff-eff-emm". Tested on macOS 14, Windows 11, and Linux (Ubuntu 24.04).
+eff-eff-emm". The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
+(Ubuntu 24.04).
 
 Used the library, or just like what you've read so far? Please give the repo a star 🌟️!
 
@@ -23,12 +24,12 @@ dependencies {
     implementation("app.photofox.vips-ffm:vips-ffm-core:0.5.12")
 }
 ```
-When running your project you must add: `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
+When running your project you must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
 don't, you'll get a warning about "Restricted methods". In the future, the JVM will throw an error if you don't
 explicitly include this flag.
 
 As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips `8.15.3`,
-however they use the underlying libvips operation API. All operations **do not** use the C API directly (as described
+however they use the underlying libvips operation API. Most operations **do not** use the C API directly (as described
 in the [bindings docs](https://www.libvips.org/API/current/binding.html)) - they should be safe to use with different
 libvips versions, assuming there haven't been major changes.
 
@@ -66,10 +67,11 @@ import app.photofox.vipsffm.enums.VipsAccess
 
 // ...
 
-// Call once to initialise libvips when your program starts
+// Call once to initialise libvips when your program starts, from any thread
 Vips.init()
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
+// Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
 Vips.run { arena ->
     val sourceImage = VImage.newFromFile(
       arena,
@@ -92,7 +94,7 @@ Vips.run { arena ->
     logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
 }
 
-// Optionally call at the end of your program, for memory leak detection
+// Optionally call at the end of your program, for memory leak detection, from any thread
 Vips.shutdown()
 ```
 

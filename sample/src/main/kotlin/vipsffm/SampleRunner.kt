@@ -36,8 +36,8 @@ object SampleRunner {
         Files.createDirectory(sampleParentRunPath)
 
         Vips.init(false, true)
-        Vips.run { arena ->
-            samples.forEach { sample ->
+        samples.forEach { sample ->
+            Vips.run { arena ->
                 val sampleName = sample::class.simpleName!!
                 logger.info("running sample \"$sampleName\"...")
                 val sampleDirectoryName = makeSampleDirectoryName(sampleName)
