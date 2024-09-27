@@ -1,5 +1,7 @@
 package app.photofox.vipsffm;
 
+import app.photofox.vipsffm.jextract.VipsTarget;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
@@ -8,12 +10,14 @@ import java.lang.foreign.MemorySegment;
  */
 public class VTarget {
 
+    final Arena arena;
     final MemorySegment address;
 
-    VTarget(MemorySegment address) throws VipsError {
+    VTarget(Arena arena, MemorySegment address) throws VipsError {
         if (!VipsValidation.isValidPointer(address)) {
             throw new VipsError("invalid pointer used for creation");
         }
+        this.arena = arena;
         this.address = address;
     }
 
@@ -51,18 +55,40 @@ public class VTarget {
         return this.address;
     }
 
-    public static VTarget newToDescriptor(Arena arena, int descriptor) {
+    /**
+     * Create a new target pointed at a file descriptor
+     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
+     */
+    public static VTarget newToDescriptor(Arena arena, int descriptor) throws VipsError {
         var pointer = VipsHelper.target_new_to_descriptor(arena, descriptor);
-        return new VTarget(pointer);
+        return new VTarget(arena, pointer);
     }
 
-    public static VTarget newToFile(Arena arena, String filename) {
+    /**
+     * Create a new target pointed at an output file
+     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
+     */
+    public static VTarget newToFile(Arena arena, String filename) throws VipsError {
         var pointer = VipsHelper.target_new_to_file(arena, filename);
-        return new VTarget(pointer);
+        return new VTarget(arena, pointer);
     }
 
-    public static VTarget newToMemory(Arena arena) {
+    /**
+     * Create a new memory-backed VipsTarget
+     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
+     * After writing to this target, you can also retrieve the backing {@link VBlob} with {@link #getBlob()}
+     */
+    public static VTarget newToMemory(Arena arena) throws VipsError {
         var pointer = VipsHelper.target_new_to_memory(arena);
-        return new VTarget(pointer);
+        return new VTarget(arena, pointer);
+    }
+
+    /**
+     * Only valid for memory-backed targets (eg via {@link #newToMemory(Arena)})
+     * Returns the contents of the backing VBlob
+     */
+    public VBlob getBlob() throws VipsError {
+        var blob = VipsTarget.blob(this.address);
+        return new VBlob(arena, blob);
     }
 }
