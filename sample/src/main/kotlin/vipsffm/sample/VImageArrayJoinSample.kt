@@ -1,10 +1,10 @@
-package vipsffm
+package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
-import app.photofox.vipsffm.VSource
-import app.photofox.vipsffm.VipsHelper
 import app.photofox.vipsffm.VipsOption
 import app.photofox.vipsffm.enums.VipsAlign
+import vipsffm.RunnableSample
+import vipsffm.SampleHelper
 import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString

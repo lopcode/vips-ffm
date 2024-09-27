@@ -1,6 +1,8 @@
-package vipsffm
+package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
+import vipsffm.RunnableSample
+import vipsffm.SampleHelper
 import java.io.FileOutputStream
 import java.lang.foreign.Arena
 import java.nio.file.Path

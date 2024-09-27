@@ -1,8 +1,10 @@
-package vipsffm
+package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
 import app.photofox.vipsffm.VSource
 import app.photofox.vipsffm.VTarget
+import vipsffm.RunnableSample
+import vipsffm.SampleHelper
 import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
@@ -20,7 +22,7 @@ object VSourceTargetSample: RunnableSample {
         val sourceHeight = sourceImage.height
         if (sourceWidth != ORIGINAL_WIDTH || sourceHeight != ORIGINAL_HEIGHT) {
             return Result.failure(
-                RuntimeException("expected size ${ORIGINAL_WIDTH}x${ORIGINAL_HEIGHT}, got ${sourceWidth}x${sourceHeight}")
+                RuntimeException("expected size ${ORIGINAL_WIDTH}x$ORIGINAL_HEIGHT, got ${sourceWidth}x${sourceHeight}")
             )
         }
 

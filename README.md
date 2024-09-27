@@ -39,9 +39,10 @@ libvips versions, assuming there haven't been major changes.
 > Windows).
 
 All libvips operations are exposed via helper classes, like `VImage`. You must provide an [Arena][1] to operations like
-`VImage.newFromFile`, and this constrains the lifetime of objects generated during usage. Be careful to only keep the 
-arena, and image, in scope for as long as you need to! If the arena doesn't close, your memory usage will grow forever.
-Constructing the `VImage` object is cheap, as it's just a wrapper, so make them as you need.
+`VImage.newFromFile`, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
+by using `Vips.run` as shown in the [sample](#thumbnail-sample) below. These helper objects expose their raw pointers
+as a last resort via functions like `VTarget.getUnsafeStructAddress` - if you need to use these raw pointers and can't
+find an alternative, please file a GitHub Issue.
 
 Helper enums are generated for the version of libvips shown above. If you need to use an enum from another version,
 which isn't present in `vips-ffm`, you can use `VipsOption.Enum(rawValue)` or `VEnum.Raw(rawValue)`.
@@ -98,22 +99,10 @@ Vips.run { arena ->
 Vips.shutdown()
 ```
 
-The project has several samples, [described below](#samples).
-
-## Project goals
-
-Ideas and suggestions are welcome, but please make sure they fit in to these goals, or you have a good argument about
-why a goal should change!
-
-* Avoid manual work by automating as much as possible. This means upstream changes can be rapidly integrated.
-* Use the libvips operations API, as described in the [libvips documentation](https://www.libvips.org/API/current/binding.html)
-* Provide access to the raw bindings (`VipsHelper`), so users aren't blocked by helper bugs or API annoyances.
-* Incubate in [Photo Fox](https://github.com/lopcode/photo-fox) with some "real world" usage.
-
 ## Samples
 
-Samples are included that show various usages of the `libvips` bindings. They include validations, and run on GitHub
-Actions as "end-to-end tests" during development.
+Samples are included that show various usages of these bindings. They include validations, and run on GitHub Actions as
+"end-to-end tests" during development. You can find them all listed [here](https://github.com/lopcode/vips-ffm/tree/main/sample/src/main/kotlin/vipsffm/sample).
 
 To get set up to run samples (on macOS):
 * `brew install vips`
@@ -148,6 +137,16 @@ To get set up to run samples (on macOS):
 memory: high-water mark 128.35 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 ```
+
+## Project goals
+
+Ideas and suggestions are welcome, but please make sure they fit in to these goals, or you have a good argument about
+why a goal should change!
+
+* Avoid manual work by automating as much as possible. This means upstream changes can be rapidly integrated.
+* Use the libvips operations API, as described in the [libvips documentation](https://www.libvips.org/API/current/binding.html)
+* Provide access to the raw bindings (`VipsHelper`), so users aren't blocked by helper bugs or API annoyances.
+* Incubate in [Photo Fox](https://github.com/lopcode/photo-fox) with some "real world" usage.
 
 ## Releasing
 
