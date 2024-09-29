@@ -13,15 +13,34 @@ import app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_MODIFY
 import app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_OUTPUT
 import app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_REQUIRED
 import app.photofox.vipsffm.jextract.VipsTypeMap2Fn
+import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.MapperFeature
+import com.fasterxml.jackson.dataformat.xml.XmlMapper
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.slf4j.LoggerFactory
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
+import java.nio.file.Files
+import java.nio.file.Path
+
 
 data class VipsOperation(
     val nickname: String,
     val description: String,
-    val args: List<VipsOperationArgument>
-)
+    val args: List<VipsOperationArgument>,
+    val gir: DiscoverVipsOperations.GIRRepository.GIRMethod?
+) {
+    override fun toString(): String {
+        val gir = if (gir != null) {
+            "has gir"
+        } else {
+            "no gir"
+        }
+        return "VipsOperation(nickname=$nickname, ${args.size} args, $gir)"
+    }
+}
 
 sealed class GValueType {
 
@@ -88,16 +107,27 @@ fun main() {
         DiscoverVipsOperations.run(it)
     }
 
-    logger.info("found ${operations.size} operations:")
+    val numberWithGir = operations.count { it.gir != null }
+    logger.info("found ${operations.size} operations ($numberWithGir with GIR info):")
     operations.forEach {
-        logger.info("  $it")
+        logger.info("  ${it.nickname}")
+    }
+    if (numberWithGir != operations.size) {
+        logger.info("missing GIR info:")
+        operations.filter { it.gir == null }.forEach {
+            logger.info("  ${it.nickname}")
+        }
     }
 }
 
 object DiscoverVipsOperations {
 
+    private val girPath = Path.of("/opt/homebrew/share/gir-1.0/Vips-8.0.gir")
+
     fun run(arena: Arena): List<VipsOperation> {
         VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))
+
+        val girMethods = readGIRMethods()
 
         val baseObjectGtype = VipsRaw.g_type_from_name(arena.allocateFrom("VipsObject"))
         val paramEnumGType = discoverParamEnumGType()
@@ -169,7 +199,11 @@ object DiscoverVipsOperations {
                 }
 
                 if (!candidateOperations.any { it.nickname == subtypeNickname }) {
-                    candidateOperations += VipsOperation(subtypeNickname, description, args)
+                    val girMethod = girMethods.firstOrNull { it.cIdentifier == "vips_$subtypeNickname"}
+                    if (girMethod == null) {
+                        logger.warn("failed to find GIR information for method: $subtypeNickname")
+                    }
+                    candidateOperations += VipsOperation(subtypeNickname, description, args, girMethod)
                 }
             }.getOrElse {
                 logger.info("skipping $subtypeNickname, couldn't introspect", it)
@@ -183,6 +217,106 @@ object DiscoverVipsOperations {
         VipsRaw.vips_type_map(baseObjectGtype, callbackPointer, MemorySegment.NULL, MemorySegment.NULL)
 
         return candidateOperations.sortedBy { it.nickname }
+    }
+
+    data class GIRRepository(
+        @JacksonXmlProperty(localName = "namespace")
+        @JacksonXmlElementWrapper(useWrapping = false)
+        val namespaces: List<GIRNamespace>
+    ) {
+        data class GIRNamespace(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String,
+
+            @JacksonXmlProperty(localName = "class")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            @JvmField
+            val classes: List<GIRClass>,
+
+            @JacksonXmlProperty(localName = "function")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            @JvmField
+            val functions: List<GIRMethod>
+        ) {
+            // workaround for xml parser not supporting split unwrapped arrays of elements
+            fun setClasses(list: List<GIRClass>) {
+                (classes as MutableList).addAll(list)
+            }
+
+            fun setFunctions(list: List<GIRMethod>) {
+                (functions as MutableList).addAll(list)
+            }
+        }
+
+        data class GIRClass(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String,
+
+            @JacksonXmlProperty(localName = "constructor")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            val constructors: List<GIRMethod>?,
+
+            @JacksonXmlProperty(localName = "method")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            val methods: List<GIRMethod>?
+        ) {
+            // workaround for xml parser not supporting split unwrapped arrays of elements
+            fun setConstructors(list: List<GIRMethod>) {
+                (constructors as MutableList).addAll(list)
+            }
+
+            fun setMethods(list: List<GIRMethod>) {
+                (methods as MutableList).addAll(list)
+            }
+        }
+
+        data class GIRMethod(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String,
+            @JacksonXmlProperty(isAttribute = true, namespace = "c", localName = "identifier")
+            val cIdentifier: String?,
+            val doc: String?,
+
+            @JacksonXmlElementWrapper(useWrapping = true)
+            val parameters: List<GIRParameter>?,
+
+            val returnValue: GIRParameter?
+        )
+
+        data class GIRParameter(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String,
+            @JacksonXmlProperty(isAttribute = true, localName = "transfer-ownership")
+            val transferOwnership: String?,
+            @JacksonXmlProperty(isAttribute = true)
+            val direction: String?,
+            val type: GIRType?,
+            val varargs: Unit?
+        )
+
+        data class GIRType(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String
+        )
+    }
+    private fun readGIRMethods(): List<GIRRepository.GIRMethod> {
+        Files.newInputStream(girPath).use { xmlInputStream ->
+            val xmlMapper = XmlMapper.builder()
+                .defaultUseWrapper(false)
+                .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .build()
+                .registerKotlinModule()
+
+            val xml = xmlMapper.readValue(xmlInputStream, GIRRepository::class.java)
+            val vipsNamespaceXml = xml.namespaces.first { it.name == "Vips" }
+            val classMethods = vipsNamespaceXml.classes.mapNotNull { it.methods }.flatten()
+            val functions = vipsNamespaceXml.functions
+            val allMethods = classMethods + functions
+
+            logger.info("found ${allMethods.size} methods in GIR")
+            return allMethods.sortedBy { it.name }
+        }
     }
 
     private fun discoverParamEnumGType(): Long {

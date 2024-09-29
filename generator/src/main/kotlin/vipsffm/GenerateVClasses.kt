@@ -84,16 +84,22 @@ object GenerateVClasses {
             (it.type as GValueType.Unknown).rawName
         }.toSet()
 
-        Arena.ofConfined().use { arena ->
-            enums.forEach {
-                buildEnumClass(arena, it)
+        val discoveredEnums = Arena.ofConfined().use { arena ->
+            enums.map {
+                discoverEnumClass(arena, it)
             }
         }
+        discoveredEnums.forEach {
+            buildEnumClass(it)
+        }
 
-        generateVImageClass(operations)
+        generateVImageClass(operations, discoveredEnums)
     }
 
-    private fun generateVImageClass(operations: List<VipsOperation>) {
+    private fun generateVImageClass(
+        operations: List<VipsOperation>,
+        enums: List<DiscoveredEnum>
+    ) {
         val operationMethods = operations.mapNotNull { operation ->
             val hasImageInput = operation.args.any { it.isInput && it.isRequired && it.type == GValueType.VipsImage }
             val hasImageOutput =
@@ -102,7 +108,7 @@ object GenerateVClasses {
                 logger.info("skipping \"${operation.nickname}\" - no image inputs or outputs")
                 return@mapNotNull null
             }
-            buildOperationMethod(operation)
+            buildOperationMethod(operation, operations, enums)
         }
 
         val imageMethods = buildImageMethods()
@@ -176,7 +182,11 @@ object GenerateVClasses {
         javaFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
     }
 
-    private fun buildOperationMethod(spec: VipsOperation): MethodSpec {
+    private fun buildOperationMethod(
+        spec: VipsOperation,
+        operations: List<VipsOperation>,
+        enums: List<DiscoveredEnum>
+    ): MethodSpec {
         logger.info("building operation $spec")
         val requiredArguments = spec.args.filter { it.isRequired }
         val methodName = spec.nickname.fromSnakeToJavaStyle()
@@ -209,7 +219,7 @@ object GenerateVClasses {
         method.varargs(true)
         method.addException(vipsErrorType)
         method.addModifiers(Modifier.PUBLIC)
-        method.addJavadoc(spec.description.capitalizeVipsText())
+        generateMethodJavadoc(method, spec, operations, enums)
 
         poetArguments.forEachIndexed { index, poetArg ->
             if (!filteredPoetArgs.contains(poetArg)) {
@@ -218,9 +228,12 @@ object GenerateVClasses {
             val argSpec = requiredArguments[index]
             var argNameSection = poetArg.name
             if (argSpec.isEnum) {
-                argNameSection += " {@link app.photofox.vipsffm.enums.${(argSpec.type as GValueType.Unknown).rawName}}"
+                val enumName = (argSpec.type as GValueType.Unknown).rawName
+                argNameSection += " {@link \$T}"
+                method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+            } else {
+                method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
             }
-            method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
         }
         method.addJavadoc("\n@param args Array of VipsOption to apply to this operation")
         spec.args.forEach {
@@ -231,9 +244,12 @@ object GenerateVClasses {
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
             var optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
             if (it.isEnum) {
-                optionName += " {@link app.photofox.vipsffm.enums.${(it.type as GValueType.Unknown).rawName}}"
+                val enumName = (it.type as GValueType.Unknown).rawName
+                optionName += " {@link \$T}"
+                method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+            } else {
+                method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
             }
-            method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
         }
 
         poetArguments.forEachIndexed { index, poetArg ->
@@ -269,6 +285,101 @@ object GenerateVClasses {
         }
 
         return method.build()
+    }
+
+    private fun generateMethodJavadoc(
+        method: MethodSpec.Builder,
+        spec: VipsOperation,
+        operations: List<VipsOperation>,
+        enums: List<DiscoveredEnum>
+    ) {
+        if (spec.gir?.doc == null) {
+            method.addJavadoc(spec.description.capitalizeVipsText())
+            return
+        }
+
+        var girDoc = spec.gir.doc.replace("$", "$$")
+
+        val referencedClassNames = mutableListOf<ClassName>()
+
+        girDoc = girDoc.replace("\\* @[A-Za-z0-9-_]*:(.)*\n([ ]+([A-Za-z0-9-_]*\n))?".toRegex(), "")
+
+        girDoc = girDoc.replace("@([A-Za-z0-9-_]*)".toRegex()) { match ->
+            val referencedName = match.groups[1]!!.value
+            val matchedArg = spec.args.firstOrNull {
+                val girDocsNormalisedName = it.name.replace("-", "_")
+                referencedName == girDocsNormalisedName
+            }
+            if (matchedArg != null) {
+                if (matchedArg.isRequired) {
+                    "{@param ${matchedArg.name.fromSnakeToJavaStyle()}}"
+                } else {
+                    "{@optionalArg ${matchedArg.name.fromSnakeToJavaStyle()}}"
+                }
+            } else {
+                "<code>@$referencedName</code>"
+            }
+        }
+
+        girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
+            val newName = match.groups[1]!!.value.removePrefix("image").fromSnakeToJavaStyle()
+            if (spec.nickname == newName) {
+                newName
+            } else if (operations.any { it.nickname == newName }) {
+                "{@link #$newName}"
+            } else {
+                "<code>vips_${match.groups[1]!!.value}</code>"
+            }
+        }
+
+        girDoc = girDoc.replace("#(VIPS_[A-Z0-9-_]*)".toRegex()) { match ->
+            val identifierName = match.groups[1]!!.value
+            val matchedParentEnum = enums.firstOrNull {
+                it.values.any {
+                    it.name == identifierName
+                }
+            }
+            val matchedValue = matchedParentEnum?.values?.first { it.name == identifierName }
+            if (matchedValue != null) {
+                val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
+                referencedClassNames += ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name)
+                "{@link $enumName}"
+            } else {
+                "<code>$identifierName</code>"
+            }
+        }
+
+        girDoc = girDoc.replace("%([A-Za-z0-9-_]*)".toRegex()) { match ->
+            val matchedValue = match.groups[1]!!.value
+            if (matchedValue.isBlank()) {
+                match.groups[0]!!.value
+            } else {
+                "<code>$matchedValue</code>"
+            }
+        }
+
+        girDoc = "<p>" + girDoc.replace("Optional arguments:\n\n".toRegex(), "")
+            .replace("\n\n", "</p>\n\n<p>")
+            .trim() + "</p>"
+
+        girDoc = girDoc.replace("<(link|function)".toRegex(), "<code")
+                        .replace("</(link|function)>".toRegex(), "</code>")
+                        .replace("<table>".toRegex(), "<pre>{@code\n<table>")
+                        .replace("</table>".toRegex(), "</table>\n}</pre>")
+                        .replace("<emphasis>".toRegex(), "<b>")
+                        .replace("</emphasis>".toRegex(), "</b>")
+                        .replace("<=".toRegex(), "&le;")
+                        .replace(">=".toRegex(), "&ge;")
+                        .replace("<( |[0-9])".toRegex(), "&lt;$1")
+                        .replace("( |[0-9])>".toRegex(), "$1&gt;")
+                        .replace("<p>|[", "<pre>{@code ")
+                        .replace("]|", "}</pre>")
+                        .replace("</p>\n\n<p>(\\s)+".toRegex(), "\n\n$1")
+                        .replace("<p><pre>".toRegex(), "<pre>")
+                        .replace("</pre></p>".toRegex(), "</pre>")
+                        .replace("([ \n])(linkend|foreground)=\"([A-Za-z0-9-_]*)\"".toRegex(), "") // todo - filter all unknown attributes?
+
+        method.addJavadoc(girDoc, *referencedClassNames.toTypedArray())
     }
 
     private fun mapPoetTypeToVipsOptionType(
@@ -468,7 +579,7 @@ object GenerateVClasses {
         val rawValue: Int
     )
 
-    private fun buildEnumClass(arena: Arena, parentName: String) {
+    private fun discoverEnumClass(arena: Arena, parentName: String): DiscoveredEnum {
         val gtype = VipsRaw.g_type_from_name(arena.allocateFrom(parentName))
         val genumclass = VipsRaw.g_type_class_ref(gtype)
         val numValues = GEnumClass.n_values(genumclass)
@@ -486,11 +597,15 @@ object GenerateVClasses {
                 rawValue = enumValueRawValue
             )
         }
-        val spec = DiscoveredEnum(
+        return DiscoveredEnum(
             name = parentName,
             values = values
         )
-        logger.info("generating enum $parentName: $spec")
+    }
+
+    private fun buildEnumClass(spec: DiscoveredEnum) {
+        val parentName = spec.name
+        logger.info("generating enum ${spec.name}")
 
         val enumClassBuilder = TypeSpec.enumBuilder(parentName)
             .addModifiers(Modifier.PUBLIC)

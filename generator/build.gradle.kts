@@ -5,6 +5,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     kotlin("jvm")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     application
 }
 
@@ -15,6 +16,8 @@ repositories {
 dependencies {
     implementation(project(":core"))
     implementation(platform("org.slf4j:slf4j-bom:2.0.16"))
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
     implementation("com.squareup:javapoet:1.13.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
@@ -41,6 +44,12 @@ tasks.withType<Test> {
         exceptionFormat = TestExceptionFormat.FULL
     }
     outputs.upToDateWhen { false }
+}
+
+tasks.withType<Jar>().configureEach {
+    manifest {
+        attributes("Enable-Native-Access" to "ALL-UNNAMED")
+    }
 }
 
 application {

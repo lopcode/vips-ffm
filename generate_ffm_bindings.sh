@@ -77,4 +77,6 @@ set -x
 @includes_filtered.txt \
 "$LIBVIPS_ENTRY_PATH"
 
-./gradlew clean generator:run
+./gradlew clean generator:build generator:shadowJar
+
+DYLD_LIBRARY_PATH=/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
