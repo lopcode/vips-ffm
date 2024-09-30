@@ -4391,8 +4391,6 @@ public final class VImage {
   }
 
   /**
-   * <p>during load</p>
-   *
    * <p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
    * {@link #jpegload}, but read from a memory buffer.</p>
    *
@@ -4425,8 +4423,6 @@ public final class VImage {
   }
 
   /**
-   * <p>during load</p>
-   *
    * <p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
    * {@link #jpegload}, but read from a source.</p>
    *
@@ -9115,8 +9111,6 @@ public final class VImage {
   }
 
   /**
-   * <p>during load</p>
-   *
    * <p>Read a TIFF file into a VIPS image. It is a full baseline TIFF 6 reader,
    * with extensions for tiled images, multipage images, XYZ and LAB colour
    * space, pyramidal images and JPEG compression, including CMYK and YCbCr.</p>
@@ -9182,8 +9176,6 @@ public final class VImage {
   }
 
   /**
-   * <p>during load</p>
-   *
    * <p>Read a TIFF-formatted memory block into a VIPS image. Exactly as
    * {@link #tiffload}, but read from a memory source.</p>
    *
@@ -9217,8 +9209,6 @@ public final class VImage {
   }
 
   /**
-   * <p>during load</p>
-   *
    * <p>Exactly as {@link #tiffload}, but read from a source.</p>
    *
    * <p>See also: {@link #tiffload}.</p>
