@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation(project(":core"))
     implementation(platform("org.slf4j:slf4j-bom:2.0.16"))
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
     implementation("com.squareup:javapoet:1.13.0")
     implementation("org.slf4j:slf4j-api")
