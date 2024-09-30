@@ -219,7 +219,7 @@ public final class VImage {
 
   /**
    * <p>Turn Lab to XYZ. The colour temperature defaults to D65, but can be
-   * specified with {@optionalArg temp}.</p>
+   * specified with {@code temp}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg temp {@link VipsOption.ArrayDouble} Color temperature
    */
@@ -331,7 +331,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Turn XYZ to Lab, optionally specifying the colour temperature. {@optionalArg temp}
+   * <p>Turn XYZ to Lab, optionally specifying the colour temperature. {@code temp}
    * defaults to D65.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg temp {@link VipsOption.ArrayDouble} Colour temperature
@@ -499,13 +499,13 @@ public final class VImage {
   }
 
   /**
-   * <p>This operator performs an affine transform on an image using {@optionalArg interpolate}.</p>
+   * <p>This operator performs an affine transform on an image using {@code interpolate}.</p>
    *
    * <p>The transform is:</p>
    *
    * <pre>{@code 
-   *   X = {@code @a} * (x + {@optionalArg idx}) + {@code @b} * (y + {@optionalArg idy}) + {@optionalArg odx}
-   *   Y = {@code @c} * (x + {@optionalArg idx}) + {@code @d} * (y + {@optionalArg idy}) + {@code @doy}
+   *   X = {@code @a} * (x + {@code idx}) + {@code @b} * (y + {@code idy}) + {@code odx}
+   *   Y = {@code @c} * (x + {@code idx}) + {@code @d} * (y + {@code idy}) + {@code @doy}
    *
    *  where:
    *     x and y are the coordinates in input image.
@@ -513,22 +513,22 @@ public final class VImage {
    *     (0,0) is the upper left corner.
    * }</pre>
    *
-   * <p>The section of the output space defined by {@optionalArg oarea} is written to
-   * {@code out}. {@optionalArg oarea} is a four-element int array of left, top, width, height.
-   * By default {@optionalArg oarea} is just large enough to cover the whole of the
+   * <p>The section of the output space defined by {@code oarea} is written to
+   * {@code out}. {@code oarea} is a four-element int array of left, top, width, height.
+   * By default {@code oarea} is just large enough to cover the whole of the
    * transformed input image.</p>
    *
-   * <p>By default, new pixels are filled with {@optionalArg background}. This defaults to
-   * zero (black). You can set other extend types with {@optionalArg extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
+   * <p>By default, new pixels are filled with {@code background}. This defaults to
+   * zero (black). You can set other extend types with {@code extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
    * is better for image upsizing.</p>
    *
-   * <p>{@optionalArg interpolate} defaults to bilinear.</p>
+   * <p>{@code interpolate} defaults to bilinear.</p>
    *
-   * <p>{@optionalArg idx}, {@optionalArg idy}, {@optionalArg odx}, {@optionalArg ody} default to zero.</p>
+   * <p>{@code idx}, {@code idy}, {@code odx}, {@code ody} default to zero.</p>
    *
    * <p>Image are normally treated as unpremultiplied, so this operation can be used
    * directly on PNG images. If your images have been through {@link #premultiply},
-   * set {@optionalArg premultiplied}.</p>
+   * set {@code premultiplied}.</p>
    *
    * <p>This operation does not change xres or yres. The image resolution needs to
    * be updated by the application.</p>
@@ -590,22 +590,22 @@ public final class VImage {
   }
 
   /**
-   * <p>Lay out the images in {@code in} in a grid. The grid is {@optionalArg across} images across and
+   * <p>Lay out the images in {@code in} in a grid. The grid is {@code across} images across and
    * however high is necessary to use up all of {@code in}. Images are set down
-   * left-to-right and top-to-bottom. {@optionalArg across} defaults to {@code @n}.</p>
+   * left-to-right and top-to-bottom. {@code across} defaults to {@code @n}.</p>
    *
-   * <p>Each input image is placed with a box of size {@optionalArg hspacing} by {@optionalArg vspacing}
+   * <p>Each input image is placed with a box of size {@code hspacing} by {@code vspacing}
    * pixels and cropped. These default to the largest width and largest height
    * of the input images.</p>
    *
-   * <p>Space between images is filled with {@optionalArg background}. This defaults to 0
+   * <p>Space between images is filled with {@code background}. This defaults to 0
    * (black).</p>
    *
-   * <p>Images are positioned within their {@optionalArg hspacing} by {@optionalArg vspacing} box at low,
-   * centre or high coordinate values, controlled by {@optionalArg halign} and {@optionalArg valign}. These
+   * <p>Images are positioned within their {@code hspacing} by {@code vspacing} box at low,
+   * centre or high coordinate values, controlled by {@code halign} and {@code valign}. These
    * default to left-top.</p>
    *
-   * <p>Boxes are joined and separated by {@optionalArg shim} pixels. This defaults to 0.</p>
+   * <p>Boxes are joined and separated by {@code shim} pixels. This defaults to 0.</p>
    *
    * <p>If the number of bands in the input images differs, all but one of the
    * images must have one band. In this case, an n-band image is formed from the
@@ -645,7 +645,7 @@ public final class VImage {
    * upright. The {@code VIPS_META_ORIENTATION} tag is removed from {@code out} to prevent
    * accidental double rotation.</p>
    *
-   * <p>Read {@optionalArg angle} to find the amount the image was rotated by. Read {@optionalArg flip} to
+   * <p>Read {@code angle} to find the amount the image was rotated by. Read {@code flip} to
    * see if the image was also flipped.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle} Angle image was rotated by
@@ -713,7 +713,7 @@ public final class VImage {
 
   /**
    * <p>Fold up an image horizontally: width is collapsed into bands.
-   * Use {@optionalArg factor} to set how much to fold by: {@optionalArg factor} 3, for example, will make
+   * Use {@code factor} to set how much to fold by: {@code factor} 3, for example, will make
    * the output image three times narrower than the input, and with three times
    * as many bands. By default the whole of the input width is folded up.</p>
    *
@@ -801,11 +801,11 @@ public final class VImage {
   /**
    * <p>Sorts the images {@code in} band-element-wise, then outputs an
    * image in which each band element is selected from the sorted list by the
-   * {@optionalArg index} parameter. For example, if {@optionalArg index}
+   * {@code index} parameter. For example, if {@code index}
    * is zero, then each output band element will be the minimum of all the
    * corresponding input band elements.</p>
    *
-   * <p>By default, {@optionalArg index} is -1, meaning pick the median value.</p>
+   * <p>By default, {@code index} is -1, meaning pick the median value.</p>
    *
    * <p>It works for any uncoded, non-complex image type. Images are cast up to the
    * smallest common-format.</p>
@@ -833,7 +833,7 @@ public final class VImage {
 
   /**
    * <p>Unfold image bands into x axis.
-   * Use {@optionalArg factor} to set how much to unfold by: {@optionalArg factor} 3, for example, will make
+   * Use {@code factor} to set how much to unfold by: {@code factor} 3, for example, will make
    * the output image three times wider than the input, and with one third
    * as many bands. By default, all bands are unfolded.</p>
    *
@@ -1013,9 +1013,9 @@ public final class VImage {
   /**
    * <p>This operation behaves rather like {@link #copy} between images
    * {@code in} and {@code out}, except that it keeps a cache of computed pixels.
-   * This cache is made of up to {@optionalArg maxTiles} tiles (a value of -1
-   * means any number of tiles), and each tile is of size {@optionalArg tileWidth}
-   * by {@optionalArg tileHeight} pixels. By default it will cache 250 128 x 128 pixel tiles,
+   * This cache is made of up to {@code maxTiles} tiles (a value of -1
+   * means any number of tiles), and each tile is of size {@code tileWidth}
+   * by {@code tileHeight} pixels. By default it will cache 250 128 x 128 pixel tiles,
    * enough for two 1920 x 1080 images.</p>
    *
    * <p>This operation is a thin wrapper over {@code vips_sink_screen}, see the
@@ -1049,10 +1049,10 @@ public final class VImage {
    * where output is uchar, and double input, where output is double. Non-complex
    * images only.</p>
    *
-   * <p>Use {@optionalArg sigma} to control the scale over which gradient is measured. 1.4 is
+   * <p>Use {@code sigma} to control the scale over which gradient is measured. 1.4 is
    * usually a good value.</p>
    *
-   * <p>Use {@optionalArg precision} to set the precision of edge detection. For uchar images,
+   * <p>Use {@code precision} to set the precision of edge detection. For uchar images,
    * setting this to {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER} will make edge detection much
    * faster, but sacrifice some sensitivity.</p>
    *
@@ -1108,7 +1108,7 @@ public final class VImage {
    *
    * <p>Casting from complex to real returns the real part.</p>
    *
-   * <p>If {@optionalArg shift} is {@code TRUE}, integer values are shifted up and down. For example,
+   * <p>If {@code shift} is {@code TRUE}, integer values are shifted up and down. For example,
    * casting from unsigned 8 bit to unsigned 16 bit would
    * shift every value left by 8 bits. The bottom bit is copied into the new
    * bits, so 255 would become 65535.</p>
@@ -1133,7 +1133,7 @@ public final class VImage {
 
   /**
    * <p>This operation looks at the interpretation field of {@code in} (or uses
-   * {@optionalArg sourceSpace}, if set) and runs
+   * {@code sourceSpace}, if set) and runs
    * a set of colourspace conversion functions to move it to {@code space}.</p>
    *
    * <p>For example, given an image tagged as {@link VipsInterpretation#INTERPRETATION_YXY}, running
@@ -1159,7 +1159,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This convolves {@code in} with {@code mask} {@optionalArg times} times, rotating {@code mask} by {@optionalArg angle}
+   * <p>This convolves {@code in} with {@code mask} {@code times} times, rotating {@code mask} by {@code angle}
    * each time. By default, it comvolves twice, rotating by 90 degrees, taking
    * the maximum result.</p>
    *
@@ -1299,11 +1299,11 @@ public final class VImage {
    *
    * <p>The images do not need to match in size or format. They will be expanded to
    * the smallest common size and format in the usual way. Images are positioned
-   * using the {@optionalArg x} and {@optionalArg y} parameters, if set.</p>
+   * using the {@code x} and {@code y} parameters, if set.</p>
    *
    * <p>Image are normally treated as unpremultiplied, so this operation can be used
    * directly on PNG images. If your images have been through {@link #premultiply},
-   * set {@optionalArg premultiplied}.</p>
+   * set {@code premultiplied}.</p>
    *
    * <p>See also: {@link #insert}.</p>
    * @param in Array of input images
@@ -1362,35 +1362,35 @@ public final class VImage {
    *
    * <p>where scale and offset are part of {@code mask}.</p>
    *
-   * <p>By default, {@optionalArg precision} is
+   * <p>By default, {@code precision} is
    * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_FLOAT}. The output image
    * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@code in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
    * {@code out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
    *
-   * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, then
+   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, then
    * elements of {@code mask} are converted to
    * integers before convolution, using rint(),
    * and the output image
    * always has the same #VipsBandFormat as the input image.</p>
    *
-   * <p>For {@link VipsBandFormat#FORMAT_UCHAR} images and {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER} {@optionalArg precision},
+   * <p>For {@link VipsBandFormat#FORMAT_UCHAR} images and {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER} {@code precision},
    * conv uses a fast vector path based on
    * half-float arithmetic. This can produce slightly different results.
    * Disable the vector path with `--vips-novector` or `VIPS_NOVECTOR` or
    * {@code vips_vector_set_enabled}.</p>
    *
-   * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_APPROXIMATE} then, like
+   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_APPROXIMATE} then, like
    * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, {@code mask} is converted to int before convolution, and
    * the output image
    * always has the same #VipsBandFormat as the input image.</p>
    *
-   * <p>Larger values for {@optionalArg layers} give more accurate
-   * results, but are slower. As {@optionalArg layers} approaches the mask radius, the
+   * <p>Larger values for {@code layers} give more accurate
+   * results, but are slower. As {@code layers} approaches the mask radius, the
    * accuracy will become close to exact convolution and the speed will drop to
    * match. For many large masks, such as Gaussian, {@code @n_layers} need be only 10% of
    * this value and accuracy will still be good.</p>
    *
-   * <p>Smaller values of {@optionalArg cluster} will give more accurate results, but be slower
+   * <p>Smaller values of {@code cluster} will give more accurate results, but be slower
    * and use more memory. 10% of the mask radius is a good rule of thumb.</p>
    *
    * <p>See also: {@link #convsep}.</p>
@@ -1421,13 +1421,13 @@ public final class VImage {
    * Elements of {@code mask} are converted to
    * integers before convolution.</p>
    *
-   * <p>Larger values for {@optionalArg layers} give more accurate
-   * results, but are slower. As {@optionalArg layers} approaches the mask radius, the
+   * <p>Larger values for {@code layers} give more accurate
+   * results, but are slower. As {@code layers} approaches the mask radius, the
    * accuracy will become close to exact convolution and the speed will drop to
-   * match. For many large masks, such as Gaussian, {@optionalArg layers} need be only 10% of
+   * match. For many large masks, such as Gaussian, {@code layers} need be only 10% of
    * this value and accuracy will still be good.</p>
    *
-   * <p>Smaller values of {@optionalArg cluster} will give more accurate results, but be slower
+   * <p>Smaller values of {@code cluster} will give more accurate results, but be slower
    * and use more memory. 10% of the mask radius is a good rule of thumb.</p>
    *
    * <p>See also: {@link #conv}.</p>
@@ -1457,10 +1457,10 @@ public final class VImage {
    * Elements of {@code mask} are converted to
    * integers before convolution.</p>
    *
-   * <p>Larger values for {@optionalArg layers} give more accurate
-   * results, but are slower. As {@optionalArg layers} approaches the mask radius, the
+   * <p>Larger values for {@code layers} give more accurate
+   * results, but are slower. As {@code layers} approaches the mask radius, the
    * accuracy will become close to exact convolution and the speed will drop to
-   * match. For many large masks, such as Gaussian, {@optionalArg layers} need be only 10% of
+   * match. For many large masks, such as Gaussian, {@code layers} need be only 10% of
    * this value and accuracy will still be good.</p>
    *
    * <p>The output image
@@ -1638,20 +1638,20 @@ public final class VImage {
    * You can use a backslash (\) within the quotes to escape special characters,
    * such as quote marks.</p>
    *
-   * <p>{@optionalArg skip} sets the number of lines to skip at the start of the file.
+   * <p>{@code skip} sets the number of lines to skip at the start of the file.
    * Default zero.</p>
    *
-   * <p>{@optionalArg lines} sets the number of lines to read from the file. Default -1,
+   * <p>{@code lines} sets the number of lines to read from the file. Default -1,
    * meaning read all lines to end of file.</p>
    *
-   * <p>{@optionalArg whitespace} sets the skippable whitespace characters.
+   * <p>{@code whitespace} sets the skippable whitespace characters.
    * Default <b>space</b>.
    * Whitespace characters are always run together.</p>
    *
-   * <p>{@optionalArg separator} sets the characters that separate fields.
+   * <p>{@code separator} sets the characters that separate fields.
    * Default ;,<b>tab</b>. Separators are never run together.</p>
    *
-   * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
+   * <p>Use {@code failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link #bandfold}.</p>
@@ -1716,7 +1716,7 @@ public final class VImage {
    * "(real,imaginary)" and will need extra parsing I guess. Only the first band
    * is written.</p>
    *
-   * <p>{@optionalArg separator} gives the string to use to separate numbers in the output.
+   * <p>{@code separator} gives the string to use to separate numbers in the output.
    * The default is "\\t" (tab).</p>
    *
    * <p>See also: {@code vips_image_write_to_file}.</p>
@@ -1927,7 +1927,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Draws a circle on {@code image}. If {@optionalArg fill} is {@code TRUE} then the circle is filled,
+   * <p>Draws a circle on {@code image}. If {@code fill} is {@code TRUE} then the circle is filled,
    * otherwise a 1-pixel-wide perimeter is drawn.</p>
    *
    * <p>{@code ink} is an array of double containing values to draw.</p>
@@ -1961,14 +1961,14 @@ public final class VImage {
    * bounded by pixels that are equal to the ink colour, in other words, it
    * searches for pixels enclosed by an edge of {@code ink}.</p>
    *
-   * <p>If {@optionalArg equal} is set, it instead searches for pixels which are equal to the
+   * <p>If {@code equal} is set, it instead searches for pixels which are equal to the
    * start point and fills them with {@code ink}.</p>
    *
-   * <p>Normally it will test and set pixels in {@code image}. If {@optionalArg test} is set, it will
-   * test pixels in {@optionalArg test} and set pixels in {@code image}. This lets you search an
-   * image ({@optionalArg test}) for continuous areas of pixels without modifying it.</p>
+   * <p>Normally it will test and set pixels in {@code image}. If {@code test} is set, it will
+   * test pixels in {@code test} and set pixels in {@code image}. This lets you search an
+   * image ({@code test}) for continuous areas of pixels without modifying it.</p>
    *
-   * <p>{@optionalArg left}, {@optionalArg top}, {@optionalArg width}, {@optionalArg height} output the bounding box of the modified
+   * <p>{@code left}, {@code top}, {@code width}, {@code height} output the bounding box of the modified
    * pixels.</p>
    *
    * <p>{@code ink} is an array of double containing values to draw.</p>
@@ -2004,7 +2004,7 @@ public final class VImage {
    * number of bands in {@code image}. {@code sub} will be converted to {@code image}'s format, see
    * {@link #cast}.</p>
    *
-   * <p>Use {@optionalArg mode} to set how pixels are combined. If you use
+   * <p>Use {@code mode} to set how pixels are combined. If you use
    * {@link app.photofox.vipsffm.enums.VipsCombineMode#COMBINE_MODE_ADD}, both images muct be uncoded.</p>
    *
    * <p>See also: {@code vips_draw_mask}, {@link #insert}.</p>
@@ -2088,7 +2088,7 @@ public final class VImage {
 
   /**
    * <p>Paint pixels within {@code left}, {@code top}, {@code width}, {@code height} in {@code image} with {@code ink}. If
-   * {@optionalArg fill} is zero, just paint a 1-pixel-wide outline.</p>
+   * {@code fill} is zero, just paint a 1-pixel-wide outline.</p>
    *
    * <p>See also: {@code vips_draw_circle}.</p>
    * @param ink Color for pixels
@@ -2146,60 +2146,60 @@ public final class VImage {
 
   /**
    * <p>Save an image as a set of tiles at various resolutions. By default dzsave
-   * uses DeepZoom layout -- use {@optionalArg layout} to pick other conventions.</p>
+   * uses DeepZoom layout -- use {@code layout} to pick other conventions.</p>
    *
    * <p>dzsave creates a directory called {@code @name} to hold the tiles. If {@code @name}
    * ends `.zip`, dzsave will create a zip file called {@code @name} to hold the
-   * tiles. You can use {@optionalArg container} to force zip file output.</p>
+   * tiles. You can use {@code container} to force zip file output.</p>
    *
-   * <p>Use {@optionalArg basename} to set the name of the image we are creating. The
+   * <p>Use {@code basename} to set the name of the image we are creating. The
    * default value is set from {@code @name}.</p>
    *
-   * <p>By default, tiles are written as JPEGs. Use {@optionalArg Q} set set the JPEG quality
+   * <p>By default, tiles are written as JPEGs. Use {@code Q} set set the JPEG quality
    * factor.</p>
    *
-   * <p>You can set {@optionalArg suffix} to something like `".png[bitdepth=4]"` to write tiles
+   * <p>You can set {@code suffix} to something like `".png[bitdepth=4]"` to write tiles
    * in another format.</p>
    *
-   * <p>In Google layout mode, edge tiles are expanded to {@optionalArg tileSize} by {@optionalArg tileSize}
+   * <p>In Google layout mode, edge tiles are expanded to {@code tileSize} by {@code tileSize}
    * pixels. Normally they are filled with white, but you can set another colour
-   * with {@optionalArg background}. Images are usually placed at the top-left of the tile,
-   * but you can have them centred by turning on {@optionalArg centre}.</p>
+   * with {@code background}. Images are usually placed at the top-left of the tile,
+   * but you can have them centred by turning on {@code centre}.</p>
    *
-   * <p>You can set the size and overlap of tiles with {@optionalArg tileSize} and {@optionalArg overlap}.
-   * They default to the correct settings for the selected {@optionalArg layout}. The deepzoom
+   * <p>You can set the size and overlap of tiles with {@code tileSize} and {@code overlap}.
+   * They default to the correct settings for the selected {@code layout}. The deepzoom
    * defaults produce 256x256 jpeg files for centre tiles, the most efficient
    * size.</p>
    *
-   * <p>Use {@optionalArg depth} to control how low the pyramid goes. This defaults to the
-   * correct setting for the {@optionalArg layout} you select.</p>
+   * <p>Use {@code depth} to control how low the pyramid goes. This defaults to the
+   * correct setting for the {@code layout} you select.</p>
    *
-   * <p>You can rotate the image during write with the {@optionalArg angle} argument. However,
+   * <p>You can rotate the image during write with the {@code angle} argument. However,
    * this will only work for images which support random access, like openslide,
    * and not for things like JPEG. You'll need to rotate those images
    * yourself with {@link #rot}. Note that the `autorotate` option to the loader
    * may do what you need.</p>
    *
    * <p>By default, all tiles are stripped since usually you do not want a copy of
-   * all metadata in every tile. Set {@optionalArg keep} if you want to keep metadata.</p>
+   * all metadata in every tile. Set {@code keep} if you want to keep metadata.</p>
    *
-   * <p>If {@optionalArg container} is set to `zip`, you can set a compression level from -1
+   * <p>If {@code container} is set to `zip`, you can set a compression level from -1
    * (use zlib default), 0 (store, compression disabled) to 9 (max compression).
    * If no value is given, the default is to store files without compression.</p>
    *
-   * <p>You can use {@optionalArg regionShrink} to control the method for shrinking each 2x2
+   * <p>You can use {@code regionShrink} to control the method for shrinking each 2x2
    * region. This defaults to using the average of the 4 input pixels but you can
    * also use the median in cases where you want to preserve the range of values.</p>
    *
-   * <p>If you set {@optionalArg skipBlanks} to a value greater than or equal to zero, tiles
+   * <p>If you set {@code skipBlanks} to a value greater than or equal to zero, tiles
    * which are all within that many pixel values to the background are skipped.
    * This can save a lot of space for some image types. This option defaults to
    * 5 in Google layout mode, -1 otherwise.</p>
    *
    * <p>In IIIF layout, you can set the base of the `id` property in `info.json`
-   * with {@optionalArg id}. The default is `https://example.com/iiif`.</p>
+   * with {@code id}. The default is `https://example.com/iiif`.</p>
    *
-   * <p>Use {@optionalArg layout} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout#FOREIGN_DZ_LAYOUT_IIIF3} for IIIF v3 layout.</p>
+   * <p>Use {@code layout} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout#FOREIGN_DZ_LAYOUT_IIIF3} for IIIF v3 layout.</p>
    *
    * <p>See also: {@link #tiffsave}.</p>
    * @param filename Filename to save to
@@ -2242,7 +2242,7 @@ public final class VImage {
   /**
    * <p>As {@link #dzsave}, but save to a memory buffer.</p>
    *
-   * <p>Output is always in a zip container. Use {@optionalArg basename} to set the name of the
+   * <p>Output is always in a zip container. Use {@code basename} to set the name of the
    * directory that the zip will create when unzipped.</p>
    *
    * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
@@ -2332,7 +2332,7 @@ public final class VImage {
    * <p>The opposite of {@code vips_extract_area}: embed {@code in} within an image of size
    * {@code width} by {@code height} at position {@code x}, {@code y}.</p>
    *
-   * <p>{@optionalArg extend}
+   * <p>{@code extend}
    * controls what appears in the new pels, see #VipsExtend.</p>
    *
    * <p>See also: {@code vips_extract_area}, {@link #insert}.</p>
@@ -2413,10 +2413,10 @@ public final class VImage {
 
   /**
    * <p>Create a test pattern with increasing spatial frequency in X and
-   * amplitude in Y. {@optionalArg factor} should be between 0 and 1 and determines the
+   * amplitude in Y. {@code factor} should be between 0 and 1 and determines the
    * maximum spatial frequency.</p>
    *
-   * <p>Set {@optionalArg uchar} to output a uchar image.</p>
+   * <p>Set {@code uchar} to output a uchar image.</p>
    *
    * <p>See also: {@link #zone}.</p>
    * @param width Image width in pixels
@@ -2492,14 +2492,14 @@ public final class VImage {
   }
 
   /**
-   * <p>Fill outwards from every non-zero pixel in {@code in}, setting pixels in {@optionalArg distance}
+   * <p>Fill outwards from every non-zero pixel in {@code in}, setting pixels in {@code distance}
    * and {@code @value}.</p>
    *
-   * <p>At the position of zero pixels in {@code in}, {@optionalArg distance} contains the distance to
+   * <p>At the position of zero pixels in {@code in}, {@code distance} contains the distance to
    * the nearest non-zero pixel in {@code in}, and {@code @value} contains the value of that
    * pixel.</p>
    *
-   * <p>{@optionalArg distance} is a one-band float image. {@code @value} has the same number of bands and
+   * <p>{@code distance} is a one-band float image. {@code @value} has the same number of bands and
    * format as {@code in}.</p>
    *
    * <p>See also: {@code vips_hist_find_indexed}.</p>
@@ -2520,25 +2520,25 @@ public final class VImage {
    * <p>Search {@code in} for the bounding box of the non-background area.</p>
    *
    * <p>Any alpha is flattened out, then the image is median-filtered (unless
-   * {@optionalArg lineArt} is set, see below), all the row
+   * {@code lineArt} is set, see below), all the row
    * and column sums of the absolute
-   * difference from {@optionalArg background} are calculated in a
+   * difference from {@code background} are calculated in a
    * single pass, then the first row or column in each of the
-   * four directions where the sum is greater than {@optionalArg threshold} gives the bounding
+   * four directions where the sum is greater than {@code threshold} gives the bounding
    * box.</p>
    *
    * <p>If the image is entirely background, {@code vips_find_trim} returns {@code width} == 0
    * and {@code height} == 0.</p>
    *
-   * <p>{@optionalArg background} defaults to 255, or 65535 for 16-bit images. Set another value,
+   * <p>{@code background} defaults to 255, or 65535 for 16-bit images. Set another value,
    * or use {@link #getpoint} to pick a value from an edge. You'll need to flatten
    * before {@link #getpoint} to get a correct background value.</p>
    *
-   * <p>{@optionalArg threshold} defaults to 10.</p>
+   * <p>{@code threshold} defaults to 10.</p>
    *
    * <p>The detector is designed for photographic or compressed images where there
    * is a degree of noise that needs filtering. If your images are synthetic
-   * (eg. rendered from vector art, perhaps), set {@optionalArg lineArt} to disable this
+   * (eg. rendered from vector art, perhaps), set {@code lineArt} to disable this
    * filtering.</p>
    *
    * <p>The image needs to be at least 3x3 pixels in size.</p>
@@ -2644,12 +2644,12 @@ public final class VImage {
 
   /**
    * <p>Take the last band of {@code in} as an alpha and use it to blend the
-   * remaining channels with {@optionalArg background}.</p>
+   * remaining channels with {@code background}.</p>
    *
-   * <p>The alpha channel is 0 - {@optionalArg maxAlpha}, where {@optionalArg maxAlpha} means 100% image
-   * and 0 means 100% background. {@optionalArg background} defaults to zero (black).</p>
+   * <p>The alpha channel is 0 - {@code maxAlpha}, where {@code maxAlpha} means 100% image
+   * and 0 means 100% background. {@code background} defaults to zero (black).</p>
    *
-   * <p>{@optionalArg maxAlpha} has the default value 255, or 65535 for images tagged as
+   * <p>{@code maxAlpha} has the default value 255, or 65535 for images tagged as
    * {@link VipsInterpretation#INTERPRETATION_RGB16} or
    * {@link VipsInterpretation#INTERPRETATION_GREY16}.</p>
    *
@@ -2774,7 +2774,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Calculate {@code in} ** (1 / {@optionalArg exponent}), normalising to the maximum range of the
+   * <p>Calculate {@code in} ** (1 / {@code exponent}), normalising to the maximum range of the
    * input type. For float types use 1.0 as the maximum.</p>
    *
    * <p>See also: {@link #identity}, {@code vips_pow_const1}, {@link #maplut}</p>
@@ -2793,7 +2793,7 @@ public final class VImage {
 
   /**
    * <p>This operator runs {@link #gaussmat} and {@link #convsep} for you on an image.
-   * Set {@optionalArg minAmpl} smaller to generate a larger, more accurate mask. Set {@code sigma}
+   * Set {@code minAmpl} smaller to generate a larger, more accurate mask. Set {@code sigma}
    * larger to make the blur more blurry.</p>
    *
    * <p>See also: {@link #gaussmat}, {@link #convsep}.</p>
@@ -2825,12 +2825,12 @@ public final class VImage {
    *  H(r) = exp(-(r * r) / (2 * {@code sigma} * {@code sigma}))</p>
    *
    * <p>The generated image has odd size and its maximum value is normalised to
-   * 1.0, unless {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
+   * 1.0, unless {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
    *
-   * <p>If {@optionalArg separable} is set, only the centre horizontal is generated. This is
+   * <p>If {@code separable} is set, only the centre horizontal is generated. This is
    * useful for separable convolutions.</p>
    *
-   * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer gaussian is generated.
+   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer gaussian is generated.
    * This is useful for integer convolutions.</p>
    *
    * <p>"scale" is set to the sum of all the mask elements.</p>
@@ -2909,13 +2909,13 @@ public final class VImage {
   /**
    * <p>Read a GIF file into a libvips image.</p>
    *
-   * <p>Use {@optionalArg page} to select a page to render, numbering from zero.</p>
+   * <p>Use {@code page} to select a page to render, numbering from zero.</p>
    *
-   * <p>Use {@optionalArg n} to select the number of pages to render. The default is 1. Pages are
+   * <p>Use {@code n} to select the number of pages to render. The default is 1. Pages are
    * rendered in a vertical column. Set to -1 to mean "until the end of the
    * document". Use {@link #grid} to change page layout.</p>
    *
-   * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
+   * <p>Use {@code failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>The output image is RGBA for GIFs containing transparent elements, RGB
@@ -3005,28 +3005,28 @@ public final class VImage {
   /**
    * <p>Write to a file in GIF format.</p>
    *
-   * <p>Use {@optionalArg dither} to set the degree of Floyd-Steinberg dithering
-   * and {@optionalArg effort} to control the CPU effort (1 is the fastest,
+   * <p>Use {@code dither} to set the degree of Floyd-Steinberg dithering
+   * and {@code effort} to control the CPU effort (1 is the fastest,
    * 10 is the slowest, 7 is the default).</p>
    *
-   * <p>Use {@optionalArg bitdepth} (from 1 to 8, default 8) to control the number
+   * <p>Use {@code bitdepth} (from 1 to 8, default 8) to control the number
    * of colours in the palette. The first entry in the palette is
    * always reserved for transparency. For example, a bitdepth of
    * 4 will allow the output to contain up to 15 colours.</p>
    *
-   * <p>Use {@optionalArg interframeMaxerror} to set the threshold below which pixels are
+   * <p>Use {@code interframeMaxerror} to set the threshold below which pixels are
    * considered equal.
    * Pixels which don't change from frame to frame can be made transparent,
    * improving the compression rate. Default 0.</p>
    *
-   * <p>Use {@optionalArg interpaletteMaxerror} to set the threshold below which the
+   * <p>Use {@code interpaletteMaxerror} to set the threshold below which the
    * previously generated palette will be reused.</p>
    *
-   * <p>If {@optionalArg reuse} is TRUE, the GIF will be saved with a single global
+   * <p>If {@code reuse} is TRUE, the GIF will be saved with a single global
    * palette taken from the metadata in {@code in}, and no new palette optimisation
    * will be done.</p>
    *
-   * <p>If {@optionalArg interlace} is TRUE, the GIF file will be interlaced (progressive GIF).
+   * <p>If {@code interlace} is TRUE, the GIF file will be interlaced (progressive GIF).
    * These files may be better for display over a slow network
    * connection, but need more memory to encode.</p>
    *
@@ -3129,13 +3129,13 @@ public final class VImage {
    * <p>It opens each of the source images in turn and extracts all parts which
    * overlap with any of the other images. It finds the average values in the
    * overlap areas and uses least-mean-square to find a set of correction
-   * factors which will minimise overlap differences. It uses {@optionalArg gamma} to
+   * factors which will minimise overlap differences. It uses {@code gamma} to
    * gamma-correct the source images before calculating the factors. A value of
    * 1.0 will stop this.</p>
    *
    * <p>Each of the source images is transformed with the appropriate correction
    * factor, then the mosaic is reassembled. {@code out} is {@link VipsBandFormat#FORMAT_FLOAT}, but
-   * if {@optionalArg intOutput} is set, the output image is the same format as the input
+   * if {@code intOutput} is set, the output image is the same format as the input
    * images.</p>
    *
    * <p>There are some conditions that must be met before this operation can work:
@@ -3162,7 +3162,7 @@ public final class VImage {
    * <p>The opposite of {@code vips_extract_area}: place {@code in} within an image of size
    * {@code width} by {@code height} at a certain gravity.</p>
    *
-   * <p>{@optionalArg extend}
+   * <p>{@code extend}
    * controls what appears in the new pels, see #VipsExtend.</p>
    *
    * <p>See also: {@code vips_extract_area}, {@link #insert}.</p>
@@ -3194,7 +3194,7 @@ public final class VImage {
    * <p>Create a one-band float image with the left-most column zero and the
    * right-most 1. Intermediate pixels are a linear ramp.</p>
    *
-   * <p>Set {@optionalArg uchar} to output a uchar image with the leftmost pixel 0 and the
+   * <p>Set {@code uchar} to output a uchar image with the leftmost pixel 0 and the
    * rightmost 255.</p>
    *
    * <p>See also: {@link #xyz}, {@link #identity}.</p>
@@ -3253,21 +3253,21 @@ public final class VImage {
   /**
    * <p>Read a HEIF image file into a VIPS image.</p>
    *
-   * <p>Use {@optionalArg page} to select a page to render, numbering from zero. If neither {@optionalArg n}
-   * nor {@optionalArg page} are set, {@optionalArg page} defaults to the primary page, otherwise to 0.</p>
+   * <p>Use {@code page} to select a page to render, numbering from zero. If neither {@code n}
+   * nor {@code page} are set, {@code page} defaults to the primary page, otherwise to 0.</p>
    *
-   * <p>Use {@optionalArg n} to select the number of pages to render. The default is 1. Pages are
+   * <p>Use {@code n} to select the number of pages to render. The default is 1. Pages are
    * rendered in a vertical column. Set to -1 to mean "until the end of the
    * document". Use {@link #grid} to reorganise pages.</p>
    *
    * <p>HEIF images have a primary image. The metadata item `heif-primary` gives
    * the page number of the primary.</p>
    *
-   * <p>If {@optionalArg thumbnail} is {@code TRUE}, then fetch a stored thumbnail rather than the
+   * <p>If {@code thumbnail} is {@code TRUE}, then fetch a stored thumbnail rather than the
    * image.</p>
    *
    * <p>By default, input image dimensions are limited to 16384x16384.
-   * If {@optionalArg unlimited} is {@code TRUE}, this increases to the maximum of 65535x65535.</p>
+   * If {@code unlimited} is {@code TRUE}, this increases to the maximum of 65535x65535.</p>
    *
    * <p>The bitdepth of the heic image is recorded in the metadata item
    * `heif-bitdepth`.</p>
@@ -3366,25 +3366,25 @@ public final class VImage {
   /**
    * <p>Write a VIPS image to a file in HEIF format.</p>
    *
-   * <p>Use {@optionalArg Q} to set the compression factor. Default 50, which seems to be roughly
+   * <p>Use {@code Q} to set the compression factor. Default 50, which seems to be roughly
    * what the iphone uses. Q 30 gives about the same quality as JPEG Q 75.</p>
    *
-   * <p>Set {@optionalArg lossless} {@code TRUE} to switch to lossless compression.</p>
+   * <p>Set {@code lossless} {@code TRUE} to switch to lossless compression.</p>
    *
-   * <p>Use {@optionalArg compression} to set the compression format e.g. HEVC, AVC, AV1 to use. It defaults to AV1
+   * <p>Use {@code compression} to set the compression format e.g. HEVC, AVC, AV1 to use. It defaults to AV1
    * if the target filename ends with ".avif", otherwise HEVC.</p>
    *
-   * <p>Use {@optionalArg effort} to control the CPU effort spent improving compression.
+   * <p>Use {@code effort} to control the CPU effort spent improving compression.
    * This is currently only applicable to AV1 encoders. Defaults to 4, 0 is
    * fastest, 9 is slowest.</p>
    *
    * <p>Chroma subsampling is normally automatically disabled for Q &ge; 90. You can
-   * force the subsampling mode with {@optionalArg subsampleMode}.</p>
+   * force the subsampling mode with {@code subsampleMode}.</p>
    *
-   * <p>Use {@optionalArg bitdepth} to set the bitdepth of the output file. HEIC supports at
+   * <p>Use {@code bitdepth} to set the bitdepth of the output file. HEIC supports at
    * least 8, 10 and 12 bits; other codecs may support more or fewer options.</p>
    *
-   * <p>Use {@optionalArg encoder} to set the encode library to use, e.g. aom, SVT-AV1, rav1e etc.</p>
+   * <p>Use {@code encoder} to set the encode library to use, e.g. aom, SVT-AV1, rav1e etc.</p>
    *
    * <p>See also: {@code vips_image_write_to_file}, {@link #heifload}.</p>
    * @param filename Filename to save to
@@ -3530,9 +3530,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Find the histogram of {@code in}. Find the histogram for band {@optionalArg band} (producing a
+   * <p>Find the histogram of {@code in}. Find the histogram for band {@code band} (producing a
    * one-band histogram), or for all bands (producing an n-band histogram) if
-   * {@optionalArg band} is -1.</p>
+   * {@code band} is -1.</p>
    *
    * <p>char and uchar images are cast to uchar before histogramming, all other
    * image types are cast to ushort.</p>
@@ -3563,7 +3563,7 @@ public final class VImage {
    *
    * <p>{@code out} always has the same size and format as {@code in}.</p>
    *
-   * <p>Normally, bins are summed, but you can use {@optionalArg combine} to set other combine
+   * <p>Normally, bins are summed, but you can use {@code combine} to set other combine
    * modes.</p>
    *
    * <p>This operation is useful in conjunction with {@link #labelregions}. You can
@@ -3587,9 +3587,9 @@ public final class VImage {
 
   /**
    * <p>Make a one, two or three dimensional histogram of a 1, 2 or
-   * 3 band image. Divide each axis into {@optionalArg bins} bins .. ie.
+   * 3 band image. Divide each axis into {@code bins} bins .. ie.
    * output is 1 x bins, bins x bins, or bins x bins x bins bands.
-   * {@optionalArg bins} defaults to 10.</p>
+   * {@code bins} defaults to 10.</p>
    *
    * <p>char and uchar images are cast to uchar before histogramming, all other
    * image types are cast to ushort.</p>
@@ -3629,7 +3629,7 @@ public final class VImage {
    * <p>The output image is the same size as the input image. The edge pixels are
    * created by mirroring the input image outwards.</p>
    *
-   * <p>If {@optionalArg maxSlope} is greater than 0, it sets the maximum value for the slope of
+   * <p>If {@code maxSlope} is greater than 0, it sets the maximum value for the slope of
    * the cumulative histogram, that is, the maximum brightening that is
    * performed. A value of 3 is often used. Local histogram equalization with
    * contrast limiting is usually called CLAHE.</p>
@@ -3728,10 +3728,10 @@ public final class VImage {
    * <p>The output pixel at (x, y, band) is the strength of the circle centred on
    * (x, y) and with radius (band).</p>
    *
-   * <p>Use {@optionalArg maxRadius} and {@optionalArg minRadius} to set the range of radii to search for.</p>
+   * <p>Use {@code maxRadius} and {@code minRadius} to set the range of radii to search for.</p>
    *
-   * <p>Use {@optionalArg scale} to set how {@code in} coordinates are scaled to {@code out} coordinates. A
-   * {@optionalArg scale} of 3, for example, will make {@code out} 1/3rd of the width and height of
+   * <p>Use {@code scale} to set how {@code in} coordinates are scaled to {@code out} coordinates. A
+   * {@code scale} of 3, for example, will make {@code out} 1/3rd of the width and height of
    * {@code in}, and reduce the number of radii tested (and hence the number of bands
    * int {@code out}) by a factor of three as well.</p>
    *
@@ -3757,7 +3757,7 @@ public final class VImage {
    * of {@code out} is the line angle in 0 - 180 degrees, the Y dimension is the
    * distance of the closest part of that line to the origin in the top-left.</p>
    *
-   * <p>Use {@optionalArg width} {@optionalArg height} to set the size of the parameter space image ({@code out}),
+   * <p>Use {@code width} {@code height} to set the size of the parameter space image ({@code out}),
    * that is, how accurate the line determination should be.</p>
    *
    * <p>See also: {@code vips_hough_circle}.</p>
@@ -3777,13 +3777,13 @@ public final class VImage {
 
   /**
    * <p>Export an image from D65 LAB to device space with an ICC profile.
-   * If {@optionalArg pcs} is
+   * If {@code pcs} is
    * set to {@link app.photofox.vipsffm.enums.VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.
-   * If {@optionalArg outputProfile} is not set, use the embedded profile, if any.
-   * If {@optionalArg outputProfile} is set, export with that and attach it to the output
+   * If {@code outputProfile} is not set, use the embedded profile, if any.
+   * If {@code outputProfile} is set, export with that and attach it to the output
    * image.</p>
    *
-   * <p>If {@optionalArg blackPointCompensation} is set, LCMS black point compensation is
+   * <p>If {@code blackPointCompensation} is set, LCMS black point compensation is
    * enabled.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg pcs {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPCS} Set Profile Connection Space
@@ -3803,24 +3803,24 @@ public final class VImage {
   }
 
   /**
-   * <p>Import an image from device space to D65 LAB with an ICC profile. If {@optionalArg pcs} is
+   * <p>Import an image from device space to D65 LAB with an ICC profile. If {@code pcs} is
    * set to {@link app.photofox.vipsffm.enums.VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.</p>
    *
    * <p>The input profile is searched for in three places:
    *
-   *  1. If {@optionalArg embedded} is set, libvips will try to use any profile in the input
+   *  1. If {@code embedded} is set, libvips will try to use any profile in the input
    *   image metadata. You can test for the presence of an embedded profile
    *   with {@code vips_image_get_typeof} with {@code VIPS_META_ICC_NAME} as an argument.
    *   This will return {@code GType} 0 if there is no profile.
    *
-   *  2. Otherwise, if {@optionalArg inputProfile} is set, libvips will try to load a
+   *  2. Otherwise, if {@code inputProfile} is set, libvips will try to load a
    *   profile from the named file. This can aslso be the name of one of the
    *   built-in profiles.
    *
    *  3. Otherwise, libvips will try to pick a compatible profile from the set
    *   of built-in profiles.</p>
    *
-   * <p>If {@optionalArg blackPointCompensation} is set, LCMS black point compensation is
+   * <p>If {@code blackPointCompensation} is set, LCMS black point compensation is
    * enabled.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg pcs {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPCS} Set Profile Connection Space
@@ -3846,22 +3846,22 @@ public final class VImage {
    *
    * <p>The input profile is searched for in three places:
    *
-   *  1. If {@optionalArg embedded} is set, libvips will try to use any profile in the input
+   *  1. If {@code embedded} is set, libvips will try to use any profile in the input
    *   image metadata. You can test for the presence of an embedded profile
    *   with {@code vips_image_get_typeof} with {@code VIPS_META_ICC_NAME} as an argument.
    *   This will return {@code GType} 0 if there is no profile.
    *
-   *  2. Otherwise, if {@optionalArg inputProfile} is set, libvips will try to load a
+   *  2. Otherwise, if {@code inputProfile} is set, libvips will try to load a
    *   profile from the named file. This can aslso be the name of one of the
    *   built-in profiles.
    *
    *  3. Otherwise, libvips will try to pick a compatible profile from the set
    *   of built-in profiles.</p>
    *
-   * <p>If {@optionalArg blackPointCompensation} is set, LCMS black point compensation is
+   * <p>If {@code blackPointCompensation} is set, LCMS black point compensation is
    * enabled.</p>
    *
-   * <p>{@optionalArg depth} defaults to 8, or 16 if {@code in} is a 16-bit image.</p>
+   * <p>{@code depth} defaults to 8, or 16 if {@code in} is a 16-bit image.</p>
    *
    * <p>The output image has the output profile attached to the {@code VIPS_META_ICC_NAME}
    * field.</p>
@@ -3897,10 +3897,10 @@ public final class VImage {
    * <p>Use the arithmetic operations on these tables to make LUTs representing
    * arbitrary functions.</p>
    *
-   * <p>Normally LUTs are 8-bit. Set {@optionalArg ushort} to create a 16-bit table.</p>
+   * <p>Normally LUTs are 8-bit. Set {@code ushort} to create a 16-bit table.</p>
    *
    * <p>Normally 16-bit tables have 65536 entries. You can set this smaller with
-   * {@optionalArg size}.</p>
+   * {@code size}.</p>
    *
    * <p>See also: {@link #xyz}, {@link #maplut}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -3931,7 +3931,7 @@ public final class VImage {
    * <p>If the images differ in size, the smaller images are enlarged to match the
    * largest by adding zero pixels along the bottom and right.</p>
    *
-   * <p>If {@optionalArg blend} is {@code TRUE}, then values in {@code out} are smoothly blended between {@code in1}
+   * <p>If {@code blend} is {@code TRUE}, then values in {@code out} are smoothly blended between {@code in1}
    * and {@code in2} using the formula:
    *
    *  {@code out} = ({@code cond} / 255) * {@code in1} + (1 - {@code cond} / 255) * {@code in2}</p>
@@ -3957,10 +3957,10 @@ public final class VImage {
   /**
    * <p>Insert {@code sub} into {@code main} at position {@code x}, {@code y}.</p>
    *
-   * <p>Normally {@code out} shows the whole of {@code main}. If {@optionalArg expand} is #TRUE then {@code out} is
+   * <p>Normally {@code out} shows the whole of {@code main}. If {@code expand} is #TRUE then {@code out} is
    * made large enough to hold all of {@code main} and {@code sub}.
    * Any areas of {@code out} not coming from
-   * either {@code main} or {@code sub} are set to {@optionalArg background} (default 0).</p>
+   * either {@code main} or {@code sub} are set to {@code background} (default 0).</p>
    *
    * <p>If {@code sub} overlaps {@code main},
    * {@code sub} will appear on top of {@code main}.</p>
@@ -4061,7 +4061,7 @@ public final class VImage {
 
   /**
    * <p>Transform an image from Fourier space to real space. The result is complex.
-   * If you are OK with a real result, set {@optionalArg real}, it's quicker.</p>
+   * If you are OK with a real result, set {@code real}, it's quicker.</p>
    *
    * <p>VIPS uses the fftw Fourier Transform library. If this library was not
    * available when VIPS was configured, these functions will fail.</p>
@@ -4085,16 +4085,16 @@ public final class VImage {
    * of {@code direction}.</p>
    *
    * <p>If one is taller or wider than the
-   * other, {@code out} will be has high as the smaller. If {@optionalArg expand} is {@code TRUE}, then
+   * other, {@code out} will be has high as the smaller. If {@code expand} is {@code TRUE}, then
    * the output will be expanded to contain all of the input pixels.</p>
    *
-   * <p>Use {@optionalArg align} to set the edge that the images align on. By default, they align
+   * <p>Use {@code align} to set the edge that the images align on. By default, they align
    * on the edge with the lower value coordinate.</p>
    *
-   * <p>Use {@optionalArg background} to set the colour of any pixels in {@code out} which are not
+   * <p>Use {@code background} to set the colour of any pixels in {@code out} which are not
    * present in either {@code in1} or {@code in2}.</p>
    *
-   * <p>Use {@optionalArg shim} to set the spacing between the images. By default this is 0.</p>
+   * <p>Use {@code shim} to set the spacing between the images. By default this is 0.</p>
    *
    * <p>If the number of bands differs, one of the images
    * must have one band. In this case, an n-band image is formed from the
@@ -4137,11 +4137,11 @@ public final class VImage {
    *
    * <p>It will only load images where all channels have the same format.</p>
    *
-   * <p>Use {@optionalArg page} to set the page to load, where page 0 is the base resolution
+   * <p>Use {@code page} to set the page to load, where page 0 is the base resolution
    * image and higher-numbered pages are x2 reductions. Use the metadata item
    * "n-pages" to find the number of pyramid layers.</p>
    *
-   * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
+   * <p>Use {@code failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
@@ -4224,15 +4224,15 @@ public final class VImage {
    * values, signed and unsigned. It supports greyscale, RGB, CMYK and
    * multispectral images.</p>
    *
-   * <p>Use {@optionalArg Q} to set the compression quality factor. The default value
+   * <p>Use {@code Q} to set the compression quality factor. The default value
    * produces file with approximately the same size as regular JPEG Q 75.</p>
    *
-   * <p>Set {@optionalArg lossless} to enable lossless compression.</p>
+   * <p>Set {@code lossless} to enable lossless compression.</p>
    *
-   * <p>Use {@optionalArg tileWidth} and {@optionalArg tileHeight} to set the tile size. The default is 512.</p>
+   * <p>Use {@code tileWidth} and {@code tileHeight} to set the tile size. The default is 512.</p>
    *
    * <p>Chroma subsampling is normally disabled for compatibility. Set
-   * {@optionalArg subsampleMode} to auto to enable chroma subsample for Q &lt; 90. Subsample
+   * {@code subsampleMode} to auto to enable chroma subsample for Q &lt; 90. Subsample
    * mode uses YCC rather than RGB colourspace, and many jpeg2000 decoders do
    * not support this.</p>
    *
@@ -4317,18 +4317,18 @@ public final class VImage {
    * <p>Read a JPEG file into a VIPS image. It can read most 8-bit JPEG images,
    * including CMYK and YCbCr.</p>
    *
-   * <p>{@optionalArg shrink} means shrink by this integer factor during load.  Possible values
+   * <p>{@code shrink} means shrink by this integer factor during load.  Possible values
    * are 1, 2, 4 and 8. Shrinking during read is very much faster than
    * decompressing the whole image and then shrinking later.</p>
    *
-   * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
+   * <p>Use {@code failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
-   * <p>Setting {@optionalArg autorotate} to {@code TRUE} will make the loader interpret the
+   * <p>Setting {@code autorotate} to {@code TRUE} will make the loader interpret the
    * orientation tag and automatically rotate the image appropriately during
    * load.</p>
    *
-   * <p>If {@optionalArg autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
+   * <p>If {@code autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
    * to the value of the orientation tag. Applications may read and interpret
    * this field
    * as they wish later in processing. See {@link #autorot}. Save
@@ -4454,33 +4454,33 @@ public final class VImage {
   /**
    * <p>Write a VIPS image to a file as JPEG.</p>
    *
-   * <p>Use {@optionalArg Q} to set the JPEG compression factor. Default 75.</p>
+   * <p>Use {@code Q} to set the JPEG compression factor. Default 75.</p>
    *
-   * <p>If {@optionalArg optimizeCoding} is set, the Huffman tables are optimized. This is
+   * <p>If {@code optimizeCoding} is set, the Huffman tables are optimized. This is
    * slightly slower and produces slightly smaller files.</p>
    *
-   * <p>If {@optionalArg interlace} is set, the jpeg files will be interlaced (progressive jpeg,
+   * <p>If {@code interlace} is set, the jpeg files will be interlaced (progressive jpeg,
    * in jpg parlance). These files may be better for display over a slow network
    * connection, but need much more memory to encode and decode.</p>
    *
    * <p>Chroma subsampling is normally automatically disabled for Q &ge; 90. You can
-   * force the subsampling mode with {@optionalArg subsampleMode}.</p>
+   * force the subsampling mode with {@code subsampleMode}.</p>
    *
-   * <p>If {@optionalArg trellisQuant} is set and the version of libjpeg supports it
+   * <p>If {@code trellisQuant} is set and the version of libjpeg supports it
    * (e.g. mozjpeg &ge; 3.0), apply trellis quantisation to each 8x8 block.
    * Reduces file size but increases compression time.</p>
    *
-   * <p>If {@optionalArg overshootDeringing} is set and the version of libjpeg supports it
+   * <p>If {@code overshootDeringing} is set and the version of libjpeg supports it
    * (e.g. mozjpeg &ge; 3.0), apply overshooting to samples with extreme values
    * for example 0 and 255 for 8-bit. Overshooting may reduce ringing artifacts
    * from compression, in particular in areas where black text appears on a
    * white background.</p>
    *
-   * <p>If {@optionalArg optimizeScans} is set and the version of libjpeg supports it
+   * <p>If {@code optimizeScans} is set and the version of libjpeg supports it
    * (e.g. mozjpeg &ge; 3.0), split the spectrum of DCT coefficients into
    * separate scans. Reduces file size but increases compression time.</p>
    *
-   * <p>If {@optionalArg quantTable} is set and the version of libjpeg supports it
+   * <p>If {@code quantTable} is set and the version of libjpeg supports it
    * (e.g. mozjpeg &ge; 3.0) it selects the quantization table to use:</p>
    *
    * <p>* 0 — Tables from JPEG Annex K (vips and libjpeg default)
@@ -4729,17 +4729,17 @@ public final class VImage {
    * <p>The JPEG-XL loader and saver are experimental features and may change
    * in future libvips versions.</p>
    *
-   * <p>{@optionalArg tier} sets the overall decode speed the encoder will target. Minimum is 0
+   * <p>{@code tier} sets the overall decode speed the encoder will target. Minimum is 0
    * (highest quality), and maximum is 4 (lowest quality). Default is 0.</p>
    *
-   * <p>{@optionalArg distance} sets the target maximum encoding error. Minimum is 0
+   * <p>{@code distance} sets the target maximum encoding error. Minimum is 0
    * (highest quality), and maximum is 15 (lowest quality). Default is 1.0
    * (visually lossless).</p>
    *
-   * <p>As a convenience, you can also use {@optionalArg Q} to set {@optionalArg distance}. {@optionalArg Q} uses
+   * <p>As a convenience, you can also use {@code Q} to set {@code distance}. {@code Q} uses
    * approximately the same scale as regular JPEG.</p>
    *
-   * <p>Set {@optionalArg lossless} to enable lossless compression.</p>
+   * <p>Set {@code lossless} to enable lossless compression.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tier {@link VipsOption.Int} Decode speed tier
@@ -4818,7 +4818,7 @@ public final class VImage {
    * <p>Repeatedly scans {@code in} for regions of 4-connected pixels
    * with the same pixel value. Every time a region is discovered, those
    * pixels are marked in {@code mask} with a unique serial number. Once all pixels
-   * have been labelled, the operation returns, setting {@optionalArg segments} to the number
+   * have been labelled, the operation returns, setting {@code segments} to the number
    * of discrete regions which were detected.</p>
    *
    * <p>{@code mask} is always a 1-band {@link VipsBandFormat#FORMAT_INT} image of the same dimensions as
@@ -4847,7 +4847,7 @@ public final class VImage {
   /**
    * <p>Pass an image through a linear transform, ie. ({@code out} = {@code in} * {@code a} + {@code b}). Output
    * is float for integer input, double for double input, complex for
-   * complex input and double complex for double complex input. Set {@optionalArg uchar} to
+   * complex input and double complex for double complex input. Set {@code uchar} to
    * output uchar pixels.</p>
    *
    * <p>If the arrays of constants have just one element, that constant is used for
@@ -4887,16 +4887,16 @@ public final class VImage {
    * <p>Each cache tile is made with a single call to
    * {@code vips_region_prepare}.</p>
    *
-   * <p>When the cache fills, a tile is chosen for reuse. If {@optionalArg access} is
+   * <p>When the cache fills, a tile is chosen for reuse. If {@code access} is
    * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
-   * {@optionalArg access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}, then
-   * the top-most tile is reused. {@optionalArg access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
+   * {@code access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}, then
+   * the top-most tile is reused. {@code access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
    *
-   * <p>{@optionalArg tileHeight} can be used to set the size of the strips that
+   * <p>{@code tileHeight} can be used to set the size of the strips that
    * linecache uses. The default is 1 (a single scanline).</p>
    *
    * <p>Normally, only a single thread at once is allowed to calculate tiles. If
-   * you set {@optionalArg threaded} to {@code TRUE}, linecache will allow many threads to
+   * you set {@code threaded} to {@code TRUE}, linecache will allow many threads to
    * calculate tiles at once and share the cache between them.</p>
    *
    * <p>See also: {@link #cache}, {@link #tilecache}.</p>
@@ -4934,12 +4934,12 @@ public final class VImage {
    * <p>where s2 = {@code sigma} * {@code sigma}, s4 = s2 * s2, r2 = r * r.</p>
    *
    * <p>The generated mask has odd size and its maximum value is normalised to
-   * 1.0, unless {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
+   * 1.0, unless {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
    *
-   * <p>If {@optionalArg separable} is set, only the centre horizontal is generated. This is
+   * <p>If {@code separable} is set, only the centre horizontal is generated. This is
    * useful for separable convolutions.</p>
    *
-   * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer mask is generated.
+   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer mask is generated.
    * This is useful for integer convolutions.</p>
    *
    * <p>"scale" is set to the sum of all the mask elements.</p>
@@ -4979,10 +4979,10 @@ public final class VImage {
    * from the file contents.</p>
    *
    * <p>Normally it will only load the first image in a many-image sequence (such
-   * as a GIF or a PDF). Use {@optionalArg page} and {@optionalArg n} to set the start page and number of
-   * pages to load. Set {@optionalArg n} to -1 to load all pages from {@optionalArg page} onwards.</p>
+   * as a GIF or a PDF). Use {@code page} and {@code n} to set the start page and number of
+   * pages to load. Set {@code n} to -1 to load all pages from {@code page} onwards.</p>
    *
-   * <p>{@optionalArg density} is "WxH" in DPI, e.g. "600x300" or "600" (default is "72x72"). See
+   * <p>{@code density} is "WxH" in DPI, e.g. "600x300" or "600" (default is "72x72"). See
    * the [density
    * docs](http://www.imagemagick.org/script/command-line-options.php#density)
    * on the imagemagick website.</p>
@@ -5049,21 +5049,21 @@ public final class VImage {
   /**
    * <p>Write an image using libMagick.</p>
    *
-   * <p>Use {@optionalArg quality} to set the quality factor. Default 0.</p>
+   * <p>Use {@code quality} to set the quality factor. Default 0.</p>
    *
-   * <p>Use {@optionalArg format} to explicitly set the save format, for example, "BMP". Otherwise
+   * <p>Use {@code format} to explicitly set the save format, for example, "BMP". Otherwise
    * the format is guessed from the filename suffix.</p>
    *
-   * <p>If {@optionalArg optimizeGifFrames} is set, GIF frames are cropped to the smallest size
+   * <p>If {@code optimizeGifFrames} is set, GIF frames are cropped to the smallest size
    * while preserving the results of the GIF animation. This takes some time for
    * computation but saves some time on encoding and produces smaller files in
    * some cases.</p>
    *
-   * <p>If {@optionalArg optimizeGifTransparency} is set, pixels that don't change the image
+   * <p>If {@code optimizeGifTransparency} is set, pixels that don't change the image
    * through animation are made transparent. This takes some time for computation
    * but saves some time on encoding and produces smaller files in some cases.</p>
    *
-   * <p>{@optionalArg bitdepth} specifies the number of bits per pixel. The image will be quantized
+   * <p>{@code bitdepth} specifies the number of bits per pixel. The image will be quantized
    * and dithered if the value is within the valid range (1 to 8).</p>
    *
    * <p>See also: {@code vips_magicksave_buffer}, {@link #magickload}.</p>
@@ -5135,15 +5135,15 @@ public final class VImage {
    * of {@code in}, and with y increasing down the image. Use {@link #xyz} to build index
    * images.</p>
    *
-   * <p>{@optionalArg interpolate} defaults to bilinear.</p>
+   * <p>{@code interpolate} defaults to bilinear.</p>
    *
-   * <p>By default, new pixels are filled with {@optionalArg background}. This defaults to
-   * zero (black). You can set other extend types with {@optionalArg extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
+   * <p>By default, new pixels are filled with {@code background}. This defaults to
+   * zero (black). You can set other extend types with {@code extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
    * is better for image upsizing.</p>
    *
    * <p>Image are normally treated as unpremultiplied, so this operation can be used
    * directly on PNG images. If your images have been through {@link #premultiply},
-   * set {@optionalArg premultiplied}.</p>
+   * set {@code premultiplied}.</p>
    *
    * <p>This operation does not change xres or yres. The image resolution needs to
    * be updated by the application.</p>
@@ -5183,8 +5183,8 @@ public final class VImage {
    * computation.
    * If {@code lut} is too large, extra values are ignored.</p>
    *
-   * <p>If {@code lut} has one band and {@optionalArg band} is -1 (the default), then all bands of {@code in}
-   * pass through {@code lut}. If {@optionalArg band} is &ge; 0, then just that band of {@code in} passes
+   * <p>If {@code lut} has one band and {@code band} is -1 (the default), then all bands of {@code in}
+   * pass through {@code lut}. If {@code band} is &ge; 0, then just that band of {@code in} passes
    * through {@code lut} and other bands are just copied.</p>
    *
    * <p>If {@code lut}
@@ -5485,16 +5485,16 @@ public final class VImage {
    * Masks are created with the DC component at (0, 0). The DC pixel always
    * has the value 1.0.</p>
    *
-   * <p>Set {@optionalArg nodc} to not set the DC pixel.</p>
+   * <p>Set {@code nodc} to not set the DC pixel.</p>
    *
-   * <p>Set {@optionalArg optical} to position the DC component in the centre of the image. This
+   * <p>Set {@code optical} to position the DC component in the centre of the image. This
    * makes the mask suitable for multiplying against optical Fourier transforms.
    * See {@link #wrap}.</p>
    *
-   * <p>Set {@optionalArg reject} to invert the sense of
+   * <p>Set {@code reject} to invert the sense of
    * the filter. For example, low-pass becomes low-reject.</p>
    *
-   * <p>Set {@optionalArg uchar} to output an 8-bit unsigned char image rather than a
+   * <p>Set {@code uchar} to output an 8-bit unsigned char image rather than a
    * float image. In this case, pixels are in the range [0 - 255].</p>
    *
    * <p>See also: {@code vips_mask_ideal}, {@code vips_mask_ideal_ring},
@@ -5598,9 +5598,9 @@ public final class VImage {
   /**
    * <p>Scale, rotate and translate {@code sec} so that the tie-points line up.</p>
    *
-   * <p>If {@optionalArg search} is {@code TRUE}, before performing the transformation, the tie-points
-   * are improved by searching an area of {@code sec} of size {@optionalArg harea} for a
-   * match of size {@optionalArg hwindow} to {@code ref}.</p>
+   * <p>If {@code search} is {@code TRUE}, before performing the transformation, the tie-points
+   * are improved by searching an area of {@code sec} of size {@code harea} for a
+   * match of size {@code hwindow} to {@code ref}.</p>
    *
    * <p>This function will only work well for small rotates and scales.</p>
    * @param xr1 Position of first reference tie-point
@@ -5929,8 +5929,8 @@ public final class VImage {
   /**
    * <p>This operation finds the maximum value in an image.</p>
    *
-   * <p>By default it finds the single largest value. If {@optionalArg size} is set &gt;1, it will
-   * find the {@optionalArg size} largest values. It will stop searching early if has found
+   * <p>By default it finds the single largest value. If {@code size} is set &gt;1, it will
+   * find the {@code size} largest values. It will stop searching early if has found
    * enough values.
    * Equal values will be sorted by y then x.</p>
    *
@@ -5940,12 +5940,12 @@ public final class VImage {
    *
    * <p>For complex images, this operation finds the maximum modulus.</p>
    *
-   * <p>You can read out the position of the maximum with {@optionalArg x} and {@optionalArg y}. You can read
-   * out arrays of the values and positions of the top {@optionalArg size} maxima with
-   * {@optionalArg outArray}, {@optionalArg xArray} and {@optionalArg yArray}. These values are returned sorted from
+   * <p>You can read out the position of the maximum with {@code x} and {@code y}. You can read
+   * out arrays of the values and positions of the top {@code size} maxima with
+   * {@code outArray}, {@code xArray} and {@code yArray}. These values are returned sorted from
    * largest to smallest.</p>
    *
-   * <p>If there are more than {@optionalArg size} maxima, the maxima returned will be a random
+   * <p>If there are more than {@code size} maxima, the maxima returned will be a random
    * selection of the maxima in the image.</p>
    *
    * <p>See also: {@link #min}, {@link #stats}.</p>
@@ -5974,8 +5974,8 @@ public final class VImage {
    * than 20% of
    * the mean. Only the central 50% of each patch is averaged.</p>
    *
-   * <p>If the chart does not fill the whole image, use the optional {@optionalArg left}, {@optionalArg top},
-   * {@optionalArg width}, {@optionalArg height} arguments to indicate the
+   * <p>If the chart does not fill the whole image, use the optional {@code left}, {@code top},
+   * {@code width}, {@code height} arguments to indicate the
    * position of the chart.</p>
    *
    * <p>See also: {@link #avg}, {@link #deviate}.</p>
@@ -6018,7 +6018,7 @@ public final class VImage {
    * the vector to get from the origin of {@code sec} to the origin of {@code ref}, in other
    * words, {@code dx} will generally be a negative number.</p>
    *
-   * <p>{@optionalArg mblend} limits  the  maximum width of the
+   * <p>{@code mblend} limits  the  maximum width of the
    * blend area.  A value of "-1" means "unlimited". The two images are blended
    * with a raised cosine.</p>
    *
@@ -6055,8 +6055,8 @@ public final class VImage {
   /**
    * <p>This operation finds the minimum value in an image.</p>
    *
-   * <p>By default it finds the single smallest value. If {@optionalArg size} is set &gt;1, it will
-   * find the {@optionalArg size} smallest values. It will stop searching early if has found
+   * <p>By default it finds the single smallest value. If {@code size} is set &gt;1, it will
+   * find the {@code size} smallest values. It will stop searching early if has found
    * enough values.
    * Equal values will be sorted by y then x.</p>
    *
@@ -6066,13 +6066,13 @@ public final class VImage {
    *
    * <p>For complex images, this operation finds the minimum modulus.</p>
    *
-   * <p>You can read out the position of the minimum with {@optionalArg x} and {@optionalArg y}. You can read
-   * out arrays of the values and positions of the top {@optionalArg size} minima with
-   * {@optionalArg outArray}, {@optionalArg xArray} and {@optionalArg yArray}.
+   * <p>You can read out the position of the minimum with {@code x} and {@code y}. You can read
+   * out arrays of the values and positions of the top {@code size} minima with
+   * {@code outArray}, {@code xArray} and {@code yArray}.
    * These values are returned sorted from
    * smallest to largest.</p>
    *
-   * <p>If there are more than {@optionalArg size} minima, the minima returned will be a random
+   * <p>If there are more than {@code size} minima, the minima returned will be a random
    * selection of the minima in the image.</p>
    *
    * <p>See also: min, {@link #stats}.</p>
@@ -6149,9 +6149,9 @@ public final class VImage {
    *
    * <p>{@code sec} is positioned so that the pixel ({@code xsec}, {@code ysec}) in {@code sec} lies on top of
    * the pixel ({@code xref}, {@code yref}) in {@code ref}. The overlap area is divided into three
-   * sections, 20 high-contrast points in band {@optionalArg bandno} of image {@code ref} are found
-   * in each, and a window of pixels of size {@optionalArg hwindow} around each high-contrast
-   * point is searched for in {@code sec} over an area of {@optionalArg harea}.</p>
+   * sections, 20 high-contrast points in band {@code bandno} of image {@code ref} are found
+   * in each, and a window of pixels of size {@code hwindow} around each high-contrast
+   * point is searched for in {@code sec} over an area of {@code harea}.</p>
    *
    * <p>A linear model is fitted to the 60 tie-points, points a long way from the
    * fit are discarded, and the model refitted until either too few points
@@ -6160,8 +6160,8 @@ public final class VImage {
    * <p>The detected displacement is used with {@link #merge} to join the two images
    * together.</p>
    *
-   * <p>You can read out the detected transform with {@optionalArg dx0}, {@optionalArg dy0}, {@optionalArg scale1}, {@optionalArg angle1},
-   * {@optionalArg dx1}, {@optionalArg dy1}.</p>
+   * <p>You can read out the detected transform with {@code dx0}, {@code dy0}, {@code scale1}, {@code angle1},
+   * {@code dx1}, {@code dy1}.</p>
    *
    * <p>See also: {@link #merge}, {@link #insert}.</p>
    * @param direction {@link VipsDirection} Horizontal or vertical mosaic
@@ -6210,11 +6210,11 @@ public final class VImage {
    * given an approximate pair of tie-points. {@code sec} is scaled and rotated as
    * necessary before the join.</p>
    *
-   * <p>If {@optionalArg search} is {@code TRUE}, before performing the transformation, the tie-points
-   * are improved by searching an area of {@code sec} of size {@optionalArg harea} for a
-   * object of size {@optionalArg hwindow} in {@code ref}.</p>
+   * <p>If {@code search} is {@code TRUE}, before performing the transformation, the tie-points
+   * are improved by searching an area of {@code sec} of size {@code harea} for a
+   * object of size {@code hwindow} in {@code ref}.</p>
    *
-   * <p>{@optionalArg mblend} limits  the  maximum size of the
+   * <p>{@code mblend} limits  the  maximum size of the
    * blend area.  A value of "-1" means "unlimited". The two images are blended
    * with a raised cosine.</p>
    *
@@ -6284,7 +6284,7 @@ public final class VImage {
    * <p>Turn any integer image to 8-bit unsigned char by discarding all but the most
    * significant byte. Signed values are converted to unsigned by adding 128.</p>
    *
-   * <p>Use {@optionalArg band} to make a one-band 8-bit image.</p>
+   * <p>Use {@code band} to make a one-band 8-bit image.</p>
    *
    * <p>This operator also works for LABQ coding.</p>
    *
@@ -6432,21 +6432,21 @@ public final class VImage {
    * <p>To facilitate zooming, virtual slide formats include multiple scaled-down
    * versions of the high-resolution image.  These are typically called
    * "levels".  By default, openslideload reads the highest-resolution
-   * level (level 0).  Set {@optionalArg level} to the level number you want.</p>
+   * level (level 0).  Set {@code level} to the level number you want.</p>
    *
    * <p>In addition to the slide image itself, virtual slide formats sometimes
    * include additional images, such as a scan of the slide's barcode.
    * OpenSlide calls these "associated images".  To read an associated image,
-   * set {@optionalArg associated} to the image's name.
+   * set {@code associated} to the image's name.
    * A slide's associated images are listed in the
    * "slide-associated-images" metadata item.</p>
    *
-   * <p>If you set {@optionalArg attachAssociated}, then all associated images are attached as
+   * <p>If you set {@code attachAssociated}, then all associated images are attached as
    * metadata items. Use {@code vips_image_get_image} on {@code out} to retrieve them. Images
    * are attached as "openslide-associated-XXXXX", where XXXXX is the name of the
    * associated image.</p>
    *
-   * <p>By default, the output of this operator is RGBA. Set {@optionalArg rgb} to enable RGB
+   * <p>By default, the output of this operator is RGBA. Set {@code rgb} to enable RGB
    * output.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
@@ -6511,20 +6511,20 @@ public final class VImage {
    * converted. If you need CMYK bitmaps, you should use {@link #magickload}
    * instead.</p>
    *
-   * <p>Use {@optionalArg page} to select a page to render, numbering from zero.</p>
+   * <p>Use {@code page} to select a page to render, numbering from zero.</p>
    *
-   * <p>Use {@optionalArg n} to select the number of pages to render. The default is 1. Pages are
+   * <p>Use {@code n} to select the number of pages to render. The default is 1. Pages are
    * rendered in a vertical column, with each individual page aligned to the
    * left. Set to -1 to mean "until the end of the document". Use {@link #grid}
    * to change page layout.</p>
    *
-   * <p>Use {@optionalArg dpi} to set the rendering resolution. The default is 72. Additionally,
-   * you can scale by setting {@optionalArg scale}. If you set both, they combine.</p>
+   * <p>Use {@code dpi} to set the rendering resolution. The default is 72. Additionally,
+   * you can scale by setting {@code scale}. If you set both, they combine.</p>
    *
-   * <p>Use {@optionalArg background} to set the background RGBA colour. The default is 255
+   * <p>Use {@code background} to set the background RGBA colour. The default is 255
    * (solid white), use eg. 0 for a transparent background.</p>
    *
-   * <p>Use {@optionalArg password} to supply a decryption password.</p>
+   * <p>Use {@code password} to supply a decryption password.</p>
    *
    * <p>The operation fills a number of header fields with metadata, for example
    * "pdf-author". They may be useful.</p>
@@ -6661,13 +6661,13 @@ public final class VImage {
    *
    * <p>https://en.wikipedia.org/wiki/Perlin_noise</p>
    *
-   * <p>Use {@optionalArg cellSize} to set the size of the cells from which the image is
+   * <p>Use {@code cellSize} to set the size of the cells from which the image is
    * constructed. The default is 256 x 256.</p>
    *
-   * <p>If {@code width} and {@code height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
+   * <p>If {@code width} and {@code height} are multiples of {@code cellSize}, the image will tessellate.</p>
    *
    * <p>Normally, output pixels are {@link VipsBandFormat#FORMAT_FLOAT} in the range [-1, +1]. Set
-   * {@optionalArg uchar} to output a uchar image with pixels in [0, 255].</p>
+   * {@code uchar} to output a uchar image with pixels in [0, 255].</p>
    *
    * <p>See also: {@link #worley}, {@link #fractsurf}, {@link #gaussnoise}.</p>
    * @param width Image width in pixels
@@ -6715,11 +6715,11 @@ public final class VImage {
    * <p>Any ICC profile is read and attached to the VIPS image. It also supports
    * XMP metadata.</p>
    *
-   * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
+   * <p>Use {@code failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>By default, the PNG loader limits the number of text and data chunks to
-   * block some denial of service attacks. Set {@optionalArg unlimited} to disable these
+   * block some denial of service attacks. Set {@code unlimited} to disable these
    * limits.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
@@ -6803,29 +6803,29 @@ public final class VImage {
   /**
    * <p>Write a VIPS image to a file as PNG.</p>
    *
-   * <p>{@optionalArg compression} means compress with this much effort (0 - 9). Default 6.</p>
+   * <p>{@code compression} means compress with this much effort (0 - 9). Default 6.</p>
    *
-   * <p>Set {@optionalArg interlace} to {@code TRUE} to interlace the image with ADAM7
+   * <p>Set {@code interlace} to {@code TRUE} to interlace the image with ADAM7
    * interlacing. Beware
    * than an interlaced PNG can be up to 7 times slower to write than a
    * non-interlaced image.</p>
    *
-   * <p>Use {@optionalArg filter} to specify one or more filters, defaults to none,
+   * <p>Use {@code filter} to specify one or more filters, defaults to none,
    * see #VipsForeignPngFilter.</p>
    *
    * <p>The image is automatically converted to RGB, RGBA, Monochrome or Mono +
    * alpha before saving. Images with more than one byte per band element are
    * saved as 16-bit PNG, others are saved as 8-bit PNG.</p>
    *
-   * <p>Set {@optionalArg palette} to {@code TRUE} to enable palette mode for RGB or RGBA images. A
-   * palette will be computed with enough space for {@optionalArg bitdepth} (1, 2, 4 or 8)
-   * bits. Use {@optionalArg Q} to set the optimisation effort, {@optionalArg dither} to set the degree of
-   * Floyd-Steinberg dithering and {@optionalArg effort} to control the CPU effort
+   * <p>Set {@code palette} to {@code TRUE} to enable palette mode for RGB or RGBA images. A
+   * palette will be computed with enough space for {@code bitdepth} (1, 2, 4 or 8)
+   * bits. Use {@code Q} to set the optimisation effort, {@code dither} to set the degree of
+   * Floyd-Steinberg dithering and {@code effort} to control the CPU effort
    * (1 is the fastest, 10 is the slowest, 7 is the default).
    * This feature requires libvips to be compiled with libimagequant.</p>
    *
-   * <p>The default {@optionalArg bitdepth} is either 8 or 16 depending on the interpretation.
-   * You can also set {@optionalArg bitdepth} for mono and mono + alpha images, and the image
+   * <p>The default {@code bitdepth} is either 8 or 16 depending on the interpretation.
+   * You can also set {@code bitdepth} for mono and mono + alpha images, and the image
    * will be quantized.</p>
    *
    * <p>XMP metadata is written to the XMP chunk. PNG comments are written to
@@ -6985,12 +6985,12 @@ public final class VImage {
    * <p>When writing float (PFM) images the scale factor is set from the
    * "pfm-scale" metadata.</p>
    *
-   * <p>Set {@optionalArg ascii} to {@code TRUE} to write as human-readable ASCII. Normally data is
+   * <p>Set {@code ascii} to {@code TRUE} to write as human-readable ASCII. Normally data is
    * written in binary.</p>
    *
-   * <p>Set {@optionalArg bitdepth} to 1 to write a one-bit image.</p>
+   * <p>Set {@code bitdepth} to 1 to write a one-bit image.</p>
    *
-   * <p>{@optionalArg format} defaults to the sub-type for this filename suffix.</p>
+   * <p>{@code format} defaults to the sub-type for this filename suffix.</p>
    *
    * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
@@ -7045,8 +7045,8 @@ public final class VImage {
    * and the bands are transformed as:</p>
    *
    * <pre>{@code 
-   *   alpha = clip(0, in[in.bands - 1], {@optionalArg maxAlpha});
-   *   norm = alpha / {@optionalArg maxAlpha};
+   *   alpha = clip(0, in[in.bands - 1], {@code maxAlpha});
+   *   norm = alpha / {@code maxAlpha};
    *   out = [in[0] * norm, ..., in[in.bands - 1] * norm, alpha];
    * }</pre>
    *
@@ -7059,7 +7059,7 @@ public final class VImage {
    * {@link VipsBandFormat#FORMAT_FLOAT} unless the input format is {@link VipsBandFormat#FORMAT_DOUBLE}, in which
    * case the output is double as well.</p>
    *
-   * <p>{@optionalArg maxAlpha} has the default value 255, or 65535 for images tagged as
+   * <p>{@code maxAlpha} has the default value 255, or 65535 for images tagged as
    * {@link VipsInterpretation#INTERPRETATION_RGB16} or
    * {@link VipsInterpretation#INTERPRETATION_GREY16}.</p>
    *
@@ -7379,10 +7379,10 @@ public final class VImage {
    * <p>This operation mmaps the file, setting up {@code out} so that access to that
    * image will read from the file.</p>
    *
-   * <p>By default, it assumes uchar pixels. Use {@optionalArg format} to select something else.</p>
+   * <p>By default, it assumes uchar pixels. Use {@code format} to select something else.</p>
    *
    * <p>The image will be tagged as {@link VipsInterpretation#INTERPRETATION_MULTIBAND}. Use
-   * {@optionalArg interpretation} to select something else.</p>
+   * {@code interpretation} to select something else.</p>
    *
    * <p>Use {@link #byteswap} to reverse the byte ordering if necessary.</p>
    *
@@ -7494,9 +7494,9 @@ public final class VImage {
    * <p>Reduce {@code in} by a pair of factors with a pair of 1D kernels. This
    * will not work well for shrink factors greater than three.</p>
    *
-   * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrink} to shrink
-   * with a box filter first. The bigger {@optionalArg gap}, the closer the result
-   * to the fair resampling. The smaller {@optionalArg gap}, the faster resizing.
+   * <p>Set {@code gap} to speed up reducing by having {@link #shrink} to shrink
+   * with a box filter first. The bigger {@code gap}, the closer the result
+   * to the fair resampling. The smaller {@code gap}, the faster resizing.
    * The default value is 0.0 (no optimization).</p>
    *
    * <p>This is a very low-level operation: see {@link #resize} for a more
@@ -7536,11 +7536,11 @@ public final class VImage {
 
   /**
    * <p>Reduce {@code in} horizontally by a float factor. The pixels in {@code out} are
-   * interpolated with a 1D mask generated by {@optionalArg kernel}.</p>
+   * interpolated with a 1D mask generated by {@code kernel}.</p>
    *
-   * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrinkh} to shrink
-   * with a box filter first. The bigger {@optionalArg gap}, the closer the result
-   * to the fair resampling. The smaller {@optionalArg gap}, the faster resizing.
+   * <p>Set {@code gap} to speed up reducing by having {@link #shrinkh} to shrink
+   * with a box filter first. The bigger {@code gap}, the closer the result
+   * to the fair resampling. The smaller {@code gap}, the faster resizing.
    * The default value is 0.0 (no optimization).</p>
    *
    * <p>This is a very low-level operation: see {@link #resize} for a more
@@ -7573,11 +7573,11 @@ public final class VImage {
 
   /**
    * <p>Reduce {@code in} vertically by a float factor. The pixels in {@code out} are
-   * interpolated with a 1D mask generated by {@optionalArg kernel}.</p>
+   * interpolated with a 1D mask generated by {@code kernel}.</p>
    *
-   * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrinkv} to shrink
-   * with a box filter first. The bigger {@optionalArg gap}, the closer the result
-   * to the fair resampling. The smaller {@optionalArg gap}, the faster resizing.
+   * <p>Set {@code gap} to speed up reducing by having {@link #shrinkv} to shrink
+   * with a box filter first. The bigger {@code gap}, the closer the result
+   * to the fair resampling. The smaller {@code gap}, the faster resizing.
    * The default value is 0.0 (no optimization).</p>
    *
    * <p>This is a very low-level operation: see {@link #resize} for a more
@@ -7773,22 +7773,22 @@ public final class VImage {
   /**
    * <p>Resize an image.</p>
    *
-   * <p>Set {@optionalArg gap} to speed up downsizing by having {@link #shrink} to shrink
-   * with a box filter first. The bigger {@optionalArg gap}, the closer the result
-   * to the fair resampling. The smaller {@optionalArg gap}, the faster resizing.
+   * <p>Set {@code gap} to speed up downsizing by having {@link #shrink} to shrink
+   * with a box filter first. The bigger {@code gap}, the closer the result
+   * to the fair resampling. The smaller {@code gap}, the faster resizing.
    * The default value is 2.0 (very close to fair resampling
    * while still being faster in many cases).</p>
    *
    * <p>resize normally uses {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_LANCZOS3} for the final reduce, you
-   * can change this with {@optionalArg kernel}. Downsizing is done with centre convention.</p>
+   * can change this with {@code kernel}. Downsizing is done with centre convention.</p>
    *
    * <p>When upsizing ({@code scale} &gt; 1), the operation uses {@link #affine} with
-   * a #VipsInterpolate selected depending on {@optionalArg kernel}. It will use
+   * a #VipsInterpolate selected depending on {@code kernel}. It will use
    * #VipsInterpolateBicubic for {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_CUBIC} and above. It adds a
    * 0.5 pixel displacement to the input pixels to get centre convention scaling.</p>
    *
    * <p>resize normally maintains the image aspect ratio. If you set
-   * {@optionalArg vscale}, that factor is used for the vertical scale and {@code scale} for the
+   * {@code vscale}, that factor is used for the vertical scale and {@code scale} for the
    * horizontal.</p>
    *
    * <p>If either axis would drop below 1px in size, the shrink in that dimension
@@ -7960,9 +7960,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Convert an scRGB image to greyscale. Set {@optionalArg depth} to 16 to get 16-bit output.</p>
+   * <p>Convert an scRGB image to greyscale. Set {@code depth} to 16 to get 16-bit output.</p>
    *
-   * <p>If {@optionalArg depth} is 16, any extra channels after RGB are
+   * <p>If {@code depth} is 16, any extra channels after RGB are
    * multiplied by 256.</p>
    *
    * <p>See also: {@link #LabS2LabQ}, {@link #sRGB2scRGB}, {@link #rad2float}.</p>
@@ -7994,9 +7994,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Convert an scRGB image to sRGB. Set {@optionalArg depth} to 16 to get 16-bit output.</p>
+   * <p>Convert an scRGB image to sRGB. Set {@code depth} to 16 to get 16-bit output.</p>
    *
-   * <p>If {@optionalArg depth} is 16, any extra channels after RGB are
+   * <p>If {@code depth} is 16, any extra channels after RGB are
    * multiplied by 256.</p>
    *
    * <p>See also: {@link #LabS2LabQ}, {@link #sRGB2scRGB}, {@link #rad2float}.</p>
@@ -8018,8 +8018,8 @@ public final class VImage {
    * as unsigned 8-bit, scaled so that the maximum value is 255 and the
    * minimum is zero.</p>
    *
-   * <p>If {@optionalArg log} is set, transform with log10(1.0 + pow(x, {@optionalArg exp})) + .5,
-   * then scale so max == 255. By default, {@optionalArg exp} is 0.25.</p>
+   * <p>If {@code log} is set, transform with log10(1.0 + pow(x, {@code exp})) + .5,
+   * then scale so max == 255. By default, {@code exp} is 0.25.</p>
    *
    * <p>See also: {@link #cast}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -8061,7 +8061,7 @@ public final class VImage {
    * top-to-bottom. This operation is useful for loading file formats which are
    * strictly top-to-bottom, like PNG.</p>
    *
-   * <p>{@optionalArg tileHeight} can be used to set the size of the tiles that
+   * <p>{@code tileHeight} can be used to set the size of the tiles that
    * sequential uses. The default value is 1.</p>
    *
    * <p>See also: {@link #cache}, {@link #linecache}, {@link #tilecache}.</p>
@@ -8124,7 +8124,7 @@ public final class VImage {
    * <p>If you want more or less sharpening, we suggest you just change the
    * m2 parameter.</p>
    *
-   * <p>The {@optionalArg sigma} parameter changes the width of the fringe and can be
+   * <p>The {@code sigma} parameter changes the width of the fringe and can be
    * adjusted according to the output printing resolution. As an approximate
    * guideline, use 0.5 for 4 pixels/mm (display resolution),
    * 1.0 for 12 pixels/mm and 1.5 for 16 pixels/mm (300 dpi == 12
@@ -8271,7 +8271,7 @@ public final class VImage {
 
   /**
    * <p>This operator calls {@link #affine} for you, calculating the matrix for the
-   * affine transform from {@optionalArg scale} and {@optionalArg angle}. Other parameters are passed on to
+   * affine transform from {@code scale} and {@code angle}. Other parameters are passed on to
    * {@link #affine} unaltered.</p>
    *
    * <p>See also: {@link #affine}, #VipsInterpolate.</p>
@@ -8300,14 +8300,14 @@ public final class VImage {
    * dimensions.</p>
    *
    * <p>The number of horizontal and vertical spatial frequencies are
-   * determined by the variables {@optionalArg hfreq} and {@optionalArg vfreq} respectively.  The
+   * determined by the variables {@code hfreq} and {@code vfreq} respectively.  The
    * function is useful for creating displayable sine waves and
    * square waves in two dimensions.</p>
    *
    * <p>If horfreq and verfreq are integers the resultant image is periodical
    * and therefore the Fourier transform does not present spikes</p>
    *
-   * <p>Pixels are normally in [-1, +1], set {@optionalArg uchar} to output [0, 255].</p>
+   * <p>Pixels are normally in [-1, +1], set {@code uchar} to output [0, 255].</p>
    *
    * <p>See also: {@link #grey}, {@link #xyz}.</p>
    * @param width Image width in pixels
@@ -8332,7 +8332,7 @@ public final class VImage {
   /**
    * <p>Crop an image down to a specified width and height by removing boring parts.</p>
    *
-   * <p>Use {@optionalArg interesting} to pick the method vips uses to decide which bits of the
+   * <p>Use {@code interesting} to pick the method vips uses to decide which bits of the
    * image should be kept.</p>
    *
    * <p>You can test xoffset / yoffset on {@code out} to find the location of the crop
@@ -8485,14 +8485,14 @@ public final class VImage {
    * <p>At point (i,j) the output is given by the equation:</p>
    *
    * <pre>{@code 
-   * vout(i,j) = {@optionalArg a} * {@optionalArg m0} + (1 - {@optionalArg a}) * meanv +
-   *       (vin(i,j) - meanv) * ({@optionalArg b} * {@optionalArg s0}) / ({@optionalArg s0} + {@optionalArg b} * stdv)
+   * vout(i,j) = {@code a} * {@code m0} + (1 - {@code a}) * meanv +
+   *       (vin(i,j) - meanv) * ({@code b} * {@code s0}) / ({@code s0} + {@code b} * stdv)
    * }</pre>
    *
-   * <p>Values {@optionalArg a}, {@optionalArg m0}, {@optionalArg b} and {@optionalArg s0} are entered, while meanv and stdv are the values
+   * <p>Values {@code a}, {@code m0}, {@code b} and {@code s0} are entered, while meanv and stdv are the values
    * calculated over a moving window of size {@code width}, {@code height} centred on pixel
-   * (i,j). {@optionalArg m0} is the new mean, {@optionalArg a} is the weight given to it. {@optionalArg s0} is the new
-   * standard deviation, {@optionalArg b} is the weight given to it.</p>
+   * (i,j). {@code m0} is the new mean, {@code a} is the weight given to it. {@code s0} is the new
+   * standard deviation, {@code b} is the weight given to it.</p>
    *
    * <p>Try:</p>
    *
@@ -8535,7 +8535,7 @@ public final class VImage {
    * from {@code @in} and then subsample that line. For large shrinks it will fetch
    * single pixels.</p>
    *
-   * <p>If {@optionalArg point} is set, {@code @in} will always be sampled in points. This can be faster
+   * <p>If {@code point} is set, {@code @in} will always be sampled in points. This can be faster
    * if the previous operations in the pipeline are very slow.</p>
    *
    * <p>See also: {@link #affine}, {@link #shrink}, {@link #zoom}.</p>
@@ -8741,13 +8741,13 @@ public final class VImage {
    * <p>Render a SVG file into a VIPS image.  Rendering uses the librsvg library
    * and should be fast.</p>
    *
-   * <p>Use {@optionalArg dpi} to set the rendering resolution. The default is 72. You can also
-   * scale the rendering by {@optionalArg scale}.</p>
+   * <p>Use {@code dpi} to set the rendering resolution. The default is 72. You can also
+   * scale the rendering by {@code scale}.</p>
    *
    * <p>This function only reads the image header and does not render any pixel
    * data. Rendering occurs when pixels are accessed.</p>
    *
-   * <p>SVGs larger than 10MB are normally blocked for security. Set {@optionalArg unlimited} to
+   * <p>SVGs larger than 10MB are normally blocked for security. Set {@code unlimited} to
    * allow SVGs of any size.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
@@ -8865,40 +8865,40 @@ public final class VImage {
    * unsigned char image, with 0 for no text and 255 for text. Values between
    * are used for anti-aliasing.</p>
    *
-   * <p>Set {@optionalArg rgba} to enable RGBA output. This is useful for colour emoji rendering,
+   * <p>Set {@code rgba} to enable RGBA output. This is useful for colour emoji rendering,
    * or support for pango markup features like `<span>Red!</span>`.</p>
    *
    * <p>{@code text} is the text to render as a UTF-8 string. It can contain Pango markup,
    * for example `<i>The</i>Guardian`.</p>
    *
-   * <p>{@optionalArg font} is the font to render with, as a fontconfig name. Examples might be
+   * <p>{@code font} is the font to render with, as a fontconfig name. Examples might be
    * `sans 12` or perhaps `bitstream charter bold 10`.</p>
    *
-   * <p>You can specify a font to load with {@optionalArg fontfile}. You'll need to also set the
-   * name of the font with {@optionalArg font}.</p>
+   * <p>You can specify a font to load with {@code fontfile}. You'll need to also set the
+   * name of the font with {@code font}.</p>
    *
-   * <p>{@optionalArg width} is the number of pixels to word-wrap at. By default, lines of text
+   * <p>{@code width} is the number of pixels to word-wrap at. By default, lines of text
    * wider than this will be broken at word boundaries.
-   * Use {@optionalArg wrap} to set lines to wrap on word or character boundaries, or to
+   * Use {@code wrap} to set lines to wrap on word or character boundaries, or to
    * disable line breaks.</p>
    *
-   * <p>Set {@optionalArg justify} to turn on line justification.
-   * {@optionalArg align} can be used to set the alignment style for multi-line
+   * <p>Set {@code justify} to turn on line justification.
+   * {@code align} can be used to set the alignment style for multi-line
    * text to the low (left) edge centre, or high (right) edge. Note that the
-   * output image can be wider than {@optionalArg width} if there are no
-   * word breaks, or narrower if the lines don't break exactly at {@optionalArg width}.</p>
+   * output image can be wider than {@code width} if there are no
+   * word breaks, or narrower if the lines don't break exactly at {@code width}.</p>
    *
-   * <p>{@optionalArg height} is the maximum number of pixels high the generated text can be. This
-   * only takes effect when {@optionalArg dpi} is not set, and {@optionalArg width} is set, making a box.
-   * In this case, text will search for a {@optionalArg dpi} and set of line breaks
-   * which will just fit the text into {@optionalArg width} and {@optionalArg height}.</p>
+   * <p>{@code height} is the maximum number of pixels high the generated text can be. This
+   * only takes effect when {@code dpi} is not set, and {@code width} is set, making a box.
+   * In this case, text will search for a {@code dpi} and set of line breaks
+   * which will just fit the text into {@code width} and {@code height}.</p>
    *
-   * <p>You can use {@optionalArg autofitDpi} to read out the DPI selected by auto fit.</p>
+   * <p>You can use {@code autofitDpi} to read out the DPI selected by auto fit.</p>
    *
-   * <p>{@optionalArg dpi} sets the resolution to render at. "sans 12" at 72 dpi draws characters
+   * <p>{@code dpi} sets the resolution to render at. "sans 12" at 72 dpi draws characters
    * approximately 12 pixels high.</p>
    *
-   * <p>{@optionalArg spacing} sets the line spacing, in points. It would typically be something
+   * <p>{@code spacing} sets the line spacing, in points. It would typically be something
    * like font size times 1.2.</p>
    *
    * <p>You can read the coordinate of the top edge of the character from `Xoffset`
@@ -8945,42 +8945,42 @@ public final class VImage {
    * {@code filename}, for example `"x.gif[n=-1]"`.</p>
    *
    * <p>The output image will fit within a square of size {@code width} x {@code width}. You can
-   * specify a separate height with the {@optionalArg height} option. Set either {@code width} or
-   * {@optionalArg height} to a very large number to ignore that dimension.</p>
+   * specify a separate height with the {@code height} option. Set either {@code width} or
+   * {@code height} to a very large number to ignore that dimension.</p>
    *
-   * <p>If you set {@optionalArg crop}, then the output image will fill the whole of the {@code width} x
-   * {@optionalArg height} rectangle, with any excess cropped away. See {@link #smartcrop} for
+   * <p>If you set {@code crop}, then the output image will fill the whole of the {@code width} x
+   * {@code height} rectangle, with any excess cropped away. See {@link #smartcrop} for
    * details on the cropping strategy.</p>
    *
    * <p>Normally the operation will upsize or downsize as required to fit the image
-   * inside or outside the target size. If {@optionalArg size} is set
+   * inside or outside the target size. If {@code size} is set
    * to {@link app.photofox.vipsffm.enums.VipsSize#SIZE_UP}, the operation will only upsize and will just
    * copy if asked to downsize.
-   * If {@optionalArg size} is set
+   * If {@code size} is set
    * to {@link app.photofox.vipsffm.enums.VipsSize#SIZE_DOWN}, the operation will only downsize and will just
    * copy if asked to upsize.
-   * If {@optionalArg size} is {@link app.photofox.vipsffm.enums.VipsSize#SIZE_FORCE}, the image aspect ratio will be broken and the
+   * If {@code size} is {@link app.photofox.vipsffm.enums.VipsSize#SIZE_FORCE}, the image aspect ratio will be broken and the
    * image will be forced to fit the target.</p>
    *
    * <p>Normally any orientation tags on the input image (such as EXIF tags) are
-   * interpreted to rotate the image upright. If you set {@optionalArg noRotate} to {@code TRUE},
+   * interpreted to rotate the image upright. If you set {@code noRotate} to {@code TRUE},
    * these tags will not be interpreted.</p>
    *
-   * <p>Shrinking is normally done in sRGB colourspace. Set {@optionalArg linear} to shrink in
+   * <p>Shrinking is normally done in sRGB colourspace. Set {@code linear} to shrink in
    * linear light colourspace instead. This can give better results, but can
    * also be far slower, since tricks like JPEG shrink-on-load cannot be used in
    * linear space.</p>
    *
-   * <p>If you set {@optionalArg exportProfile} to the filename of an ICC profile, the image
+   * <p>If you set {@code exportProfile} to the filename of an ICC profile, the image
    * will be transformed to the target colourspace before writing to the
-   * output. You can also give an {@optionalArg importProfile} which will be used if the
+   * output. You can also give an {@code importProfile} which will be used if the
    * input image has no ICC profile, or if the profile embedded in the
    * input image is broken.</p>
    *
-   * <p>Use {@optionalArg intent} to set the rendering intent for any ICC transform. The default
+   * <p>Use {@code intent} to set the rendering intent for any ICC transform. The default
    * is {@link app.photofox.vipsffm.enums.VipsIntent#INTENT_RELATIVE}.</p>
    *
-   * <p>Use {@optionalArg failOn} to control the types of error that will cause loading to fail.
+   * <p>Use {@code failOn} to control the types of error that will cause loading to fail.
    * The default is {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}, ie. thumbnail is permissive.</p>
    *
    * <p>See also: {@code vips_thumbnail_buffer}.</p>
@@ -9012,7 +9012,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link #thumbnail}, but read from a memory buffer. One extra
-   * optional argument, {@optionalArg optionString}, lets you pass options to the underlying
+   * optional argument, {@code optionString}, lets you pass options to the underlying
    * loader.</p>
    *
    * <p>See also: {@link #thumbnail}.</p>
@@ -9079,7 +9079,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link #thumbnail}, but read from a source. One extra
-   * optional argument, {@optionalArg optionString}, lets you pass options to the underlying
+   * optional argument, {@code optionString}, lets you pass options to the underlying
    * loader.</p>
    *
    * <p>See also: {@link #thumbnail}.</p>
@@ -9115,29 +9115,29 @@ public final class VImage {
    * with extensions for tiled images, multipage images, XYZ and LAB colour
    * space, pyramidal images and JPEG compression, including CMYK and YCbCr.</p>
    *
-   * <p>{@optionalArg page} means load this page from the file. By default the first page (page
+   * <p>{@code page} means load this page from the file. By default the first page (page
    * 0) is read.</p>
    *
-   * <p>{@optionalArg n} means load this many pages. By default a single page is read. All the
+   * <p>{@code n} means load this many pages. By default a single page is read. All the
    * pages must have the same dimensions, and they are loaded as a tall, thin
    * "toilet roll" image. The {@code VIPS_META_PAGE_HEIGHT} metadata
    * tag gives the height in pixels of each page. Use -1 to load all pages.</p>
    *
-   * <p>Setting {@optionalArg autorotate} to {@code TRUE} will make the loader interpret the
+   * <p>Setting {@code autorotate} to {@code TRUE} will make the loader interpret the
    * orientation tag and automatically rotate the image appropriately during
    * load.</p>
    *
-   * <p>If {@optionalArg autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
+   * <p>If {@code autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
    * to the value of the orientation tag. Applications may read and interpret
    * this field
    * as they wish later in processing. See {@link #autorot}. Save
    * operations will use {@code VIPS_META_ORIENTATION}, if present, to set the
    * orientation of output images.</p>
    *
-   * <p>If {@optionalArg autorotate} is TRUE, the image will be rotated upright during load and
+   * <p>If {@code autorotate} is TRUE, the image will be rotated upright during load and
    * no metadata attached. This can be very slow.</p>
    *
-   * <p>If {@optionalArg subifd} is -1 (the default), the main image is selected for each page.
+   * <p>If {@code subifd} is -1 (the default), the main image is selected for each page.
    * If it is 0 or greater and there is a SUBIFD tag, the indexed SUBIFD is
    * selected. This can be used to read lower resolution layers from
    * bioformats-style image pyramids.</p>
@@ -9244,7 +9244,7 @@ public final class VImage {
    * "toilet roll" image. It will be
    * written as series of pages, each {@code VIPS_META_PAGE_HEIGHT} pixels high.</p>
    *
-   * <p>Use {@optionalArg compression} to set the tiff compression. Currently jpeg, packbits,
+   * <p>Use {@code compression} to set the tiff compression. Currently jpeg, packbits,
    * fax4, lzw, none, deflate, webp and zstd are supported. The default is no
    * compression.
    * JPEG compression is a good lossy compressor for photographs, packbits is
@@ -9252,60 +9252,60 @@ public final class VImage {
    * can do.</p>
    *
    * <p>XYZ images are automatically saved as libtiff LOGLUV with SGILOG compression.
-   * Float LAB images are saved as float CIELAB. Set {@optionalArg bitdepth} to save as 8-bit
+   * Float LAB images are saved as float CIELAB. Set {@code bitdepth} to save as 8-bit
    * CIELAB.</p>
    *
-   * <p>Use {@optionalArg Q} to set the JPEG compression factor. Default 75.</p>
+   * <p>Use {@code Q} to set the JPEG compression factor. Default 75.</p>
    *
-   * <p>User {@optionalArg level} to set the ZSTD compression level. Use {@optionalArg lossless} to
-   * set WEBP lossless mode on. Use {@optionalArg Q} to set the WEBP compression level.</p>
+   * <p>User {@code level} to set the ZSTD compression level. Use {@code lossless} to
+   * set WEBP lossless mode on. Use {@code Q} to set the WEBP compression level.</p>
    *
-   * <p>Use {@optionalArg predictor} to set the predictor for lzw, deflate and zstd compression.
+   * <p>Use {@code predictor} to set the predictor for lzw, deflate and zstd compression.
    * It defaults to {@link app.photofox.vipsffm.enums.VipsForeignTiffPredictor#FOREIGN_TIFF_PREDICTOR_HORIZONTAL}, meaning horizontal
    * differencing. Please refer to the libtiff
    * specifications for further discussion of various predictors.</p>
    *
-   * <p>Set {@optionalArg tile} to TRUE to write a tiled tiff.  By default tiff are written in
-   * strips. Use {@optionalArg tileWidth} and {@optionalArg tileHeight} to set the tile size. The defaiult
+   * <p>Set {@code tile} to TRUE to write a tiled tiff.  By default tiff are written in
+   * strips. Use {@code tileWidth} and {@code tileHeight} to set the tile size. The defaiult
    * is 128 by 128.</p>
    *
-   * <p>Set {@optionalArg pyramid} to write the image as a set of images, one per page, of
-   * decreasing size. Use {@optionalArg regionShrink} to set how images will be shrunk: by
+   * <p>Set {@code pyramid} to write the image as a set of images, one per page, of
+   * decreasing size. Use {@code regionShrink} to set how images will be shrunk: by
    * default each 2x2 block is just averaged, but you can set MODE or MEDIAN as
    * well.</p>
    *
    * <p>By default, the pyramid stops when the image is small enough to fit in one
-   * tile. Use {@optionalArg depth} to stop when the image fits in one pixel, or to only write
+   * tile. Use {@code depth} to stop when the image fits in one pixel, or to only write
    * a single layer.</p>
    *
-   * <p>Set {@optionalArg bitdepth} to save 8-bit uchar images as 1, 2 or 4-bit TIFFs.
+   * <p>Set {@code bitdepth} to save 8-bit uchar images as 1, 2 or 4-bit TIFFs.
    * In case of depth 1: Values &gt;128 are written as white, values &le;128 as black.
    * Normally vips will write MINISBLACK TIFFs where black is a 0 bit, but if you
-   * set {@optionalArg miniswhite}, it will use 0 for a white bit. Many pre-press applications
-   * only work with images which use this sense. {@optionalArg miniswhite} only affects one-bit
+   * set {@code miniswhite}, it will use 0 for a white bit. Many pre-press applications
+   * only work with images which use this sense. {@code miniswhite} only affects one-bit
    * images, it does nothing for greyscale images.
    * In case of depth 2: The same holds but values &lt; 64 are written as black.
    * For 64 &le; values &lt; 128 they are written as dark grey, for 128 &le; values &lt; 192
    * they are written as light gray and values above are written as white.
-   * In case {@optionalArg miniswhite} is set to true this behavior is inverted.
+   * In case {@code miniswhite} is set to true this behavior is inverted.
    * In case of depth 4: values &lt; 16 are written as black, and so on for the
-   * lighter shades. In case {@optionalArg miniswhite} is set to true this behavior is inverted.</p>
+   * lighter shades. In case {@code miniswhite} is set to true this behavior is inverted.</p>
    *
-   * <p>Use {@optionalArg resunit} to override the default resolution unit.
+   * <p>Use {@code resunit} to override the default resolution unit.
    * The default
    * resolution unit is taken from the header field
    * {@code VIPS_META_RESOLUTION_UNIT}. If this field is not set, then
    * VIPS defaults to cm.</p>
    *
-   * <p>Use {@optionalArg xres} and {@optionalArg yres} to override the default horizontal and vertical
+   * <p>Use {@code xres} and {@code yres} to override the default horizontal and vertical
    * resolutions. By default these values are taken from the VIPS image header.
    * libvips resolution is always in pixels per millimetre.</p>
    *
-   * <p>Set {@optionalArg bigtiff} to attempt to write a bigtiff. Bigtiff is a variant of the TIFF
+   * <p>Set {@code bigtiff} to attempt to write a bigtiff. Bigtiff is a variant of the TIFF
    * format that allows more than 4GB in a file.</p>
    *
-   * <p>Set {@optionalArg properties} to write all vips metadata to the IMAGEDESCRIPTION tag as
-   * xml. If {@optionalArg properties} is not set, the value of {@code VIPS_META_IMAGEDESCRIPTION} is
+   * <p>Set {@code properties} to write all vips metadata to the IMAGEDESCRIPTION tag as
+   * xml. If {@code properties} is not set, the value of {@code VIPS_META_IMAGEDESCRIPTION} is
    * used instead.</p>
    *
    * <p>The value of {@code VIPS_META_XMP_NAME} is written to
@@ -9316,10 +9316,10 @@ public final class VImage {
    * tag.</p>
    *
    * <p>By default, pyramid layers are saved as consecutive pages.
-   * Set {@optionalArg subifd} to save pyramid layers as sub-directories of the main image.
+   * Set {@code subifd} to save pyramid layers as sub-directories of the main image.
    * Setting this option can improve compatibility with formats like OME.</p>
    *
-   * <p>Set {@optionalArg premultiply} to save with premultiplied alpha. Some programs, such as
+   * <p>Set {@code premultiply} to save with premultiplied alpha. Some programs, such as
    * InDesign, will only work with premultiplied alpha.</p>
    *
    * <p>See also: {@link #tiffload}, {@code vips_image_write_to_file}.</p>
@@ -9455,26 +9455,26 @@ public final class VImage {
   /**
    * <p>This operation behaves rather like {@link #copy} between images
    * {@code in} and {@code out}, except that it keeps a cache of computed pixels.
-   * This cache is made of up to {@optionalArg maxTiles} tiles (a value of -1
-   * means any number of tiles), and each tile is of size {@optionalArg tileWidth}
-   * by {@optionalArg tileHeight} pixels.</p>
+   * This cache is made of up to {@code maxTiles} tiles (a value of -1
+   * means any number of tiles), and each tile is of size {@code tileWidth}
+   * by {@code tileHeight} pixels.</p>
    *
    * <p>Each cache tile is made with a single call to
    * {@code vips_region_prepare}.</p>
    *
-   * <p>When the cache fills, a tile is chosen for reuse. If {@optionalArg access} is
+   * <p>When the cache fills, a tile is chosen for reuse. If {@code access} is
    * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
-   * {@optionalArg access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}
+   * {@code access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}
    * the top-most tile is reused.</p>
    *
-   * <p>By default, {@optionalArg tileWidth} and {@optionalArg tileHeight} are 128 pixels, and the operation
-   * will cache up to 1,000 tiles. {@optionalArg access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
+   * <p>By default, {@code tileWidth} and {@code tileHeight} are 128 pixels, and the operation
+   * will cache up to 1,000 tiles. {@code access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
    *
    * <p>Normally, only a single thread at once is allowed to calculate tiles. If
-   * you set {@optionalArg threaded} to {@code TRUE}, tilecache will allow many threads to
+   * you set {@code threaded} to {@code TRUE}, tilecache will allow many threads to
    * calculate tiles at once, and share the cache between them.</p>
    *
-   * <p>Normally the cache is dropped when computation finishes. Set {@optionalArg persistent} to
+   * <p>Normally the cache is dropped when computation finishes. Set {@code persistent} to
    * {@code TRUE} to keep the cache between computations.</p>
    *
    * <p>See also: {@link #cache}, {@link #linecache}.</p>
@@ -9501,12 +9501,12 @@ public final class VImage {
    * levels. It is mostly designed for adjusting the L* part of a LAB image in
    * a way suitable for print work, but you can use it for other things too.</p>
    *
-   * <p>The curve is an unsigned 16-bit image with ({@optionalArg inMax} + 1) entries,
-   * each in the range [0, {@optionalArg outMax}].</p>
+   * <p>The curve is an unsigned 16-bit image with ({@code inMax} + 1) entries,
+   * each in the range [0, {@code outMax}].</p>
    *
-   * <p>{@optionalArg Lb}, {@optionalArg Lw} are expressed as 0-100, as in LAB colour space. You
-   * specify the scaling for the input and output images with the {@optionalArg inMax} and
-   * {@optionalArg outMax} parameters.</p>
+   * <p>{@code Lb}, {@code Lw} are expressed as 0-100, as in LAB colour space. You
+   * specify the scaling for the input and output images with the {@code inMax} and
+   * {@code outMax} parameters.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg in-max {@link VipsOption.Int} Size of LUT to build
    * @optionalArg out-max {@link VipsOption.Int} Maximum value in output LUT
@@ -9537,7 +9537,7 @@ public final class VImage {
    * output contains the Nth scanline, in order, from each input page.</p>
    *
    * <p>You can override the {@code VIPS_META_PAGE_HEIGHT} metadata item with the optional
-   * {@optionalArg pageHeight} parameter.</p>
+   * {@code pageHeight} parameter.</p>
    *
    * <p>{@code VIPS_META_PAGE_HEIGHT} in the output image is the number of pages in the
    * input image.</p>
@@ -9558,12 +9558,12 @@ public final class VImage {
 
   /**
    * <p>Unpremultiplies any alpha channel.
-   * Band {@optionalArg alphaBand} (by default the final band) contains the alpha and all
+   * Band {@code alphaBand} (by default the final band) contains the alpha and all
    * other bands are transformed as:</p>
    *
    * <pre>{@code 
-   *   alpha = (int) clip(0, in[in.bands - 1], {@optionalArg maxAlpha});
-   *   norm = (double) alpha / {@optionalArg maxAlpha};
+   *   alpha = (int) clip(0, in[in.bands - 1], {@code maxAlpha});
+   *   norm = (double) alpha / {@code maxAlpha};
    *   if (alpha == 0)
    *   	out = [0, ..., 0, alpha];
    *   else
@@ -9578,7 +9578,7 @@ public final class VImage {
    * {@link VipsBandFormat#FORMAT_FLOAT} unless the input format is {@link VipsBandFormat#FORMAT_DOUBLE}, in which
    * case the output is double as well.</p>
    *
-   * <p>{@optionalArg maxAlpha} has the default value 255, or 65535 for images tagged as
+   * <p>{@code maxAlpha} has the default value 255, or 65535 for images tagged as
    * {@link VipsInterpretation#INTERPRETATION_RGB16} or
    * {@link VipsInterpretation#INTERPRETATION_GREY16}.</p>
    *
@@ -9690,14 +9690,14 @@ public final class VImage {
   /**
    * <p>Read a WebP file into a VIPS image.</p>
    *
-   * <p>Use {@optionalArg page} to select a page to render, numbering from zero.</p>
+   * <p>Use {@code page} to select a page to render, numbering from zero.</p>
    *
-   * <p>Use {@optionalArg n} to select the number of pages to render. The default is 1. Pages are
+   * <p>Use {@code n} to select the number of pages to render. The default is 1. Pages are
    * rendered in a vertical column, with each individual page aligned to the
    * left. Set to -1 to mean "until the end of the document". Use {@link #grid}
    * to change page layout.</p>
    *
-   * <p>Use {@optionalArg scale} to specify a scale-on-load factor. For example, 2.0 to double
+   * <p>Use {@code scale} to specify a scale-on-load factor. For example, 2.0 to double
    * the size on load. Animated webp images don't support shrink-on-load, so a
    * further resize may be necessary.</p>
    *
@@ -9795,33 +9795,33 @@ public final class VImage {
    * <p>Write an image to a file in WebP format.</p>
    *
    * <p>By default, images are saved in lossy format, with
-   * {@optionalArg Q} giving the WebP quality factor. It has the range 0 - 100, with the
+   * {@code Q} giving the WebP quality factor. It has the range 0 - 100, with the
    * default 75.</p>
    *
-   * <p>Use {@optionalArg preset} to hint the image type to the lossy compressor. The default is
+   * <p>Use {@code preset} to hint the image type to the lossy compressor. The default is
    * {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset#FOREIGN_WEBP_PRESET_DEFAULT}.</p>
    *
-   * <p>Set {@optionalArg smartSubsample} to enable high quality chroma subsampling.</p>
+   * <p>Set {@code smartSubsample} to enable high quality chroma subsampling.</p>
    *
-   * <p>Use {@optionalArg alphaQ} to set the quality for the alpha channel in lossy mode. It has
+   * <p>Use {@code alphaQ} to set the quality for the alpha channel in lossy mode. It has
    * the range 1 - 100, with the default 100.</p>
    *
-   * <p>Use {@optionalArg effort} to control how much CPU time to spend attempting to
+   * <p>Use {@code effort} to control how much CPU time to spend attempting to
    * reduce file size. A higher value means more effort and therefore CPU time
    * should be spent. It has the range 0-6 and a default value of 4.</p>
    *
-   * <p>Set {@optionalArg lossless} to use lossless compression, or combine {@optionalArg nearLossless}
-   * with {@optionalArg Q} 80, 60, 40 or 20 to apply increasing amounts of preprocessing
+   * <p>Set {@code lossless} to use lossless compression, or combine {@code nearLossless}
+   * with {@code Q} 80, 60, 40 or 20 to apply increasing amounts of preprocessing
    * which improves the near-lossless compression ratio by up to 50%.</p>
    *
-   * <p>For animated webp output, {@optionalArg minSize} will try to optimize for minimum size.</p>
+   * <p>For animated webp output, {@code minSize} will try to optimize for minimum size.</p>
    *
-   * <p>For animated webp output, {@optionalArg kmax} sets the maximum number of frames between
-   * keyframes. Setting 0 means only keyframes. {@optionalArg kmin} sets the minimum number of
+   * <p>For animated webp output, {@code kmax} sets the maximum number of frames between
+   * keyframes. Setting 0 means only keyframes. {@code kmin} sets the minimum number of
    * frames between frames. Setting 0 means no keyframes. By default, keyframes
    * are disabled.</p>
    *
-   * <p>For animated webp output, {@optionalArg mixed} tries to improve the file size by mixing
+   * <p>For animated webp output, {@code mixed} tries to improve the file size by mixing
    * both lossy and lossless encoding.</p>
    *
    * <p>Use the metadata items `loop` and `delay` to set the number of
@@ -9962,10 +9962,10 @@ public final class VImage {
    *
    * <p>https://en.wikipedia.org/wiki/Worley_noise</p>
    *
-   * <p>Use {@optionalArg cellSize} to set the size of the cells from which the image is
+   * <p>Use {@code cellSize} to set the size of the cells from which the image is
    * constructed. The default is 256 x 256.</p>
    *
-   * <p>If {@code width} and {@code height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
+   * <p>If {@code width} and {@code height} are multiples of {@code cellSize}, the image will tessellate.</p>
    *
    * <p>See also: {@link #perlin}, {@link #fractsurf}, {@link #gaussnoise}.</p>
    * @param width Image width in pixels
@@ -9988,7 +9988,7 @@ public final class VImage {
 
   /**
    * <p>Slice an image up and move the segments about so that the pixel that was
-   * at 0, 0 is now at {@optionalArg x}, {@optionalArg y}. If {@optionalArg x} and {@optionalArg y} are not set, they default to the
+   * at 0, 0 is now at {@code x}, {@code y}. If {@code x} and {@code y} are not set, they default to the
    * centre of the image.</p>
    *
    * <p>See also: {@link #embed}, {@link #replicate}.</p>
@@ -10014,7 +10014,7 @@ public final class VImage {
    * <p>You can make any image where the value of a pixel is a function of its (x,
    * y) coordinate by combining this operator with the arithmetic operators.</p>
    *
-   * <p>Set {@optionalArg csize}, {@optionalArg dsize}, {@optionalArg esize} to generate higher dimensions and add more
+   * <p>Set {@code csize}, {@code dsize}, {@code esize} to generate higher dimensions and add more
    * bands. The extra dimensions are placed down the vertical axis. Use
    * {@link #grid} to change the layout.</p>
    *
@@ -10041,7 +10041,7 @@ public final class VImage {
   /**
    * <p>Create a one-band image of a zone plate.</p>
    *
-   * <p>Pixels are normally in [-1, +1], set {@optionalArg uchar} to output [0, 255].</p>
+   * <p>Pixels are normally in [-1, +1], set {@code uchar} to output [0, 255].</p>
    *
    * <p>See also: {@link #eye}, {@link #xyz}.</p>
    * @param width Image width in pixels

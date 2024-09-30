@@ -26,6 +26,7 @@ java {
 
 tasks.withType<Javadoc> {
     this.options.overview = "../README.md"
+    (options as StandardJavadocDocletOptions).tags("optionalArg:a:\"Optional arguments:\"")
 
     doLast {
         copy {

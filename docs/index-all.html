@@ -118,7 +118,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#affine(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">affine(List&lt;Double&gt;, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">This operator performs an affine transform on an image using .</div>
+<div class="block">This operator performs an affine transform on an image using <code>interpolate</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsAlign.html#ALIGN_CENTRE" class="member-name-link">ALIGN_CENTRE</a> - Enum constant in enum class app.photofox.vipsffm.enums.<a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsAlign.html" title="enum class in app.photofox.vipsffm.enums">VipsAlign</a></dt>
 <dd>&nbsp;</dd>
@@ -1480,7 +1480,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sorts the images <code>in</code> band-element-wise, then outputs an
  image in which each band element is selected from the sorted list by the
-  parameter.</div>
+ <code>index</code> parameter.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#bandunfold(app.photofox.vipsffm.VipsOption...)" class="member-name-link">bandunfold(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -2187,7 +2187,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#colourspace(app.photofox.vipsffm.enums.VipsInterpretation,app.photofox.vipsffm.VipsOption...)" class="member-name-link">colourspace(VipsInterpretation, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">This operation looks at the interpretation field of <code>in</code> (or uses
- , if set) and runs
+ <code>sourceSpace</code>, if set) and runs
  a set of colourspace conversion functions to move it to <code>space</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsCombine.html#COMBINE_LAST" class="member-name-link">COMBINE_LAST</a> - Enum constant in enum class app.photofox.vipsffm.enums.<a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsCombine.html" title="enum class in app.photofox.vipsffm.enums">VipsCombine</a></dt>
@@ -2206,7 +2206,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#compass(app.photofox.vipsffm.VipsOption...)" class="member-name-link">compass(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">This convolves <code>in</code> with <code>mask</code>  times, rotating <code>mask</code> by 
+<div class="block">This convolves <code>in</code> with <code>mask</code> <code>times</code> times, rotating <code>mask</code> by <code>angle</code>
  each time.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsCompassDirection.html#COMPASS_DIRECTION_CENTRE" class="member-name-link">COMPASS_DIRECTION_CENTRE</a> - Enum constant in enum class app.photofox.vipsffm.enums.<a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsCompassDirection.html" title="enum class in app.photofox.vipsffm.enums">VipsCompassDirection</a></dt>
@@ -4834,7 +4834,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#fillNearest(app.photofox.vipsffm.VipsOption...)" class="member-name-link">fillNearest(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">Fill outwards from every non-zero pixel in <code>in</code>, setting pixels in 
+<div class="block">Fill outwards from every non-zero pixel in <code>in</code>, setting pixels in <code>distance</code>
  and <code>@value</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.html#finalize(java.lang.foreign.MemorySegment)" class="member-name-link">finalize(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.html" title="class in app.photofox.vipsffm.jextract">_GObjectClass</a></dt>
@@ -5216,7 +5216,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#flatten(app.photofox.vipsffm.VipsOption...)" class="member-name-link">flatten(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Take the last band of <code>in</code> as an alpha and use it to blend the
- remaining channels with .</div>
+ remaining channels with <code>background</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#flip(app.photofox.vipsffm.enums.VipsDirection,app.photofox.vipsffm.VipsOption...)" class="member-name-link">flip(VipsDirection, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -10766,7 +10766,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#gamma(app.photofox.vipsffm.VipsOption...)" class="member-name-link">gamma(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">Calculate <code>in</code> ** (1 / ), normalising to the maximum range of the
+<div class="block">Calculate <code>in</code> ** (1 / <code>exponent</code>), normalising to the maximum range of the
  input type.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#gaussblur(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">gaussblur(double, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
@@ -18904,7 +18904,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#similarity(app.photofox.vipsffm.VipsOption...)" class="member-name-link">similarity(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">This operator calls <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#affine(java.util.List,app.photofox.vipsffm.VipsOption...)"><code>VImage.affine(java.util.List&lt;java.lang.Double&gt;, app.photofox.vipsffm.VipsOption...)</code></a> for you, calculating the matrix for the
- affine transform from  and .</div>
+ affine transform from <code>scale</code> and <code>angle</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#sines(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">sines(int, int, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -30568,7 +30568,7 @@ Magick save: true"
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#wrap(app.photofox.vipsffm.VipsOption...)" class="member-name-link">wrap(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Slice an image up and move the segments about so that the pixel that was
- at 0, 0 is now at , .</div>
+ at 0, 0 is now at <code>x</code>, <code>y</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#write(app.photofox.vipsffm.VImage)" class="member-name-link">write(VImage)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>
