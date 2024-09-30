@@ -28,7 +28,9 @@ echo "Found libvips entry at \"$LIBVIPS_ENTRY_PATH\"..."
 
 echo "Clearing generated files..."
 
-rm -rf core/src/main/java/app/photofox/vipsffm/jextract || true
+cp core/src/main/java/app/photofox/vipsffm/jextract/package-info.java /tmp/jextract-package-info.java
+rm -r core/src/main/java/app/photofox/vipsffm/jextract/* || true
+mv /tmp/jextract-package-info.java core/src/main/java/app/photofox/vipsffm/jextract/package-info.java
 
 echo "Dumping all discovered includes..."
 
@@ -80,3 +82,5 @@ set -x
 ./gradlew clean generator:build generator:shadowJar
 
 DYLD_LIBRARY_PATH=/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
+
+./build_docs.sh

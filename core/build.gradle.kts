@@ -16,10 +16,23 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(22))
+        languageVersion.set(JavaLanguageVersion.of(23))
     }
+    sourceCompatibility = JavaVersion.VERSION_22 // intentionally kept at 22
+    targetCompatibility = JavaVersion.VERSION_22
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks.withType<Javadoc> {
+    this.options.overview = "../README.md"
+
+    doLast {
+        copy {
+            from("build/docs/javadoc")
+            into("../docs")
+        }
+    }
 }
 
 testing {

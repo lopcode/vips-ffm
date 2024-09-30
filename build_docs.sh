@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-mkdocs build
+./gradlew clean core:javadoc
