@@ -302,7 +302,7 @@ object GenerateVClasses {
 
         val referencedClassNames = mutableListOf<ClassName>()
 
-        girDoc = girDoc.replace("\\* @[A-Za-z0-9-_]*:(.)*\n([ ]+([A-Za-z0-9-_]*\n))?".toRegex(), "")
+        girDoc = girDoc.replace("Optional arguments:\n\n?(\\*?(.+)\n)+".toRegex(), "")
 
         girDoc = girDoc.replace("@([A-Za-z0-9-_]*)".toRegex()) { match ->
             val referencedName = match.groups[1]!!.value
@@ -358,8 +358,7 @@ object GenerateVClasses {
             }
         }
 
-        girDoc = "<p>" + girDoc.replace("Optional arguments:\n\n".toRegex(), "")
-            .replace("\n\n", "</p>\n\n<p>")
+        girDoc = "<p>" + girDoc.replace("\n\n", "</p>\n\n<p>")
             .trim() + "</p>"
 
         girDoc = girDoc.replace("<(link|function)".toRegex(), "<code")

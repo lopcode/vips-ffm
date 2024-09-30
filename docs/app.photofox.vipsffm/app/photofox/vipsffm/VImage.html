@@ -1243,13 +1243,13 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#jpegloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">jpegloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">during load</div>
+<div class="block">Read a JPEG-formatted memory block into a VIPS image.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#jpegloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">jpegloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">during load</div>
+<div class="block">Read a JPEG-formatted memory block into a VIPS image.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#jpegsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">jpegsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
@@ -2215,19 +2215,19 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">during load</div>
+<div class="block">Read a TIFF file into a VIPS image.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">during load</div>
+<div class="block">Read a TIFF-formatted memory block into a VIPS image.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">during load</div>
+<div class="block">Exactly as <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
@@ -6686,9 +6686,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">jpegloadBuffer</span><wbr><span class="parameters">(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</span>
                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>during load</p>
-
- <p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
+<div class="block"><p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
  <a href="#jpegload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>jpegload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a memory buffer.</p>
 
  <p>You must not free the buffer while  is active. The
@@ -6714,9 +6712,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">jpegloadSource</span><wbr><span class="parameters">(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</span>
                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>during load</p>
-
- <p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
+<div class="block"><p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
  <a href="#jpegload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>jpegload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</p>
 
  <p>See also: <a href="#jpegload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>jpegload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>.</p></div>
@@ -11086,9 +11082,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">tiffload</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</span>
                 throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>during load</p>
-
- <p>Read a TIFF file into a VIPS image. It is a full baseline TIFF 6 reader,
+<div class="block"><p>Read a TIFF file into a VIPS image. It is a full baseline TIFF 6 reader,
  with extensions for tiled images, multipage images, XYZ and LAB colour
  space, pyramidal images and JPEG compression, including CMYK and YCbCr.</p>
 
@@ -11146,9 +11140,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">tiffloadBuffer</span><wbr><span class="parameters">(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</span>
                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>during load</p>
-
- <p>Read a TIFF-formatted memory block into a VIPS image. Exactly as
+<div class="block"><p>Read a TIFF-formatted memory block into a VIPS image. Exactly as
  <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a memory source.</p>
 
  <p>You must not free the buffer while  is active. The
@@ -11174,9 +11166,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">tiffloadSource</span><wbr><span class="parameters">(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</span>
                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>during load</p>
-
- <p>Exactly as <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</p>
+<div class="block"><p>Exactly as <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</p>
 
  <p>See also: <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>.</p></div>
 <dl class="notes">
