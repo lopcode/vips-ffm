@@ -311,11 +311,7 @@ object GenerateVClasses {
                 referencedName == girDocsNormalisedName
             }
             if (matchedArg != null) {
-                if (matchedArg.isRequired) {
-                    "{@code ${matchedArg.name.fromSnakeToJavaStyle()}}"
-                } else {
-                    "{@optionalArg ${matchedArg.name.fromSnakeToJavaStyle()}}"
-                }
+                "{@code ${matchedArg.name.fromSnakeToJavaStyle()}}"
             } else {
                 "{@code @$referencedName}"
             }
