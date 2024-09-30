@@ -99,7 +99,7 @@ public final class VImage {
    * fallback profile will be used.</p>
    *
    * <p>Conversion is to D65 XYZ with relative intent. If you need more control
-   * over the process, use <code>vips_icc_import</code> instead.</p>
+   * over the process, use {@code vips_icc_import} instead.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage CMYK2XYZ(VipsOption... args) throws VipsError {
@@ -317,7 +317,7 @@ public final class VImage {
    * <p>Turn XYZ to CMYK.</p>
    *
    * <p>Conversion is from D65 XYZ with relative intent. If you need more control
-   * over the process, use <code>vips_icc_export</code> instead.</p>
+   * over the process, use {@code vips_icc_export} instead.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage XYZ2CMYK(VipsOption... args) throws VipsError {
@@ -409,7 +409,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates <code>@in1</code> + <code>@in2</code> and writes the result to {@param out}.</p>
+   * <p>This operation calculates {@code @in1} + {@code @in2} and writes the result to {@code out}.</p>
    *
    * <p>If the images differ in size, the smaller image is enlarged to match the
    * larger by adding zero pixels along the bottom and right.</p>
@@ -504,8 +504,8 @@ public final class VImage {
    * <p>The transform is:</p>
    *
    * <pre>{@code 
-   *   X = <code>@a</code> * (x + {@optionalArg idx}) + <code>@b</code> * (y + {@optionalArg idy}) + {@optionalArg odx}
-   *   Y = <code>@c</code> * (x + {@optionalArg idx}) + <code>@d</code> * (y + {@optionalArg idy}) + <code>@doy</code>
+   *   X = {@code @a} * (x + {@optionalArg idx}) + {@code @b} * (y + {@optionalArg idy}) + {@optionalArg odx}
+   *   Y = {@code @c} * (x + {@optionalArg idx}) + {@code @d} * (y + {@optionalArg idy}) + {@code @doy}
    *
    *  where:
    *     x and y are the coordinates in input image.
@@ -514,7 +514,7 @@ public final class VImage {
    * }</pre>
    *
    * <p>The section of the output space defined by {@optionalArg oarea} is written to
-   * {@param out}. {@optionalArg oarea} is a four-element int array of left, top, width, height.
+   * {@code out}. {@optionalArg oarea} is a four-element int array of left, top, width, height.
    * By default {@optionalArg oarea} is just large enough to cover the whole of the
    * transformed input image.</p>
    *
@@ -559,7 +559,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Load an Analyze 6.0 file. If {@param filename} is "fred.img", this will look for
+   * <p>Load an Analyze 6.0 file. If {@code filename} is "fred.img", this will look for
    * an image header called "fred.hdr" and pixel data in "fred.img". You can
    * also load "fred" or "fred.hdr".</p>
    *
@@ -567,7 +567,7 @@ public final class VImage {
    * loaded lazilly and byte-swapped, if necessary. The Analyze metadata is read
    * and attached.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -590,9 +590,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Lay out the images in {@param in} in a grid. The grid is {@optionalArg across} images across and
-   * however high is necessary to use up all of {@param in}. Images are set down
-   * left-to-right and top-to-bottom. {@optionalArg across} defaults to <code>@n</code>.</p>
+   * <p>Lay out the images in {@code in} in a grid. The grid is {@optionalArg across} images across and
+   * however high is necessary to use up all of {@code in}. Images are set down
+   * left-to-right and top-to-bottom. {@optionalArg across} defaults to {@code @n}.</p>
    *
    * <p>Each input image is placed with a box of size {@optionalArg hspacing} by {@optionalArg vspacing}
    * pixels and cropped. These default to the largest width and largest height
@@ -642,7 +642,7 @@ public final class VImage {
 
   /**
    * <p>Look at the image metadata and rotate and flip the image to make it
-   * upright. The <code>VIPS_META_ORIENTATION</code> tag is removed from {@param out} to prevent
+   * upright. The {@code VIPS_META_ORIENTATION} tag is removed from {@code out} to prevent
    * accidental double rotation.</p>
    *
    * <p>Read {@optionalArg angle} to find the amount the image was rotated by. Read {@optionalArg flip} to
@@ -695,7 +695,7 @@ public final class VImage {
    * <p>This operation is useful in conjunction with {@link #relational}. You can use
    * it to see if all image bands match exactly.</p>
    *
-   * <p>See also: <code>vips_boolean_const</code>.</p>
+   * <p>See also: {@code vips_boolean_const}.</p>
    * @param boolean1 {@link VipsOperationBoolean} Boolean to perform
    * @param args Array of VipsOption to apply to this operation
    */
@@ -799,7 +799,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Sorts the images {@param in} band-element-wise, then outputs an
+   * <p>Sorts the images {@code in} band-element-wise, then outputs an
    * image in which each band element is selected from the sorted list by the
    * {@optionalArg index} parameter. For example, if {@optionalArg index}
    * is zero, then each output band element will be the minimum of all the
@@ -891,7 +891,7 @@ public final class VImage {
    * Smallest common format in
    * <code>arithmetic</code>).</p>
    *
-   * <p>See also: <code>vips_boolean_const</code>.</p>
+   * <p>See also: {@code vips_boolean_const}.</p>
    * @param boolean1 {@link VipsOperationBoolean} Boolean to perform
    * @param args Array of VipsOption to apply to this operation
    */
@@ -922,7 +922,7 @@ public final class VImage {
    * element and the image only has a single band, the result is a many-band
    * image where each band corresponds to one array element.</p>
    *
-   * <p>See also: <code>vips_boolean</code>, <code>vips_boolean_const1</code>.</p>
+   * <p>See also: {@code vips_boolean}, {@code vips_boolean_const1}.</p>
    * @param boolean1 {@link VipsOperationBoolean} Boolean to perform
    * @param c Array of constants
    * @param args Array of VipsOption to apply to this operation
@@ -1012,13 +1012,13 @@ public final class VImage {
 
   /**
    * <p>This operation behaves rather like {@link #copy} between images
-   * {@param in} and {@param out}, except that it keeps a cache of computed pixels.
+   * {@code in} and {@code out}, except that it keeps a cache of computed pixels.
    * This cache is made of up to {@optionalArg maxTiles} tiles (a value of -1
    * means any number of tiles), and each tile is of size {@optionalArg tileWidth}
    * by {@optionalArg tileHeight} pixels. By default it will cache 250 128 x 128 pixel tiles,
    * enough for two 1920 x 1080 images.</p>
    *
-   * <p>This operation is a thin wrapper over <code>vips_sink_screen</code>, see the
+   * <p>This operation is a thin wrapper over {@code vips_sink_screen}, see the
    * documentation for that operation for details.</p>
    *
    * <p>It uses a set of background threads to calculate pixels and the various
@@ -1075,18 +1075,18 @@ public final class VImage {
   }
 
   /**
-   * <p>Use values in {@param index} to select pixels from {@param cases}.</p>
+   * <p>Use values in {@code index} to select pixels from {@code cases}.</p>
    *
-   * <p>{@param index} must have one band. {@param cases} can have up to 256 elements. Values in
-   * {@param index} greater than or equal to <code>@n</code> use the final image in {@param cases}. The
-   * images in {@param cases} must have either one band or the same number of bands.
-   * The output image is the same size as {@param index}. Images in {@param cases} are
+   * <p>{@code index} must have one band. {@code cases} can have up to 256 elements. Values in
+   * {@code index} greater than or equal to {@code @n} use the final image in {@code cases}. The
+   * images in {@code cases} must have either one band or the same number of bands.
+   * The output image is the same size as {@code index}. Images in {@code cases} are
    * expanded to the smallest common format and number of bands.</p>
    *
-   * <p>Combine this with <code>vips_switch</code> to make something like a case statement or
+   * <p>Combine this with {@code vips_switch} to make something like a case statement or
    * a multi-way {@link #ifthenelse}.</p>
    *
-   * <p>See also: {@link #maplut}, <code>vips_switch</code>, {@link #ifthenelse}.</p>
+   * <p>See also: {@link #maplut}, {@code vips_switch}, {@link #ifthenelse}.</p>
    * @param cases Array of case images
    * @param args Array of VipsOption to apply to this operation
    */
@@ -1103,18 +1103,18 @@ public final class VImage {
   }
 
   /**
-   * <p>Convert {@param in} to {@param format}. You can convert between any pair of formats.
+   * <p>Convert {@code in} to {@code format}. You can convert between any pair of formats.
    * Floats are truncated (not rounded). Out of range values are clipped.</p>
    *
    * <p>Casting from complex to real returns the real part.</p>
    *
-   * <p>If {@optionalArg shift} is <code>TRUE</code>, integer values are shifted up and down. For example,
+   * <p>If {@optionalArg shift} is {@code TRUE}, integer values are shifted up and down. For example,
    * casting from unsigned 8 bit to unsigned 16 bit would
    * shift every value left by 8 bits. The bottom bit is copied into the new
    * bits, so 255 would become 65535.</p>
    *
-   * <p>See also: {@link #scale}, {@link #complexform}, <code>vips_real</code>, <code>vips_imag</code>,
-   * <code>vips_cast_uchar</code>, {@link #msb}.</p>
+   * <p>See also: {@link #scale}, {@link #complexform}, {@code vips_real}, {@code vips_imag},
+   * {@code vips_cast_uchar}, {@link #msb}.</p>
    * @param format {@link VipsBandFormat} Format to cast to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shift {@link VipsOption.Boolean} Shift integer values up and down
@@ -1132,16 +1132,16 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation looks at the interpretation field of {@param in} (or uses
+   * <p>This operation looks at the interpretation field of {@code in} (or uses
    * {@optionalArg sourceSpace}, if set) and runs
-   * a set of colourspace conversion functions to move it to {@param space}.</p>
+   * a set of colourspace conversion functions to move it to {@code space}.</p>
    *
    * <p>For example, given an image tagged as {@link VipsInterpretation#INTERPRETATION_YXY}, running
-   * colourspace with {@param space} set to {@link VipsInterpretation#INTERPRETATION_LAB} will
+   * colourspace with {@code space} set to {@link VipsInterpretation#INTERPRETATION_LAB} will
    * convert with {@link #Yxy2XYZ} and {@link #XYZ2Lab}.</p>
    *
-   * <p>See also: <code>vips_colourspace_issupported</code>,
-   * <code>vips_image_guess_interpretation</code>.</p>
+   * <p>See also: {@code vips_colourspace_issupported},
+   * {@code vips_image_guess_interpretation}.</p>
    * @param space {@link VipsInterpretation} Destination color space
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg source-space {@link VipsOption.Enum} {@link VipsInterpretation} Source color space
@@ -1159,7 +1159,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This convolves {@param in} with {@param mask} {@optionalArg times} times, rotating {@param mask} by {@optionalArg angle}
+   * <p>This convolves {@code in} with {@code mask} {@optionalArg times} times, rotating {@code mask} by {@optionalArg angle}
    * each time. By default, it comvolves twice, rotating by 90 degrees, taking
    * the maximum result.</p>
    *
@@ -1227,10 +1227,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Compose two real images to make a complex image. If either {@param left} or {@param right}
-   * are {@link VipsBandFormat#FORMAT_DOUBLE}, {@param out} is {@link VipsBandFormat#FORMAT_DPCOMPLEX}. Otherwise {@param out}
-   * is {@link VipsBandFormat#FORMAT_COMPLEX}. {@param left} becomes the real component of {@param out} and
-   * {@param right} the imaginary.</p>
+   * <p>Compose two real images to make a complex image. If either {@code left} or {@code right}
+   * are {@link VipsBandFormat#FORMAT_DOUBLE}, {@code out} is {@link VipsBandFormat#FORMAT_DPCOMPLEX}. Otherwise {@code out}
+   * is {@link VipsBandFormat#FORMAT_COMPLEX}. {@code left} becomes the real component of {@code out} and
+   * {@code right} the imaginary.</p>
    *
    * <p>If the number of bands differs, one of the images
    * must have one band. In this case, an n-band image is formed from the
@@ -1276,17 +1276,17 @@ public final class VImage {
   /**
    * <p>Composite an array of images together.</p>
    *
-   * <p>Images are placed in a stack, with {@param in}[0] at the bottom and {@param in}[<code>@n</code> - 1] at
+   * <p>Images are placed in a stack, with {@code in}[0] at the bottom and {@code in}[{@code @n} - 1] at
    * the top. Pixels are blended together working from the bottom upwards, with
    * the blend mode at each step being set by the corresponding #VipsBlendMode
-   * in {@param mode}.</p>
+   * in {@code mode}.</p>
    *
    * <p>Images are transformed to a compositing space before processing. This is
-   * <code>VIPS_INTERPRETATION_</code>sRGB, {@link VipsInterpretation#INTERPRETATION_B_W},
+   * {@code VIPS_INTERPRETATION_}sRGB, {@link VipsInterpretation#INTERPRETATION_B_W},
    * {@link VipsInterpretation#INTERPRETATION_RGB16}, or {@link VipsInterpretation#INTERPRETATION_GREY16}
    * by default, depending on
    * how many bands and bits the input images have. You can select any other
-   * space, such as {@link VipsInterpretation#INTERPRETATION_LAB} or <code>VIPS_INTERPRETATION_</code>scRGB.</p>
+   * space, such as {@link VipsInterpretation#INTERPRETATION_LAB} or {@code VIPS_INTERPRETATION_}scRGB.</p>
    *
    * <p>The output image is in the compositing space. It will always be
    * {@link VipsBandFormat#FORMAT_FLOAT} unless one of the inputs is {@link VipsBandFormat#FORMAT_DOUBLE}, in
@@ -1328,7 +1328,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Composite {@param overlay} on top of {@param base} with {@param mode}. See {@link #composite}.</p>
+   * <p>Composite {@code overlay} on top of {@code base} with {@code mode}. See {@link #composite}.</p>
    * @param mode {@link VipsBlendMode} VipsBlendMode to join with
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg x {@link VipsOption.Int} X position of overlay
@@ -1353,22 +1353,22 @@ public final class VImage {
   /**
    * <p>Convolution.</p>
    *
-   * <p>Perform a convolution of {@param in} with {@param mask}.
+   * <p>Perform a convolution of {@code in} with {@code mask}.
    * Each output pixel is calculated as:</p>
    *
    * <pre>{@code 
    * sigma[i]{pixel[i] * mask[i]} / scale + offset
    * }</pre>
    *
-   * <p>where scale and offset are part of {@param mask}.</p>
+   * <p>where scale and offset are part of {@code mask}.</p>
    *
    * <p>By default, {@optionalArg precision} is
    * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_FLOAT}. The output image
-   * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@param in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
-   * {@param out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
+   * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@code in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
+   * {@code out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
    *
    * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, then
-   * elements of {@param mask} are converted to
+   * elements of {@code mask} are converted to
    * integers before convolution, using rint(),
    * and the output image
    * always has the same #VipsBandFormat as the input image.</p>
@@ -1377,17 +1377,17 @@ public final class VImage {
    * conv uses a fast vector path based on
    * half-float arithmetic. This can produce slightly different results.
    * Disable the vector path with `--vips-novector` or `VIPS_NOVECTOR` or
-   * <code>vips_vector_set_enabled</code>.</p>
+   * {@code vips_vector_set_enabled}.</p>
    *
    * <p>If {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_APPROXIMATE} then, like
-   * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, {@param mask} is converted to int before convolution, and
+   * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, {@code mask} is converted to int before convolution, and
    * the output image
    * always has the same #VipsBandFormat as the input image.</p>
    *
    * <p>Larger values for {@optionalArg layers} give more accurate
    * results, but are slower. As {@optionalArg layers} approaches the mask radius, the
    * accuracy will become close to exact convolution and the speed will drop to
-   * match. For many large masks, such as Gaussian, <code>@n_layers</code> need be only 10% of
+   * match. For many large masks, such as Gaussian, {@code @n_layers} need be only 10% of
    * this value and accuracy will still be good.</p>
    *
    * <p>Smaller values of {@optionalArg cluster} will give more accurate results, but be slower
@@ -1412,13 +1412,13 @@ public final class VImage {
   }
 
   /**
-   * <p>Perform an approximate integer convolution of {@param in} with {@param mask}.
+   * <p>Perform an approximate integer convolution of {@code in} with {@code mask}.
    * This is a low-level operation, see
    * {@link #conv} for something more convenient.</p>
    *
    * <p>The output image
    * always has the same #VipsBandFormat as the input image.
-   * Elements of {@param mask} are converted to
+   * Elements of {@code mask} are converted to
    * integers before convolution.</p>
    *
    * <p>Larger values for {@optionalArg layers} give more accurate
@@ -1451,10 +1451,10 @@ public final class VImage {
    * <p>Approximate separable integer convolution. This is a low-level operation, see
    * {@link #convsep} for something more convenient.</p>
    *
-   * <p>The image is convolved twice: once with {@param mask} and then again with {@param mask}
+   * <p>The image is convolved twice: once with {@code mask} and then again with {@code mask}
    * rotated by 90 degrees.
-   * {@param mask} must be 1xn or nx1 elements.
-   * Elements of {@param mask} are converted to
+   * {@code mask} must be 1xn or nx1 elements.
+   * Elements of {@code mask} are converted to
    * integers before convolution.</p>
    *
    * <p>Larger values for {@optionalArg layers} give more accurate
@@ -1486,14 +1486,14 @@ public final class VImage {
    * <p>Convolution. This is a low-level operation, see {@link #conv} for something
    * more convenient.</p>
    *
-   * <p>Perform a convolution of {@param in} with {@param mask}.
+   * <p>Perform a convolution of {@code in} with {@code mask}.
    * Each output pixel is
    * calculated as sigma[i]{pixel[i] * mask[i]} / scale + offset, where scale
-   * and offset are part of {@param mask}.</p>
+   * and offset are part of {@code mask}.</p>
    *
    * <p>The convolution is performed with floating-point arithmetic. The output image
-   * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@param in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
-   * {@param out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
+   * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@code in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
+   * {@code out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
    *
    * <p>See also: {@link #conv}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -1514,7 +1514,7 @@ public final class VImage {
    * <p>Integer convolution. This is a low-level operation, see {@link #conv} for
    * something more convenient.</p>
    *
-   * <p>{@param mask} is converted to an integer mask with rint() of each element, rint of
+   * <p>{@code mask} is converted to an integer mask with rint() of each element, rint of
    * scale and rint of offset. Each output pixel is then calculated as</p>
    *
    * <pre>{@code 
@@ -1526,7 +1526,7 @@ public final class VImage {
    * <p>For {@link VipsBandFormat#FORMAT_UCHAR} images, convi uses a fast vector path based on
    * half-float arithmetic. This can produce slightly different results.
    * Disable the vector path with `--vips-novector` or `VIPS_NOVECTOR` or
-   * <code>vips_vector_set_enabled</code>.</p>
+   * {@code vips_vector_set_enabled}.</p>
    *
    * <p>See also: {@link #conv}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -1544,12 +1544,12 @@ public final class VImage {
   }
 
   /**
-   * <p>Perform a separable convolution of {@param in} with {@param mask}.
+   * <p>Perform a separable convolution of {@code in} with {@code mask}.
    * See {@link #conv} for a detailed description.</p>
    *
    * <p>The mask must be 1xn or nx1 elements.</p>
    *
-   * <p>The image is convolved twice: once with {@param mask} and then again with {@param mask}
+   * <p>The image is convolved twice: once with {@code mask} and then again with {@code mask}
    * rotated by 90 degrees. This is much faster for certain types of mask
    * (gaussian blur, for example) than doing a full 2D convolution.</p>
    *
@@ -1654,7 +1654,7 @@ public final class VImage {
    * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>, {@link #bandfold}.</p>
+   * <p>See also: {@code vips_image_new_from_file}, {@link #bandfold}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg skip {@link VipsOption.Int} Skip this many lines at the start of the file
@@ -1710,7 +1710,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Writes the pixels in {@param in} to the {@param filename} as CSV (comma-separated values).
+   * <p>Writes the pixels in {@code in} to the {@code filename} as CSV (comma-separated values).
    * The image is written
    * one line of text per scanline. Complex numbers are written as
    * "(real,imaginary)" and will need extra parsing I guess. Only the first band
@@ -1719,7 +1719,7 @@ public final class VImage {
    * <p>{@optionalArg separator} gives the string to use to separate numbers in the output.
    * The default is "\\t" (tab).</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg separator {@link VipsOption.String} Separator characters
@@ -1816,7 +1816,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation finds the standard deviation of all pixels in {@param in}. It
+   * <p>This operation finds the standard deviation of all pixels in {@code in}. It
    * operates on all bands of the input image: use {@link #stats} if you need
    * to calculate an average for each band.</p>
    *
@@ -1836,8 +1836,8 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates <code>@in1</code> / <code>@in2</code> and writes the result to {@param out}. If any
-   * pixels in <code>@in2</code> are zero, the corresponding pixel in {@param out} is also zero.</p>
+   * <p>This operation calculates {@code @in1} / {@code @in2} and writes the result to {@code out}. If any
+   * pixels in {@code @in2} are zero, the corresponding pixel in {@code out} is also zero.</p>
    *
    * <p>If the images differ in size, the smaller image is enlarged to match the
    * larger by adding zero pixels along the bottom and right.</p>
@@ -1911,7 +1911,7 @@ public final class VImage {
    * <p>In other words, the output type is just large enough to hold the whole
    * range of possible values.</p>
    *
-   * <p>See also: {@link #multiply}, {@link #linear}, <code>vips_pow</code>.</p>
+   * <p>See also: {@link #multiply}, {@link #linear}, {@code vips_pow}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage divide(VipsOption... args) throws VipsError {
@@ -1927,12 +1927,12 @@ public final class VImage {
   }
 
   /**
-   * <p>Draws a circle on {@param image}. If {@optionalArg fill} is <code>TRUE</code> then the circle is filled,
+   * <p>Draws a circle on {@code image}. If {@optionalArg fill} is {@code TRUE} then the circle is filled,
    * otherwise a 1-pixel-wide perimeter is drawn.</p>
    *
-   * <p>{@param ink} is an array of double containing values to draw.</p>
+   * <p>{@code ink} is an array of double containing values to draw.</p>
    *
-   * <p>See also: <code>vips_draw_circle1</code>, <code>vips_draw_line</code>.</p>
+   * <p>See also: {@code vips_draw_circle1}, {@code vips_draw_line}.</p>
    * @param ink Color for pixels
    * @param cx Centre of draw_circle
    * @param cy Centre of draw_circle
@@ -1957,23 +1957,23 @@ public final class VImage {
   }
 
   /**
-   * <p>Flood-fill {@param image} with {@param ink}, starting at position {@param x}, {@param y}. The filled area is
+   * <p>Flood-fill {@code image} with {@code ink}, starting at position {@code x}, {@code y}. The filled area is
    * bounded by pixels that are equal to the ink colour, in other words, it
-   * searches for pixels enclosed by an edge of {@param ink}.</p>
+   * searches for pixels enclosed by an edge of {@code ink}.</p>
    *
    * <p>If {@optionalArg equal} is set, it instead searches for pixels which are equal to the
-   * start point and fills them with {@param ink}.</p>
+   * start point and fills them with {@code ink}.</p>
    *
-   * <p>Normally it will test and set pixels in {@param image}. If {@optionalArg test} is set, it will
-   * test pixels in {@optionalArg test} and set pixels in {@param image}. This lets you search an
+   * <p>Normally it will test and set pixels in {@code image}. If {@optionalArg test} is set, it will
+   * test pixels in {@optionalArg test} and set pixels in {@code image}. This lets you search an
    * image ({@optionalArg test}) for continuous areas of pixels without modifying it.</p>
    *
    * <p>{@optionalArg left}, {@optionalArg top}, {@optionalArg width}, {@optionalArg height} output the bounding box of the modified
    * pixels.</p>
    *
-   * <p>{@param ink} is an array of double containing values to draw.</p>
+   * <p>{@code ink} is an array of double containing values to draw.</p>
    *
-   * <p>See also: <code>vips_draw_flood1</code>.</p>
+   * <p>See also: {@code vips_draw_flood1}.</p>
    * @param ink Color for pixels
    * @param x DrawFlood start point
    * @param y DrawFlood start point
@@ -1999,15 +1999,15 @@ public final class VImage {
   }
 
   /**
-   * <p>Draw {@param sub} on top of {@param image} at position {@param x}, {@param y}. The two images must have the
-   * same Coding. If {@param sub} has 1 band, the bands will be duplicated to match the
-   * number of bands in {@param image}. {@param sub} will be converted to {@param image}'s format, see
+   * <p>Draw {@code sub} on top of {@code image} at position {@code x}, {@code y}. The two images must have the
+   * same Coding. If {@code sub} has 1 band, the bands will be duplicated to match the
+   * number of bands in {@code image}. {@code sub} will be converted to {@code image}'s format, see
    * {@link #cast}.</p>
    *
    * <p>Use {@optionalArg mode} to set how pixels are combined. If you use
    * {@link app.photofox.vipsffm.enums.VipsCombineMode#COMBINE_MODE_ADD}, both images muct be uncoded.</p>
    *
-   * <p>See also: <code>vips_draw_mask</code>, {@link #insert}.</p>
+   * <p>See also: {@code vips_draw_mask}, {@link #insert}.</p>
    * @param x Draw image here
    * @param y Draw image here
    * @param args Array of VipsOption to apply to this operation
@@ -2029,9 +2029,9 @@ public final class VImage {
   /**
    * <p>Draws a 1-pixel-wide line on an image.</p>
    *
-   * <p>{@param ink} is an array of double containing values to draw.</p>
+   * <p>{@code ink} is an array of double containing values to draw.</p>
    *
-   * <p>See also: <code>vips_draw_line1</code>, <code>vips_draw_circle</code>, <code>vips_draw_mask</code>.</p>
+   * <p>See also: {@code vips_draw_line1}, {@code vips_draw_circle}, {@code vips_draw_mask}.</p>
    * @param ink Color for pixels
    * @param x1 Start of draw_line
    * @param y1 Start of draw_line
@@ -2058,14 +2058,14 @@ public final class VImage {
   }
 
   /**
-   * <p>Draw {@param mask} on the image. {@param mask} is a monochrome 8-bit image with 0/255
-   * for transparent or {@param ink} coloured points. Intermediate values blend the ink
+   * <p>Draw {@code mask} on the image. {@code mask} is a monochrome 8-bit image with 0/255
+   * for transparent or {@code ink} coloured points. Intermediate values blend the ink
    * with the pixel. Use with {@link #text} to draw text on an image. Use in a
-   * <code>vips_draw_line</code> subclass to draw an object along a line.</p>
+   * {@code vips_draw_line} subclass to draw an object along a line.</p>
    *
-   * <p>{@param ink} is an array of double containing values to draw.</p>
+   * <p>{@code ink} is an array of double containing values to draw.</p>
    *
-   * <p>See also: {@link #text}, <code>vips_draw_line</code>.</p>
+   * <p>See also: {@link #text}, {@code vips_draw_line}.</p>
    * @param ink Color for pixels
    * @param x Draw mask here
    * @param y Draw mask here
@@ -2087,10 +2087,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Paint pixels within {@param left}, {@param top}, {@param width}, {@param height} in {@param image} with {@param ink}. If
+   * <p>Paint pixels within {@code left}, {@code top}, {@code width}, {@code height} in {@code image} with {@code ink}. If
    * {@optionalArg fill} is zero, just paint a 1-pixel-wide outline.</p>
    *
-   * <p>See also: <code>vips_draw_circle</code>.</p>
+   * <p>See also: {@code vips_draw_circle}.</p>
    * @param ink Color for pixels
    * @param left Rect to fill
    * @param top Rect to fill
@@ -2118,10 +2118,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Smudge a section of {@param image}. Each pixel in the area {@param left}, {@param top}, {@param width},
-   * {@param height} is replaced by the average of the surrounding 3x3 pixels.</p>
+   * <p>Smudge a section of {@code image}. Each pixel in the area {@code left}, {@code top}, {@code width},
+   * {@code height} is replaced by the average of the surrounding 3x3 pixels.</p>
    *
-   * <p>See also: <code>vips_draw_line</code>.</p>
+   * <p>See also: {@code vips_draw_line}.</p>
    * @param left Rect to fill
    * @param top Rect to fill
    * @param width Rect to fill
@@ -2148,12 +2148,12 @@ public final class VImage {
    * <p>Save an image as a set of tiles at various resolutions. By default dzsave
    * uses DeepZoom layout -- use {@optionalArg layout} to pick other conventions.</p>
    *
-   * <p>dzsave creates a directory called <code>@name</code> to hold the tiles. If <code>@name</code>
-   * ends `.zip`, dzsave will create a zip file called <code>@name</code> to hold the
+   * <p>dzsave creates a directory called {@code @name} to hold the tiles. If {@code @name}
+   * ends `.zip`, dzsave will create a zip file called {@code @name} to hold the
    * tiles. You can use {@optionalArg container} to force zip file output.</p>
    *
    * <p>Use {@optionalArg basename} to set the name of the image we are creating. The
-   * default value is set from <code>@name</code>.</p>
+   * default value is set from {@code @name}.</p>
    *
    * <p>By default, tiles are written as JPEGs. Use {@optionalArg Q} set set the JPEG quality
    * factor.</p>
@@ -2245,11 +2245,11 @@ public final class VImage {
    * <p>Output is always in a zip container. Use {@optionalArg basename} to set the name of the
    * directory that the zip will create when unzipped.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #dzsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #dzsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dirname {@link VipsOption.String} Directory name to save to
    * @optionalArg imagename {@link VipsOption.String} Image name
@@ -2290,7 +2290,7 @@ public final class VImage {
   /**
    * <p>As {@link #dzsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #dzsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #dzsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dirname {@link VipsOption.String} Directory name to save to
@@ -2329,13 +2329,13 @@ public final class VImage {
   }
 
   /**
-   * <p>The opposite of <code>vips_extract_area</code>: embed {@param in} within an image of size
-   * {@param width} by {@param height} at position {@param x}, {@param y}.</p>
+   * <p>The opposite of {@code vips_extract_area}: embed {@code in} within an image of size
+   * {@code width} by {@code height} at position {@code x}, {@code y}.</p>
    *
    * <p>{@optionalArg extend}
    * controls what appears in the new pels, see #VipsExtend.</p>
    *
-   * <p>See also: <code>vips_extract_area</code>, {@link #insert}.</p>
+   * <p>See also: {@code vips_extract_area}, {@link #insert}.</p>
    * @param x Left edge of input in output
    * @param y Top edge of input in output
    * @param width Image width in pixels
@@ -2363,9 +2363,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Extract an area from an image. The area must fit within <code>@in</code>.</p>
+   * <p>Extract an area from an image. The area must fit within {@code @in}.</p>
    *
-   * <p>See also: <code>vips_extract_bands</code>, {@link #smartcrop}.</p>
+   * <p>See also: {@code vips_extract_bands}, {@link #smartcrop}.</p>
    * @param left Left edge of extract area
    * @param top Top edge of extract area
    * @param width Width of extract area
@@ -2394,7 +2394,7 @@ public final class VImage {
   /**
    * <p>Extract a band or bands from an image. Extracting out of range is an error.</p>
    *
-   * <p>See also: <code>vips_extract_area</code>.</p>
+   * <p>See also: {@code vips_extract_area}.</p>
    * @param band Band to extract
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg n {@link VipsOption.Int} Number of bands to extract
@@ -2438,7 +2438,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Force {@param in} to 1 band, 8-bit, then transform to
+   * <p>Force {@code in} to 1 band, 8-bit, then transform to
    * a 3-band 8-bit image with a false colour
    * map. The map is supposed to make small differences in brightness more
    * obvious.</p>
@@ -2459,7 +2459,7 @@ public final class VImage {
   /**
    * <p>Calculate a fast correlation surface.</p>
    *
-   * <p>{@param ref} is placed at every position in {@param in} and the sum of squares of
+   * <p>{@code ref} is placed at every position in {@code in} and the sum of squares of
    * differences calculated.</p>
    *
    * <p>The output
@@ -2492,17 +2492,17 @@ public final class VImage {
   }
 
   /**
-   * <p>Fill outwards from every non-zero pixel in {@param in}, setting pixels in {@optionalArg distance}
-   * and <code>@value</code>.</p>
+   * <p>Fill outwards from every non-zero pixel in {@code in}, setting pixels in {@optionalArg distance}
+   * and {@code @value}.</p>
    *
-   * <p>At the position of zero pixels in {@param in}, {@optionalArg distance} contains the distance to
-   * the nearest non-zero pixel in {@param in}, and <code>@value</code> contains the value of that
+   * <p>At the position of zero pixels in {@code in}, {@optionalArg distance} contains the distance to
+   * the nearest non-zero pixel in {@code in}, and {@code @value} contains the value of that
    * pixel.</p>
    *
-   * <p>{@optionalArg distance} is a one-band float image. <code>@value</code> has the same number of bands and
-   * format as {@param in}.</p>
+   * <p>{@optionalArg distance} is a one-band float image. {@code @value} has the same number of bands and
+   * format as {@code in}.</p>
    *
-   * <p>See also: <code>vips_hist_find_indexed</code>.</p>
+   * <p>See also: {@code vips_hist_find_indexed}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg distance {@link VipsOption.Image} Distance to nearest non-zero pixel
    */
@@ -2517,7 +2517,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Search {@param in} for the bounding box of the non-background area.</p>
+   * <p>Search {@code in} for the bounding box of the non-background area.</p>
    *
    * <p>Any alpha is flattened out, then the image is median-filtered (unless
    * {@optionalArg lineArt} is set, see below), all the row
@@ -2527,8 +2527,8 @@ public final class VImage {
    * four directions where the sum is greater than {@optionalArg threshold} gives the bounding
    * box.</p>
    *
-   * <p>If the image is entirely background, <code>vips_find_trim</code> returns {@param width} == 0
-   * and {@param height} == 0.</p>
+   * <p>If the image is entirely background, {@code vips_find_trim} returns {@code width} == 0
+   * and {@code height} == 0.</p>
    *
    * <p>{@optionalArg background} defaults to 255, or 65535 for 16-bit images. Set another value,
    * or use {@link #getpoint} to pick a value from an edge. You'll need to flatten
@@ -2543,7 +2543,7 @@ public final class VImage {
    *
    * <p>The image needs to be at least 3x3 pixels in size.</p>
    *
-   * <p>See also: {@link #getpoint}, <code>vips_extract_area</code>, {@link #smartcrop}.</p>
+   * <p>See also: {@link #getpoint}, {@code vips_extract_area}, {@link #smartcrop}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg threshold {@link VipsOption.Double} Object threshold
    * @optionalArg background {@link VipsOption.ArrayDouble} Color for background pixels
@@ -2576,7 +2576,7 @@ public final class VImage {
    *
    * <p>FITS metadata is attached with the "fits-" prefix.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -2624,7 +2624,7 @@ public final class VImage {
   /**
    * <p>Write a VIPS image to a file in FITS format.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
@@ -2643,7 +2643,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Take the last band of {@param in} as an alpha and use it to blend the
+   * <p>Take the last band of {@code in} as an alpha and use it to blend the
    * remaining channels with {@optionalArg background}.</p>
    *
    * <p>The alpha channel is 0 - {@optionalArg maxAlpha}, where {@optionalArg maxAlpha} means 100% image
@@ -2708,10 +2708,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Generate an image of size {@param width} by {@param height} and fractal dimension
-   * {@param fractalDimension}. The dimension should be between 2 and 3.</p>
+   * <p>Generate an image of size {@code width} by {@code height} and fractal dimension
+   * {@code fractalDimension}. The dimension should be between 2 and 3.</p>
    *
-   * <p>See also: {@link #gaussnoise}, <code>vips_mask_fractal</code>.</p>
+   * <p>See also: {@link #gaussnoise}, {@code vips_mask_fractal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param fractalDimension Fractal dimension
@@ -2733,13 +2733,13 @@ public final class VImage {
   }
 
   /**
-   * <p>Multiply {@param in} by {@param mask} in Fourier space.</p>
+   * <p>Multiply {@code in} by {@code mask} in Fourier space.</p>
    *
-   * <p>{@param in} is transformed to Fourier space, multiplied with {@param mask}, then
-   * transformed back to real space. If {@param in} is already a complex image, just
+   * <p>{@code in} is transformed to Fourier space, multiplied with {@code mask}, then
+   * transformed back to real space. If {@code in} is already a complex image, just
    * multiply then inverse transform.</p>
    *
-   * <p>See also: {@link #invfft}, <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@link #invfft}, {@code vips_mask_ideal}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage freqmult(VipsOption... args) throws VipsError {
@@ -2774,10 +2774,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Calculate {@param in} ** (1 / {@optionalArg exponent}), normalising to the maximum range of the
+   * <p>Calculate {@code in} ** (1 / {@optionalArg exponent}), normalising to the maximum range of the
    * input type. For float types use 1.0 as the maximum.</p>
    *
-   * <p>See also: {@link #identity}, <code>vips_pow_const1</code>, {@link #maplut}</p>
+   * <p>See also: {@link #identity}, {@code vips_pow_const1}, {@link #maplut}</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg exponent {@link VipsOption.Double} Gamma factor
    */
@@ -2793,7 +2793,7 @@ public final class VImage {
 
   /**
    * <p>This operator runs {@link #gaussmat} and {@link #convsep} for you on an image.
-   * Set {@optionalArg minAmpl} smaller to generate a larger, more accurate mask. Set {@param sigma}
+   * Set {@optionalArg minAmpl} smaller to generate a larger, more accurate mask. Set {@code sigma}
    * larger to make the blur more blurry.</p>
    *
    * <p>See also: {@link #gaussmat}, {@link #convsep}.</p>
@@ -2816,13 +2816,13 @@ public final class VImage {
 
   /**
    * <p>Creates a circularly symmetric Gaussian image of radius
-   * {@param sigma}.  The size of the mask is determined by the variable {@param minAmpl};
+   * {@code sigma}.  The size of the mask is determined by the variable {@code minAmpl};
    * if for instance the value .1 is entered this means that the produced mask
    * is clipped at values less than 10 percent of the maximum amplitude.</p>
    *
    * <p>The program uses the following equation:
    *
-   *  H(r) = exp(-(r * r) / (2 * {@param sigma} * {@param sigma}))</p>
+   *  H(r) = exp(-(r * r) / (2 * {@code sigma} * {@code sigma}))</p>
    *
    * <p>The generated image has odd size and its maximum value is normalised to
    * 1.0, unless {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
@@ -2883,11 +2883,11 @@ public final class VImage {
   /**
    * <p>Reads a single pixel on an image.</p>
    *
-   * <p>The pixel values are returned in <code>@vector</code>, the length of the
-   * array in <code>@n</code>. You must free the array with g_free() when you are done with
+   * <p>The pixel values are returned in {@code @vector}, the length of the
+   * array in {@code @n}. You must free the array with g_free() when you are done with
    * it.</p>
    *
-   * <p>See also: <code>vips_draw_point</code>.</p>
+   * <p>See also: {@code vips_draw_point}.</p>
    * @param x Point to read
    * @param y Point to read
    * @param args Array of VipsOption to apply to this operation
@@ -2921,7 +2921,7 @@ public final class VImage {
    * <p>The output image is RGBA for GIFs containing transparent elements, RGB
    * otherwise.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
@@ -2948,8 +2948,8 @@ public final class VImage {
   /**
    * <p>Exactly as {@link #gifload}, but read from a memory buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #gifload}.</p>
    * @param buffer Buffer to load from
@@ -3023,14 +3023,14 @@ public final class VImage {
    * previously generated palette will be reused.</p>
    *
    * <p>If {@optionalArg reuse} is TRUE, the GIF will be saved with a single global
-   * palette taken from the metadata in {@param in}, and no new palette optimisation
+   * palette taken from the metadata in {@code in}, and no new palette optimisation
    * will be done.</p>
    *
    * <p>If {@optionalArg interlace} is TRUE, the GIF file will be interlaced (progressive GIF).
    * These files may be better for display over a slow network
    * connection, but need more memory to encode.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dither {@link VipsOption.Double} Amount of dithering
@@ -3059,11 +3059,11 @@ public final class VImage {
   /**
    * <p>As {@link #gifsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #gifsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #gifsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dither {@link VipsOption.Double} Amount of dithering
    * @optionalArg effort {@link VipsOption.Int} Quantisation effort
@@ -3092,7 +3092,7 @@ public final class VImage {
   /**
    * <p>As {@link #gifsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #gifsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #gifsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dither {@link VipsOption.Double} Amount of dithering
@@ -3122,7 +3122,7 @@ public final class VImage {
    * <p>globalbalance can be used to remove contrast differences in
    * an assembled mosaic.</p>
    *
-   * <p>It reads the History field attached to {@param in} and builds a list of the source
+   * <p>It reads the History field attached to {@code in} and builds a list of the source
    * images that were used to make the mosaic and the position that each ended
    * up at in the final image.</p>
    *
@@ -3134,16 +3134,16 @@ public final class VImage {
    * 1.0 will stop this.</p>
    *
    * <p>Each of the source images is transformed with the appropriate correction
-   * factor, then the mosaic is reassembled. {@param out} is {@link VipsBandFormat#FORMAT_FLOAT}, but
+   * factor, then the mosaic is reassembled. {@code out} is {@link VipsBandFormat#FORMAT_FLOAT}, but
    * if {@optionalArg intOutput} is set, the output image is the same format as the input
    * images.</p>
    *
    * <p>There are some conditions that must be met before this operation can work:
    * the source images must all be present under the filenames recorded in the
-   * history on {@param in}, and the mosaic must have been built using only operations in
+   * history on {@code in}, and the mosaic must have been built using only operations in
    * this package.</p>
    *
-   * <p>See also: <code>vips_remosaic</code>.</p>
+   * <p>See also: {@code vips_remosaic}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg gamma {@link VipsOption.Double} Image gamma
    * @optionalArg int-output {@link VipsOption.Boolean} Integer output
@@ -3159,13 +3159,13 @@ public final class VImage {
   }
 
   /**
-   * <p>The opposite of <code>vips_extract_area</code>: place {@param in} within an image of size
-   * {@param width} by {@param height} at a certain gravity.</p>
+   * <p>The opposite of {@code vips_extract_area}: place {@code in} within an image of size
+   * {@code width} by {@code height} at a certain gravity.</p>
    *
    * <p>{@optionalArg extend}
    * controls what appears in the new pels, see #VipsExtend.</p>
    *
-   * <p>See also: <code>vips_extract_area</code>, {@link #insert}.</p>
+   * <p>See also: {@code vips_extract_area}, {@link #insert}.</p>
    * @param direction {@link VipsCompassDirection} Direction to place image within width/height
    * @param width Image width in pixels
    * @param height Image height in pixels
@@ -3220,11 +3220,11 @@ public final class VImage {
    *
    * <p>The input image should be a very tall, thin image containing a list of
    * smaller images. Volumetric or time-sequence images are often laid out like
-   * this. This image is chopped into a series of tiles, each {@param tileHeight}
-   * pixels high and the width of {@param in}. The tiles are then rearranged into a grid
-   * {@param across} tiles across and {@param down} tiles down in row-major order.</p>
+   * this. This image is chopped into a series of tiles, each {@code tileHeight}
+   * pixels high and the width of {@code in}. The tiles are then rearranged into a grid
+   * {@code across} tiles across and {@code down} tiles down in row-major order.</p>
    *
-   * <p>Supplying {@param tileHeight}, {@param across} and {@param down} is not strictly necessary, we
+   * <p>Supplying {@code tileHeight}, {@code across} and {@code down} is not strictly necessary, we
    * only really need two of these. Requiring three is a double-check that the
    * image has the expected geometry.</p>
    *
@@ -3263,16 +3263,16 @@ public final class VImage {
    * <p>HEIF images have a primary image. The metadata item `heif-primary` gives
    * the page number of the primary.</p>
    *
-   * <p>If {@optionalArg thumbnail} is <code>TRUE</code>, then fetch a stored thumbnail rather than the
+   * <p>If {@optionalArg thumbnail} is {@code TRUE}, then fetch a stored thumbnail rather than the
    * image.</p>
    *
    * <p>By default, input image dimensions are limited to 16384x16384.
-   * If {@optionalArg unlimited} is <code>TRUE</code>, this increases to the maximum of 65535x65535.</p>
+   * If {@optionalArg unlimited} is {@code TRUE}, this increases to the maximum of 65535x65535.</p>
    *
    * <p>The bitdepth of the heic image is recorded in the metadata item
    * `heif-bitdepth`.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -3303,8 +3303,8 @@ public final class VImage {
    * <p>Read a HEIF image file into a VIPS image.
    * Exactly as {@link #heifload}, but read from a memory buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #heifload}.</p>
    * @param buffer Buffer to load from
@@ -3369,7 +3369,7 @@ public final class VImage {
    * <p>Use {@optionalArg Q} to set the compression factor. Default 50, which seems to be roughly
    * what the iphone uses. Q 30 gives about the same quality as JPEG Q 75.</p>
    *
-   * <p>Set {@optionalArg lossless} <code>TRUE</code> to switch to lossless compression.</p>
+   * <p>Set {@optionalArg lossless} {@code TRUE} to switch to lossless compression.</p>
    *
    * <p>Use {@optionalArg compression} to set the compression format e.g. HEVC, AVC, AV1 to use. It defaults to AV1
    * if the target filename ends with ".avif", otherwise HEVC.</p>
@@ -3386,7 +3386,7 @@ public final class VImage {
    *
    * <p>Use {@optionalArg encoder} to set the encode library to use, e.g. aom, SVT-AV1, rav1e etc.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>, {@link #heifload}.</p>
+   * <p>See also: {@code vips_image_write_to_file}, {@link #heifload}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -3415,11 +3415,11 @@ public final class VImage {
   /**
    * <p>As {@link #heifsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@obuf</code>, the length of the buffer in
-   * <code>@olen</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @obuf}, the length of the buffer in
+   * {@code @olen}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #heifsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #heifsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
@@ -3448,7 +3448,7 @@ public final class VImage {
   /**
    * <p>As {@link #heifsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #heifsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #heifsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -3477,7 +3477,7 @@ public final class VImage {
   /**
    * <p>Form cumulative histogram.</p>
    *
-   * <p>See also: <code>vips_hist_norm</code>.</p>
+   * <p>See also: {@code vips_hist_norm}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage histCum(VipsOption... args) throws VipsError {
@@ -3511,7 +3511,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Histogram-equalise {@param in}. Equalise using band <code>@bandno</code>, or if <code>@bandno</code> is -1,
+   * <p>Histogram-equalise {@code in}. Equalise using band {@code @bandno}, or if {@code @bandno} is -1,
    * equalise bands independently. The output format is always the same as the
    * input format.</p>
    *
@@ -3530,14 +3530,14 @@ public final class VImage {
   }
 
   /**
-   * <p>Find the histogram of {@param in}. Find the histogram for band {@optionalArg band} (producing a
+   * <p>Find the histogram of {@code in}. Find the histogram for band {@optionalArg band} (producing a
    * one-band histogram), or for all bands (producing an n-band histogram) if
    * {@optionalArg band} is -1.</p>
    *
    * <p>char and uchar images are cast to uchar before histogramming, all other
    * image types are cast to ushort.</p>
    *
-   * <p>See also: <code>vips_hist_find_ndim</code>, <code>vips_hist_find_indexed</code>.</p>
+   * <p>See also: {@code vips_hist_find_ndim}, {@code vips_hist_find_indexed}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg band {@link VipsOption.Int} Find histogram of band
    */
@@ -3552,16 +3552,16 @@ public final class VImage {
   }
 
   /**
-   * <p>Make a histogram of {@param in}, but use image {@param index} to pick the bins. In other
-   * words, element zero in {@param out} contains the combination of all the pixels in {@param in}
-   * whose corresponding pixel in {@param index} is zero.</p>
+   * <p>Make a histogram of {@code in}, but use image {@code index} to pick the bins. In other
+   * words, element zero in {@code out} contains the combination of all the pixels in {@code in}
+   * whose corresponding pixel in {@code index} is zero.</p>
    *
-   * <p>char and uchar {@param index} images are cast to uchar before histogramming, all
-   * other image types are cast to ushort. {@param index} must have just one band.</p>
+   * <p>char and uchar {@code index} images are cast to uchar before histogramming, all
+   * other image types are cast to ushort. {@code index} must have just one band.</p>
    *
-   * <p>{@param in} must be non-complex.</p>
+   * <p>{@code in} must be non-complex.</p>
    *
-   * <p>{@param out} always has the same size and format as {@param in}.</p>
+   * <p>{@code out} always has the same size and format as {@code in}.</p>
    *
    * <p>Normally, bins are summed, but you can use {@optionalArg combine} to set other combine
    * modes.</p>
@@ -3569,7 +3569,7 @@ public final class VImage {
    * <p>This operation is useful in conjunction with {@link #labelregions}. You can
    * use it to find the centre of gravity of blobs in an image, for example.</p>
    *
-   * <p>See also: <code>vips_hist_find</code>, {@link #labelregions}.</p>
+   * <p>See also: {@code vips_hist_find}, {@link #labelregions}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg combine {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsCombine} Combine bins like this
    */
@@ -3594,7 +3594,7 @@ public final class VImage {
    * <p>char and uchar images are cast to uchar before histogramming, all other
    * image types are cast to ushort.</p>
    *
-   * <p>See also: <code>vips_hist_find</code>, <code>vips_hist_find_indexed</code>.</p>
+   * <p>See also: {@code vips_hist_find}, {@code vips_hist_find_indexed}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg bins {@link VipsOption.Int} Number of bins in each dimension
    */
@@ -3609,7 +3609,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Test {@param in} for monotonicity. <code>@out</code> is set non-zero if {@param in} is monotonic.</p>
+   * <p>Test {@code in} for monotonicity. {@code @out} is set non-zero if {@code in} is monotonic.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public boolean histIsmonotonic(VipsOption... args) throws VipsError {
@@ -3623,8 +3623,8 @@ public final class VImage {
   }
 
   /**
-   * <p>Performs local histogram equalisation on {@param in} using a
-   * window of size {@param width} by {@param height} centered on the input pixel.</p>
+   * <p>Performs local histogram equalisation on {@code in} using a
+   * window of size {@code width} by {@code height} centered on the input pixel.</p>
    *
    * <p>The output image is the same size as the input image. The edge pixels are
    * created by mirroring the input image outwards.</p>
@@ -3634,7 +3634,7 @@ public final class VImage {
    * performed. A value of 3 is often used. Local histogram equalization with
    * contrast limiting is usually called CLAHE.</p>
    *
-   * <p>See also: <code>vips_hist_equal</code>.</p>
+   * <p>See also: {@code vips_hist_equal}.</p>
    * @param width Window width in pixels
    * @param height Window height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -3655,12 +3655,12 @@ public final class VImage {
   }
 
   /**
-   * <p>Adjust {@param in} to match {@param ref}. If {@param in} and {@param ref} are normalised
-   * cumulative histograms, {@param out} will be a LUT that adjusts the PDF of the image
-   * from which {@param in} was made to match the PDF of {@param ref}'s image.</p>
+   * <p>Adjust {@code in} to match {@code ref}. If {@code in} and {@code ref} are normalised
+   * cumulative histograms, {@code out} will be a LUT that adjusts the PDF of the image
+   * from which {@code in} was made to match the PDF of {@code ref}'s image.</p>
    *
-   * <p>See also: {@link #maplut}, <code>vips_hist_find</code>, <code>vips_hist_norm</code>,
-   * <code>vips_hist_cum</code>.</p>
+   * <p>See also: {@link #maplut}, {@code vips_hist_find}, {@code vips_hist_norm},
+   * {@code vips_hist_cum}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage histMatch(VipsOption... args) throws VipsError {
@@ -3680,7 +3680,7 @@ public final class VImage {
    * index, so for example the max for a uchar image becomes 255.
    * Normalise each band separately.</p>
    *
-   * <p>See also: <code>vips_hist_cum</code>.</p>
+   * <p>See also: {@code vips_hist_cum}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage histNorm(VipsOption... args) throws VipsError {
@@ -3700,7 +3700,7 @@ public final class VImage {
    * <p><b>unsigned char</b> max is always 256</p>
    *
    * <p><b>other unsigned integer types</b> output 0 - maximum
-   * value of {@param in}.</p>
+   * value of {@code in}.</p>
    *
    * <p><b>signed int types</b> min moved to 0, max moved to max + min.</p>
    *
@@ -3719,8 +3719,8 @@ public final class VImage {
   }
 
   /**
-   * <p>Find the circular Hough transform of an image. {@param in} must be one band, with
-   * non-zero pixels for image edges. {@param out} is three-band, with the third channel
+   * <p>Find the circular Hough transform of an image. {@code in} must be one band, with
+   * non-zero pixels for image edges. {@code out} is three-band, with the third channel
    * representing the detected circle radius. The operation scales the number of
    * votes by circle circumference so circles of differing size are given equal
    * weight.</p>
@@ -3730,12 +3730,12 @@ public final class VImage {
    *
    * <p>Use {@optionalArg maxRadius} and {@optionalArg minRadius} to set the range of radii to search for.</p>
    *
-   * <p>Use {@optionalArg scale} to set how {@param in} coordinates are scaled to {@param out} coordinates. A
-   * {@optionalArg scale} of 3, for example, will make {@param out} 1/3rd of the width and height of
-   * {@param in}, and reduce the number of radii tested (and hence the number of bands
-   * int {@param out}) by a factor of three as well.</p>
+   * <p>Use {@optionalArg scale} to set how {@code in} coordinates are scaled to {@code out} coordinates. A
+   * {@optionalArg scale} of 3, for example, will make {@code out} 1/3rd of the width and height of
+   * {@code in}, and reduce the number of radii tested (and hence the number of bands
+   * int {@code out}) by a factor of three as well.</p>
    *
-   * <p>See also: <code>vips_hough_line</code>.</p>
+   * <p>See also: {@code vips_hough_line}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg scale {@link VipsOption.Int} Scale down dimensions by this factor
    * @optionalArg min-radius {@link VipsOption.Int} Smallest radius to search for
@@ -3752,15 +3752,15 @@ public final class VImage {
   }
 
   /**
-   * <p>Find the line Hough transform for {@param in}. {@param in} must have one band. {@param out} has one
+   * <p>Find the line Hough transform for {@code in}. {@code in} must have one band. {@code out} has one
    * band, with pixels being the number of votes for that line. The X dimension
-   * of {@param out} is the line angle in 0 - 180 degrees, the Y dimension is the
+   * of {@code out} is the line angle in 0 - 180 degrees, the Y dimension is the
    * distance of the closest part of that line to the origin in the top-left.</p>
    *
-   * <p>Use {@optionalArg width} {@optionalArg height} to set the size of the parameter space image ({@param out}),
+   * <p>Use {@optionalArg width} {@optionalArg height} to set the size of the parameter space image ({@code out}),
    * that is, how accurate the line determination should be.</p>
    *
-   * <p>See also: <code>vips_hough_circle</code>.</p>
+   * <p>See also: {@code vips_hough_circle}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg width {@link VipsOption.Int} Horizontal size of parameter space
    * @optionalArg height {@link VipsOption.Int} Vertical size of parameter space
@@ -3810,8 +3810,8 @@ public final class VImage {
    *
    *  1. If {@optionalArg embedded} is set, libvips will try to use any profile in the input
    *   image metadata. You can test for the presence of an embedded profile
-   *   with <code>vips_image_get_typeof</code> with <code>VIPS_META_ICC_NAME</code> as an argument.
-   *   This will return <code>GType</code> 0 if there is no profile.
+   *   with {@code vips_image_get_typeof} with {@code VIPS_META_ICC_NAME} as an argument.
+   *   This will return {@code GType} 0 if there is no profile.
    *
    *  2. Otherwise, if {@optionalArg inputProfile} is set, libvips will try to load a
    *   profile from the named file. This can aslso be the name of one of the
@@ -3848,8 +3848,8 @@ public final class VImage {
    *
    *  1. If {@optionalArg embedded} is set, libvips will try to use any profile in the input
    *   image metadata. You can test for the presence of an embedded profile
-   *   with <code>vips_image_get_typeof</code> with <code>VIPS_META_ICC_NAME</code> as an argument.
-   *   This will return <code>GType</code> 0 if there is no profile.
+   *   with {@code vips_image_get_typeof} with {@code VIPS_META_ICC_NAME} as an argument.
+   *   This will return {@code GType} 0 if there is no profile.
    *
    *  2. Otherwise, if {@optionalArg inputProfile} is set, libvips will try to load a
    *   profile from the named file. This can aslso be the name of one of the
@@ -3861,12 +3861,12 @@ public final class VImage {
    * <p>If {@optionalArg blackPointCompensation} is set, LCMS black point compensation is
    * enabled.</p>
    *
-   * <p>{@optionalArg depth} defaults to 8, or 16 if {@param in} is a 16-bit image.</p>
+   * <p>{@optionalArg depth} defaults to 8, or 16 if {@code in} is a 16-bit image.</p>
    *
-   * <p>The output image has the output profile attached to the <code>VIPS_META_ICC_NAME</code>
+   * <p>The output image has the output profile attached to the {@code VIPS_META_ICC_NAME}
    * field.</p>
    *
-   * <p>Use <code>vips_icc_import</code> and <code>vips_icc_export</code> to do either the first or
+   * <p>Use {@code vips_icc_import} and {@code vips_icc_export} to do either the first or
    * second half of this operation in isolation.</p>
    * @param outputProfile Filename to load output profile from
    * @param args Array of VipsOption to apply to this operation
@@ -3917,26 +3917,26 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation scans the condition image {@param cond}
-   * and uses it to select pixels from either the then image {@param in1} or the else
-   * image {@param in2}. Non-zero means {@param in1}, 0 means {@param in2}.</p>
+   * <p>This operation scans the condition image {@code cond}
+   * and uses it to select pixels from either the then image {@code in1} or the else
+   * image {@code in2}. Non-zero means {@code in1}, 0 means {@code in2}.</p>
    *
    * <p>Any image can have either 1 band or n bands, where n is the same for all
    * the non-1-band images. Single band images are then effectively copied to
    * make n-band images.</p>
    *
-   * <p>Images {@param in1} and {@param in2} are cast up to the smallest common format. {@param cond} is
+   * <p>Images {@code in1} and {@code in2} are cast up to the smallest common format. {@code cond} is
    * cast to uchar.</p>
    *
    * <p>If the images differ in size, the smaller images are enlarged to match the
    * largest by adding zero pixels along the bottom and right.</p>
    *
-   * <p>If {@optionalArg blend} is <code>TRUE</code>, then values in {@param out} are smoothly blended between {@param in1}
-   * and {@param in2} using the formula:
+   * <p>If {@optionalArg blend} is {@code TRUE}, then values in {@code out} are smoothly blended between {@code in1}
+   * and {@code in2} using the formula:
    *
-   *  {@param out} = ({@param cond} / 255) * {@param in1} + (1 - {@param cond} / 255) * {@param in2}</p>
+   *  {@code out} = ({@code cond} / 255) * {@code in1} + (1 - {@code cond} / 255) * {@code in2}</p>
    *
-   * <p>See also: <code>vips_equal</code>.</p>
+   * <p>See also: {@code vips_equal}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg blend {@link VipsOption.Boolean} Blend smoothly between then and else parts
    */
@@ -3955,15 +3955,15 @@ public final class VImage {
   }
 
   /**
-   * <p>Insert {@param sub} into {@param main} at position {@param x}, {@param y}.</p>
+   * <p>Insert {@code sub} into {@code main} at position {@code x}, {@code y}.</p>
    *
-   * <p>Normally {@param out} shows the whole of {@param main}. If {@optionalArg expand} is #TRUE then {@param out} is
-   * made large enough to hold all of {@param main} and {@param sub}.
-   * Any areas of {@param out} not coming from
-   * either {@param main} or {@param sub} are set to {@optionalArg background} (default 0).</p>
+   * <p>Normally {@code out} shows the whole of {@code main}. If {@optionalArg expand} is #TRUE then {@code out} is
+   * made large enough to hold all of {@code main} and {@code sub}.
+   * Any areas of {@code out} not coming from
+   * either {@code main} or {@code sub} are set to {@optionalArg background} (default 0).</p>
    *
-   * <p>If {@param sub} overlaps {@param main},
-   * {@param sub} will appear on top of {@param main}.</p>
+   * <p>If {@code sub} overlaps {@code main},
+   * {@code sub} will appear on top of {@code main}.</p>
    *
    * <p>If the number of bands differs, one of the images
    * must have one band. In this case, an n-band image is formed from the
@@ -3974,7 +3974,7 @@ public final class VImage {
    * Smallest common format in
    * <code>arithmetic</code>).</p>
    *
-   * <p>See also: {@link #join}, {@link #embed}, <code>vips_extract_area</code>.</p>
+   * <p>See also: {@link #join}, {@link #embed}, {@code vips_extract_area}.</p>
    * @param x Left edge of sub in main
    * @param y Top edge of sub in main
    * @param args Array of VipsOption to apply to this operation
@@ -3998,11 +3998,11 @@ public final class VImage {
   }
 
   /**
-   * <p>For unsigned formats, this operation calculates (max - {@param in}), eg. (255 -
-   * {@param in}) for uchar. For signed and float formats, this operation calculates (-1
-   * {@param in}).</p>
+   * <p>For unsigned formats, this operation calculates (max - {@code in}), eg. (255 -
+   * {@code in}) for uchar. For signed and float formats, this operation calculates (-1
+   * {@code in}).</p>
    *
-   * <p>For complex images, only the real part is inverted. See also <code>vips_conj</code>.</p>
+   * <p>For complex images, only the real part is inverted. See also {@code vips_conj}.</p>
    *
    * <p>See also: {@link #linear}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -4081,18 +4081,18 @@ public final class VImage {
   }
 
   /**
-   * <p>Join {@param in1} and {@param in2} together, left-right or up-down depending on the value
-   * of {@param direction}.</p>
+   * <p>Join {@code in1} and {@code in2} together, left-right or up-down depending on the value
+   * of {@code direction}.</p>
    *
    * <p>If one is taller or wider than the
-   * other, {@param out} will be has high as the smaller. If {@optionalArg expand} is <code>TRUE</code>, then
+   * other, {@code out} will be has high as the smaller. If {@optionalArg expand} is {@code TRUE}, then
    * the output will be expanded to contain all of the input pixels.</p>
    *
    * <p>Use {@optionalArg align} to set the edge that the images align on. By default, they align
    * on the edge with the lower value coordinate.</p>
    *
-   * <p>Use {@optionalArg background} to set the colour of any pixels in {@param out} which are not
-   * present in either {@param in1} or {@param in2}.</p>
+   * <p>Use {@optionalArg background} to set the colour of any pixels in {@code out} which are not
+   * present in either {@code in1} or {@code in2}.</p>
    *
    * <p>Use {@optionalArg shim} to set the spacing between the images. By default this is 0.</p>
    *
@@ -4144,7 +4144,7 @@ public final class VImage {
    * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
@@ -4170,8 +4170,8 @@ public final class VImage {
   /**
    * <p>Exactly as {@link #jp2kload}, but read from a buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
@@ -4238,7 +4238,7 @@ public final class VImage {
    *
    * <p>This operation always writes a pyramid.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>, {@link #jp2kload}.</p>
+   * <p>See also: {@code vips_image_write_to_file}, {@link #jp2kload}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
@@ -4264,7 +4264,7 @@ public final class VImage {
   /**
    * <p>As {@link #jp2ksave}, but save to a target.</p>
    *
-   * <p>See also: {@link #jp2ksave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #jp2ksave}, {@code vips_image_write_to_target}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
@@ -4290,7 +4290,7 @@ public final class VImage {
   /**
    * <p>As {@link #jp2ksave}, but save to a target.</p>
    *
-   * <p>See also: {@link #jp2ksave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #jp2ksave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
@@ -4324,15 +4324,15 @@ public final class VImage {
    * <p>Use {@optionalArg failOn} to set the type of error that will cause load to fail. By
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
-   * <p>Setting {@optionalArg autorotate} to <code>TRUE</code> will make the loader interpret the
+   * <p>Setting {@optionalArg autorotate} to {@code TRUE} will make the loader interpret the
    * orientation tag and automatically rotate the image appropriately during
    * load.</p>
    *
-   * <p>If {@optionalArg autorotate} is <code>FALSE</code>, the metadata field <code>VIPS_META_ORIENTATION</code> is set
+   * <p>If {@optionalArg autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
    * to the value of the orientation tag. Applications may read and interpret
    * this field
    * as they wish later in processing. See {@link #autorot}. Save
-   * operations will use <code>VIPS_META_ORIENTATION</code>, if present, to set the
+   * operations will use {@code VIPS_META_ORIENTATION}, if present, to set the
    * orientation of output images.</p>
    *
    * <p>Example:</p>
@@ -4346,11 +4346,11 @@ public final class VImage {
    *
    * <p>Any embedded ICC profiles are ignored: you always just get the RGB from
    * the file. Instead, the embedded profile will be attached to the image as
-   * <code>VIPS_META_ICC_NAME</code>. You need to use something like
-   * <code>vips_icc_import</code> to get CIE values from the file.</p>
+   * {@code VIPS_META_ICC_NAME}. You need to use something like
+   * {@code vips_icc_import} to get CIE values from the file.</p>
    *
-   * <p>EXIF metadata is attached as <code>VIPS_META_EXIF_NAME</code>, IPTC as
-   * <code>VIPS_META_IPTC_NAME</code>, and XMP as <code>VIPS_META_XMP_NAME</code>.</p>
+   * <p>EXIF metadata is attached as {@code VIPS_META_EXIF_NAME}, IPTC as
+   * {@code VIPS_META_IPTC_NAME}, and XMP as {@code VIPS_META_XMP_NAME}.</p>
    *
    * <p>The int metadata item "jpeg-multiscan" is set to the result of
    * jpeg_has_multiple_scans(). Interlaced jpeg images need a large amount of
@@ -4363,9 +4363,9 @@ public final class VImage {
    * image with no subsampling.</p>
    *
    * <p>The EXIF thumbnail, if present, is attached to the image as
-   * "jpeg-thumbnail-data". See <code>vips_image_get_blob</code>.</p>
+   * "jpeg-thumbnail-data". See {@code vips_image_get_blob}.</p>
    *
-   * <p>See also: <code>vips_jpegload_buffer</code>, <code>vips_image_new_from_file</code>, {@link #autorot}.</p>
+   * <p>See also: {@code vips_jpegload_buffer}, {@code vips_image_new_from_file}, {@link #autorot}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
@@ -4394,8 +4394,8 @@ public final class VImage {
    * <p>Read a JPEG-formatted memory block into a VIPS image. Exactly as
    * {@link #jpegload}, but read from a memory buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #jpegload}.</p>
    * @param buffer Buffer to load from
@@ -4519,15 +4519,15 @@ public final class VImage {
    * <p>The image is automatically converted to RGB, Monochrome or CMYK before
    * saving.</p>
    *
-   * <p>EXIF data is constructed from <code>VIPS_META_EXIF_NAME</code>, then
+   * <p>EXIF data is constructed from {@code VIPS_META_EXIF_NAME}, then
    * modified with any other related tags on the image before being written to
-   * the file. <code>VIPS_META_RESOLUTION_UNIT</code> is used to set the EXIF resolution
-   * unit. <code>VIPS_META_ORIENTATION</code> is used to set the EXIF orientation tag.</p>
+   * the file. {@code VIPS_META_RESOLUTION_UNIT} is used to set the EXIF resolution
+   * unit. {@code VIPS_META_ORIENTATION} is used to set the EXIF orientation tag.</p>
    *
-   * <p>IPTC as <code>VIPS_META_IPTC_NAME</code> and XMP as <code>VIPS_META_XMP_NAME</code>
+   * <p>IPTC as {@code VIPS_META_IPTC_NAME} and XMP as {@code VIPS_META_XMP_NAME}
    * are coded and attached.</p>
    *
-   * <p>See also: <code>vips_jpegsave_buffer</code>, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_jpegsave_buffer}, {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -4558,11 +4558,11 @@ public final class VImage {
   /**
    * <p>As {@link #jpegsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@obuf</code>, the length of the buffer in
-   * <code>@olen</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @obuf}, the length of the buffer in
+   * {@code @olen}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #jpegsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #jpegsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg optimize-coding {@link VipsOption.Boolean} Compute optimal Huffman coding tables
@@ -4593,7 +4593,7 @@ public final class VImage {
   /**
    * <p>As {@link #jpegsave}, but save as a mime jpeg on stdout.</p>
    *
-   * <p>See also: {@link #jpegsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #jpegsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg optimize-coding {@link VipsOption.Boolean} Compute optimal Huffman coding tables
@@ -4621,7 +4621,7 @@ public final class VImage {
   /**
    * <p>As {@link #jpegsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #jpegsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #jpegsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -4655,7 +4655,7 @@ public final class VImage {
    * <p>The JPEG-XL loader and saver are experimental features and may change
    * in future libvips versions.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -4765,7 +4765,7 @@ public final class VImage {
   /**
    * <p>As {@link #jxlsave}, but save to a memory buffer.</p>
    *
-   * <p>See also: {@link #jxlsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #jxlsave}, {@code vips_image_write_to_target}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tier {@link VipsOption.Int} Decode speed tier
    * @optionalArg distance {@link VipsOption.Double} Target butteraugli distance
@@ -4791,7 +4791,7 @@ public final class VImage {
   /**
    * <p>As {@link #jxlsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #jxlsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #jxlsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tier {@link VipsOption.Int} Decode speed tier
@@ -4815,22 +4815,22 @@ public final class VImage {
   }
 
   /**
-   * <p>Repeatedly scans {@param in} for regions of 4-connected pixels
+   * <p>Repeatedly scans {@code in} for regions of 4-connected pixels
    * with the same pixel value. Every time a region is discovered, those
-   * pixels are marked in {@param mask} with a unique serial number. Once all pixels
+   * pixels are marked in {@code mask} with a unique serial number. Once all pixels
    * have been labelled, the operation returns, setting {@optionalArg segments} to the number
    * of discrete regions which were detected.</p>
    *
-   * <p>{@param mask} is always a 1-band {@link VipsBandFormat#FORMAT_INT} image of the same dimensions as
-   * {@param in}.</p>
+   * <p>{@code mask} is always a 1-band {@link VipsBandFormat#FORMAT_INT} image of the same dimensions as
+   * {@code in}.</p>
    *
    * <p>This operation is useful for, for example, blob counting. You can use the
    * morphological operators to detect and isolate a series of objects, then use
    * labelregions to number them all.</p>
    *
-   * <p>Use <code>vips_hist_find_indexed</code> to (for example) find blob coordinates.</p>
+   * <p>Use {@code vips_hist_find_indexed} to (for example) find blob coordinates.</p>
    *
-   * <p>See also: <code>vips_hist_find_indexed</code>.</p>
+   * <p>See also: {@code vips_hist_find_indexed}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg segments {@link VipsOption.Int} Number of discrete contiguous regions
    */
@@ -4845,7 +4845,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Pass an image through a linear transform, ie. ({@param out} = {@param in} * {@param a} + {@param b}). Output
+   * <p>Pass an image through a linear transform, ie. ({@code out} = {@code in} * {@code a} + {@code b}). Output
    * is float for integer input, double for double input, complex for
    * complex input and double complex for double complex input. Set {@optionalArg uchar} to
    * output uchar pixels.</p>
@@ -4857,7 +4857,7 @@ public final class VImage {
    * element and the image only has a single band, the result is a many-band
    * image where each band corresponds to one array element.</p>
    *
-   * <p>See also: <code>vips_linear1</code>, {@link #add}.</p>
+   * <p>See also: {@code vips_linear1}, {@link #add}.</p>
    * @param a Multiply by this
    * @param b Add this
    * @param args Array of VipsOption to apply to this operation
@@ -4879,13 +4879,13 @@ public final class VImage {
 
   /**
    * <p>This operation behaves rather like {@link #copy} between images
-   * {@param in} and {@param out}, except that it keeps a cache of computed scanlines.</p>
+   * {@code in} and {@code out}, except that it keeps a cache of computed scanlines.</p>
    *
    * <p>The number of lines cached is enough for a small amount of non-local
    * access.</p>
    *
    * <p>Each cache tile is made with a single call to
-   * <code>vips_region_prepare</code>.</p>
+   * {@code vips_region_prepare}.</p>
    *
    * <p>When the cache fills, a tile is chosen for reuse. If {@optionalArg access} is
    * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
@@ -4896,7 +4896,7 @@ public final class VImage {
    * linecache uses. The default is 1 (a single scanline).</p>
    *
    * <p>Normally, only a single thread at once is allowed to calculate tiles. If
-   * you set {@optionalArg threaded} to <code>TRUE</code>, linecache will allow many threads to
+   * you set {@optionalArg threaded} to {@code TRUE}, linecache will allow many threads to
    * calculate tiles at once and share the cache between them.</p>
    *
    * <p>See also: {@link #cache}, {@link #tilecache}.</p>
@@ -4919,7 +4919,7 @@ public final class VImage {
   /**
    * <p>Creates a circularly symmetric Laplacian of Gaussian mask
    * of radius
-   * {@param sigma}.  The size of the mask is determined by the variable {@param minAmpl};
+   * {@code sigma}.  The size of the mask is determined by the variable {@code minAmpl};
    * if for instance the value .1 is entered this means that the produced mask
    * is clipped at values within 10 percent of zero, and where the change
    * between mask elements is less than 10%.</p>
@@ -4931,7 +4931,7 @@ public final class VImage {
    * 	(2 - (r2 / s2)) *
    * 	exp(-r2 / (2 * s2))</p>
    *
-   * <p>where s2 = {@param sigma} * {@param sigma}, s4 = s2 * s2, r2 = r * r.</p>
+   * <p>where s2 = {@code sigma} * {@code sigma}, s4 = s2 * s2, r2 = r * r.</p>
    *
    * <p>The generated mask has odd size and its maximum value is normalised to
    * 1.0, unless {@optionalArg precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
@@ -4987,7 +4987,7 @@ public final class VImage {
    * docs](http://www.imagemagick.org/script/command-line-options.php#density)
    * on the imagemagick website.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg density {@link VipsOption.String} Canvas resolution for rendering vector formats like SVG
@@ -5017,8 +5017,8 @@ public final class VImage {
    * <p>Read an image memory block using libMagick into a VIPS image. Exactly as
    * {@link #magickload}, but read from a memory source.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #magickload}.</p>
    * @param buffer Buffer to load from
@@ -5066,7 +5066,7 @@ public final class VImage {
    * <p>{@optionalArg bitdepth} specifies the number of bits per pixel. The image will be quantized
    * and dithered if the value is within the valid range (1 to 8).</p>
    *
-   * <p>See also: <code>vips_magicksave_buffer</code>, {@link #magickload}.</p>
+   * <p>See also: {@code vips_magicksave_buffer}, {@link #magickload}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg format {@link VipsOption.String} Format to save in
@@ -5092,11 +5092,11 @@ public final class VImage {
   /**
    * <p>As {@link #magicksave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@obuf</code>, the length of the buffer in
-   * <code>@olen</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @obuf}, the length of the buffer in
+   * {@code @olen}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #magicksave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #magicksave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg format {@link VipsOption.String} Format to save in
    * @optionalArg quality {@link VipsOption.Int} Quality to use
@@ -5120,19 +5120,19 @@ public final class VImage {
   }
 
   /**
-   * <p>This operator resamples {@param in} using {@param index} to look up pixels. {@param out} is
-   * the same size as {@param index}, with each pixel being fetched from that position in
-   * {@param in}. That is:</p>
+   * <p>This operator resamples {@code in} using {@code index} to look up pixels. {@code out} is
+   * the same size as {@code index}, with each pixel being fetched from that position in
+   * {@code in}. That is:</p>
    *
    * <pre>{@code 
    * out[x, y] = in[index[x, y]]
    * }</pre>
    *
-   * <p>If {@param index} has one band, that band must be complex. Otherwise, {@param index} must
+   * <p>If {@code index} has one band, that band must be complex. Otherwise, {@code index} must
    * have two bands of any format.</p>
    *
-   * <p>Coordinates in {@param index} are in pixels, with (0, 0) being the top-left corner
-   * of {@param in}, and with y increasing down the image. Use {@link #xyz} to build index
+   * <p>Coordinates in {@code index} are in pixels, with (0, 0) being the top-left corner
+   * of {@code in}, and with y increasing down the image. Use {@link #xyz} to build index
    * images.</p>
    *
    * <p>{@optionalArg interpolate} defaults to bilinear.</p>
@@ -5177,22 +5177,22 @@ public final class VImage {
    * <p>The input image will be cast to one of the unsigned integer types, that is,
    * VIPS_FORMAT_UCHAR, VIPS_FORMAT_USHORT or VIPS_FORMAT_UINT.</p>
    *
-   * <p>If {@param lut} is too small for the input type (for example, if {@param in} is
-   * VIPS_FORMAT_UCHAR but {@param lut} only has 100 elements), the lut is padded out
+   * <p>If {@code lut} is too small for the input type (for example, if {@code in} is
+   * VIPS_FORMAT_UCHAR but {@code lut} only has 100 elements), the lut is padded out
    * by copying the last element. Overflows are reported at the end of
    * computation.
-   * If {@param lut} is too large, extra values are ignored.</p>
+   * If {@code lut} is too large, extra values are ignored.</p>
    *
-   * <p>If {@param lut} has one band and {@optionalArg band} is -1 (the default), then all bands of {@param in}
-   * pass through {@param lut}. If {@optionalArg band} is &ge; 0, then just that band of {@param in} passes
-   * through {@param lut} and other bands are just copied.</p>
+   * <p>If {@code lut} has one band and {@optionalArg band} is -1 (the default), then all bands of {@code in}
+   * pass through {@code lut}. If {@optionalArg band} is &ge; 0, then just that band of {@code in} passes
+   * through {@code lut} and other bands are just copied.</p>
    *
-   * <p>If {@param lut}
-   * has same number of bands as {@param in}, then each band is mapped
-   * separately. If {@param in} has one band, then {@param lut} may have many bands and
-   * the output will have the same number of bands as {@param lut}.</p>
+   * <p>If {@code lut}
+   * has same number of bands as {@code in}, then each band is mapped
+   * separately. If {@code in} has one band, then {@code lut} may have many bands and
+   * the output will have the same number of bands as {@code lut}.</p>
    *
-   * <p>See also: <code>vips_hist_find</code>, {@link #identity}.</p>
+   * <p>See also: {@code vips_hist_find}, {@link #identity}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg band {@link VipsOption.Int} Apply one-band lut to this band of in
    */
@@ -5211,12 +5211,12 @@ public final class VImage {
   /**
    * <p>Make an butterworth high- or low-pass filter, that is, one with a variable,
    * smooth transition
-   * positioned at {@param frequencyCutoff}, where {@param frequencyCutoff} is in
+   * positioned at {@code frequencyCutoff}, where {@code frequencyCutoff} is in
    * range 0 - 1. The shape of the curve is controlled by
-   * {@param order} --- higher values give a sharper transition. See Gonzalez and Wintz,
+   * {@code order} --- higher values give a sharper transition. See Gonzalez and Wintz,
    * Digital Image Processing, 1987.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5249,13 +5249,13 @@ public final class VImage {
 
   /**
    * <p>Make an butterworth band-pass or band-reject filter, that is, one with a
-   * variable, smooth transition positioned at {@param frequencyCutoffX},
-   * {@param frequencyCutoffY}, of radius {@param radius}.
+   * variable, smooth transition positioned at {@code frequencyCutoffX},
+   * {@code frequencyCutoffY}, of radius {@code radius}.
    * The shape of the curve is controlled by
-   * {@param order} --- higher values give a sharper transition. See Gonzalez and Wintz,
+   * {@code order} --- higher values give a sharper transition. See Gonzalez and Wintz,
    * Digital Image Processing, 1987.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5297,12 +5297,12 @@ public final class VImage {
    * <p>Make a butterworth ring-pass or ring-reject filter, that is, one with a
    * variable,
    * smooth transition
-   * positioned at {@param frequencyCutoff} of width {@param width}, where {@param frequencyCutoff} is
+   * positioned at {@code frequencyCutoff} of width {@code width}, where {@code frequencyCutoff} is
    * in the range 0 - 1. The shape of the curve is controlled by
-   * {@param order} --- higher values give a sharper transition. See Gonzalez and Wintz,
+   * {@code order} --- higher values give a sharper transition. See Gonzalez and Wintz,
    * Digital Image Processing, 1987.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5340,7 +5340,7 @@ public final class VImage {
    * <p>This operation should be used to create fractal images by filtering the
    * power spectrum of Gaussian white noise. See {@link #gaussnoise}.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param fractalDimension Fractal dimension
@@ -5367,9 +5367,9 @@ public final class VImage {
 
   /**
    * <p>Make a gaussian high- or low-pass filter, that is, one with a variable,
-   * smooth transition positioned at {@param frequencyCutoff}.</p>
+   * smooth transition positioned at {@code frequencyCutoff}.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5399,10 +5399,10 @@ public final class VImage {
 
   /**
    * <p>Make a gaussian band-pass or band-reject filter, that is, one with a
-   * variable, smooth transition positioned at {@param frequencyCutoffX},
-   * {@param frequencyCutoffY}, of radius {@param radius}.</p>
+   * variable, smooth transition positioned at {@code frequencyCutoffX},
+   * {@code frequencyCutoffY}, of radius {@code radius}.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoffX Frequency cutoff x
@@ -5439,10 +5439,10 @@ public final class VImage {
 
   /**
    * <p>Make a gaussian ring-pass or ring-reject filter, that is, one with a
-   * variable, smooth transition positioned at {@param frequencyCutoff} of width
-   * {@param ringwidth}.</p>
+   * variable, smooth transition positioned at {@code frequencyCutoff} of width
+   * {@code ringwidth}.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5475,7 +5475,7 @@ public final class VImage {
 
   /**
    * <p>Make an ideal high- or low-pass filter, that is, one with a sharp cutoff
-   * positioned at {@param frequencyCutoff}, where {@param frequencyCutoff} is in
+   * positioned at {@code frequencyCutoff}, where {@code frequencyCutoff} is in
    * the range 0 - 1.</p>
    *
    * <p>This operation creates a one-band float image of the specified size.
@@ -5497,11 +5497,11 @@ public final class VImage {
    * <p>Set {@optionalArg uchar} to output an 8-bit unsigned char image rather than a
    * float image. In this case, pixels are in the range [0 - 255].</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>, <code>vips_mask_ideal_ring</code>,
-   * <code>vips_mask_ideal_band</code>, <code>vips_mask_butterworth</code>,
-   * <code>vips_mask_butterworth_ring</code>, <code>vips_mask_butterworth_band</code>,
-   * <code>vips_mask_gaussian</code>, <code>vips_mask_gaussian_ring</code>,
-   * <code>vips_mask_gaussian_band</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}, {@code vips_mask_ideal_ring},
+   * {@code vips_mask_ideal_band}, {@code vips_mask_butterworth},
+   * {@code vips_mask_butterworth_ring}, {@code vips_mask_butterworth_band},
+   * {@code vips_mask_gaussian}, {@code vips_mask_gaussian_ring},
+   * {@code vips_mask_gaussian_band}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5528,10 +5528,10 @@ public final class VImage {
 
   /**
    * <p>Make an ideal band-pass or band-reject filter, that is, one with a
-   * sharp cutoff around the point {@param frequencyCutoffX}, {@param frequencyCutoffY},
-   * of size {@param radius}.</p>
+   * sharp cutoff around the point {@code frequencyCutoffX}, {@code frequencyCutoffY},
+   * of size {@code radius}.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoffX Frequency cutoff x
@@ -5564,10 +5564,10 @@ public final class VImage {
 
   /**
    * <p>Make an ideal ring-pass or ring-reject filter, that is, one with a sharp
-   * ring positioned at {@param frequencyCutoff} of width {@param width}, where
-   * {@param frequencyCutoff} and {@param width} are expressed as the range 0 - 1.</p>
+   * ring positioned at {@code frequencyCutoff} of width {@code width}, where
+   * {@code frequencyCutoff} and {@code width} are expressed as the range 0 - 1.</p>
    *
-   * <p>See also: <code>vips_mask_ideal</code>.</p>
+   * <p>See also: {@code vips_mask_ideal}.</p>
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5596,11 +5596,11 @@ public final class VImage {
   }
 
   /**
-   * <p>Scale, rotate and translate {@param sec} so that the tie-points line up.</p>
+   * <p>Scale, rotate and translate {@code sec} so that the tie-points line up.</p>
    *
-   * <p>If {@optionalArg search} is <code>TRUE</code>, before performing the transformation, the tie-points
-   * are improved by searching an area of {@param sec} of size {@optionalArg harea} for a
-   * match of size {@optionalArg hwindow} to {@param ref}.</p>
+   * <p>If {@optionalArg search} is {@code TRUE}, before performing the transformation, the tie-points
+   * are improved by searching an area of {@code sec} of size {@optionalArg harea} for a
+   * match of size {@optionalArg hwindow} to {@code ref}.</p>
    *
    * <p>This function will only work well for small rotates and scales.</p>
    * @param xr1 Position of first reference tie-point
@@ -5672,9 +5672,9 @@ public final class VImage {
 
   /**
    * <p>This operation calculates a 2-ary maths operation on a pair of images
-   * and writes the result to {@param out}. The images may have any
-   * non-complex format. {@param out} is float except in the case that either of {@param left}
-   * or {@param right} are double, in which case {@param out} is also double.</p>
+   * and writes the result to {@code out}. The images may have any
+   * non-complex format. {@code out} is float except in the case that either of {@code left}
+   * or {@code right} are double, in which case {@code out} is also double.</p>
    *
    * <p>It detects division by zero, setting those pixels to zero in the output.
    * Beware: it does this silently!</p>
@@ -5692,7 +5692,7 @@ public final class VImage {
    * <code>arithmetic</code>), and that format is the
    * result type.</p>
    *
-   * <p>See also: <code>vips_math2_const</code>.</p>
+   * <p>See also: {@code vips_math2_const}.</p>
    * @param math2 {@link VipsOperationMath2} Math to perform
    * @param args Array of VipsOption to apply to this operation
    */
@@ -5712,10 +5712,10 @@ public final class VImage {
 
   /**
    * <p>This operation calculates various 2-ary maths operations on an image and
-   * an array of constants and writes the result to {@param out}.
+   * an array of constants and writes the result to {@code out}.
    * The image may have any
-   * non-complex format. {@param out} is float except in the case that {@param in}
-   * is double, in which case {@param out} is also double.</p>
+   * non-complex format. {@code out} is float except in the case that {@code in}
+   * is double, in which case {@code out} is also double.</p>
    *
    * <p>It detects division by zero, setting those pixels to zero in the output.
    * Beware: it does this silently!</p>
@@ -5755,7 +5755,7 @@ public final class VImage {
    * it as an image. It will not handle complex images. It does not handle
    * sparse matrices.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -5778,7 +5778,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates the inverse of the matrix represented in <code>@m</code>.
+   * <p>This operation calculates the inverse of the matrix represented in {@code @m}.
    * The scale and offset members of the input matrix are ignored.</p>
    *
    * <p>See also: {@link #matrixload}.</p>
@@ -5865,7 +5865,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Print {@param in} to <code>stdout</code> in matrix format. See {@link #matrixload} for a
+   * <p>Print {@code in} to {@code stdout} in matrix format. See {@link #matrixload} for a
    * description of the format.</p>
    *
    * <p>See also: {@link #matrixload}.</p>
@@ -5884,7 +5884,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Write {@param in} to {@param filename} in matrix format. See {@link #matrixload} for a
+   * <p>Write {@code in} to {@code filename} in matrix format. See {@link #matrixload} for a
    * description of the format.</p>
    *
    * <p>See also: {@link #matrixload}.</p>
@@ -6002,8 +6002,8 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation joins two images left-right (with {@param ref} on the left) or
-   * up-down (with {@param ref} above) with a smooth seam.</p>
+   * <p>This operation joins two images left-right (with {@code ref} on the left) or
+   * up-down (with {@code ref} above) with a smooth seam.</p>
    *
    * <p>If the number of bands differs, one of the images
    * must have one band. In this case, an n-band image is formed from the
@@ -6014,9 +6014,9 @@ public final class VImage {
    * Smallest common format in
    * <code>arithmetic</code>).</p>
    *
-   * <p>{@param dx} and {@param dy} give the displacement of {@param sec} relative to {@param ref}, in other words,
-   * the vector to get from the origin of {@param sec} to the origin of {@param ref}, in other
-   * words, {@param dx} will generally be a negative number.</p>
+   * <p>{@code dx} and {@code dy} give the displacement of {@code sec} relative to {@code ref}, in other words,
+   * the vector to get from the origin of {@code sec} to the origin of {@code ref}, in other
+   * words, {@code dx} will generally be a negative number.</p>
    *
    * <p>{@optionalArg mblend} limits  the  maximum width of the
    * blend area.  A value of "-1" means "unlimited". The two images are blended
@@ -6095,7 +6095,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Performs a morphological operation on {@param in} using {@param mask} as a
+   * <p>Performs a morphological operation on {@code in} using {@code mask} as a
    * structuring element.</p>
    *
    * <p>The image should have 0 (black) for no object and 255
@@ -6119,13 +6119,13 @@ public final class VImage {
    * the output pixel is set if any part of the mask
    * matches, that is, the result is the logical OR of the selected input pixels.</p>
    *
-   * <p>See the boolean operations <code>vips_andimage</code>, <code>vips_orimage</code> and
-   * <code>vips_eorimage</code>
+   * <p>See the boolean operations {@code vips_andimage}, {@code vips_orimage} and
+   * {@code vips_eorimage}
    * for analogues of the usual set difference and set union operations.</p>
    *
    * <p>Operations are performed using the processor's vector unit,
    * if possible. Disable this with `--vips-novector` or `VIPS_NOVECTOR` or
-   * <code>vips_vector_set_enabled</code></p>
+   * {@code vips_vector_set_enabled}</p>
    * @param morph {@link VipsOperationMorphology} Morphological operation to perform
    * @param args Array of VipsOption to apply to this operation
    */
@@ -6144,14 +6144,14 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation joins two images left-right (with {@param ref} on the left) or
-   * top-bottom (with {@param ref} above) given an approximate overlap.</p>
+   * <p>This operation joins two images left-right (with {@code ref} on the left) or
+   * top-bottom (with {@code ref} above) given an approximate overlap.</p>
    *
-   * <p>{@param sec} is positioned so that the pixel ({@param xsec}, {@param ysec}) in {@param sec} lies on top of
-   * the pixel ({@param xref}, {@param yref}) in {@param ref}. The overlap area is divided into three
-   * sections, 20 high-contrast points in band {@optionalArg bandno} of image {@param ref} are found
+   * <p>{@code sec} is positioned so that the pixel ({@code xsec}, {@code ysec}) in {@code sec} lies on top of
+   * the pixel ({@code xref}, {@code yref}) in {@code ref}. The overlap area is divided into three
+   * sections, 20 high-contrast points in band {@optionalArg bandno} of image {@code ref} are found
    * in each, and a window of pixels of size {@optionalArg hwindow} around each high-contrast
-   * point is searched for in {@param sec} over an area of {@optionalArg harea}.</p>
+   * point is searched for in {@code sec} over an area of {@optionalArg harea}.</p>
    *
    * <p>A linear model is fitted to the 60 tie-points, points a long way from the
    * fit are discarded, and the model refitted until either too few points
@@ -6205,14 +6205,14 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation joins two images top-bottom (with {@param sec} on the right)
-   * or left-right (with {@param sec} at the bottom)
-   * given an approximate pair of tie-points. {@param sec} is scaled and rotated as
+   * <p>This operation joins two images top-bottom (with {@code sec} on the right)
+   * or left-right (with {@code sec} at the bottom)
+   * given an approximate pair of tie-points. {@code sec} is scaled and rotated as
    * necessary before the join.</p>
    *
-   * <p>If {@optionalArg search} is <code>TRUE</code>, before performing the transformation, the tie-points
-   * are improved by searching an area of {@param sec} of size {@optionalArg harea} for a
-   * object of size {@optionalArg hwindow} in {@param ref}.</p>
+   * <p>If {@optionalArg search} is {@code TRUE}, before performing the transformation, the tie-points
+   * are improved by searching an area of {@code sec} of size {@optionalArg harea} for a
+   * object of size {@optionalArg hwindow} in {@code ref}.</p>
    *
    * <p>{@optionalArg mblend} limits  the  maximum size of the
    * blend area.  A value of "-1" means "unlimited". The two images are blended
@@ -6303,7 +6303,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates {@param left} * {@param right} and writes the result to {@param out}.</p>
+   * <p>This operation calculates {@code left} * {@code right} and writes the result to {@code out}.</p>
    *
    * <p>If the images differ in size, the smaller image is enlarged to match the
    * larger by adding zero pixels along the bottom and right.</p>
@@ -6402,7 +6402,7 @@ public final class VImage {
    * <p>This reader uses the rather limited OpenEXR C API. It should really be
    * redone in C++.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -6442,14 +6442,14 @@ public final class VImage {
    * "slide-associated-images" metadata item.</p>
    *
    * <p>If you set {@optionalArg attachAssociated}, then all associated images are attached as
-   * metadata items. Use <code>vips_image_get_image</code> on {@param out} to retrieve them. Images
+   * metadata items. Use {@code vips_image_get_image} on {@code out} to retrieve them. Images
    * are attached as "openslide-associated-XXXXX", where XXXXX is the name of the
    * associated image.</p>
    *
    * <p>By default, the output of this operator is RGBA. Set {@optionalArg rgb} to enable RGB
    * output.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg level {@link VipsOption.Int} Load this level from the file
@@ -6532,7 +6532,7 @@ public final class VImage {
    * <p>This function only reads the image header and does not render any pixel
    * data. Rendering occurs when pixels are accessed.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>, {@link #magickload}.</p>
+   * <p>See also: {@code vips_image_new_from_file}, {@link #magickload}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -6564,8 +6564,8 @@ public final class VImage {
    * <p>Read a PDF-formatted memory buffer into a VIPS image. Exactly as
    * {@link #pdfload}, but read from memory.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #pdfload}.</p>
    * @param buffer Buffer to load from
@@ -6627,8 +6627,8 @@ public final class VImage {
   }
 
   /**
-   * <p>percent returns (through the {@param threshold} parameter) the threshold
-   * below which there are {@param percent} values of {@param in}. For example:</p>
+   * <p>percent returns (through the {@code threshold} parameter) the threshold
+   * below which there are {@code percent} values of {@code in}. For example:</p>
    *
    * <pre>{@code 
    * $ vips percent k2.jpg 90
@@ -6640,7 +6640,7 @@ public final class VImage {
    * <p>The function works for uchar and ushort images only.  It can be used
    * to threshold the scaled result of a filtering operation.</p>
    *
-   * <p>See also: <code>vips_hist_find</code>, {@link #profile}.</p>
+   * <p>See also: {@code vips_hist_find}, {@link #profile}.</p>
    * @param percent Percent of pixels
    * @param args Array of VipsOption to apply to this operation
    */
@@ -6664,7 +6664,7 @@ public final class VImage {
    * <p>Use {@optionalArg cellSize} to set the size of the cells from which the image is
    * constructed. The default is 256 x 256.</p>
    *
-   * <p>If {@param width} and {@param height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
+   * <p>If {@code width} and {@code height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
    *
    * <p>Normally, output pixels are {@link VipsBandFormat#FORMAT_FLOAT} in the range [-1, +1]. Set
    * {@optionalArg uchar} to output a uchar image with pixels in [0, 255].</p>
@@ -6693,7 +6693,7 @@ public final class VImage {
    * <p>Convert the two input images to Fourier space, calculate phase-correlation,
    * back to real space.</p>
    *
-   * <p>See also: {@link #fwfft}, <code>vips_cross_phase</code>,</p>
+   * <p>See also: {@link #fwfft}, {@code vips_cross_phase},</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage phasecor(VipsOption... args) throws VipsError {
@@ -6722,7 +6722,7 @@ public final class VImage {
    * block some denial of service attacks. Set {@optionalArg unlimited} to disable these
    * limits.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
@@ -6748,8 +6748,8 @@ public final class VImage {
   /**
    * <p>Exactly as {@link #pngload}, but read from a PNG-formatted memory block.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #pngload}.</p>
    * @param buffer Buffer to load from
@@ -6805,7 +6805,7 @@ public final class VImage {
    *
    * <p>{@optionalArg compression} means compress with this much effort (0 - 9). Default 6.</p>
    *
-   * <p>Set {@optionalArg interlace} to <code>TRUE</code> to interlace the image with ADAM7
+   * <p>Set {@optionalArg interlace} to {@code TRUE} to interlace the image with ADAM7
    * interlacing. Beware
    * than an interlaced PNG can be up to 7 times slower to write than a
    * non-interlaced image.</p>
@@ -6817,7 +6817,7 @@ public final class VImage {
    * alpha before saving. Images with more than one byte per band element are
    * saved as 16-bit PNG, others are saved as 8-bit PNG.</p>
    *
-   * <p>Set {@optionalArg palette} to <code>TRUE</code> to enable palette mode for RGB or RGBA images. A
+   * <p>Set {@optionalArg palette} to {@code TRUE} to enable palette mode for RGB or RGBA images. A
    * palette will be computed with enough space for {@optionalArg bitdepth} (1, 2, 4 or 8)
    * bits. Use {@optionalArg Q} to set the optimisation effort, {@optionalArg dither} to set the degree of
    * Floyd-Steinberg dithering and {@optionalArg effort} to control the CPU effort
@@ -6831,7 +6831,7 @@ public final class VImage {
    * <p>XMP metadata is written to the XMP chunk. PNG comments are written to
    * separate text chunks.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Int} Compression factor
@@ -6861,11 +6861,11 @@ public final class VImage {
   /**
    * <p>As {@link #pngsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #pngsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #pngsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Int} Compression factor
    * @optionalArg interlace {@link VipsOption.Boolean} Interlace image
@@ -6895,7 +6895,7 @@ public final class VImage {
   /**
    * <p>As {@link #pngsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #pngsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #pngsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Int} Compression factor
@@ -6929,7 +6929,7 @@ public final class VImage {
    * stored in binary or in ASCII. One bit images become 8 bit VIPS images,
    * with 0 and 255 for 0 and 1.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -6985,14 +6985,14 @@ public final class VImage {
    * <p>When writing float (PFM) images the scale factor is set from the
    * "pfm-scale" metadata.</p>
    *
-   * <p>Set {@optionalArg ascii} to <code>TRUE</code> to write as human-readable ASCII. Normally data is
+   * <p>Set {@optionalArg ascii} to {@code TRUE} to write as human-readable ASCII. Normally data is
    * written in binary.</p>
    *
    * <p>Set {@optionalArg bitdepth} to 1 to write a one-bit image.</p>
    *
    * <p>{@optionalArg format} defaults to the sub-type for this filename suffix.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
@@ -7099,12 +7099,12 @@ public final class VImage {
   }
 
   /**
-   * <p>profile searches inward from the edge of {@param in} and finds the
-   * first non-zero pixel. Pixels in {@param columns} have the distance from the top edge
-   * to the first non-zero pixel in that column, {@param rows} has the distance from the
+   * <p>profile searches inward from the edge of {@code in} and finds the
+   * first non-zero pixel. Pixels in {@code columns} have the distance from the top edge
+   * to the first non-zero pixel in that column, {@code rows} has the distance from the
    * left edge to the first non-zero pixel in that row.</p>
    *
-   * <p>See also: {@link #project}, <code>vips_hist_find</code>.</p>
+   * <p>See also: {@link #project}, {@code vips_hist_find}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage profile(VipsOption... args) throws VipsError {
@@ -7126,7 +7126,7 @@ public final class VImage {
    *
    * <p>Non-complex images only.</p>
    *
-   * <p>See also: <code>vips_hist_find</code>, {@link #profile}.</p>
+   * <p>See also: {@code vips_hist_find}, {@link #profile}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage project(VipsOption... args) throws VipsError {
@@ -7181,7 +7181,7 @@ public final class VImage {
    *
    * <p>Radiance files are read as {@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD}. They have one byte for each of
    * red, green and blue, and one byte of shared exponent. Some operations (like
-   * <code>vips_extract_area</code>) can work directly with images in this format, but
+   * {@code vips_extract_area}) can work directly with images in this format, but
    * mmany (all the arithmetic operations, for example) will not. Unpack
    * {@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD} images to 3 band float with {@link #rad2float} if
    * you want to do arithmetic on them.</p>
@@ -7191,7 +7191,7 @@ public final class VImage {
    *
    * <p>Sections of this reader from Greg Ward and Radiance with kind permission.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7216,8 +7216,8 @@ public final class VImage {
   /**
    * <p>Exactly as {@link #radload}, but read from a HDR-formatted memory block.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #radload}.</p>
    * @param buffer Buffer to load from
@@ -7271,7 +7271,7 @@ public final class VImage {
    *
    * <p>Sections of this reader from Greg Ward and Radiance with kind permission.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
@@ -7292,11 +7292,11 @@ public final class VImage {
   /**
    * <p>As {@link #radsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #radsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #radsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -7336,10 +7336,10 @@ public final class VImage {
   }
 
   /**
-   * <p>rank does rank filtering on an image. A window of size {@param width} by
-   * {@param height} is passed over the image. At each position, the pixels inside the
-   * window are sorted into ascending order and the pixel at position {@param index} is
-   * output. {@param index} numbers from 0.</p>
+   * <p>rank does rank filtering on an image. A window of size {@code width} by
+   * {@code height} is passed over the image. At each position, the pixels inside the
+   * window are sorted into ascending order and the pixel at position {@code index} is
+   * output. {@code index} numbers from 0.</p>
    *
    * <p>It works for any non-complex image type, with any number of bands.
    * The input is expanded by copying edge pixels before performing the
@@ -7353,7 +7353,7 @@ public final class VImage {
    * <p>The special cases n == 0 and n == m * m - 1 are useful dilate and
    * expand operators.</p>
    *
-   * <p>See also: {@link #conv}, <code>vips_median</code>, {@link #spcor}.</p>
+   * <p>See also: {@link #conv}, {@code vips_median}, {@link #spcor}.</p>
    * @param width Window width in pixels
    * @param height Window height in pixels
    * @param index Select pixel at index
@@ -7376,7 +7376,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation mmaps the file, setting up {@param out} so that access to that
+   * <p>This operation mmaps the file, setting up {@code out} so that access to that
    * image will read from the file.</p>
    *
    * <p>By default, it assumes uchar pixels. Use {@optionalArg format} to select something else.</p>
@@ -7386,7 +7386,7 @@ public final class VImage {
    *
    * <p>Use {@link #byteswap} to reverse the byte ordering if necessary.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>, {@link #copy}, {@link #byteswap}.</p>
+   * <p>See also: {@code vips_image_new_from_file}, {@link #copy}, {@link #byteswap}.</p>
    * @param filename Filename to load from
    * @param width Image width in pixels
    * @param height Image height in pixels
@@ -7422,10 +7422,10 @@ public final class VImage {
   }
 
   /**
-   * <p>Writes the pixels in {@param in} to the file {@param filename} with no header or other
+   * <p>Writes the pixels in {@code in} to the file {@code filename} with no header or other
    * metadata.</p>
    *
-   * <p>See also: <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
@@ -7444,7 +7444,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Writes the pixels in {@param in} to the {@param fd} with no header or other
+   * <p>Writes the pixels in {@code in} to the {@code fd} with no header or other
    * metadata.  Handy for implementing other savers.</p>
    *
    * <p>See also: {@link #rawsave}.</p>
@@ -7466,11 +7466,11 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation recombines an image's bands. Each pixel in {@param in} is treated as
-   * an n-element vector, where n is the number of bands in {@param in}, and multiplied by
-   * the n x m matrix {@param m} to produce the m-band image {@param out}.</p>
+   * <p>This operation recombines an image's bands. Each pixel in {@code in} is treated as
+   * an n-element vector, where n is the number of bands in {@code in}, and multiplied by
+   * the n x m matrix {@code m} to produce the m-band image {@code out}.</p>
    *
-   * <p>{@param out} is always float, unless {@param in} is double, in which case {@param out} is double
+   * <p>{@code out} is always float, unless {@code in} is double, in which case {@code out} is double
    * too. No complex images allowed.</p>
    *
    * <p>It's useful for various sorts of colour space conversions.</p>
@@ -7491,7 +7491,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Reduce {@param in} by a pair of factors with a pair of 1D kernels. This
+   * <p>Reduce {@code in} by a pair of factors with a pair of 1D kernels. This
    * will not work well for shrink factors greater than three.</p>
    *
    * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrink} to shrink
@@ -7535,7 +7535,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Reduce {@param in} horizontally by a float factor. The pixels in {@param out} are
+   * <p>Reduce {@code in} horizontally by a float factor. The pixels in {@code out} are
    * interpolated with a 1D mask generated by {@optionalArg kernel}.</p>
    *
    * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrinkh} to shrink
@@ -7572,7 +7572,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Reduce {@param in} vertically by a float factor. The pixels in {@param out} are
+   * <p>Reduce {@code in} vertically by a float factor. The pixels in {@code out} are
    * interpolated with a 1D mask generated by {@optionalArg kernel}.</p>
    *
    * <p>Set {@optionalArg gap} to speed up reducing by having {@link #shrinkv} to shrink
@@ -7631,7 +7631,7 @@ public final class VImage {
    * band, use {@link #bandbool} after this operation to AND or OR image bands
    * together.</p>
    *
-   * <p>See also: <code>vips_boolean</code>, {@link #bandbool}, <code>vips_relational_const</code>.</p>
+   * <p>See also: {@code vips_boolean}, {@link #bandbool}, {@code vips_relational_const}.</p>
    * @param relational {@link VipsOperationRelational} Relational to perform
    * @param args Array of VipsOption to apply to this operation
    */
@@ -7663,7 +7663,7 @@ public final class VImage {
    * element and the image only has a single band, the result is a many-band
    * image where each band corresponds to one array element.</p>
    *
-   * <p>See also: <code>vips_boolean</code>, {@link #relational}.</p>
+   * <p>See also: {@code vips_boolean}, {@link #relational}.</p>
    * @param relational {@link VipsOperationRelational} Relational to perform
    * @param c Array of constants
    * @param args Array of VipsOption to apply to this operation
@@ -7684,10 +7684,10 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates {@param left} % {@param right} (remainder after integer division)
-   * and writes the result to {@param out}. The images may have any
-   * non-complex format. For float formats, remainder calculates <code>@in1</code> -
-   * <code>@in2</code> * floor (<code>@in1</code> / <code>@in2</code>).</p>
+   * <p>This operation calculates {@code left} % {@code right} (remainder after integer division)
+   * and writes the result to {@code out}. The images may have any
+   * non-complex format. For float formats, remainder calculates {@code @in1} -
+   * {@code @in2} * floor ({@code @in1} / {@code @in2}).</p>
    *
    * <p>If the images differ in size, the smaller image is enlarged to match the
    * larger by adding zero pixels along the bottom and right.</p>
@@ -7702,7 +7702,7 @@ public final class VImage {
    * <code>arithmetic</code>), and that format is the
    * result type.</p>
    *
-   * <p>See also: <code>vips_remainder_const</code>, {@link #divide}, {@link #round}.</p>
+   * <p>See also: {@code vips_remainder_const}, {@link #divide}, {@link #round}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage remainder(VipsOption... args) throws VipsError {
@@ -7718,12 +7718,12 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates {@param in} % {@param c} (remainder after division by an
+   * <p>This operation calculates {@code in} % {@code c} (remainder after division by an
    * array of constants)
-   * and writes the result to {@param out}.
+   * and writes the result to {@code out}.
    * The image may have any
-   * non-complex format. For float formats, <code>vips_remainder_const</code> calculates
-   * {@param in} - {@param c} * floor ({@param in} / {@param c}).</p>
+   * non-complex format. For float formats, {@code vips_remainder_const} calculates
+   * {@code in} - {@code c} * floor ({@code in} / {@code c}).</p>
    *
    * <p>If the array of constants has just one element, that constant is used for
    * all image bands. If the array has more than one element and they have
@@ -7751,7 +7751,7 @@ public final class VImage {
   /**
    * <p>Repeats an image many times.</p>
    *
-   * <p>See also: <code>vips_extract_area</code>.</p>
+   * <p>See also: {@code vips_extract_area}.</p>
    * @param across Repeat this many times horizontally
    * @param down Repeat this many times vertically
    * @param args Array of VipsOption to apply to this operation
@@ -7782,13 +7782,13 @@ public final class VImage {
    * <p>resize normally uses {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_LANCZOS3} for the final reduce, you
    * can change this with {@optionalArg kernel}. Downsizing is done with centre convention.</p>
    *
-   * <p>When upsizing ({@param scale} &gt; 1), the operation uses {@link #affine} with
+   * <p>When upsizing ({@code scale} &gt; 1), the operation uses {@link #affine} with
    * a #VipsInterpolate selected depending on {@optionalArg kernel}. It will use
    * #VipsInterpolateBicubic for {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_CUBIC} and above. It adds a
    * 0.5 pixel displacement to the input pixels to get centre convention scaling.</p>
    *
    * <p>resize normally maintains the image aspect ratio. If you set
-   * {@optionalArg vscale}, that factor is used for the vertical scale and {@param scale} for the
+   * {@optionalArg vscale}, that factor is used for the vertical scale and {@code scale} for the
    * horizontal.</p>
    *
    * <p>If either axis would drop below 1px in size, the shrink in that dimension
@@ -7825,7 +7825,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Rotate {@param in} by a multiple of 90 degrees.</p>
+   * <p>Rotate {@code in} by a multiple of 90 degrees.</p>
    *
    * <p>Use {@link #similarity} to rotate by an arbitrary angle. {@link #rot45} is
    * useful for rotating convolution masks by 45 degrees.</p>
@@ -7847,7 +7847,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Rotate {@param in} by a multiple of 45 degrees. Odd-length sides and square images
+   * <p>Rotate {@code in} by a multiple of 45 degrees. Odd-length sides and square images
    * only.</p>
    *
    * <p>This operation is useful for rotating convolution masks. Use
@@ -7869,7 +7869,7 @@ public final class VImage {
 
   /**
    * <p>This operator calls {@link #affine} for you, calculating the matrix for the
-   * affine transform from <code>@scale</code> and {@param angle}. Other parameters are passed on to
+   * affine transform from {@code @scale} and {@code angle}. Other parameters are passed on to
    * {@link #affine} unaltered.</p>
    *
    * <p>See also: {@link #affine}, #VipsInterpolate.</p>
@@ -7900,7 +7900,7 @@ public final class VImage {
    * <p>Copy for integer types, round float and
    * complex types.</p>
    *
-   * <p>The format of {@param out} is always the same as {@param in}, so you may wish to cast to an
+   * <p>The format of {@code out} is always the same as {@code in}, so you may wish to cast to an
    * integer format afterwards.</p>
    *
    * <p>See also: {@link #cast}</p>
@@ -8057,7 +8057,7 @@ public final class VImage {
 
   /**
    * <p>This operation behaves rather like {@link #copy} between images
-   * {@param in} and {@param out}, except that it checks that pixels on {@param in} are only requested
+   * {@code in} and {@code out}, except that it checks that pixels on {@code in} are only requested
    * top-to-bottom. This operation is useful for loading file formats which are
    * strictly top-to-bottom, like PNG.</p>
    *
@@ -8084,9 +8084,9 @@ public final class VImage {
    * <p>Selectively sharpen the L channel of a LAB image. The input image is
    * transformed to {@link VipsInterpretation#INTERPRETATION_LABS}.</p>
    *
-   * <p>The operation performs a gaussian blur and subtracts from {@param in} to generate a
+   * <p>The operation performs a gaussian blur and subtracts from {@code in} to generate a
    * high-frequency signal. This signal is passed through a lookup table formed
-   * from the five parameters and added back to {@param in}.</p>
+   * from the five parameters and added back to {@code in}.</p>
    *
    * <p>The lookup table is formed like this:</p>
    *
@@ -8152,7 +8152,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Shrink {@param in} by a pair of factors with a simple box filter. For non-integer
+   * <p>Shrink {@code in} by a pair of factors with a simple box filter. For non-integer
    * factors, shrink will first shrink by the integer part with a box
    * filter, then use {@link #reduce} to shrink by the
    * remaining fractional part.</p>
@@ -8191,8 +8191,8 @@ public final class VImage {
   }
 
   /**
-   * <p>Shrink {@param in} horizontally by an integer factor. Each pixel in the output is
-   * the average of the corresponding line of {@param hshrink} pixels in the input.</p>
+   * <p>Shrink {@code in} horizontally by an integer factor. Each pixel in the output is
+   * the average of the corresponding line of {@code hshrink} pixels in the input.</p>
    *
    * <p>This is a very low-level operation: see {@link #resize} for a more
    * convenient way to resize images.</p>
@@ -8221,8 +8221,8 @@ public final class VImage {
   }
 
   /**
-   * <p>Shrink {@param in} vertically by an integer factor. Each pixel in the output is
-   * the average of the corresponding column of {@param vshrink} pixels in the input.</p>
+   * <p>Shrink {@code in} vertically by an integer factor. Each pixel in the output is
+   * the average of the corresponding column of {@code vshrink} pixels in the input.</p>
    *
    * <p>This is a very low-level operation: see {@link #resize} for a more
    * convenient way to resize images.</p>
@@ -8335,10 +8335,10 @@ public final class VImage {
    * <p>Use {@optionalArg interesting} to pick the method vips uses to decide which bits of the
    * image should be kept.</p>
    *
-   * <p>You can test xoffset / yoffset on {@param out} to find the location of the crop
+   * <p>You can test xoffset / yoffset on {@code out} to find the location of the crop
    * within the input image.</p>
    *
-   * <p>See also: <code>vips_extract_area</code>.</p>
+   * <p>See also: {@code vips_extract_area}.</p>
    * @param width Width of extract area
    * @param height Height of extract area
    * @param args Array of VipsOption to apply to this operation
@@ -8383,7 +8383,7 @@ public final class VImage {
   /**
    * <p>Calculate a correlation surface.</p>
    *
-   * <p>{@param ref} is placed at every position in {@param in} and the correlation coefficient
+   * <p>{@code ref} is placed at every position in {@code in} and the correlation coefficient
    * calculated. The output
    * image is always float.</p>
    *
@@ -8400,7 +8400,7 @@ public final class VImage {
    *                      sqrt(sumij (inkl(i,j)-mean(inkl))^2)
    * }</pre>
    *
-   * <p>where inkl is the area of {@param in} centred at position (k,l).</p>
+   * <p>where inkl is the area of {@code in} centred at position (k,l).</p>
    *
    * <p>from Niblack "An Introduction to Digital Image Processing",
    * Prentice/Hall, pp 138.</p>
@@ -8431,7 +8431,7 @@ public final class VImage {
   /**
    * <p>Make a displayable (ie. 8-bit unsigned int) power spectrum.</p>
    *
-   * <p>If {@param in} is non-complex, it is transformed to Fourier space. Then the
+   * <p>If {@code in} is non-complex, it is transformed to Fourier space. Then the
    * absolute value is passed through {@link #scale} in log mode, and {@link #wrap}.</p>
    *
    * <p>See also: {@link #fwfft}, {@link #scale}, {@link #wrap}.</p>
@@ -8448,9 +8448,9 @@ public final class VImage {
   }
 
   /**
-   * <p>Find many image statistics in a single pass through the data. {@param out} is a
+   * <p>Find many image statistics in a single pass through the data. {@code out} is a
    * one-band {@link VipsBandFormat#FORMAT_DOUBLE} image of at least 10 columns by n + 1
-   * (where n is number of bands in image {@param in})
+   * (where n is number of bands in image {@code in})
    * rows. Columns are statistics, and are, in order: minimum, maximum, sum,
    * sum of squares, mean, standard deviation, x coordinate of minimum, y
    * coordinate of minimum, x coordinate of maximum, y coordinate of maximum.
@@ -8490,7 +8490,7 @@ public final class VImage {
    * }</pre>
    *
    * <p>Values {@optionalArg a}, {@optionalArg m0}, {@optionalArg b} and {@optionalArg s0} are entered, while meanv and stdv are the values
-   * calculated over a moving window of size {@param width}, {@param height} centred on pixel
+   * calculated over a moving window of size {@code width}, {@code height} centred on pixel
    * (i,j). {@optionalArg m0} is the new mean, {@optionalArg a} is the weight given to it. {@optionalArg s0} is the new
    * standard deviation, {@optionalArg b} is the weight given to it.</p>
    *
@@ -8504,7 +8504,7 @@ public final class VImage {
    * uchar image as its result. The output image has the same size as the
    * input.</p>
    *
-   * <p>See also: <code>vips_hist_local</code>.</p>
+   * <p>See also: {@code vips_hist_local}.</p>
    * @param width Window width in pixels
    * @param height Window height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -8532,10 +8532,10 @@ public final class VImage {
    * shrink.</p>
    *
    * <p>For small horizontal shrinks, this operation will fetch lines of pixels
-   * from <code>@in</code> and then subsample that line. For large shrinks it will fetch
+   * from {@code @in} and then subsample that line. For large shrinks it will fetch
    * single pixels.</p>
    *
-   * <p>If {@optionalArg point} is set, <code>@in</code> will always be sampled in points. This can be faster
+   * <p>If {@optionalArg point} is set, {@code @in} will always be sampled in points. This can be faster
    * if the previous operations in the pipeline are very slow.</p>
    *
    * <p>See also: {@link #affine}, {@link #shrink}, {@link #zoom}.</p>
@@ -8559,7 +8559,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation calculates <code>@in1</code> - <code>@in2</code> and writes the result to {@param out}.</p>
+   * <p>This operation calculates {@code @in1} - {@code @in2} and writes the result to {@code out}.</p>
    *
    * <p>If the images differ in size, the smaller image is enlarged to match the
    * larger by adding zero pixels along the bottom and right.</p>
@@ -8649,7 +8649,7 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation sums all images in {@param in} and writes the result to {@param out}.</p>
+   * <p>This operation sums all images in {@code in} and writes the result to {@code out}.</p>
    *
    * <p>If the images differ in size, the smaller images are enlarged to match the
    * largest by adding zero pixels along the bottom and right.</p>
@@ -8750,7 +8750,7 @@ public final class VImage {
    * <p>SVGs larger than 10MB are normally blocked for security. Set {@optionalArg unlimited} to
    * allow SVGs of any size.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dpi {@link VipsOption.Double} Render at this DPI
@@ -8779,8 +8779,8 @@ public final class VImage {
    * <p>Read a SVG-formatted memory block into a VIPS image. Exactly as
    * {@link #svgload}, but read from a memory buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #svgload}.</p>
    * @param buffer Buffer to load from
@@ -8836,17 +8836,17 @@ public final class VImage {
   }
 
   /**
-   * <p>The {@param tests} images are evaluated and at each point the index of the first
-   * non-zero value is written to {@param out}. If all {@param tests} are false, the value
-   * (<code>@n</code> + 1) is written.</p>
+   * <p>The {@code tests} images are evaluated and at each point the index of the first
+   * non-zero value is written to {@code out}. If all {@code tests} are false, the value
+   * ({@code @n} + 1) is written.</p>
    *
-   * <p>Images in {@param tests} must have one band. They are expanded to the
-   * bounding box of the set of images in {@param tests}, and that size is used for
-   * {@param out}. {@param tests} can have up to 255 elements.</p>
+   * <p>Images in {@code tests} must have one band. They are expanded to the
+   * bounding box of the set of images in {@code tests}, and that size is used for
+   * {@code out}. {@code tests} can have up to 255 elements.</p>
    *
-   * <p>Combine with <code>vips_case</code> to make an efficient multi-way {@link #ifthenelse}.</p>
+   * <p>Combine with {@code vips_case} to make an efficient multi-way {@link #ifthenelse}.</p>
    *
-   * <p>See also: {@link #maplut}, <code>vips_case</code>, {@link #ifthenelse}.</p>
+   * <p>See also: {@link #maplut}, {@code vips_case}, {@link #ifthenelse}.</p>
    * @param tests Table of images to test
    * @param args Array of VipsOption to apply to this operation
    */
@@ -8861,14 +8861,14 @@ public final class VImage {
   }
 
   /**
-   * <p>Draw the string {@param text} to an image. {@param out} is normally a one-band 8-bit
+   * <p>Draw the string {@code text} to an image. {@code out} is normally a one-band 8-bit
    * unsigned char image, with 0 for no text and 255 for text. Values between
    * are used for anti-aliasing.</p>
    *
    * <p>Set {@optionalArg rgba} to enable RGBA output. This is useful for colour emoji rendering,
    * or support for pango markup features like `<span>Red!</span>`.</p>
    *
-   * <p>{@param text} is the text to render as a UTF-8 string. It can contain Pango markup,
+   * <p>{@code text} is the text to render as a UTF-8 string. It can contain Pango markup,
    * for example `<i>The</i>Guardian`.</p>
    *
    * <p>{@optionalArg font} is the font to render with, as a fontconfig name. Examples might be
@@ -8937,18 +8937,18 @@ public final class VImage {
    * lanczos3. The output should be high quality, and the operation should be
    * quick.</p>
    *
-   * <p>See <code>vips_thumbnail_buffer</code> to thumbnail from a memory buffer, or
-   * <code>vips_thumbnail_source</code> to thumbnail from an arbitrary byte source.</p>
+   * <p>See {@code vips_thumbnail_buffer} to thumbnail from a memory buffer, or
+   * {@code vips_thumbnail_source} to thumbnail from an arbitrary byte source.</p>
    *
    * <p>By default, libvips will only the first frame of animated or multipage
    * images. To thumbnail all pages or frames, pass `n=-1` to the loader in
-   * {@param filename}, for example `"x.gif[n=-1]"`.</p>
+   * {@code filename}, for example `"x.gif[n=-1]"`.</p>
    *
-   * <p>The output image will fit within a square of size {@param width} x {@param width}. You can
-   * specify a separate height with the {@optionalArg height} option. Set either {@param width} or
+   * <p>The output image will fit within a square of size {@code width} x {@code width}. You can
+   * specify a separate height with the {@optionalArg height} option. Set either {@code width} or
    * {@optionalArg height} to a very large number to ignore that dimension.</p>
    *
-   * <p>If you set {@optionalArg crop}, then the output image will fill the whole of the {@param width} x
+   * <p>If you set {@optionalArg crop}, then the output image will fill the whole of the {@code width} x
    * {@optionalArg height} rectangle, with any excess cropped away. See {@link #smartcrop} for
    * details on the cropping strategy.</p>
    *
@@ -8963,7 +8963,7 @@ public final class VImage {
    * image will be forced to fit the target.</p>
    *
    * <p>Normally any orientation tags on the input image (such as EXIF tags) are
-   * interpreted to rotate the image upright. If you set {@optionalArg noRotate} to <code>TRUE</code>,
+   * interpreted to rotate the image upright. If you set {@optionalArg noRotate} to {@code TRUE},
    * these tags will not be interpreted.</p>
    *
    * <p>Shrinking is normally done in sRGB colourspace. Set {@optionalArg linear} to shrink in
@@ -8983,7 +8983,7 @@ public final class VImage {
    * <p>Use {@optionalArg failOn} to control the types of error that will cause loading to fail.
    * The default is {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}, ie. thumbnail is permissive.</p>
    *
-   * <p>See also: <code>vips_thumbnail_buffer</code>.</p>
+   * <p>See also: {@code vips_thumbnail_buffer}.</p>
    * @param filename Filename to read from
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
@@ -9120,18 +9120,18 @@ public final class VImage {
    *
    * <p>{@optionalArg n} means load this many pages. By default a single page is read. All the
    * pages must have the same dimensions, and they are loaded as a tall, thin
-   * "toilet roll" image. The <code>VIPS_META_PAGE_HEIGHT</code> metadata
+   * "toilet roll" image. The {@code VIPS_META_PAGE_HEIGHT} metadata
    * tag gives the height in pixels of each page. Use -1 to load all pages.</p>
    *
-   * <p>Setting {@optionalArg autorotate} to <code>TRUE</code> will make the loader interpret the
+   * <p>Setting {@optionalArg autorotate} to {@code TRUE} will make the loader interpret the
    * orientation tag and automatically rotate the image appropriately during
    * load.</p>
    *
-   * <p>If {@optionalArg autorotate} is <code>FALSE</code>, the metadata field <code>VIPS_META_ORIENTATION</code> is set
+   * <p>If {@optionalArg autorotate} is {@code FALSE}, the metadata field {@code VIPS_META_ORIENTATION} is set
    * to the value of the orientation tag. Applications may read and interpret
    * this field
    * as they wish later in processing. See {@link #autorot}. Save
-   * operations will use <code>VIPS_META_ORIENTATION</code>, if present, to set the
+   * operations will use {@code VIPS_META_ORIENTATION}, if present, to set the
    * orientation of output images.</p>
    *
    * <p>If {@optionalArg autorotate} is TRUE, the image will be rotated upright during load and
@@ -9143,13 +9143,13 @@ public final class VImage {
    * bioformats-style image pyramids.</p>
    *
    * <p>Any ICC profile is read and attached to the VIPS image as
-   * <code>VIPS_META_ICC_NAME</code>. Any XMP metadata is read and attached to the image
-   * as <code>VIPS_META_XMP_NAME</code>. Any IPTC is attached as <code>VIPS_META_IPTC_NAME</code>. The
+   * {@code VIPS_META_ICC_NAME}. Any XMP metadata is read and attached to the image
+   * as {@code VIPS_META_XMP_NAME}. Any IPTC is attached as {@code VIPS_META_IPTC_NAME}. The
    * image description is
-   * attached as <code>VIPS_META_IMAGEDESCRIPTION</code>. Data in the photoshop tag is
-   * attached as <code>VIPS_META_PHOTOSHOP_NAME</code>.</p>
+   * attached as {@code VIPS_META_IMAGEDESCRIPTION}. Data in the photoshop tag is
+   * attached as {@code VIPS_META_PHOTOSHOP_NAME}.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>, {@link #autorot}.</p>
+   * <p>See also: {@code vips_image_new_from_file}, {@link #autorot}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -9179,8 +9179,8 @@ public final class VImage {
    * <p>Read a TIFF-formatted memory block into a VIPS image. Exactly as
    * {@link #tiffload}, but read from a memory source.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #tiffload}.</p>
    * @param buffer Buffer to load from
@@ -9240,9 +9240,9 @@ public final class VImage {
   /**
    * <p>Write a VIPS image to a file as TIFF.</p>
    *
-   * <p>If {@param in} has the <code>VIPS_META_PAGE_HEIGHT</code> metadata item, this is assumed to be a
+   * <p>If {@code in} has the {@code VIPS_META_PAGE_HEIGHT} metadata item, this is assumed to be a
    * "toilet roll" image. It will be
-   * written as series of pages, each <code>VIPS_META_PAGE_HEIGHT</code> pixels high.</p>
+   * written as series of pages, each {@code VIPS_META_PAGE_HEIGHT} pixels high.</p>
    *
    * <p>Use {@optionalArg compression} to set the tiff compression. Currently jpeg, packbits,
    * fax4, lzw, none, deflate, webp and zstd are supported. The default is no
@@ -9294,7 +9294,7 @@ public final class VImage {
    * <p>Use {@optionalArg resunit} to override the default resolution unit.
    * The default
    * resolution unit is taken from the header field
-   * <code>VIPS_META_RESOLUTION_UNIT</code>. If this field is not set, then
+   * {@code VIPS_META_RESOLUTION_UNIT}. If this field is not set, then
    * VIPS defaults to cm.</p>
    *
    * <p>Use {@optionalArg xres} and {@optionalArg yres} to override the default horizontal and vertical
@@ -9305,14 +9305,14 @@ public final class VImage {
    * format that allows more than 4GB in a file.</p>
    *
    * <p>Set {@optionalArg properties} to write all vips metadata to the IMAGEDESCRIPTION tag as
-   * xml. If {@optionalArg properties} is not set, the value of <code>VIPS_META_IMAGEDESCRIPTION</code> is
+   * xml. If {@optionalArg properties} is not set, the value of {@code VIPS_META_IMAGEDESCRIPTION} is
    * used instead.</p>
    *
-   * <p>The value of <code>VIPS_META_XMP_NAME</code> is written to
-   * the XMP tag. <code>VIPS_META_ORIENTATION</code> (if set) is used to set the value of
+   * <p>The value of {@code VIPS_META_XMP_NAME} is written to
+   * the XMP tag. {@code VIPS_META_ORIENTATION} (if set) is used to set the value of
    * the orientation
-   * tag. <code>VIPS_META_IPTC</code> (if set) is used to set the value of the IPTC tag.
-   * <code>VIPS_META_PHOTOSHOP_NAME</code> (if set) is used to set the value of the PHOTOSHOP
+   * tag. {@code VIPS_META_IPTC} (if set) is used to set the value of the IPTC tag.
+   * {@code VIPS_META_PHOTOSHOP_NAME} (if set) is used to set the value of the PHOTOSHOP
    * tag.</p>
    *
    * <p>By default, pyramid layers are saved as consecutive pages.
@@ -9322,7 +9322,7 @@ public final class VImage {
    * <p>Set {@optionalArg premultiply} to save with premultiplied alpha. Some programs, such as
    * InDesign, will only work with premultiplied alpha.</p>
    *
-   * <p>See also: {@link #tiffload}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #tiffload}, {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
@@ -9365,11 +9365,11 @@ public final class VImage {
   /**
    * <p>As {@link #tiffsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
-   * <p>See also: {@link #tiffsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #tiffsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -9412,7 +9412,7 @@ public final class VImage {
   /**
    * <p>As {@link #tiffsave}, but save to a target.</p>
    *
-   * <p>See also: {@link #tiffsave}, <code>vips_image_write_to_target</code>.</p>
+   * <p>See also: {@link #tiffsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
@@ -9454,13 +9454,13 @@ public final class VImage {
 
   /**
    * <p>This operation behaves rather like {@link #copy} between images
-   * {@param in} and {@param out}, except that it keeps a cache of computed pixels.
+   * {@code in} and {@code out}, except that it keeps a cache of computed pixels.
    * This cache is made of up to {@optionalArg maxTiles} tiles (a value of -1
    * means any number of tiles), and each tile is of size {@optionalArg tileWidth}
    * by {@optionalArg tileHeight} pixels.</p>
    *
    * <p>Each cache tile is made with a single call to
-   * <code>vips_region_prepare</code>.</p>
+   * {@code vips_region_prepare}.</p>
    *
    * <p>When the cache fills, a tile is chosen for reuse. If {@optionalArg access} is
    * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
@@ -9471,11 +9471,11 @@ public final class VImage {
    * will cache up to 1,000 tiles. {@optionalArg access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
    *
    * <p>Normally, only a single thread at once is allowed to calculate tiles. If
-   * you set {@optionalArg threaded} to <code>TRUE</code>, tilecache will allow many threads to
+   * you set {@optionalArg threaded} to {@code TRUE}, tilecache will allow many threads to
    * calculate tiles at once, and share the cache between them.</p>
    *
    * <p>Normally the cache is dropped when computation finishes. Set {@optionalArg persistent} to
-   * <code>TRUE</code> to keep the cache between computations.</p>
+   * {@code TRUE} to keep the cache between computations.</p>
    *
    * <p>See also: {@link #cache}, {@link #linecache}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -9531,15 +9531,15 @@ public final class VImage {
    * <p>Transpose a volumetric image.</p>
    *
    * <p>Volumetric images are very tall, thin images, with the metadata item
-   * <code>VIPS_META_PAGE_HEIGHT</code> set to the height of each sub-image.</p>
+   * {@code VIPS_META_PAGE_HEIGHT} set to the height of each sub-image.</p>
    *
    * <p>This operation swaps the two major dimensions, so that page N in the
    * output contains the Nth scanline, in order, from each input page.</p>
    *
-   * <p>You can override the <code>VIPS_META_PAGE_HEIGHT</code> metadata item with the optional
+   * <p>You can override the {@code VIPS_META_PAGE_HEIGHT} metadata item with the optional
    * {@optionalArg pageHeight} parameter.</p>
    *
-   * <p><code>VIPS_META_PAGE_HEIGHT</code> in the output image is the number of pages in the
+   * <p>{@code VIPS_META_PAGE_HEIGHT} in the output image is the number of pages in the
    * input image.</p>
    *
    * <p>See also: {@link #grid}.</p>
@@ -9648,7 +9648,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Write {@param in} to {@param filename} in VIPS format.</p>
+   * <p>Write {@code in} to {@code filename} in VIPS format.</p>
    *
    * <p>See also: {@link #vipsload}.</p>
    * @param filename Filename to save to
@@ -9703,7 +9703,7 @@ public final class VImage {
    *
    * <p>The loader supports ICC, EXIF and XMP metadata.</p>
    *
-   * <p>See also: <code>vips_image_new_from_file</code>.</p>
+   * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -9733,8 +9733,8 @@ public final class VImage {
    * <p>Read a WebP-formatted memory block into a VIPS image. Exactly as
    * {@link #webpload}, but read from a memory buffer.</p>
    *
-   * <p>You must not free the buffer while {@param out} is active. The
-   * #VipsObject::postclose signal on {@param out} is a good place to free.</p>
+   * <p>You must not free the buffer while {@code out} is active. The
+   * #VipsObject::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link #webpload}</p>
    * @param buffer Buffer to load from
@@ -9827,7 +9827,7 @@ public final class VImage {
    * <p>Use the metadata items `loop` and `delay` to set the number of
    * loops for the animation and the frame delays.</p>
    *
-   * <p>See also: {@link #webpload}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #webpload}, {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -9860,8 +9860,8 @@ public final class VImage {
   /**
    * <p>As {@link #webpsave}, but save to a memory buffer.</p>
    *
-   * <p>The address of the buffer is returned in <code>@buf</code>, the length of the buffer in
-   * <code>@len</code>. You are responsible for freeing the buffer with g_free() when you
+   * <p>The address of the buffer is returned in {@code @buf}, the length of the buffer in
+   * {@code @len}. You are responsible for freeing the buffer with g_free() when you
    * are done with it.</p>
    *
    * <p>See also: {@link #webpsave}.</p>
@@ -9897,7 +9897,7 @@ public final class VImage {
   /**
    * <p>As {@link #webpsave}, but save as a mime webp on stdout.</p>
    *
-   * <p>See also: {@link #webpsave}, <code>vips_image_write_to_file</code>.</p>
+   * <p>See also: {@link #webpsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
@@ -9965,7 +9965,7 @@ public final class VImage {
    * <p>Use {@optionalArg cellSize} to set the size of the cells from which the image is
    * constructed. The default is 256 x 256.</p>
    *
-   * <p>If {@param width} and {@param height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
+   * <p>If {@code width} and {@code height} are multiples of {@optionalArg cellSize}, the image will tessellate.</p>
    *
    * <p>See also: {@link #perlin}, {@link #fractsurf}, {@link #gaussnoise}.</p>
    * @param width Image width in pixels

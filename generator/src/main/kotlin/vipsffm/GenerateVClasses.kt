@@ -312,12 +312,12 @@ object GenerateVClasses {
             }
             if (matchedArg != null) {
                 if (matchedArg.isRequired) {
-                    "{@param ${matchedArg.name.fromSnakeToJavaStyle()}}"
+                    "{@code ${matchedArg.name.fromSnakeToJavaStyle()}}"
                 } else {
                     "{@optionalArg ${matchedArg.name.fromSnakeToJavaStyle()}}"
                 }
             } else {
-                "<code>@$referencedName</code>"
+                "{@code @$referencedName}"
             }
         }
 
@@ -328,7 +328,7 @@ object GenerateVClasses {
             } else if (operations.any { it.nickname == newName }) {
                 "{@link #$newName}"
             } else {
-                "<code>vips_${match.groups[1]!!.value}</code>"
+                "{@code vips_${match.groups[1]!!.value}}"
             }
         }
 
@@ -345,7 +345,7 @@ object GenerateVClasses {
                 referencedClassNames += ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name)
                 "{@link $enumName}"
             } else {
-                "<code>$identifierName</code>"
+                "{@code $identifierName}"
             }
         }
 
@@ -354,7 +354,7 @@ object GenerateVClasses {
             if (matchedValue.isBlank()) {
                 match.groups[0]!!.value
             } else {
-                "<code>$matchedValue</code>"
+                "{@code $matchedValue}"
             }
         }
 
