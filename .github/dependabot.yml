@@ -4,3 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      jackson:
+        patterns:
+          - "com.fasterxml.jackson*"
+      slf4j:
+        patterns:
+          - "org.slf4j*"
