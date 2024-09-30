@@ -9,7 +9,7 @@ Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, an
 eff-eff-emm". The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
 (Ubuntu 24.04).
 
-Used the library, or just like what you've read so far? Please give the repo a star 🌟️!
+Used the library, or just like what you've read so far? Please give [the repo](https://github.com/lopcode/vips-ffm) a star 🌟️!
 
 ## Usage
 

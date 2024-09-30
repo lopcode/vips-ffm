@@ -7,8 +7,11 @@ import java.lang.foreign.MemorySegment;
 import java.util.List;
 
 /**
- * Generated helpers to wrap {@link VipsRaw} JExtract definitions
- * Validation of input pointers is performed, but prefer usage of {@link VImage} and friends which do not expose raw pointers
+ * <p>Generated helpers to wrap {@link VipsRaw} JExtract definitions</p>
+ *
+ * <p>Validation of input pointers is performed, but prefer usage of {@link VImage} and friends which do not expose raw pointers</p>
+ *
+ * <p><b>Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!</b></p>
  */
 public final class VipsHelper {
   public static void init(Arena arena, boolean allowUntrusted) {
