@@ -9,6 +9,7 @@ import vipsffm.sample.VImageCachingSample
 import vipsffm.sample.VImageChainSample
 import vipsffm.sample.VImageCopyWriteSample
 import vipsffm.sample.VImageCreateThumbnailSample
+import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VOptionHyphenSample
 import vipsffm.sample.VSourceTargetSample
 import java.nio.file.Files
@@ -34,7 +35,8 @@ object SampleRunner {
             VImageBlobSample,
             VImageArrayJoinSample,
             VBlobByteBufferSample,
-            VTargetToFileSample
+            VTargetToFileSample,
+            VImageJoinSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {
