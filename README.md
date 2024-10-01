@@ -40,10 +40,10 @@ libvips versions, assuming there haven't been major changes.
 
 All libvips operations are exposed via helper classes, like `VImage`. You must provide an [Arena][1] to operations like
 `VImage.newFromFile`, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
-by using `Vips.run` as shown in the [sample](#thumbnail-sample) below. `VImage` has extensive Javadocs included, which
-are automatically generated from the same source that the libvips website uses, for ease of use. These helper objects
-expose their raw pointers as a last resort via functions like `VTarget.getUnsafeStructAddress` - if you need to use
-these raw pointers and can't find an alternative, please file a GitHub Issue.
+by using `Vips.run` as shown in the [sample](#thumbnail-sample) below. `VImage` and associated enums have extensive
+Javadocs included, which are automatically generated from the same source that the libvips website uses, for ease of use.
+These helper objects expose their raw pointers as a last resort via functions like `VTarget.getUnsafeStructAddress` - if
+you need to use these raw pointers and can't find an alternative, please file a GitHub Issue.
 
 Helper enums are generated for the version of libvips shown above. If you need to use an enum from another version,
 which isn't present in `vips-ffm`, you can use `VipsOption.Enum(rawValue)` or `VEnum.Raw(rawValue)`.
