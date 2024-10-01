@@ -34,6 +34,7 @@ data class VipsOperation(
     val nickname: String,
     val description: String,
     val args: List<VipsOperationArgument>,
+    val isDeprecated: Boolean,
     val gir: DiscoverVipsOperations.GIRRepository.GIRMethod?
 ) {
     override fun toString(): String {
@@ -161,11 +162,6 @@ object DiscoverVipsOperations {
                 val flags = VipsRaw.vips_operation_get_flags(operation)
 
                 val isDeprecated = flags and VipsRaw.VIPS_OPERATION_DEPRECATED() == VipsRaw.VIPS_OPERATION_DEPRECATED()
-                if (isDeprecated) {
-                    logger.info("skipping $subtypeNickname, deprecated")
-                    VipsRaw.vips_type_map(type, callbackPointer, MemorySegment.NULL, MemorySegment.NULL)
-                    return@Function MemorySegment.NULL
-                }
 
                 logger.info("found $subtypeNickname:")
                 logger.info(" description: $description")
@@ -214,7 +210,7 @@ object DiscoverVipsOperations {
                     if (girMethod == null) {
                         logger.warn("failed to find GIR information for method: $subtypeNickname")
                     }
-                    candidateOperations += VipsOperation(subtypeNickname, description, args, girMethod)
+                    candidateOperations += VipsOperation(subtypeNickname, description, args, isDeprecated, girMethod)
                 }
             }.getOrElse {
                 logger.info("skipping $subtypeNickname, couldn't introspect", it)

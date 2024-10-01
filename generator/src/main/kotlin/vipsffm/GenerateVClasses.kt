@@ -42,7 +42,6 @@ object GenerateVClasses {
     private val vInterpolateType = ClassName.get("app.photofox.vipsffm", "VInterpolate")
     private val vEnumType = ClassName.get("app.photofox.vipsffm", "VEnum")
     private val vblobType = ClassName.get("app.photofox.vipsffm", "VBlob")
-    private val listStringType = ParameterizedTypeName.get(listType, stringType)
     private val boxedBooleanType = ClassName.get("java.lang", "Boolean")
     private val boxedIntType = ClassName.get("java.lang", "Integer")
     private val boxedLongType = ClassName.get("java.lang", "Long")
@@ -63,6 +62,7 @@ object GenerateVClasses {
     private val vipsOptionEnumType = ClassName.get("app.photofox.vipsffm", "VipsOption.Enum")
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm", "VipsValidation")
     private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
+    private val deprecatedAnnotationType = ClassName.get("java.lang", "Deprecated")
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -150,7 +150,7 @@ object GenerateVClasses {
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
             .addAnnotation(
-                AnnotationSpec.builder(ClassName.get("java.lang", "Deprecated"))
+                AnnotationSpec.builder(deprecatedAnnotationType)
                     .addMember("since", "\"0.5.10\"")
                     .addMember("forRemoval", "true")
                     .build()
@@ -221,6 +221,13 @@ object GenerateVClasses {
         method.varargs(true)
         method.addException(vipsErrorType)
         method.addModifiers(Modifier.PUBLIC)
+        if (spec.isDeprecated) {
+            method.addAnnotation(
+                AnnotationSpec.builder(deprecatedAnnotationType)
+                    .addMember("forRemoval", "true")
+                    .build()
+            )
+        }
         generateMethodJavadoc(method, methodName, spec, operations, enums)
 
         poetArguments.forEachIndexed { index, poetArg ->

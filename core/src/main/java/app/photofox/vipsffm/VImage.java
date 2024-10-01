@@ -680,6 +680,36 @@ public final class VImage {
   }
 
   /**
+   * Save image in AVIF format
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg Q {@link VipsOption.Int} Q factor
+   * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
+   * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
+   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifCompression} Compression format
+   * @optionalArg effort {@link VipsOption.Int} CPU effort
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg speed {@link VipsOption.Int} CPU effort
+   * @optionalArg encoder {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifEncoder} Select encoder to use
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void avifsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "avifsave_target", callArgs);
+  }
+
+  /**
    * <p>Perform various boolean operations across the bands of an image. For
    * example, a three-band uchar image operated on with
    * {@link VipsOperationBoolean#OPERATION_BOOLEAN_AND} will produce a one-band uchar image where each
@@ -5090,6 +5120,60 @@ public final class VImage {
   }
 
   /**
+   * Save bmp image with ImageMagick
+   * @param filename Filename to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.String} Format to save in
+   * @optionalArg quality {@link VipsOption.Int} Quality to use
+   * @optionalArg optimize-gif-frames {@link VipsOption.Boolean} Apply GIF frames optimization
+   * @optionalArg optimize-gif-transparency {@link VipsOption.Boolean} Apply GIF transparency optimization
+   * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void magicksaveBmp(String filename, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var filenameOption = VipsOption.String("filename", filename);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(filenameOption);
+    VipsInvoker.invokeOperation(arena, "magicksave_bmp", callArgs);
+  }
+
+  /**
+   * Save bmp image to magick buffer
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.String} Format to save in
+   * @optionalArg quality {@link VipsOption.Int} Quality to use
+   * @optionalArg optimize-gif-frames {@link VipsOption.Boolean} Apply GIF frames optimization
+   * @optionalArg optimize-gif-transparency {@link VipsOption.Boolean} Apply GIF transparency optimization
+   * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public VBlob magicksaveBmpBuffer(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var bufferOption = VipsOption.Blob("buffer");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(bufferOption);
+    VipsInvoker.invokeOperation(arena, "magicksave_bmp_buffer", callArgs);
+    return bufferOption.valueOrThrow();
+  }
+
+  /**
    * <p>As {@link VImage#magicksave}, but save to a memory buffer.</p>
    *
    * <p>The address of the buffer is returned in {@code obuf}, the length of the buffer in
@@ -6505,6 +6589,32 @@ public final class VImage {
   }
 
   /**
+   * Save image in pbm format
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
+   * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
+   * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void pbmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "pbmsave_target", callArgs);
+  }
+
+  /**
    * <p>Render a PDF file into a VIPS image.</p>
    *
    * <p>The output image is always RGBA --- CMYK PDFs will be
@@ -6687,6 +6797,58 @@ public final class VImage {
     callArgs.add(heightOption);
     VipsInvoker.invokeOperation(arena, "perlin", callArgs);
     return outOption.valueOrThrow();
+  }
+
+  /**
+   * Save image in pfm format
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
+   * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
+   * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void pfmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "pfmsave_target", callArgs);
+  }
+
+  /**
+   * Save image in pgm format
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
+   * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
+   * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void pgmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "pgmsave_target", callArgs);
   }
 
   /**
@@ -6920,6 +7082,32 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(targetOption);
     VipsInvoker.invokeOperation(arena, "pngsave_target", callArgs);
+  }
+
+  /**
+   * Save image in pnm format
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
+   * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
+   * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  @Deprecated(
+      forRemoval = true
+  )
+  public void pnmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "pnmsave_target", callArgs);
   }
 
   /**
