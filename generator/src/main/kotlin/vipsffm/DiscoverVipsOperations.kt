@@ -25,6 +25,10 @@ import java.lang.foreign.MemorySegment
 import java.nio.file.Files
 import java.nio.file.Path
 
+data class DiscoveredOperations(
+    val operations: List<VipsOperation>,
+    val enums: List<VipsEnum>
+)
 
 data class VipsOperation(
     val nickname: String,
@@ -41,6 +45,10 @@ data class VipsOperation(
         return "VipsOperation(nickname=$nickname, ${args.size} args, $gir)"
     }
 }
+
+data class VipsEnum(
+    val gir: DiscoverVipsOperations.GIRRepository.GIREnumeration
+)
 
 sealed class GValueType {
 
@@ -103,9 +111,10 @@ data class VipsOperationArgument(
 private val logger = LoggerFactory.getLogger(DiscoverVipsOperations::class.java)
 
 fun main() {
-    val operations = Arena.ofConfined().use {
+    val discoveredOperations = Arena.ofConfined().use {
         DiscoverVipsOperations.run(it)
     }
+    val operations = discoveredOperations.operations
 
     val numberWithGir = operations.count { it.gir != null }
     logger.info("found ${operations.size} operations ($numberWithGir with GIR info):")
@@ -124,10 +133,12 @@ object DiscoverVipsOperations {
 
     private val girPath = Path.of("/opt/homebrew/share/gir-1.0/Vips-8.0.gir")
 
-    fun run(arena: Arena): List<VipsOperation> {
+    fun run(arena: Arena): DiscoveredOperations {
         VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))
 
-        val girMethods = readGIRMethods()
+        val gir = discoverGIR()
+        val girMethods = gir.operations
+        val girEnums = gir.enums
 
         val baseObjectGtype = VipsRaw.g_type_from_name(arena.allocateFrom("VipsObject"))
         val paramEnumGType = discoverParamEnumGType()
@@ -216,7 +227,10 @@ object DiscoverVipsOperations {
         callbackPointer = VipsTypeMap2Fn.allocate(recursiveCallback, arena)
         VipsRaw.vips_type_map(baseObjectGtype, callbackPointer, MemorySegment.NULL, MemorySegment.NULL)
 
-        return candidateOperations.sortedBy { it.nickname }
+        return DiscoveredOperations(
+            operations = candidateOperations.sortedBy { it.nickname },
+            enums = gir.enums.map { VipsEnum(it) }
+        )
     }
 
     data class GIRRepository(
@@ -224,50 +238,52 @@ object DiscoverVipsOperations {
         @JacksonXmlElementWrapper(useWrapping = false)
         val namespaces: List<GIRNamespace>
     ) {
-        data class GIRNamespace(
+        class GIRNamespace {
             @JacksonXmlProperty(isAttribute = true)
-            val name: String,
+            var name: String = ""
+                set(value) {
+                    field += value
+                }
 
             @JacksonXmlProperty(localName = "class")
             @JacksonXmlElementWrapper(useWrapping = false)
-            @JvmField
-            val classes: List<GIRClass>,
+            var classes: List<GIRClass> = listOf()
+                set(value) {
+                    field += value
+                }
 
             @JacksonXmlProperty(localName = "function")
             @JacksonXmlElementWrapper(useWrapping = false)
-            @JvmField
-            val functions: List<GIRMethod>
-        ) {
-            // workaround for xml parser not supporting split unwrapped arrays of elements
-            fun setClasses(list: List<GIRClass>) {
-                (classes as MutableList).addAll(list)
-            }
+            var functions: List<GIRMethod> = listOf()
+                set(value) {
+                    field += value
+                }
 
-            fun setFunctions(list: List<GIRMethod>) {
-                (functions as MutableList).addAll(list)
-            }
+            @JacksonXmlProperty(localName = "enumeration")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            var enumerations: List<GIREnumeration> = listOf()
+                set(value) {
+                    field += value
+                }
         }
 
-        data class GIRClass(
+        class GIRClass {
             @JacksonXmlProperty(isAttribute = true)
-            val name: String,
+            var name: String = ""
 
             @JacksonXmlProperty(localName = "constructor")
             @JacksonXmlElementWrapper(useWrapping = false)
-            val constructors: List<GIRMethod>?,
+            var constructors: List<GIRMethod> = listOf()
+                set(value) {
+                    field += value
+                }
 
             @JacksonXmlProperty(localName = "method")
             @JacksonXmlElementWrapper(useWrapping = false)
-            val methods: List<GIRMethod>?
-        ) {
-            // workaround for xml parser not supporting split unwrapped arrays of elements
-            fun setConstructors(list: List<GIRMethod>) {
-                (constructors as MutableList).addAll(list)
-            }
-
-            fun setMethods(list: List<GIRMethod>) {
-                (methods as MutableList).addAll(list)
-            }
+            var methods: List<GIRMethod> = listOf()
+                set(value) {
+                    field += value
+                }
         }
 
         data class GIRMethod(
@@ -298,8 +314,36 @@ object DiscoverVipsOperations {
             @JacksonXmlProperty(isAttribute = true)
             val name: String
         )
+
+        class GIREnumeration {
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String = ""
+
+            @JacksonXmlProperty(isAttribute = true, namespace = "c", localName = "type")
+            val cType: String? = null
+            val doc: String? = null
+
+            @JacksonXmlProperty(localName = "member")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            var members: List<GIREnumerationMember> = listOf()
+                set(value) {
+                    field += value
+                }
+        }
+
+        data class GIREnumerationMember(
+            @JacksonXmlProperty(isAttribute = true)
+            val name: String,
+            @JacksonXmlProperty(isAttribute = true, namespace = "c", localName = "identifier")
+            val cIdentifier: String?,
+            val doc: String?,
+        )
     }
-    private fun readGIRMethods(): List<GIRRepository.GIRMethod> {
+    data class DiscoveredGIRInfo(
+        val operations: List<GIRRepository.GIRMethod>,
+        val enums: List<GIRRepository.GIREnumeration>
+    )
+    private fun discoverGIR(): DiscoveredGIRInfo {
         Files.newInputStream(girPath).use { xmlInputStream ->
             val xmlMapper = XmlMapper.builder()
                 .defaultUseWrapper(false)
@@ -310,12 +354,13 @@ object DiscoverVipsOperations {
 
             val xml = xmlMapper.readValue(xmlInputStream, GIRRepository::class.java)
             val vipsNamespaceXml = xml.namespaces.first { it.name == "Vips" }
-            val classMethods = vipsNamespaceXml.classes.mapNotNull { it.methods }.flatten()
+            val classMethods = vipsNamespaceXml.classes.map { it.methods }.flatten()
             val functions = vipsNamespaceXml.functions
             val allMethods = classMethods + functions
+            val enums = vipsNamespaceXml.enumerations
 
-            logger.info("found ${allMethods.size} methods in GIR")
-            return allMethods.sortedBy { it.name }
+            logger.info("found ${allMethods.size} methods, ${enums.size} in GIR")
+            return DiscoveredGIRInfo(allMethods, enums)
         }
     }
 

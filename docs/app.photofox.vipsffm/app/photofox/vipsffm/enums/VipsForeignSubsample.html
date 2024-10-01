@@ -110,6 +110,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsForeignSubsample</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsForeignSubsample.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignSubsample</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>Set subsampling mode.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -135,13 +136,19 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_SUBSAMPLE_AUTO" class="member-name-link">FOREIGN_SUBSAMPLE_AUTO</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">prevent subsampling when quality &gt;= 90</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_SUBSAMPLE_LAST" class="member-name-link">FOREIGN_SUBSAMPLE_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_SUBSAMPLE_OFF" class="member-name-link">FOREIGN_SUBSAMPLE_OFF</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">never perform subsampling</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_SUBSAMPLE_ON" class="member-name-link">FOREIGN_SUBSAMPLE_ON</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">always perform subsampling</div>
+</div>
 </div>
 </section>
 </li>
@@ -216,6 +223,7 @@ the order they are declared.</div>
 <h3>FOREIGN_SUBSAMPLE_AUTO</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignSubsample.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignSubsample</a></span>&nbsp;<span class="element-name">FOREIGN_SUBSAMPLE_AUTO</span></div>
+<div class="block"><p>prevent subsampling when quality &gt;= 90</p></div>
 </div>
 </section>
 </li>
@@ -224,6 +232,7 @@ the order they are declared.</div>
 <h3>FOREIGN_SUBSAMPLE_ON</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignSubsample.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignSubsample</a></span>&nbsp;<span class="element-name">FOREIGN_SUBSAMPLE_ON</span></div>
+<div class="block"><p>always perform subsampling</p></div>
 </div>
 </section>
 </li>
@@ -232,6 +241,7 @@ the order they are declared.</div>
 <h3>FOREIGN_SUBSAMPLE_OFF</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignSubsample.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignSubsample</a></span>&nbsp;<span class="element-name">FOREIGN_SUBSAMPLE_OFF</span></div>
+<div class="block"><p>never perform subsampling</p></div>
 </div>
 </section>
 </li>

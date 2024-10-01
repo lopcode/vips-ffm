@@ -4,9 +4,20 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>More like hit-miss, really.</p>
+ *
+ * <p>See also: {@link app.photofox.vipsffm.VImage#morph}.</p>
+ */
 public enum VipsOperationMorphology implements VNamedEnum {
+  /**
+   * <p>true if all set</p>
+   */
   OPERATION_MORPHOLOGY_ERODE("VIPS_OPERATION_MORPHOLOGY_ERODE", "erode", 0),
 
+  /**
+   * <p>true if one set</p>
+   */
   OPERATION_MORPHOLOGY_DILATE("VIPS_OPERATION_MORPHOLOGY_DILATE", "dilate", 1),
 
   OPERATION_MORPHOLOGY_LAST("VIPS_OPERATION_MORPHOLOGY_LAST", "last", 2);

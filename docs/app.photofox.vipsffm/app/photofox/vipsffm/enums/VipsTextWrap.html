@@ -111,6 +111,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsTextWrap</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsTextWrap.html" title="enum class in app.photofox.vipsffm.enums">VipsTextWrap</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>Sets the word wrapping style for <a href="../VImage.html#text(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.text(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a> when used with a maximum
+ width.</p>
+
+ <p>See also: <a href="../VImage.html#text(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.text(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -136,15 +140,23 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#TEXT_WRAP_CHAR" class="member-name-link">TEXT_WRAP_CHAR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">wrap at character boundaries</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#TEXT_WRAP_LAST" class="member-name-link">TEXT_WRAP_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#TEXT_WRAP_NONE" class="member-name-link">TEXT_WRAP_NONE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">no wrapping</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#TEXT_WRAP_WORD" class="member-name-link">TEXT_WRAP_WORD</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">wrap at word boundaries</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#TEXT_WRAP_WORD_CHAR" class="member-name-link">TEXT_WRAP_WORD_CHAR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">wrap at word boundaries, but fall back to character boundaries if there is not enough space for a full word</div>
+</div>
 </div>
 </section>
 </li>
@@ -219,6 +231,7 @@ the order they are declared.</div>
 <h3>TEXT_WRAP_WORD</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsTextWrap.html" title="enum class in app.photofox.vipsffm.enums">VipsTextWrap</a></span>&nbsp;<span class="element-name">TEXT_WRAP_WORD</span></div>
+<div class="block"><p>wrap at word boundaries</p></div>
 </div>
 </section>
 </li>
@@ -227,6 +240,7 @@ the order they are declared.</div>
 <h3>TEXT_WRAP_CHAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsTextWrap.html" title="enum class in app.photofox.vipsffm.enums">VipsTextWrap</a></span>&nbsp;<span class="element-name">TEXT_WRAP_CHAR</span></div>
+<div class="block"><p>wrap at character boundaries</p></div>
 </div>
 </section>
 </li>
@@ -235,6 +249,7 @@ the order they are declared.</div>
 <h3>TEXT_WRAP_WORD_CHAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsTextWrap.html" title="enum class in app.photofox.vipsffm.enums">VipsTextWrap</a></span>&nbsp;<span class="element-name">TEXT_WRAP_WORD_CHAR</span></div>
+<div class="block"><p>wrap at word boundaries, but fall back to character boundaries if there is not enough space for a full word</p></div>
 </div>
 </section>
 </li>
@@ -243,6 +258,7 @@ the order they are declared.</div>
 <h3>TEXT_WRAP_NONE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsTextWrap.html" title="enum class in app.photofox.vipsffm.enums">VipsTextWrap</a></span>&nbsp;<span class="element-name">TEXT_WRAP_NONE</span></div>
+<div class="block"><p>no wrapping</p></div>
 </div>
 </section>
 </li>

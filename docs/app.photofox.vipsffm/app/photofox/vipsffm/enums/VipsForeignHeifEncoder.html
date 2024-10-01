@@ -112,6 +112,9 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsForeignHeifEncoder</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>The selected encoder to use.
+ If libheif hasn't been compiled with the selected encoder,
+ we will fallback to the default encoder for the compression format.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -137,17 +140,27 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_AOM" class="member-name-link">FOREIGN_HEIF_ENCODER_AOM</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">aom</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_AUTO" class="member-name-link">FOREIGN_HEIF_ENCODER_AUTO</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">auto</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_LAST" class="member-name-link">FOREIGN_HEIF_ENCODER_LAST</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_RAV1E" class="member-name-link">FOREIGN_HEIF_ENCODER_RAV1E</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">RAV1E</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_SVT" class="member-name-link">FOREIGN_HEIF_ENCODER_SVT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">SVT-AV1</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_HEIF_ENCODER_X265" class="member-name-link">FOREIGN_HEIF_ENCODER_X265</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">x265</div>
+</div>
 </div>
 </section>
 </li>
@@ -222,6 +235,7 @@ the order they are declared.</div>
 <h3>FOREIGN_HEIF_ENCODER_AUTO</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a></span>&nbsp;<span class="element-name">FOREIGN_HEIF_ENCODER_AUTO</span></div>
+<div class="block"><p>auto</p></div>
 </div>
 </section>
 </li>
@@ -230,6 +244,7 @@ the order they are declared.</div>
 <h3>FOREIGN_HEIF_ENCODER_AOM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a></span>&nbsp;<span class="element-name">FOREIGN_HEIF_ENCODER_AOM</span></div>
+<div class="block"><p>aom</p></div>
 </div>
 </section>
 </li>
@@ -238,6 +253,7 @@ the order they are declared.</div>
 <h3>FOREIGN_HEIF_ENCODER_RAV1E</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a></span>&nbsp;<span class="element-name">FOREIGN_HEIF_ENCODER_RAV1E</span></div>
+<div class="block"><p>RAV1E</p></div>
 </div>
 </section>
 </li>
@@ -246,6 +262,7 @@ the order they are declared.</div>
 <h3>FOREIGN_HEIF_ENCODER_SVT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a></span>&nbsp;<span class="element-name">FOREIGN_HEIF_ENCODER_SVT</span></div>
+<div class="block"><p>SVT-AV1</p></div>
 </div>
 </section>
 </li>
@@ -254,6 +271,7 @@ the order they are declared.</div>
 <h3>FOREIGN_HEIF_ENCODER_X265</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignHeifEncoder.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignHeifEncoder</a></span>&nbsp;<span class="element-name">FOREIGN_HEIF_ENCODER_X265</span></div>
+<div class="block"><p>x265</p></div>
 </div>
 </section>
 </li>

@@ -118,6 +118,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsBandFormat</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>The format used for each band element.</p>
+
+ <p>Each corresponds to a native C type for the current machine. For example,
+ <a href="#FORMAT_USHORT"><code>FORMAT_USHORT</code></a> is &lt;type&gt;unsigned short&lt;/type&gt;.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -143,29 +147,51 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_CHAR" class="member-name-link">FORMAT_CHAR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">char format</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_COMPLEX" class="member-name-link">FORMAT_COMPLEX</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">complex (two floats) format</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_DOUBLE" class="member-name-link">FORMAT_DOUBLE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">double float format</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_DPCOMPLEX" class="member-name-link">FORMAT_DPCOMPLEX</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">double complex (two double) format</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_FLOAT" class="member-name-link">FORMAT_FLOAT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">float format</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_INT" class="member-name-link">FORMAT_INT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">int format</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_LAST" class="member-name-link">FORMAT_LAST</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_NOTSET" class="member-name-link">FORMAT_NOTSET</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">invalid setting</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_SHORT" class="member-name-link">FORMAT_SHORT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">short format</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_UCHAR" class="member-name-link">FORMAT_UCHAR</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">unsigned char format</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FORMAT_UINT" class="member-name-link">FORMAT_UINT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">unsigned int format</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FORMAT_USHORT" class="member-name-link">FORMAT_USHORT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">unsigned short format</div>
+</div>
 </div>
 </section>
 </li>
@@ -240,6 +266,7 @@ the order they are declared.</div>
 <h3>FORMAT_NOTSET</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_NOTSET</span></div>
+<div class="block"><p>invalid setting</p></div>
 </div>
 </section>
 </li>
@@ -248,6 +275,7 @@ the order they are declared.</div>
 <h3>FORMAT_UCHAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_UCHAR</span></div>
+<div class="block"><p>unsigned char format</p></div>
 </div>
 </section>
 </li>
@@ -256,6 +284,7 @@ the order they are declared.</div>
 <h3>FORMAT_CHAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_CHAR</span></div>
+<div class="block"><p>char format</p></div>
 </div>
 </section>
 </li>
@@ -264,6 +293,7 @@ the order they are declared.</div>
 <h3>FORMAT_USHORT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_USHORT</span></div>
+<div class="block"><p>unsigned short format</p></div>
 </div>
 </section>
 </li>
@@ -272,6 +302,7 @@ the order they are declared.</div>
 <h3>FORMAT_SHORT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_SHORT</span></div>
+<div class="block"><p>short format</p></div>
 </div>
 </section>
 </li>
@@ -280,6 +311,7 @@ the order they are declared.</div>
 <h3>FORMAT_UINT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_UINT</span></div>
+<div class="block"><p>unsigned int format</p></div>
 </div>
 </section>
 </li>
@@ -288,6 +320,7 @@ the order they are declared.</div>
 <h3>FORMAT_INT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_INT</span></div>
+<div class="block"><p>int format</p></div>
 </div>
 </section>
 </li>
@@ -296,6 +329,7 @@ the order they are declared.</div>
 <h3>FORMAT_FLOAT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_FLOAT</span></div>
+<div class="block"><p>float format</p></div>
 </div>
 </section>
 </li>
@@ -304,6 +338,7 @@ the order they are declared.</div>
 <h3>FORMAT_COMPLEX</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_COMPLEX</span></div>
+<div class="block"><p>complex (two floats) format</p></div>
 </div>
 </section>
 </li>
@@ -312,6 +347,7 @@ the order they are declared.</div>
 <h3>FORMAT_DOUBLE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_DOUBLE</span></div>
+<div class="block"><p>double float format</p></div>
 </div>
 </section>
 </li>
@@ -320,6 +356,7 @@ the order they are declared.</div>
 <h3>FORMAT_DPCOMPLEX</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBandFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsBandFormat</a></span>&nbsp;<span class="element-name">FORMAT_DPCOMPLEX</span></div>
+<div class="block"><p>double complex (two double) format</p></div>
 </div>
 </section>
 </li>

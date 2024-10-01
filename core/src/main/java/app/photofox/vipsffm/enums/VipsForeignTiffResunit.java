@@ -4,9 +4,18 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>Use inches or centimeters as the resolution unit for a tiff file.</p>
+ */
 public enum VipsForeignTiffResunit implements VNamedEnum {
+  /**
+   * <p>use centimeters</p>
+   */
   FOREIGN_TIFF_RESUNIT_CM("VIPS_FOREIGN_TIFF_RESUNIT_CM", "cm", 0),
 
+  /**
+   * <p>use inches</p>
+   */
   FOREIGN_TIFF_RESUNIT_INCH("VIPS_FOREIGN_TIFF_RESUNIT_INCH", "inch", 1),
 
   FOREIGN_TIFF_RESUNIT_LAST("VIPS_FOREIGN_TIFF_RESUNIT_LAST", "last", 2);

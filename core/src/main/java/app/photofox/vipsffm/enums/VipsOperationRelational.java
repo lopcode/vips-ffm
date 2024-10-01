@@ -4,17 +4,38 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>See also: {@link app.photofox.vipsffm.VImage#relational}.</p>
+ */
 public enum VipsOperationRelational implements VNamedEnum {
+  /**
+   * <p>==</p>
+   */
   OPERATION_RELATIONAL_EQUAL("VIPS_OPERATION_RELATIONAL_EQUAL", "equal", 0),
 
+  /**
+   * <p>!=</p>
+   */
   OPERATION_RELATIONAL_NOTEQ("VIPS_OPERATION_RELATIONAL_NOTEQ", "noteq", 1),
 
+  /**
+   * <p>&lt;</p>
+   */
   OPERATION_RELATIONAL_LESS("VIPS_OPERATION_RELATIONAL_LESS", "less", 2),
 
+  /**
+   * <p>&lt;=</p>
+   */
   OPERATION_RELATIONAL_LESSEQ("VIPS_OPERATION_RELATIONAL_LESSEQ", "lesseq", 3),
 
+  /**
+   * <p>&gt;</p>
+   */
   OPERATION_RELATIONAL_MORE("VIPS_OPERATION_RELATIONAL_MORE", "more", 4),
 
+  /**
+   * <p>&gt;=</p>
+   */
   OPERATION_RELATIONAL_MOREEQ("VIPS_OPERATION_RELATIONAL_MOREEQ", "moreeq", 5),
 
   OPERATION_RELATIONAL_LAST("VIPS_OPERATION_RELATIONAL_LAST", "last", 6);

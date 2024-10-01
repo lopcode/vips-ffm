@@ -113,6 +113,29 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsExtend</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>See <a href="../VImage.html#embed(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.embed(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a>, <a href="../VImage.html#conv(app.photofox.vipsffm.VipsOption...)"><code>VImage.conv(app.photofox.vipsffm.VipsOption...)</code></a>, <a href="../VImage.html#affine(java.util.List,app.photofox.vipsffm.VipsOption...)"><code>VImage.affine(java.util.List&lt;java.lang.Double&gt;, app.photofox.vipsffm.VipsOption...)</code></a> and so on.</p>
+
+ <p>When the edges of an image are extended, you can specify
+ how you want the extension done.</p>
+
+ <p><a href="#EXTEND_BLACK"><code>EXTEND_BLACK</code></a> --- new pixels are black, ie. all bits are zero.</p>
+
+ <p><a href="#EXTEND_COPY"><code>EXTEND_COPY</code></a> --- each new pixel takes the value of the nearest edge
+ pixel</p>
+
+ <p><a href="#EXTEND_REPEAT"><code>EXTEND_REPEAT</code></a> --- the image is tiled to fill the new area</p>
+
+ <p><a href="#EXTEND_MIRROR"><code>EXTEND_MIRROR</code></a> --- the image is reflected and tiled to reduce hash
+ edges</p>
+
+ <p><a href="#EXTEND_WHITE"><code>EXTEND_WHITE</code></a> --- new pixels are white, ie. all bits are set</p>
+
+ <p><a href="#EXTEND_BACKGROUND"><code>EXTEND_BACKGROUND</code></a> --- colour set from the <code>background</code> property</p>
+
+ <p>We have to specify the exact value of each enum member since we have to
+ keep these frozen for back compat with vips7.</p>
+
+ <p>See also: <a href="../VImage.html#embed(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.embed(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a>.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -138,19 +161,31 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#EXTEND_BACKGROUND" class="member-name-link">EXTEND_BACKGROUND</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">extend with colour from the <code>background</code> property</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#EXTEND_BLACK" class="member-name-link">EXTEND_BLACK</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">extend with black (all 0) pixels</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#EXTEND_COPY" class="member-name-link">EXTEND_COPY</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">copy the image edges</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#EXTEND_LAST" class="member-name-link">EXTEND_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#EXTEND_MIRROR" class="member-name-link">EXTEND_MIRROR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">mirror the whole image</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#EXTEND_REPEAT" class="member-name-link">EXTEND_REPEAT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">repeat the whole image</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#EXTEND_WHITE" class="member-name-link">EXTEND_WHITE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">extend with white (all bits set) pixels</div>
+</div>
 </div>
 </section>
 </li>
@@ -225,6 +260,7 @@ the order they are declared.</div>
 <h3>EXTEND_BLACK</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_BLACK</span></div>
+<div class="block"><p>extend with black (all 0) pixels</p></div>
 </div>
 </section>
 </li>
@@ -233,6 +269,7 @@ the order they are declared.</div>
 <h3>EXTEND_COPY</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_COPY</span></div>
+<div class="block"><p>copy the image edges</p></div>
 </div>
 </section>
 </li>
@@ -241,6 +278,7 @@ the order they are declared.</div>
 <h3>EXTEND_REPEAT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_REPEAT</span></div>
+<div class="block"><p>repeat the whole image</p></div>
 </div>
 </section>
 </li>
@@ -249,6 +287,7 @@ the order they are declared.</div>
 <h3>EXTEND_MIRROR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_MIRROR</span></div>
+<div class="block"><p>mirror the whole image</p></div>
 </div>
 </section>
 </li>
@@ -257,6 +296,7 @@ the order they are declared.</div>
 <h3>EXTEND_WHITE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_WHITE</span></div>
+<div class="block"><p>extend with white (all bits set) pixels</p></div>
 </div>
 </section>
 </li>
@@ -265,6 +305,7 @@ the order they are declared.</div>
 <h3>EXTEND_BACKGROUND</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a></span>&nbsp;<span class="element-name">EXTEND_BACKGROUND</span></div>
+<div class="block"><p>extend with colour from the <code>background</code> property</p></div>
 </div>
 </section>
 </li>
