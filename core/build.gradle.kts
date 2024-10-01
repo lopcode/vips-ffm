@@ -51,6 +51,7 @@ testing {
                 implementation(project(":core"))
                 implementation("org.openjdk.jmh:jmh-core:1.37")
                 annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+                implementation("com.criteo:jvips:8.12.2-69bf715")
             }
 
             targets {

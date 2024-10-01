@@ -1,6 +1,8 @@
 package app.photofox.vipsffm;
 
 import app.photofox.vipsffm.enums.VipsInteresting;
+import com.criteo.vips.VipsImage;
+import com.criteo.vips.enums.VipsImageFormat;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -8,6 +10,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.lang.foreign.Arena;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
 public class BenchmarkTests {
@@ -34,17 +38,20 @@ public class BenchmarkTests {
     public static class BenchmarkState {
 
         VSource sourceImage;
+        byte[] sourceImageBytes;
         Arena arena = Arena.ofConfined();
 
         @Setup(Level.Trial)
-        public void init() throws VipsError {
+        public void init() throws Exception {
             Vips.init(false, true);
             VipsHelper.cache_set_max(0);
 
+            var samplePath = "../sample/src/main/resources/sample_images/fox.jpg";
             sourceImage = VSource.newFromFile(
                 arena,
-                "../sample/src/main/resources/sample_images/fox.jpg"
+                samplePath
             );
+            sourceImageBytes = Files.readAllBytes(Path.of(samplePath));
         }
 
         @TearDown
@@ -66,7 +73,7 @@ public class BenchmarkTests {
     }
 
     @Benchmark
-    public void jvipsStyle(BenchmarkState state) {
+    public void frameBenchmarkUsingVipsFfm(BenchmarkState state) {
         Vips.run(arena -> {
             var target = VTarget.newToMemory(arena);
             var image = VImage.newFromSource(arena, state.sourceImage, "");
@@ -86,4 +93,19 @@ public class BenchmarkTests {
                 .writeToTarget(target, ".jpg");
         });
     }
+
+//    jvips doesn't support arm64 :(
+//    @Benchmark
+//    public void frameBenchmarkUsingJVips(BenchmarkState state) {
+//        var image = new VipsImage(state.sourceImageBytes, state.sourceImageBytes.length);
+//        var insertSize = 512;
+//        var paddingSize = 100;
+//        var finalImageSize = insertSize + paddingSize;
+//        var backgroundImage = VipsImage.black(finalImageSize, finalImageSize);
+//        image.thumbnailImage(insertSize, insertSize, false); // todo: how to crop?
+//        backgroundImage.insert(image, paddingSize / 2, paddingSize / 2);
+//        backgroundImage.writeToArray(VipsImageFormat.JPG, false);
+//        image.release();
+//        backgroundImage.release();
+//    }
 }
