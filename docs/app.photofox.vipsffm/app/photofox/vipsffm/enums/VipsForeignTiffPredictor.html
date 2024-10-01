@@ -110,6 +110,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsForeignTiffPredictor</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsForeignTiffPredictor.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignTiffPredictor</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>The predictor can help deflate and lzw compression. The values are fixed by
+ the tiff library.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -135,13 +137,19 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_TIFF_PREDICTOR_FLOAT" class="member-name-link">FOREIGN_TIFF_PREDICTOR_FLOAT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">float predictor</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_TIFF_PREDICTOR_HORIZONTAL" class="member-name-link">FOREIGN_TIFF_PREDICTOR_HORIZONTAL</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">horizontal differencing</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_TIFF_PREDICTOR_LAST" class="member-name-link">FOREIGN_TIFF_PREDICTOR_LAST</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_TIFF_PREDICTOR_NONE" class="member-name-link">FOREIGN_TIFF_PREDICTOR_NONE</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">no prediction</div>
+</div>
 </div>
 </section>
 </li>
@@ -216,6 +224,7 @@ the order they are declared.</div>
 <h3>FOREIGN_TIFF_PREDICTOR_NONE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignTiffPredictor.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignTiffPredictor</a></span>&nbsp;<span class="element-name">FOREIGN_TIFF_PREDICTOR_NONE</span></div>
+<div class="block"><p>no prediction</p></div>
 </div>
 </section>
 </li>
@@ -224,6 +233,7 @@ the order they are declared.</div>
 <h3>FOREIGN_TIFF_PREDICTOR_HORIZONTAL</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignTiffPredictor.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignTiffPredictor</a></span>&nbsp;<span class="element-name">FOREIGN_TIFF_PREDICTOR_HORIZONTAL</span></div>
+<div class="block"><p>horizontal differencing</p></div>
 </div>
 </section>
 </li>
@@ -232,6 +242,7 @@ the order they are declared.</div>
 <h3>FOREIGN_TIFF_PREDICTOR_FLOAT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignTiffPredictor.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignTiffPredictor</a></span>&nbsp;<span class="element-name">FOREIGN_TIFF_PREDICTOR_FLOAT</span></div>
+<div class="block"><p>float predictor</p></div>
 </div>
 </section>
 </li>

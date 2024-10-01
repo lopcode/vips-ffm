@@ -112,6 +112,18 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsForeignPpmFormat</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>The netpbm file format to save as.</p>
+
+ <p><a href="#FOREIGN_PPM_FORMAT_PBM"><code>FOREIGN_PPM_FORMAT_PBM</code></a> images are single bit.</p>
+
+ <p><a href="#FOREIGN_PPM_FORMAT_PGM"><code>FOREIGN_PPM_FORMAT_PGM</code></a> images are 8, 16, or 32-bits, one band.</p>
+
+ <p><a href="#FOREIGN_PPM_FORMAT_PPM"><code>FOREIGN_PPM_FORMAT_PPM</code></a> images are 8, 16, or 32-bits, three bands.</p>
+
+ <p><a href="#FOREIGN_PPM_FORMAT_PFM"><code>FOREIGN_PPM_FORMAT_PFM</code></a> images are 32-bit float pixels.</p>
+
+ <p><a href="#FOREIGN_PPM_FORMAT_PNM"><code>FOREIGN_PPM_FORMAT_PNM</code></a> images are anymap images -- the image format
+ is used to pick the saver.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -139,15 +151,25 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="col-first even-row-color"><code><a href="#FOREIGN_PPM_FORMAT_LAST" class="member-name-link">FOREIGN_PPM_FORMAT_LAST</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_PPM_FORMAT_PBM" class="member-name-link">FOREIGN_PPM_FORMAT_PBM</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">portable bitmap</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_PPM_FORMAT_PFM" class="member-name-link">FOREIGN_PPM_FORMAT_PFM</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">portable float map</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_PPM_FORMAT_PGM" class="member-name-link">FOREIGN_PPM_FORMAT_PGM</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">portable greymap</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FOREIGN_PPM_FORMAT_PNM" class="member-name-link">FOREIGN_PPM_FORMAT_PNM</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">portable anymap</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FOREIGN_PPM_FORMAT_PPM" class="member-name-link">FOREIGN_PPM_FORMAT_PPM</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">portable pixmap</div>
+</div>
 </div>
 </section>
 </li>
@@ -222,6 +244,7 @@ the order they are declared.</div>
 <h3>FOREIGN_PPM_FORMAT_PBM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a></span>&nbsp;<span class="element-name">FOREIGN_PPM_FORMAT_PBM</span></div>
+<div class="block"><p>portable bitmap</p></div>
 </div>
 </section>
 </li>
@@ -230,6 +253,7 @@ the order they are declared.</div>
 <h3>FOREIGN_PPM_FORMAT_PGM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a></span>&nbsp;<span class="element-name">FOREIGN_PPM_FORMAT_PGM</span></div>
+<div class="block"><p>portable greymap</p></div>
 </div>
 </section>
 </li>
@@ -238,6 +262,7 @@ the order they are declared.</div>
 <h3>FOREIGN_PPM_FORMAT_PPM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a></span>&nbsp;<span class="element-name">FOREIGN_PPM_FORMAT_PPM</span></div>
+<div class="block"><p>portable pixmap</p></div>
 </div>
 </section>
 </li>
@@ -246,6 +271,7 @@ the order they are declared.</div>
 <h3>FOREIGN_PPM_FORMAT_PFM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a></span>&nbsp;<span class="element-name">FOREIGN_PPM_FORMAT_PFM</span></div>
+<div class="block"><p>portable float map</p></div>
 </div>
 </section>
 </li>
@@ -254,6 +280,7 @@ the order they are declared.</div>
 <h3>FOREIGN_PPM_FORMAT_PNM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsForeignPpmFormat.html" title="enum class in app.photofox.vipsffm.enums">VipsForeignPpmFormat</a></span>&nbsp;<span class="element-name">FOREIGN_PPM_FORMAT_PNM</span></div>
+<div class="block"><p>portable anymap</p></div>
 </div>
 </section>
 </li>

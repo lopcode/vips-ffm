@@ -4,11 +4,23 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>See also: {@link app.photofox.vipsffm.VImage#round}.</p>
+ */
 public enum VipsOperationRound implements VNamedEnum {
+  /**
+   * <p>round to nearest</p>
+   */
   OPERATION_ROUND_RINT("VIPS_OPERATION_ROUND_RINT", "rint", 0),
 
+  /**
+   * <p>the smallest integral value not less than</p>
+   */
   OPERATION_ROUND_CEIL("VIPS_OPERATION_ROUND_CEIL", "ceil", 1),
 
+  /**
+   * <p>largest integral value not greater than</p>
+   */
   OPERATION_ROUND_FLOOR("VIPS_OPERATION_ROUND_FLOOR", "floor", 2),
 
   OPERATION_ROUND_LAST("VIPS_OPERATION_ROUND_LAST", "last", 3);

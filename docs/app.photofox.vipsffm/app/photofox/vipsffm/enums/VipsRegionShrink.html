@@ -113,6 +113,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsRegionShrink</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>How to calculate the output pixels when shrinking a 2x2 region.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -140,17 +141,29 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="col-first even-row-color"><code><a href="#REGION_SHRINK_LAST" class="member-name-link">REGION_SHRINK_LAST</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="#REGION_SHRINK_MAX" class="member-name-link">REGION_SHRINK_MAX</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">use the maximum</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#REGION_SHRINK_MEAN" class="member-name-link">REGION_SHRINK_MEAN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">use the average</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#REGION_SHRINK_MEDIAN" class="member-name-link">REGION_SHRINK_MEDIAN</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">use the median</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#REGION_SHRINK_MIN" class="member-name-link">REGION_SHRINK_MIN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">use the minimum</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#REGION_SHRINK_MODE" class="member-name-link">REGION_SHRINK_MODE</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">use the mode</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#REGION_SHRINK_NEAREST" class="member-name-link">REGION_SHRINK_NEAREST</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">use the top-left pixel</div>
+</div>
 </div>
 </section>
 </li>
@@ -225,6 +238,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_MEAN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_MEAN</span></div>
+<div class="block"><p>use the average</p></div>
 </div>
 </section>
 </li>
@@ -233,6 +247,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_MEDIAN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_MEDIAN</span></div>
+<div class="block"><p>use the median</p></div>
 </div>
 </section>
 </li>
@@ -241,6 +256,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_MODE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_MODE</span></div>
+<div class="block"><p>use the mode</p></div>
 </div>
 </section>
 </li>
@@ -249,6 +265,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_MAX</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_MAX</span></div>
+<div class="block"><p>use the maximum</p></div>
 </div>
 </section>
 </li>
@@ -257,6 +274,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_MIN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_MIN</span></div>
+<div class="block"><p>use the minimum</p></div>
 </div>
 </section>
 </li>
@@ -265,6 +283,7 @@ the order they are declared.</div>
 <h3>REGION_SHRINK_NEAREST</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsRegionShrink.html" title="enum class in app.photofox.vipsffm.enums">VipsRegionShrink</a></span>&nbsp;<span class="element-name">REGION_SHRINK_NEAREST</span></div>
+<div class="block"><p>use the top-left pixel</p></div>
 </div>
 </section>
 </li>

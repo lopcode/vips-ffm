@@ -114,6 +114,15 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsInteresting</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>Pick the algorithm vips uses to decide image &quot;interestingness&quot;. This is used
+ by <a href="../VImage.html#smartcrop(int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.smartcrop(int, int, app.photofox.vipsffm.VipsOption...)</code></a>, for example, to decide what parts of the image to
+ keep.</p>
+
+ <p><a href="#INTERESTING_NONE"><code>INTERESTING_NONE</code></a> and <a href="#INTERESTING_LOW"><code>INTERESTING_LOW</code></a> mean the same -- the
+ crop is positioned at the top or left. <a href="#INTERESTING_HIGH"><code>INTERESTING_HIGH</code></a> positions at
+ the bottom or right.</p>
+
+ <p>See also: <a href="../VImage.html#smartcrop(int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.smartcrop(int, int, app.photofox.vipsffm.VipsOption...)</code></a>.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -139,21 +148,35 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#INTERESTING_ALL" class="member-name-link">INTERESTING_ALL</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">everything is interesting</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#INTERESTING_ATTENTION" class="member-name-link">INTERESTING_ATTENTION</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">look for features likely to draw human attention</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#INTERESTING_CENTRE" class="member-name-link">INTERESTING_CENTRE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">just take the centre</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#INTERESTING_ENTROPY" class="member-name-link">INTERESTING_ENTROPY</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">use an entropy measure</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#INTERESTING_HIGH" class="member-name-link">INTERESTING_HIGH</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">position the crop towards the high coordinate</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#INTERESTING_LAST" class="member-name-link">INTERESTING_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#INTERESTING_LOW" class="member-name-link">INTERESTING_LOW</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">position the crop towards the low coordinate</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#INTERESTING_NONE" class="member-name-link">INTERESTING_NONE</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">do nothing</div>
+</div>
 </div>
 </section>
 </li>
@@ -228,6 +251,7 @@ the order they are declared.</div>
 <h3>INTERESTING_NONE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_NONE</span></div>
+<div class="block"><p>do nothing</p></div>
 </div>
 </section>
 </li>
@@ -236,6 +260,7 @@ the order they are declared.</div>
 <h3>INTERESTING_CENTRE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_CENTRE</span></div>
+<div class="block"><p>just take the centre</p></div>
 </div>
 </section>
 </li>
@@ -244,6 +269,7 @@ the order they are declared.</div>
 <h3>INTERESTING_ENTROPY</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_ENTROPY</span></div>
+<div class="block"><p>use an entropy measure</p></div>
 </div>
 </section>
 </li>
@@ -252,6 +278,7 @@ the order they are declared.</div>
 <h3>INTERESTING_ATTENTION</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_ATTENTION</span></div>
+<div class="block"><p>look for features likely to draw human attention</p></div>
 </div>
 </section>
 </li>
@@ -260,6 +287,7 @@ the order they are declared.</div>
 <h3>INTERESTING_LOW</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_LOW</span></div>
+<div class="block"><p>position the crop towards the low coordinate</p></div>
 </div>
 </section>
 </li>
@@ -268,6 +296,7 @@ the order they are declared.</div>
 <h3>INTERESTING_HIGH</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_HIGH</span></div>
+<div class="block"><p>position the crop towards the high coordinate</p></div>
 </div>
 </section>
 </li>
@@ -276,6 +305,7 @@ the order they are declared.</div>
 <h3>INTERESTING_ALL</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInteresting.html" title="enum class in app.photofox.vipsffm.enums">VipsInteresting</a></span>&nbsp;<span class="element-name">INTERESTING_ALL</span></div>
+<div class="block"><p>everything is interesting</p></div>
 </div>
 </section>
 </li>

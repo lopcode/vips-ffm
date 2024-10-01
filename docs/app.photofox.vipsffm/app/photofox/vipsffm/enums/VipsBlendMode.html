@@ -132,6 +132,14 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsBlendMode</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>The various Porter-Duff and PDF blend modes. See <a href="../VImage.html#composite(java.util.List,java.util.List,app.photofox.vipsffm.VipsOption...)"><code>VImage.composite(java.util.List&lt;app.photofox.vipsffm.VImage&gt;, java.util.List&lt;java.lang.Integer&gt;, app.photofox.vipsffm.VipsOption...)</code></a>,
+ for example.</p>
+
+ <p>The Cairo docs have a nice explanation of all the blend modes:</p>
+
+ <p>https://www.cairographics.org/operators</p>
+
+ <p>The non-separable modes are not implemented.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -157,57 +165,107 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_ADD" class="member-name-link">BLEND_MODE_ADD</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">a bit like adding the two images</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_ATOP" class="member-name-link">BLEND_MODE_ATOP</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">this leaves the first object mostly intact, but mixes both objects in the overlapping area</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_CLEAR" class="member-name-link">BLEND_MODE_CLEAR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">where the second object is drawn, the first is removed</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_COLOUR_BURN" class="member-name-link">BLEND_MODE_COLOUR_BURN</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">darken first by a factor of second</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_COLOUR_DODGE" class="member-name-link">BLEND_MODE_COLOUR_DODGE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">brighten first by a factor second</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_DARKEN" class="member-name-link">BLEND_MODE_DARKEN</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">the darker of each component</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_DEST" class="member-name-link">BLEND_MODE_DEST</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">leaves the first object untouched, the second is discarded completely</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_DEST_ATOP" class="member-name-link">BLEND_MODE_DEST_ATOP</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">like ATOP, but swaps the arguments</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_DEST_IN" class="member-name-link">BLEND_MODE_DEST_IN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">like IN, but swaps the arguments</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_DEST_OUT" class="member-name-link">BLEND_MODE_DEST_OUT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">like OUT, but swaps the arguments</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_DEST_OVER" class="member-name-link">BLEND_MODE_DEST_OVER</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">like OVER, but swaps the arguments</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_DIFFERENCE" class="member-name-link">BLEND_MODE_DIFFERENCE</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">difference of the two</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_EXCLUSION" class="member-name-link">BLEND_MODE_EXCLUSION</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">somewhat like DIFFERENCE, but lower-contrast</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_HARD_LIGHT" class="member-name-link">BLEND_MODE_HARD_LIGHT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">multiply or screen, depending on lightness</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_IN" class="member-name-link">BLEND_MODE_IN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">the first object is removed completely, the second is only drawn where the first was</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_LAST" class="member-name-link">BLEND_MODE_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_LIGHTEN" class="member-name-link">BLEND_MODE_LIGHTEN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">the lighter of each component</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_MULTIPLY" class="member-name-link">BLEND_MODE_MULTIPLY</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">at least as dark as the darker of the two inputs</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_OUT" class="member-name-link">BLEND_MODE_OUT</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">the second is drawn only where the first isn't</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_OVER" class="member-name-link">BLEND_MODE_OVER</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">the image shows what you would expect if you held two semi-transparent slides on top of each other</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_OVERLAY" class="member-name-link">BLEND_MODE_OVERLAY</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">multiplies or screens colors, depending on the lightness</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_SATURATE" class="member-name-link">BLEND_MODE_SATURATE</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">a bit like the darker of the two</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_SCREEN" class="member-name-link">BLEND_MODE_SCREEN</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">at least as light as the lighter of the inputs</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_SOFT_LIGHT" class="member-name-link">BLEND_MODE_SOFT_LIGHT</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">darken or lighten, depending on lightness</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#BLEND_MODE_SOURCE" class="member-name-link">BLEND_MODE_SOURCE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">the second object is drawn as if nothing were below</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#BLEND_MODE_XOR" class="member-name-link">BLEND_MODE_XOR</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">something like a difference operator</div>
+</div>
 </div>
 </section>
 </li>
@@ -282,6 +340,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_CLEAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_CLEAR</span></div>
+<div class="block"><p>where the second object is drawn, the first is removed</p></div>
 </div>
 </section>
 </li>
@@ -290,6 +349,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_SOURCE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_SOURCE</span></div>
+<div class="block"><p>the second object is drawn as if nothing were below</p></div>
 </div>
 </section>
 </li>
@@ -298,6 +358,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_OVER</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_OVER</span></div>
+<div class="block"><p>the image shows what you would expect if you held two semi-transparent slides on top of each other</p></div>
 </div>
 </section>
 </li>
@@ -306,6 +367,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_IN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_IN</span></div>
+<div class="block"><p>the first object is removed completely, the second is only drawn where the first was</p></div>
 </div>
 </section>
 </li>
@@ -314,6 +376,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_OUT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_OUT</span></div>
+<div class="block"><p>the second is drawn only where the first isn't</p></div>
 </div>
 </section>
 </li>
@@ -322,6 +385,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_ATOP</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_ATOP</span></div>
+<div class="block"><p>this leaves the first object mostly intact, but mixes both objects in the overlapping area</p></div>
 </div>
 </section>
 </li>
@@ -330,6 +394,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DEST</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DEST</span></div>
+<div class="block"><p>leaves the first object untouched, the second is discarded completely</p></div>
 </div>
 </section>
 </li>
@@ -338,6 +403,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DEST_OVER</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DEST_OVER</span></div>
+<div class="block"><p>like OVER, but swaps the arguments</p></div>
 </div>
 </section>
 </li>
@@ -346,6 +412,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DEST_IN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DEST_IN</span></div>
+<div class="block"><p>like IN, but swaps the arguments</p></div>
 </div>
 </section>
 </li>
@@ -354,6 +421,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DEST_OUT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DEST_OUT</span></div>
+<div class="block"><p>like OUT, but swaps the arguments</p></div>
 </div>
 </section>
 </li>
@@ -362,6 +430,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DEST_ATOP</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DEST_ATOP</span></div>
+<div class="block"><p>like ATOP, but swaps the arguments</p></div>
 </div>
 </section>
 </li>
@@ -370,6 +439,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_XOR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_XOR</span></div>
+<div class="block"><p>something like a difference operator</p></div>
 </div>
 </section>
 </li>
@@ -378,6 +448,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_ADD</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_ADD</span></div>
+<div class="block"><p>a bit like adding the two images</p></div>
 </div>
 </section>
 </li>
@@ -386,6 +457,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_SATURATE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_SATURATE</span></div>
+<div class="block"><p>a bit like the darker of the two</p></div>
 </div>
 </section>
 </li>
@@ -394,6 +466,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_MULTIPLY</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_MULTIPLY</span></div>
+<div class="block"><p>at least as dark as the darker of the two inputs</p></div>
 </div>
 </section>
 </li>
@@ -402,6 +475,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_SCREEN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_SCREEN</span></div>
+<div class="block"><p>at least as light as the lighter of the inputs</p></div>
 </div>
 </section>
 </li>
@@ -410,6 +484,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_OVERLAY</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_OVERLAY</span></div>
+<div class="block"><p>multiplies or screens colors, depending on the lightness</p></div>
 </div>
 </section>
 </li>
@@ -418,6 +493,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DARKEN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DARKEN</span></div>
+<div class="block"><p>the darker of each component</p></div>
 </div>
 </section>
 </li>
@@ -426,6 +502,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_LIGHTEN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_LIGHTEN</span></div>
+<div class="block"><p>the lighter of each component</p></div>
 </div>
 </section>
 </li>
@@ -434,6 +511,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_COLOUR_DODGE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_COLOUR_DODGE</span></div>
+<div class="block"><p>brighten first by a factor second</p></div>
 </div>
 </section>
 </li>
@@ -442,6 +520,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_COLOUR_BURN</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_COLOUR_BURN</span></div>
+<div class="block"><p>darken first by a factor of second</p></div>
 </div>
 </section>
 </li>
@@ -450,6 +529,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_HARD_LIGHT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_HARD_LIGHT</span></div>
+<div class="block"><p>multiply or screen, depending on lightness</p></div>
 </div>
 </section>
 </li>
@@ -458,6 +538,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_SOFT_LIGHT</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_SOFT_LIGHT</span></div>
+<div class="block"><p>darken or lighten, depending on lightness</p></div>
 </div>
 </section>
 </li>
@@ -466,6 +547,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_DIFFERENCE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_DIFFERENCE</span></div>
+<div class="block"><p>difference of the two</p></div>
 </div>
 </section>
 </li>
@@ -474,6 +556,7 @@ the order they are declared.</div>
 <h3>BLEND_MODE_EXCLUSION</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsBlendMode.html" title="enum class in app.photofox.vipsffm.enums">VipsBlendMode</a></span>&nbsp;<span class="element-name">BLEND_MODE_EXCLUSION</span></div>
+<div class="block"><p>somewhat like DIFFERENCE, but lower-contrast</p></div>
 </div>
 </section>
 </li>

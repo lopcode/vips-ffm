@@ -111,6 +111,11 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsFailOn</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
+<div class="block"><p>How sensitive loaders are to errors, from never stop (very insensitive), to
+ stop on the smallest warning (very sensitive).</p>
+
+ <p>Each one implies the ones before it, so <a href="#FAIL_ON_ERROR"><code>FAIL_ON_ERROR</code></a> implies
+ <a href="#FAIL_ON_TRUNCATED"><code>FAIL_ON_TRUNCATED</code></a>.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -136,15 +141,23 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="#FAIL_ON_ERROR" class="member-name-link">FAIL_ON_ERROR</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">stop on serious error or truncation</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FAIL_ON_LAST" class="member-name-link">FAIL_ON_LAST</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code><a href="#FAIL_ON_NONE" class="member-name-link">FAIL_ON_NONE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">never stop</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="#FAIL_ON_TRUNCATED" class="member-name-link">FAIL_ON_TRUNCATED</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">stop on image truncated, nothing else</div>
+</div>
 <div class="col-first even-row-color"><code><a href="#FAIL_ON_WARNING" class="member-name-link">FAIL_ON_WARNING</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">stop on anything, even warnings</div>
+</div>
 </div>
 </section>
 </li>
@@ -219,6 +232,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_NONE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_NONE</span></div>
+<div class="block"><p>never stop</p></div>
 </div>
 </section>
 </li>
@@ -227,6 +241,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_TRUNCATED</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_TRUNCATED</span></div>
+<div class="block"><p>stop on image truncated, nothing else</p></div>
 </div>
 </section>
 </li>
@@ -235,6 +250,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_ERROR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_ERROR</span></div>
+<div class="block"><p>stop on serious error or truncation</p></div>
 </div>
 </section>
 </li>
@@ -243,6 +259,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_WARNING</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_WARNING</span></div>
+<div class="block"><p>stop on anything, even warnings</p></div>
 </div>
 </section>
 </li>

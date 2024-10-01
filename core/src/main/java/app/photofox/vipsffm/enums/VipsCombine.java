@@ -4,11 +4,23 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>How to combine values. See {@link app.photofox.vipsffm.VImage#compass}, for example.</p>
+ */
 public enum VipsCombine implements VNamedEnum {
+  /**
+   * <p>take the maximum of the possible values</p>
+   */
   COMBINE_MAX("VIPS_COMBINE_MAX", "max", 0),
 
+  /**
+   * <p>sum all the values</p>
+   */
   COMBINE_SUM("VIPS_COMBINE_SUM", "sum", 1),
 
+  /**
+   * <p>take the minimum value</p>
+   */
   COMBINE_MIN("VIPS_COMBINE_MIN", "min", 2),
 
   COMBINE_LAST("VIPS_COMBINE_LAST", "last", 3);

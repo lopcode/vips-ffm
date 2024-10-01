@@ -4,11 +4,23 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
+/**
+ * <p>See also: {@link app.photofox.vipsffm.VImage#math}.</p>
+ */
 public enum VipsOperationMath2 implements VNamedEnum {
+  /**
+   * <p>pow(left, right)</p>
+   */
   OPERATION_MATH2_POW("VIPS_OPERATION_MATH2_POW", "pow", 0),
 
+  /**
+   * <p>pow(right, left)</p>
+   */
   OPERATION_MATH2_WOP("VIPS_OPERATION_MATH2_WOP", "wop", 1),
 
+  /**
+   * <p>atan2(left, right)</p>
+   */
   OPERATION_MATH2_ATAN2("VIPS_OPERATION_MATH2_ATAN2", "atan2", 2),
 
   OPERATION_MATH2_LAST("VIPS_OPERATION_MATH2_LAST", "last", 3);
