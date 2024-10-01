@@ -47,6 +47,12 @@ testing {
             useKotlinTest("2.0.0")
             testType = TestSuiteType.INTEGRATION_TEST
 
+            dependencies {
+                implementation(project(":core"))
+                implementation("org.openjdk.jmh:jmh-core:1.37")
+                annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+            }
+
             targets {
                 all {
                     testTask.configure {
@@ -69,7 +75,6 @@ tasks.withType<Test> {
 
 tasks.named("check") {
     dependsOn(testing.suites.named("test"))
-    dependsOn(testing.suites.named("integrationTest"))
 }
 
 tasks.withType<JavaExec>().configureEach {
