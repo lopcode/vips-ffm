@@ -87,10 +87,10 @@ Windows).</p>
 </blockquote>
 <p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html">Arena</a> to operations like
 <code>VImage.newFromFile</code>, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
-by using <code>Vips.run</code> as shown in the <a href="#thumbnail-sample">sample</a> below. <code>VImage</code> has extensive Javadocs included, which
-are automatically generated from the same source that the libvips website uses, for ease of use. These helper objects
-expose their raw pointers as a last resort via functions like <code>VTarget.getUnsafeStructAddress</code> - if you need to use
-these raw pointers and can't find an alternative, please file a GitHub Issue.</p>
+by using <code>Vips.run</code> as shown in the <a href="#thumbnail-sample">sample</a> below. <code>VImage</code> and associated enums have extensive
+Javadocs included, which are automatically generated from the same source that the libvips website uses, for ease of use.
+These helper objects expose their raw pointers as a last resort via functions like <code>VTarget.getUnsafeStructAddress</code> - if
+you need to use these raw pointers and can't find an alternative, please file a GitHub Issue.</p>
 <p>Helper enums are generated for the version of libvips shown above. If you need to use an enum from another version,
 which isn't present in <code>vips-ffm</code>, you can use <code>VipsOption.Enum(rawValue)</code> or <code>VEnum.Raw(rawValue)</code>.</p>
 <blockquote>

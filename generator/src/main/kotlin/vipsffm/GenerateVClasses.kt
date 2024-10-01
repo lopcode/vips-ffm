@@ -202,11 +202,17 @@ object GenerateVClasses {
             ParameterSpec.builder(argType, name).build()
         }
 
+        var firstSpottedImageInputIndex = -1
         val filteredPoetArgs = poetArguments.filterIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            val isNotOutput = !argSpec.isOutput
-            val isNotImageInput = !(argSpec.isInput && (argSpec.type == GValueType.VipsImage))
-            isNotOutput && isNotImageInput
+            val isImageInput = argSpec.isInput && (argSpec.type == GValueType.VipsImage)
+            if (isImageInput && (firstSpottedImageInputIndex < 0)) {
+                // discard first image input - it'll be "this image"
+                firstSpottedImageInputIndex = index
+                return@filterIndexed false
+            }
+            val keepArg = !argSpec.isOutput
+            keepArg
         }
         method.addParameters(filteredPoetArgs)
 
@@ -268,7 +274,8 @@ object GenerateVClasses {
             if (argSpec.isOutput) {
                 method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
             } else if (argSpec.isInput) {
-                if (poetArg.type == vimageType) {
+                if (poetArg.type == vimageType && !filteredPoetArgs.contains(poetArg)) {
+                    // it's an image type, and doesn't refer to "this image"
                     method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
                 } else if (poetArg.type == vEnumType) {
                     method.addStatement(
