@@ -60,8 +60,9 @@ of libvips, FFM, and auto-generated helpers means these bindings are complete (s
 and <a href="https://github.com/lopcode/vips-ffm/issues/59#issuecomment-2367634956">faster</a> than AWT or JNI-based alternatives.</p>
 <p>Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced &quot;vips (like zips)
 eff-eff-emm&quot;. The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
-(Ubuntu 24.04).</p>
-<p>Used the library, or just like what you've read so far? Please give <a href="https://github.com/lopcode/vips-ffm">the repo</a> a star 🌟️!</p>
+(Ubuntu 24.04). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).</p>
+<p>Used the library? I'd love to hear from more users - let me know in <a href="https://github.com/lopcode/vips-ffm/discussions">Discussions</a>.</p>
+<p>Please also give <a href="https://github.com/lopcode/vips-ffm">the repo</a> a star 🌟️!</p>
 <h2 id="usage-heading">Usage</h2>
 <p><code>vips-ffm</code> is available on Maven Central. To get set up with Gradle:</p>
 <pre><code class="language-kotlin">repositories {
@@ -69,7 +70,7 @@ eff-eff-emm&quot;. The project is relatively new, but aims to be production read
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:0.6.0&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.0.0&quot;)
 }
 </code></pre>
 <p>When running your project you must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you
