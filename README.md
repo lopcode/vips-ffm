@@ -7,9 +7,11 @@ and [faster](https://github.com/lopcode/vips-ffm/issues/59#issuecomment-23676349
 
 Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
 eff-eff-emm". The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
-(Ubuntu 24.04).
+(Ubuntu 24.04). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).
 
-Used the library, or just like what you've read so far? Please give [the repo](https://github.com/lopcode/vips-ffm) a star 🌟️!
+Used the library? I'd love to hear from more users - let me know in [Discussions](https://github.com/lopcode/vips-ffm/discussions).
+
+Please also give [the repo](https://github.com/lopcode/vips-ffm) a star 🌟️!
 
 ## Usage
 
@@ -21,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:0.6.0")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.0.0")
 }
 ```
 When running your project you must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
