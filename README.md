@@ -151,6 +151,17 @@ why a goal should change!
 * Provide access to the raw bindings (`VipsHelper`), so users aren't blocked by helper bugs or API annoyances.
 * Incubate in [Photo Fox](https://github.com/lopcode/photo-fox) with some "real world" usage.
 
+## Contributing
+
+I'm not currently looking for external code contributions. If you'd like to help the project:
+
+* Use the library and give your feedback in [Discussions](https://github.com/lopcode/vips-ffm/discussions)
+  * Or [file an issue](https://github.com/lopcode/vips-ffm/issues) if you have a problem!
+* Share the [announcement post](https://www.lopcode.com/posts/2024/10/vips-ffm-1/) in your circles
+* Star the repo 🌟
+
+Thank you for being enthusiastic about the project!
+
 ## Releasing
 
 * GitHub Releases automatically result in a deployment to GitHub Packages
