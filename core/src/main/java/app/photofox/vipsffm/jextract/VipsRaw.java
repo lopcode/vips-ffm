@@ -4753,6 +4753,69 @@ public class VipsRaw {
         }
     }
 
+    private static class g_signal_connect_data {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_LONG,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_signal_connect_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+     * }
+     */
+    public static FunctionDescriptor g_signal_connect_data$descriptor() {
+        return g_signal_connect_data.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+     * }
+     */
+    public static MethodHandle g_signal_connect_data$handle() {
+        return g_signal_connect_data.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+     * }
+     */
+    public static MemorySegment g_signal_connect_data$address() {
+        return g_signal_connect_data.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+     * }
+     */
+    public static long g_signal_connect_data(MemorySegment instance, MemorySegment detailed_signal, MemorySegment c_handler, MemorySegment data, MemorySegment destroy_data, int connect_flags) {
+        var mh$ = g_signal_connect_data.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_signal_connect_data", instance, detailed_signal, c_handler, data, destroy_data, connect_flags);
+            }
+            return (long)mh$.invokeExact(instance, detailed_signal, c_handler, data, destroy_data, connect_flags);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class g_value_set_boxed {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             VipsRaw.C_POINTER,
@@ -10543,6 +10606,62 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_source_custom_new {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_source_custom_new");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern VipsSourceCustom *vips_source_custom_new()
+     * }
+     */
+    public static FunctionDescriptor vips_source_custom_new$descriptor() {
+        return vips_source_custom_new.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern VipsSourceCustom *vips_source_custom_new()
+     * }
+     */
+    public static MethodHandle vips_source_custom_new$handle() {
+        return vips_source_custom_new.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern VipsSourceCustom *vips_source_custom_new()
+     * }
+     */
+    public static MemorySegment vips_source_custom_new$address() {
+        return vips_source_custom_new.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern VipsSourceCustom *vips_source_custom_new()
+     * }
+     */
+    public static MemorySegment vips_source_custom_new() {
+        var mh$ = vips_source_custom_new.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_source_custom_new");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_target_get_type {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_LONG    );
@@ -10824,6 +10943,62 @@ public class VipsRaw {
                 traceDowncall("vips_target_new_temp", target);
             }
             return (MemorySegment)mh$.invokeExact(target);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_target_custom_new {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER    );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_target_custom_new");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern VipsTargetCustom *vips_target_custom_new()
+     * }
+     */
+    public static FunctionDescriptor vips_target_custom_new$descriptor() {
+        return vips_target_custom_new.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern VipsTargetCustom *vips_target_custom_new()
+     * }
+     */
+    public static MethodHandle vips_target_custom_new$handle() {
+        return vips_target_custom_new.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern VipsTargetCustom *vips_target_custom_new()
+     * }
+     */
+    public static MemorySegment vips_target_custom_new$address() {
+        return vips_target_custom_new.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern VipsTargetCustom *vips_target_custom_new()
+     * }
+     */
+    public static MemorySegment vips_target_custom_new() {
+        var mh$ = vips_target_custom_new.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_target_custom_new");
+            }
+            return (MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }

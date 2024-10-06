@@ -11,7 +11,9 @@ import java.nio.ByteBuffer;
 import static app.photofox.vipsffm.jextract.VipsRaw.C_LONG;
 
 /**
- * Represents a VipsBlob, boxed to avoid exposing its raw MemorySegment
+ * Represents a VipsBlob, which is backed by a contiguous area of off-heap memory
+ * Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ * Use its static helper methods to create new blobs
  */
 public final class VBlob {
 

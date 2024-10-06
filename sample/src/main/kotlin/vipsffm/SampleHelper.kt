@@ -30,7 +30,7 @@ object SampleHelper {
         val fileSizeKb = Files.size(path) / 1000
         if (!expectedSizeBoundsKb.contains(fileSizeKb)) {
             return Result.failure(
-                RuntimeException("unexpected resulting thumbnail size $fileSizeKb")
+                RuntimeException("unexpected resulting thumbnail size ${fileSizeKb}kb")
             )
         }
 

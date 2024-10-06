@@ -15,6 +15,8 @@ import app.photofox.vipsffm.enums.VipsOperationMath2;
 import app.photofox.vipsffm.enums.VipsOperationMorphology;
 import app.photofox.vipsffm.enums.VipsOperationRelational;
 import app.photofox.vipsffm.enums.VipsOperationRound;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Integer;
@@ -10381,6 +10383,28 @@ public final class VImage {
     return newFromSource(arena, source, options);
   }
 
+  /**
+   * Creates a new VImage from an {@link InputStream}. This uses libvips' "custom streaming" feature and is
+   * therefore quite efficient, avoiding the need to make extra full copies of the image's data.
+   * You could, for example, use this function to create an image directly from an API call, thumbnail it,
+   * and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
+   * file.
+   */
+  public static VImage newFromStream(Arena arena, InputStream stream, String optionString,
+      VipsOption... options) throws VipsError {
+    var source = VSource.newFromInputStream(arena, stream);
+    return newFromSource(arena, source, optionString, options);
+  }
+
+  /**
+   * See {@link VImage#newFromStream(Arena, InputStream, String, VipsOption...)}
+   */
+  public static VImage newFromStream(Arena arena, InputStream stream, VipsOption... options) throws
+      VipsError {
+    var source = VSource.newFromInputStream(arena, stream);
+    return newFromSource(arena, source, options);
+  }
+
   public void writeToFile(String path, VipsOption... options) throws VipsError {
     var filename = VipsHelper.filename_get_filename(arena, path);
     var filenameOptions = VipsHelper.filename_get_options(arena, filename);
@@ -10406,6 +10430,19 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(targetOption);
     VipsInvoker.invokeOperation(arena, loader, callArgs);
+  }
+
+  /**
+   * Writes this VImage to an {@link OutputStream}. This uses libvips' "custom streaming" feature and is
+   * therefore quite efficient, avoiding the need to make extra full copies of the image's data.
+   * You could, for example, use this function to create an image directly from an API call, thumbnail it,
+   * and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
+   * file.
+   */
+  public void writeToStream(OutputStream stream, String suffix, VipsOption... options) throws
+      VipsError {
+    var target = VTarget.newFromOutputStream(arena, stream);
+    this.writeToTarget(target, suffix, options);
   }
 
   public static VImage newImage(Arena arena) throws VipsError {

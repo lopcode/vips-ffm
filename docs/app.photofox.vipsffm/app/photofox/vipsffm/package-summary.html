@@ -103,8 +103,30 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Represents a VipsBlob, boxed to avoid exposing its raw MemorySegment</div>
+<div class="block">Represents a VipsBlob, which is backed by a contiguous area of off-heap memory
+ Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ Use its static helper methods to create new blobs</div>
 </div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="VCustomSource.html" title="class in app.photofox.vipsffm">VCustomSource</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Models a libvips "custom streaming" source
+ Provides callbacks for read and seek operations
+ See <a href="https://www.libvips.org/2019/11/29/True-streaming-for-libvips.html">true streaming for libvips</a></div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab1"><a href="VCustomSource.ReadCallback.html" title="interface in app.photofox.vipsffm">VCustomSource.ReadCallback</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab1">&nbsp;</div>
+<div class="col-first odd-row-color class-summary class-summary-tab1"><a href="VCustomSource.SeekCallback.html" title="interface in app.photofox.vipsffm">VCustomSource.SeekCallback</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab1">&nbsp;</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="VCustomTarget.html" title="class in app.photofox.vipsffm">VCustomTarget</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Models a libvips "custom streaming" target
+ Provides callbacks for write and end operations
+ See <a href="https://www.libvips.org/2019/11/29/True-streaming-for-libvips.html">true streaming for libvips</a></div>
+</div>
+<div class="col-first odd-row-color class-summary class-summary-tab1"><a href="VCustomTarget.EndCallback.html" title="interface in app.photofox.vipsffm">VCustomTarget.EndCallback</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab1">&nbsp;</div>
+<div class="col-first even-row-color class-summary class-summary-tab1"><a href="VCustomTarget.WriteCallback.html" title="interface in app.photofox.vipsffm">VCustomTarget.WriteCallback</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab1">&nbsp;</div>
 <div class="col-first odd-row-color class-summary class-summary-tab1"><a href="VEnum.html" title="interface in app.photofox.vipsffm">VEnum</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab1">&nbsp;</div>
 <div class="col-first even-row-color class-summary class-summary-tab4"><a href="VEnum.Raw.html" title="class in app.photofox.vipsffm">VEnum.Raw</a></div>
@@ -168,11 +190,15 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color class-summary class-summary-tab1">&nbsp;</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Represents a VipsSource, boxed to avoid exposing its raw MemorySegment</div>
+<div class="block">Represents a VipsSource
+ Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ Use its static helper methods to create new sources</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Represents a VipsTarget, boxed to avoid exposing its raw MemorySegment</div>
+<div class="block">Represents a VipsTarget
+ Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ Use its static helper methods to create new targets</div>
 </div>
 </div>
 </div>

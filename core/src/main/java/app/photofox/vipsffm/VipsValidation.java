@@ -2,7 +2,7 @@ package app.photofox.vipsffm;
 
 import app.photofox.vipsffm.jextract.VipsRaw;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
 
 public class VipsValidation {
 

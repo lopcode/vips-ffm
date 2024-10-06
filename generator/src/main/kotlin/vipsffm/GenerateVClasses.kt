@@ -63,6 +63,8 @@ object GenerateVClasses {
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm", "VipsValidation")
     private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
     private val deprecatedAnnotationType = ClassName.get("java.lang", "Deprecated")
+    private val inputStreamType = ClassName.get("java.io", "InputStream")
+    private val outputStreamType = ClassName.get("java.io", "OutputStream")
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -599,6 +601,37 @@ object GenerateVClasses {
             .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
             .addJavadoc("See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}")
             .build()
+        val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(inputStreamType, "stream")
+            .addParameter(stringType, "optionString")
+            .addParameter(vipsOptionVarargType, "options")
+            .returns(vimageType)
+            .varargs(true)
+            .addException(vipsErrorType)
+            .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
+            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
+            .addJavadoc("""
+                Creates a new VImage from an {@link InputStream}. This uses libvips' "custom streaming" feature and is
+                therefore quite efficient, avoiding the need to make extra full copies of the image's data.
+                You could, for example, use this function to create an image directly from an API call, thumbnail it,
+                and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
+                file.
+                """.trimIndent())
+            .build()
+        val newFromStreamNoOptionsMethod = MethodSpec.methodBuilder("newFromStream")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(inputStreamType, "stream")
+            .addParameter(vipsOptionVarargType, "options")
+            .returns(vimageType)
+            .varargs(true)
+            .addException(vipsErrorType)
+            .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
+            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
+            .addJavadoc("See {@link VImage#newFromStream(Arena, InputStream, String, VipsOption...)}")
+            .build()
         val writeToFileMethod = MethodSpec.methodBuilder("writeToFile")
             .addModifiers(Modifier.PUBLIC)
             .addParameter(stringType, "path")
@@ -638,6 +671,23 @@ object GenerateVClasses {
             .addStatement("callArgs.add(targetOption)")
             .addStatement("\$T.invokeOperation(arena, loader, callArgs)", vipsInvokerType)
             .build()
+        val writeToStreamMethod = MethodSpec.methodBuilder("writeToStream")
+            .addModifiers(Modifier.PUBLIC)
+            .addParameter(outputStreamType, "stream")
+            .addParameter(stringType, "suffix")
+            .varargs(true)
+            .addParameter(vipsOptionVarargType, "options")
+            .addException(vipsErrorType)
+            .addStatement("var target = \$T.newFromOutputStream(arena, stream)", vtargetType)
+            .addStatement("this.writeToTarget(target, suffix, options)")
+            .addJavadoc("""
+                Writes this VImage to an {@link OutputStream}. This uses libvips' "custom streaming" feature and is
+                therefore quite efficient, avoiding the need to make extra full copies of the image's data.
+                You could, for example, use this function to create an image directly from an API call, thumbnail it,
+                and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
+                file.
+            """.trimIndent())
+            .build()
         val newImageMethod = MethodSpec.methodBuilder("newImage")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .addParameter(arenaType, "arena")
@@ -655,9 +705,12 @@ object GenerateVClasses {
             newFromSourceNoOptionsMethod,
             newFromBytesMethod,
             newFromBytesNoOptionsMethod,
+            newFromStreamMethod,
+            newFromStreamNoOptionsMethod,
             writeToFileMethod,
             writeToImageMethod,
             writeToTargetMethod,
+            writeToStreamMethod,
             newImageMethod
         )
     }

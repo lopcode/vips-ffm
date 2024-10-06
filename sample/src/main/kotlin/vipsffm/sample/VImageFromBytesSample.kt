@@ -8,6 +8,9 @@ import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
+/**
+ * Sense checking loading a VImage from raw bytes
+ */
 object VImageFromBytesSample: RunnableSample {
 
     // note that this is generally inefficient, use a "VImage.newFrom" method if available

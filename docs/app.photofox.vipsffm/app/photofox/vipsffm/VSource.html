@@ -74,6 +74,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#newFromBlob(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob)" tabindex="0">newFromBlob(Arena, VBlob)</a></li>
 <li><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" tabindex="0">newFromBytes(Arena, byte[])</a></li>
 <li><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" tabindex="0">newFromOptions(Arena, String)</a></li>
+<li><a href="#newFromInputStream(java.lang.foreign.Arena,java.io.InputStream)" tabindex="0">newFromInputStream(Arena, InputStream)</a></li>
 </ol>
 </li>
 </ol>
@@ -88,10 +89,17 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
+<dl class="notes">
+<dt>Direct Known Subclasses:</dt>
+<dd><code><a href="VCustomSource.html" title="class in app.photofox.vipsffm">VCustomSource</a></code></dd>
+</dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">VSource</span>
-<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Represents a VipsSource, boxed to avoid exposing its raw MemorySegment</div>
+<div class="type-signature"><span class="modifiers">public sealed class </span><span class="element-name type-name-label">VSource</span>
+<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span>
+<span class="permits">permits <a href="VCustomSource.html" title="class in app.photofox.vipsffm">VCustomSource</a></span></div>
+<div class="block">Represents a VipsSource
+ Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ Use its static helper methods to create new sources</div>
 </div>
 </section>
 <section class="summary">
@@ -155,9 +163,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Create a new VSource from a file path</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromOptions</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromInputStream(java.lang.foreign.Arena,java.io.InputStream)" class="member-name-link">newFromInputStream</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;stream)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new VSource from a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link"><code>InputStream</code></a>
+ The provided InputStream is coupled to the arena's lifetime, and closed when its scope ends
+ Note that you can read an image directly from an InputStream using <a href="VImage.html#newFromStream(java.lang.foreign.Arena,java.io.InputStream,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromStream(Arena, InputStream, VipsOption...)</code></a>
+ This stream does not support seeking, because InputStream does not support it, so cannot be maximally
+ efficient - but it is still likely more efficient than taking a full intermediate copy of bytes</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromOptions</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;options)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -293,6 +311,25 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromOptions</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;options)</span>
                               throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newFromInputStream(java.lang.foreign.Arena,java.io.InputStream)">
+<h3>newFromInputStream</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromInputStream</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;stream)</span>
+                                  throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Creates a new VSource from a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link"><code>InputStream</code></a>
+ The provided InputStream is coupled to the arena's lifetime, and closed when its scope ends
+ Note that you can read an image directly from an InputStream using <a href="VImage.html#newFromStream(java.lang.foreign.Arena,java.io.InputStream,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromStream(Arena, InputStream, VipsOption...)</code></a>
+ This stream does not support seeking, because InputStream does not support it, so cannot be maximally
+ efficient - but it is still likely more efficient than taking a full intermediate copy of bytes</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
