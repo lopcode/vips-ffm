@@ -6,11 +6,6 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [ -n "$(git status --porcelain)" ]; then
-  echo "there are local changes, not building (check \"git status\")"
-  exit 1
-fi
-
 export GITHUB_VERSION=$1
 
 (gh release list --json tagName,isDraft,isPrerelease | jq -e ".[] | select(.tagName == \"$GITHUB_VERSION\" and .isDraft == false and .isPrerelease == false)") || (echo "couldn't find release" && exit 1)

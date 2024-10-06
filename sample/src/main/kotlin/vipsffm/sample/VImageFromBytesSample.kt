@@ -1,7 +1,6 @@
 package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
-import app.photofox.vipsffm.VSource
 import vipsffm.RunnableSample
 import vipsffm.SampleHelper
 import java.lang.foreign.Arena
