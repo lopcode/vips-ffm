@@ -34,6 +34,13 @@ object SampleHelper {
             )
         }
 
+        val bytes = Files.readAllBytes(path)
+        if (bytes.all { it == 0.toByte() }) {
+            return Result.failure(
+                RuntimeException("file all zeroes")
+            )
+        }
+
         return Result.success(Unit)
     }
 }

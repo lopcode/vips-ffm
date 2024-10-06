@@ -5,6 +5,7 @@ import app.photofox.vipsffm.jextract.VipsRaw;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.nio.ByteBuffer;
 
 import static app.photofox.vipsffm.jextract.VipsRaw.C_LONG;
@@ -26,6 +27,23 @@ public final class VBlob {
         }
         this.arena = arena;
         this.address = address;
+    }
+
+    /**
+     * Creates a new VBlob from a fixed array of bytes
+     * This must copy the data - it's generally more efficient to use {@link VImage#newFromFile(Arena, String, VipsOption...)},
+     * {@link VImage#newFromSource(Arena, VSource, String, VipsOption...)}, and friends
+     * @param arena An arena constraining the lifetime of this blob
+     * @param bytes The bytes to wrap
+     */
+    public static VBlob newFromBytes(Arena arena, byte[] bytes) throws VipsError {
+        var offHeapSegment = arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes);
+        var blobAddress = VipsRaw.vips_blob_new(MemorySegment.NULL, offHeapSegment, offHeapSegment.byteSize());
+        if (!VipsValidation.isValidPointer(blobAddress)) {
+            throw new VipsError("invalid blob returned from libvips");
+        }
+        blobAddress.reinterpret(arena, VipsRaw::vips_area_unref);
+        return new VBlob(arena, blobAddress);
     }
 
     /**
@@ -103,7 +121,7 @@ public final class VBlob {
         }
         buffer.rewind();
         var newBuffer = ByteBuffer.allocate(buffer.capacity());
-        buffer.put(newBuffer);
+        newBuffer.put(buffer);
         newBuffer.rewind();
         return newBuffer;
     }

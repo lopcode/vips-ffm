@@ -10358,6 +10358,29 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
+  public static VImage newFromSource(Arena arena, VSource source, VipsOption... options) throws
+      VipsError {
+    return newFromSource(arena, source, "", options);
+  }
+
+  /**
+   * Creates a new VImage from raw bytes. Note that this is quite inefficient, use {@link VImage#newFromFile(Arena, String, VipsOption...)} and friends instead.
+   */
+  public static VImage newFromBytes(Arena arena, byte[] bytes, String optionString,
+      VipsOption... options) throws VipsError {
+    var source = VSource.newFromBytes(arena, bytes);
+    return newFromSource(arena, source, optionString, options);
+  }
+
+  /**
+   * See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}
+   */
+  public static VImage newFromBytes(Arena arena, byte[] bytes, VipsOption... options) throws
+      VipsError {
+    var source = VSource.newFromBytes(arena, bytes);
+    return newFromSource(arena, source, options);
+  }
+
   public void writeToFile(String path, VipsOption... options) throws VipsError {
     var filename = VipsHelper.filename_get_filename(arena, path);
     var filenameOptions = VipsHelper.filename_get_options(arena, filename);

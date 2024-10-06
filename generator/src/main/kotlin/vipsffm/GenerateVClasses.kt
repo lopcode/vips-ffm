@@ -564,6 +564,41 @@ object GenerateVClasses {
             .addStatement("\$T.invokeOperation(arena, loader, optionString, callArgs)", vipsInvokerType)
             .addStatement("return outOption.valueOrThrow()")
             .build()
+        val newFromSourceNoOptionsMethod = MethodSpec.methodBuilder("newFromSource")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(vsourceType, "source")
+            .addParameter(vipsOptionVarargType, "options")
+            .returns(vimageType)
+            .varargs(true)
+            .addException(vipsErrorType)
+            .addStatement("return newFromSource(arena, source, \"\", options)")
+            .build()
+        val newFromBytesMethod = MethodSpec.methodBuilder("newFromBytes")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(ArrayTypeName.of(TypeName.BYTE), "bytes")
+            .addParameter(stringType, "optionString")
+            .addParameter(vipsOptionVarargType, "options")
+            .returns(vimageType)
+            .varargs(true)
+            .addException(vipsErrorType)
+            .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
+            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
+            .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use {@link VImage#newFromFile(Arena, String, VipsOption...)} and friends instead.")
+            .build()
+        val newFromBytesNoOptionsMethod = MethodSpec.methodBuilder("newFromBytes")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(ArrayTypeName.of(TypeName.BYTE), "bytes")
+            .addParameter(vipsOptionVarargType, "options")
+            .returns(vimageType)
+            .varargs(true)
+            .addException(vipsErrorType)
+            .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
+            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
+            .addJavadoc("See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}")
+            .build()
         val writeToFileMethod = MethodSpec.methodBuilder("writeToFile")
             .addModifiers(Modifier.PUBLIC)
             .addParameter(stringType, "path")
@@ -617,6 +652,9 @@ object GenerateVClasses {
             alphaMethod,
             newFromFileMethod,
             newFromSourceMethod,
+            newFromSourceNoOptionsMethod,
+            newFromBytesMethod,
+            newFromBytesNoOptionsMethod,
             writeToFileMethod,
             writeToImageMethod,
             writeToTargetMethod,
