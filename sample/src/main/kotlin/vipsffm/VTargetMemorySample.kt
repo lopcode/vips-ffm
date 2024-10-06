@@ -11,7 +11,7 @@ object VTargetToFileSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val source = VSource.newFromFile(arena, "sample/src/main/resources/sample_images/fox.jpg")
-        val sourceImage = VImage.newFromSource(arena, source, "")
+        val sourceImage = VImage.newFromSource(arena, source)
 
         val target = VTarget.newToMemory(arena)
         sourceImage.writeToTarget(target, ".jpg")
@@ -19,7 +19,7 @@ object VTargetToFileSample: RunnableSample {
         val blob = target.blob
         val outputSource = VSource.newFromBlob(arena, blob)
         val outputPath = workingDirectory.resolve("fox_copy.jpg")
-        VImage.newFromSource(arena, outputSource, "")
+        VImage.newFromSource(arena, outputSource)
             .writeToFile(outputPath.absolutePathString())
 
         return SampleHelper.validate(

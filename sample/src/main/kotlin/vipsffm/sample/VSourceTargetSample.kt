@@ -16,7 +16,7 @@ object VSourceTargetSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val source = VSource.newFromFile(arena, "sample/src/main/resources/sample_images/fox.jpg")
-        val sourceImage = VImage.newFromSource(arena, source, "")
+        val sourceImage = VImage.newFromSource(arena, source)
 
         val sourceWidth = sourceImage.width
         val sourceHeight = sourceImage.height

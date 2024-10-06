@@ -16,7 +16,7 @@ object VBlobByteBufferSample: RunnableSample {
             arena,
             "sample/src/main/resources/sample_images/rabbit.jpg"
         )
-            .thumbnailImage(400)
+        .thumbnailImage(400)
 
         val blob = image.jpegsaveBuffer()
         val bytes = blob.asClonedByteBuffer()

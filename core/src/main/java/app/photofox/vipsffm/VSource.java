@@ -51,19 +51,38 @@ public final class VSource {
         return this.address;
     }
 
+    /**
+     * Create a new VSource from a file descriptor
+     */
     public static VSource newFromDescriptor(Arena arena, int descriptor) throws VipsError {
         var pointer = VipsHelper.source_new_from_descriptor(arena, descriptor);
         return new VSource(pointer);
     }
 
+    /**
+     * Create a new VSource from a file path
+     */
     public static VSource newFromFile(Arena arena, String filename) throws VipsError {
         var pointer = VipsHelper.source_new_from_file(arena, filename);
         return new VSource(pointer);
     }
 
+    /**
+     * Create a new VSource from a VBlob, usually received from a Vips operation
+     */
     public static VSource newFromBlob(Arena arena, VBlob blob) throws VipsError {
         var pointer = VipsHelper.source_new_from_blob(arena, blob.address);
         return new VSource(pointer);
+    }
+
+    /**
+     * Create a new VSource directly from some bytes
+     * Note that this makes a full copy of the data, which is inefficient - prefer {@link VImage#newFromFile(Arena, String, VipsOption...)}
+     * and friends
+     */
+    public static VSource newFromBytes(Arena arena, byte[] bytes) throws VipsError {
+        var blob = VBlob.newFromBytes(arena, bytes);
+        return newFromBlob(arena, blob);
     }
 
     public static VSource newFromOptions(Arena arena, String options) throws VipsError {
