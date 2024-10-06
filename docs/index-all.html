@@ -854,7 +854,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/package-summary.html">app.photofox.vipsffm.jextract</a> - package app.photofox.vipsffm.jextract</dt>
 <dd>
-<div class="block">Automatically generated bindings using the jextract tool</div>
+<div class="block">Automatically generated bindings from the jextract tool</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass._g_reserved1.Function.html#apply()" class="member-name-link">apply()</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass._g_reserved1.Function.html" title="interface in app.photofox.vipsffm.jextract">_GInputStreamClass._g_reserved1.Function</a></dt>
 <dd>&nbsp;</dd>
@@ -15450,16 +15450,44 @@ loadScripts(document, 'script');</script>
 </div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html#newFromBlob(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob)" class="member-name-link">newFromBlob(Arena, VBlob)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html" title="class in app.photofox.vipsffm">VSource</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Create a new VSource from a VBlob, usually received from a Vips operation</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VBlob.html#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes(Arena, byte[])</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></dt>
+<dd>
+<div class="block">Creates a new VBlob from a fixed array of bytes
+ This must copy the data - it's generally more efficient to use <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>,
+ <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromSource(Arena, VSource, String, VipsOption...)</code></a>, and friends</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes(Arena, byte[])</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html" title="class in app.photofox.vipsffm">VSource</a></dt>
+<dd>
+<div class="block">Create a new VSource directly from some bytes
+ Note that this makes a full copy of the data, which is inefficient - prefer <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>
+ and friends</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromBytes(Arena, byte[], VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">See <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromBytes(Arena, byte[], String, VipsOption...)</code></a></div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromBytes(Arena, byte[], String, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Creates a new VImage from raw bytes.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html#newFromDescriptor(java.lang.foreign.Arena,int)" class="member-name-link">newFromDescriptor(Arena, int)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html" title="class in app.photofox.vipsffm">VSource</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Create a new VSource from a file descriptor</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html#newFromFile(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromFile(Arena, String)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html" title="class in app.photofox.vipsffm">VSource</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Create a new VSource from a file path</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromFile(Arena, String, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VInterpolate.html#newFromName(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromName(Arena, String)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VInterpolate.html" title="class in app.photofox.vipsffm">VInterpolate</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html#newFromOptions(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromOptions(Arena, String)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VSource.html" title="class in app.photofox.vipsffm">VSource</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromSource(Arena, VSource, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromSource(Arena, VSource, String, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>

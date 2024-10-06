@@ -72,6 +72,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#newFromDescriptor(java.lang.foreign.Arena,int)" tabindex="0">newFromDescriptor(Arena, int)</a></li>
 <li><a href="#newFromFile(java.lang.foreign.Arena,java.lang.String)" tabindex="0">newFromFile(Arena, String)</a></li>
 <li><a href="#newFromBlob(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob)" tabindex="0">newFromBlob(Arena, VBlob)</a></li>
+<li><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" tabindex="0">newFromBytes(Arena, byte[])</a></li>
 <li><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" tabindex="0">newFromOptions(Arena, String)</a></li>
 </ol>
 </li>
@@ -130,19 +131,33 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBlob(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob)" class="member-name-link">newFromBlob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;blob)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Create a new VSource from a VBlob, usually received from a Vips operation</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromDescriptor(java.lang.foreign.Arena,int)" class="member-name-link">newFromDescriptor</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;descriptor)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Create a new VSource directly from some bytes
+ Note that this makes a full copy of the data, which is inefficient - prefer <a href="VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>
+ and friends</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromFile(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromDescriptor(java.lang.foreign.Arena,int)" class="member-name-link">newFromDescriptor</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ int&nbsp;descriptor)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Create a new VSource from a file descriptor</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromOptions</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromFile(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Create a new VSource from a file path</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromOptions(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newFromOptions</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;options)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -216,6 +231,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromDescriptor</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  int&nbsp;descriptor)</span>
                                  throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Create a new VSource from a file descriptor</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -230,6 +246,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromFile</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</span>
                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Create a new VSource from a file path</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -244,6 +261,24 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromBlob</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;blob)</span>
                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Create a new VSource from a VBlob, usually received from a Vips operation</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newFromBytes(java.lang.foreign.Arena,byte[])">
+<h3>newFromBytes</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a></span>&nbsp;<span class="element-name">newFromBytes</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes)</span>
+                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Create a new VSource directly from some bytes
+ Note that this makes a full copy of the data, which is inefficient - prefer <a href="VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>
+ and friends</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>

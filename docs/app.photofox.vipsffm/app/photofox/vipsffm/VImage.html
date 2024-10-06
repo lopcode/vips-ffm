@@ -386,6 +386,9 @@ loadScripts(document, 'script');</script>
 <li><a href="#hasAlpha()" tabindex="0">hasAlpha()</a></li>
 <li><a href="#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromFile(Arena, String, VipsOption...)</a></li>
 <li><a href="#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromSource(Arena, VSource, String, VipsOption...)</a></li>
+<li><a href="#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromSource(Arena, VSource, VipsOption...)</a></li>
+<li><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromBytes(Arena, byte[], String, VipsOption...)</a></li>
+<li><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromBytes(Arena, byte[], VipsOption...)</a></li>
 <li><a href="#writeToFile(java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">writeToFile(String, VipsOption...)</a></li>
 <li><a href="#write(app.photofox.vipsffm.VImage)" tabindex="0">write(VImage)</a></li>
 <li><a href="#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">writeToTarget(VTarget, String, VipsOption...)</a></li>
@@ -1748,751 +1751,771 @@ loadScripts(document, 'script');</script>
 <div class="block">This operation calculates <code>left</code> * <code>right</code> and writes the result to <code>out</code>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">See <a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>newFromBytes(Arena, byte[], String, VipsOption...)</code></a></div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;optionString,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new VImage from raw bytes.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromSource</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromSource</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;optionString,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newImage(java.lang.foreign.Arena)" class="member-name-link">newImage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">newFromSource</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;optionString,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openexrload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openexrload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newImage(java.lang.foreign.Arena)" class="member-name-link">newImage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openexrload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openexrload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a OpenEXR file into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openslideload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openslideload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openslideload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openslideload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a virtual slide supported by the OpenSlide library into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openslideloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openslideloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openslideloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openslideloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#openslideload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>openslideload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pbmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pbmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pbmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pbmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span></div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Render a PDF file into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Read a PDF-formatted memory buffer into a VIPS image.</div>
-</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Exactly as <a href="#pdfload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pdfload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
+<div class="block">Read a PDF-formatted memory buffer into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#percent(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">percent</a><wbr>(double&nbsp;percent,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pdfloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pdfloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exactly as <a href="#pdfload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pdfload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#percent(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">percent</a><wbr>(double&nbsp;percent,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"><code>percent</code> returns (through the <code>threshold</code> parameter) the threshold
  below which there are <code>percent</code> values of <code>in</code>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#perlin(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">perlin</a><wbr>(int&nbsp;width,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#perlin(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">perlin</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Create a one-band float image of Perlin noise.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pfmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pfmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
+<div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span></div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pfmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pfmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pgmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pgmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span></div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pgmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pgmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#phasecor(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">phasecor</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;in2,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
-<div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span></div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#phasecor(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">phasecor</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;in2,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Convert the two input images to Fourier space, calculate phase-correlation,
  back to real space.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a PNG file into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#pngload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pngload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a PNG-formatted memory block.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#pngload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pngload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write a VIPS image to a file as PNG.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#pngsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pngsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a memory buffer.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pngsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pngsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#pngsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>pngsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pnmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pnmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#pnmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">pnmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span></div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a PPM/PBM/PGM/PFM file into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#ppmload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>ppmload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write a VIPS image to a file as PPM.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ppmsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#ppmsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>ppmsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#premultiply(app.photofox.vipsffm.VipsOption...)" class="member-name-link">premultiply</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#premultiply(app.photofox.vipsffm.VipsOption...)" class="member-name-link">premultiply</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Premultiplies any alpha channel.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#prewitt(app.photofox.vipsffm.VipsOption...)" class="member-name-link">prewitt</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#prewitt(app.photofox.vipsffm.VipsOption...)" class="member-name-link">prewitt</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Prewitt edge detector.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#profile(app.photofox.vipsffm.VipsOption...)" class="member-name-link">profile</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#profile(app.photofox.vipsffm.VipsOption...)" class="member-name-link">profile</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"><code>profile</code> searches inward from the edge of <code>in</code> and finds the
  first non-zero pixel.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#project(app.photofox.vipsffm.VipsOption...)" class="member-name-link">project</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#project(app.photofox.vipsffm.VipsOption...)" class="member-name-link">project</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Find the horizontal and vertical projections of an image, ie.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#quadratic(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">quadratic</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;coeff,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#quadratic(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">quadratic</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;coeff,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation is unfinished and unusable, sorry.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rad2float(app.photofox.vipsffm.VipsOption...)" class="member-name-link">rad2float</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rad2float(app.photofox.vipsffm.VipsOption...)" class="member-name-link">rad2float</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Unpack a RAD (<a href="enums/VipsCoding.html#CODING_RAD"><code>VipsCoding.CODING_RAD</code></a>) image to a three-band float image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a Radiance (HDR) file into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#radload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>radload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a HDR-formatted memory block.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#radload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>radload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write a VIPS image in Radiance (HDR) format.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#radsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>radsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a memory buffer.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#radsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">radsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#radsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>radsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rank(int,int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rank</a><wbr>(int&nbsp;width,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rank(int,int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rank</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  int&nbsp;index,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"><code>rank</code> does rank filtering on an image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawload(java.lang.String,int,int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawload(java.lang.String,int,int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  int&nbsp;width,
  int&nbsp;height,
  int&nbsp;bands,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation mmaps the file, setting up <code>out</code> so that access to that
  image will read from the file.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Writes the pixels in <code>in</code> to the file <code>filename</code> with no header or other
  metadata.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawsaveFd(int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawsaveFd</a><wbr>(int&nbsp;fd,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rawsaveFd(int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rawsaveFd</a><wbr>(int&nbsp;fd,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Writes the pixels in <code>in</code> to the <code>fd</code> with no header or other
  metadata.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#recomb(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">recomb</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;m,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#recomb(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">recomb</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;m,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation recombines an image's bands.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reduce(double,double,double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reduce</a><wbr>(double&nbsp;xshrink,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reduce(double,double,double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reduce</a><wbr>(double&nbsp;xshrink,
  double&nbsp;hshrink,
  double&nbsp;yshrink,
  double&nbsp;vshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Reduce <code>in</code> by a pair of factors with a pair of 1D kernels.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reduceh(double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reduceh</a><wbr>(double&nbsp;xshrink,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reduceh(double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reduceh</a><wbr>(double&nbsp;xshrink,
  double&nbsp;hshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Reduce <code>in</code> horizontally by a float factor.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reducev(double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reducev</a><wbr>(double&nbsp;yshrink,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reducev(double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">reducev</a><wbr>(double&nbsp;yshrink,
  double&nbsp;vshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Reduce <code>in</code> vertically by a float factor.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#relational(app.photofox.vipsffm.VImage,app.photofox.vipsffm.enums.VipsOperationRelational,app.photofox.vipsffm.VipsOption...)" class="member-name-link">relational</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#relational(app.photofox.vipsffm.VImage,app.photofox.vipsffm.enums.VipsOperationRelational,app.photofox.vipsffm.VipsOption...)" class="member-name-link">relational</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
  <a href="enums/VipsOperationRelational.html" title="enum class in app.photofox.vipsffm.enums">VipsOperationRelational</a>&nbsp;relational,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Perform various relational operations on pairs of images.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#relationalConst(app.photofox.vipsffm.enums.VipsOperationRelational,java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">relationalConst</a><wbr>(<a href="enums/VipsOperationRelational.html" title="enum class in app.photofox.vipsffm.enums">VipsOperationRelational</a>&nbsp;relational,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#relationalConst(app.photofox.vipsffm.enums.VipsOperationRelational,java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">relationalConst</a><wbr>(<a href="enums/VipsOperationRelational.html" title="enum class in app.photofox.vipsffm.enums">VipsOperationRelational</a>&nbsp;relational,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&nbsp;c,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Perform various relational operations on an image and an array of
  constants.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remainder(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">remainder</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remainder(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">remainder</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation calculates <code>left</code> % <code>right</code> (remainder after integer division)
  and writes the result to <code>out</code>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remainderConst(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">remainderConst</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&nbsp;c,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remainderConst(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">remainderConst</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&nbsp;c,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation calculates <code>in</code> % <code>c</code> (remainder after division by an
  array of constants)
  and writes the result to <code>out</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#replicate(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">replicate</a><wbr>(int&nbsp;across,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#replicate(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">replicate</a><wbr>(int&nbsp;across,
  int&nbsp;down,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Repeats an image many times.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resize(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">resize</a><wbr>(double&nbsp;scale,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resize(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">resize</a><wbr>(double&nbsp;scale,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resize an image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rot(app.photofox.vipsffm.enums.VipsAngle,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rot</a><wbr>(<a href="enums/VipsAngle.html" title="enum class in app.photofox.vipsffm.enums">VipsAngle</a>&nbsp;angle,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rot(app.photofox.vipsffm.enums.VipsAngle,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rot</a><wbr>(<a href="enums/VipsAngle.html" title="enum class in app.photofox.vipsffm.enums">VipsAngle</a>&nbsp;angle,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Rotate <code>in</code> by a multiple of 90 degrees.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rot45(app.photofox.vipsffm.VipsOption...)" class="member-name-link">rot45</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rot45(app.photofox.vipsffm.VipsOption...)" class="member-name-link">rot45</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Rotate <code>in</code> by a multiple of 45 degrees.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rotate(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rotate</a><wbr>(double&nbsp;angle,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rotate(double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">rotate</a><wbr>(double&nbsp;angle,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operator calls <a href="#affine(java.util.List,app.photofox.vipsffm.VipsOption...)"><code>affine(java.util.List&lt;java.lang.Double&gt;, app.photofox.vipsffm.VipsOption...)</code></a> for you, calculating the matrix for the
  affine transform from <code>scale</code> and <code>angle</code>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#round(app.photofox.vipsffm.enums.VipsOperationRound,app.photofox.vipsffm.VipsOption...)" class="member-name-link">round</a><wbr>(<a href="enums/VipsOperationRound.html" title="enum class in app.photofox.vipsffm.enums">VipsOperationRound</a>&nbsp;round,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#round(app.photofox.vipsffm.enums.VipsOperationRound,app.photofox.vipsffm.VipsOption...)" class="member-name-link">round</a><wbr>(<a href="enums/VipsOperationRound.html" title="enum class in app.photofox.vipsffm.enums">VipsOperationRound</a>&nbsp;round,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Round to an integral value.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scale(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scale</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scale(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scale</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Search the image for the maximum and minimum value, then return the image
  as unsigned 8-bit, scaled so that the maximum value is 255 and the
  minimum is zero.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scharr(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scharr</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scharr(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scharr</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Scharr edge detector.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2BW(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2BW</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2BW(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2BW</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Convert an scRGB image to greyscale.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2sRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2sRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2sRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2sRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Convert an scRGB image to sRGB.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2XYZ(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2XYZ</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scRGB2XYZ(app.photofox.vipsffm.VipsOption...)" class="member-name-link">scRGB2XYZ</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Turn XYZ to scRGB.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sequential(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sequential</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sequential(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sequential</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation behaves rather like <a href="#copy(app.photofox.vipsffm.VipsOption...)"><code>copy(app.photofox.vipsffm.VipsOption...)</code></a> between images
  <code>in</code> and <code>out</code>, except that it checks that pixels on <code>in</code> are only requested
  top-to-bottom.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sharpen(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sharpen</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sharpen(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sharpen</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Selectively sharpen the L channel of a LAB image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrink(double,double,double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrink</a><wbr>(double&nbsp;xshrink,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrink(double,double,double,double,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrink</a><wbr>(double&nbsp;xshrink,
  double&nbsp;hshrink,
  double&nbsp;yshrink,
  double&nbsp;vshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Shrink <code>in</code> by a pair of factors with a simple box filter.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrinkh(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrinkh</a><wbr>(int&nbsp;xshrink,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrinkh(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrinkh</a><wbr>(int&nbsp;xshrink,
  int&nbsp;hshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Shrink <code>in</code> horizontally by an integer factor.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrinkv(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrinkv</a><wbr>(int&nbsp;yshrink,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shrinkv(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">shrinkv</a><wbr>(int&nbsp;yshrink,
  int&nbsp;vshrink,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Shrink <code>in</code> vertically by an integer factor.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sign(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sign</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sign(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sign</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Finds the unit vector in the direction of the pixel value.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#similarity(app.photofox.vipsffm.VipsOption...)" class="member-name-link">similarity</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#similarity(app.photofox.vipsffm.VipsOption...)" class="member-name-link">similarity</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operator calls <a href="#affine(java.util.List,app.photofox.vipsffm.VipsOption...)"><code>affine(java.util.List&lt;java.lang.Double&gt;, app.photofox.vipsffm.VipsOption...)</code></a> for you, calculating the matrix for the
  affine transform from <code>scale</code> and <code>angle</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sines(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">sines</a><wbr>(int&nbsp;width,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sines(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">sines</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Creates a float one band image of the a sine waveform in two
  dimensions.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#smartcrop(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">smartcrop</a><wbr>(int&nbsp;width,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#smartcrop(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">smartcrop</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Crop an image down to a specified width and height by removing boring parts.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sobel(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sobel</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sobel(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sobel</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sobel edge detector.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spcor(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">spcor</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;ref,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spcor(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">spcor</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;ref,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Calculate a correlation surface.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spectrum(app.photofox.vipsffm.VipsOption...)" class="member-name-link">spectrum</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spectrum(app.photofox.vipsffm.VipsOption...)" class="member-name-link">spectrum</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Make a displayable (ie.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sRGB2HSV(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sRGB2HSV</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sRGB2HSV(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sRGB2HSV</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Convert to HSV.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sRGB2scRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sRGB2scRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sRGB2scRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sRGB2scRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Convert an sRGB image to scRGB.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stats(app.photofox.vipsffm.VipsOption...)" class="member-name-link">stats</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stats(app.photofox.vipsffm.VipsOption...)" class="member-name-link">stats</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Find many image statistics in a single pass through the data.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stdif(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">stdif</a><wbr>(int&nbsp;width,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stdif(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">stdif</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"><code>stdif</code> performs statistical differencing according to the formula
  given in page 45 of the book &quot;An Introduction to Digital Image
  Processing&quot; by Wayne Niblack.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#subsample(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">subsample</a><wbr>(int&nbsp;xfac,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#subsample(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">subsample</a><wbr>(int&nbsp;xfac,
  int&nbsp;yfac,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Subsample an image by an integer fraction.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#subtract(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">subtract</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#subtract(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)" class="member-name-link">subtract</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;right,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation calculates <code>in1</code> - <code>in2</code> and writes the result to <code>out</code>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sum(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">sum</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&gt;&nbsp;in,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sum(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">sum</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&gt;&nbsp;in,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation sums all images in <code>in</code> and writes the result to <code>out</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Render a SVG file into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Read a SVG-formatted memory block into a VIPS image.</div>
-</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Exactly as <a href="#svgload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>svgload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
+<div class="block">Read a SVG-formatted memory block into a VIPS image.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switch1(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">switch1</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&gt;&nbsp;tests,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#svgloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">svgloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exactly as <a href="#svgload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>svgload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switch1(java.util.List,app.photofox.vipsffm.VipsOption...)" class="member-name-link">switch1</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&gt;&nbsp;tests,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">The <code>tests</code> images are evaluated and at each point the index of the first
  non-zero value is written to <code>out</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#text(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">text</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#text(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">text</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Draw the string <code>text</code> to an image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnail(java.lang.String,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnail(java.lang.String,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  int&nbsp;width,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Make a thumbnail from a file.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailBuffer(app.photofox.vipsffm.VBlob,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailBuffer(app.photofox.vipsffm.VBlob,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  int&nbsp;width,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#thumbnail(java.lang.String,int,app.photofox.vipsffm.VipsOption...)"><code>thumbnail(java.lang.String, int, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a memory buffer.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailImage(int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailImage</a><wbr>(int&nbsp;width,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailImage(int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailImage</a><wbr>(int&nbsp;width,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#thumbnail(java.lang.String,int,app.photofox.vipsffm.VipsOption...)"><code>thumbnail(java.lang.String, int, app.photofox.vipsffm.VipsOption...)</code></a>, but read from an existing image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailSource(app.photofox.vipsffm.VSource,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thumbnailSource(app.photofox.vipsffm.VSource,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">thumbnailSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  int&nbsp;width,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#thumbnail(java.lang.String,int,app.photofox.vipsffm.VipsOption...)"><code>thumbnail(java.lang.String, int, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a TIFF file into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a TIFF-formatted memory block into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#tiffload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write a VIPS image to a file as TIFF.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#tiffsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a memory buffer.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tiffsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">tiffsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#tiffsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>tiffsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tilecache(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tilecache</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tilecache(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tilecache</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This operation behaves rather like <a href="#copy(app.photofox.vipsffm.VipsOption...)"><code>copy(app.photofox.vipsffm.VipsOption...)</code></a> between images
  <code>in</code> and <code>out</code>, except that it keeps a cache of computed pixels.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tonelut(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tonelut</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tonelut(app.photofox.vipsffm.VipsOption...)" class="member-name-link">tonelut</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"><code>tonelut</code> generates a tone curve for the adjustment of image
  levels.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#transpose3d(app.photofox.vipsffm.VipsOption...)" class="member-name-link">transpose3d</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#transpose3d(app.photofox.vipsffm.VipsOption...)" class="member-name-link">transpose3d</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Transpose a volumetric image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unpremultiply(app.photofox.vipsffm.VipsOption...)" class="member-name-link">unpremultiply</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unpremultiply(app.photofox.vipsffm.VipsOption...)" class="member-name-link">unpremultiply</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Unpremultiplies any alpha channel.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipsload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipsload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipsload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipsload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read in a vips image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipsloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipsloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipsloadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipsloadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#vipsload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>vipsload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipssave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipssave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipssave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipssave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write <code>in</code> to <code>filename</code> in VIPS format.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipssaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipssaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#vipssaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">vipssaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#vipssave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>vipssave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpload(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a WebP file into a VIPS image.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webploadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webploadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webploadBuffer(app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webploadBuffer</a><wbr>(<a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a>&nbsp;buffer,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Read a WebP-formatted memory block into a VIPS image.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webploadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webploadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webploadSource(app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webploadSource</a><wbr>(<a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exactly as <a href="#webpload(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>webpload(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a source.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsave</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Write an image to a file in WebP format.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveBuffer(app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveBuffer</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>webpsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a memory buffer.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveMime(app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveMime</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveMime(app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveMime</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">As <a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>webpsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save as a mime webp on stdout.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">As <a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>webpsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#worley(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">worley</a><wbr>(int&nbsp;width,
- int&nbsp;height,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#webpsaveTarget(app.photofox.vipsffm.VTarget,app.photofox.vipsffm.VipsOption...)" class="member-name-link">webpsaveTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Create a one-band float image of Worley noise.</div>
+<div class="block">As <a href="#webpsave(java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>webpsave(java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but save to a target.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#wrap(app.photofox.vipsffm.VipsOption...)" class="member-name-link">wrap</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#worley(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">worley</a><wbr>(int&nbsp;width,
+ int&nbsp;height,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Create a one-band float image of Worley noise.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#wrap(app.photofox.vipsffm.VipsOption...)" class="member-name-link">wrap</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Slice an image up and move the segments about so that the pixel that was
  at 0, 0 is now at <code>x</code>, <code>y</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#write(app.photofox.vipsffm.VImage)" class="member-name-link">write</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;out)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#writeToFile(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#write(app.photofox.vipsffm.VImage)" class="member-name-link">write</a><wbr>(<a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a>&nbsp;out)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffix,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#writeToFile(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#xyz(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">xyz</a><wbr>(int&nbsp;width,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToTarget</a><wbr>(<a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;target,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffix,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#xyz(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">xyz</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Create a two-band uint32 image where the elements in the first band have the
  value of their x coordinate and elements in the second band have their y
  coordinate.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2CMYK(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2CMYK</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2CMYK(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2CMYK</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Turn XYZ to CMYK.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2Lab(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2Lab</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2Lab(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2Lab</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Turn XYZ to Lab, optionally specifying the colour temperature.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2scRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2scRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2scRGB(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2scRGB</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Turn XYZ to scRGB.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2Yxy(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2Yxy</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Turn XYZ to Yxy.</div>
-</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#Yxy2XYZ(app.photofox.vipsffm.VipsOption...)" class="member-name-link">Yxy2XYZ</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#XYZ2Yxy(app.photofox.vipsffm.VipsOption...)" class="member-name-link">XYZ2Yxy</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Turn XYZ to Yxy.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#zone(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">zone</a><wbr>(int&nbsp;width,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#Yxy2XYZ(app.photofox.vipsffm.VipsOption...)" class="member-name-link">Yxy2XYZ</a><wbr>(<a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Turn XYZ to Yxy.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#zone(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">zone</a><wbr>(int&nbsp;width,
  int&nbsp;height,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Create a one-band image of a zone plate.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#zoom(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">zoom</a><wbr>(int&nbsp;xfac,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#zoom(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">zoom</a><wbr>(int&nbsp;xfac,
  int&nbsp;yfac,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;args)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Zoom an image by repeating pixels.</div>
 </div>
 </div>
@@ -12290,6 +12313,54 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;optionString,
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
                             throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)">
+<h3>newFromSource</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">newFromSource</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="VSource.html" title="class in app.photofox.vipsffm">VSource</a>&nbsp;source,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
+                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newFromBytes(java.lang.foreign.Arena,byte[],java.lang.String,app.photofox.vipsffm.VipsOption...)">
+<h3>newFromBytes</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">newFromBytes</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;optionString,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
+                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Creates a new VImage from raw bytes. Note that this is quite inefficient, use <a href="#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>newFromFile(Arena, String, VipsOption...)</code></a> and friends instead.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newFromBytes(java.lang.foreign.Arena,byte[],app.photofox.vipsffm.VipsOption...)">
+<h3>newFromBytes</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">newFromBytes</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ byte[]&nbsp;bytes,
+ <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
+                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">See <a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>newFromBytes(Arena, byte[], String, VipsOption...)</code></a></div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>

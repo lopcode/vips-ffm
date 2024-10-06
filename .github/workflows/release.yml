@@ -27,6 +27,9 @@ jobs:
         with:
           gradle-version: 8.10.1
 
+      - name: Regenerate docs and check for changes
+        run: bash verify_docs_up_to_date.sh
+
       - name: Run checks
         run: ./gradlew build check shadowJar
 

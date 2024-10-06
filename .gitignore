@@ -6,7 +6,8 @@ build
 
 .idea
 
-jextract*
+jextract.tar.gz
+jextract-*
 logo*
 includes.txt
 includes_filtered.txt
