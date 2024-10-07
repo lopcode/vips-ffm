@@ -1,19 +1,25 @@
 package app.photofox.vipsffm;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 /**
- * Represents a VipsSource, boxed to avoid exposing its raw MemorySegment
+ * Represents a VipsSource
+ * Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ * Use its static helper methods to create new sources
  */
-public final class VSource {
+public sealed class VSource permits VCustomSource {
 
+    final Arena arena;
     final MemorySegment address;
 
-    VSource(MemorySegment address) throws VipsError {
+    VSource(Arena arena, MemorySegment address) throws VipsError {
         if (!VipsValidation.isValidPointer(address)) {
             throw new VipsError("invalid pointer used for creation");
         }
+        this.arena = arena;
         this.address = address;
     }
 
@@ -56,7 +62,7 @@ public final class VSource {
      */
     public static VSource newFromDescriptor(Arena arena, int descriptor) throws VipsError {
         var pointer = VipsHelper.source_new_from_descriptor(arena, descriptor);
-        return new VSource(pointer);
+        return new VSource(arena, pointer);
     }
 
     /**
@@ -64,7 +70,7 @@ public final class VSource {
      */
     public static VSource newFromFile(Arena arena, String filename) throws VipsError {
         var pointer = VipsHelper.source_new_from_file(arena, filename);
-        return new VSource(pointer);
+        return new VSource(arena, pointer);
     }
 
     /**
@@ -72,7 +78,7 @@ public final class VSource {
      */
     public static VSource newFromBlob(Arena arena, VBlob blob) throws VipsError {
         var pointer = VipsHelper.source_new_from_blob(arena, blob.address);
-        return new VSource(pointer);
+        return new VSource(arena, pointer);
     }
 
     /**
@@ -87,6 +93,42 @@ public final class VSource {
 
     public static VSource newFromOptions(Arena arena, String options) throws VipsError {
         var pointer = VipsHelper.source_new_from_options(arena, options);
-        return new VSource(pointer);
+        return new VSource(arena, pointer);
+    }
+
+    /**
+     * Creates a new VSource from a Java {@link InputStream}
+     * The provided InputStream is coupled to the arena's lifetime, and closed when its scope ends
+     * Note that you can read an image directly from an InputStream using {@link VImage#newFromStream(Arena, InputStream, VipsOption...)}
+     * This stream does not support seeking, because InputStream does not support it, so cannot be maximally
+     * efficient - but it is still likely more efficient than taking a full intermediate copy of bytes
+     */
+    public static VSource newFromInputStream(Arena arena, InputStream stream) throws VipsError {
+        VCustomSource.ReadCallback readCallback = (dataPointer, length) -> {
+            if (length < 0) {
+                throw new VipsError("invalid length to read provided: " + length);
+            }
+            // bytebuffer only supports reading int max bytes at a time
+            var clippedLength = (int) Math.min(length, Integer.MAX_VALUE);
+            byte[] bytes;
+            try {
+                bytes = stream.readNBytes(clippedLength);
+            } catch (IOException e) {
+                throw new VipsError("failed to read bytes from stream", e);
+            }
+            var buffer = dataPointer.asSlice(0, clippedLength).asByteBuffer();
+            buffer.put(bytes);
+            return bytes.length;
+        };
+        var source = new VCustomSource(arena, readCallback);
+        // attempt to close stream when arena scope ends, in case users have not already done so
+        source.address.reinterpret(arena, (_) -> {
+            try {
+                stream.close();
+            } catch (IOException e) {
+                // deliberately ignored
+            }
+        });
+        return source;
     }
 }

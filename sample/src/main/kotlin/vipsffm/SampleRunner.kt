@@ -2,7 +2,10 @@ package vipsffm
 
 import app.photofox.vipsffm.Vips
 import org.slf4j.LoggerFactory
+import vipsffm.sample.HelperGetVersionSample
+import vipsffm.sample.RawGetVersionSample
 import vipsffm.sample.VBlobByteBufferSample
+import vipsffm.sample.VImageStreamSample
 import vipsffm.sample.VImageArrayJoinSample
 import vipsffm.sample.VImageBlobSample
 import vipsffm.sample.VImageCachingSample
@@ -38,7 +41,8 @@ object SampleRunner {
             VBlobByteBufferSample,
             VTargetToFileSample,
             VImageJoinSample,
-            VImageFromBytesSample
+            VImageFromBytesSample,
+            VImageStreamSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

@@ -3,10 +3,13 @@ package vipsffm.sample
 import app.photofox.vipsffm.VImage
 import vipsffm.RunnableSample
 import vipsffm.SampleHelper
-import java.io.FileOutputStream
 import java.lang.foreign.Arena
+import java.nio.file.Files
 import java.nio.file.Path
 
+/**
+ * Sample showing retrieval of the backing byte[] representation of an image
+ */
 object VBlobByteBufferSample: RunnableSample {
 
     // https://github.com/lopcode/vips-ffm/issues/72
@@ -37,9 +40,9 @@ object VBlobByteBufferSample: RunnableSample {
         }
 
         val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
-        val outputChannel = FileOutputStream(outputPath.toFile()).channel
-        outputChannel.write(bytes)
-        outputChannel.close()
+        Files.newOutputStream(outputPath).use {
+            it.write(bytes.array())
+        }
 
         return SampleHelper.validate(
             outputPath,

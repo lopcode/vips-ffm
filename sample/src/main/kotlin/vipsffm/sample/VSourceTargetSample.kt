@@ -9,6 +9,9 @@ import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
+/**
+ * Sense checking basic source creation and target writing operations
+ */
 object VSourceTargetSample: RunnableSample {
 
     private const val ORIGINAL_WIDTH = 3115

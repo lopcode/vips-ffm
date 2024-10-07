@@ -90,7 +90,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">VBlob</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Represents a VipsBlob, boxed to avoid exposing its raw MemorySegment</div>
+<div class="block">Represents a VipsBlob, which is backed by a contiguous area of off-heap memory
+ Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+ Use its static helper methods to create new blobs</div>
 </div>
 </section>
 <section class="summary">

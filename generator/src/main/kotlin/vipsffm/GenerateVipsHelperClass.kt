@@ -291,13 +291,13 @@ object GenerateVipsHelperClass {
             if (externArgMetadata.type == "...") {
                 ParameterSpec.builder(vipsOptionArrayType, "options").build()
             } else if (parameter.displayName() == "MemorySegment" &&
-                externArgMetadata.type == "char" &&
+                (externArgMetadata.type == "char" || externArgMetadata.type == "gchar") &&
                 externArgMetadata.pointerDepth == 1 &&
                 externArgMetadata.isArray
             ) {
                 ParameterSpec.builder(listStringType, "${externArgName}StringArray").build()
             } else if (parameter.displayName() == "MemorySegment" &&
-                externArgMetadata.type == "char" &&
+                (externArgMetadata.type == "char" || externArgMetadata.type == "gchar") &&
                 externArgMetadata.pointerDepth == 1
             ) {
                 ParameterSpec.builder(stringType, "${externArgName}String").build()
@@ -418,6 +418,10 @@ object GenerateVipsHelperClass {
     }
 
     private fun isVipsMethodNameInScope(name: Utf8Entry): Boolean {
+        if (name.stringValue() == "g_signal_connect_data") {
+            return true
+        }
+
         return name.startsWith("vips_")
                 && !name.startsWith("vips__")
                 && !name.contains("$")

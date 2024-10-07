@@ -26,6 +26,20 @@ public final class VipsHelper {
   /**
    * Binding for:
    * {@snippet lang=c :
+   * gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+   * }
+   */
+  public static long g_signal_connect_data(Arena arena, MemorySegment instance,
+      String detailed_signalString, MemorySegment c_handler, MemorySegment data,
+      MemorySegment destroy_data, int connect_flags) throws VipsError {
+    var detailed_signal = arena.allocateFrom(detailed_signalString);
+    var result = VipsRaw.g_signal_connect_data(instance, detailed_signal, c_handler, data, destroy_data, connect_flags);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
    * const char *vips_enum_string(GType enm, int value)
    * }
    */
@@ -953,6 +967,21 @@ public final class VipsHelper {
   /**
    * Binding for:
    * {@snippet lang=c :
+   * VipsSourceCustom *vips_source_custom_new()
+   * }
+   */
+  public static MemorySegment source_custom_new(Arena arena) throws VipsError {
+    var result = VipsRaw.vips_source_custom_new();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_source_custom_new", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
    * GType vips_target_get_type()
    * }
    */
@@ -1022,6 +1051,21 @@ public final class VipsHelper {
     var result = VipsRaw.vips_target_new_temp(target);
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_target_new_temp", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsTargetCustom *vips_target_custom_new()
+   * }
+   */
+  public static MemorySegment target_custom_new(Arena arena) throws VipsError {
+    var result = VipsRaw.vips_target_custom_new();
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_target_custom_new", "result");
     }
     result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;

@@ -1,6 +1,7 @@
 package app.photofox.vipsffm;
 
-import app.photofox.vipsffm.jextract.*;
+import app.photofox.vipsffm.jextract.GValue;
+import app.photofox.vipsffm.jextract.VipsRaw;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
@@ -137,7 +138,7 @@ public class VipsInvoker {
                 VipsRaw.g_object_get_property(operation, keyCString, gvaluePointer);
                 var vipsPointer = g_value_get_object(gvaluePointer);
                 vipsPointer = refGObjectToArenaScope(arena, vipsPointer);
-                var vipsObject = new VSource(vipsPointer);
+                var vipsObject = new VSource(arena, vipsPointer);
                 o.setValue(vipsObject);
             }
             case VipsOption.Target o -> {

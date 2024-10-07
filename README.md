@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.1.1")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.2.0")
 }
 ```
 When running your project you must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
@@ -80,7 +80,7 @@ Vips.run { arena ->
     val sourceImage = VImage.newFromFile(
       arena,
       "sample/src/main/resources/sample_images/rabbit.jpg",
-      VipsOption.Enum("access", VipsAccess.ACCESS_SEQUENTIAL)
+      VipsOption.Enum("access", VipsAccess.ACCESS_SEQUENTIAL) // example of an option
     )
     val sourceWidth = sourceImage.width
     val sourceHeight = sourceImage.height

@@ -7,6 +7,9 @@ import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
+/**
+ * Sense checking basic VImage load and save operations
+ */
 object VImageCopyWriteSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {

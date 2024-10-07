@@ -1,16 +1,16 @@
 package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
-import app.photofox.vipsffm.VipsOption
-import app.photofox.vipsffm.enums.VipsAccess
 import app.photofox.vipsffm.enums.VipsDirection
-import vipsffm.RawGetVersionSample.logger
 import vipsffm.RunnableSample
 import vipsffm.SampleHelper
 import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
+/**
+ * Sample showing usage of the VImage.join operation
+ */
 object VImageJoinSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {

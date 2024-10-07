@@ -9,6 +9,9 @@ import java.lang.foreign.Arena
 import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
+/**
+ * Sample showing example usage of VImage.arrayjoin
+ */
 object VImageArrayJoinSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
