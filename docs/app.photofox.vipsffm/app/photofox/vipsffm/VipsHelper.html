@@ -138,21 +138,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#filename_get_filename(java.lang.foreign.Arena,java.lang.String)" tabindex="0">filename_get_filename(Arena, String)</a></li>
 <li><a href="#filename_get_options(java.lang.foreign.Arena,java.lang.String)" tabindex="0">filename_get_options(Arena, String)</a></li>
 <li><a href="#image_new(java.lang.foreign.Arena)" tabindex="0">image_new(Arena)</a></li>
-<li><a href="#image_new_memory(java.lang.foreign.Arena)" tabindex="0">image_new_memory(Arena)</a></li>
-<li><a href="#image_new_from_file_RW(java.lang.foreign.Arena,java.lang.String)" tabindex="0">image_new_from_file_RW(Arena, String)</a></li>
-<li><a href="#image_new_from_file_raw(java.lang.foreign.Arena,java.lang.String,int,int,int,long)" tabindex="0">image_new_from_file_raw(Arena, String, int, int, int, long)</a></li>
-<li><a href="#image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" tabindex="0">image_new_from_memory(Arena, MemorySegment, long, int, int, int, int)</a></li>
-<li><a href="#image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" tabindex="0">image_new_from_memory_copy(Arena, MemorySegment, long, int, int, int, int)</a></li>
-<li><a href="#image_new_matrix(java.lang.foreign.Arena,int,int)" tabindex="0">image_new_matrix(Arena, int, int)</a></li>
-<li><a href="#image_new_matrix_from_array(java.lang.foreign.Arena,int,int,java.lang.foreign.MemorySegment,int)" tabindex="0">image_new_matrix_from_array(Arena, int, int, MemorySegment, int)</a></li>
-<li><a href="#image_new_from_image(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" tabindex="0">image_new_from_image(Arena, MemorySegment, MemorySegment, int)</a></li>
-<li><a href="#image_new_from_image1(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,double)" tabindex="0">image_new_from_image1(Arena, MemorySegment, double)</a></li>
-<li><a href="#image_new_temp_file(java.lang.foreign.Arena,java.lang.String)" tabindex="0">image_new_temp_file(Arena, String)</a></li>
 <li><a href="#image_write(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">image_write(MemorySegment, MemorySegment)</a></li>
-<li><a href="#image_write_to_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">image_write_to_memory(Arena, MemorySegment, MemorySegment)</a></li>
 <li><a href="#image_hasalpha(java.lang.foreign.MemorySegment)" tabindex="0">image_hasalpha(MemorySegment)</a></li>
-<li><a href="#image_write_prepare(java.lang.foreign.MemorySegment)" tabindex="0">image_write_prepare(MemorySegment)</a></li>
-<li><a href="#image_write_line(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" tabindex="0">image_write_line(MemorySegment, int, MemorySegment)</a></li>
 <li><a href="#value_get_array_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">value_get_array_image(MemorySegment, MemorySegment)</a></li>
 <li><a href="#value_set_array_image(java.lang.foreign.MemorySegment,int)" tabindex="0">value_set_array_image(MemorySegment, int)</a></li>
 <li><a href="#error_buffer()" tabindex="0">error_buffer()</a></li>
@@ -171,7 +158,9 @@ loadScripts(document, 'script');</script>
 <li><a href="#interpolate_new(java.lang.foreign.Arena,java.lang.String)" tabindex="0">interpolate_new(Arena, String)</a></li>
 <li><a href="#image_get_width(java.lang.foreign.MemorySegment)" tabindex="0">image_get_width(MemorySegment)</a></li>
 <li><a href="#image_get_height(java.lang.foreign.MemorySegment)" tabindex="0">image_get_height(MemorySegment)</a></li>
+<li><a href="#image_get_bands(java.lang.foreign.MemorySegment)" tabindex="0">image_get_bands(MemorySegment)</a></li>
 <li><a href="#image_get_typeof(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String)" tabindex="0">image_get_typeof(Arena, MemorySegment, String)</a></li>
+<li><a href="#image_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">image_get_blob(Arena, MemorySegment, String, MemorySegment, MemorySegment)</a></li>
 <li><a href="#operation_get_flags(java.lang.foreign.MemorySegment)" tabindex="0">operation_get_flags(MemorySegment)</a></li>
 <li><a href="#operation_new(java.lang.foreign.Arena,java.lang.String)" tabindex="0">operation_new(Arena, String)</a></li>
 <li><a href="#cache_operation_buildp(java.lang.foreign.MemorySegment)" tabindex="0">cache_operation_buildp(MemorySegment)</a></li>
@@ -196,13 +185,6 @@ loadScripts(document, 'script');</script>
 <li><a href="#error_exit(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">error_exit(Arena, String, VipsOption...)</a></li>
 <li><a href="#error_system(java.lang.foreign.Arena,int,java.lang.String,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">error_system(Arena, int, String, String, VipsOption...)</a></li>
 <li><a href="#error(java.lang.foreign.Arena,java.lang.String,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">error(Arena, String, String, VipsOption...)</a></li>
-<li><a href="#image_write_to_target(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_write_to_target(Arena, MemorySegment, String, MemorySegment, VipsOption...)</a></li>
-<li><a href="#image_write_to_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_write_to_buffer(Arena, MemorySegment, String, MemorySegment, MemorySegment, VipsOption...)</a></li>
-<li><a href="#image_write_to_file(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_write_to_file(Arena, MemorySegment, String, VipsOption...)</a></li>
-<li><a href="#image_new_matrixv(java.lang.foreign.Arena,int,int,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_new_matrixv(Arena, int, int, VipsOption...)</a></li>
-<li><a href="#image_new_from_source(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_new_from_source(Arena, MemorySegment, String, VipsOption...)</a></li>
-<li><a href="#image_new_from_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_new_from_buffer(Arena, MemorySegment, long, String, VipsOption...)</a></li>
-<li><a href="#image_new_from_file(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">image_new_from_file(Arena, String, VipsOption...)</a></li>
 <li><a href="#value_set_save_stringf(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">value_set_save_stringf(Arena, MemorySegment, String, VipsOption...)</a></li>
 </ol>
 </li>
@@ -763,6 +745,32 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_get_bands(java.lang.foreign.MemorySegment)" class="member-name-link">image_get_bands</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Binding for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-image_get_bands(java.lang.foreign.MemorySegment)1"><code class="language-c">int vips_image_get_bands(const VipsImage *image)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_get_blob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;length)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Binding for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-image_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">int vips_image_get_blob(const VipsImage *image, const char *name, const void **data, size_t *length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_get_height(java.lang.foreign.MemorySegment)" class="member-name-link">image_get_height</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Binding for:
@@ -830,202 +838,6 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_new_from_buffer</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;buf,
- long&nbsp;len,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;option_stringString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,java.lang.String,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">VipsImage *vips_image_new_from_buffer(const void *buf, size_t len, const char *option_string, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_file(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_new_from_file</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">VipsImage *vips_image_new_from_file(const char *name, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_file_raw(java.lang.foreign.Arena,java.lang.String,int,int,int,long)" class="member-name-link">image_new_from_file_raw</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filenameString,
- int&nbsp;xsize,
- int&nbsp;ysize,
- int&nbsp;bands,
- long&nbsp;offset)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file_raw(java.lang.foreign.Arena,java.lang.String,int,int,int,long)1"><code class="language-c">VipsImage *vips_image_new_from_file_raw(const char *filename, int xsize, int ysize, int bands, guint64 offset)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_file_RW(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">image_new_from_file_RW</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filenameString)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file_RW(java.lang.foreign.Arena,java.lang.String)1"><code class="language-c">VipsImage *vips_image_new_from_file_RW(const char *filename)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_image(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" class="member-name-link">image_new_from_image</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;c,
- int&nbsp;n)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_image(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)1"><code class="language-c">VipsImage *vips_image_new_from_image(VipsImage *image, const double *c, int n)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_image1(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,double)" class="member-name-link">image_new_from_image1</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- double&nbsp;c)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_image1(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,double)1"><code class="language-c">VipsImage *vips_image_new_from_image1(VipsImage *image, double c)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" class="member-name-link">image_new_from_memory</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
- long&nbsp;size,
- int&nbsp;width,
- int&nbsp;height,
- int&nbsp;bands,
- int&nbsp;format)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)1"><code class="language-c">VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" class="member-name-link">image_new_from_memory_copy</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
- long&nbsp;size,
- int&nbsp;width,
- int&nbsp;height,
- int&nbsp;bands,
- int&nbsp;format)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)1"><code class="language-c">VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_source(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_new_from_source</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;source,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;option_stringString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_source(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">VipsImage *vips_image_new_from_source(VipsSource *source, const char *option_string, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_matrix(java.lang.foreign.Arena,int,int)" class="member-name-link">image_new_matrix</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrix(java.lang.foreign.Arena,int,int)1"><code class="language-c">VipsImage *vips_image_new_matrix(int width, int height)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_matrix_from_array(java.lang.foreign.Arena,int,int,java.lang.foreign.MemorySegment,int)" class="member-name-link">image_new_matrix_from_array</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
- int&nbsp;size)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrix_from_array(java.lang.foreign.Arena,int,int,java.lang.foreign.MemorySegment,int)1"><code class="language-c">VipsImage *vips_image_new_matrix_from_array(int width, int height, const double *array, int size)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_matrixv(java.lang.foreign.Arena,int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_new_matrixv</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrixv(java.lang.foreign.Arena,int,int,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">VipsImage *vips_image_new_matrixv(int width, int height, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_memory(java.lang.foreign.Arena)" class="member-name-link">image_new_memory</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_memory(java.lang.foreign.Arena)1"><code class="language-c">VipsImage *vips_image_new_memory()
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_temp_file(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">image_new_temp_file</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;formatString)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_temp_file(java.lang.foreign.Arena,java.lang.String)1"><code class="language-c">VipsImage *vips_image_new_temp_file(const char *format)
-</code></pre>
-</div>
-</div>
-</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_write</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;out)</code></div>
@@ -1034,88 +846,6 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-image_write(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">int vips_image_write(VipsImage *image, VipsImage *out)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_line(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" class="member-name-link">image_write_line</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- int&nbsp;ypos,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;linebuffer)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_line(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)1"><code class="language-c">int vips_image_write_line(VipsImage *image, int ypos, VipsPel *linebuffer)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_prepare(java.lang.foreign.MemorySegment)" class="member-name-link">image_write_prepare</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_prepare(java.lang.foreign.MemorySegment)1"><code class="language-c">int vips_image_write_prepare(VipsImage *image)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_to_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_write_to_buffer</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffixString,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;buf,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;size,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">int vips_image_write_to_buffer(VipsImage *in, const char *suffix, void **buf, size_t *size, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_to_file(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_write_to_file</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_file(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">int vips_image_write_to_file(VipsImage *image, const char *name, ...)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_to_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_write_to_memory</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;size)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">void *vips_image_write_to_memory(VipsImage *in, size_t *size)
-</code></pre>
-</div>
-</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_write_to_target(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)" class="member-name-link">image_write_to_target</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffixString,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;target,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_target(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)1"><code class="language-c">int vips_image_write_to_target(VipsImage *in, const char *suffix, VipsTarget *target, ...)
 </code></pre>
 </div>
 </div>
@@ -3363,236 +3093,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="image_new_memory(java.lang.foreign.Arena)">
-<h3>image_new_memory</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_memory</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</span>
-                                      throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_memory(java.lang.foreign.Arena)2"><code class="language-c">VipsImage *vips_image_new_memory()
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_file_RW(java.lang.foreign.Arena,java.lang.String)">
-<h3>image_new_from_file_RW</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_file_RW</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filenameString)</span>
-                                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file_RW(java.lang.foreign.Arena,java.lang.String)2"><code class="language-c">VipsImage *vips_image_new_from_file_RW(const char *filename)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_file_raw(java.lang.foreign.Arena,java.lang.String,int,int,int,long)">
-<h3>image_new_from_file_raw</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_file_raw</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filenameString,
- int&nbsp;xsize,
- int&nbsp;ysize,
- int&nbsp;bands,
- long&nbsp;offset)</span>
-                                             throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file_raw(java.lang.foreign.Arena,java.lang.String,int,int,int,long)2"><code class="language-c">VipsImage *vips_image_new_from_file_raw(const char *filename, int xsize, int ysize, int bands, guint64 offset)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)">
-<h3>image_new_from_memory</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_memory</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
- long&nbsp;size,
- int&nbsp;width,
- int&nbsp;height,
- int&nbsp;bands,
- int&nbsp;format)</span>
-                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)2"><code class="language-c">VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)">
-<h3>image_new_from_memory_copy</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_memory_copy</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
- long&nbsp;size,
- int&nbsp;width,
- int&nbsp;height,
- int&nbsp;bands,
- int&nbsp;format)</span>
-                                                throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)2"><code class="language-c">VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_matrix(java.lang.foreign.Arena,int,int)">
-<h3>image_new_matrix</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_matrix</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height)</span>
-                                      throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrix(java.lang.foreign.Arena,int,int)2"><code class="language-c">VipsImage *vips_image_new_matrix(int width, int height)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_matrix_from_array(java.lang.foreign.Arena,int,int,java.lang.foreign.MemorySegment,int)">
-<h3>image_new_matrix_from_array</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_matrix_from_array</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
- int&nbsp;size)</span>
-                                                 throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrix_from_array(java.lang.foreign.Arena,int,int,java.lang.foreign.MemorySegment,int)2"><code class="language-c">VipsImage *vips_image_new_matrix_from_array(int width, int height, const double *array, int size)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_image(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)">
-<h3>image_new_from_image</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_image</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;c,
- int&nbsp;n)</span>
-                                          throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_image(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)2"><code class="language-c">VipsImage *vips_image_new_from_image(VipsImage *image, const double *c, int n)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_image1(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,double)">
-<h3>image_new_from_image1</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_image1</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- double&nbsp;c)</span>
-                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_image1(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,double)2"><code class="language-c">VipsImage *vips_image_new_from_image1(VipsImage *image, double c)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_temp_file(java.lang.foreign.Arena,java.lang.String)">
-<h3>image_new_temp_file</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_temp_file</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;formatString)</span>
-                                         throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_temp_file(java.lang.foreign.Arena,java.lang.String)2"><code class="language-c">VipsImage *vips_image_new_temp_file(const char *format)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
 <section class="detail" id="image_write(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
 <h3>image_write</h3>
 <div class="horizontal-scroll">
@@ -3614,28 +3114,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="image_write_to_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
-<h3>image_write_to_memory</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_write_to_memory</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;size)</span>
-                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">void *vips_image_write_to_memory(VipsImage *in, size_t *size)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
 <section class="detail" id="image_hasalpha(java.lang.foreign.MemorySegment)">
 <h3>image_hasalpha</h3>
 <div class="horizontal-scroll">
@@ -3645,48 +3123,6 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-image_hasalpha(java.lang.foreign.MemorySegment)2"><code class="language-c">gboolean vips_image_hasalpha(VipsImage *image)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_write_prepare(java.lang.foreign.MemorySegment)">
-<h3>image_write_prepare</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_write_prepare</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image)</span>
-                               throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_prepare(java.lang.foreign.MemorySegment)2"><code class="language-c">int vips_image_write_prepare(VipsImage *image)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_write_line(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)">
-<h3>image_write_line</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_write_line</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- int&nbsp;ypos,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;linebuffer)</span>
-                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_line(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)2"><code class="language-c">int vips_image_write_line(VipsImage *image, int ypos, VipsPel *linebuffer)
 </code></pre>
 </div>
 </div>
@@ -4065,6 +3501,26 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="image_get_bands(java.lang.foreign.MemorySegment)">
+<h3>image_get_bands</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_get_bands</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image)</span>
+                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Binding for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-image_get_bands(java.lang.foreign.MemorySegment)2"><code class="language-c">int vips_image_get_bands(const VipsImage *image)
+</code></pre>
+</div>
+</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="image_get_typeof(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String)">
 <h3>image_get_typeof</h3>
 <div class="horizontal-scroll">
@@ -4076,6 +3532,30 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-image_get_typeof(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String)2"><code class="language-c">GType vips_image_get_typeof(const VipsImage *image, const char *name)
+</code></pre>
+</div>
+</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="image_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
+<h3>image_get_blob</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_get_blob</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;length)</span>
+                          throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Binding for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-image_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">int vips_image_get_blob(const VipsImage *image, const char *name, const void **data, size_t *length)
 </code></pre>
 </div>
 </div>
@@ -4573,170 +4053,6 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-error(java.lang.foreign.Arena,java.lang.String,java.lang.String,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">void vips_error(const char *domain, const char *fmt, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_write_to_target(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)">
-<h3>image_write_to_target</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_write_to_target</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffixString,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;target,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                 throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_target(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">int vips_image_write_to_target(VipsImage *in, const char *suffix, VipsTarget *target, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_write_to_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)">
-<h3>image_write_to_buffer</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_write_to_buffer</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;in,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;suffixString,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;buf,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;size,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                 throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">int vips_image_write_to_buffer(VipsImage *in, const char *suffix, void **buf, size_t *size, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_write_to_file(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)">
-<h3>image_write_to_file</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">image_write_to_file</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                               throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_write_to_file(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">int vips_image_write_to_file(VipsImage *image, const char *name, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_matrixv(java.lang.foreign.Arena,int,int,app.photofox.vipsffm.VipsOption...)">
-<h3>image_new_matrixv</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_matrixv</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- int&nbsp;width,
- int&nbsp;height,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_matrixv(java.lang.foreign.Arena,int,int,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">VipsImage *vips_image_new_matrixv(int width, int height, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_source(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)">
-<h3>image_new_from_source</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_source</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;source,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;option_stringString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_source(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">VipsImage *vips_image_new_from_source(VipsSource *source, const char *option_string, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,java.lang.String,app.photofox.vipsffm.VipsOption...)">
-<h3>image_new_from_buffer</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_buffer</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;buf,
- long&nbsp;len,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;option_stringString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_buffer(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,java.lang.String,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">VipsImage *vips_image_new_from_buffer(const void *buf, size_t len, const char *option_string, ...)
-</code></pre>
-</div>
-</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
-</dl>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="image_new_from_file(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)">
-<h3>image_new_from_file</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_file</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameString,
- <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
-                                         throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Binding for:
- 
-<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-image_new_from_file(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)2"><code class="language-c">VipsImage *vips_image_new_from_file(const char *name, ...)
 </code></pre>
 </div>
 </div>

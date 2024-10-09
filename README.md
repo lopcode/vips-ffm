@@ -37,8 +37,7 @@ libvips versions, assuming there haven't been major changes.
 
 > [!NOTE]
 > This library **does not** include `libvips` in the download, you must add it to the system/container you're building
-> for, then make sure it's available in `DYLD_LIBRARY_PATH` (on macOS), `LD_LIBRARY_PATH` (on Linux), or `PATH` (on
-> Windows).
+> for. See details in [native library loading](#native-library-loading).
 
 All libvips operations are exposed via helper classes, like `VImage`. You must provide an [Arena][1] to operations like
 `VImage.newFromFile`, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
@@ -140,6 +139,25 @@ To get set up to run samples (on macOS):
 memory: high-water mark 128.35 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 ```
+
+## Native library loading
+
+This library requires the `libvips`, `glib`, and `gobject` native libraries to be present in your library path:
+* On macOS: `DYLD_LIBRARY_PATH` (eg `DYLD_LIBRARY_PATH=/opt/homebrew/lib` if you used `brew install vips`)
+* On Linux: `LD_LIBRARY_PATH`
+* On Windows: `PATH`
+
+The naming conventions of these libraries are not consistent across operating systems, so vips-ffm attempts to load each
+in the following order:
+* `vips`, `vips.{abiNumber}`, `libvips-{abiNumber}` 
+* `glib-2.0`, `glib-2.0.{abiNumber}`, `libglib-2.0-{abiNumber}`
+* `gobject-2.0`, `gobject-2.0.{abiNumber}`, `libgobject-2.0-{abiNumber}`
+
+Override properties are provided to set your own "ABI number", but note that vips-ffm might not support that version
+yet (which could manifest as crashes/segfaults):
+* `vipsffm.abinumber.vips.override`, default: `42`
+* `vipsffm.abinumber.glib.override`, default: `0`
+* `vipsffm.abinumber.gobject.override`, default: `0`
 
 ## Project goals
 
