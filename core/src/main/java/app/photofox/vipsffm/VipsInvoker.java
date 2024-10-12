@@ -13,6 +13,13 @@ import java.util.List;
 
 import static app.photofox.vipsffm.jextract.VipsRaw.*;
 
+/**
+ * <p>Contains helper methods to interact with libvips</p>
+ *
+ * <p>You can invoke an operation manually using {@link #invokeOperation(Arena, String, List)} - this is useful
+ * if vips-ffm hasn't yet been built for a new version of libvips. You can find examples of how to use it in
+ * {@link VImage}.</p>
+ */
 public class VipsInvoker {
 
     public static void invokeOperation(

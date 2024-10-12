@@ -83,8 +83,7 @@ libvips versions, assuming there haven't been major changes.</p>
 <blockquote>
 <p>[!NOTE]
 This library <strong>does not</strong> include <code>libvips</code> in the download, you must add it to the system/container you're building
-for, then make sure it's available in <code>DYLD_LIBRARY_PATH</code> (on macOS), <code>LD_LIBRARY_PATH</code> (on Linux), or <code>PATH</code> (on
-Windows).</p>
+for. See details in <a href="#native-library-loading">native library loading</a>.</p>
 </blockquote>
 <p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html">Arena</a> to operations like
 <code>VImage.newFromFile</code>, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
@@ -184,6 +183,27 @@ Vips.shutdown()
 memory: high-water mark 128.35 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 </code></pre>
+<h2 id="native-library-loading-heading">Native library loading</h2>
+<p>This library requires the <code>libvips</code>, <code>glib</code>, and <code>gobject</code> native libraries to be present in your library path:</p>
+<ul>
+<li>On macOS: <code>DYLD_LIBRARY_PATH</code> (eg <code>DYLD_LIBRARY_PATH=/opt/homebrew/lib</code> if you used <code>brew install vips</code>)</li>
+<li>On Linux: <code>LD_LIBRARY_PATH</code></li>
+<li>On Windows: <code>PATH</code></li>
+</ul>
+<p>The naming conventions of these libraries are not consistent across operating systems, so vips-ffm attempts to load each
+in the following order:</p>
+<ul>
+<li><code>vips</code>, <code>vips.{abiNumber}</code>, <code>libvips-{abiNumber}</code></li>
+<li><code>glib-2.0</code>, <code>glib-2.0.{abiNumber}</code>, <code>libglib-2.0-{abiNumber}</code></li>
+<li><code>gobject-2.0</code>, <code>gobject-2.0.{abiNumber}</code>, <code>libgobject-2.0-{abiNumber}</code></li>
+</ul>
+<p>Override properties are provided to set your own &quot;ABI number&quot;, but note that vips-ffm might not support that version
+yet (which could manifest as crashes/segfaults):</p>
+<ul>
+<li><code>vipsffm.abinumber.vips.override</code>, default: <code>42</code></li>
+<li><code>vipsffm.abinumber.glib.override</code>, default: <code>0</code></li>
+<li><code>vipsffm.abinumber.gobject.override</code>, default: <code>0</code></li>
+</ul>
 <h2 id="project-goals-heading">Project goals</h2>
 <p>Ideas and suggestions are welcome, but please make sure they fit in to these goals, or you have a good argument about
 why a goal should change!</p>

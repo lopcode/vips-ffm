@@ -8,7 +8,7 @@ import java.nio.file.Path
 import kotlin.io.path.absolutePathString
 
 /**
- * Sense checking basic VImage load and save operations
+ * Sense checking creation of a blank image, then writing a loaded image to it
  */
 object VImageCopyWriteSample: RunnableSample {
 

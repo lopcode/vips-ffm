@@ -16,6 +16,7 @@ import vipsffm.sample.VImageFromBytesSample
 import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VOptionHyphenSample
 import vipsffm.sample.VSourceTargetSample
+import vipsffm.sample.VTargetToFileSample
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.Locale

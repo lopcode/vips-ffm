@@ -26,46 +26,41 @@ public class VipsLibLookup {
 
     private static SymbolLookup findVipsLoader(Arena arena) {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.vips.override"))
-                .orElse("42");
+            .orElse("42");
         var names = List.of(
             "vips", // default unix-like
             "vips." + abiNumber, // some linux systems don't symlink and need abi number
             "libvips-" + abiNumber // windows needs everything
         );
-        for (var name : names) {
-            var attempt = attemptLibraryLookup(name, arena);
-            if (attempt.isPresent()) {
-                return attempt.get();
-            }
-        }
-        return null;
+        return findFirstSymbolLookup(arena, names);
     }
 
     private static SymbolLookup findGlibLoader(Arena arena) {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.glib.override"))
-                .orElse("0");
+            .orElse("0");
         var names = List.of(
-                "glib-2.0", // default unix-like
-                "glib-2.0." + abiNumber, // some linux systems don't symlink and need abi number
-                "libglib-2.0-" + abiNumber // windows needs everything
+            "glib-2.0", // default unix-like
+            "glib-2.0." + abiNumber, // some linux systems don't symlink and need abi number
+            "libglib-2.0-" + abiNumber // windows needs everything
         );
-        for (var name : names) {
-            var attempt = attemptLibraryLookup(name, arena);
-            if (attempt.isPresent()) {
-                return attempt.get();
-            }
-        }
-        return null;
+        return findFirstSymbolLookup(arena, names);
     }
 
     private static SymbolLookup findGObjectLoader(Arena arena) {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.gobject.override"))
-                .orElse("0");
+            .orElse("0");
         var names = List.of(
-                "gobject-2.0", // default unix-like
-                "gobject-2.0." + abiNumber, // some linux systems don't symlink and need abi number
-                "libgobject-2.0-" + abiNumber // windows needs everything
+            "gobject-2.0", // default unix-like
+            "gobject-2.0." + abiNumber, // some linux systems don't symlink and need abi number
+            "libgobject-2.0-" + abiNumber // windows needs everything
         );
+        return findFirstSymbolLookup(arena, names);
+    }
+
+    private static SymbolLookup findFirstSymbolLookup(
+        Arena arena,
+        List<String> names
+    ) {
         for (var name : names) {
             var attempt = attemptLibraryLookup(name, arena);
             if (attempt.isPresent()) {
