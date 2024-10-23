@@ -983,31 +983,49 @@ public final class VImage {
    * always of type {@link VipsBandFormat#FORMAT_DOUBLE}, use {@link VImage#cast} to change it to the
    * type you need.</p>
    *
-   * <p>For example, consider this 2 x 2 matrix of (x, y) coordinates:</p>
+   * <p>For example, consider this 2 x 2 matrix of (x, y) coordinates:
    *
-   * <pre>{@code 
-   *     |-------|-------|
-   *     | 0     | 0     |
-   *     |-------|-------|
-   *     | 255   | 100   |
-   *     |-------|-------|
-   * }</pre>
+   *  &lt;tgroup cols='2' align='left' colsep='1' rowsep='1'&gt;
+   *     &lt;tbody&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;0&lt;/entry&gt;
+   *         &lt;entry&gt;0&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;255&lt;/entry&gt;
+   *         &lt;entry&gt;100&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *     &lt;/tbody&gt;
+   *   &lt;/tgroup&gt;</p>
    *
-   * <p>We then generate a 1 x 256 element LUT like this:</p>
+   * <p>We then generate a 1 x 256 element LUT like this:
    *
-   * <pre>{@code 
-   *     |-------|-------|
-   *     | Index | Value |
-   *     |-------|-------|
-   *     | 0     | 0     |
-   *     |-------|-------|
-   *     | 1     | 0.4   |
-   *     |-------|-------|
-   *     | etc.  | 0.4   |
-   *     |-------|-------|
-   *     | 255   | 100   |
-   *     |-------|-------|
-   * }</pre>
+   *  &lt;tgroup cols='2' align='left' colsep='1' rowsep='1'&gt;
+   *     &lt;thead&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;Index&lt;/entry&gt;
+   *         &lt;entry&gt;Value&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *     &lt;/thead&gt;
+   *     &lt;tbody&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;0&lt;/entry&gt;
+   *         &lt;entry&gt;0&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;1&lt;/entry&gt;
+   *         &lt;entry&gt;0.4&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;etc.&lt;/entry&gt;
+   *         &lt;entry&gt;0.4&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;255&lt;/entry&gt;
+   *         &lt;entry&gt;100&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *     &lt;/tbody&gt;
+   *   &lt;/tgroup&gt;</p>
    *
    * <p>This is then written as the output image, with the left column giving the
    * index in the image to place the value.</p>
@@ -4084,17 +4102,34 @@ public final class VImage {
    * measurements of a colour chart. All values in [0,1]. Piecewise linear
    * interpolation, extrapolate head and tail to 0 and 1.</p>
    *
-   * <p>Eg. input like this:</p>
+   * <p>Eg. input like this:
    *
-   * <pre>{@code 
-   *     |-------|-------|-------|-------|
-   *     | 0.1   | 0.2   | 0.3   | 0.1   |
-   *     |-------|-------|-------|-------|
-   *     | 0.2   | 0.4   | 0.4   | 0.2   |
-   *     |-------|-------|-------|-------|
-   *     | 0.7   | 0.5   | 0.6   | 0.3   |
-   *     |-------|-------|-------|-------|
-   * }</pre>
+   *  &lt;tgroup cols='4' align='left' colsep='1' rowsep='1'&gt;
+   *     &lt;tbody&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;4&lt;/entry&gt;
+   *         &lt;entry&gt;3&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;0.1&lt;/entry&gt;
+   *         &lt;entry&gt;0.2&lt;/entry&gt;
+   *         &lt;entry&gt;0.3&lt;/entry&gt;
+   *         &lt;entry&gt;0.1&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;0.2&lt;/entry&gt;
+   *         &lt;entry&gt;0.4&lt;/entry&gt;
+   *         &lt;entry&gt;0.4&lt;/entry&gt;
+   *         &lt;entry&gt;0.2&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *       &lt;row&gt;
+   *         &lt;entry&gt;0.7&lt;/entry&gt;
+   *         &lt;entry&gt;0.5&lt;/entry&gt;
+   *         &lt;entry&gt;0.6&lt;/entry&gt;
+   *         &lt;entry&gt;0.3&lt;/entry&gt;
+   *       &lt;/row&gt;
+   *     &lt;/tbody&gt;
+   *   &lt;/tgroup&gt;</p>
    *
    * <p>Means a patch with 10% reflectance produces an image with 20% in
    * channel 1, 30% in channel 2, and 10% in channel 3, and so on.</p>
