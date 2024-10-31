@@ -70,13 +70,13 @@ eff-eff-emm&quot;. The project is relatively new, but aims to be production read
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.2.1&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.2.2&quot;)
 }
 </code></pre>
 <p>When running your project you must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you
 don't, you'll get a warning about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't
 explicitly include this flag.</p>
-<p>As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips <code>8.15.5</code>,
+<p>As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips <code>8.16.0</code>,
 however they use the underlying libvips operation API. Most operations <strong>do not</strong> use the C API directly (as described
 in the <a href="https://www.libvips.org/API/current/binding.html">bindings docs</a>) - they should be safe to use with different
 libvips versions, assuming there haven't been major changes.</p>

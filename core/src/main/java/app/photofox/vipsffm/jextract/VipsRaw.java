@@ -9577,42 +9577,6 @@ public class VipsRaw {
     public static int VIPS_FOREIGN_SUBSAMPLE_LAST() {
         return VIPS_FOREIGN_SUBSAMPLE_LAST;
     }
-    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO = 0
-     * }
-     */
-    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO() {
-        return VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO;
-    }
-    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_ON = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_ON = 1
-     * }
-     */
-    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_ON() {
-        return VIPS_FOREIGN_JPEG_SUBSAMPLE_ON;
-    }
-    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF = 2
-     * }
-     */
-    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF() {
-        return VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF;
-    }
-    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST = (int)3L;
-    /**
-     * {@snippet lang=c :
-     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST = 3
-     * }
-     */
-    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST() {
-        return VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST;
-    }
     private static final int VIPS_FOREIGN_WEBP_PRESET_DEFAULT = (int)0L;
     /**
      * {@snippet lang=c :
@@ -11548,6 +11512,87 @@ public class VipsRaw {
     public static int VIPS_TEXT_WRAP_LAST() {
         return VIPS_TEXT_WRAP_LAST;
     }
+    private static final int VIPS_SDF_SHAPE_CIRCLE = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SDF_SHAPE_CIRCLE = 0
+     * }
+     */
+    public static int VIPS_SDF_SHAPE_CIRCLE() {
+        return VIPS_SDF_SHAPE_CIRCLE;
+    }
+    private static final int VIPS_SDF_SHAPE_BOX = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SDF_SHAPE_BOX = 1
+     * }
+     */
+    public static int VIPS_SDF_SHAPE_BOX() {
+        return VIPS_SDF_SHAPE_BOX;
+    }
+    private static final int VIPS_SDF_SHAPE_ROUNDED_BOX = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SDF_SHAPE_ROUNDED_BOX = 2
+     * }
+     */
+    public static int VIPS_SDF_SHAPE_ROUNDED_BOX() {
+        return VIPS_SDF_SHAPE_ROUNDED_BOX;
+    }
+    private static final int VIPS_SDF_SHAPE_LINE = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SDF_SHAPE_LINE = 3
+     * }
+     */
+    public static int VIPS_SDF_SHAPE_LINE() {
+        return VIPS_SDF_SHAPE_LINE;
+    }
+    private static final int VIPS_SDF_SHAPE_LAST = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SDF_SHAPE_LAST = 4
+     * }
+     */
+    public static int VIPS_SDF_SHAPE_LAST() {
+        return VIPS_SDF_SHAPE_LAST;
+    }
+    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO = 0
+     * }
+     */
+    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO() {
+        return VIPS_FOREIGN_JPEG_SUBSAMPLE_AUTO;
+    }
+    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_ON = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_ON = 1
+     * }
+     */
+    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_ON() {
+        return VIPS_FOREIGN_JPEG_SUBSAMPLE_ON;
+    }
+    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF = 2
+     * }
+     */
+    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF() {
+        return VIPS_FOREIGN_JPEG_SUBSAMPLE_OFF;
+    }
+    private static final int VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST = 3
+     * }
+     */
+    public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST() {
+        return VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST;
+    }
 
     private static class vips_init {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
@@ -12242,25 +12287,25 @@ public class VipsRaw {
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION "8.15.5"
+     * #define VIPS_VERSION "8.16.0"
      * }
      */
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.5");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.16.0");
         }
         return Holder.VIPS_VERSION;
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION_STRING "8.15.5"
+     * #define VIPS_VERSION_STRING "8.16.0"
      * }
      */
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.15.5");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.16.0");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -12273,46 +12318,46 @@ public class VipsRaw {
     public static int VIPS_MAJOR_VERSION() {
         return VIPS_MAJOR_VERSION;
     }
-    private static final int VIPS_MINOR_VERSION = (int)15L;
+    private static final int VIPS_MINOR_VERSION = (int)16L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MINOR_VERSION 15
+     * #define VIPS_MINOR_VERSION 16
      * }
      */
     public static int VIPS_MINOR_VERSION() {
         return VIPS_MINOR_VERSION;
     }
-    private static final int VIPS_MICRO_VERSION = (int)5L;
+    private static final int VIPS_MICRO_VERSION = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MICRO_VERSION 5
+     * #define VIPS_MICRO_VERSION 0
      * }
      */
     public static int VIPS_MICRO_VERSION() {
         return VIPS_MICRO_VERSION;
     }
-    private static final int VIPS_LIBRARY_CURRENT = (int)59L;
+    private static final int VIPS_LIBRARY_CURRENT = (int)60L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_CURRENT 59
+     * #define VIPS_LIBRARY_CURRENT 60
      * }
      */
     public static int VIPS_LIBRARY_CURRENT() {
         return VIPS_LIBRARY_CURRENT;
     }
-    private static final int VIPS_LIBRARY_REVISION = (int)5L;
+    private static final int VIPS_LIBRARY_REVISION = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_REVISION 5
+     * #define VIPS_LIBRARY_REVISION 0
      * }
      */
     public static int VIPS_LIBRARY_REVISION() {
         return VIPS_LIBRARY_REVISION;
     }
-    private static final int VIPS_LIBRARY_AGE = (int)17L;
+    private static final int VIPS_LIBRARY_AGE = (int)18L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_AGE 17
+     * #define VIPS_LIBRARY_AGE 18
      * }
      */
     public static int VIPS_LIBRARY_AGE() {
@@ -12325,46 +12370,40 @@ public class VipsRaw {
      * enable modules: true
      * enable cplusplus: true
      * enable RAD load/save: true
-     * enable Analyze7 load/save: true
+     * enable Analyze7 load: true
      * enable PPM load/save: true
      * enable GIF load: true
-     * use fftw for FFTs: true
-     * SIMD support with highway: true
-     * accelerate loops with ORC: false
-     * ICC profile support with lcms: true
-     * zlib: true
+     * FFTs with fftw3: true
+     * SIMD support with libhwy: true
+     * ICC profile support with lcms2: true
+     * deflate compression with zlib: true
      * text rendering with pangocairo: true
      * font file support with fontconfig: true
      * EXIF metadata support with libexif: true
      * JPEG load/save with libjpeg: true
      * JXL load/save with libjxl: true (dynamic module: true)
-     * JPEG2000 load/save with OpenJPEG: true
-     * PNG load/save with libspng: true
-     * PNG load/save with libpng: false
-     * selected quantisation package: imagequant
-     * TIFF load/save with libtiff: true
+     * JPEG2000 load/save with libopenjp2: true
+     * PNG load/save with spng: true
+     * image quantisation with imagequant: true
+     * TIFF load/save with libtiff-4: true
      * image pyramid save with libarchive: true
      * HEIC/AVIF load/save with libheif: true (dynamic module: true)
      * WebP load/save with libwebp: true
-     * PDF load with PDFium: false
      * PDF load with poppler-glib: true (dynamic module: true)
-     * SVG load with librsvg: true
+     * SVG load with librsvg-2.0: true
      * EXR load with OpenEXR: true
-     * OpenSlide load: true (dynamic module: true)
-     * Matlab load with libmatio: true
-     * NIfTI load/save with niftiio: false
+     * WSI load with openslide: true (dynamic module: true)
+     * Matlab load with matio: true
+     * NIfTI load/save with libnifti: false
      * FITS load/save with cfitsio: true
      * GIF save with cgif: true
-     * selected Magick package: MagickCore (dynamic module: true)
-     * Magick API version: magick7
-     * Magick load: true
-     * Magick save: true"
+     * Magick load/save with MagickCore: true (dynamic module: true)"
      * }
      */
     public static MemorySegment VIPS_CONFIG() {
         class Holder {
             static final MemorySegment VIPS_CONFIG
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable cplusplus: true\nenable RAD load/save: true\nenable Analyze7 load/save: true\nenable PPM load/save: true\nenable GIF load: true\nuse fftw for FFTs: true\nSIMD support with highway: true\naccelerate loops with ORC: false\nICC profile support with lcms: true\nzlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with OpenJPEG: true\nPNG load/save with libspng: true\nPNG load/save with libpng: false\nselected quantisation package: imagequant\nTIFF load/save with libtiff: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with PDFium: false\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg: true\nEXR load with OpenEXR: true\nOpenSlide load: true (dynamic module: true)\nMatlab load with libmatio: true\nNIfTI load/save with niftiio: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nselected Magick package: MagickCore (dynamic module: true)\nMagick API version: magick7\nMagick load: true\nMagick save: true");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable cplusplus: true\nenable RAD load/save: true\nenable Analyze7 load: true\nenable PPM load/save: true\nenable GIF load: true\nFFTs with fftw3: true\nSIMD support with libhwy: true\nICC profile support with lcms2: true\ndeflate compression with zlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with libopenjp2: true\nPNG load/save with spng: true\nimage quantisation with imagequant: true\nTIFF load/save with libtiff-4: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg-2.0: true\nEXR load with OpenEXR: true\nWSI load with openslide: true (dynamic module: true)\nMatlab load with matio: true\nNIfTI load/save with libnifti: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nMagick load/save with MagickCore: true (dynamic module: true)");
         }
         return Holder.VIPS_CONFIG;
     }
@@ -12458,14 +12497,14 @@ public class VipsRaw {
     public static int VIPS_MAGIC_SPARC() {
         return VIPS_MAGIC_SPARC;
     }
-    private static final int VIPS_MAX_COORD = (int)10000000L;
+    private static final int VIPS_DEFAULT_MAX_COORD = (int)100000000L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MAX_COORD 10000000
+     * #define VIPS_DEFAULT_MAX_COORD 100000000
      * }
      */
-    public static int VIPS_MAX_COORD() {
-        return VIPS_MAX_COORD;
+    public static int VIPS_DEFAULT_MAX_COORD() {
+        return VIPS_DEFAULT_MAX_COORD;
     }
     private static final int VIPS_TRANSFORM_SHIFT = (int)6L;
     /**
@@ -12598,6 +12637,18 @@ public class VipsRaw {
                 = VipsRaw.LIBRARY_ARENA.allocateFrom("bits-per-sample");
         }
         return Holder.VIPS_META_BITS_PER_SAMPLE;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_META_PALETTE "palette"
+     * }
+     */
+    public static MemorySegment VIPS_META_PALETTE() {
+        class Holder {
+            static final MemorySegment VIPS_META_PALETTE
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("palette");
+        }
+        return Holder.VIPS_META_PALETTE;
     }
     /**
      * {@snippet lang=c :
@@ -12952,6 +13003,210 @@ public class VipsRaw {
      */
     public static double VIPS_D3250_Z0() {
         return VIPS_D3250_Z0;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_META_IPCT_NAME "iptc-data"
+     * }
+     */
+    public static MemorySegment VIPS_META_IPCT_NAME() {
+        class Holder {
+            static final MemorySegment VIPS_META_IPCT_NAME
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("iptc-data");
+        }
+        return Holder.VIPS_META_IPCT_NAME;
+    }
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_EXEEXT ""
+     * }
+     */
+    public static MemorySegment VIPS_EXEEXT() {
+        class Holder {
+            static final MemorySegment VIPS_EXEEXT
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("");
+        }
+        return Holder.VIPS_EXEEXT;
+    }
+    private static final int VIPS_MASK_IDEAL_HIGHPASS = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_HIGHPASS 0
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_HIGHPASS() {
+        return VIPS_MASK_IDEAL_HIGHPASS;
+    }
+    private static final int VIPS_MASK_IDEAL_LOWPASS = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_LOWPASS 1
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_LOWPASS() {
+        return VIPS_MASK_IDEAL_LOWPASS;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_HIGHPASS = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_HIGHPASS 2
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_HIGHPASS() {
+        return VIPS_MASK_BUTTERWORTH_HIGHPASS;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_LOWPASS = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_LOWPASS 3
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_LOWPASS() {
+        return VIPS_MASK_BUTTERWORTH_LOWPASS;
+    }
+    private static final int VIPS_MASK_GAUSS_HIGHPASS = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_HIGHPASS 4
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_HIGHPASS() {
+        return VIPS_MASK_GAUSS_HIGHPASS;
+    }
+    private static final int VIPS_MASK_GAUSS_LOWPASS = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_LOWPASS 5
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_LOWPASS() {
+        return VIPS_MASK_GAUSS_LOWPASS;
+    }
+    private static final int VIPS_MASK_IDEAL_RINGPASS = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_RINGPASS 6
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_RINGPASS() {
+        return VIPS_MASK_IDEAL_RINGPASS;
+    }
+    private static final int VIPS_MASK_IDEAL_RINGREJECT = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_RINGREJECT 7
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_RINGREJECT() {
+        return VIPS_MASK_IDEAL_RINGREJECT;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_RINGPASS = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_RINGPASS 8
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_RINGPASS() {
+        return VIPS_MASK_BUTTERWORTH_RINGPASS;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_RINGREJECT = (int)9L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_RINGREJECT 9
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_RINGREJECT() {
+        return VIPS_MASK_BUTTERWORTH_RINGREJECT;
+    }
+    private static final int VIPS_MASK_GAUSS_RINGPASS = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_RINGPASS 10
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_RINGPASS() {
+        return VIPS_MASK_GAUSS_RINGPASS;
+    }
+    private static final int VIPS_MASK_GAUSS_RINGREJECT = (int)11L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_RINGREJECT 11
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_RINGREJECT() {
+        return VIPS_MASK_GAUSS_RINGREJECT;
+    }
+    private static final int VIPS_MASK_IDEAL_BANDPASS = (int)12L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_BANDPASS 12
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_BANDPASS() {
+        return VIPS_MASK_IDEAL_BANDPASS;
+    }
+    private static final int VIPS_MASK_IDEAL_BANDREJECT = (int)13L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_IDEAL_BANDREJECT 13
+     * }
+     */
+    public static int VIPS_MASK_IDEAL_BANDREJECT() {
+        return VIPS_MASK_IDEAL_BANDREJECT;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_BANDPASS = (int)14L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_BANDPASS 14
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_BANDPASS() {
+        return VIPS_MASK_BUTTERWORTH_BANDPASS;
+    }
+    private static final int VIPS_MASK_BUTTERWORTH_BANDREJECT = (int)15L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_BUTTERWORTH_BANDREJECT 15
+     * }
+     */
+    public static int VIPS_MASK_BUTTERWORTH_BANDREJECT() {
+        return VIPS_MASK_BUTTERWORTH_BANDREJECT;
+    }
+    private static final int VIPS_MASK_GAUSS_BANDPASS = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_BANDPASS 16
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_BANDPASS() {
+        return VIPS_MASK_GAUSS_BANDPASS;
+    }
+    private static final int VIPS_MASK_GAUSS_BANDREJECT = (int)17L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_GAUSS_BANDREJECT 17
+     * }
+     */
+    public static int VIPS_MASK_GAUSS_BANDREJECT() {
+        return VIPS_MASK_GAUSS_BANDREJECT;
+    }
+    private static final int VIPS_MASK_FRACTAL_FLT = (int)18L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_MASK_FRACTAL_FLT 18
+     * }
+     */
+    public static int VIPS_MASK_FRACTAL_FLT() {
+        return VIPS_MASK_FRACTAL_FLT;
+    }
+    private static final int VIPS_VECTOR_SOURCE_MAX = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * #define VIPS_VECTOR_SOURCE_MAX 10
+     * }
+     */
+    public static int VIPS_VECTOR_SOURCE_MAX() {
+        return VIPS_VECTOR_SOURCE_MAX;
     }
 }
 
