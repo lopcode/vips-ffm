@@ -15,6 +15,7 @@ import app.photofox.vipsffm.enums.VipsOperationMath2;
 import app.photofox.vipsffm.enums.VipsOperationMorphology;
 import app.photofox.vipsffm.enums.VipsOperationRelational;
 import app.photofox.vipsffm.enums.VipsOperationRound;
+import app.photofox.vipsffm.enums.VipsSdfShape;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.Deprecated;
@@ -498,6 +499,22 @@ public final class VImage {
     callArgs.add(rightOption);
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "add", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /**
+   * <p>Append an alpha channel.</p>
+   *
+   * <p>See also: {@code vips_image_hasalpha}.</p>
+   * @param args Array of VipsOption to apply to this operation
+   */
+  public VImage addalpha(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "addalpha", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -1064,28 +1081,15 @@ public final class VImage {
   }
 
   /**
-   * <p>This operation behaves rather like {@link VImage#copy} between images
-   * {@code in} and {@code out}, except that it keeps a cache of computed pixels.
-   * This cache is made of up to {@code max-tiles} tiles (a value of -1
-   * means any number of tiles), and each tile is of size {@code tile-width}
-   * by {@code tile-height} pixels. By default it will cache 250 128 x 128 pixel tiles,
-   * enough for two 1920 x 1080 images.</p>
-   *
-   * <p>This operation is a thin wrapper over {@code vips_sink_screen}, see the
-   * documentation for that operation for details.</p>
-   *
-   * <p>It uses a set of background threads to calculate pixels and the various
-   * active cache operations coordinate so as not to overwhelm your system. When
-   * a request is made for an area of pixels, the operation will block until all
-   * of those pixels have been calculated. Pixels are calculated with a set of
-   * threads.</p>
-   *
-   * <p>See also: {@link VImage#tilecache}.</p>
+   * Cache an image
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg max-tiles {@link VipsOption.Int} Maximum number of tiles to cache
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    */
+  @Deprecated(
+      forRemoval = true
+  )
   public VImage cache(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var outOption = VipsOption.Image("out");
@@ -1181,6 +1185,26 @@ public final class VImage {
     callArgs.add(outOption);
     callArgs.add(formatOption);
     VipsInvoker.invokeOperation(arena, "cast", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /**
+   * <p>This operation clamps pixel values to a range, by default 0 - 1.</p>
+   *
+   * <p>Use {@code min} and {@code max} to change the range.</p>
+   *
+   * <p>See also: {@link VImage#sign}, {@link VImage#abs}, {@link VImage#sdf}.</p>
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg min {@link VipsOption.Double} Minimum value
+   * @optionalArg max {@link VipsOption.Double} Maximum value
+   */
+  public VImage clamp(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "clamp", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -1354,9 +1378,10 @@ public final class VImage {
    * <p>The output image will always have an alpha band. A solid alpha is
    * added to any input missing an alpha.</p>
    *
-   * <p>The images do not need to match in size or format. They will be expanded to
-   * the smallest common size and format in the usual way. Images are positioned
-   * using the {@code x} and {@code y} parameters, if set.</p>
+   * <p>The images do not need to match in size or format. The output image is
+   * always the size of {@code in}[0], with other images being
+   * positioned with the {@code x} and {@code y} parameters and clipped
+   * against that rectangle.</p>
    *
    * <p>Image are normally treated as unpremultiplied, so this operation can be used
    * directly on PNG images. If your images have been through {@link VImage#premultiply},
@@ -2593,12 +2618,10 @@ public final class VImage {
    * <p>Search {@code in} for the bounding box of the non-background area.</p>
    *
    * <p>Any alpha is flattened out, then the image is median-filtered (unless
-   * {@code line-art} is set, see below), all the row
-   * and column sums of the absolute
-   * difference from {@code background} are calculated in a
-   * single pass, then the first row or column in each of the
-   * four directions where the sum is greater than {@code threshold} gives the bounding
-   * box.</p>
+   * {@code line-art} is set, see below). The absolute difference from {@code background} is
+   * computed and binarized according to {@code threshold}. Row and column sums of
+   * the absolute difference are calculated from this binary image and searched
+   * for the first row or column in each direction to obtain the bounding box.</p>
    *
    * <p>If the image is entirely background, {@code findTrim} returns {@code width} == 0
    * and {@code height} == 0.</p>
@@ -2961,10 +2984,14 @@ public final class VImage {
    * array in {@code n}. You must free the array with g_free() when you are done with
    * it.</p>
    *
+   * <p>The result array has an element for each band. If {@code unpack-complex} is set,
+   * pixels in complex images are returned as double-length arrays.</p>
+   *
    * <p>See also: {@code vips_draw_point}.</p>
    * @param x Point to read
    * @param y Point to read
    * @param args Array of VipsOption to apply to this operation
+   * @optionalArg unpack-complex {@link VipsOption.Boolean} Complex pixels should be unpacked
    */
   public List<Double> getpoint(int x, int y, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -4336,7 +4363,7 @@ public final class VImage {
    * <p>This operation always writes a pyramid.</p>
    *
    * <p>See also: {@code vips_image_write_to_file}, {@link VImage#jp2kload}.</p>
-   * @param filename Filename to load from
+   * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
@@ -4755,6 +4782,8 @@ public final class VImage {
    * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
+   * @optionalArg page {@link VipsOption.Int} First page to load
+   * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
    * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
@@ -4778,6 +4807,8 @@ public final class VImage {
    * <p>Exactly as {@link VImage#jxlload}, but read from a buffer.</p>
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
+   * @optionalArg page {@link VipsOption.Int} First page to load
+   * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
    * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
@@ -4801,6 +4832,8 @@ public final class VImage {
    * <p>Exactly as {@link VImage#jxlload}, but read from a source.</p>
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
+   * @optionalArg page {@link VipsOption.Int} First page to load
+   * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
    * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
@@ -4837,7 +4870,7 @@ public final class VImage {
    * approximately the same scale as regular JPEG.</p>
    *
    * <p>Set {@code lossless} to enable lossless compression.</p>
-   * @param filename Filename to load from
+   * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tier {@link VipsOption.Int} Decode speed tier
    * @optionalArg distance {@link VipsOption.Double} Target butteraugli distance
@@ -4996,7 +5029,7 @@ public final class VImage {
    * you set {@code threaded} to {@code TRUE}, {@code linecache} will allow many threads to
    * calculate tiles at once and share the cache between them.</p>
    *
-   * <p>See also: {@link VImage#cache}, {@link VImage#tilecache}.</p>
+   * <p>See also: {@code vips_cache}, {@link VImage#tilecache}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Expected access pattern
@@ -6123,6 +6156,25 @@ public final class VImage {
   }
 
   /**
+   * <p>For each pixel, pick the maximum of a pair of images.</p>
+   *
+   * <p>See also: {@link VImage#minpair}.</p>
+   * @param right Right-hand image argument
+   * @param args Array of VipsOption to apply to this operation
+   */
+  public VImage maxpair(VImage right, VipsOption... args) throws VipsError {
+    var leftOption = VipsOption.Image("left", this);
+    var rightOption = VipsOption.Image("right", right);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(leftOption);
+    callArgs.add(rightOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "maxpair", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /**
    * <p>Analyse a grid of colour patches, producing an array of patch averages.
    * The mask has a row for each measured patch and a column for each image
    * band. The operations issues a warning if any patch has a deviation more
@@ -6247,6 +6299,25 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "min", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /**
+   * <p>For each pixel, pick the minimum of a pair of images.</p>
+   *
+   * <p>See also: {@code minpair}.</p>
+   * @param right Right-hand image argument
+   * @param args Array of VipsOption to apply to this operation
+   */
+  public VImage minpair(VImage right, VipsOption... args) throws VipsError {
+    var leftOption = VipsOption.Image("left", this);
+    var rightOption = VipsOption.Image("right", right);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(leftOption);
+    callArgs.add(rightOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "minpair", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -7711,11 +7782,13 @@ public final class VImage {
   }
 
   /**
-   * <p>Writes the pixels in {@code in} to the {@code fd} with no header or other
-   * metadata.  Handy for implementing other savers.</p>
+   * <p>As {@link VImage#rawsave}, but save to a memory buffer.</p>
    *
-   * <p>See also: {@link VImage#rawsave}.</p>
-   * @param fd File descriptor to write to
+   * <p>The address of the buffer is returned in {@code buf}, the length of the buffer in
+   * {@code len}. You are responsible for freeing the buffer with g_free() when you
+   * are done with it.</p>
+   *
+   * <p>See also: {@link VImage#rawsave}, {@code vips_image_write_to_memory}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -7723,13 +7796,35 @@ public final class VImage {
    * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
    * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
    */
-  public void rawsaveFd(int fd, VipsOption... args) throws VipsError {
+  public VBlob rawsaveBuffer(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
-    var fdOption = VipsOption.Int("fd", fd);
+    var bufferOption = VipsOption.Blob("buffer");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(fdOption);
-    VipsInvoker.invokeOperation(arena, "rawsave_fd", callArgs);
+    callArgs.add(bufferOption);
+    VipsInvoker.invokeOperation(arena, "rawsave_buffer", callArgs);
+    return bufferOption.valueOrThrow();
+  }
+
+  /**
+   * <p>As {@link VImage#rawsave}, but save to a target.</p>
+   *
+   * <p>See also: {@link VImage#rawsave}.</p>
+   * @param target Target to save to
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
+   * @optionalArg background {@link VipsOption.ArrayDouble} Background value
+   * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
+   * @optionalArg profile {@link VipsOption.String} Filename of ICC profile to embed
+   * @optionalArg strip {@link VipsOption.Boolean} Strip all metadata from image
+   */
+  public void rawsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "rawsave_target", callArgs);
   }
 
   /**
@@ -8143,7 +8238,7 @@ public final class VImage {
    * {@link VImage#affine} unaltered.</p>
    *
    * <p>See also: {@link VImage#affine}, {@code VipsInterpolate}.</p>
-   * @param angle Rotate anticlockwise by this many degrees
+   * @param angle Rotate clockwise by this many degrees
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg interpolate {@link VipsOption.Interpolate} Interpolate pixels with this
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -8326,6 +8421,47 @@ public final class VImage {
   }
 
   /**
+   * <p>Create a signed distance field (SDF) image of the given shape. Different
+   * shapes use different combinations of the optional arguments, see below.</p>
+   *
+   * <p>{@code shape} {@link VipsSdfShape#SDF_SHAPE_CIRCLE}: create a circle centred on {@code a}, radius {@code r}.</p>
+   *
+   * <p>{@code shape} {@link VipsSdfShape#SDF_SHAPE_BOX}: create a box with top-left corner {@code a} and
+   * bottom-right corner {@code b}.</p>
+   *
+   * <p>{@code shape} {@link VipsSdfShape#SDF_SHAPE_ROUNDED_BOX}: create a box with top-left corner {@code a}
+   * and bottom-right corner {@code b}, whose four corners are
+   * rounded by the four-element float array {@code corners}. {@code corners} will default to
+   * 0.0.</p>
+   *
+   * <p>{@code shape} {@link VipsSdfShape#SDF_SHAPE_LINE}: draw a line from {@code a} to {@code b}.</p>
+   *
+   * <p>See also: {@link VImage#grey}, {@link VImage#grid}, {@link VImage#xyz}.</p>
+   * @param width Image width in pixels
+   * @param height Image height in pixels
+   * @param shape {@link VipsSdfShape} SDF shape to create
+   * @param args Array of VipsOption to apply to this operation
+   * @optionalArg r {@link VipsOption.Double} Radius
+   * @optionalArg a {@link VipsOption.ArrayDouble} Point a
+   * @optionalArg b {@link VipsOption.ArrayDouble} Point b
+   * @optionalArg corners {@link VipsOption.ArrayDouble} Corner radii
+   */
+  public VImage sdf(int width, int height, VipsSdfShape shape, VipsOption... args) throws
+      VipsError {
+    var outOption = VipsOption.Image("out");
+    var widthOption = VipsOption.Int("width", width);
+    var heightOption = VipsOption.Int("height", height);
+    var shapeOption = VipsOption.Enum("shape", shape);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(outOption);
+    callArgs.add(widthOption);
+    callArgs.add(heightOption);
+    callArgs.add(shapeOption);
+    VipsInvoker.invokeOperation(arena, "sdf", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /**
    * <p>This operation behaves rather like {@link VImage#copy} between images
    * {@code in} and {@code out}, except that it checks that pixels on {@code in} are only requested
    * top-to-bottom. This operation is useful for loading file formats which are
@@ -8334,7 +8470,7 @@ public final class VImage {
    * <p>{@code tile-height} can be used to set the size of the tiles that
    * {@code sequential} uses. The default value is 1.</p>
    *
-   * <p>See also: {@link VImage#cache}, {@link VImage#linecache}, {@link VImage#tilecache}.</p>
+   * <p>See also: {@code vips_cache}, {@link VImage#linecache}, {@link VImage#tilecache}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg trace {@link VipsOption.Boolean} Trace pixel requests
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
@@ -8547,7 +8683,7 @@ public final class VImage {
    * <p>See also: {@link VImage#affine}, {@code VipsInterpolate}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg scale {@link VipsOption.Double} Scale by this factor
-   * @optionalArg angle {@link VipsOption.Double} Rotate anticlockwise by this many degrees
+   * @optionalArg angle {@link VipsOption.Double} Rotate clockwise by this many degrees
    * @optionalArg interpolate {@link VipsOption.Interpolate} Interpolate pixels with this
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg odx {@link VipsOption.Double} Horizontal output displacement
@@ -9213,7 +9349,7 @@ public final class VImage {
    * <p>See {@link VImage#thumbnailBuffer} to thumbnail from a memory buffer, or
    * {@link VImage#thumbnailSource} to thumbnail from an arbitrary byte source.</p>
    *
-   * <p>By default, libvips will only the first frame of animated or multipage
+   * <p>By default, libvips will only use the first frame of animated or multipage
    * images. To thumbnail all pages or frames, pass `n=-1` to the loader in
    * {@code filename}, for example `&quot;x.gif[n=-1]&quot;`.</p>
    *
@@ -9530,7 +9666,7 @@ public final class VImage {
    *
    * <p>Use {@code Q} to set the JPEG compression factor. Default 75.</p>
    *
-   * <p>User {@code level} to set the ZSTD compression level. Use {@code lossless} to
+   * <p>User {@code level} to set the ZSTD (1-22) or Deflate (1-9) compression level. Use {@code lossless} to
    * set WEBP lossless mode on. Use {@code Q} to set the WEBP compression level.</p>
    *
    * <p>Use {@code predictor} to set the predictor for lzw, deflate and zstd compression.
@@ -9613,7 +9749,7 @@ public final class VImage {
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
    * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
-   * @optionalArg level {@link VipsOption.Int} ZSTD compression level
+   * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
    * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
@@ -9659,7 +9795,7 @@ public final class VImage {
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
    * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
-   * @optionalArg level {@link VipsOption.Int} ZSTD compression level
+   * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
    * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
@@ -9703,7 +9839,7 @@ public final class VImage {
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
    * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
-   * @optionalArg level {@link VipsOption.Int} ZSTD compression level
+   * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
    * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
@@ -9750,7 +9886,7 @@ public final class VImage {
    * <p>Normally the cache is dropped when computation finishes. Set {@code persistent} to
    * {@code TRUE} to keep the cache between computations.</p>
    *
-   * <p>See also: {@link VImage#cache}, {@link VImage#linecache}.</p>
+   * <p>See also: {@code vips_cache}, {@link VImage#linecache}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
@@ -10076,12 +10212,23 @@ public final class VImage {
    *
    * <p>Set {@code smart-subsample} to enable high quality chroma subsampling.</p>
    *
+   * <p>Set {@code smart-deblock} to enable auto-adjusting of the deblocking filter. This
+   * can improve image quality, especially on low-contrast edges, but encoding
+   * can take significantly longer.</p>
+   *
    * <p>Use {@code alpha-q} to set the quality for the alpha channel in lossy mode. It has
    * the range 1 - 100, with the default 100.</p>
    *
    * <p>Use {@code effort} to control how much CPU time to spend attempting to
    * reduce file size. A higher value means more effort and therefore CPU time
    * should be spent. It has the range 0-6 and a default value of 4.</p>
+   *
+   * <p>Use {@code target-size} to set the desired target size in bytes.</p>
+   *
+   * <p>Use {@code passes} to set the number of entropy-analysis passes, by default 1,
+   * unless {@code target-size} is set, in which case the default is 3. It is not
+   * recommended to set {@code passes} unless you set {@code target-size}. Doing so will
+   * result in longer encoding times for no benefit.</p>
    *
    * <p>Set {@code lossless} to use lossless compression, or combine {@code near-lossless}
    * with {@code Q} 80, 60, 40 or 20 to apply increasing amounts of preprocessing
@@ -10113,8 +10260,11 @@ public final class VImage {
    * @optionalArg kmin {@link VipsOption.Int} Minimum number of frames between key frames
    * @optionalArg kmax {@link VipsOption.Int} Maximum number of frames between key frames
    * @optionalArg effort {@link VipsOption.Int} Level of CPU effort to reduce file size
+   * @optionalArg target-size {@link VipsOption.Int} Desired target size in bytes
    * @optionalArg reduction-effort {@link VipsOption.Int} Level of CPU effort to reduce file size
    * @optionalArg mixed {@link VipsOption.Boolean} Allow mixed encoding (might reduce file size)
+   * @optionalArg smart-deblock {@link VipsOption.Boolean} Enable auto-adjusting of the deblocking filter
+   * @optionalArg passes {@link VipsOption.Int} Number of entropy-analysis passes (in [1..10])
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -10149,8 +10299,11 @@ public final class VImage {
    * @optionalArg kmin {@link VipsOption.Int} Minimum number of frames between key frames
    * @optionalArg kmax {@link VipsOption.Int} Maximum number of frames between key frames
    * @optionalArg effort {@link VipsOption.Int} Level of CPU effort to reduce file size
+   * @optionalArg target-size {@link VipsOption.Int} Desired target size in bytes
    * @optionalArg reduction-effort {@link VipsOption.Int} Level of CPU effort to reduce file size
    * @optionalArg mixed {@link VipsOption.Boolean} Allow mixed encoding (might reduce file size)
+   * @optionalArg smart-deblock {@link VipsOption.Boolean} Enable auto-adjusting of the deblocking filter
+   * @optionalArg passes {@link VipsOption.Int} Number of entropy-analysis passes (in [1..10])
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -10182,8 +10335,11 @@ public final class VImage {
    * @optionalArg kmin {@link VipsOption.Int} Minimum number of frames between key frames
    * @optionalArg kmax {@link VipsOption.Int} Maximum number of frames between key frames
    * @optionalArg effort {@link VipsOption.Int} Level of CPU effort to reduce file size
+   * @optionalArg target-size {@link VipsOption.Int} Desired target size in bytes
    * @optionalArg reduction-effort {@link VipsOption.Int} Level of CPU effort to reduce file size
    * @optionalArg mixed {@link VipsOption.Boolean} Allow mixed encoding (might reduce file size)
+   * @optionalArg smart-deblock {@link VipsOption.Boolean} Enable auto-adjusting of the deblocking filter
+   * @optionalArg passes {@link VipsOption.Int} Number of entropy-analysis passes (in [1..10])
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -10213,8 +10369,11 @@ public final class VImage {
    * @optionalArg kmin {@link VipsOption.Int} Minimum number of frames between key frames
    * @optionalArg kmax {@link VipsOption.Int} Maximum number of frames between key frames
    * @optionalArg effort {@link VipsOption.Int} Level of CPU effort to reduce file size
+   * @optionalArg target-size {@link VipsOption.Int} Desired target size in bytes
    * @optionalArg reduction-effort {@link VipsOption.Int} Level of CPU effort to reduce file size
    * @optionalArg mixed {@link VipsOption.Boolean} Allow mixed encoding (might reduce file size)
+   * @optionalArg smart-deblock {@link VipsOption.Boolean} Enable auto-adjusting of the deblocking filter
+   * @optionalArg passes {@link VipsOption.Int} Number of entropy-analysis passes (in [1..10])
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
