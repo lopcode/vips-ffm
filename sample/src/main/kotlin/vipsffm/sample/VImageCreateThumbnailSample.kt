@@ -20,8 +20,7 @@ object VImageCreateThumbnailSample: RunnableSample {
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val sourceImage = VImage.newFromFile(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg",
-            VipsOption.Enum("access", VipsAccess.ACCESS_SEQUENTIAL)
+            "sample/src/main/resources/sample_images/rabbit.jpg"
         )
         val sourceWidth = sourceImage.width
         val sourceHeight = sourceImage.height
@@ -30,9 +29,9 @@ object VImageCreateThumbnailSample: RunnableSample {
         val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
         sourceImage.writeToFile(outputPath.absolutePathString())
 
-        val thumbnail = sourceImage.thumbnail(
-            "sample/src/main/resources/sample_images/rabbit.jpg",
-            400
+        val thumbnail = sourceImage.thumbnailImage(
+            400,
+            VipsOption.Boolean("auto-rotate", true) // example of an option
         )
         val thumbnailWidth = thumbnail.width
         val thumbnailHeight = thumbnail.height
