@@ -55,7 +55,7 @@ jobs:
 
       - name: Run samples
         run: |
-          vips --version || brew install vips
+          vips --version || ((brew install pkgconf || brew link --overwrite pkgconf) && brew install vips)
           ./run_samples.sh
 
   windows-sense-check:
