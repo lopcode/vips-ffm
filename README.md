@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.2.2")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.3.0")
 }
 ```
 When running your project you must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
@@ -171,6 +171,12 @@ yet (which could manifest as crashes/segfaults):
 * `vipsffm.abinumber.vips.override`, default: `42`
 * `vipsffm.abinumber.glib.override`, default: `0`
 * `vipsffm.abinumber.gobject.override`, default: `0`
+
+If you want to manually override the library lookup path for any of the above (for example, if you're using a platform
+like Android where it's hard to set the system library path), you can do so using these system properties:
+* libvips: `vipsffm.libpath.vips.override` (eg `/opt/homebrew/lib/libvips.dylib`)
+* glib: `vipsffm.libpath.glib.override`
+* gobject: `vipsffm.libpath.gobject.override`
 
 ## Project goals
 
