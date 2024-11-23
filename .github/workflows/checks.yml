@@ -86,3 +86,23 @@ jobs:
           Get-ChildItem .\vips_w64\vips-dev-8.15
           .\gradlew.bat sample:clean sample:shadowJar
           java -jar sample/build/libs/sample-all.jar
+
+  docker-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 22
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10.1
+
+      - name: Run checks
+        run: ./run_docker_tests.sh

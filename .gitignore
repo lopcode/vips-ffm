@@ -16,3 +16,4 @@ hs_err*
 sample_run
 .kotlin
 sample_output*
+sample*.jar
