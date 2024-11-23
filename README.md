@@ -163,8 +163,8 @@ You can find them in the [`docker_tests`](docker_tests) folder.
 ## Native library loading
 
 This library requires the `libvips`, `glib`, and `gobject` native libraries to be present in your library path:
-* On macOS: `DYLD_LIBRARY_PATH` (eg `DYLD_LIBRARY_PATH=/opt/homebrew/lib` if you used `brew install vips`)
-* On Linux: `LD_LIBRARY_PATH`
+* On macOS: `DYLD_LIBRARY_PATH` (installed with `brew install vips`)
+* On Linux: `LD_LIBRARY_PATH` (installed with `apt install libvips-dev` on Debian / Ubuntu)
 * On Windows: `PATH`
 
 The naming conventions of these libraries are not consistent across operating systems, so vips-ffm attempts to load each
