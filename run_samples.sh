@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-echo "building samples..."
-./gradlew sample:clean sample:shadowJar
+if [ -f "gradlew" ]; then
+  echo "building samples..."
+  ./gradlew sample:clean sample:shadowJar
+else
+  echo "skipping sample build as no gradle present..."
+fi
 
 export JAVA_PATH_OPTS=""
 if [[ "$OSTYPE" == "darwin"* ]]; then

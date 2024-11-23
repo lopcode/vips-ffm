@@ -7,7 +7,7 @@ and [faster](https://github.com/lopcode/vips-ffm/issues/59#issuecomment-23676349
 
 Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
 eff-eff-emm". The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
-(Ubuntu 24.04). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).
+(Ubuntu 24.04, Debian 12.1). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).
 
 Used the library? I'd love to hear from more users - let me know in [Discussions](https://github.com/lopcode/vips-ffm/discussions).
 
@@ -152,6 +152,13 @@ To get set up to run samples (on macOS):
 memory: high-water mark 151.24 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 ```
+
+### Docker checks
+
+These samples are also run in Docker containers, to verify behaviour on specific Linux distributions. They're useful to
+look at if you're deploying `libvips` and `vips-ffm` workloads using containers.
+
+You can find them in the [`docker_tests`](docker_tests) folder.
 
 ## Native library loading
 
