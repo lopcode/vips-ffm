@@ -21,8 +21,8 @@ object VImageBlobSample: RunnableSample {
             .thumbnailImage(400)
             .jpegsaveBuffer()
 
-        VImage.newImage(arena)
-            .jpegloadBuffer(imageBlob)
+        VImage
+            .jpegloadBuffer(arena, imageBlob)
             .writeToFile(outputPath.absolutePathString())
 
         return SampleHelper.validate(

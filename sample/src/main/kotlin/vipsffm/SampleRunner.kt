@@ -14,6 +14,7 @@ import vipsffm.sample.VImageCopyWriteSample
 import vipsffm.sample.VImageCreateThumbnailSample
 import vipsffm.sample.VImageFromBytesSample
 import vipsffm.sample.VImageJoinSample
+import vipsffm.sample.VImageStaticThumbnailSample
 import vipsffm.sample.VOptionHyphenSample
 import vipsffm.sample.VSourceTargetSample
 import vipsffm.sample.VTargetToFileSample
@@ -43,7 +44,8 @@ object SampleRunner {
             VTargetToFileSample,
             VImageJoinSample,
             VImageFromBytesSample,
-            VImageStreamSample
+            VImageStreamSample,
+            VImageStaticThumbnailSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

@@ -20,17 +20,17 @@ object VImageArrayJoinSample: RunnableSample {
             arena,
             "sample/src/main/resources/sample_images/rabbit.jpg"
         )
-            .thumbnailImage(400)
+        .thumbnailImage(400)
 
-        image
-            .arrayjoin(
-                listOf(image, image),
-                VipsOption.Enum("valign", VipsAlign.ALIGN_CENTRE),
-                VipsOption.Enum("halign", VipsAlign.ALIGN_CENTRE),
-                VipsOption.Int("across", 2),
-                VipsOption.Int("shim", 10)
-            )
-            .writeToFile(outputPath.absolutePathString())
+        VImage.arrayjoin(
+            arena,
+            listOf(image, image),
+            VipsOption.Enum("valign", VipsAlign.ALIGN_CENTRE),
+            VipsOption.Enum("halign", VipsAlign.ALIGN_CENTRE),
+            VipsOption.Int("across", 2),
+            VipsOption.Int("shim", 10)
+        )
+        .writeToFile(outputPath.absolutePathString())
 
         return SampleHelper.validate(
             outputPath,
