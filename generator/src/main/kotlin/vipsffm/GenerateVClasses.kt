@@ -216,7 +216,6 @@ object GenerateVClasses {
             val keepArg = !argSpec.isOutput
             keepArg
         }
-        method.addParameters(filteredPoetArgs)
 
         val firstOutput = poetArguments.filterIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
@@ -225,10 +224,10 @@ object GenerateVClasses {
 
         val returnType = firstOutput?.type ?: TypeName.VOID
         method.returns(returnType)
-        method.addParameter(vipsOptionVarargType, "args")
         method.varargs(true)
         method.addException(vipsErrorType)
         method.addModifiers(Modifier.PUBLIC)
+
         if (spec.isDeprecated) {
             method.addAnnotation(
                 AnnotationSpec.builder(deprecatedAnnotationType)
@@ -238,6 +237,44 @@ object GenerateVClasses {
         }
         generateMethodJavadoc(method, methodName, spec, operations, enums)
 
+        var referencedSelf = false
+        poetArguments.forEachIndexed { index, poetArg ->
+            val argSpec = requiredArguments[index]
+            val poetArgType = poetArg.type
+            val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
+            if (argSpec.isOutput) {
+                method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
+            } else if (argSpec.isInput) {
+                if (poetArg.type == vimageType && !filteredPoetArgs.contains(poetArg)) {
+                    // it's an image type, and doesn't refer to "this image"
+                    referencedSelf = true
+                    method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
+                } else if (poetArg.type == vEnumType) {
+                    method.addStatement(
+                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name}.getRawValue())",
+                        vipsOptionType
+                    )
+                } else {
+                    method.addStatement(
+                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name})",
+                        vipsOptionType
+                    )
+                }
+            }
+        }
+        method.addStatement("var callArgs = new \$T<>(\$T.asList(args))", ArrayList::class.java, Arrays::class.java)
+        poetArguments.forEachIndexed { index, poetArg ->
+            val argSpec = requiredArguments[index]
+            method.addStatement("callArgs.add(${poetArg.name}Option)")
+        }
+        method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType);
+        if (returnType != TypeName.VOID) {
+            method.addStatement("return ${firstOutput!!.name}Option.valueOrThrow()")
+        }
+
+        if (!referencedSelf) {
+            method.addJavadoc("\n@param arena The arena that bounds resulting memory allocations during this operation")
+        }
         poetArguments.forEachIndexed { index, poetArg ->
             if (!filteredPoetArgs.contains(poetArg)) {
                 return@forEachIndexed
@@ -269,38 +306,14 @@ object GenerateVClasses {
             }
         }
 
-        poetArguments.forEachIndexed { index, poetArg ->
-            val argSpec = requiredArguments[index]
-            val poetArgType = poetArg.type
-            val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
-            if (argSpec.isOutput) {
-                method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
-            } else if (argSpec.isInput) {
-                if (poetArg.type == vimageType && !filteredPoetArgs.contains(poetArg)) {
-                    // it's an image type, and doesn't refer to "this image"
-                    method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
-                } else if (poetArg.type == vEnumType) {
-                    method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name}.getRawValue())",
-                        vipsOptionType
-                    )
-                } else {
-                    method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name})",
-                        vipsOptionType
-                    )
-                }
-            }
+        if (!referencedSelf) {
+            method.addModifiers(Modifier.STATIC)
+            method.addParameter(
+                ParameterSpec.builder(arenaType, "arena").build()
+            )
         }
-        method.addStatement("var callArgs = new \$T<>(\$T.asList(args))", ArrayList::class.java, Arrays::class.java)
-        poetArguments.forEachIndexed { index, poetArg ->
-            val argSpec = requiredArguments[index]
-            method.addStatement("callArgs.add(${poetArg.name}Option)")
-        }
-        method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType);
-        if (returnType != TypeName.VOID) {
-            method.addStatement("return ${firstOutput!!.name}Option.valueOrThrow()")
-        }
+        method.addParameters(filteredPoetArgs)
+        method.addParameter(vipsOptionVarargType, "args")
 
         return method.build()
     }

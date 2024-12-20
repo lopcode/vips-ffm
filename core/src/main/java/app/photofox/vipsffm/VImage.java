@@ -588,6 +588,7 @@ public final class VImage {
    * and attached.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -599,7 +600,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage analyzeload(String filename, VipsOption... args) throws VipsError {
+  public static VImage analyzeload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -640,6 +642,7 @@ public final class VImage {
    * colourspace for compositing.</p>
    *
    * <p>See also: {@link VImage#join}, {@link VImage#insert}, {@link VImage#colourspace}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param in Array of input images
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg across {@link VipsOption.Int} Number of images across grid
@@ -650,7 +653,8 @@ public final class VImage {
    * @optionalArg hspacing {@link VipsOption.Int} Horizontal spacing between images
    * @optionalArg vspacing {@link VipsOption.Int} Vertical spacing between images
    */
-  public VImage arrayjoin(List<VImage> in, VipsOption... args) throws VipsError {
+  public static VImage arrayjoin(Arena arena, List<VImage> in, VipsOption... args) throws
+      VipsError {
     var inOption = VipsOption.ArrayImage("in", in);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -797,10 +801,11 @@ public final class VImage {
    * {@code arithmetic}).</p>
    *
    * <p>See also: {@link VImage#insert}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param in Array of input images
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage bandjoin(List<VImage> in, VipsOption... args) throws VipsError {
+  public static VImage bandjoin(Arena arena, List<VImage> in, VipsOption... args) throws VipsError {
     var inOption = VipsOption.ArrayImage("in", in);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -867,11 +872,12 @@ public final class VImage {
    * <p>Smaller input images are expanded by adding black pixels.</p>
    *
    * <p>See also: {@link VImage#rank}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param in Array of input images
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg index {@link VipsOption.Int} Select this band element from sorted list
    */
-  public VImage bandrank(List<VImage> in, VipsOption... args) throws VipsError {
+  public static VImage bandrank(Arena arena, List<VImage> in, VipsOption... args) throws VipsError {
     var inOption = VipsOption.ArrayImage("in", in);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -905,12 +911,14 @@ public final class VImage {
    * <p>Make a black unsigned char image of a specified size.</p>
    *
    * <p>See also: {@link VImage#xyz}, {@link VImage#text}, {@link VImage#gaussnoise}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg bands {@link VipsOption.Int} Number of bands in image
    */
-  public VImage black(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage black(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -1388,6 +1396,7 @@ public final class VImage {
    * set {@code premultiplied}.</p>
    *
    * <p>See also: {@link VImage#insert}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param in Array of input images
    * @param mode Array of VipsBlendMode to join with
    * @param args Array of VipsOption to apply to this operation
@@ -1396,8 +1405,8 @@ public final class VImage {
    * @optionalArg compositing-space {@link VipsOption.Enum} {@link VipsInterpretation} Composite images in this colour space
    * @optionalArg premultiplied {@link VipsOption.Boolean} Images have premultiplied alpha
    */
-  public VImage composite(List<VImage> in, List<Integer> mode, VipsOption... args) throws
-      VipsError {
+  public static VImage composite(Arena arena, List<VImage> in, List<Integer> mode,
+      VipsOption... args) throws VipsError {
     var inOption = VipsOption.ArrayImage("in", in);
     var outOption = VipsOption.Image("out");
     var modeOption = VipsOption.ArrayInt("mode", mode);
@@ -1745,6 +1754,7 @@ public final class VImage {
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link VImage#bandfold}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg skip {@link VipsOption.Int} Skip this many lines at the start of the file
@@ -1760,7 +1770,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage csvload(String filename, VipsOption... args) throws VipsError {
+  public static VImage csvload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -1774,6 +1784,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#csvload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#csvload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg skip {@link VipsOption.Int} Skip this many lines at the start of the file
@@ -1789,7 +1800,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage csvloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage csvloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2516,13 +2528,15 @@ public final class VImage {
    * <p>Set {@code uchar} to output a uchar image.</p>
    *
    * <p>See also: {@link VImage#zone}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg uchar {@link VipsOption.Boolean} Output an unsigned char image
    * @optionalArg factor {@link VipsOption.Double} Maximum spatial frequency
    */
-  public VImage eye(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage eye(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -2673,6 +2687,7 @@ public final class VImage {
    * <p>FITS metadata is attached with the &quot;fits-&quot; prefix.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -2684,7 +2699,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage fitsload(String filename, VipsOption... args) throws VipsError {
+  public static VImage fitsload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2696,6 +2711,7 @@ public final class VImage {
 
   /**
    * Load FITS from a source
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -2707,7 +2723,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage fitsloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage fitsloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -2808,13 +2825,14 @@ public final class VImage {
    * {@code fractalDimension}. The dimension should be between 2 and 3.</p>
    *
    * <p>See also: {@link VImage#gaussnoise}, {@link VImage#maskFractal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param fractalDimension Fractal dimension
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage fractsurf(int width, int height, double fractalDimension, VipsOption... args) throws
-      VipsError {
+  public static VImage fractsurf(Arena arena, int width, int height, double fractalDimension,
+      VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -2933,6 +2951,7 @@ public final class VImage {
    * <p>&quot;scale&quot; is set to the sum of all the mask elements.</p>
    *
    * <p>See also: {@link VImage#logmat}, {@link VImage#conv}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param sigma Sigma of Gaussian
    * @param minAmpl Minimum amplitude of Gaussian
    * @param args Array of VipsOption to apply to this operation
@@ -2940,7 +2959,8 @@ public final class VImage {
    * @optionalArg integer {@link VipsOption.Boolean} Generate integer Gaussian
    * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Generate with this precision
    */
-  public VImage gaussmat(double sigma, double minAmpl, VipsOption... args) throws VipsError {
+  public static VImage gaussmat(Arena arena, double sigma, double minAmpl, VipsOption... args)
+      throws VipsError {
     var outOption = VipsOption.Image("out");
     var sigmaOption = VipsOption.Double("sigma", sigma);
     var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
@@ -2958,6 +2978,7 @@ public final class VImage {
    * numbers with the appropriate weights.</p>
    *
    * <p>See also: {@link VImage#black}, {@link VImage#xyz}, {@link VImage#text}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -2965,7 +2986,8 @@ public final class VImage {
    * @optionalArg mean {@link VipsOption.Double} Mean of pixels in generated image
    * @optionalArg seed {@link VipsOption.Int} Random number seed
    */
-  public VImage gaussnoise(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage gaussnoise(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -3023,6 +3045,7 @@ public final class VImage {
    * otherwise.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
@@ -3036,7 +3059,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage gifload(String filename, VipsOption... args) throws VipsError {
+  public static VImage gifload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -3053,6 +3076,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#gifload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
@@ -3066,7 +3090,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage gifloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage gifloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -3080,6 +3105,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#gifload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#gifload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
@@ -3093,7 +3119,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage gifloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage gifloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -3299,12 +3326,14 @@ public final class VImage {
    * rightmost 255.</p>
    *
    * <p>See also: {@link VImage#xyz}, {@link VImage#identity}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg uchar {@link VipsOption.Boolean} Output an unsigned char image
    */
-  public VImage grey(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage grey(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -3374,6 +3403,7 @@ public final class VImage {
    * `heif-bitdepth`.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -3390,7 +3420,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage heifload(String filename, VipsOption... args) throws VipsError {
+  public static VImage heifload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -3408,6 +3438,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#heifload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -3424,7 +3455,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage heifloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage heifloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -3438,6 +3470,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#heifload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#heifload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -3454,7 +3487,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage heifloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage heifloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4006,12 +4040,13 @@ public final class VImage {
    * {@code size}.</p>
    *
    * <p>See also: {@link VImage#xyz}, {@link VImage#maplut}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg bands {@link VipsOption.Int} Number of bands in LUT
    * @optionalArg ushort {@link VipsOption.Boolean} Create a 16-bit LUT
    * @optionalArg size {@link VipsOption.Int} Size of 16-bit LUT
    */
-  public VImage identity(VipsOption... args) throws VipsError {
+  public static VImage identity(Arena arena, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
@@ -4269,6 +4304,7 @@ public final class VImage {
    * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
@@ -4281,7 +4317,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jp2kload(String filename, VipsOption... args) throws VipsError {
+  public static VImage jp2kload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4296,6 +4332,7 @@ public final class VImage {
    *
    * <p>You must not free the buffer while {@code out} is active. The
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
@@ -4308,7 +4345,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jp2kloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage jp2kloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4320,6 +4358,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link VImage#jp2kload}, but read from a source.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
@@ -4332,7 +4371,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jp2kloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage jp2kloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4490,6 +4530,7 @@ public final class VImage {
    * &quot;jpeg-thumbnail-data&quot;. See {@code vips_image_get_blob}.</p>
    *
    * <p>See also: {@link VImage#jpegloadBuffer}, {@code vips_image_new_from_file}, {@link VImage#autorot}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
@@ -4504,7 +4545,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jpegload(String filename, VipsOption... args) throws VipsError {
+  public static VImage jpegload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4522,6 +4563,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#jpegload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
@@ -4536,7 +4578,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jpegloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage jpegloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4551,6 +4594,7 @@ public final class VImage {
    * {@link VImage#jpegload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#jpegload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
@@ -4565,7 +4609,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jpegloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage jpegloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4780,6 +4825,7 @@ public final class VImage {
    * in future libvips versions.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -4793,7 +4839,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jxlload(String filename, VipsOption... args) throws VipsError {
+  public static VImage jxlload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4805,6 +4851,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link VImage#jxlload}, but read from a buffer.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -4818,7 +4865,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jxlloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage jxlloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -4830,6 +4878,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link VImage#jxlload}, but read from a source.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -4843,7 +4892,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage jxlloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage jxlloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -5075,6 +5125,7 @@ public final class VImage {
    * <p>&quot;scale&quot; is set to the sum of all the mask elements.</p>
    *
    * <p>See also: {@link VImage#gaussmat}, {@link VImage#conv}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param sigma Radius of Gaussian
    * @param minAmpl Minimum amplitude of Gaussian
    * @param args Array of VipsOption to apply to this operation
@@ -5082,7 +5133,8 @@ public final class VImage {
    * @optionalArg integer {@link VipsOption.Boolean} Generate integer Gaussian
    * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Generate with this precision
    */
-  public VImage logmat(double sigma, double minAmpl, VipsOption... args) throws VipsError {
+  public static VImage logmat(Arena arena, double sigma, double minAmpl, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var sigmaOption = VipsOption.Double("sigma", sigma);
     var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
@@ -5118,6 +5170,7 @@ public final class VImage {
    * on the imagemagick website.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg density {@link VipsOption.String} Canvas resolution for rendering vector formats like SVG
@@ -5133,7 +5186,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage magickload(String filename, VipsOption... args) throws VipsError {
+  public static VImage magickload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -5151,6 +5205,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#magickload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg density {@link VipsOption.String} Canvas resolution for rendering vector formats like SVG
@@ -5166,7 +5221,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage magickloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage magickloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -5403,6 +5459,7 @@ public final class VImage {
    * Digital Image Processing, 1987.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5414,8 +5471,8 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskButterworth(int width, int height, double order, double frequencyCutoff,
-      double amplitudeCutoff, VipsOption... args) throws VipsError {
+  public static VImage maskButterworth(Arena arena, int width, int height, double order,
+      double frequencyCutoff, double amplitudeCutoff, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5442,6 +5499,7 @@ public final class VImage {
    * Digital Image Processing, 1987.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5455,9 +5513,9 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskButterworthBand(int width, int height, double order, double frequencyCutoffX,
-      double frequencyCutoffY, double radius, double amplitudeCutoff, VipsOption... args) throws
-      VipsError {
+  public static VImage maskButterworthBand(Arena arena, int width, int height, double order,
+      double frequencyCutoffX, double frequencyCutoffY, double radius, double amplitudeCutoff,
+      VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5489,6 +5547,7 @@ public final class VImage {
    * Digital Image Processing, 1987.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param order Filter order
@@ -5501,8 +5560,9 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskButterworthRing(int width, int height, double order, double frequencyCutoff,
-      double amplitudeCutoff, double ringwidth, VipsOption... args) throws VipsError {
+  public static VImage maskButterworthRing(Arena arena, int width, int height, double order,
+      double frequencyCutoff, double amplitudeCutoff, double ringwidth, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5527,6 +5587,7 @@ public final class VImage {
    * power spectrum of Gaussian white noise. See {@link VImage#gaussnoise}.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param fractalDimension Fractal dimension
@@ -5536,8 +5597,8 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskFractal(int width, int height, double fractalDimension, VipsOption... args)
-      throws VipsError {
+  public static VImage maskFractal(Arena arena, int width, int height, double fractalDimension,
+      VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5556,6 +5617,7 @@ public final class VImage {
    * smooth transition positioned at {@code frequencyCutoff}.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5566,8 +5628,8 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskGaussian(int width, int height, double frequencyCutoff, double amplitudeCutoff,
-      VipsOption... args) throws VipsError {
+  public static VImage maskGaussian(Arena arena, int width, int height, double frequencyCutoff,
+      double amplitudeCutoff, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5589,6 +5651,7 @@ public final class VImage {
    * {@code frequencyCutoffY}, of radius {@code radius}.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoffX Frequency cutoff x
@@ -5601,7 +5664,7 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskGaussianBand(int width, int height, double frequencyCutoffX,
+  public static VImage maskGaussianBand(Arena arena, int width, int height, double frequencyCutoffX,
       double frequencyCutoffY, double radius, double amplitudeCutoff, VipsOption... args) throws
       VipsError {
     var outOption = VipsOption.Image("out");
@@ -5629,6 +5692,7 @@ public final class VImage {
    * {@code ringwidth}.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5640,7 +5704,7 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskGaussianRing(int width, int height, double frequencyCutoff,
+  public static VImage maskGaussianRing(Arena arena, int width, int height, double frequencyCutoff,
       double amplitudeCutoff, double ringwidth, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -5688,6 +5752,7 @@ public final class VImage {
    * {@link VImage#maskButterworthRing}, {@link VImage#maskButterworthBand},
    * {@link VImage#maskGaussian}, {@link VImage#maskGaussianRing},
    * {@link VImage#maskGaussianBand}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5697,8 +5762,8 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskIdeal(int width, int height, double frequencyCutoff, VipsOption... args) throws
-      VipsError {
+  public static VImage maskIdeal(Arena arena, int width, int height, double frequencyCutoff,
+      VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5718,6 +5783,7 @@ public final class VImage {
    * of size {@code radius}.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoffX Frequency cutoff x
@@ -5729,7 +5795,7 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskIdealBand(int width, int height, double frequencyCutoffX,
+  public static VImage maskIdealBand(Arena arena, int width, int height, double frequencyCutoffX,
       double frequencyCutoffY, double radius, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -5754,6 +5820,7 @@ public final class VImage {
    * {@code frequencyCutoff} and {@code width} are expressed as the range 0 - 1.</p>
    *
    * <p>See also: {@link VImage#maskIdeal}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param frequencyCutoff Frequency cutoff
@@ -5764,8 +5831,8 @@ public final class VImage {
    * @optionalArg reject {@link VipsOption.Boolean} Invert the sense of the filter
    * @optionalArg optical {@link VipsOption.Boolean} Rotate quadrants to optical space
    */
-  public VImage maskIdealRing(int width, int height, double frequencyCutoff, double ringwidth,
-      VipsOption... args) throws VipsError {
+  public static VImage maskIdealRing(Arena arena, int width, int height, double frequencyCutoff,
+      double ringwidth, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -5944,6 +6011,7 @@ public final class VImage {
    * sparse matrices.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -5955,7 +6023,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage matload(String filename, VipsOption... args) throws VipsError {
+  public static VImage matload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6006,6 +6074,7 @@ public final class VImage {
    * ignored.</p>
    *
    * <p>See also: {@code matrixload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -6017,7 +6086,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage matrixload(String filename, VipsOption... args) throws VipsError {
+  public static VImage matrixload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6031,6 +6101,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#matrixload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#matrixload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -6042,7 +6113,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage matrixloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage matrixloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6635,6 +6707,7 @@ public final class VImage {
    * redone in C++.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -6646,7 +6719,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage openexrload(String filename, VipsOption... args) throws VipsError {
+  public static VImage openexrload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6682,6 +6756,7 @@ public final class VImage {
    * output.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg level {@link VipsOption.Int} Load this level from the file
@@ -6698,7 +6773,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage openslideload(String filename, VipsOption... args) throws VipsError {
+  public static VImage openslideload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6710,6 +6786,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link VImage#openslideload}, but read from a source.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg level {@link VipsOption.Int} Load this level from the file
@@ -6726,7 +6803,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage openslideloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage openslideloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6791,6 +6869,7 @@ public final class VImage {
    * data. Rendering occurs when pixels are accessed.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link VImage#magickload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -6808,7 +6887,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pdfload(String filename, VipsOption... args) throws VipsError {
+  public static VImage pdfload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6826,6 +6905,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#pdfload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -6843,7 +6923,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pdfloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage pdfloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6857,6 +6938,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#pdfload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#pdfload}</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -6874,7 +6956,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pdfloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage pdfloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -6928,6 +7011,7 @@ public final class VImage {
    * {@code uchar} to output a uchar image with pixels in [0, 255].</p>
    *
    * <p>See also: {@link VImage#worley}, {@link VImage#fractsurf}, {@link VImage#gaussnoise}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -6935,7 +7019,8 @@ public final class VImage {
    * @optionalArg uchar {@link VipsOption.Boolean} Output an unsigned char image
    * @optionalArg seed {@link VipsOption.Int} Random number seed
    */
-  public VImage perlin(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage perlin(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -7034,6 +7119,7 @@ public final class VImage {
    * limits.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
@@ -7046,7 +7132,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pngload(String filename, VipsOption... args) throws VipsError {
+  public static VImage pngload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7063,6 +7149,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#pngload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
@@ -7075,7 +7162,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pngloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage pngloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7089,6 +7177,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#pngload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#pngload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
@@ -7101,7 +7190,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage pngloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage pngloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7267,6 +7357,7 @@ public final class VImage {
    * with 0 and 255 for 0 and 1.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7278,7 +7369,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage ppmload(String filename, VipsOption... args) throws VipsError {
+  public static VImage ppmload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7292,6 +7383,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#ppmload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#ppmload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7303,7 +7395,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage ppmloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage ppmloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7530,6 +7623,7 @@ public final class VImage {
    * <p>Sections of this reader from Greg Ward and Radiance with kind permission.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7541,7 +7635,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage radload(String filename, VipsOption... args) throws VipsError {
+  public static VImage radload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7558,6 +7652,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#radload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7569,7 +7664,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage radloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage radloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7583,6 +7679,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#radload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#radload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -7594,7 +7691,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage radloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage radloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -7725,6 +7823,7 @@ public final class VImage {
    * <p>Use {@link VImage#byteswap} to reverse the byte ordering if necessary.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link VImage#copy}, {@link VImage#byteswap}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param width Image width in pixels
    * @param height Image height in pixels
@@ -7742,8 +7841,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage rawload(String filename, int width, int height, int bands, VipsOption... args)
-      throws VipsError {
+  public static VImage rawload(Arena arena, String filename, int width, int height, int bands,
+      VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -8437,6 +8536,7 @@ public final class VImage {
    * <p>{@code shape} {@link VipsSdfShape#SDF_SHAPE_LINE}: draw a line from {@code a} to {@code b}.</p>
    *
    * <p>See also: {@link VImage#grey}, {@link VImage#grid}, {@link VImage#xyz}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param shape {@link VipsSdfShape} SDF shape to create
@@ -8446,8 +8546,8 @@ public final class VImage {
    * @optionalArg b {@link VipsOption.ArrayDouble} Point b
    * @optionalArg corners {@link VipsOption.ArrayDouble} Corner radii
    */
-  public VImage sdf(int width, int height, VipsSdfShape shape, VipsOption... args) throws
-      VipsError {
+  public static VImage sdf(Arena arena, int width, int height, VipsSdfShape shape,
+      VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -8716,6 +8816,7 @@ public final class VImage {
    * <p>Pixels are normally in [-1, +1], set {@code uchar} to output [0, 255].</p>
    *
    * <p>See also: {@link VImage#grey}, {@link VImage#xyz}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -8723,7 +8824,8 @@ public final class VImage {
    * @optionalArg hfreq {@link VipsOption.Double} Horizontal spatial frequency
    * @optionalArg vfreq {@link VipsOption.Double} Vertical spatial frequency
    */
-  public VImage sines(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage sines(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -9132,10 +9234,11 @@ public final class VImage {
    * range of possible values.</p>
    *
    * <p>See also: {@link VImage#add}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param in Array of input images
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage sum(List<VImage> in, VipsOption... args) throws VipsError {
+  public static VImage sum(Arena arena, List<VImage> in, VipsOption... args) throws VipsError {
     var inOption = VipsOption.ArrayImage("in", in);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9159,6 +9262,7 @@ public final class VImage {
    * allow SVGs of any size.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dpi {@link VipsOption.Double} Render at this DPI
@@ -9173,7 +9277,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage svgload(String filename, VipsOption... args) throws VipsError {
+  public static VImage svgload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9191,6 +9295,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#svgload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dpi {@link VipsOption.Double} Render at this DPI
@@ -9205,7 +9310,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage svgloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage svgloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9219,6 +9325,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#svgload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#svgload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dpi {@link VipsOption.Double} Render at this DPI
@@ -9233,7 +9340,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage svgloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage svgloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9255,10 +9363,12 @@ public final class VImage {
    * <p>Combine with {@link VImage#case1} to make an efficient multi-way {@link VImage#ifthenelse}.</p>
    *
    * <p>See also: {@link VImage#maplut}, {@link VImage#case1}, {@link VImage#ifthenelse}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param tests Table of images to test
    * @param args Array of VipsOption to apply to this operation
    */
-  public VImage switch1(List<VImage> tests, VipsOption... args) throws VipsError {
+  public static VImage switch1(Arena arena, List<VImage> tests, VipsOption... args) throws
+      VipsError {
     var testsOption = VipsOption.ArrayImage("tests", tests);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9315,6 +9425,7 @@ public final class VImage {
    * several {@code text}.</p>
    *
    * <p>See also: {@link VImage#bandjoin}, {@link VImage#composite}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param text Text to render
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg font {@link VipsOption.String} Font to render with
@@ -9329,7 +9440,7 @@ public final class VImage {
    * @optionalArg rgba {@link VipsOption.Boolean} Enable RGBA output
    * @optionalArg wrap {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsTextWrap} Wrap lines on word or character boundaries
    */
-  public VImage text(String text, VipsOption... args) throws VipsError {
+  public static VImage text(Arena arena, String text, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var textOption = VipsOption.String("text", text);
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9393,6 +9504,7 @@ public final class VImage {
    * The default is {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}, ie. thumbnail is permissive.</p>
    *
    * <p>See also: {@link VImage#thumbnailBuffer}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to read from
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
@@ -9407,7 +9519,8 @@ public final class VImage {
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
    * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
    */
-  public VImage thumbnail(String filename, int width, VipsOption... args) throws VipsError {
+  public static VImage thumbnail(Arena arena, String filename, int width, VipsOption... args) throws
+      VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -9425,6 +9538,7 @@ public final class VImage {
    * loader.</p>
    *
    * <p>See also: {@link VImage#thumbnail}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
@@ -9440,7 +9554,8 @@ public final class VImage {
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
    * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
    */
-  public VImage thumbnailBuffer(VBlob buffer, int width, VipsOption... args) throws VipsError {
+  public static VImage thumbnailBuffer(Arena arena, VBlob buffer, int width, VipsOption... args)
+      throws VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -9492,6 +9607,7 @@ public final class VImage {
    * loader.</p>
    *
    * <p>See also: {@link VImage#thumbnail}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
@@ -9507,7 +9623,8 @@ public final class VImage {
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
    * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
    */
-  public VImage thumbnailSource(VSource source, int width, VipsOption... args) throws VipsError {
+  public static VImage thumbnailSource(Arena arena, VSource source, int width, VipsOption... args)
+      throws VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
@@ -9559,6 +9676,7 @@ public final class VImage {
    * attached as {@code VIPS_META_PHOTOSHOP_NAME}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link VImage#autorot}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -9574,7 +9692,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage tiffload(String filename, VipsOption... args) throws VipsError {
+  public static VImage tiffload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9592,6 +9710,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#tiffload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -9607,7 +9726,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage tiffloadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage tiffloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9621,6 +9741,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#tiffload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#tiffload}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -9636,7 +9757,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage tiffloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage tiffloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -9916,6 +10038,7 @@ public final class VImage {
    * <p>{@code Lb}, {@code Lw} are expressed as 0-100, as in LAB colour space. You
    * specify the scaling for the input and output images with the {@code in-max} and
    * {@code out-max} parameters.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg in-max {@link VipsOption.Int} Size of LUT to build
    * @optionalArg out-max {@link VipsOption.Int} Maximum value in output LUT
@@ -9928,7 +10051,7 @@ public final class VImage {
    * @optionalArg M {@link VipsOption.Double} Adjust mid-tones by this much
    * @optionalArg H {@link VipsOption.Double} Adjust highlights by this much
    */
-  public VImage tonelut(VipsOption... args) throws VipsError {
+  public static VImage tonelut(Arena arena, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(outOption);
@@ -10012,6 +10135,7 @@ public final class VImage {
    * <p>Read in a vips image.</p>
    *
    * <p>See also: {@link VImage#vipssave}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -10023,7 +10147,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage vipsload(String filename, VipsOption... args) throws VipsError {
+  public static VImage vipsload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -10035,6 +10159,7 @@ public final class VImage {
 
   /**
    * <p>Exactly as {@link VImage#vipsload}, but read from a source.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
@@ -10046,7 +10171,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage vipsloadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage vipsloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -10113,6 +10239,7 @@ public final class VImage {
    * <p>The loader supports ICC, EXIF and XMP metadata.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param filename Filename to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -10128,7 +10255,7 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage webpload(String filename, VipsOption... args) throws VipsError {
+  public static VImage webpload(Arena arena, String filename, VipsOption... args) throws VipsError {
     var filenameOption = VipsOption.String("filename", filename);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -10146,6 +10273,7 @@ public final class VImage {
    * {@code VipsObject}::postclose signal on {@code out} is a good place to free.</p>
    *
    * <p>See also: {@link VImage#webpload}</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param buffer Buffer to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -10161,7 +10289,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage webploadBuffer(VBlob buffer, VipsOption... args) throws VipsError {
+  public static VImage webploadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
     var bufferOption = VipsOption.Blob("buffer", buffer);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -10175,6 +10304,7 @@ public final class VImage {
    * <p>Exactly as {@link VImage#webpload}, but read from a source.</p>
    *
    * <p>See also: {@link VImage#webpload}</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param source Source to load from
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg page {@link VipsOption.Int} First page to load
@@ -10190,7 +10320,8 @@ public final class VImage {
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
    * @optionalArg disc {@link VipsOption.Boolean} Open to disc
    */
-  public VImage webploadSource(VSource source, VipsOption... args) throws VipsError {
+  public static VImage webploadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
     var sourceOption = VipsOption.Source("source", source);
     var outOption = VipsOption.Image("out");
     var callArgs = new ArrayList<>(Arrays.asList(args));
@@ -10400,13 +10531,15 @@ public final class VImage {
    * <p>If {@code width} and {@code height} are multiples of {@code cell-size}, the image will tessellate.</p>
    *
    * <p>See also: {@link VImage#perlin}, {@link VImage#fractsurf}, {@link VImage#gaussnoise}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg cell-size {@link VipsOption.Int} Size of Worley cells
    * @optionalArg seed {@link VipsOption.Int} Random number seed
    */
-  public VImage worley(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage worley(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -10451,6 +10584,7 @@ public final class VImage {
    * {@link VImage#grid} to change the layout.</p>
    *
    * <p>See also: {@link VImage#grey}, {@link VImage#grid}, {@link VImage#identity}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
@@ -10458,7 +10592,8 @@ public final class VImage {
    * @optionalArg dsize {@link VipsOption.Int} Size of fourth dimension
    * @optionalArg esize {@link VipsOption.Int} Size of fifth dimension
    */
-  public VImage xyz(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage xyz(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
@@ -10476,12 +10611,14 @@ public final class VImage {
    * <p>Pixels are normally in [-1, +1], set {@code uchar} to output [0, 255].</p>
    *
    * <p>See also: {@link VImage#eye}, {@link VImage#xyz}.</p>
+   * @param arena The arena that bounds resulting memory allocations during this operation
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg uchar {@link VipsOption.Boolean} Output an unsigned char image
    */
-  public VImage zone(int width, int height, VipsOption... args) throws VipsError {
+  public static VImage zone(Arena arena, int width, int height, VipsOption... args) throws
+      VipsError {
     var outOption = VipsOption.Image("out");
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
