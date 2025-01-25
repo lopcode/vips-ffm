@@ -13,6 +13,7 @@ import vipsffm.sample.VImageChainSample
 import vipsffm.sample.VImageCopyWriteSample
 import vipsffm.sample.VImageCreateThumbnailSample
 import vipsffm.sample.VImageFromBytesSample
+import vipsffm.sample.VImageGetPagesSample
 import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VImageStaticThumbnailSample
 import vipsffm.sample.VOptionHyphenSample
@@ -45,7 +46,8 @@ object SampleRunner {
             VImageJoinSample,
             VImageFromBytesSample,
             VImageStreamSample,
-            VImageStaticThumbnailSample
+            VImageStaticThumbnailSample,
+            VImageGetPagesSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

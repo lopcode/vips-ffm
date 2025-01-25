@@ -1432,6 +1432,299 @@ public final class VipsHelper {
   /**
    * Binding for:
    * {@snippet lang=c :
+   * VipsBandFormat vips_image_get_format(const VipsImage *image)
+   * }
+   */
+  public static int image_get_format(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_format", "image");
+    }
+    var result = VipsRaw.vips_image_get_format(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_format_max(VipsBandFormat format)
+   * }
+   */
+  public static double image_get_format_max(int format) throws VipsError {
+    var result = VipsRaw.vips_image_get_format_max(format);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsCoding vips_image_get_coding(const VipsImage *image)
+   * }
+   */
+  public static int image_get_coding(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_coding", "image");
+    }
+    var result = VipsRaw.vips_image_get_coding(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * VipsInterpretation vips_image_get_interpretation(const VipsImage *image)
+   * }
+   */
+  public static int image_get_interpretation(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_interpretation", "image");
+    }
+    var result = VipsRaw.vips_image_get_interpretation(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_xres(const VipsImage *image)
+   * }
+   */
+  public static double image_get_xres(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_xres", "image");
+    }
+    var result = VipsRaw.vips_image_get_xres(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_yres(const VipsImage *image)
+   * }
+   */
+  public static double image_get_yres(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_yres", "image");
+    }
+    var result = VipsRaw.vips_image_get_yres(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_xoffset(const VipsImage *image)
+   * }
+   */
+  public static int image_get_xoffset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_xoffset", "image");
+    }
+    var result = VipsRaw.vips_image_get_xoffset(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_yoffset(const VipsImage *image)
+   * }
+   */
+  public static int image_get_yoffset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_yoffset", "image");
+    }
+    var result = VipsRaw.vips_image_get_yoffset(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_filename(const VipsImage *image)
+   * }
+   */
+  public static String image_get_filename(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_filename", "image");
+    }
+    var result = VipsRaw.vips_image_get_filename(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_filename", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_mode(const VipsImage *image)
+   * }
+   */
+  public static String image_get_mode(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_mode", "image");
+    }
+    var result = VipsRaw.vips_image_get_mode(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_mode", "result");
+    }
+    return result.getString(0);
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_scale(const VipsImage *image)
+   * }
+   */
+  public static double image_get_scale(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_scale", "image");
+    }
+    var result = VipsRaw.vips_image_get_scale(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * double vips_image_get_offset(const VipsImage *image)
+   * }
+   */
+  public static double image_get_offset(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_offset", "image");
+    }
+    var result = VipsRaw.vips_image_get_offset(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_page_height(VipsImage *image)
+   * }
+   */
+  public static int image_get_page_height(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_page_height", "image");
+    }
+    var result = VipsRaw.vips_image_get_page_height(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_n_pages(VipsImage *image)
+   * }
+   */
+  public static int image_get_n_pages(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_n_pages", "image");
+    }
+    var result = VipsRaw.vips_image_get_n_pages(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_n_subifds(VipsImage *image)
+   * }
+   */
+  public static int image_get_n_subifds(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_n_subifds", "image");
+    }
+    var result = VipsRaw.vips_image_get_n_subifds(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_orientation(VipsImage *image)
+   * }
+   */
+  public static int image_get_orientation(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_orientation", "image");
+    }
+    var result = VipsRaw.vips_image_get_orientation(image);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gboolean vips_image_get_orientation_swap(VipsImage *image)
+   * }
+   */
+  public static boolean image_get_orientation_swap(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_orientation_swap", "image");
+    }
+    var result = VipsRaw.vips_image_get_orientation_swap(image);
+    return result == 1;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_concurrency(VipsImage *image, int default_concurrency)
+   * }
+   */
+  public static int image_get_concurrency(MemorySegment image, int default_concurrency) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_concurrency", "image");
+    }
+    var result = VipsRaw.vips_image_get_concurrency(image, default_concurrency);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const void *vips_image_get_data(VipsImage *image)
+   * }
+   */
+  public static MemorySegment image_get_data(Arena arena, MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_data", "image");
+    }
+    var result = VipsRaw.vips_image_get_data(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_data", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_as_string(const VipsImage *image, const char *name, char **out)
+   * }
+   */
+  public static int image_get_as_string(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_as_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_as_string", "out");
+    }
+    var result = VipsRaw.vips_image_get_as_string(image, name, out);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
    * GType vips_image_get_typeof(const VipsImage *image, const char *name)
    * }
    */
@@ -1442,6 +1735,42 @@ public final class VipsHelper {
     }
     var name = arena.allocateFrom(nameString);
     var result = VipsRaw.vips_image_get_typeof(image, name);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * gchar **vips_image_get_fields(VipsImage *image)
+   * }
+   */
+  public static MemorySegment image_get_fields(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_fields", "image");
+    }
+    var result = VipsRaw.vips_image_get_fields(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_fields", "result");
+    }
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_area(const VipsImage *image, const char *name, const void **data)
+   * }
+   */
+  public static int image_get_area(Arena arena, MemorySegment image, String nameString,
+      MemorySegment data) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_area", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_area", "data");
+    }
+    var result = VipsRaw.vips_image_get_area(image, name, data);
     return result;
   }
 
@@ -1465,6 +1794,143 @@ public final class VipsHelper {
     }
     var result = VipsRaw.vips_image_get_blob(image, name, data, length);
     return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_int(const VipsImage *image, const char *name, int *out)
+   * }
+   */
+  public static int image_get_int(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_int", "out");
+    }
+    var result = VipsRaw.vips_image_get_int(image, name, out);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_double(const VipsImage *image, const char *name, double *out)
+   * }
+   */
+  public static int image_get_double(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_double", "out");
+    }
+    var result = VipsRaw.vips_image_get_double(image, name, out);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_string(const VipsImage *image, const char *name, const char **out)
+   * }
+   */
+  public static int image_get_string(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_string", "out");
+    }
+    var result = VipsRaw.vips_image_get_string(image, name, out);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_image(const VipsImage *image, const char *name, VipsImage **out)
+   * }
+   */
+  public static int image_get_image(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_image", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_image", "out");
+    }
+    var result = VipsRaw.vips_image_get_image(image, name, out);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_array_int(VipsImage *image, const char *name, int **out, int *n)
+   * }
+   */
+  public static int image_get_array_int(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_int", "out");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_int", "n");
+    }
+    var result = VipsRaw.vips_image_get_array_int(image, name, out, n);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * int vips_image_get_array_double(VipsImage *image, const char *name, double **out, int *n)
+   * }
+   */
+  public static int image_get_array_double(Arena arena, MemorySegment image, String nameString,
+      MemorySegment out, MemorySegment n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(out)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_double", "out");
+    }
+    if(!VipsValidation.isValidPointer(n)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_array_double", "n");
+    }
+    var result = VipsRaw.vips_image_get_array_double(image, name, out, n);
+    return result;
+  }
+
+  /**
+   * Binding for:
+   * {@snippet lang=c :
+   * const char *vips_image_get_history(VipsImage *image)
+   * }
+   */
+  public static String image_get_history(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_history", "image");
+    }
+    var result = VipsRaw.vips_image_get_history(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_history", "result");
+    }
+    return result.getString(0);
   }
 
   /**
