@@ -76,7 +76,7 @@ dependencies {
 <p>When running your project you must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you
 don't, you'll get a warning about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't
 explicitly include this flag.</p>
-<p>As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips <code>8.16.0</code>,
+<p>As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips <code>8.16.1</code>,
 however they use the underlying libvips operation API. Most operations <strong>do not</strong> use the C API directly (as described
 in the <a href="https://www.libvips.org/API/current/binding.html">bindings docs</a>) - they should be safe to use with different
 libvips versions, assuming there haven't been major changes.</p>
