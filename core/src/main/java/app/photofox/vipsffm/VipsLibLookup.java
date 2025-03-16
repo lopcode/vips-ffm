@@ -101,17 +101,18 @@ public class VipsLibLookup {
             try {
                 symbolLookup = SymbolLookup.libraryLookup(Path.of(path), arena);
             } catch (IllegalArgumentException exception) {
-                throw makeOverriddenPathMissingException(libraryName, path);
+                throw makeLibraryAtPathNotValidException(libraryName, path, exception);
             }
             return symbolLookup;
         });
     }
 
-    private static IllegalArgumentException makeOverriddenPathMissingException(
+    private static IllegalArgumentException makeLibraryAtPathNotValidException(
         String libraryName,
-        String overridePath
+        String overridePath,
+        Throwable cause
     ) {
-        var message = "path override requested for %s, but library not found at path: %s".formatted(libraryName, overridePath);
-        return new IllegalArgumentException(message);
+        var message = "path override requested for %s, but library not valid at path: %s".formatted(libraryName, overridePath);
+        return new IllegalArgumentException(message, cause);
     }
 }
