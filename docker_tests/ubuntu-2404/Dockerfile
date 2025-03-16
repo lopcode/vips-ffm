@@ -1,4 +1,4 @@
-FROM debian:12.1-slim
+FROM ubuntu:24.04
 ENV JAVA_HOME=/opt/java/openjdk
 COPY --from=eclipse-temurin:22 $JAVA_HOME $JAVA_HOME
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
