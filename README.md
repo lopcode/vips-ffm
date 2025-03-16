@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.5.1")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.5.2")
 }
 ```
 When running your project you must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you
