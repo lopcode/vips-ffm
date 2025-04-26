@@ -39,13 +39,11 @@ tasks.withType<Javadoc> {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.0.0")
-            testType = TestSuiteType.UNIT_TEST
+            useKotlinTest("2.1.20")
         }
 
         register<JvmTestSuite>("integrationTest") {
-            useKotlinTest("2.0.0")
-            testType = TestSuiteType.INTEGRATION_TEST
+            useKotlinTest("2.1.20")
 
             dependencies {
                 implementation(project(":core"))

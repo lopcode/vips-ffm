@@ -23,7 +23,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.10.1
+          gradle-version: 8.14
 
       - name: Run checks
         run: ./gradlew build check shadowJar
@@ -48,7 +48,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.10.1
+          gradle-version: 8.14
 
       - name: Run checks
         run: ./gradlew build check shadowJar
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.10.1
+          gradle-version: 8.14
 
       - name: Run samples
         shell: pwsh
@@ -102,7 +102,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.10.1
+          gradle-version: 8.14
 
       - name: Run checks
         run: ./run_docker_tests.sh

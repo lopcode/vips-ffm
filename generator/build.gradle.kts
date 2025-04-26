@@ -33,8 +33,7 @@ java {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.0.0")
-            testType = TestSuiteType.UNIT_TEST
+            useKotlinTest("2.1.20")
         }
     }
 }

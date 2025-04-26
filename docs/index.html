@@ -54,15 +54,14 @@ loadScripts(document, 'script');</script>
 <h1 class="title">core API</h1>
 </div>
 <div class="block"><h1 id="vips-ffm-heading">vips-ffm</h1>
-<p><a href="https://github.com/libvips/libvips">libvips</a> bindings for JVM projects, using the &quot;Foreign Function &amp; Memory API&quot;
-(<a href="https://openjdk.org/jeps/454">JEP 454</a>), and the &quot;Class-File API&quot; (<a href="https://openjdk.org/jeps/457">JEP 457</a>) released in JDK 22. The combination
-of libvips, FFM, and auto-generated helpers means these bindings are complete (supporting all libvips operations), safe,
-and <a href="https://github.com/lopcode/vips-ffm/issues/59#issuecomment-2367634956">faster</a> than AWT or JNI-based alternatives.</p>
+<p>Fast, safe, complete <a href="https://github.com/libvips/libvips">libvips</a> bindings for image processing in Java / JVM projects.</p>
 <p>Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced &quot;vips (like zips)
 eff-eff-emm&quot;. The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
 (Ubuntu 24.04, Debian 12.1). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).</p>
-<p>Used the library? I'd love to hear from more users - let me know in <a href="https://github.com/lopcode/vips-ffm/discussions">Discussions</a>.</p>
-<p>Please also give <a href="https://github.com/lopcode/vips-ffm">the repo</a> a star 🌟️!</p>
+<p>Uses the &quot;Foreign Function &amp; Memory API&quot; (<a href="https://openjdk.org/jeps/454">JEP 454</a>), and the &quot;Class-File API&quot; (<a href="https://openjdk.org/jeps/457">JEP 457</a>) released in JDK 22.
+Built in such a way that it's usually the fastest image processing library available for Java.</p>
+<p>Used the library? I'd love to hear from more users - let me know in <a href="https://github.com/lopcode/vips-ffm/discussions">Discussions</a>. Please also give <a href="https://github.com/lopcode/vips-ffm">the repo</a>
+a star 🌟️!</p>
 <h2 id="usage-heading">Usage</h2>
 <p><code>vips-ffm</code> is available on Maven Central. To get set up with Gradle:</p>
 <pre><code class="language-kotlin">repositories {
@@ -73,32 +72,17 @@ dependencies {
     implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.5.2&quot;)
 }
 </code></pre>
-<p>When running your project you must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you
-don't, you'll get a warning about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't
-explicitly include this flag.</p>
-<p>As the project uses the Java FFM API, it must target JDK 22+. Bindings are currently generated from libvips <code>8.16.1</code>,
-however they use the underlying libvips operation API. Most operations <strong>do not</strong> use the C API directly (as described
-in the <a href="https://www.libvips.org/API/current/binding.html">bindings docs</a>) - they should be safe to use with different
-libvips versions, assuming there haven't been major changes.</p>
+<p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
+first, then use it through one of the helper classes (for example, <a href="https://vipsffm.photofox.app/app.photofox.vipsffm/app/photofox/vipsffm/VImage.html">VImage</a>).
+There are also lots of examples in the <a href="#samples">samples</a>.</p>
+<p>You must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you don't, you'll get a warning
+about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
+<p>As the project uses the Java FFM API, your target must also be JDK 22+. Bindings are currently generated from libvips
+<code>8.16.1</code> (but should be safe to use with different minor or patch versions).</p>
 <blockquote>
 <p>[!NOTE]
 This library <strong>does not</strong> include <code>libvips</code> in the download, you must add it to the system/container you're building
 for. See details in <a href="#native-library-loading">native library loading</a>.</p>
-</blockquote>
-<p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html">Arena</a> to operations like
-<code>VImage.newFromFile</code>, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
-by using <code>Vips.run</code> as shown in the <a href="#thumbnail-sample">sample</a> below. <code>VImage</code> and associated enums have extensive
-Javadocs included, which are automatically generated from the same source that the libvips website uses, for ease of use.
-These helper objects expose their raw pointers as a last resort via functions like <code>VTarget.getUnsafeStructAddress</code> - if
-you need to use these raw pointers and can't find an alternative, please file a GitHub Issue.</p>
-<p>Helper enums are generated for the version of libvips shown above. If you need to use an enum from another version,
-which isn't present in <code>vips-ffm</code>, you can use <code>VipsOption.Enum(rawValue)</code> or <code>VEnum.Raw(rawValue)</code>.</p>
-<blockquote>
-<p>[!CAUTION]
-Bindings generated by <code>jextract</code> are available in <code>VipsRaw</code>, and wrapped with validation in <code>VipsHelper</code>. These
-functions are difficult to use without accidentally causing memory leaks, or even segfaults! If what you want to do is
-available in <code>VImage</code> and other <code>V</code>-prefixed classes, use those instead. If you notice something missing, please open
-a GitHub Issue.</p>
 </blockquote>
 <h3 id="thumbnail-sample-heading">Thumbnail sample</h3>
 <p>To get a feeling for the bindings, here's an indicative sample written in Kotlin (using the Java bindings) that:</p>
@@ -196,6 +180,24 @@ Vips.shutdown()
 memory: high-water mark 151.24 MB
 [main] INFO vipsffm.SampleRunner - all samples ran successfully 🎉
 </code></pre>
+<h3 id="detailed-usage-heading">Detailed usage</h3>
+<p>Most operations <strong>do not</strong> use the C API directly (as described in the <a href="https://www.libvips.org/API/current/binding.html">bindings docs</a>) - they
+should be safe to use with different libvips versions, assuming there haven't been major changes.</p>
+<p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html">Arena</a> to operations like
+<code>VImage.newFromFile</code>, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
+by using <code>Vips.run</code> as shown in the <a href="#thumbnail-sample">sample</a> below. <code>VImage</code> and associated enums have extensive
+Javadocs included, which are automatically generated from the same source that the libvips website uses, for ease of use.
+These helper objects expose their raw pointers as a last resort via functions like <code>VTarget.getUnsafeStructAddress</code> - if
+you need to use these raw pointers and can't find an alternative, please file a GitHub Issue.</p>
+<p>Helper enums are generated for the version of libvips shown above. If you need to use an enum from another version,
+which isn't present in <code>vips-ffm</code>, you can use <code>VipsOption.Enum(rawValue)</code> or <code>VEnum.Raw(rawValue)</code>.</p>
+<blockquote>
+<p>[!CAUTION]
+Bindings generated by <code>jextract</code> are available in <code>VipsRaw</code>, and wrapped with validation in <code>VipsHelper</code>. These
+functions are difficult to use without accidentally causing memory leaks, or even segfaults! If what you want to do is
+available in <code>VImage</code> and other <code>V</code>-prefixed classes, use those instead. If you notice something missing, please open
+a GitHub Issue.</p>
+</blockquote>
 <h3 id="docker-checks-heading">Docker checks</h3>
 <p>These samples are also run in Docker containers, to verify behaviour on specific Linux distributions. They're useful to
 look at if you're deploying <code>libvips</code> and <code>vips-ffm</code> workloads using containers.</p>
@@ -238,7 +240,8 @@ why a goal should change!</p>
 <li>Incubate in <a href="https://github.com/lopcode/photo-fox">Photo Fox</a> with some &quot;real world&quot; usage.</li>
 </ul>
 <h2 id="contributing-heading">Contributing</h2>
-<p>I'm not currently looking for external code contributions. If you'd like to help the project:</p>
+<p>Please see the contributing guidelines: <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+<p>Some great non-code ways to help the project:</p>
 <ul>
 <li>Use the library and give your feedback in <a href="https://github.com/lopcode/vips-ffm/discussions">Discussions</a>
 <ul>
