@@ -16,12 +16,14 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(23))
+        languageVersion.set(JavaLanguageVersion.of(24))
     }
-    sourceCompatibility = JavaVersion.VERSION_22 // intentionally kept at 22
-    targetCompatibility = JavaVersion.VERSION_22
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks.withType<JavaCompile> {
+    options.release = 22 // intentionally kept at 22
 }
 
 tasks.withType<Javadoc> {
@@ -39,11 +41,11 @@ tasks.withType<Javadoc> {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.20")
+            useKotlinTest("2.1.21")
         }
 
         register<JvmTestSuite>("integrationTest") {
-            useKotlinTest("2.1.20")
+            useKotlinTest("2.1.21")
 
             dependencies {
                 implementation(project(":core"))
