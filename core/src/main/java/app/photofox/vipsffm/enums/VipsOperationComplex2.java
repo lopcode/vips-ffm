@@ -1,17 +1,12 @@
 package app.photofox.vipsffm.enums;
 
-import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See also: {@link VImage#complex2}.</p>
- */
+/// See also: `Image.complex2`.
 public enum VipsOperationComplex2 implements VNamedEnum {
-  /**
-   * <p>convert to polar coordinates</p>
-   */
+  /// convert to polar coordinates
   OPERATION_COMPLEX2_CROSS_PHASE("VIPS_OPERATION_COMPLEX2_CROSS_PHASE", "cross-phase", 0),
 
   OPERATION_COMPLEX2_LAST("VIPS_OPERATION_COMPLEX2_LAST", "last", 1);

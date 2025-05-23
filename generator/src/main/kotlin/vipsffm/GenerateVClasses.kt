@@ -23,6 +23,7 @@ import java.util.Arrays
 import java.util.Locale
 import java.util.Objects
 import javax.lang.model.element.Modifier
+import kotlin.io.path.writeText
 
 object GenerateVClasses {
 
@@ -147,7 +148,7 @@ object GenerateVClasses {
             .addStatement("return Objects.equals(arena, vImage.arena) && Objects.equals(address, vImage.address)")
             .build()
         val unsafeDeprecatedAddress = MethodSpec.methodBuilder("getUnsafeAddress")
-            .addJavadoc("@deprecated See {@link #getUnsafeStructAddress}")
+            .addJavadoc("@deprecated See [#getUnsafeStructAddress]")
             .addStatement("return this.getUnsafeStructAddress()")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
@@ -159,16 +160,16 @@ object GenerateVClasses {
             )
             .build()
         val unsafeStructAddress = MethodSpec.methodBuilder("getUnsafeStructAddress")
-            .addJavadoc("Gets the raw {@link MemorySegment} (C pointer) for this VipsImage struct")
-            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the {@link #arena}")
-            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with {@link VipsHelper}")
+            .addJavadoc("Gets the raw [MemorySegment] (C pointer) for this VipsImage struct")
+            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the [#arena]")
+            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]")
             .addStatement("return this.address")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
             .build()
         val vipsClass = TypeSpec.classBuilder(vimageType.topLevelClassName())
             .addJavadoc("A generated wrapper representing a VipsImage. Do not edit.")
-            .addJavadoc("\n@see <a href=\"https://www.libvips.org/API/current/api-index-full.html\">libvips api docs</a>")
+            .addJavadoc("\n[libvips api docs](https://www.libvips.org/API/current/api-index-full.html)")
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
             .addMethod(ctor)
             .addMethod(hashCode)
@@ -182,8 +183,12 @@ object GenerateVClasses {
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm", vipsClass)
             .build()
-        val targetedGeneratedSourceRoot = Path.of("core/src/main/java")
-        javaFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm")
+        targetGeneratedSourceRoot.resolve("VImage.java").writeText(javaFile, Charsets.UTF_8)
     }
 
     private fun buildOperationMethod(
@@ -283,7 +288,7 @@ object GenerateVClasses {
             var argNameSection = poetArg.name()
             if (argSpec.isEnum) {
                 val enumName = (argSpec.type as GValueType.Unknown).rawName
-                argNameSection += " {@link \$T}"
+                argNameSection += " [\$T]"
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
             } else {
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
@@ -296,10 +301,10 @@ object GenerateVClasses {
             }
             val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
-            var optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
+            var optionName = "[${vipsOptionType.simpleNames().first()}]"
             if (it.isEnum) {
                 val enumName = (it.type as GValueType.Unknown).rawName
-                optionName += " {@link \$T}"
+                optionName += " [\$T]"
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
             } else {
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
@@ -369,7 +374,30 @@ object GenerateVClasses {
         )
         val classReferences = mutableListOf<ClassMatch>()
 
-        girDoc = girDoc.replace("Optional arguments:\n\n?(\\*?(.+)\n)+".toRegex(), "")
+        girDoc = girDoc.replace("::: tip \"Optional arguments\"\n\n?(\\*?(.+)\n)+".toRegex(), "")
+
+        // replace gir markdown references
+        // examples:
+        // * [ctor@Image.new_from_file]
+        // * [enum@Vips.BandFormat.UCHAR]
+        // * "@something" - references a local parameter
+        girDoc = girDoc.replace("\\[([A-Za-z0-9-_]+)@([A-Za-z0-9-_.]+)]".toRegex()) { match ->
+            val matchType = match.groups[1]!!.value
+            val matchName = match.groups[2]!!.value
+
+            return@replace when (matchType) {
+                "ctor" -> "`$matchName`"
+                "enum" -> "`$matchName`"
+                "method" -> "`$matchName`"
+                "class" -> "`$matchName`"
+                "func" -> "`$matchName`"
+                "struct" -> "`$matchName`"
+                "const" -> "`$matchName`"
+                "alias" -> "`$matchName`"
+                "flags" -> "`$matchName`"
+                else -> throw RuntimeException("unsupported gir lookup type: $matchType")
+            }
+        }
 
         girDoc = girDoc.replace("[%#@]([A-Za-z0-9-_]+)".toRegex()) { match ->
             val identifierName = match.groups[1]!!.value
@@ -386,7 +414,7 @@ object GenerateVClasses {
                         match.range.first
                     )
                     val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
-                    return@replace "{@link $enumName}"
+                    return@replace "[$enumName]"
                 }
             }
 
@@ -402,14 +430,14 @@ object GenerateVClasses {
                 }
                 if (operationMatch != null && optionMatch != null) {
                     if (optionMatch.isRequired) {
-                        return@replace "{@code ${optionMatch.name.fromSnakeToJavaStyle()}}"
+                        return@replace "`${optionMatch.name.fromSnakeToJavaStyle()}`"
                     } else {
-                        return@replace "{@code ${optionMatch.name}}"
+                        return@replace "`${optionMatch.name}`"
                     }
                 }
             }
 
-            return@replace "{@code $identifierName}"
+            return@replace "`$identifierName`"
         }
 
         girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
@@ -417,37 +445,18 @@ object GenerateVClasses {
             if (operations.any { it.gir?.cIdentifier == "vips_$identifier" }) {
                 val newName = identifier.removePrefix("image").fromSnakeToJavaStyle()
                 if (newName == name) {
-                    "{@code $name}"
+                    "`$name`"
                 } else {
                     classReferences += ClassMatch(
                         vimageType,
                         match.range.first
                     )
-                    "{@link \$T#$newName}"
+                    "[\$T#$newName]"
                 }
             } else {
-                "{@code vips_$identifier}"
+                "`vips_$identifier`"
             }
         }
-
-        girDoc = "<p>" + girDoc.replace("\n\n", "</p>\n\n<p>")
-            .trim() + "</p>"
-
-        girDoc = girDoc.replace("<(code|link|function)(.*?)>".toRegex(), "{@code ")
-            .replace("</(link|function|code)>".toRegex(), "}")
-            .replace("<table>".toRegex(), "<pre>{@code\n<table>")
-            .replace("</table>".toRegex(), "</table>\n}</pre>")
-            .replace("<emphasis>".toRegex(), "<b>")
-            .replace("</emphasis>".toRegex(), "</b>")
-            .replace("<p>|[", "<pre>{@code ")
-            .replace("]|", "}</pre>")
-            .replace("</p>\n\n<p>(\\s)+".toRegex(), "\n\n$1")
-            .replace("<p><pre>".toRegex(), "<pre>")
-            .replace("</pre></p>".toRegex(), "</pre>")
-            .replace("<p>([\\s\\S]*?)</p>".toRegex()) { match ->
-                val escapedInner = StringEscapeUtils.escapeHtml4(match.groups[1]!!.value)
-                "<p>$escapedInner</p>"
-            }
 
         val orderedClassReferences = classReferences.sortedBy { it.matchPosition }.map { it.className }
         return Pair(girDoc, orderedClassReferences)
@@ -600,7 +609,7 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
             .addStatement("return newFromSource(arena, source, optionString, options)")
-            .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use {@link VImage#newFromFile(Arena, String, VipsOption...)} and friends instead.")
+            .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use [VImage#newFromFile] and friends instead.")
             .build()
         val newFromBytesNoOptionsMethod = MethodSpec.methodBuilder("newFromBytes")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -612,7 +621,7 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
             .addStatement("return newFromSource(arena, source, options)")
-            .addJavadoc("See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}")
+            .addJavadoc("See [VImage#newFromBytes]")
             .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -626,7 +635,7 @@ object GenerateVClasses {
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
             .addStatement("return newFromSource(arena, source, optionString, options)")
             .addJavadoc("""
-                Creates a new VImage from an {@link InputStream}. This uses libvips' "custom streaming" feature and is
+                Creates a new VImage from an [InputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
@@ -643,7 +652,7 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
             .addStatement("return newFromSource(arena, source, options)")
-            .addJavadoc("See {@link VImage#newFromStream(Arena, InputStream, String, VipsOption...)}")
+            .addJavadoc("See [VImage#newFromStream]")
             .build()
         val writeToFileMethod = MethodSpec.methodBuilder("writeToFile")
             .addModifiers(Modifier.PUBLIC)
@@ -694,7 +703,7 @@ object GenerateVClasses {
             .addStatement("var target = \$T.newFromOutputStream(arena, stream)", vtargetType)
             .addStatement("this.writeToTarget(target, suffix, options)")
             .addJavadoc("""
-                Writes this VImage to an {@link OutputStream}. This uses libvips' "custom streaming" feature and is
+                Writes this VImage to an [OutputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
@@ -853,8 +862,12 @@ object GenerateVClasses {
         val enumClass = enumClassBuilder.build()
         val enumFile = JavaFile.builder("app.photofox.vipsffm.enums", enumClass)
             .build()
-        val targetedGeneratedSourceRoot = Path.of("core/src/main/java")
-        enumFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm/enums")
+        targetGeneratedSourceRoot.resolve("$parentName.java").writeText(enumFile, Charsets.UTF_8)
     }
 }
 
