@@ -1,16 +1,17 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>See {@link app.photofox.vipsffm.VImage#flip}, {@link app.photofox.vipsffm.VImage#join} and so on.</p>
+ * <p>See {@link VImage#flip}, {@link VImage#join} and so on.</p>
  *
- * <p>Operations like {@link app.photofox.vipsffm.VImage#flip} need to be told whether to flip left-right or
+ * <p>Operations like {@link VImage#flip} need to be told whether to flip left-right or
  * top-bottom.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#flip}, {@link app.photofox.vipsffm.VImage#join}.</p>
+ * <p>See also: {@link VImage#flip}, {@link VImage#join}.</p>
  */
 public enum VipsDirection implements VNamedEnum {
   /**

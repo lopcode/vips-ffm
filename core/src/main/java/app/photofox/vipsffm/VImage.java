@@ -1,11 +1,33 @@
 package app.photofox.vipsffm;
 
+import app.photofox.vipsffm.enums.VipsAccess;
+import app.photofox.vipsffm.enums.VipsAlign;
 import app.photofox.vipsffm.enums.VipsAngle;
+import app.photofox.vipsffm.enums.VipsAngle45;
 import app.photofox.vipsffm.enums.VipsBandFormat;
 import app.photofox.vipsffm.enums.VipsBlendMode;
+import app.photofox.vipsffm.enums.VipsCoding;
+import app.photofox.vipsffm.enums.VipsCombine;
+import app.photofox.vipsffm.enums.VipsCombineMode;
 import app.photofox.vipsffm.enums.VipsCompassDirection;
 import app.photofox.vipsffm.enums.VipsDirection;
+import app.photofox.vipsffm.enums.VipsExtend;
+import app.photofox.vipsffm.enums.VipsFailOn;
+import app.photofox.vipsffm.enums.VipsForeignDzContainer;
+import app.photofox.vipsffm.enums.VipsForeignDzDepth;
+import app.photofox.vipsffm.enums.VipsForeignDzLayout;
+import app.photofox.vipsffm.enums.VipsForeignHeifCompression;
+import app.photofox.vipsffm.enums.VipsForeignHeifEncoder;
+import app.photofox.vipsffm.enums.VipsForeignPpmFormat;
+import app.photofox.vipsffm.enums.VipsForeignSubsample;
+import app.photofox.vipsffm.enums.VipsForeignTiffCompression;
+import app.photofox.vipsffm.enums.VipsForeignTiffPredictor;
+import app.photofox.vipsffm.enums.VipsForeignTiffResunit;
+import app.photofox.vipsffm.enums.VipsForeignWebpPreset;
+import app.photofox.vipsffm.enums.VipsIntent;
+import app.photofox.vipsffm.enums.VipsInteresting;
 import app.photofox.vipsffm.enums.VipsInterpretation;
+import app.photofox.vipsffm.enums.VipsKernel;
 import app.photofox.vipsffm.enums.VipsOperationBoolean;
 import app.photofox.vipsffm.enums.VipsOperationComplex;
 import app.photofox.vipsffm.enums.VipsOperationComplex2;
@@ -15,7 +37,12 @@ import app.photofox.vipsffm.enums.VipsOperationMath2;
 import app.photofox.vipsffm.enums.VipsOperationMorphology;
 import app.photofox.vipsffm.enums.VipsOperationRelational;
 import app.photofox.vipsffm.enums.VipsOperationRound;
+import app.photofox.vipsffm.enums.VipsPCS;
+import app.photofox.vipsffm.enums.VipsPrecision;
+import app.photofox.vipsffm.enums.VipsRegionShrink;
 import app.photofox.vipsffm.enums.VipsSdfShape;
+import app.photofox.vipsffm.enums.VipsSize;
+import app.photofox.vipsffm.enums.VipsTextWrap;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.Deprecated;
@@ -189,7 +216,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Convert a Lab three-band float image to LabQ ({@link app.photofox.vipsffm.enums.VipsCoding#CODING_LABQ}).</p>
+   * <p>Convert a Lab three-band float image to LabQ ({@link VipsCoding#CODING_LABQ}).</p>
    *
    * <p>See also: {@link VImage#LabQ2Lab}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -237,7 +264,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Unpack a LabQ ({@link app.photofox.vipsffm.enums.VipsCoding#CODING_LABQ}) image to a three-band float image.</p>
+   * <p>Unpack a LabQ ({@link VipsCoding#CODING_LABQ}) image to a three-band float image.</p>
    *
    * <p>See also: {@code LabQ2Lab}, {@link VImage#LabQ2LabS}, {@link VImage#rad2float}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -253,7 +280,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Unpack a LabQ ({@link app.photofox.vipsffm.enums.VipsCoding#CODING_LABQ}) image to a three-band short image.</p>
+   * <p>Unpack a LabQ ({@link VipsCoding#CODING_LABQ}) image to a three-band short image.</p>
    *
    * <p>See also: {@link VImage#LabS2LabQ}, {@code LabQ2LabS}, {@link VImage#rad2float}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -269,7 +296,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Unpack a LabQ ({@link app.photofox.vipsffm.enums.VipsCoding#CODING_LABQ}) image to a three-band short image.</p>
+   * <p>Unpack a LabQ ({@link VipsCoding#CODING_LABQ}) image to a three-band short image.</p>
    *
    * <p>See also: {@link VImage#LabS2LabQ}, {@code LabQ2sRGB}, {@link VImage#rad2float}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -539,7 +566,7 @@ public final class VImage {
    * transformed input image.</p>
    *
    * <p>By default, new pixels are filled with {@code background}. This defaults to
-   * zero (black). You can set other extend types with {@code extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
+   * zero (black). You can set other extend types with {@code extend}. {@link VipsExtend#EXTEND_COPY}
    * is better for image upsizing.</p>
    *
    * <p>{@code interpolate} defaults to bilinear.</p>
@@ -564,7 +591,7 @@ public final class VImage {
    * @optionalArg idy {@link VipsOption.Double} Vertical input displacement
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg premultiplied {@link VipsOption.Boolean} Images have premultiplied alpha
-   * @optionalArg extend {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsExtend} How to generate the extra pixels
+   * @optionalArg extend {@link VipsOption.Enum} {@link VipsExtend} How to generate the extra pixels
    */
   public VImage affine(List<Double> matrix, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -593,8 +620,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -648,8 +675,8 @@ public final class VImage {
    * @optionalArg across {@link VipsOption.Int} Number of images across grid
    * @optionalArg shim {@link VipsOption.Int} Pixels between images
    * @optionalArg background {@link VipsOption.ArrayDouble} Colour for new pixels
-   * @optionalArg halign {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAlign} Align on the left, centre or right
-   * @optionalArg valign {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAlign} Align on the top, centre or bottom
+   * @optionalArg halign {@link VipsOption.Enum} {@link VipsAlign} Align on the left, centre or right
+   * @optionalArg valign {@link VipsOption.Enum} {@link VipsAlign} Align on the top, centre or bottom
    * @optionalArg hspacing {@link VipsOption.Int} Horizontal spacing between images
    * @optionalArg vspacing {@link VipsOption.Int} Vertical spacing between images
    */
@@ -710,11 +737,11 @@ public final class VImage {
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifCompression} Compression format
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignHeifCompression} Compression format
    * @optionalArg effort {@link VipsOption.Int} CPU effort
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg speed {@link VipsOption.Int} CPU effort
-   * @optionalArg encoder {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifEncoder} Select encoder to use
+   * @optionalArg encoder {@link VipsOption.Enum} {@link VipsForeignHeifEncoder} Select encoder to use
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -1118,7 +1145,7 @@ public final class VImage {
    * usually a good value.</p>
    *
    * <p>Use {@code precision} to set the precision of edge detection. For uchar images,
-   * setting this to {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER} will make edge detection much
+   * setting this to {@link VipsPrecision#PRECISION_INTEGER} will make edge detection much
    * faster, but sacrifice some sensitivity.</p>
    *
    * <p>You will probably need to process the output further to eliminate weak
@@ -1127,7 +1154,7 @@ public final class VImage {
    * <p>See also: {@link VImage#sobel}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg sigma {@link VipsOption.Double} Sigma of Gaussian
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Convolve with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Convolve with this precision
    */
   public VImage canny(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -1252,9 +1279,9 @@ public final class VImage {
    * @param mask Input matrix image
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg times {@link VipsOption.Int} Rotate and convolve this many times
-   * @optionalArg angle {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAngle45} Rotate mask by this much between convolutions
-   * @optionalArg combine {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsCombine} Combine convolution results like this
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Convolve with this precision
+   * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle45} Rotate mask by this much between convolutions
+   * @optionalArg combine {@link VipsOption.Enum} {@link VipsCombine} Combine convolution results like this
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Convolve with this precision
    * @optionalArg layers {@link VipsOption.Int} Use this many layers in approximation
    * @optionalArg cluster {@link VipsOption.Int} Cluster lines closer than this in approximation
    */
@@ -1456,24 +1483,24 @@ public final class VImage {
    * <p>where scale and offset are part of {@code mask}.</p>
    *
    * <p>By default, {@code precision} is
-   * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_FLOAT}. The output image
+   * {@link VipsPrecision#PRECISION_FLOAT}. The output image
    * is always {@link VipsBandFormat#FORMAT_FLOAT} unless {@code in} is {@link VipsBandFormat#FORMAT_DOUBLE}, in which case
    * {@code out} is also {@link VipsBandFormat#FORMAT_DOUBLE}.</p>
    *
-   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, then
+   * <p>If {@code precision} is {@link VipsPrecision#PRECISION_INTEGER}, then
    * elements of {@code mask} are converted to
    * integers before convolution, using rint(),
    * and the output image
    * always has the same {@code VipsBandFormat} as the input image.</p>
    *
-   * <p>For {@link VipsBandFormat#FORMAT_UCHAR} images and {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER} {@code precision},
+   * <p>For {@link VipsBandFormat#FORMAT_UCHAR} images and {@link VipsPrecision#PRECISION_INTEGER} {@code precision},
    * {@code conv} uses a fast vector path based on
    * half-float arithmetic. This can produce slightly different results.
    * Disable the vector path with `--vips-novector` or `VIPS_NOVECTOR` or
    * {@code vips_vector_set_enabled}.</p>
    *
-   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_APPROXIMATE} then, like
-   * {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, {@code mask} is converted to int before convolution, and
+   * <p>If {@code precision} is {@link VipsPrecision#PRECISION_APPROXIMATE} then, like
+   * {@link VipsPrecision#PRECISION_INTEGER}, {@code mask} is converted to int before convolution, and
    * the output image
    * always has the same {@code VipsBandFormat} as the input image.</p>
    *
@@ -1489,7 +1516,7 @@ public final class VImage {
    * <p>See also: {@link VImage#convsep}.</p>
    * @param mask Input matrix image
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Convolve with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Convolve with this precision
    * @optionalArg layers {@link VipsOption.Int} Use this many layers in approximation
    * @optionalArg cluster {@link VipsOption.Int} Cluster lines closer than this in approximation
    */
@@ -1654,7 +1681,7 @@ public final class VImage {
    * <p>See also: {@link VImage#conv}, {@link VImage#gaussmat}.</p>
    * @param mask Input matrix image
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Convolve with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Convolve with this precision
    * @optionalArg layers {@link VipsOption.Int} Use this many layers in approximation
    * @optionalArg cluster {@link VipsOption.Int} Cluster lines closer than this in approximation
    */
@@ -1686,7 +1713,7 @@ public final class VImage {
    * @optionalArg height {@link VipsOption.Int} Image height in pixels
    * @optionalArg bands {@link VipsOption.Int} Number of bands in image
    * @optionalArg format {@link VipsOption.Enum} {@link VipsBandFormat} Pixel format in image
-   * @optionalArg coding {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsCoding} Pixel coding
+   * @optionalArg coding {@link VipsOption.Enum} {@link VipsCoding} Pixel coding
    * @optionalArg interpretation {@link VipsOption.Enum} {@link VipsInterpretation} Pixel interpretation
    * @optionalArg xres {@link VipsOption.Double} Horizontal resolution in pixels/mm
    * @optionalArg yres {@link VipsOption.Double} Vertical resolution in pixels/mm
@@ -1751,7 +1778,7 @@ public final class VImage {
    * Default ;,&lt;b&gt;tab&lt;/b&gt;. Separators are never run together.</p>
    *
    * <p>Use {@code fail-on} to set the type of error that will cause load to fail. By
-   * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
+   * default, loaders are permissive, that is, {@link VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}, {@link VImage#bandfold}.</p>
    * @param arena The arena that bounds resulting memory allocations during this operation
@@ -1763,8 +1790,8 @@ public final class VImage {
    * @optionalArg separator {@link VipsOption.String} Set of separator characters
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -1793,8 +1820,8 @@ public final class VImage {
    * @optionalArg separator {@link VipsOption.String} Set of separator characters
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -2111,14 +2138,14 @@ public final class VImage {
    * {@link VImage#cast}.</p>
    *
    * <p>Use {@code mode} to set how pixels are combined. If you use
-   * {@link app.photofox.vipsffm.enums.VipsCombineMode#COMBINE_MODE_ADD}, both images muct be uncoded.</p>
+   * {@link VipsCombineMode#COMBINE_MODE_ADD}, both images muct be uncoded.</p>
    *
    * <p>See also: {@link VImage#drawMask}, {@link VImage#insert}.</p>
    * @param sub Sub-image to insert into main image
    * @param x Draw image here
    * @param y Draw image here
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsCombineMode} Combining mode
+   * @optionalArg mode {@link VipsOption.Enum} {@link VipsCombineMode} Combining mode
    */
   public void drawImage(VImage sub, int x, int y, VipsOption... args) throws VipsError {
     var imageOption = VipsOption.Image("image", this);
@@ -2308,26 +2335,26 @@ public final class VImage {
    * <p>In IIIF layout, you can set the base of the `id` property in `info.json`
    * with {@code id}. The default is `https://example.com/iiif`.</p>
    *
-   * <p>Use {@code layout} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout#FOREIGN_DZ_LAYOUT_IIIF3} for IIIF v3 layout.</p>
+   * <p>Use {@code layout} {@link VipsForeignDzLayout#FOREIGN_DZ_LAYOUT_IIIF3} for IIIF v3 layout.</p>
    *
    * <p>See also: {@link VImage#tiffsave}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dirname {@link VipsOption.String} Directory name to save to
    * @optionalArg imagename {@link VipsOption.String} Image name
-   * @optionalArg layout {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout} Directory layout
+   * @optionalArg layout {@link VipsOption.Enum} {@link VipsForeignDzLayout} Directory layout
    * @optionalArg suffix {@link VipsOption.String} Filename suffix for tiles
    * @optionalArg overlap {@link VipsOption.Int} Tile overlap in pixels
    * @optionalArg tile-size {@link VipsOption.Int} Tile size in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg centre {@link VipsOption.Boolean} Center image in tile
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle} Rotate image during save
-   * @optionalArg container {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzContainer} Pyramid container type
+   * @optionalArg container {@link VipsOption.Enum} {@link VipsForeignDzContainer} Pyramid container type
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties file to the output directory
    * @optionalArg compression {@link VipsOption.Int} ZIP deflate compression level
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg skip-blanks {@link VipsOption.Int} Skip tiles which are nearly equal to the background
    * @optionalArg id {@link VipsOption.String} Resource ID
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -2362,19 +2389,19 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dirname {@link VipsOption.String} Directory name to save to
    * @optionalArg imagename {@link VipsOption.String} Image name
-   * @optionalArg layout {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout} Directory layout
+   * @optionalArg layout {@link VipsOption.Enum} {@link VipsForeignDzLayout} Directory layout
    * @optionalArg suffix {@link VipsOption.String} Filename suffix for tiles
    * @optionalArg overlap {@link VipsOption.Int} Tile overlap in pixels
    * @optionalArg tile-size {@link VipsOption.Int} Tile size in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg centre {@link VipsOption.Boolean} Center image in tile
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle} Rotate image during save
-   * @optionalArg container {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzContainer} Pyramid container type
+   * @optionalArg container {@link VipsOption.Enum} {@link VipsForeignDzContainer} Pyramid container type
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties file to the output directory
    * @optionalArg compression {@link VipsOption.Int} ZIP deflate compression level
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg skip-blanks {@link VipsOption.Int} Skip tiles which are nearly equal to the background
    * @optionalArg id {@link VipsOption.String} Resource ID
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -2404,19 +2431,19 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg dirname {@link VipsOption.String} Directory name to save to
    * @optionalArg imagename {@link VipsOption.String} Image name
-   * @optionalArg layout {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzLayout} Directory layout
+   * @optionalArg layout {@link VipsOption.Enum} {@link VipsForeignDzLayout} Directory layout
    * @optionalArg suffix {@link VipsOption.String} Filename suffix for tiles
    * @optionalArg overlap {@link VipsOption.Int} Tile overlap in pixels
    * @optionalArg tile-size {@link VipsOption.Int} Tile size in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg centre {@link VipsOption.Boolean} Center image in tile
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle} Rotate image during save
-   * @optionalArg container {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzContainer} Pyramid container type
+   * @optionalArg container {@link VipsOption.Enum} {@link VipsForeignDzContainer} Pyramid container type
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties file to the output directory
    * @optionalArg compression {@link VipsOption.Int} ZIP deflate compression level
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg skip-blanks {@link VipsOption.Int} Skip tiles which are nearly equal to the background
    * @optionalArg id {@link VipsOption.String} Resource ID
    * @optionalArg Q {@link VipsOption.Int} Q factor
@@ -2450,7 +2477,7 @@ public final class VImage {
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg extend {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsExtend} How to generate the extra pixels
+   * @optionalArg extend {@link VipsOption.Enum} {@link VipsExtend} How to generate the extra pixels
    * @optionalArg background {@link VipsOption.ArrayDouble} Color for background pixels
    */
   public VImage embed(int x, int y, int width, int height, VipsOption... args) throws VipsError {
@@ -2692,8 +2719,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -2716,8 +2743,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -2807,7 +2834,7 @@ public final class VImage {
   /**
    * <p>Convert a three-band float image to Radiance 32-bit packed format.</p>
    *
-   * <p>See also: {@link VImage#rad2float}, {@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD}, {@link VImage#LabQ2Lab}.</p>
+   * <p>See also: {@link VImage#rad2float}, {@link VipsCoding#CODING_RAD}, {@link VImage#LabQ2Lab}.</p>
    * @param args Array of VipsOption to apply to this operation
    */
   public VImage float2rad(VipsOption... args) throws VipsError {
@@ -2915,7 +2942,7 @@ public final class VImage {
    * @param sigma Sigma of Gaussian
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg min-ampl {@link VipsOption.Double} Minimum amplitude of Gaussian
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Convolve with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Convolve with this precision
    */
   public VImage gaussblur(double sigma, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -2940,12 +2967,12 @@ public final class VImage {
    *  H(r) = exp(-(r * r) / (2 * {@code sigma} * {@code sigma}))</p>
    *
    * <p>The generated image has odd size and its maximum value is normalised to
-   * 1.0, unless {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
+   * 1.0, unless {@code precision} is {@link VipsPrecision#PRECISION_INTEGER}.</p>
    *
    * <p>If {@code separable} is set, only the centre horizontal is generated. This is
    * useful for separable convolutions.</p>
    *
-   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer gaussian is generated.
+   * <p>If {@code precision} is {@link VipsPrecision#PRECISION_INTEGER}, an integer gaussian is generated.
    * This is useful for integer convolutions.</p>
    *
    * <p>&quot;scale&quot; is set to the sum of all the mask elements.</p>
@@ -2957,7 +2984,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg separable {@link VipsOption.Boolean} Generate separable Gaussian
    * @optionalArg integer {@link VipsOption.Boolean} Generate integer Gaussian
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Generate with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Generate with this precision
    */
   public static VImage gaussmat(Arena arena, double sigma, double minAmpl, VipsOption... args)
       throws VipsError {
@@ -3039,7 +3066,7 @@ public final class VImage {
    * document&quot;. Use {@link VImage#grid} to change page layout.</p>
    *
    * <p>Use {@code fail-on} to set the type of error that will cause load to fail. By
-   * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
+   * default, loaders are permissive, that is, {@link VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>The output image is RGBA for GIFs containing transparent elements, RGB
    * otherwise.</p>
@@ -3052,8 +3079,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} First page to load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3083,8 +3110,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} First page to load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3112,8 +3139,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} First page to load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3298,7 +3325,7 @@ public final class VImage {
    * @param width Image width in pixels
    * @param height Image height in pixels
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg extend {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsExtend} How to generate the extra pixels
+   * @optionalArg extend {@link VipsOption.Enum} {@link VipsExtend} How to generate the extra pixels
    * @optionalArg background {@link VipsOption.ArrayDouble} Color for background pixels
    */
   public VImage gravity(VipsCompassDirection direction, int width, int height, VipsOption... args)
@@ -3413,8 +3440,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3448,8 +3475,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3480,8 +3507,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -3527,11 +3554,11 @@ public final class VImage {
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifCompression} Compression format
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignHeifCompression} Compression format
    * @optionalArg effort {@link VipsOption.Int} CPU effort
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg speed {@link VipsOption.Int} CPU effort
-   * @optionalArg encoder {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifEncoder} Select encoder to use
+   * @optionalArg encoder {@link VipsOption.Enum} {@link VipsForeignHeifEncoder} Select encoder to use
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -3559,11 +3586,11 @@ public final class VImage {
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifCompression} Compression format
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignHeifCompression} Compression format
    * @optionalArg effort {@link VipsOption.Int} CPU effort
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg speed {@link VipsOption.Int} CPU effort
-   * @optionalArg encoder {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifEncoder} Select encoder to use
+   * @optionalArg encoder {@link VipsOption.Enum} {@link VipsForeignHeifEncoder} Select encoder to use
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -3589,11 +3616,11 @@ public final class VImage {
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg bitdepth {@link VipsOption.Int} Number of bits per pixel
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifCompression} Compression format
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignHeifCompression} Compression format
    * @optionalArg effort {@link VipsOption.Int} CPU effort
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg speed {@link VipsOption.Int} CPU effort
-   * @optionalArg encoder {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignHeifEncoder} Select encoder to use
+   * @optionalArg encoder {@link VipsOption.Enum} {@link VipsForeignHeifEncoder} Select encoder to use
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -3707,7 +3734,7 @@ public final class VImage {
    * <p>See also: {@link VImage#histFind}, {@link VImage#labelregions}.</p>
    * @param index Index image
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg combine {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsCombine} Combine bins like this
+   * @optionalArg combine {@link VipsOption.Enum} {@link VipsCombine} Combine bins like this
    */
   public VImage histFindIndexed(VImage index, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -3915,7 +3942,7 @@ public final class VImage {
   /**
    * <p>Export an image from D65 LAB to device space with an ICC profile.
    * If {@code pcs} is
-   * set to {@link app.photofox.vipsffm.enums.VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.
+   * set to {@link VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.
    * If {@code output-profile} is not set, use the embedded profile, if any.
    * If {@code output-profile} is set, export with that and attach it to the output
    * image.</p>
@@ -3923,8 +3950,8 @@ public final class VImage {
    * <p>If {@code black-point-compensation} is set, LCMS black point compensation is
    * enabled.</p>
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg pcs {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPCS} Set Profile Connection Space
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg pcs {@link VipsOption.Enum} {@link VipsPCS} Set Profile Connection Space
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg black-point-compensation {@link VipsOption.Boolean} Enable black point compensation
    * @optionalArg output-profile {@link VipsOption.String} Filename to load output profile from
    * @optionalArg depth {@link VipsOption.Int} Output device space depth in bits
@@ -3941,7 +3968,7 @@ public final class VImage {
 
   /**
    * <p>Import an image from device space to D65 LAB with an ICC profile. If {@code pcs} is
-   * set to {@link app.photofox.vipsffm.enums.VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.</p>
+   * set to {@link VipsPCS#PCS_XYZ}, use CIE XYZ PCS instead.</p>
    *
    * <p>The input profile is searched for in three places:
    *
@@ -3960,8 +3987,8 @@ public final class VImage {
    * <p>If {@code black-point-compensation} is set, LCMS black point compensation is
    * enabled.</p>
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg pcs {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPCS} Set Profile Connection Space
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg pcs {@link VipsOption.Enum} {@link VipsPCS} Set Profile Connection Space
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg black-point-compensation {@link VipsOption.Boolean} Enable black point compensation
    * @optionalArg embedded {@link VipsOption.Boolean} Use embedded input profile, if available
    * @optionalArg input-profile {@link VipsOption.String} Filename to load input profile from
@@ -4007,8 +4034,8 @@ public final class VImage {
    * second half of this operation in isolation.</p>
    * @param outputProfile Filename to load output profile from
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg pcs {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPCS} Set Profile Connection Space
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg pcs {@link VipsOption.Enum} {@link VipsPCS} Set Profile Connection Space
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg black-point-compensation {@link VipsOption.Boolean} Enable black point compensation
    * @optionalArg embedded {@link VipsOption.Boolean} Use embedded input profile, if available
    * @optionalArg input-profile {@link VipsOption.String} Filename to load input profile from
@@ -4273,7 +4300,7 @@ public final class VImage {
    * @optionalArg expand {@link VipsOption.Boolean} Expand output to hold all of both inputs
    * @optionalArg shim {@link VipsOption.Int} Pixels between images
    * @optionalArg background {@link VipsOption.ArrayDouble} Colour for new pixels
-   * @optionalArg align {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAlign} Align on the low, centre or high coordinate edge
+   * @optionalArg align {@link VipsOption.Enum} {@link VipsAlign} Align on the low, centre or high coordinate edge
    */
   public VImage join(VImage in2, VipsDirection direction, VipsOption... args) throws VipsError {
     var in1Option = VipsOption.Image("in1", this);
@@ -4301,7 +4328,7 @@ public final class VImage {
    * &quot;n-pages&quot; to find the number of pyramid layers.</p>
    *
    * <p>Use {@code fail-on} to set the type of error that will cause load to fail. By
-   * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
+   * default, loaders are permissive, that is, {@link VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>See also: {@code vips_image_new_from_file}.</p>
    * @param arena The arena that bounds resulting memory allocations during this operation
@@ -4310,8 +4337,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4338,8 +4365,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4364,8 +4391,8 @@ public final class VImage {
    * @optionalArg page {@link VipsOption.Int} Load this page from the image
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4409,7 +4436,7 @@ public final class VImage {
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -4434,7 +4461,7 @@ public final class VImage {
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -4461,7 +4488,7 @@ public final class VImage {
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg page-height {@link VipsOption.Int} Set page height for multipage save
@@ -4486,7 +4513,7 @@ public final class VImage {
    * decompressing the whole image and then shrinking later.</p>
    *
    * <p>Use {@code fail-on} to set the type of error that will cause load to fail. By
-   * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
+   * default, loaders are permissive, that is, {@link VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>Setting {@code autorotate} to {@code TRUE} will make the loader interpret the
    * orientation tag and automatically rotate the image appropriately during
@@ -4538,8 +4565,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4571,8 +4598,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4602,8 +4629,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4707,7 +4734,7 @@ public final class VImage {
    * @optionalArg overshoot-deringing {@link VipsOption.Boolean} Apply overshooting to samples with extreme values
    * @optionalArg optimize-scans {@link VipsOption.Boolean} Split spectrum of DCT coefficients into separate scans
    * @optionalArg quant-table {@link VipsOption.Int} Use predefined quantization table with given index
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg restart-interval {@link VipsOption.Int} Add restart markers every specified number of mcu
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -4741,7 +4768,7 @@ public final class VImage {
    * @optionalArg overshoot-deringing {@link VipsOption.Boolean} Apply overshooting to samples with extreme values
    * @optionalArg optimize-scans {@link VipsOption.Boolean} Split spectrum of DCT coefficients into separate scans
    * @optionalArg quant-table {@link VipsOption.Int} Use predefined quantization table with given index
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg restart-interval {@link VipsOption.Int} Add restart markers every specified number of mcu
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -4772,7 +4799,7 @@ public final class VImage {
    * @optionalArg overshoot-deringing {@link VipsOption.Boolean} Apply overshooting to samples with extreme values
    * @optionalArg optimize-scans {@link VipsOption.Boolean} Split spectrum of DCT coefficients into separate scans
    * @optionalArg quant-table {@link VipsOption.Int} Use predefined quantization table with given index
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg restart-interval {@link VipsOption.Int} Add restart markers every specified number of mcu
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -4801,7 +4828,7 @@ public final class VImage {
    * @optionalArg overshoot-deringing {@link VipsOption.Boolean} Apply overshooting to samples with extreme values
    * @optionalArg optimize-scans {@link VipsOption.Boolean} Split spectrum of DCT coefficients into separate scans
    * @optionalArg quant-table {@link VipsOption.Int} Use predefined quantization table with given index
-   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignSubsample} Select chroma subsample operation mode
+   * @optionalArg subsample-mode {@link VipsOption.Enum} {@link VipsForeignSubsample} Select chroma subsample operation mode
    * @optionalArg restart-interval {@link VipsOption.Int} Add restart markers every specified number of mcu
    * @optionalArg keep {@link VipsOption.Int} Which metadata to retain
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
@@ -4832,8 +4859,8 @@ public final class VImage {
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4858,8 +4885,8 @@ public final class VImage {
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -4885,8 +4912,8 @@ public final class VImage {
    * @optionalArg n {@link VipsOption.Int} Number of pages to load, -1 for all
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -5068,9 +5095,9 @@ public final class VImage {
    * {@code vips_region_prepare}.</p>
    *
    * <p>When the cache fills, a tile is chosen for reuse. If {@code access} is
-   * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
-   * {@code access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}, then
-   * the top-most tile is reused. {@code access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
+   * {@link VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
+   * {@code access} is {@link VipsAccess#ACCESS_SEQUENTIAL}, then
+   * the top-most tile is reused. {@code access} defaults to {@link VipsAccess#ACCESS_RANDOM}.</p>
    *
    * <p>{@code tile-height} can be used to set the size of the strips that
    * {@code linecache} uses. The default is 1 (a single scanline).</p>
@@ -5082,7 +5109,7 @@ public final class VImage {
    * <p>See also: {@code vips_cache}, {@link VImage#tilecache}.</p>
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Expected access pattern
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Expected access pattern
    * @optionalArg threaded {@link VipsOption.Boolean} Allow threaded access
    * @optionalArg persistent {@link VipsOption.Boolean} Keep cache between evaluations
    */
@@ -5114,12 +5141,12 @@ public final class VImage {
    * <p>where s2 = {@code sigma} * {@code sigma}, s4 = s2 * s2, r2 = r * r.</p>
    *
    * <p>The generated mask has odd size and its maximum value is normalised to
-   * 1.0, unless {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}.</p>
+   * 1.0, unless {@code precision} is {@link VipsPrecision#PRECISION_INTEGER}.</p>
    *
    * <p>If {@code separable} is set, only the centre horizontal is generated. This is
    * useful for separable convolutions.</p>
    *
-   * <p>If {@code precision} is {@link app.photofox.vipsffm.enums.VipsPrecision#PRECISION_INTEGER}, an integer mask is generated.
+   * <p>If {@code precision} is {@link VipsPrecision#PRECISION_INTEGER}, an integer mask is generated.
    * This is useful for integer convolutions.</p>
    *
    * <p>&quot;scale&quot; is set to the sum of all the mask elements.</p>
@@ -5131,7 +5158,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg separable {@link VipsOption.Boolean} Generate separable Gaussian
    * @optionalArg integer {@link VipsOption.Boolean} Generate integer Gaussian
-   * @optionalArg precision {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsPrecision} Generate with this precision
+   * @optionalArg precision {@link VipsOption.Enum} {@link VipsPrecision} Generate with this precision
    */
   public static VImage logmat(Arena arena, double sigma, double minAmpl, VipsOption... args) throws
       VipsError {
@@ -5179,8 +5206,8 @@ public final class VImage {
    * @optionalArg all-frames {@link VipsOption.Boolean} Read all frames from an image
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -5214,8 +5241,8 @@ public final class VImage {
    * @optionalArg all-frames {@link VipsOption.Boolean} Read all frames from an image
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -5378,7 +5405,7 @@ public final class VImage {
    * <p>{@code interpolate} defaults to bilinear.</p>
    *
    * <p>By default, new pixels are filled with {@code background}. This defaults to
-   * zero (black). You can set other extend types with {@code extend}. {@link app.photofox.vipsffm.enums.VipsExtend#EXTEND_COPY}
+   * zero (black). You can set other extend types with {@code extend}. {@link VipsExtend#EXTEND_COPY}
    * is better for image upsizing.</p>
    *
    * <p>Image are normally treated as unpremultiplied, so this operation can be used
@@ -5397,7 +5424,7 @@ public final class VImage {
    * @optionalArg interpolate {@link VipsOption.Interpolate} Interpolate pixels with this
    * @optionalArg background {@link VipsOption.ArrayDouble} Background value
    * @optionalArg premultiplied {@link VipsOption.Boolean} Images have premultiplied alpha
-   * @optionalArg extend {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsExtend} How to generate the extra pixels
+   * @optionalArg extend {@link VipsOption.Enum} {@link VipsExtend} How to generate the extra pixels
    */
   public VImage mapim(VImage index, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -6016,8 +6043,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6079,8 +6106,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6106,8 +6133,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6712,8 +6739,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6766,8 +6793,8 @@ public final class VImage {
    * @optionalArg rgb {@link VipsOption.Boolean} Output RGB (not RGBA)
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6796,8 +6823,8 @@ public final class VImage {
    * @optionalArg rgb {@link VipsOption.Boolean} Output RGB (not RGBA)
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6818,7 +6845,7 @@ public final class VImage {
    * Save image in pbm format
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -6880,8 +6907,8 @@ public final class VImage {
    * @optionalArg password {@link VipsOption.String} Password to decrypt with
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6916,8 +6943,8 @@ public final class VImage {
    * @optionalArg password {@link VipsOption.String} Password to decrypt with
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -6949,8 +6976,8 @@ public final class VImage {
    * @optionalArg password {@link VipsOption.String} Password to decrypt with
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7036,7 +7063,7 @@ public final class VImage {
    * Save image in pfm format
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -7062,7 +7089,7 @@ public final class VImage {
    * Save image in pgm format
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -7112,7 +7139,7 @@ public final class VImage {
    * XMP metadata.</p>
    *
    * <p>Use {@code fail-on} to set the type of error that will cause load to fail. By
-   * default, loaders are permissive, that is, {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}.</p>
+   * default, loaders are permissive, that is, {@link VipsFailOn#FAIL_ON_NONE}.</p>
    *
    * <p>By default, the PNG loader limits the number of text and data chunks to
    * block some denial of service attacks. Set {@code unlimited} to disable these
@@ -7125,8 +7152,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7155,8 +7182,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7183,8 +7210,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Remove all denial of service limits
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7327,7 +7354,7 @@ public final class VImage {
    * Save image in pnm format
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -7362,8 +7389,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7388,8 +7415,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7425,7 +7452,7 @@ public final class VImage {
    * <p>See also: {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -7450,7 +7477,7 @@ public final class VImage {
    * <p>See also: {@link VImage#ppmsave}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg format {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignPpmFormat} Format to save in
+   * @optionalArg format {@link VipsOption.Enum} {@link VipsForeignPpmFormat} Format to save in
    * @optionalArg ascii {@link VipsOption.Boolean} Save as ascii
    * @optionalArg squash {@link VipsOption.Boolean} Save as one bit
    * @optionalArg bitdepth {@link VipsOption.Int} Set to 1 to write as a 1 bit image
@@ -7592,7 +7619,7 @@ public final class VImage {
   }
 
   /**
-   * <p>Unpack a RAD ({@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD}) image to a three-band float image.</p>
+   * <p>Unpack a RAD ({@link VipsCoding#CODING_RAD}) image to a three-band float image.</p>
    *
    * <p>See also: {@link VImage#float2rad}, {@link VImage#LabQ2LabS}.</p>
    * @param args Array of VipsOption to apply to this operation
@@ -7610,11 +7637,11 @@ public final class VImage {
   /**
    * <p>Read a Radiance (HDR) file into a VIPS image.</p>
    *
-   * <p>Radiance files are read as {@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD}. They have one byte for each of
+   * <p>Radiance files are read as {@link VipsCoding#CODING_RAD}. They have one byte for each of
    * red, green and blue, and one byte of shared exponent. Some operations (like
    * {@link VImage#extractArea}) can work directly with images in this format, but
    * mmany (all the arithmetic operations, for example) will not. Unpack
-   * {@link app.photofox.vipsffm.enums.VipsCoding#CODING_RAD} images to 3 band float with {@link VImage#rad2float} if
+   * {@link VipsCoding#CODING_RAD} images to 3 band float with {@link VImage#rad2float} if
    * you want to do arithmetic on them.</p>
    *
    * <p>This operation ignores some header fields, like VIEW and DATE. It will not
@@ -7628,8 +7655,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7657,8 +7684,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7684,8 +7711,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7834,8 +7861,8 @@ public final class VImage {
    * @optionalArg interpretation {@link VipsOption.Enum} {@link VipsInterpretation} Pixel interpretation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -7973,7 +8000,7 @@ public final class VImage {
    * @param yshrink Vertical shrink factor
    * @param vshrink Vertical shrink factor
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg kernel {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsKernel} Resampling kernel
+   * @optionalArg kernel {@link VipsOption.Enum} {@link VipsKernel} Resampling kernel
    * @optionalArg gap {@link VipsOption.Double} Reducing gap
    * @optionalArg centre {@link VipsOption.Boolean} Use centre sampling convention
    */
@@ -8015,7 +8042,7 @@ public final class VImage {
    * @param xshrink Horizontal shrink factor
    * @param hshrink Horizontal shrink factor
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg kernel {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsKernel} Resampling kernel
+   * @optionalArg kernel {@link VipsOption.Enum} {@link VipsKernel} Resampling kernel
    * @optionalArg gap {@link VipsOption.Double} Reducing gap
    * @optionalArg centre {@link VipsOption.Boolean} Use centre sampling convention
    */
@@ -8052,7 +8079,7 @@ public final class VImage {
    * @param yshrink Vertical shrink factor
    * @param vshrink Vertical shrink factor
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg kernel {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsKernel} Resampling kernel
+   * @optionalArg kernel {@link VipsOption.Enum} {@link VipsKernel} Resampling kernel
    * @optionalArg gap {@link VipsOption.Double} Reducing gap
    * @optionalArg centre {@link VipsOption.Boolean} Use centre sampling convention
    */
@@ -8243,12 +8270,12 @@ public final class VImage {
    * The default value is 2.0 (very close to fair resampling
    * while still being faster in many cases).</p>
    *
-   * <p>{@code resize} normally uses {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_LANCZOS3} for the final reduce, you
+   * <p>{@code resize} normally uses {@link VipsKernel#KERNEL_LANCZOS3} for the final reduce, you
    * can change this with {@code kernel}. Downsizing is done with centre convention.</p>
    *
    * <p>When upsizing ({@code scale} &gt; 1), the operation uses {@link VImage#affine} with
    * a {@code VipsInterpolate} selected depending on {@code kernel}. It will use
-   * {@code VipsInterpolateBicubic} for {@link app.photofox.vipsffm.enums.VipsKernel#KERNEL_CUBIC} and above. It adds a
+   * {@code VipsInterpolateBicubic} for {@link VipsKernel#KERNEL_CUBIC} and above. It adds a
    * 0.5 pixel displacement to the input pixels to get centre convention scaling.</p>
    *
    * <p>{@code resize} normally maintains the image aspect ratio. If you set
@@ -8269,7 +8296,7 @@ public final class VImage {
    * @param scale Scale image by this factor
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg interpolate {@link VipsOption.Interpolate} Interpolate pixels with this
-   * @optionalArg kernel {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsKernel} Resampling kernel
+   * @optionalArg kernel {@link VipsOption.Enum} {@link VipsKernel} Resampling kernel
    * @optionalArg gap {@link VipsOption.Double} Reducing gap
    * @optionalArg centre {@link VipsOption.Boolean} Use centre sampling convention
    * @optionalArg vscale {@link VipsOption.Double} Vertical scale image by this factor
@@ -8319,7 +8346,7 @@ public final class VImage {
    *
    * <p>See also: {@link VImage#rot}, {@link VImage#similarity}.</p>
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg angle {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAngle45} Angle to rotate image
+   * @optionalArg angle {@link VipsOption.Enum} {@link VipsAngle45} Angle to rotate image
    */
   public VImage rot45(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -8574,7 +8601,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg trace {@link VipsOption.Boolean} Trace pixel requests
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Expected access pattern
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Expected access pattern
    */
   public VImage sequential(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -8852,7 +8879,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg attention-x {@link VipsOption.Int} Horizontal position of attention centre
    * @optionalArg attention-y {@link VipsOption.Int} Vertical position of attention centre
-   * @optionalArg interesting {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInteresting} How to measure interestingness
+   * @optionalArg interesting {@link VipsOption.Enum} {@link VipsInteresting} How to measure interestingness
    * @optionalArg premultiplied {@link VipsOption.Boolean} Input image already has premultiplied alpha
    */
   public VImage smartcrop(int width, int height, VipsOption... args) throws VipsError {
@@ -9270,8 +9297,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Allow SVG of any size
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9303,8 +9330,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Allow SVG of any size
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9333,8 +9360,8 @@ public final class VImage {
    * @optionalArg unlimited {@link VipsOption.Boolean} Allow SVG of any size
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9431,14 +9458,14 @@ public final class VImage {
    * @optionalArg font {@link VipsOption.String} Font to render with
    * @optionalArg width {@link VipsOption.Int} Maximum image width in pixels
    * @optionalArg height {@link VipsOption.Int} Maximum image height in pixels
-   * @optionalArg align {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAlign} Align on the low, centre or high edge
+   * @optionalArg align {@link VipsOption.Enum} {@link VipsAlign} Align on the low, centre or high edge
    * @optionalArg justify {@link VipsOption.Boolean} Justify lines
    * @optionalArg dpi {@link VipsOption.Int} DPI to render at
    * @optionalArg autofit-dpi {@link VipsOption.Int} DPI selected by autofit
    * @optionalArg spacing {@link VipsOption.Int} Line spacing
    * @optionalArg fontfile {@link VipsOption.String} Load this font file
    * @optionalArg rgba {@link VipsOption.Boolean} Enable RGBA output
-   * @optionalArg wrap {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsTextWrap} Wrap lines on word or character boundaries
+   * @optionalArg wrap {@link VipsOption.Enum} {@link VipsTextWrap} Wrap lines on word or character boundaries
    */
   public static VImage text(Arena arena, String text, VipsOption... args) throws VipsError {
     var outOption = VipsOption.Image("out");
@@ -9474,12 +9501,12 @@ public final class VImage {
    *
    * <p>Normally the operation will upsize or downsize as required to fit the image
    * inside or outside the target size. If {@code size} is set
-   * to {@link app.photofox.vipsffm.enums.VipsSize#SIZE_UP}, the operation will only upsize and will just
+   * to {@link VipsSize#SIZE_UP}, the operation will only upsize and will just
    * copy if asked to downsize.
    * If {@code size} is set
-   * to {@link app.photofox.vipsffm.enums.VipsSize#SIZE_DOWN}, the operation will only downsize and will just
+   * to {@link VipsSize#SIZE_DOWN}, the operation will only downsize and will just
    * copy if asked to upsize.
-   * If {@code size} is {@link app.photofox.vipsffm.enums.VipsSize#SIZE_FORCE}, the image aspect ratio will be broken and the
+   * If {@code size} is {@link VipsSize#SIZE_FORCE}, the image aspect ratio will be broken and the
    * image will be forced to fit the target.</p>
    *
    * <p>Normally any orientation tags on the input image (such as EXIF tags) are
@@ -9498,10 +9525,10 @@ public final class VImage {
    * input image is broken.</p>
    *
    * <p>Use {@code intent} to set the rendering intent for any ICC transform. The default
-   * is {@link app.photofox.vipsffm.enums.VipsIntent#INTENT_RELATIVE}.</p>
+   * is {@link VipsIntent#INTENT_RELATIVE}.</p>
    *
    * <p>Use {@code fail-on} to control the types of error that will cause loading to fail.
-   * The default is {@link app.photofox.vipsffm.enums.VipsFailOn#FAIL_ON_NONE}, ie. thumbnail is permissive.</p>
+   * The default is {@link VipsFailOn#FAIL_ON_NONE}, ie. thumbnail is permissive.</p>
    *
    * <p>See also: {@link VImage#thumbnailBuffer}.</p>
    * @param arena The arena that bounds resulting memory allocations during this operation
@@ -9509,15 +9536,15 @@ public final class VImage {
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg height {@link VipsOption.Int} Size to this height
-   * @optionalArg size {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsSize} Only upsize, only downsize, or both
+   * @optionalArg size {@link VipsOption.Enum} {@link VipsSize} Only upsize, only downsize, or both
    * @optionalArg no-rotate {@link VipsOption.Boolean} Don't use orientation tags to rotate image upright
-   * @optionalArg crop {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInteresting} Reduce to fill target rectangle, then crop
+   * @optionalArg crop {@link VipsOption.Enum} {@link VipsInteresting} Reduce to fill target rectangle, then crop
    * @optionalArg linear {@link VipsOption.Boolean} Reduce in linear light
    * @optionalArg import-profile {@link VipsOption.String} Fallback import profile
    * @optionalArg export-profile {@link VipsOption.String} Fallback export profile
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    */
   public static VImage thumbnail(Arena arena, String filename, int width, VipsOption... args) throws
       VipsError {
@@ -9544,15 +9571,15 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg option-string {@link VipsOption.String} Options that are passed on to the underlying loader
    * @optionalArg height {@link VipsOption.Int} Size to this height
-   * @optionalArg size {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsSize} Only upsize, only downsize, or both
+   * @optionalArg size {@link VipsOption.Enum} {@link VipsSize} Only upsize, only downsize, or both
    * @optionalArg no-rotate {@link VipsOption.Boolean} Don't use orientation tags to rotate image upright
-   * @optionalArg crop {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInteresting} Reduce to fill target rectangle, then crop
+   * @optionalArg crop {@link VipsOption.Enum} {@link VipsInteresting} Reduce to fill target rectangle, then crop
    * @optionalArg linear {@link VipsOption.Boolean} Reduce in linear light
    * @optionalArg import-profile {@link VipsOption.String} Fallback import profile
    * @optionalArg export-profile {@link VipsOption.String} Fallback export profile
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    */
   public static VImage thumbnailBuffer(Arena arena, VBlob buffer, int width, VipsOption... args)
       throws VipsError {
@@ -9579,15 +9606,15 @@ public final class VImage {
    * @param width Size to this width
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg height {@link VipsOption.Int} Size to this height
-   * @optionalArg size {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsSize} Only upsize, only downsize, or both
+   * @optionalArg size {@link VipsOption.Enum} {@link VipsSize} Only upsize, only downsize, or both
    * @optionalArg no-rotate {@link VipsOption.Boolean} Don't use orientation tags to rotate image upright
-   * @optionalArg crop {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInteresting} Reduce to fill target rectangle, then crop
+   * @optionalArg crop {@link VipsOption.Enum} {@link VipsInteresting} Reduce to fill target rectangle, then crop
    * @optionalArg linear {@link VipsOption.Boolean} Reduce in linear light
    * @optionalArg import-profile {@link VipsOption.String} Fallback import profile
    * @optionalArg export-profile {@link VipsOption.String} Fallback export profile
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    */
   public VImage thumbnailImage(int width, VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
@@ -9613,15 +9640,15 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg option-string {@link VipsOption.String} Options that are passed on to the underlying loader
    * @optionalArg height {@link VipsOption.Int} Size to this height
-   * @optionalArg size {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsSize} Only upsize, only downsize, or both
+   * @optionalArg size {@link VipsOption.Enum} {@link VipsSize} Only upsize, only downsize, or both
    * @optionalArg no-rotate {@link VipsOption.Boolean} Don't use orientation tags to rotate image upright
-   * @optionalArg crop {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsInteresting} Reduce to fill target rectangle, then crop
+   * @optionalArg crop {@link VipsOption.Enum} {@link VipsInteresting} Reduce to fill target rectangle, then crop
    * @optionalArg linear {@link VipsOption.Boolean} Reduce in linear light
    * @optionalArg import-profile {@link VipsOption.String} Fallback import profile
    * @optionalArg export-profile {@link VipsOption.String} Fallback export profile
-   * @optionalArg intent {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsIntent} Rendering intent
+   * @optionalArg intent {@link VipsOption.Enum} {@link VipsIntent} Rendering intent
    * @optionalArg auto-rotate {@link VipsOption.Boolean} Use orientation tags to rotate image upright
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    */
   public static VImage thumbnailSource(Arena arena, VSource source, int width, VipsOption... args)
       throws VipsError {
@@ -9685,8 +9712,8 @@ public final class VImage {
    * @optionalArg autorotate {@link VipsOption.Boolean} Rotate image using orientation tag
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9719,8 +9746,8 @@ public final class VImage {
    * @optionalArg autorotate {@link VipsOption.Boolean} Rotate image using orientation tag
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9750,8 +9777,8 @@ public final class VImage {
    * @optionalArg autorotate {@link VipsOption.Boolean} Rotate image using orientation tag
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -9792,7 +9819,7 @@ public final class VImage {
    * set WEBP lossless mode on. Use {@code Q} to set the WEBP compression level.</p>
    *
    * <p>Use {@code predictor} to set the predictor for lzw, deflate and zstd compression.
-   * It defaults to {@link app.photofox.vipsffm.enums.VipsForeignTiffPredictor#FOREIGN_TIFF_PREDICTOR_HORIZONTAL}, meaning horizontal
+   * It defaults to {@link VipsForeignTiffPredictor#FOREIGN_TIFF_PREDICTOR_HORIZONTAL}, meaning horizontal
    * differencing. Please refer to the libtiff
    * specifications for further discussion of various predictors.</p>
    *
@@ -9856,24 +9883,24 @@ public final class VImage {
    * <p>See also: {@link VImage#tiffload}, {@code vips_image_write_to_file}.</p>
    * @param filename Filename to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignTiffCompression} Compression for this file
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg predictor {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffPredictor} Compression prediction
+   * @optionalArg predictor {@link VipsOption.Enum} {@link VipsForeignTiffPredictor} Compression prediction
    * @optionalArg tile {@link VipsOption.Boolean} Write a tiled tiff
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg pyramid {@link VipsOption.Boolean} Write a pyramidal tiff
    * @optionalArg miniswhite {@link VipsOption.Boolean} Use 0 for white in 1-bit images
    * @optionalArg bitdepth {@link VipsOption.Int} Write as a 1, 2, 4 or 8 bit image
-   * @optionalArg resunit {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffResunit} Resolution unit
+   * @optionalArg resunit {@link VipsOption.Enum} {@link VipsForeignTiffResunit} Resolution unit
    * @optionalArg xres {@link VipsOption.Double} Horizontal resolution in pixels/mm
    * @optionalArg yres {@link VipsOption.Double} Vertical resolution in pixels/mm
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
    * @optionalArg premultiply {@link VipsOption.Boolean} Save with premultiplied alpha
    * @optionalArg rgbjpeg {@link VipsOption.Boolean} Output RGB JPEG rather than YCbCr
@@ -9902,24 +9929,24 @@ public final class VImage {
    *
    * <p>See also: {@link VImage#tiffsave}, {@code vips_image_write_to_file}.</p>
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignTiffCompression} Compression for this file
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg predictor {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffPredictor} Compression prediction
+   * @optionalArg predictor {@link VipsOption.Enum} {@link VipsForeignTiffPredictor} Compression prediction
    * @optionalArg tile {@link VipsOption.Boolean} Write a tiled tiff
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg pyramid {@link VipsOption.Boolean} Write a pyramidal tiff
    * @optionalArg miniswhite {@link VipsOption.Boolean} Use 0 for white in 1-bit images
    * @optionalArg bitdepth {@link VipsOption.Int} Write as a 1, 2, 4 or 8 bit image
-   * @optionalArg resunit {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffResunit} Resolution unit
+   * @optionalArg resunit {@link VipsOption.Enum} {@link VipsForeignTiffResunit} Resolution unit
    * @optionalArg xres {@link VipsOption.Double} Horizontal resolution in pixels/mm
    * @optionalArg yres {@link VipsOption.Double} Vertical resolution in pixels/mm
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
    * @optionalArg premultiply {@link VipsOption.Boolean} Save with premultiplied alpha
    * @optionalArg rgbjpeg {@link VipsOption.Boolean} Output RGB JPEG rather than YCbCr
@@ -9946,24 +9973,24 @@ public final class VImage {
    * <p>See also: {@link VImage#tiffsave}, {@code vips_image_write_to_target}.</p>
    * @param target Target to save to
    * @param args Array of VipsOption to apply to this operation
-   * @optionalArg compression {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffCompression} Compression for this file
+   * @optionalArg compression {@link VipsOption.Enum} {@link VipsForeignTiffCompression} Compression for this file
    * @optionalArg Q {@link VipsOption.Int} Q factor
-   * @optionalArg predictor {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffPredictor} Compression prediction
+   * @optionalArg predictor {@link VipsOption.Enum} {@link VipsForeignTiffPredictor} Compression prediction
    * @optionalArg tile {@link VipsOption.Boolean} Write a tiled tiff
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg pyramid {@link VipsOption.Boolean} Write a pyramidal tiff
    * @optionalArg miniswhite {@link VipsOption.Boolean} Use 0 for white in 1-bit images
    * @optionalArg bitdepth {@link VipsOption.Int} Write as a 1, 2, 4 or 8 bit image
-   * @optionalArg resunit {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignTiffResunit} Resolution unit
+   * @optionalArg resunit {@link VipsOption.Enum} {@link VipsForeignTiffResunit} Resolution unit
    * @optionalArg xres {@link VipsOption.Double} Horizontal resolution in pixels/mm
    * @optionalArg yres {@link VipsOption.Double} Vertical resolution in pixels/mm
    * @optionalArg bigtiff {@link VipsOption.Boolean} Write a bigtiff image
    * @optionalArg properties {@link VipsOption.Boolean} Write a properties document to IMAGEDESCRIPTION
-   * @optionalArg region-shrink {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsRegionShrink} Method to shrink regions
+   * @optionalArg region-shrink {@link VipsOption.Enum} {@link VipsRegionShrink} Method to shrink regions
    * @optionalArg level {@link VipsOption.Int} Deflate (1-9, default 6) or ZSTD (1-22, default 9) compression level
    * @optionalArg lossless {@link VipsOption.Boolean} Enable WEBP lossless mode
-   * @optionalArg depth {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignDzDepth} Pyramid depth
+   * @optionalArg depth {@link VipsOption.Enum} {@link VipsForeignDzDepth} Pyramid depth
    * @optionalArg subifd {@link VipsOption.Boolean} Save pyr layers as sub-IFDs
    * @optionalArg premultiply {@link VipsOption.Boolean} Save with premultiplied alpha
    * @optionalArg rgbjpeg {@link VipsOption.Boolean} Output RGB JPEG rather than YCbCr
@@ -9994,12 +10021,12 @@ public final class VImage {
    * {@code vips_region_prepare}.</p>
    *
    * <p>When the cache fills, a tile is chosen for reuse. If {@code access} is
-   * {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
-   * {@code access} is {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_SEQUENTIAL}
+   * {@link VipsAccess#ACCESS_RANDOM}, then the least-recently-used tile is reused. If
+   * {@code access} is {@link VipsAccess#ACCESS_SEQUENTIAL}
    * the top-most tile is reused.</p>
    *
    * <p>By default, {@code tile-width} and {@code tile-height} are 128 pixels, and the operation
-   * will cache up to 1,000 tiles. {@code access} defaults to {@link app.photofox.vipsffm.enums.VipsAccess#ACCESS_RANDOM}.</p>
+   * will cache up to 1,000 tiles. {@code access} defaults to {@link VipsAccess#ACCESS_RANDOM}.</p>
    *
    * <p>Normally, only a single thread at once is allowed to calculate tiles. If
    * you set {@code threaded} to {@code TRUE}, {@code tilecache} will allow many threads to
@@ -10013,7 +10040,7 @@ public final class VImage {
    * @optionalArg tile-width {@link VipsOption.Int} Tile width in pixels
    * @optionalArg tile-height {@link VipsOption.Int} Tile height in pixels
    * @optionalArg max-tiles {@link VipsOption.Int} Maximum number of tiles to cache
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Expected access pattern
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Expected access pattern
    * @optionalArg threaded {@link VipsOption.Boolean} Allow threaded access
    * @optionalArg persistent {@link VipsOption.Boolean} Keep cache between evaluations
    */
@@ -10140,8 +10167,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -10164,8 +10191,8 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -10248,8 +10275,8 @@ public final class VImage {
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -10282,8 +10309,8 @@ public final class VImage {
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -10313,8 +10340,8 @@ public final class VImage {
    * @optionalArg shrink {@link VipsOption.Int} Shrink factor on load
    * @optionalArg flags {@link VipsOption.Int} Flags for this file
    * @optionalArg memory {@link VipsOption.Boolean} Force open via memory
-   * @optionalArg access {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsAccess} Required access pattern for this file
-   * @optionalArg fail-on {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsFailOn} Error level to fail on
+   * @optionalArg access {@link VipsOption.Enum} {@link VipsAccess} Required access pattern for this file
+   * @optionalArg fail-on {@link VipsOption.Enum} {@link VipsFailOn} Error level to fail on
    * @optionalArg revalidate {@link VipsOption.Boolean} Don't use a cached result for this operation
    * @optionalArg sequential {@link VipsOption.Boolean} Sequential read only
    * @optionalArg fail {@link VipsOption.Boolean} Fail on first warning
@@ -10339,7 +10366,7 @@ public final class VImage {
    * default 75.</p>
    *
    * <p>Use {@code preset} to hint the image type to the lossy compressor. The default is
-   * {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset#FOREIGN_WEBP_PRESET_DEFAULT}.</p>
+   * {@link VipsForeignWebpPreset#FOREIGN_WEBP_PRESET_DEFAULT}.</p>
    *
    * <p>Set {@code smart-subsample} to enable high quality chroma subsampling.</p>
    *
@@ -10383,7 +10410,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg preset {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset} Preset for lossy compression
+   * @optionalArg preset {@link VipsOption.Enum} {@link VipsForeignWebpPreset} Preset for lossy compression
    * @optionalArg smart-subsample {@link VipsOption.Boolean} Enable high quality chroma subsampling
    * @optionalArg near-lossless {@link VipsOption.Boolean} Enable preprocessing in lossless mode (uses Q)
    * @optionalArg alpha-q {@link VipsOption.Int} Change alpha plane fidelity for lossy compression
@@ -10422,7 +10449,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg preset {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset} Preset for lossy compression
+   * @optionalArg preset {@link VipsOption.Enum} {@link VipsForeignWebpPreset} Preset for lossy compression
    * @optionalArg smart-subsample {@link VipsOption.Boolean} Enable high quality chroma subsampling
    * @optionalArg near-lossless {@link VipsOption.Boolean} Enable preprocessing in lossless mode (uses Q)
    * @optionalArg alpha-q {@link VipsOption.Int} Change alpha plane fidelity for lossy compression
@@ -10458,7 +10485,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg preset {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset} Preset for lossy compression
+   * @optionalArg preset {@link VipsOption.Enum} {@link VipsForeignWebpPreset} Preset for lossy compression
    * @optionalArg smart-subsample {@link VipsOption.Boolean} Enable high quality chroma subsampling
    * @optionalArg near-lossless {@link VipsOption.Boolean} Enable preprocessing in lossless mode (uses Q)
    * @optionalArg alpha-q {@link VipsOption.Int} Change alpha plane fidelity for lossy compression
@@ -10492,7 +10519,7 @@ public final class VImage {
    * @param args Array of VipsOption to apply to this operation
    * @optionalArg Q {@link VipsOption.Int} Q factor
    * @optionalArg lossless {@link VipsOption.Boolean} Enable lossless compression
-   * @optionalArg preset {@link VipsOption.Enum} {@link app.photofox.vipsffm.enums.VipsForeignWebpPreset} Preset for lossy compression
+   * @optionalArg preset {@link VipsOption.Enum} {@link VipsForeignWebpPreset} Preset for lossy compression
    * @optionalArg smart-subsample {@link VipsOption.Boolean} Enable high quality chroma subsampling
    * @optionalArg near-lossless {@link VipsOption.Boolean} Enable preprocessing in lossless mode (uses Q)
    * @optionalArg alpha-q {@link VipsOption.Int} Change alpha plane fidelity for lossy compression

@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>The resampling kernels vips supports. See {@link app.photofox.vipsffm.VImage#reduce}, for example.</p>
+ * <p>The resampling kernels vips supports. See {@link VImage#reduce}, for example.</p>
  */
 public enum VipsKernel implements VNamedEnum {
   /**

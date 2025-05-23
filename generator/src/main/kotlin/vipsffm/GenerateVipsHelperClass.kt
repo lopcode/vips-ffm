@@ -1,14 +1,14 @@
 package vipsffm
 
-import com.squareup.javapoet.ArrayTypeName
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.CodeBlock
-import com.squareup.javapoet.JavaFile
-import com.squareup.javapoet.MethodSpec
-import com.squareup.javapoet.ParameterSpec
-import com.squareup.javapoet.ParameterizedTypeName
-import com.squareup.javapoet.TypeName
-import com.squareup.javapoet.TypeSpec
+import com.palantir.javapoet.ArrayTypeName
+import com.palantir.javapoet.ClassName
+import com.palantir.javapoet.CodeBlock
+import com.palantir.javapoet.JavaFile
+import com.palantir.javapoet.MethodSpec
+import com.palantir.javapoet.ParameterSpec
+import com.palantir.javapoet.ParameterizedTypeName
+import com.palantir.javapoet.TypeName
+import com.palantir.javapoet.TypeSpec
 import org.slf4j.LoggerFactory
 import java.lang.classfile.ClassFile
 import java.lang.classfile.ClassModel
@@ -66,7 +66,7 @@ object GenerateVipsHelperClass {
 
         logger.info("generated methods:")
         (simpleMethods + variadicMethods).forEach {
-            logger.info("  ${it.name}")
+            logger.info("  ${it.name()}")
         }
 
         buildVipsFile(simpleMethods, variadicMethods)
@@ -143,14 +143,14 @@ object GenerateVipsHelperClass {
         }
         val vipsFunctionArgsJoined = vipsFunctionArgs.mapIndexed { index, parameterSpec ->
             val externArgMetadata = externMetadata.arguments.getOrNull(index)
-            if (parameterSpec.type == listStringType) {
-                parameterSpec.name.removeSuffix("StringArray")
-            } else if (parameterSpec.type == stringType) {
-                parameterSpec.name.removeSuffix("String")
+            if (parameterSpec.type() == listStringType) {
+                parameterSpec.name().removeSuffix("StringArray")
+            } else if (parameterSpec.type() == stringType) {
+                parameterSpec.name().removeSuffix("String")
             } else if (externArgMetadata?.type == "gboolean" && externArgMetadata.pointerDepth == 0) {
-                parameterSpec.name.removeSuffix("Boolean")
+                parameterSpec.name().removeSuffix("Boolean")
             } else {
-                parameterSpec.name
+                parameterSpec.name()
             }
         }.joinToString()
 
@@ -177,20 +177,20 @@ object GenerateVipsHelperClass {
 
         args.forEachIndexed { index, parameter ->
             val externArgMetadata = externMetadata.arguments[index]
-            if (externArgMetadata.type == "gboolean" && parameter.type == TypeName.BOOLEAN) {
-                methodBuilder.addStatement("var ${parameter.name.removeSuffix("Boolean")} = ${parameter.name} ? 1 : 0")
+            if (externArgMetadata.type == "gboolean" && parameter.type() == TypeName.BOOLEAN) {
+                methodBuilder.addStatement("var ${parameter.name().removeSuffix("Boolean")} = ${parameter.name()} ? 1 : 0")
             } else if (externArgMetadata.pointerDepth >= 1) {
-                if (parameter.type == listStringType) {
-                    val newName = parameter.name.removeSuffix("StringArray")
+                if (parameter.type() == listStringType) {
+                    val newName = parameter.name().removeSuffix("StringArray")
                     methodBuilder.addStatement("var $newName = \$T.makeCharStarArray(arena, ${newName}StringArray)", vipsInvokerType)
                     usedArena = true
-                } else if (parameter.type == stringType) {
-                    val newName = parameter.name.removeSuffix("String")
-                    methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name})")
+                } else if (parameter.type() == stringType) {
+                    val newName = parameter.name().removeSuffix("String")
+                    methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name()})")
                     usedArena = true
                 } else {
                     methodBuilder.addCode(
-                        makeInputValidatorCodeBlock(parameter.name, vipsValidatorType, rawMethodName)
+                        makeInputValidatorCodeBlock(parameter.name(), vipsValidatorType, rawMethodName)
                     )
                 }
             }
@@ -225,7 +225,7 @@ object GenerateVipsHelperClass {
 
             args.forEachIndexed { index, parameterSpec ->
                 val externArgMetadata = externMetadata.arguments[index]
-                val deallocUsedArena = addDeallocCodeblockIfOutType(externArgMetadata, parameterSpec.type, parameterSpec.name, methodBuilder)
+                val deallocUsedArena = addDeallocCodeblockIfOutType(externArgMetadata, parameterSpec.type(), parameterSpec.name(), methodBuilder)
                 if (deallocUsedArena) {
                     usedArena = true
                 }

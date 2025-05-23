@@ -3,17 +3,17 @@ package vipsffm
 import app.photofox.vipsffm.jextract.GEnumClass
 import app.photofox.vipsffm.jextract.GEnumValue
 import app.photofox.vipsffm.jextract.VipsRaw
-import com.squareup.javapoet.AnnotationSpec
-import com.squareup.javapoet.ArrayTypeName
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.CodeBlock
-import com.squareup.javapoet.FieldSpec
-import com.squareup.javapoet.JavaFile
-import com.squareup.javapoet.MethodSpec
-import com.squareup.javapoet.ParameterSpec
-import com.squareup.javapoet.ParameterizedTypeName
-import com.squareup.javapoet.TypeName
-import com.squareup.javapoet.TypeSpec
+import com.palantir.javapoet.AnnotationSpec
+import com.palantir.javapoet.ArrayTypeName
+import com.palantir.javapoet.ClassName
+import com.palantir.javapoet.CodeBlock
+import com.palantir.javapoet.FieldSpec
+import com.palantir.javapoet.JavaFile
+import com.palantir.javapoet.MethodSpec
+import com.palantir.javapoet.ParameterSpec
+import com.palantir.javapoet.ParameterizedTypeName
+import com.palantir.javapoet.TypeName
+import com.palantir.javapoet.TypeSpec
 import org.apache.commons.text.StringEscapeUtils
 import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
@@ -140,7 +140,7 @@ object GenerateVClasses {
         val equals = MethodSpec.methodBuilder("equals")
             .addAnnotation(Override::class.java)
             .addModifiers(Modifier.PUBLIC)
-            .addParameter(TypeName.OBJECT, "o")
+            .addParameter(ClassName.OBJECT, "o")
             .returns(TypeName.BOOLEAN)
             .addStatement("if (this == o) return true")
             .addStatement("if (!(o instanceof \$T vImage)) return false", vimageType)
@@ -222,7 +222,7 @@ object GenerateVClasses {
             argSpec.isOutput && argSpec.isRequired
         }.firstOrNull()
 
-        val returnType = firstOutput?.type ?: TypeName.VOID
+        val returnType = firstOutput?.type() ?: TypeName.VOID
         method.returns(returnType)
         method.varargs(true)
         method.addException(vipsErrorType)
@@ -240,23 +240,23 @@ object GenerateVClasses {
         var referencedSelf = false
         poetArguments.forEachIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            val poetArgType = poetArg.type
+            val poetArgType = poetArg.type()
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
             if (argSpec.isOutput) {
-                method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
+                method.addStatement("var ${poetArg.name()}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
             } else if (argSpec.isInput) {
-                if (poetArg.type == vimageType && !filteredPoetArgs.contains(poetArg)) {
+                if (poetArg.type() == vimageType && !filteredPoetArgs.contains(poetArg)) {
                     // it's an image type, and doesn't refer to "this image"
                     referencedSelf = true
-                    method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
-                } else if (poetArg.type == vEnumType) {
+                    method.addStatement("var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
+                } else if (poetArg.type() == vEnumType) {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name}.getRawValue())",
+                        "var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", ${poetArg.name()}.getRawValue())",
                         vipsOptionType
                     )
                 } else {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name})",
+                        "var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", ${poetArg.name()})",
                         vipsOptionType
                     )
                 }
@@ -265,11 +265,11 @@ object GenerateVClasses {
         method.addStatement("var callArgs = new \$T<>(\$T.asList(args))", ArrayList::class.java, Arrays::class.java)
         poetArguments.forEachIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            method.addStatement("callArgs.add(${poetArg.name}Option)")
+            method.addStatement("callArgs.add(${poetArg.name()}Option)")
         }
         method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType);
         if (returnType != TypeName.VOID) {
-            method.addStatement("return ${firstOutput!!.name}Option.valueOrThrow()")
+            method.addStatement("return ${firstOutput!!.name()}Option.valueOrThrow()")
         }
 
         if (!referencedSelf) {
@@ -280,7 +280,7 @@ object GenerateVClasses {
                 return@forEachIndexed
             }
             val argSpec = requiredArguments[index]
-            var argNameSection = poetArg.name
+            var argNameSection = poetArg.name()
             if (argSpec.isEnum) {
                 val enumName = (argSpec.type as GValueType.Unknown).rawName
                 argNameSection += " {@link \$T}"
@@ -470,8 +470,8 @@ object GenerateVClasses {
             vEnumType -> vipsOptionEnumType
             vblobType -> vipsOptionBlobType
             else -> {
-                if (poetArgType is ParameterizedTypeName && poetArgType.rawType == listType) {
-                    val parameterizedType = poetArgType.typeArguments.first()
+                if (poetArgType is ParameterizedTypeName && poetArgType.rawType() == listType) {
+                    val parameterizedType = poetArgType.typeArguments().first()
                     when (parameterizedType) {
                         boxedDoubleType -> vipsOptionArrayDoubleType
                         boxedIntType -> vipsOptionArrayIntType
@@ -599,7 +599,7 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
-            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
+            .addStatement("return newFromSource(arena, source, optionString, options)")
             .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use {@link VImage#newFromFile(Arena, String, VipsOption...)} and friends instead.")
             .build()
         val newFromBytesNoOptionsMethod = MethodSpec.methodBuilder("newFromBytes")
@@ -611,7 +611,7 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
-            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
+            .addStatement("return newFromSource(arena, source, options)")
             .addJavadoc("See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}")
             .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
@@ -624,7 +624,7 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
-            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
+            .addStatement("return newFromSource(arena, source, optionString, options)")
             .addJavadoc("""
                 Creates a new VImage from an {@link InputStream}. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
@@ -642,7 +642,7 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
-            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
+            .addStatement("return newFromSource(arena, source, options)")
             .addJavadoc("See {@link VImage#newFromStream(Arena, InputStream, String, VipsOption...)}")
             .build()
         val writeToFileMethod = MethodSpec.methodBuilder("writeToFile")
@@ -667,7 +667,7 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .returns(vimageType)
             .addStatement("\$T.image_write(this.address, out.address)", vipsHelperType)
-            .addStatement("return out", vimageType)
+            .addStatement("return out")
             .build()
         val writeToTargetMethod = MethodSpec.methodBuilder("writeToTarget")
             .addModifiers(Modifier.PUBLIC)

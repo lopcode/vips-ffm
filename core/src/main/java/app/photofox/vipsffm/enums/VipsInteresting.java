@@ -1,19 +1,20 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
  * <p>Pick the algorithm vips uses to decide image &quot;interestingness&quot;. This is used
- * by {@link app.photofox.vipsffm.VImage#smartcrop}, for example, to decide what parts of the image to
+ * by {@link VImage#smartcrop}, for example, to decide what parts of the image to
  * keep.</p>
  *
  * <p>{@link VipsInteresting#INTERESTING_NONE} and {@link VipsInteresting#INTERESTING_LOW} mean the same -- the
  * crop is positioned at the top or left. {@link VipsInteresting#INTERESTING_HIGH} positions at
  * the bottom or right.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#smartcrop}.</p>
+ * <p>See also: {@link VImage#smartcrop}.</p>
  */
 public enum VipsInteresting implements VNamedEnum {
   /**

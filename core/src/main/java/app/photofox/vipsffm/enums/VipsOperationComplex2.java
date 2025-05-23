@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>See also: {@link app.photofox.vipsffm.VImage#complex2}.</p>
+ * <p>See also: {@link VImage#complex2}.</p>
  */
 public enum VipsOperationComplex2 implements VNamedEnum {
   /**

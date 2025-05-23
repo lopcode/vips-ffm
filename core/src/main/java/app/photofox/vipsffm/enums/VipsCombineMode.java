@@ -1,16 +1,17 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>See {@link app.photofox.vipsffm.VImage#drawImage} and so on.</p>
+ * <p>See {@link VImage#drawImage} and so on.</p>
  *
- * <p>Operations like {@link app.photofox.vipsffm.VImage#drawImage} need to be told how to combine images
+ * <p>Operations like {@link VImage#drawImage} need to be told how to combine images
  * from two sources.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#join}.</p>
+ * <p>See also: {@link VImage#join}.</p>
  */
 public enum VipsCombineMode implements VNamedEnum {
   /**

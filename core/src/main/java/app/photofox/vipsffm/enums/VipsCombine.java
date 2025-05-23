@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>How to combine values. See {@link app.photofox.vipsffm.VImage#compass}, for example.</p>
+ * <p>How to combine values. See {@link VImage#compass}, for example.</p>
  */
 public enum VipsCombine implements VNamedEnum {
   /**

@@ -1,5 +1,6 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
@@ -7,7 +8,7 @@ import java.lang.String;
 /**
  * <p>The SDF to generate,</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#sdf}.</p>
+ * <p>See also: {@link VImage#sdf}.</p>
  */
 public enum VipsSdfShape implements VNamedEnum {
   /**

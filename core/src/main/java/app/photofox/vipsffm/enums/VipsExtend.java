@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>See {@link app.photofox.vipsffm.VImage#embed}, {@link app.photofox.vipsffm.VImage#conv}, {@link app.photofox.vipsffm.VImage#affine} and so on.</p>
+ * <p>See {@link VImage#embed}, {@link VImage#conv}, {@link VImage#affine} and so on.</p>
  *
  * <p>When the edges of an image are extended, you can specify
  * how you want the extension done.</p>
@@ -27,7 +28,7 @@ import java.lang.String;
  * <p>We have to specify the exact value of each enum member since we have to
  * keep these frozen for back compat with vips7.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#embed}.</p>
+ * <p>See also: {@link VImage#embed}.</p>
  */
 public enum VipsExtend implements VNamedEnum {
   /**

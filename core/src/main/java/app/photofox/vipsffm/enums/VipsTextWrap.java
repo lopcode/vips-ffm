@@ -1,14 +1,15 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>Sets the word wrapping style for {@link app.photofox.vipsffm.VImage#text} when used with a maximum
+ * <p>Sets the word wrapping style for {@link VImage#text} when used with a maximum
  * width.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#text}.</p>
+ * <p>See also: {@link VImage#text}.</p>
  */
 public enum VipsTextWrap implements VNamedEnum {
   /**

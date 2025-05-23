@@ -1,5 +1,6 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
@@ -8,7 +9,7 @@ import java.lang.String;
  * <p>Controls whether an operation should upsize, downsize, both up and
  * downsize, or force a size.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#thumbnail}.</p>
+ * <p>See also: {@link VImage#thumbnail}.</p>
  */
 public enum VipsSize implements VNamedEnum {
   /**

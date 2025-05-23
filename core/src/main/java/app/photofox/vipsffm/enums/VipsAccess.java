@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>The type of access an operation has to supply. See {@link app.photofox.vipsffm.VImage#tilecache}
+ * <p>The type of access an operation has to supply. See {@link VImage#tilecache}
  * and {@code VipsForeign}.</p>
  *
  * <p>{@link VipsAccess#ACCESS_RANDOM} means requests can come in any order.</p>

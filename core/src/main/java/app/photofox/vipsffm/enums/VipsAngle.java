@@ -1,15 +1,16 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>See {@link app.photofox.vipsffm.VImage#rot} and so on.</p>
+ * <p>See {@link VImage#rot} and so on.</p>
  *
  * <p>Fixed rotate angles.</p>
  *
- * <p>See also: {@link app.photofox.vipsffm.VImage#rot}.</p>
+ * <p>See also: {@link VImage#rot}.</p>
  */
 public enum VipsAngle implements VNamedEnum {
   /**

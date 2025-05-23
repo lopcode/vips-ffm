@@ -1,11 +1,12 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>The various Porter-Duff and PDF blend modes. See {@link app.photofox.vipsffm.VImage#composite},
+ * <p>The various Porter-Duff and PDF blend modes. See {@link VImage#composite},
  * for example.</p>
  *
  * <p>The Cairo docs have a nice explanation of all the blend modes:</p>

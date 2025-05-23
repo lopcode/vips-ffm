@@ -1,12 +1,13 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
 /**
- * <p>Pick a Profile Connection Space for {@link app.photofox.vipsffm.VImage#iccImport} and
- * {@link app.photofox.vipsffm.VImage#iccExport}. LAB is usually best, XYZ can be more convenient in some
+ * <p>Pick a Profile Connection Space for {@link VImage#iccImport} and
+ * {@link VImage#iccExport}. LAB is usually best, XYZ can be more convenient in some
  * cases.</p>
  */
 public enum VipsPCS implements VNamedEnum {
