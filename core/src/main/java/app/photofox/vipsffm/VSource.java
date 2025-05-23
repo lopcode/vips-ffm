@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
-/**
- * Represents a VipsSource
- * Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
- * Use its static helper methods to create new sources
- */
+/// Represents a VipsSource
+///
+/// Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+///
+/// Use its static helper methods to create new sources
 public sealed class VSource permits VCustomSource {
 
     final Arena arena;
@@ -36,9 +36,7 @@ public sealed class VSource permits VCustomSource {
         return address.hashCode();
     }
 
-    /**
-     * @deprecated See {@link #getUnsafeStructAddress}
-     */
+    /// @deprecated See [#getUnsafeStructAddress]
     @Deprecated(
         since = "0.5.10",
         forRemoval = true
@@ -47,45 +45,38 @@ public sealed class VSource permits VCustomSource {
         return this.getUnsafeStructAddress();
     }
 
-    /**
-     * Gets the raw {@link MemorySegment} (C pointer) for this VipsSource struct
-     * The memory address' lifetime is bound to the scope of the arena that created it
-     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
-     * you need to use it with {@link VipsHelper}
-     */
+    /// Gets the raw [MemorySegment] (C pointer) for this VipsSource struct
+    ///
+    /// The memory address' lifetime is bound to the scope of the arena that created it
+    ///
+    /// Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
+    /// you need to use it with [VipsHelper]
     public MemorySegment getUnsafeStructAddress() {
         return this.address;
     }
 
-    /**
-     * Create a new VSource from a file descriptor
-     */
+    /// Create a new VSource from a file descriptor
     public static VSource newFromDescriptor(Arena arena, int descriptor) throws VipsError {
         var pointer = VipsHelper.source_new_from_descriptor(arena, descriptor);
         return new VSource(arena, pointer);
     }
 
-    /**
-     * Create a new VSource from a file path
-     */
+    /// Create a new VSource from a file path
     public static VSource newFromFile(Arena arena, String filename) throws VipsError {
         var pointer = VipsHelper.source_new_from_file(arena, filename);
         return new VSource(arena, pointer);
     }
 
-    /**
-     * Create a new VSource from a VBlob, usually received from a Vips operation
-     */
+    /// Create a new VSource from a VBlob, usually received from a Vips operation
     public static VSource newFromBlob(Arena arena, VBlob blob) throws VipsError {
         var pointer = VipsHelper.source_new_from_blob(arena, blob.address);
         return new VSource(arena, pointer);
     }
 
-    /**
-     * Create a new VSource directly from some bytes
-     * Note that this makes a full copy of the data, which is inefficient - prefer {@link VImage#newFromFile(Arena, String, VipsOption...)}
-     * and friends
-     */
+    /// Create a new VSource directly from some bytes
+    ///
+    /// Note that this makes a full copy of the data, which is inefficient - prefer [VImage#newFromFile]
+    /// and friends
     public static VSource newFromBytes(Arena arena, byte[] bytes) throws VipsError {
         var blob = VBlob.newFromBytes(arena, bytes);
         return newFromBlob(arena, blob);
@@ -96,13 +87,14 @@ public sealed class VSource permits VCustomSource {
         return new VSource(arena, pointer);
     }
 
-    /**
-     * Creates a new VSource from a Java {@link InputStream}
-     * The provided InputStream is coupled to the arena's lifetime, and closed when its scope ends
-     * Note that you can read an image directly from an InputStream using {@link VImage#newFromStream(Arena, InputStream, VipsOption...)}
-     * This stream does not support seeking, because InputStream does not support it, so cannot be maximally
-     * efficient - but it is still likely more efficient than taking a full intermediate copy of bytes
-     */
+    /// Creates a new VSource from a Java [InputStream]
+    ///
+    /// The provided InputStream is coupled to the arena's lifetime, and closed when its scope ends
+    ///
+    /// Note that you can read an image directly from an InputStream using [VImage#newFromStream]
+    ///
+    /// This stream does not support seeking, because InputStream does not support it, so cannot be maximally
+    /// efficient - but it is still likely more efficient than taking a full intermediate copy of bytes
     public static VSource newFromInputStream(Arena arena, InputStream stream) throws VipsError {
         VCustomSource.ReadCallback readCallback = (dataPointer, length) -> {
             if (length < 0) {

@@ -2,10 +2,9 @@ package app.photofox.vipsffm;
 
 import java.lang.foreign.Arena;
 
-/**
- * Helper class for running Vips commands with an appropriate arena
- * Blocks untrusted operations by default
- */
+/// Helper class for running Vips commands with an appropriate arena
+///
+/// Blocks untrusted operations by default
 public class Vips {
 
     public static void init() {

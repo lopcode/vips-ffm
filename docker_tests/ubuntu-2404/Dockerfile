@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 ENV JAVA_HOME=/opt/java/openjdk
-COPY --from=eclipse-temurin:22 $JAVA_HOME $JAVA_HOME
+COPY --from=eclipse-temurin:23 $JAVA_HOME $JAVA_HOME
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 COPY sample /opt/sample

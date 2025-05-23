@@ -6,11 +6,11 @@ import app.photofox.vipsffm.jextract.CustomStreamWriteCallback;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
-/**
- * Models a libvips "custom streaming" target
- * Provides callbacks for write and end operations
- * See <a href="https://www.libvips.org/2019/11/29/True-streaming-for-libvips.html">true streaming for libvips</a>
- */
+/// Models a libvips "custom streaming" target
+///
+/// Provides callbacks for write and end operations
+///
+/// See [true streaming for libvips](https://www.libvips.org/2019/11/29/True-streaming-for-libvips.html)
 public final class VCustomTarget extends VTarget {
 
     @FunctionalInterface
