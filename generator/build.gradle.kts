@@ -19,21 +19,21 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.3")
     implementation("org.apache.commons:commons-text:1.13.1")
-    implementation("com.squareup:javapoet:1.13.0")
+    implementation("com.palantir.javapoet:javapoet:0.7.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(22))
+        languageVersion.set(JavaLanguageVersion.of(23))
     }
 }
 
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.20")
+            useKotlinTest("2.1.21")
         }
     }
 }

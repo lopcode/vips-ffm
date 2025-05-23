@@ -18,15 +18,22 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(23))
     }
-    sourceCompatibility = JavaVersion.VERSION_22 // intentionally kept at 22
-    targetCompatibility = JavaVersion.VERSION_22
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks.withType<JavaCompile> {
+    options.release = 22 // intentionally kept at 22
 }
 
 tasks.withType<Javadoc> {
     this.options.overview = "../README.md"
     (options as StandardJavadocDocletOptions).tags("optionalArg:a:Optional arguments:")
+
+    // some libvips comments are technically invalid javadoc (formulae misinterpreted as references)
+    //   but tooling still displays it sensibly, so ignore javadoc linting errors by default
+    // note that warnings are still printed during the build
+    (options as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
 
     doLast {
         copy {
@@ -39,11 +46,11 @@ tasks.withType<Javadoc> {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.20")
+            useKotlinTest("2.1.21")
         }
 
         register<JvmTestSuite>("integrationTest") {
-            useKotlinTest("2.1.20")
+            useKotlinTest("2.1.21")
 
             dependencies {
                 implementation(project(":core"))

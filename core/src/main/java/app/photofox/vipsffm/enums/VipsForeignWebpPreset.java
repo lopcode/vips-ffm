@@ -4,38 +4,24 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>Tune lossy encoder settings for different image types.</p>
- */
+/// Tune lossy encoder settings for different image types.
 public enum VipsForeignWebpPreset implements VNamedEnum {
-  /**
-   * <p>default preset</p>
-   */
+  /// default preset
   FOREIGN_WEBP_PRESET_DEFAULT("VIPS_FOREIGN_WEBP_PRESET_DEFAULT", "default", 0),
 
-  /**
-   * <p>digital picture, like portrait, inner shot</p>
-   */
+  /// digital picture, like portrait, inner shot
   FOREIGN_WEBP_PRESET_PICTURE("VIPS_FOREIGN_WEBP_PRESET_PICTURE", "picture", 1),
 
-  /**
-   * <p>outdoor photograph, with natural lighting</p>
-   */
+  /// outdoor photograph, with natural lighting
   FOREIGN_WEBP_PRESET_PHOTO("VIPS_FOREIGN_WEBP_PRESET_PHOTO", "photo", 2),
 
-  /**
-   * <p>hand or line drawing, with high-contrast details</p>
-   */
+  /// hand or line drawing, with high-contrast details
   FOREIGN_WEBP_PRESET_DRAWING("VIPS_FOREIGN_WEBP_PRESET_DRAWING", "drawing", 3),
 
-  /**
-   * <p>small-sized colorful images</p>
-   */
+  /// small-sized colorful images
   FOREIGN_WEBP_PRESET_ICON("VIPS_FOREIGN_WEBP_PRESET_ICON", "icon", 4),
 
-  /**
-   * <p>text-like</p>
-   */
+  /// text-like
   FOREIGN_WEBP_PRESET_TEXT("VIPS_FOREIGN_WEBP_PRESET_TEXT", "text", 5),
 
   FOREIGN_WEBP_PRESET_LAST("VIPS_FOREIGN_WEBP_PRESET_LAST", "last", 6);
