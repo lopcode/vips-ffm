@@ -5,20 +5,14 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>Pick a Profile Connection Space for {@link VImage#iccImport} and
- * {@link VImage#iccExport}. LAB is usually best, XYZ can be more convenient in some
- * cases.</p>
- */
+/// Pick a Profile Connection Space for [VImage#iccImport] and
+/// [VImage#iccExport]. LAB is usually best, XYZ can be more convenient in some
+/// cases.
 public enum VipsPCS implements VNamedEnum {
-  /**
-   * <p>use CIELAB D65 as the Profile Connection Space</p>
-   */
+  /// use CIELAB D65 as the Profile Connection Space
   PCS_LAB("VIPS_PCS_LAB", "lab", 0),
 
-  /**
-   * <p>use XYZ as the Profile Connection Space</p>
-   */
+  /// use XYZ as the Profile Connection Space
   PCS_XYZ("VIPS_PCS_XYZ", "xyz", 1),
 
   PCS_LAST("VIPS_PCS_LAST", "last", 2);

@@ -22,6 +22,7 @@ import java.nio.file.Path
 import java.util.Locale
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Modifier
+import kotlin.io.path.writeText
 
 object GenerateVipsHelperClass {
 
@@ -160,9 +161,9 @@ object GenerateVipsHelperClass {
             .addJavadoc(
             """
                 Binding for:
-                {@snippet lang=c :
+                ```c
                 ${externMetadata.rawExternDefinition}
-                }
+                ```
             """.trimIndent()
             )
             .addException(vipsErrorType)
@@ -378,14 +379,18 @@ object GenerateVipsHelperClass {
             .addMethod(initHelper)
             .addMethods(simpleMethods)
             .addMethods(variadicMethods)
-            .addJavadoc("<p>Generated helpers to wrap {@link \$T} JExtract definitions</p>", vipsRawType)
-            .addJavadoc("\n\n<p>Validation of input pointers is performed, but prefer usage of {@link \$T} and friends which do not expose raw pointers</p>", vImageType)
-            .addJavadoc("\n\n<p><b>Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!</b></p>")
+            .addJavadoc("Generated helpers to wrap [\$T] JExtract definitions", vipsRawType)
+            .addJavadoc("\n\nValidation of input pointers is performed, but prefer usage of [\$T] and friends which do not expose raw pointers", vImageType)
+            .addJavadoc("\n\n**Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**")
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm", vipsClass)
             .build()
-        val targetGeneratedSourceRoot = Path.of("core/src/main/java/")
-        javaFile.writeToPath(targetGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm")
+        targetGeneratedSourceRoot.resolve("VipsHelper.java").writeText(javaFile, Charsets.UTF_8)
     }
 
     private fun makeResultValidatorCodeBlock(vipsValidatorType: ClassName, methodName: String): CodeBlock? =

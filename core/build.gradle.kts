@@ -30,6 +30,11 @@ tasks.withType<Javadoc> {
     this.options.overview = "../README.md"
     (options as StandardJavadocDocletOptions).tags("optionalArg:a:Optional arguments:")
 
+    // some libvips comments are technically invalid javadoc (formulae misinterpreted as references)
+    //   but tooling still displays it sensibly, so ignore javadoc linting errors by default
+    // note that warnings are still printed during the build
+    (options as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
+
     doLast {
         copy {
             from("build/docs/javadoc")

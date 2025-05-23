@@ -96,9 +96,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public sealed class </span><span class="element-name type-name-label">VTarget</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span>
 <span class="permits">permits <a href="VCustomTarget.html" title="class in app.photofox.vipsffm">VCustomTarget</a></span></div>
-<div class="block">Represents a VipsTarget
- Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
- Use its static helper methods to create new targets</div>
+<div class="block"><p>Represents a VipsTarget</p>
+<p>Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API</p>
+<p>Use its static helper methods to create new targets</p>
+</div>
 </div>
 </section>
 <section class="summary">
@@ -120,8 +121,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBlob()" class="member-name-link">getBlob</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Only valid for memory-backed targets (eg via <a href="#newToMemory(java.lang.foreign.Arena)"><code>newToMemory(Arena)</code></a>)
- Returns the contents of the backing VBlob</div>
+<div class="block">Only valid for memory-backed targets (eg via <a href="#newToMemory(java.lang.foreign.Arena)"><code>newToMemory(Arena)</code></a>)</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#getUnsafeAddress()" class="member-name-link">getUnsafeAddress</a>()</code></div>
@@ -133,10 +133,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeStructAddress()" class="member-name-link">getUnsafeStructAddress</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsTarget struct
- The memory address' lifetime is bound to the scope of the arena that created it
- Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
- you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsTarget struct</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
@@ -145,31 +142,28 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromOutputStream(java.lang.foreign.Arena,java.io.OutputStream)" class="member-name-link">newFromOutputStream</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link">OutputStream</a>&nbsp;stream)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Create a new VipsTarget pointed at a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link"><code>OutputStream</code></a>
- The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends
- Note that you can directly write an image to an OutputStream using <a href="VImage.html#writeToStream(java.io.OutputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToStream(OutputStream, String, VipsOption...)</code></a>
- This target can also be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block"><p>Create a new VipsTarget pointed at a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link"><code>OutputStream</code></a></p>
+<p>The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends</p>
+<p>Note that you can directly write an image to an OutputStream using <a href="VImage.html#writeToStream(java.io.OutputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToStream(java.io.OutputStream, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+<p>This target can also be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(app.photofox.vipsffm.VTarget, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newToDescriptor(java.lang.foreign.Arena,int)" class="member-name-link">newToDescriptor</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  int&nbsp;descriptor)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Create a new target pointed at a file descriptor
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block">Create a new target pointed at a file descriptor</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newToFile(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">newToFile</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Create a new target pointed at an output file
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block">Create a new target pointed at an output file</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newToMemory(java.lang.foreign.Arena)" class="member-name-link">newToMemory</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Create a new memory-backed VipsTarget
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a>
- After writing to this target, you can also retrieve the backing <a href="VBlob.html" title="class in app.photofox.vipsffm"><code>VBlob</code></a> with <a href="#getBlob()"><code>getBlob()</code></a></div>
+<div class="block">Create a new memory-backed VipsTarget</div>
 </div>
 </div>
 </div>
@@ -230,10 +224,11 @@ loadScripts(document, 'script');</script>
 <h3>getUnsafeStructAddress</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">getUnsafeStructAddress</span>()</div>
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsTarget struct
- The memory address' lifetime is bound to the scope of the arena that created it
- Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
- you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block"><p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsTarget struct</p>
+<p>The memory address' lifetime is bound to the scope of the arena that created it</p>
+<p>Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
+you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></p>
+</div>
 </div>
 </section>
 </li>
@@ -244,8 +239,9 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></span>&nbsp;<span class="element-name">newToDescriptor</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  int&nbsp;descriptor)</span>
                                throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Create a new target pointed at a file descriptor
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block"><p>Create a new target pointed at a file descriptor</p>
+<p>This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(app.photofox.vipsffm.VTarget, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -260,8 +256,9 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></span>&nbsp;<span class="element-name">newToFile</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</span>
                          throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Create a new target pointed at an output file
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block"><p>Create a new target pointed at an output file</p>
+<p>This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(app.photofox.vipsffm.VTarget, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -275,9 +272,10 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></span>&nbsp;<span class="element-name">newToMemory</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</span>
                            throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Create a new memory-backed VipsTarget
- This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a>
- After writing to this target, you can also retrieve the backing <a href="VBlob.html" title="class in app.photofox.vipsffm"><code>VBlob</code></a> with <a href="#getBlob()"><code>getBlob()</code></a></div>
+<div class="block"><p>Create a new memory-backed VipsTarget</p>
+<p>This target can be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(app.photofox.vipsffm.VTarget, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+<p>After writing to this target, you can also retrieve the backing <a href="VBlob.html" title="class in app.photofox.vipsffm"><code>VBlob</code></a> with <a href="#getBlob()"><code>getBlob()</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -291,8 +289,9 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></span>&nbsp;<span class="element-name">getBlob</span>()
               throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Only valid for memory-backed targets (eg via <a href="#newToMemory(java.lang.foreign.Arena)"><code>newToMemory(Arena)</code></a>)
- Returns the contents of the backing VBlob</div>
+<div class="block"><p>Only valid for memory-backed targets (eg via <a href="#newToMemory(java.lang.foreign.Arena)"><code>newToMemory(Arena)</code></a>)</p>
+<p>Returns the contents of the backing VBlob</p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -307,10 +306,11 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a></span>&nbsp;<span class="element-name">newFromOutputStream</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link">OutputStream</a>&nbsp;stream)</span>
                                    throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Create a new VipsTarget pointed at a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link"><code>OutputStream</code></a>
- The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends
- Note that you can directly write an image to an OutputStream using <a href="VImage.html#writeToStream(java.io.OutputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToStream(OutputStream, String, VipsOption...)</code></a>
- This target can also be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(VTarget, String, VipsOption...)</code></a></div>
+<div class="block"><p>Create a new VipsTarget pointed at a Java <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link"><code>OutputStream</code></a></p>
+<p>The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends</p>
+<p>Note that you can directly write an image to an OutputStream using <a href="VImage.html#writeToStream(java.io.OutputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToStream(java.io.OutputStream, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+<p>This target can also be used with (for example) <a href="VImage.html#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.writeToTarget(app.photofox.vipsffm.VTarget, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>

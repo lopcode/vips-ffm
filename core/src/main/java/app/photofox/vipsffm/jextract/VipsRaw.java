@@ -5482,7 +5482,7 @@ public class VipsRaw {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t size)
+     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t length)
      * }
      */
     public static FunctionDescriptor vips_source_new_from_memory$descriptor() {
@@ -5492,7 +5492,7 @@ public class VipsRaw {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t size)
+     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t length)
      * }
      */
     public static MethodHandle vips_source_new_from_memory$handle() {
@@ -5502,7 +5502,7 @@ public class VipsRaw {
     /**
      * Address for:
      * {@snippet lang=c :
-     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t size)
+     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t length)
      * }
      */
     public static MemorySegment vips_source_new_from_memory$address() {
@@ -5511,16 +5511,16 @@ public class VipsRaw {
 
     /**
      * {@snippet lang=c :
-     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t size)
+     * extern VipsSource *vips_source_new_from_memory(const void *data, size_t length)
      * }
      */
-    public static MemorySegment vips_source_new_from_memory(MemorySegment data, long size) {
+    public static MemorySegment vips_source_new_from_memory(MemorySegment data, long length) {
         var mh$ = vips_source_new_from_memory.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_source_new_from_memory", data, size);
+                traceDowncall("vips_source_new_from_memory", data, length);
             }
-            return (MemorySegment)mh$.invokeExact(data, size);
+            return (MemorySegment)mh$.invokeExact(data, length);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -5882,7 +5882,7 @@ public class VipsRaw {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * extern VipsTarget *vips_target_new_temp(VipsTarget *target)
+     * extern VipsTarget *vips_target_new_temp(VipsTarget *based_on)
      * }
      */
     public static FunctionDescriptor vips_target_new_temp$descriptor() {
@@ -5892,7 +5892,7 @@ public class VipsRaw {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * extern VipsTarget *vips_target_new_temp(VipsTarget *target)
+     * extern VipsTarget *vips_target_new_temp(VipsTarget *based_on)
      * }
      */
     public static MethodHandle vips_target_new_temp$handle() {
@@ -5902,7 +5902,7 @@ public class VipsRaw {
     /**
      * Address for:
      * {@snippet lang=c :
-     * extern VipsTarget *vips_target_new_temp(VipsTarget *target)
+     * extern VipsTarget *vips_target_new_temp(VipsTarget *based_on)
      * }
      */
     public static MemorySegment vips_target_new_temp$address() {
@@ -5911,16 +5911,16 @@ public class VipsRaw {
 
     /**
      * {@snippet lang=c :
-     * extern VipsTarget *vips_target_new_temp(VipsTarget *target)
+     * extern VipsTarget *vips_target_new_temp(VipsTarget *based_on)
      * }
      */
-    public static MemorySegment vips_target_new_temp(MemorySegment target) {
+    public static MemorySegment vips_target_new_temp(MemorySegment based_on) {
         var mh$ = vips_target_new_temp.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("vips_target_new_temp", target);
+                traceDowncall("vips_target_new_temp", based_on);
             }
-            return (MemorySegment)mh$.invokeExact(target);
+            return (MemorySegment)mh$.invokeExact(based_on);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10942,68 +10942,95 @@ public class VipsRaw {
            throw new AssertionError("should not reach here", ex$);
         }
     }
-    private static final int VIPS_SAVEABLE_MONO = (int)0L;
+    private static final int VIPS_FOREIGN_SAVEABLE_ANY = (int)0L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_MONO = 0
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_ANY = 0
      * }
      */
-    public static int VIPS_SAVEABLE_MONO() {
-        return VIPS_SAVEABLE_MONO;
+    public static int VIPS_FOREIGN_SAVEABLE_ANY() {
+        return VIPS_FOREIGN_SAVEABLE_ANY;
     }
-    private static final int VIPS_SAVEABLE_RGB = (int)1L;
+    private static final int VIPS_FOREIGN_SAVEABLE_MONO = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_RGB = 1
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_MONO = 1
      * }
      */
-    public static int VIPS_SAVEABLE_RGB() {
-        return VIPS_SAVEABLE_RGB;
+    public static int VIPS_FOREIGN_SAVEABLE_MONO() {
+        return VIPS_FOREIGN_SAVEABLE_MONO;
     }
-    private static final int VIPS_SAVEABLE_RGBA = (int)2L;
+    private static final int VIPS_FOREIGN_SAVEABLE_RGB = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_RGBA = 2
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_RGB = 2
      * }
      */
-    public static int VIPS_SAVEABLE_RGBA() {
-        return VIPS_SAVEABLE_RGBA;
+    public static int VIPS_FOREIGN_SAVEABLE_RGB() {
+        return VIPS_FOREIGN_SAVEABLE_RGB;
     }
-    private static final int VIPS_SAVEABLE_RGBA_ONLY = (int)3L;
+    private static final int VIPS_FOREIGN_SAVEABLE_CMYK = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_RGBA_ONLY = 3
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_CMYK = 4
      * }
      */
-    public static int VIPS_SAVEABLE_RGBA_ONLY() {
-        return VIPS_SAVEABLE_RGBA_ONLY;
+    public static int VIPS_FOREIGN_SAVEABLE_CMYK() {
+        return VIPS_FOREIGN_SAVEABLE_CMYK;
     }
-    private static final int VIPS_SAVEABLE_RGB_CMYK = (int)4L;
+    private static final int VIPS_FOREIGN_SAVEABLE_ALPHA = (int)8L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_RGB_CMYK = 4
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_ALPHA = 8
      * }
      */
-    public static int VIPS_SAVEABLE_RGB_CMYK() {
-        return VIPS_SAVEABLE_RGB_CMYK;
+    public static int VIPS_FOREIGN_SAVEABLE_ALPHA() {
+        return VIPS_FOREIGN_SAVEABLE_ALPHA;
     }
-    private static final int VIPS_SAVEABLE_ANY = (int)5L;
+    private static final int VIPS_FOREIGN_SAVEABLE_ALL = (int)15L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_ANY = 5
+     * enum <anonymous>.VIPS_FOREIGN_SAVEABLE_ALL = 15
      * }
      */
-    public static int VIPS_SAVEABLE_ANY() {
-        return VIPS_SAVEABLE_ANY;
+    public static int VIPS_FOREIGN_SAVEABLE_ALL() {
+        return VIPS_FOREIGN_SAVEABLE_ALL;
     }
-    private static final int VIPS_SAVEABLE_LAST = (int)6L;
+    private static final int VIPS_FOREIGN_CODING_NONE = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_SAVEABLE_LAST = 6
+     * enum <anonymous>.VIPS_FOREIGN_CODING_NONE = 1
      * }
      */
-    public static int VIPS_SAVEABLE_LAST() {
-        return VIPS_SAVEABLE_LAST;
+    public static int VIPS_FOREIGN_CODING_NONE() {
+        return VIPS_FOREIGN_CODING_NONE;
+    }
+    private static final int VIPS_FOREIGN_CODING_LABQ = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_CODING_LABQ = 2
+     * }
+     */
+    public static int VIPS_FOREIGN_CODING_LABQ() {
+        return VIPS_FOREIGN_CODING_LABQ;
+    }
+    private static final int VIPS_FOREIGN_CODING_RAD = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_CODING_RAD = 4
+     * }
+     */
+    public static int VIPS_FOREIGN_CODING_RAD() {
+        return VIPS_FOREIGN_CODING_RAD;
+    }
+    private static final int VIPS_FOREIGN_CODING_ALL = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_FOREIGN_CODING_ALL = 7
+     * }
+     */
+    public static int VIPS_FOREIGN_CODING_ALL() {
+        return VIPS_FOREIGN_CODING_ALL;
     }
     private static final int VIPS_FOREIGN_KEEP_NONE = (int)0L;
     /**
@@ -13015,10 +13042,28 @@ public class VipsRaw {
     public static int VIPS_KERNEL_LANCZOS3() {
         return VIPS_KERNEL_LANCZOS3;
     }
-    private static final int VIPS_KERNEL_LAST = (int)6L;
+    private static final int VIPS_KERNEL_MKS2013 = (int)6L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_KERNEL_LAST = 6
+     * enum <anonymous>.VIPS_KERNEL_MKS2013 = 6
+     * }
+     */
+    public static int VIPS_KERNEL_MKS2013() {
+        return VIPS_KERNEL_MKS2013;
+    }
+    private static final int VIPS_KERNEL_MKS2021 = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_KERNEL_MKS2021 = 7
+     * }
+     */
+    public static int VIPS_KERNEL_MKS2021() {
+        return VIPS_KERNEL_MKS2021;
+    }
+    private static final int VIPS_KERNEL_LAST = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_KERNEL_LAST = 8
      * }
      */
     public static int VIPS_KERNEL_LAST() {
@@ -13105,10 +13150,19 @@ public class VipsRaw {
     public static int VIPS_INTENT_ABSOLUTE() {
         return VIPS_INTENT_ABSOLUTE;
     }
-    private static final int VIPS_INTENT_LAST = (int)4L;
+    private static final int VIPS_INTENT_AUTO = (int)32L;
     /**
      * {@snippet lang=c :
-     * enum <anonymous>.VIPS_INTENT_LAST = 4
+     * enum <anonymous>.VIPS_INTENT_AUTO = 32
+     * }
+     */
+    public static int VIPS_INTENT_AUTO() {
+        return VIPS_INTENT_AUTO;
+    }
+    private static final int VIPS_INTENT_LAST = (int)33L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_INTENT_LAST = 33
      * }
      */
     public static int VIPS_INTENT_LAST() {
@@ -13293,6 +13347,69 @@ public class VipsRaw {
      */
     public static int VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST() {
         return VIPS_FOREIGN_JPEG_SUBSAMPLE_LAST;
+    }
+    private static final int VIPS_SAVEABLE_ANY = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_ANY = 0
+     * }
+     */
+    public static int VIPS_SAVEABLE_ANY() {
+        return VIPS_SAVEABLE_ANY;
+    }
+    private static final int VIPS_SAVEABLE_MONO = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_MONO = 1
+     * }
+     */
+    public static int VIPS_SAVEABLE_MONO() {
+        return VIPS_SAVEABLE_MONO;
+    }
+    private static final int VIPS_SAVEABLE_RGB = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_RGB = 3
+     * }
+     */
+    public static int VIPS_SAVEABLE_RGB() {
+        return VIPS_SAVEABLE_RGB;
+    }
+    private static final int VIPS_SAVEABLE_RGBA = (int)11L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_RGBA = 11
+     * }
+     */
+    public static int VIPS_SAVEABLE_RGBA() {
+        return VIPS_SAVEABLE_RGBA;
+    }
+    private static final int VIPS_SAVEABLE_RGBA_ONLY = (int)10L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_RGBA_ONLY = 10
+     * }
+     */
+    public static int VIPS_SAVEABLE_RGBA_ONLY() {
+        return VIPS_SAVEABLE_RGBA_ONLY;
+    }
+    private static final int VIPS_SAVEABLE_RGB_CMYK = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_RGB_CMYK = 7
+     * }
+     */
+    public static int VIPS_SAVEABLE_RGB_CMYK() {
+        return VIPS_SAVEABLE_RGB_CMYK;
+    }
+    private static final int VIPS_SAVEABLE_LAST = (int)99L;
+    /**
+     * {@snippet lang=c :
+     * enum <anonymous>.VIPS_SAVEABLE_LAST = 99
+     * }
+     */
+    public static int VIPS_SAVEABLE_LAST() {
+        return VIPS_SAVEABLE_LAST;
     }
 
     private static class vips_init {
@@ -13988,25 +14105,25 @@ public class VipsRaw {
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION "8.16.1"
+     * #define VIPS_VERSION "8.17.0"
      * }
      */
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.16.1");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.0");
         }
         return Holder.VIPS_VERSION;
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION_STRING "8.16.1"
+     * #define VIPS_VERSION_STRING "8.17.0"
      * }
      */
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.16.1");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.0");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -14019,46 +14136,46 @@ public class VipsRaw {
     public static int VIPS_MAJOR_VERSION() {
         return VIPS_MAJOR_VERSION;
     }
-    private static final int VIPS_MINOR_VERSION = (int)16L;
+    private static final int VIPS_MINOR_VERSION = (int)17L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MINOR_VERSION 16
+     * #define VIPS_MINOR_VERSION 17
      * }
      */
     public static int VIPS_MINOR_VERSION() {
         return VIPS_MINOR_VERSION;
     }
-    private static final int VIPS_MICRO_VERSION = (int)1L;
+    private static final int VIPS_MICRO_VERSION = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MICRO_VERSION 1
+     * #define VIPS_MICRO_VERSION 0
      * }
      */
     public static int VIPS_MICRO_VERSION() {
         return VIPS_MICRO_VERSION;
     }
-    private static final int VIPS_LIBRARY_CURRENT = (int)60L;
+    private static final int VIPS_LIBRARY_CURRENT = (int)61L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_CURRENT 60
+     * #define VIPS_LIBRARY_CURRENT 61
      * }
      */
     public static int VIPS_LIBRARY_CURRENT() {
         return VIPS_LIBRARY_CURRENT;
     }
-    private static final int VIPS_LIBRARY_REVISION = (int)1L;
+    private static final int VIPS_LIBRARY_REVISION = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_REVISION 1
+     * #define VIPS_LIBRARY_REVISION 0
      * }
      */
     public static int VIPS_LIBRARY_REVISION() {
         return VIPS_LIBRARY_REVISION;
     }
-    private static final int VIPS_LIBRARY_AGE = (int)18L;
+    private static final int VIPS_LIBRARY_AGE = (int)19L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_AGE 18
+     * #define VIPS_LIBRARY_AGE 19
      * }
      */
     public static int VIPS_LIBRARY_AGE() {
@@ -14069,7 +14186,7 @@ public class VipsRaw {
      * #define VIPS_CONFIG "enable debug: false
      * enable deprecated: true
      * enable modules: true
-     * enable cplusplus: true
+     * enable C++ binding: true
      * enable RAD load/save: true
      * enable Analyze7 load: true
      * enable PPM load/save: true
@@ -14087,7 +14204,7 @@ public class VipsRaw {
      * PNG load/save with spng: true
      * image quantisation with imagequant: true
      * TIFF load/save with libtiff-4: true
-     * image pyramid save with libarchive: true
+     * image pyramid save with libarchive: false
      * HEIC/AVIF load/save with libheif: true (dynamic module: true)
      * WebP load/save with libwebp: true
      * PDF load with poppler-glib: true (dynamic module: true)
@@ -14104,7 +14221,7 @@ public class VipsRaw {
     public static MemorySegment VIPS_CONFIG() {
         class Holder {
             static final MemorySegment VIPS_CONFIG
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable cplusplus: true\nenable RAD load/save: true\nenable Analyze7 load: true\nenable PPM load/save: true\nenable GIF load: true\nFFTs with fftw3: true\nSIMD support with libhwy: true\nICC profile support with lcms2: true\ndeflate compression with zlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with libopenjp2: true\nPNG load/save with spng: true\nimage quantisation with imagequant: true\nTIFF load/save with libtiff-4: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg-2.0: true\nEXR load with OpenEXR: true\nWSI load with openslide: true (dynamic module: true)\nMatlab load with matio: true\nNIfTI load/save with libnifti: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nMagick load/save with MagickCore: true (dynamic module: true)");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable C++ binding: true\nenable RAD load/save: true\nenable Analyze7 load: true\nenable PPM load/save: true\nenable GIF load: true\nFFTs with fftw3: true\nSIMD support with libhwy: true\nICC profile support with lcms2: true\ndeflate compression with zlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with libopenjp2: true\nPNG load/save with spng: true\nimage quantisation with imagequant: true\nTIFF load/save with libtiff-4: true\nimage pyramid save with libarchive: false\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg-2.0: true\nEXR load with OpenEXR: true\nWSI load with openslide: true (dynamic module: true)\nMatlab load with matio: true\nNIfTI load/save with libnifti: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nMagick load/save with MagickCore: true (dynamic module: true)");
         }
         return Holder.VIPS_CONFIG;
     }

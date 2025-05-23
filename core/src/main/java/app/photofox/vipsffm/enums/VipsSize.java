@@ -5,31 +5,21 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>Controls whether an operation should upsize, downsize, both up and
- * downsize, or force a size.</p>
- *
- * <p>See also: {@link VImage#thumbnail}.</p>
- */
+/// Controls whether an operation should upsize, downsize, both up and
+/// downsize, or force a size.
+/// 
+/// See also: [VImage#thumbnail]
 public enum VipsSize implements VNamedEnum {
-  /**
-   * <p>size both up and down</p>
-   */
+  /// size both up and down
   SIZE_BOTH("VIPS_SIZE_BOTH", "both", 0),
 
-  /**
-   * <p>only upsize</p>
-   */
+  /// only upsize
   SIZE_UP("VIPS_SIZE_UP", "up", 1),
 
-  /**
-   * <p>only downsize</p>
-   */
+  /// only downsize
   SIZE_DOWN("VIPS_SIZE_DOWN", "down", 2),
 
-  /**
-   * <p>force size, that is, break aspect ratio</p>
-   */
+  /// force size, that is, break aspect ratio
   SIZE_FORCE("VIPS_SIZE_FORCE", "force", 3),
 
   SIZE_LAST("VIPS_SIZE_LAST", "last", 4);

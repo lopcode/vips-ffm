@@ -132,7 +132,7 @@ fun main() {
 
 object DiscoverVipsOperations {
 
-    private val girPath = Path.of("/opt/homebrew/share/gir-1.0/Vips-8.0.gir")
+    private val girPath = Path.of("/Users/sage/git/libvips/8.17-unreleased/share/gir-1.0/Vips-8.0.gir")
 
     fun run(arena: Arena): DiscoveredOperations {
         VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))

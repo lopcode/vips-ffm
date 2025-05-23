@@ -14,22 +14,12 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef struct _VipsArea {
- *     void *data;
- *     size_t length;
- *     int n;
- *     int count;
- *     GMutex lock;
- *     VipsCallbackFn free_fn;
- *     void *client;
- *     GType type;
- *     size_t sizeof_type;
- * } VipsArea
+ * typedef union _GMutex GMutex
  * }
  */
-public class VipsArea extends _VipsArea {
+public class GMutex extends _GMutex {
 
-    VipsArea() {
+    GMutex() {
         // Should not be called directly
     }
 }

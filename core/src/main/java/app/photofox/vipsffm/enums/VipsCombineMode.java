@@ -5,23 +5,17 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See {@link VImage#drawImage} and so on.</p>
- *
- * <p>Operations like {@link VImage#drawImage} need to be told how to combine images
- * from two sources.</p>
- *
- * <p>See also: {@link VImage#join}.</p>
- */
+/// See [VImage#drawImage] and so on.
+/// 
+/// Operations like [VImage#drawImage] need to be told how to combine images
+/// from two sources.
+/// 
+/// See also: [VImage#join]
 public enum VipsCombineMode implements VNamedEnum {
-  /**
-   * <p>set pixels to the new value</p>
-   */
+  /// set pixels to the new value
   COMBINE_MODE_SET("VIPS_COMBINE_MODE_SET", "set", 0),
 
-  /**
-   * <p>add pixels</p>
-   */
+  /// add pixels
   COMBINE_MODE_ADD("VIPS_COMBINE_MODE_ADD", "add", 1),
 
   COMBINE_MODE_LAST("VIPS_COMBINE_MODE_LAST", "last", 2);
