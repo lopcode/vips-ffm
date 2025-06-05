@@ -4,7 +4,7 @@ object JavadocMarkdownConversion {
 
     private val startRegex = "[ \\t]*/\\*\\*[ \\t]*\n".toRegex() // /**
     private val endRegex = "[ \\t]*\\*/[ \\t]*\n".toRegex()// */
-    private val middleRegex = "([\n^]\\s+)\\*".toRegex() // *
+    private val middleRegex = "([\n^]+\\s+)\\*".toRegex() // *
 
     // attempts to crudely convert a code block from old javadoc style to new markdown style
     fun convert(original: String): String {
