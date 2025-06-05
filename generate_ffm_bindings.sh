@@ -14,9 +14,9 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up libvips..."
 
-vips --version
+./libvips/release/bin/vips --version
 
-LIBVIPS_INCLUDES_PATH="/opt/homebrew/include"
+LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
 LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
 if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
@@ -35,8 +35,8 @@ mv /tmp/jextract-package-info.java core/src/main/java/app/photofox/vipsffm/jextr
 echo "Dumping all discovered includes..."
 
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
---include-dir "/opt/homebrew/include/vips/" \
---include-dir "/opt/homebrew/include/" \
+--include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
+--include-dir "$LIBVIPS_INCLUDES_PATH" \
 --include-dir "/opt/homebrew/include/glib-2.0" \
 --include-dir "/opt/homebrew/lib/glib-2.0/include" \
 --library "vips" \
@@ -63,15 +63,15 @@ touch includes_filtered.txt
   grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
   grep -E ' (_)?(CustomStream(.*)Callback)' includes.txt
   grep -E ' (_)?(VipsArea[ ]|VipsTarget[ ]|VipsConnection[ ]|VipsObject[ ])' includes.txt
-  grep -E ' (_)?(GClass[ ]|GEnum(Class|Value)?[ ]|GObject[ ]|GObjectClass[ ]|GInputStream[ ]|GInputStreamClass[ ]|GTypeInstance[ ]|GTypeClass[ ]|GValue[ ]|GParamSpec[ ]|G_TYPE)' includes.txt
+  grep -E ' (_)?(GClass[ ]|GEnum(Class|Value)?[ ]|GObject[ ]|GObjectClass[ ]|GInputStream[ ]|GInputStreamClass[ ]|GTypeInstance[ ]|GTypeClass[ ]|GValue[ ]|GParamSpec[ ]|GMutex[ ]|G_TYPE)' includes.txt
 } >> includes_filtered.txt
 
 echo "Running jextract..."
 
 set -x
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
---include-dir "/opt/homebrew/include/vips/" \
---include-dir "/opt/homebrew/include/" \
+--include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
+--include-dir "$LIBVIPS_INCLUDES_PATH" \
 --include-dir "/opt/homebrew/include/glib-2.0" \
 --include-dir "/opt/homebrew/lib/glib-2.0/include" \
 --include-dir "custom_defs" \
@@ -84,6 +84,6 @@ set -x
 
 ./gradlew clean generator:build generator:shadowJar
 
-DYLD_LIBRARY_PATH=/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
+DYLD_LIBRARY_PATH=$(readlink -f ./libvips)/release/lib:/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
 
 ./build_docs.sh

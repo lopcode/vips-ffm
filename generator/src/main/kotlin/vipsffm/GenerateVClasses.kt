@@ -3,17 +3,17 @@ package vipsffm
 import app.photofox.vipsffm.jextract.GEnumClass
 import app.photofox.vipsffm.jextract.GEnumValue
 import app.photofox.vipsffm.jextract.VipsRaw
-import com.squareup.javapoet.AnnotationSpec
-import com.squareup.javapoet.ArrayTypeName
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.CodeBlock
-import com.squareup.javapoet.FieldSpec
-import com.squareup.javapoet.JavaFile
-import com.squareup.javapoet.MethodSpec
-import com.squareup.javapoet.ParameterSpec
-import com.squareup.javapoet.ParameterizedTypeName
-import com.squareup.javapoet.TypeName
-import com.squareup.javapoet.TypeSpec
+import com.palantir.javapoet.AnnotationSpec
+import com.palantir.javapoet.ArrayTypeName
+import com.palantir.javapoet.ClassName
+import com.palantir.javapoet.CodeBlock
+import com.palantir.javapoet.FieldSpec
+import com.palantir.javapoet.JavaFile
+import com.palantir.javapoet.MethodSpec
+import com.palantir.javapoet.ParameterSpec
+import com.palantir.javapoet.ParameterizedTypeName
+import com.palantir.javapoet.TypeName
+import com.palantir.javapoet.TypeSpec
 import org.apache.commons.text.StringEscapeUtils
 import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
@@ -23,6 +23,7 @@ import java.util.Arrays
 import java.util.Locale
 import java.util.Objects
 import javax.lang.model.element.Modifier
+import kotlin.io.path.writeText
 
 object GenerateVClasses {
 
@@ -140,14 +141,14 @@ object GenerateVClasses {
         val equals = MethodSpec.methodBuilder("equals")
             .addAnnotation(Override::class.java)
             .addModifiers(Modifier.PUBLIC)
-            .addParameter(TypeName.OBJECT, "o")
+            .addParameter(ClassName.OBJECT, "o")
             .returns(TypeName.BOOLEAN)
             .addStatement("if (this == o) return true")
             .addStatement("if (!(o instanceof \$T vImage)) return false", vimageType)
             .addStatement("return Objects.equals(arena, vImage.arena) && Objects.equals(address, vImage.address)")
             .build()
         val unsafeDeprecatedAddress = MethodSpec.methodBuilder("getUnsafeAddress")
-            .addJavadoc("@deprecated See {@link #getUnsafeStructAddress}")
+            .addJavadoc("@deprecated See [#getUnsafeStructAddress]")
             .addStatement("return this.getUnsafeStructAddress()")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
@@ -159,16 +160,16 @@ object GenerateVClasses {
             )
             .build()
         val unsafeStructAddress = MethodSpec.methodBuilder("getUnsafeStructAddress")
-            .addJavadoc("Gets the raw {@link MemorySegment} (C pointer) for this VipsImage struct")
-            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the {@link #arena}")
-            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with {@link VipsHelper}")
+            .addJavadoc("Gets the raw [MemorySegment] (C pointer) for this VipsImage struct")
+            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the [#arena]")
+            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]")
             .addStatement("return this.address")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
             .build()
         val vipsClass = TypeSpec.classBuilder(vimageType.topLevelClassName())
             .addJavadoc("A generated wrapper representing a VipsImage. Do not edit.")
-            .addJavadoc("\n@see <a href=\"https://www.libvips.org/API/current/api-index-full.html\">libvips api docs</a>")
+            .addJavadoc("\n[libvips api docs](https://www.libvips.org/API/current/api-index-full.html)")
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
             .addMethod(ctor)
             .addMethod(hashCode)
@@ -182,8 +183,12 @@ object GenerateVClasses {
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm", vipsClass)
             .build()
-        val targetedGeneratedSourceRoot = Path.of("core/src/main/java")
-        javaFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm")
+        targetGeneratedSourceRoot.resolve("VImage.java").writeText(javaFile, Charsets.UTF_8)
     }
 
     private fun buildOperationMethod(
@@ -222,7 +227,7 @@ object GenerateVClasses {
             argSpec.isOutput && argSpec.isRequired
         }.firstOrNull()
 
-        val returnType = firstOutput?.type ?: TypeName.VOID
+        val returnType = firstOutput?.type() ?: TypeName.VOID
         method.returns(returnType)
         method.varargs(true)
         method.addException(vipsErrorType)
@@ -235,28 +240,27 @@ object GenerateVClasses {
                     .build()
             )
         }
-        generateMethodJavadoc(method, methodName, spec, operations, enums)
 
         var referencedSelf = false
         poetArguments.forEachIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            val poetArgType = poetArg.type
+            val poetArgType = poetArg.type()
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetArgType, argSpec)
             if (argSpec.isOutput) {
-                method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
+                method.addStatement("var ${poetArg.name()}Option = \$T(\"${argSpec.name}\")", vipsOptionType)
             } else if (argSpec.isInput) {
-                if (poetArg.type == vimageType && !filteredPoetArgs.contains(poetArg)) {
+                if (poetArg.type() == vimageType && !filteredPoetArgs.contains(poetArg)) {
                     // it's an image type, and doesn't refer to "this image"
                     referencedSelf = true
-                    method.addStatement("var ${poetArg.name}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
-                } else if (poetArg.type == vEnumType) {
+                    method.addStatement("var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", this)", vipsOptionType)
+                } else if (poetArg.type() == vEnumType) {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name}.getRawValue())",
+                        "var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", ${poetArg.name()}.getRawValue())",
                         vipsOptionType
                     )
                 } else {
                     method.addStatement(
-                        "var ${poetArg.name}Option = \$T(\"${argSpec.name}\", ${poetArg.name})",
+                        "var ${poetArg.name()}Option = \$T(\"${argSpec.name}\", ${poetArg.name()})",
                         vipsOptionType
                     )
                 }
@@ -265,13 +269,14 @@ object GenerateVClasses {
         method.addStatement("var callArgs = new \$T<>(\$T.asList(args))", ArrayList::class.java, Arrays::class.java)
         poetArguments.forEachIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            method.addStatement("callArgs.add(${poetArg.name}Option)")
+            method.addStatement("callArgs.add(${poetArg.name()}Option)")
         }
         method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType);
         if (returnType != TypeName.VOID) {
-            method.addStatement("return ${firstOutput!!.name}Option.valueOrThrow()")
+            method.addStatement("return ${firstOutput!!.name()}Option.valueOrThrow()")
         }
 
+        generateMethodJavadoc(method, methodName, spec, operations, enums)
         if (!referencedSelf) {
             method.addJavadoc("\n@param arena The arena that bounds resulting memory allocations during this operation")
         }
@@ -280,10 +285,10 @@ object GenerateVClasses {
                 return@forEachIndexed
             }
             val argSpec = requiredArguments[index]
-            var argNameSection = poetArg.name
+            var argNameSection = poetArg.name()
             if (argSpec.isEnum) {
                 val enumName = (argSpec.type as GValueType.Unknown).rawName
-                argNameSection += " {@link \$T}"
+                argNameSection += " [\$T]"
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
             } else {
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
@@ -296,10 +301,10 @@ object GenerateVClasses {
             }
             val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
-            var optionName = "{@link ${vipsOptionType.simpleNames().first()}}"
+            var optionName = "[${vipsOptionType.simpleNames().first()}]"
             if (it.isEnum) {
                 val enumName = (it.type as GValueType.Unknown).rawName
-                optionName += " {@link \$T}"
+                optionName += " [\$T]"
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
             } else {
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
@@ -355,6 +360,11 @@ object GenerateVClasses {
         enum.addJavadoc(girDoc, *referencedClassNames.toTypedArray())
     }
 
+    data class ClassMatch(
+        val className: ClassName,
+        val matchPosition: Int
+    )
+
     private fun buildJavadoc(
         doc: String,
         name: String,
@@ -363,94 +373,213 @@ object GenerateVClasses {
     ): Pair<String, List<ClassName>> {
         var girDoc = doc.replace("$", "$$")
 
-        data class ClassMatch(
-            val className: ClassName,
-            val matchPosition: Int
-        )
         val classReferences = mutableListOf<ClassMatch>()
 
-        girDoc = girDoc.replace("Optional arguments:\n\n?(\\*?(.+)\n)+".toRegex(), "")
-
-        girDoc = girDoc.replace("[%#@]([A-Za-z0-9-_]+)".toRegex()) { match ->
-            val identifierName = match.groups[1]!!.value
-            if (identifierName.startsWith("VIPS_")) {
-                val matchedParentEnum = enums.firstOrNull {
-                    it.values.any {
-                        it.gir.cIdentifier == identifierName
+        val seeAlsoReferences = mutableListOf<String>()
+        // parse known "sections"
+        // example: ::: tip "Optional arguments"
+        girDoc = girDoc.replace("\n?:::(.*)\n([\\s\\S]+?)(?:$|\n\n)".toRegex()) { match ->
+            val sectionName = match.groups[1]?.value?.trim() ?: ""
+            val sectionDetail = match.groups[2]?.value?.trim() ?: ""
+            when {
+                sectionName.startsWith("tip") -> {
+                    val tipName = sectionName
+                        .removePrefix("tip")
+                        .trim(' ', '"')
+                    when (tipName.lowercase(Locale.ENGLISH)) {
+                        // verifying the docs are laid out how we expect
+                        "optional arguments" -> Unit
+                        // avoid unexpected surprises across versions
+                        else -> throw RuntimeException("unknown tip type: $tipName")
                     }
                 }
-                val matchedValue = matchedParentEnum?.values?.first { it.gir.cIdentifier == identifierName }
-                if (matchedValue != null) {
-                    classReferences += ClassMatch(
-                        ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name),
-                        match.range.first
-                    )
-                    val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
-                    return@replace "{@link $enumName}"
-                }
-            }
-
-            if (identifierName.isBlank()) {
-                return@replace match.groups[0]!!.value
-            }
-
-            if (!identifierName.startsWith("VIPS_")) {
-                val operationMatch = operations.firstOrNull { it.nickname.fromSnakeToJavaStyle() == name }
-                val optionMatch = operationMatch?.let {
-                    val optionStyle = identifierName.replace("_", "-")
-                    operationMatch.args.firstOrNull { it.name == optionStyle }
-                }
-                if (operationMatch != null && optionMatch != null) {
-                    if (optionMatch.isRequired) {
-                        return@replace "{@code ${optionMatch.name.fromSnakeToJavaStyle()}}"
-                    } else {
-                        return@replace "{@code ${optionMatch.name}}"
+                sectionName == "seealso" -> {
+                    // expect a comma separated list of references
+                    val seeAlsos = sectionDetail
+                        .split(",")
+                        .map { it.trim(' ', '.', ',', '\n') }
+                        .filter { it.isNotBlank() }
+                    if (seeAlsos.isEmpty()) {
+                        throw RuntimeException("unexpected empty seealso list")
                     }
+                    seeAlsoReferences.addAll(seeAlsos)
                 }
+                else -> throw RuntimeException("unexpected section type: $sectionName")
             }
-
-            return@replace "{@code $identifierName}"
+            "" // always remove sections
         }
 
-        girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
-            val identifier = match.groups[1]!!.value
-            if (operations.any { it.gir?.cIdentifier == "vips_$identifier" }) {
-                val newName = identifier.removePrefix("image").fromSnakeToJavaStyle()
-                if (newName == name) {
-                    "{@code $name}"
-                } else {
-                    classReferences += ClassMatch(
-                        vimageType,
-                        match.range.first
-                    )
-                    "{@link \$T#$newName}"
-                }
-            } else {
-                "{@code vips_$identifier}"
-            }
+        // replace gir markdown references
+        girDoc = girDoc.replace("\\[([A-Za-z0-9-_]+)@([A-Za-z0-9-_.:]+)]".toRegex()) { match ->
+            return@replace convertGirReferenceToPoetReference(
+                match.value,
+                match.range.first,
+                enums,
+                operations,
+                classReferences
+            )
         }
 
-        girDoc = "<p>" + girDoc.replace("\n\n", "</p>\n\n<p>")
-            .trim() + "</p>"
+        girDoc = girDoc.replace("([\\n\\s]+)@([A-Za-z0-9-_]+)".toRegex()) { match ->
+            // single @ references
+            val whitespace = match.groups[1]!!.value
+            val matchName = match.groups[2]!!.value
+            "$whitespace`$matchName`"
+        }
 
-        girDoc = girDoc.replace("<(code|link|function)(.*?)>".toRegex(), "{@code ")
-            .replace("</(link|function|code)>".toRegex(), "}")
-            .replace("<table>".toRegex(), "<pre>{@code\n<table>")
-            .replace("</table>".toRegex(), "</table>\n}</pre>")
-            .replace("<emphasis>".toRegex(), "<b>")
-            .replace("</emphasis>".toRegex(), "</b>")
-            .replace("<p>|[", "<pre>{@code ")
-            .replace("]|", "}</pre>")
-            .replace("</p>\n\n<p>(\\s)+".toRegex(), "\n\n$1")
-            .replace("<p><pre>".toRegex(), "<pre>")
-            .replace("</pre></p>".toRegex(), "</pre>")
-            .replace("<p>([\\s\\S]*?)</p>".toRegex()) { match ->
-                val escapedInner = StringEscapeUtils.escapeHtml4(match.groups[1]!!.value)
-                "<p>$escapedInner</p>"
+        if (seeAlsoReferences.isNotEmpty()) {
+            val references = seeAlsoReferences.joinToString(", ") {
+                convertGirReferenceToPoetReference(
+                    it,
+                    girDoc.length,
+                    enums,
+                    operations,
+                    classReferences
+                )
             }
+            girDoc += "\nSee also: $references"
+        }
+//
+//        girDoc = girDoc.replace("[%#@]([A-Za-z0-9-_]+)".toRegex()) { match ->
+//            val identifierName = match.groups[1]!!.value
+//            if (identifierName.startsWith("VIPS_")) {
+//                val matchedParentEnum = enums.firstOrNull {
+//                    it.values.any {
+//                        it.gir.cIdentifier == identifierName
+//                    }
+//                }
+//                val matchedValue = matchedParentEnum?.values?.first { it.gir.cIdentifier == identifierName }
+//                if (matchedValue != null) {
+//                    classReferences += ClassMatch(
+//                        ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name),
+//                        match.range.first
+//                    )
+//                    val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
+//                    return@replace "[$enumName]"
+//                }
+//            }
+//
+//            if (identifierName.isBlank()) {
+//                return@replace match.groups[0]!!.value
+//            }
+//
+//            if (!identifierName.startsWith("VIPS_")) {
+//                val operationMatch = operations.firstOrNull { it.nickname.fromSnakeToJavaStyle() == name }
+//                val optionMatch = operationMatch?.let {
+//                    val optionStyle = identifierName.replace("_", "-")
+//                    operationMatch.args.firstOrNull { it.name == optionStyle }
+//                }
+//                if (operationMatch != null && optionMatch != null) {
+//                    if (optionMatch.isRequired) {
+//                        return@replace "`${optionMatch.name.fromSnakeToJavaStyle()}`"
+//                    } else {
+//                        return@replace "`${optionMatch.name}`"
+//                    }
+//                }
+//            }
+//
+//            return@replace "`$identifierName`"
+//        }
+//
+//        girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
+//            val identifier = match.groups[1]!!.value
+//            if (operations.any { it.gir?.cIdentifier == "vips_$identifier" }) {
+//                val newName = identifier.removePrefix("image").fromSnakeToJavaStyle()
+//                if (newName == name) {
+//                    "`$name`"
+//                } else {
+//                    classReferences += ClassMatch(
+//                        vimageType,
+//                        match.range.first
+//                    )
+//                    "[\$T#$newName]"
+//                }
+//            } else {
+//                "`vips_$identifier`"
+//            }
+//        }
 
         val orderedClassReferences = classReferences.sortedBy { it.matchPosition }.map { it.className }
         return Pair(girDoc, orderedClassReferences)
+    }
+
+    private fun convertGirReferenceToPoetReference(
+        match: String,
+        matchPosition: Int,
+        enums: List<DiscoveredEnum>,
+        operations: List<VipsOperation>,
+        classReferences: MutableList<ClassMatch>
+    ): String {
+        // examples:
+        // * [ctor@Image.new_from_file]
+        // * [enum@Vips.BandFormat.UCHAR]
+        // * "@something" - references a local parameter
+        val trimmed = match.removeSurrounding("[", "]")
+        val matchType = trimmed.substringBefore('@', "")
+        val matchName = trimmed.substringAfter('@', "")
+        if (matchType.isBlank() && matchName.isBlank()) {
+            throw RuntimeException("unexpected format for reference: $match")
+        }
+
+        return when (matchType) {
+            "enum" -> {
+                var matchParts = matchName.split(".")
+                if (matchParts[0] == "Vips") {
+                    matchParts = matchParts.drop(1)
+                }
+                val enumName = matchParts[0]
+                val matchedParentEnum = enums.firstOrNull {
+                    it.gir.name.equals(enumName, ignoreCase = true)
+                }
+                if (matchedParentEnum == null) {
+                    throw RuntimeException("unknown enum: $matchParts")
+                }
+                val classReference = ClassMatch(
+                    ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name),
+                    matchPosition
+                )
+                if (matchParts.size == 1) {
+                    // a direct reference to an enum
+                    classReferences += classReference
+                    return "[\$T]"
+                }
+                // otherwise, includes an enum value reference
+                val enumValue = matchParts[1]
+                val matchedValue =
+                    matchedParentEnum.values.firstOrNull { it.nickname.equals(enumValue, ignoreCase = true) }
+                if (matchedValue != null) {
+                    classReferences += classReference
+                    return "[\$T#${matchedValue.name.removePrefix("VIPS_")}]"
+                }
+                "`$matchName`" // fallback
+            }
+
+            "method", "func", "ctor" -> {
+                val matchParts = matchName.split(".")
+                if (matchParts[0] == "Image") {
+                    val submatchName = matchParts[1]
+                    val matchedOperation = operations.firstOrNull {
+                        it.nickname.equals(submatchName, ignoreCase = true)
+                    }
+                    if (matchedOperation == null) {
+                        return "`$matchName`"
+                    }
+                    val methodName = matchedOperation.nickname.fromSnakeToJavaStyle()
+                    classReferences += ClassMatch(vimageType, matchPosition)
+                    return "[\$T#$methodName]"
+                }
+                "`$matchName`" // fallback
+            }
+            "class" -> "`$matchName`"
+            "struct" -> "`$matchName`"
+            "const" -> "`$matchName`"
+            "alias" -> "`$matchName`"
+            "flags" -> "`$matchName`"
+            "signal" -> "`$matchName`"
+            else -> {
+                throw RuntimeException("unsupported gir lookup type: $matchType")
+            }
+        }
     }
 
     private fun mapPoetTypeToVipsOptionType(
@@ -470,8 +599,8 @@ object GenerateVClasses {
             vEnumType -> vipsOptionEnumType
             vblobType -> vipsOptionBlobType
             else -> {
-                if (poetArgType is ParameterizedTypeName && poetArgType.rawType == listType) {
-                    val parameterizedType = poetArgType.typeArguments.first()
+                if (poetArgType is ParameterizedTypeName && poetArgType.rawType() == listType) {
+                    val parameterizedType = poetArgType.typeArguments().first()
                     when (parameterizedType) {
                         boxedDoubleType -> vipsOptionArrayDoubleType
                         boxedIntType -> vipsOptionArrayIntType
@@ -599,8 +728,8 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
-            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
-            .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use {@link VImage#newFromFile(Arena, String, VipsOption...)} and friends instead.")
+            .addStatement("return newFromSource(arena, source, optionString, options)")
+            .addJavadoc("Creates a new VImage from raw bytes. Note that this is quite inefficient, use [VImage#newFromFile] and friends instead.")
             .build()
         val newFromBytesNoOptionsMethod = MethodSpec.methodBuilder("newFromBytes")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -611,8 +740,8 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromBytes(arena, bytes)", vsourceType)
-            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
-            .addJavadoc("See {@link VImage#newFromBytes(Arena, byte[], String, VipsOption...)}")
+            .addStatement("return newFromSource(arena, source, options)")
+            .addJavadoc("See [VImage#newFromBytes]")
             .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -624,9 +753,9 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
-            .addStatement("return newFromSource(arena, source, optionString, options)", vipsOptionSourceType)
+            .addStatement("return newFromSource(arena, source, optionString, options)")
             .addJavadoc("""
-                Creates a new VImage from an {@link InputStream}. This uses libvips' "custom streaming" feature and is
+                Creates a new VImage from an [InputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
@@ -642,8 +771,8 @@ object GenerateVClasses {
             .varargs(true)
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
-            .addStatement("return newFromSource(arena, source, options)", vipsOptionSourceType)
-            .addJavadoc("See {@link VImage#newFromStream(Arena, InputStream, String, VipsOption...)}")
+            .addStatement("return newFromSource(arena, source, options)")
+            .addJavadoc("See [VImage#newFromStream]")
             .build()
         val writeToFileMethod = MethodSpec.methodBuilder("writeToFile")
             .addModifiers(Modifier.PUBLIC)
@@ -667,7 +796,7 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .returns(vimageType)
             .addStatement("\$T.image_write(this.address, out.address)", vipsHelperType)
-            .addStatement("return out", vimageType)
+            .addStatement("return out")
             .build()
         val writeToTargetMethod = MethodSpec.methodBuilder("writeToTarget")
             .addModifiers(Modifier.PUBLIC)
@@ -694,7 +823,7 @@ object GenerateVClasses {
             .addStatement("var target = \$T.newFromOutputStream(arena, stream)", vtargetType)
             .addStatement("this.writeToTarget(target, suffix, options)")
             .addJavadoc("""
-                Writes this VImage to an {@link OutputStream}. This uses libvips' "custom streaming" feature and is
+                Writes this VImage to an [OutputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
@@ -853,8 +982,12 @@ object GenerateVClasses {
         val enumClass = enumClassBuilder.build()
         val enumFile = JavaFile.builder("app.photofox.vipsffm.enums", enumClass)
             .build()
-        val targetedGeneratedSourceRoot = Path.of("core/src/main/java")
-        enumFile.writeToPath(targetedGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm/enums")
+        targetGeneratedSourceRoot.resolve("$parentName.java").writeText(enumFile, Charsets.UTF_8)
     }
 }
 

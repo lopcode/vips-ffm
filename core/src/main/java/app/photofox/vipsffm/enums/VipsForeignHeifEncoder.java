@@ -4,35 +4,23 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>The selected encoder to use.
- * If libheif hasn't been compiled with the selected encoder,
- * we will fallback to the default encoder for the compression format.</p>
- */
+/// The selected encoder to use.
+/// If libheif hasn't been compiled with the selected encoder,
+/// we will fallback to the default encoder for the compression format.
 public enum VipsForeignHeifEncoder implements VNamedEnum {
-  /**
-   * <p>auto</p>
-   */
+  /// auto
   FOREIGN_HEIF_ENCODER_AUTO("VIPS_FOREIGN_HEIF_ENCODER_AUTO", "auto", 0),
 
-  /**
-   * <p>aom</p>
-   */
+  /// aom
   FOREIGN_HEIF_ENCODER_AOM("VIPS_FOREIGN_HEIF_ENCODER_AOM", "aom", 1),
 
-  /**
-   * <p>RAV1E</p>
-   */
+  /// RAV1E
   FOREIGN_HEIF_ENCODER_RAV1E("VIPS_FOREIGN_HEIF_ENCODER_RAV1E", "rav1e", 2),
 
-  /**
-   * <p>SVT-AV1</p>
-   */
+  /// SVT-AV1
   FOREIGN_HEIF_ENCODER_SVT("VIPS_FOREIGN_HEIF_ENCODER_SVT", "svt", 3),
 
-  /**
-   * <p>x265</p>
-   */
+  /// x265
   FOREIGN_HEIF_ENCODER_X265("VIPS_FOREIGN_HEIF_ENCODER_X265", "x265", 4),
 
   FOREIGN_HEIF_ENCODER_LAST("VIPS_FOREIGN_HEIF_ENCODER_LAST", "last", 5);

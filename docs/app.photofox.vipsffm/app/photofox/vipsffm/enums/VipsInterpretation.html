@@ -128,14 +128,15 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
 <div class="block"><p>How the values in an image should be interpreted. For example, a
- three-band float image of type <a href="#INTERPRETATION_LAB"><code>INTERPRETATION_LAB</code></a> should have its
- pixels interpreted as coordinates in CIE Lab space.</p>
-
- <p>RGB and sRGB are treated in the same way. Use the colourspace functions if
- you want some other behaviour.</p>
-
- <p>The gaps in numbering are historical and must be maintained. Allocate
- new numbers from the end.</p></div>
+three-band float image of type <a href="#INTERPRETATION_LAB"><code>INTERPRETATION_LAB</code></a> should have its
+pixels interpreted as coordinates in CIE Lab space.</p>
+<ul>
+<li>RGB and sRGB are treated in the same way. Use the colourspace functions if
+you want some other behaviour.</li>
+<li>The gaps in numbering are historical and must be maintained. Allocate
+new numbers from the end.</li>
+</ul>
+</div>
 </div>
 </section>
 <section class="summary">
@@ -322,7 +323,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_MULTIBAND</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_MULTIBAND</span></div>
-<div class="block"><p>generic many-band image</p></div>
+<div class="block">generic many-band image</div>
 </div>
 </section>
 </li>
@@ -331,7 +332,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_B_W</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_B_W</span></div>
-<div class="block"><p>some kind of single-band image</p></div>
+<div class="block">some kind of single-band image</div>
 </div>
 </section>
 </li>
@@ -340,7 +341,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_HISTOGRAM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_HISTOGRAM</span></div>
-<div class="block"><p>a 1D image, eg. histogram or lookup table</p></div>
+<div class="block">a 1D image, eg. histogram or lookup table</div>
 </div>
 </section>
 </li>
@@ -349,7 +350,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_XYZ</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_XYZ</span></div>
-<div class="block"><p>the first three bands are CIE XYZ</p></div>
+<div class="block">the first three bands are CIE XYZ</div>
 </div>
 </section>
 </li>
@@ -358,7 +359,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_LAB</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_LAB</span></div>
-<div class="block"><p>pixels are in CIE Lab space</p></div>
+<div class="block">pixels are in CIE Lab space</div>
 </div>
 </section>
 </li>
@@ -367,7 +368,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_CMYK</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_CMYK</span></div>
-<div class="block"><p>the first four bands are in CMYK space</p></div>
+<div class="block">the first four bands are in CMYK space</div>
 </div>
 </section>
 </li>
@@ -376,7 +377,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_LABQ</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_LABQ</span></div>
-<div class="block"><p>implies <a href="VipsCoding.html#CODING_LABQ"><code>VipsCoding.CODING_LABQ</code></a></p></div>
+<div class="block">implies <a href="VipsCoding.html#CODING_LABQ"><code>VipsCoding.CODING_LABQ</code></a></div>
 </div>
 </section>
 </li>
@@ -385,7 +386,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_RGB</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_RGB</span></div>
-<div class="block"><p>generic RGB space</p></div>
+<div class="block">generic RGB space</div>
 </div>
 </section>
 </li>
@@ -394,7 +395,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_CMC</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_CMC</span></div>
-<div class="block"><p>a uniform colourspace based on CMC(1:1)</p></div>
+<div class="block">a uniform colourspace based on CMC(1:1)</div>
 </div>
 </section>
 </li>
@@ -403,7 +404,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_LCH</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_LCH</span></div>
-<div class="block"><p>pixels are in CIE LCh space</p></div>
+<div class="block">pixels are in CIE LCh space</div>
 </div>
 </section>
 </li>
@@ -412,7 +413,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_LABS</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_LABS</span></div>
-<div class="block"><p>CIE LAB coded as three signed 16-bit values</p></div>
+<div class="block">CIE LAB coded as three signed 16-bit values</div>
 </div>
 </section>
 </li>
@@ -421,7 +422,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_sRGB</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_sRGB</span></div>
-<div class="block"><p>pixels are sRGB</p></div>
+<div class="block">pixels are sRGB</div>
 </div>
 </section>
 </li>
@@ -430,7 +431,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_YXY</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_YXY</span></div>
-<div class="block"><p>pixels are CIE Yxy</p></div>
+<div class="block">pixels are CIE Yxy</div>
 </div>
 </section>
 </li>
@@ -439,7 +440,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_FOURIER</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_FOURIER</span></div>
-<div class="block"><p>image is in fourier space</p></div>
+<div class="block">image is in fourier space</div>
 </div>
 </section>
 </li>
@@ -448,7 +449,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_RGB16</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_RGB16</span></div>
-<div class="block"><p>generic 16-bit RGB</p></div>
+<div class="block">generic 16-bit RGB</div>
 </div>
 </section>
 </li>
@@ -457,7 +458,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_GREY16</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_GREY16</span></div>
-<div class="block"><p>generic 16-bit mono</p></div>
+<div class="block">generic 16-bit mono</div>
 </div>
 </section>
 </li>
@@ -466,7 +467,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_MATRIX</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_MATRIX</span></div>
-<div class="block"><p>a matrix</p></div>
+<div class="block">a matrix</div>
 </div>
 </section>
 </li>
@@ -475,7 +476,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_scRGB</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_scRGB</span></div>
-<div class="block"><p>pixels are scRGB</p></div>
+<div class="block">pixels are scRGB</div>
 </div>
 </section>
 </li>
@@ -484,7 +485,7 @@ the order they are declared.</div>
 <h3>INTERPRETATION_HSV</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_HSV</span></div>
-<div class="block"><p>pixels are HSV</p></div>
+<div class="block">pixels are HSV</div>
 </div>
 </section>
 </li>

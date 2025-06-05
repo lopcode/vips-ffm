@@ -111,12 +111,13 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
 <div class="block"><p>The type of access an operation has to supply. See <a href="../VImage.html#tilecache(app.photofox.vipsffm.VipsOption...)"><code>VImage.tilecache(app.photofox.vipsffm.VipsOption...)</code></a>
- and <code>VipsForeign</code>.</p>
-
- <p><a href="#ACCESS_RANDOM"><code>ACCESS_RANDOM</code></a> means requests can come in any order.</p>
-
- <p><a href="#ACCESS_SEQUENTIAL"><code>ACCESS_SEQUENTIAL</code></a> means requests will be top-to-bottom, but with some
- amount of buffering behind the read point for small non-local accesses.</p></div>
+and <code>Foreign</code>.</p>
+<ul>
+<li><a href="#ACCESS_RANDOM"><code>ACCESS_RANDOM</code></a> means requests can come in any order.</li>
+<li><a href="#ACCESS_SEQUENTIAL"><code>ACCESS_SEQUENTIAL</code></a> means requests will be top-to-bottom, but with some
+amount of buffering behind the read point for small non-local accesses.</li>
+</ul>
+</div>
 </div>
 </section>
 <section class="summary">
@@ -227,7 +228,7 @@ the order they are declared.</div>
 <h3>ACCESS_RANDOM</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a></span>&nbsp;<span class="element-name">ACCESS_RANDOM</span></div>
-<div class="block"><p>can read anywhere</p></div>
+<div class="block">can read anywhere</div>
 </div>
 </section>
 </li>
@@ -236,7 +237,7 @@ the order they are declared.</div>
 <h3>ACCESS_SEQUENTIAL</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a></span>&nbsp;<span class="element-name">ACCESS_SEQUENTIAL</span></div>
-<div class="block"><p>top-to-bottom reading only, but with a small buffer</p></div>
+<div class="block">top-to-bottom reading only, but with a small buffer</div>
 </div>
 </section>
 </li>

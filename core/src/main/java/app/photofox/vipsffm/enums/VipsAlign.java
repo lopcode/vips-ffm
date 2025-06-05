@@ -1,31 +1,24 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See {@link app.photofox.vipsffm.VImage#join} and so on.</p>
- *
- * <p>Operations like {@link app.photofox.vipsffm.VImage#join} need to be told whether to align images on the
- * low or high coordinate edge, or centre.</p>
- *
- * <p>See also: {@link app.photofox.vipsffm.VImage#join}.</p>
- */
+/// See [VImage#join] and so on.
+///
+/// Operations like [VImage#join] need to be told whether to align images on the
+/// low or high coordinate edge, or centre.
+///
+/// See also: [VImage#join]
 public enum VipsAlign implements VNamedEnum {
-  /**
-   * <p>align low coordinate edge</p>
-   */
+  /// align low coordinate edge
   ALIGN_LOW("VIPS_ALIGN_LOW", "low", 0),
 
-  /**
-   * <p>align centre</p>
-   */
+  /// align centre
   ALIGN_CENTRE("VIPS_ALIGN_CENTRE", "centre", 1),
 
-  /**
-   * <p>align high coordinate edge</p>
-   */
+  /// align high coordinate edge
   ALIGN_HIGH("VIPS_ALIGN_HIGH", "high", 2),
 
   ALIGN_LAST("VIPS_ALIGN_LAST", "last", 3);

@@ -74,6 +74,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#KERNEL_MITCHELL" tabindex="0">KERNEL_MITCHELL</a></li>
 <li><a href="#KERNEL_LANCZOS2" tabindex="0">KERNEL_LANCZOS2</a></li>
 <li><a href="#KERNEL_LANCZOS3" tabindex="0">KERNEL_LANCZOS3</a></li>
+<li><a href="#KERNEL_MKS2013" tabindex="0">KERNEL_MKS2013</a></li>
+<li><a href="#KERNEL_MKS2021" tabindex="0">KERNEL_MKS2021</a></li>
 <li><a href="#KERNEL_LAST" tabindex="0">KERNEL_LAST</a></li>
 </ol>
 </li>
@@ -113,7 +115,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public enum </span><span class="element-name type-name-label">VipsKernel</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
-<div class="block"><p>The resampling kernels vips supports. See <a href="../VImage.html#reduce(double,double,double,double,app.photofox.vipsffm.VipsOption...)"><code>VImage.reduce(double, double, double, double, app.photofox.vipsffm.VipsOption...)</code></a>, for example.</p></div>
+<div class="block">The resampling kernels vips supports. See <a href="../VImage.html#reduce(double,double,double,double,app.photofox.vipsffm.VipsOption...)"><code>VImage.reduce(double, double, double, double, app.photofox.vipsffm.VipsOption...)</code></a>, for example.</div>
 </div>
 </section>
 <section class="summary">
@@ -159,6 +161,14 @@ implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm
 <div class="col-first odd-row-color"><code><a href="#KERNEL_MITCHELL" class="member-name-link">KERNEL_MITCHELL</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">Convolve with a Mitchell kernel.</div>
+</div>
+<div class="col-first even-row-color"><code><a href="#KERNEL_MKS2013" class="member-name-link">KERNEL_MKS2013</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Convolve with Magic Kernel Sharp 2013.</div>
+</div>
+<div class="col-first odd-row-color"><code><a href="#KERNEL_MKS2021" class="member-name-link">KERNEL_MKS2021</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Convolve with Magic Kernel Sharp 2021.</div>
 </div>
 <div class="col-first even-row-color"><code><a href="#KERNEL_NEAREST" class="member-name-link">KERNEL_NEAREST</a></code></div>
 <div class="col-last even-row-color">
@@ -238,7 +248,7 @@ the order they are declared.</div>
 <h3>KERNEL_NEAREST</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_NEAREST</span></div>
-<div class="block"><p>The nearest pixel to the point.</p></div>
+<div class="block">The nearest pixel to the point.</div>
 </div>
 </section>
 </li>
@@ -247,7 +257,7 @@ the order they are declared.</div>
 <h3>KERNEL_LINEAR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_LINEAR</span></div>
-<div class="block"><p>Convolve with a triangle filter.</p></div>
+<div class="block">Convolve with a triangle filter.</div>
 </div>
 </section>
 </li>
@@ -256,7 +266,7 @@ the order they are declared.</div>
 <h3>KERNEL_CUBIC</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_CUBIC</span></div>
-<div class="block"><p>Convolve with a cubic filter.</p></div>
+<div class="block">Convolve with a cubic filter.</div>
 </div>
 </section>
 </li>
@@ -265,7 +275,7 @@ the order they are declared.</div>
 <h3>KERNEL_MITCHELL</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_MITCHELL</span></div>
-<div class="block"><p>Convolve with a Mitchell kernel.</p></div>
+<div class="block">Convolve with a Mitchell kernel.</div>
 </div>
 </section>
 </li>
@@ -274,7 +284,7 @@ the order they are declared.</div>
 <h3>KERNEL_LANCZOS2</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_LANCZOS2</span></div>
-<div class="block"><p>Convolve with a two-lobe Lanczos kernel.</p></div>
+<div class="block">Convolve with a two-lobe Lanczos kernel.</div>
 </div>
 </section>
 </li>
@@ -283,7 +293,25 @@ the order they are declared.</div>
 <h3>KERNEL_LANCZOS3</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_LANCZOS3</span></div>
-<div class="block"><p>Convolve with a three-lobe Lanczos kernel.</p></div>
+<div class="block">Convolve with a three-lobe Lanczos kernel.</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="KERNEL_MKS2013">
+<h3>KERNEL_MKS2013</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_MKS2013</span></div>
+<div class="block">Convolve with Magic Kernel Sharp 2013.</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="KERNEL_MKS2021">
+<h3>KERNEL_MKS2021</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsKernel.html" title="enum class in app.photofox.vipsffm.enums">VipsKernel</a></span>&nbsp;<span class="element-name">KERNEL_MKS2021</span></div>
+<div class="block">Convolve with Magic Kernel Sharp 2021.</div>
 </div>
 </section>
 </li>

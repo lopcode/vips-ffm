@@ -1,36 +1,25 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See also: {@link app.photofox.vipsffm.VImage#boolean1}.</p>
- */
+/// See also: [VImage#boolean1].
 public enum VipsOperationBoolean implements VNamedEnum {
-  /**
-   * <p>&amp;</p>
-   */
+  /// `&`
   OPERATION_BOOLEAN_AND("VIPS_OPERATION_BOOLEAN_AND", "and", 0),
 
-  /**
-   * <p>|</p>
-   */
+  /// `|`
   OPERATION_BOOLEAN_OR("VIPS_OPERATION_BOOLEAN_OR", "or", 1),
 
-  /**
-   * <p>^</p>
-   */
+  /// `^`
   OPERATION_BOOLEAN_EOR("VIPS_OPERATION_BOOLEAN_EOR", "eor", 2),
 
-  /**
-   * <p>&gt;&gt;</p>
-   */
+  /// `>>`
   OPERATION_BOOLEAN_LSHIFT("VIPS_OPERATION_BOOLEAN_LSHIFT", "lshift", 3),
 
-  /**
-   * <p>&lt;&lt;</p>
-   */
+  /// `<<`
   OPERATION_BOOLEAN_RSHIFT("VIPS_OPERATION_BOOLEAN_RSHIFT", "rshift", 4),
 
   OPERATION_BOOLEAN_LAST("VIPS_OPERATION_BOOLEAN_LAST", "last", 5);

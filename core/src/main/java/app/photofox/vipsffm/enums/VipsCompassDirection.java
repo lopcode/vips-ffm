@@ -1,56 +1,37 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>A direction on a compass. Used for {@link app.photofox.vipsffm.VImage#gravity}, for example.</p>
- */
+/// A direction on a compass. Used for [VImage#gravity], for example.
 public enum VipsCompassDirection implements VNamedEnum {
-  /**
-   * <p>centre</p>
-   */
+  /// centre
   COMPASS_DIRECTION_CENTRE("VIPS_COMPASS_DIRECTION_CENTRE", "centre", 0),
 
-  /**
-   * <p>north</p>
-   */
+  /// north
   COMPASS_DIRECTION_NORTH("VIPS_COMPASS_DIRECTION_NORTH", "north", 1),
 
-  /**
-   * <p>east</p>
-   */
+  /// east
   COMPASS_DIRECTION_EAST("VIPS_COMPASS_DIRECTION_EAST", "east", 2),
 
-  /**
-   * <p>south</p>
-   */
+  /// south
   COMPASS_DIRECTION_SOUTH("VIPS_COMPASS_DIRECTION_SOUTH", "south", 3),
 
-  /**
-   * <p>west</p>
-   */
+  /// west
   COMPASS_DIRECTION_WEST("VIPS_COMPASS_DIRECTION_WEST", "west", 4),
 
-  /**
-   * <p>north-east</p>
-   */
+  /// north-east
   COMPASS_DIRECTION_NORTH_EAST("VIPS_COMPASS_DIRECTION_NORTH_EAST", "north-east", 5),
 
-  /**
-   * <p>south-east</p>
-   */
+  /// south-east
   COMPASS_DIRECTION_SOUTH_EAST("VIPS_COMPASS_DIRECTION_SOUTH_EAST", "south-east", 6),
 
-  /**
-   * <p>south-west</p>
-   */
+  /// south-west
   COMPASS_DIRECTION_SOUTH_WEST("VIPS_COMPASS_DIRECTION_SOUTH_WEST", "south-west", 7),
 
-  /**
-   * <p>north-west</p>
-   */
+  /// north-west
   COMPASS_DIRECTION_NORTH_WEST("VIPS_COMPASS_DIRECTION_NORTH_WEST", "north-west", 8),
 
   COMPASS_DIRECTION_LAST("VIPS_COMPASS_DIRECTION_LAST", "last", 9);

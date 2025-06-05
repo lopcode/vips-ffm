@@ -4,23 +4,15 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>How accurate an operation should be.</p>
- */
+/// How accurate an operation should be.
 public enum VipsPrecision implements VNamedEnum {
-  /**
-   * <p>int everywhere</p>
-   */
+  /// int everywhere
   PRECISION_INTEGER("VIPS_PRECISION_INTEGER", "integer", 0),
 
-  /**
-   * <p>float everywhere</p>
-   */
+  /// float everywhere
   PRECISION_FLOAT("VIPS_PRECISION_FLOAT", "float", 1),
 
-  /**
-   * <p>approximate integer output</p>
-   */
+  /// approximate integer output
   PRECISION_APPROXIMATE("VIPS_PRECISION_APPROXIMATE", "approximate", 2),
 
   PRECISION_LAST("VIPS_PRECISION_LAST", "last", 3);

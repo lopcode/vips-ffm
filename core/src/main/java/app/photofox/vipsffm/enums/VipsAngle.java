@@ -1,35 +1,26 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See {@link app.photofox.vipsffm.VImage#rot} and so on.</p>
- *
- * <p>Fixed rotate angles.</p>
- *
- * <p>See also: {@link app.photofox.vipsffm.VImage#rot}.</p>
- */
+/// See [VImage#rot] and so on.
+///
+/// Fixed rotate angles.
+///
+/// See also: [VImage#rot]
 public enum VipsAngle implements VNamedEnum {
-  /**
-   * <p>no rotate</p>
-   */
+  /// no rotate
   ANGLE_D0("VIPS_ANGLE_D0", "d0", 0),
 
-  /**
-   * <p>90 degrees clockwise</p>
-   */
+  /// 90 degrees clockwise
   ANGLE_D90("VIPS_ANGLE_D90", "d90", 1),
 
-  /**
-   * <p>180 degree rotate</p>
-   */
+  /// 180 degree rotate
   ANGLE_D180("VIPS_ANGLE_D180", "d180", 2),
 
-  /**
-   * <p>90 degrees anti-clockwise</p>
-   */
+  /// 90 degrees anti-clockwise
   ANGLE_D270("VIPS_ANGLE_D270", "d270", 3),
 
   ANGLE_LAST("VIPS_ANGLE_LAST", "last", 4);

@@ -1,14 +1,14 @@
 package vipsffm
 
-import com.squareup.javapoet.ArrayTypeName
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.CodeBlock
-import com.squareup.javapoet.JavaFile
-import com.squareup.javapoet.MethodSpec
-import com.squareup.javapoet.ParameterSpec
-import com.squareup.javapoet.ParameterizedTypeName
-import com.squareup.javapoet.TypeName
-import com.squareup.javapoet.TypeSpec
+import com.palantir.javapoet.ArrayTypeName
+import com.palantir.javapoet.ClassName
+import com.palantir.javapoet.CodeBlock
+import com.palantir.javapoet.JavaFile
+import com.palantir.javapoet.MethodSpec
+import com.palantir.javapoet.ParameterSpec
+import com.palantir.javapoet.ParameterizedTypeName
+import com.palantir.javapoet.TypeName
+import com.palantir.javapoet.TypeSpec
 import org.slf4j.LoggerFactory
 import java.lang.classfile.ClassFile
 import java.lang.classfile.ClassModel
@@ -22,6 +22,7 @@ import java.nio.file.Path
 import java.util.Locale
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Modifier
+import kotlin.io.path.writeText
 
 object GenerateVipsHelperClass {
 
@@ -66,7 +67,7 @@ object GenerateVipsHelperClass {
 
         logger.info("generated methods:")
         (simpleMethods + variadicMethods).forEach {
-            logger.info("  ${it.name}")
+            logger.info("  ${it.name()}")
         }
 
         buildVipsFile(simpleMethods, variadicMethods)
@@ -143,14 +144,14 @@ object GenerateVipsHelperClass {
         }
         val vipsFunctionArgsJoined = vipsFunctionArgs.mapIndexed { index, parameterSpec ->
             val externArgMetadata = externMetadata.arguments.getOrNull(index)
-            if (parameterSpec.type == listStringType) {
-                parameterSpec.name.removeSuffix("StringArray")
-            } else if (parameterSpec.type == stringType) {
-                parameterSpec.name.removeSuffix("String")
+            if (parameterSpec.type() == listStringType) {
+                parameterSpec.name().removeSuffix("StringArray")
+            } else if (parameterSpec.type() == stringType) {
+                parameterSpec.name().removeSuffix("String")
             } else if (externArgMetadata?.type == "gboolean" && externArgMetadata.pointerDepth == 0) {
-                parameterSpec.name.removeSuffix("Boolean")
+                parameterSpec.name().removeSuffix("Boolean")
             } else {
-                parameterSpec.name
+                parameterSpec.name()
             }
         }.joinToString()
 
@@ -160,9 +161,9 @@ object GenerateVipsHelperClass {
             .addJavadoc(
             """
                 Binding for:
-                {@snippet lang=c :
+                ```c
                 ${externMetadata.rawExternDefinition}
-                }
+                ```
             """.trimIndent()
             )
             .addException(vipsErrorType)
@@ -177,20 +178,20 @@ object GenerateVipsHelperClass {
 
         args.forEachIndexed { index, parameter ->
             val externArgMetadata = externMetadata.arguments[index]
-            if (externArgMetadata.type == "gboolean" && parameter.type == TypeName.BOOLEAN) {
-                methodBuilder.addStatement("var ${parameter.name.removeSuffix("Boolean")} = ${parameter.name} ? 1 : 0")
+            if (externArgMetadata.type == "gboolean" && parameter.type() == TypeName.BOOLEAN) {
+                methodBuilder.addStatement("var ${parameter.name().removeSuffix("Boolean")} = ${parameter.name()} ? 1 : 0")
             } else if (externArgMetadata.pointerDepth >= 1) {
-                if (parameter.type == listStringType) {
-                    val newName = parameter.name.removeSuffix("StringArray")
+                if (parameter.type() == listStringType) {
+                    val newName = parameter.name().removeSuffix("StringArray")
                     methodBuilder.addStatement("var $newName = \$T.makeCharStarArray(arena, ${newName}StringArray)", vipsInvokerType)
                     usedArena = true
-                } else if (parameter.type == stringType) {
-                    val newName = parameter.name.removeSuffix("String")
-                    methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name})")
+                } else if (parameter.type() == stringType) {
+                    val newName = parameter.name().removeSuffix("String")
+                    methodBuilder.addStatement("var $newName = arena.allocateFrom(${parameter.name()})")
                     usedArena = true
                 } else {
                     methodBuilder.addCode(
-                        makeInputValidatorCodeBlock(parameter.name, vipsValidatorType, rawMethodName)
+                        makeInputValidatorCodeBlock(parameter.name(), vipsValidatorType, rawMethodName)
                     )
                 }
             }
@@ -225,7 +226,7 @@ object GenerateVipsHelperClass {
 
             args.forEachIndexed { index, parameterSpec ->
                 val externArgMetadata = externMetadata.arguments[index]
-                val deallocUsedArena = addDeallocCodeblockIfOutType(externArgMetadata, parameterSpec.type, parameterSpec.name, methodBuilder)
+                val deallocUsedArena = addDeallocCodeblockIfOutType(externArgMetadata, parameterSpec.type(), parameterSpec.name(), methodBuilder)
                 if (deallocUsedArena) {
                     usedArena = true
                 }
@@ -378,14 +379,18 @@ object GenerateVipsHelperClass {
             .addMethod(initHelper)
             .addMethods(simpleMethods)
             .addMethods(variadicMethods)
-            .addJavadoc("<p>Generated helpers to wrap {@link \$T} JExtract definitions</p>", vipsRawType)
-            .addJavadoc("\n\n<p>Validation of input pointers is performed, but prefer usage of {@link \$T} and friends which do not expose raw pointers</p>", vImageType)
-            .addJavadoc("\n\n<p><b>Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!</b></p>")
+            .addJavadoc("Generated helpers to wrap [\$T] JExtract definitions", vipsRawType)
+            .addJavadoc("\n\nValidation of input pointers is performed, but prefer usage of [\$T] and friends which do not expose raw pointers", vImageType)
+            .addJavadoc("\n\n**Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**")
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm", vipsClass)
             .build()
-        val targetGeneratedSourceRoot = Path.of("core/src/main/java/")
-        javaFile.writeToPath(targetGeneratedSourceRoot, Charsets.UTF_8)
+            .toString()
+            .let {
+                JavadocMarkdownConversion.convert(it)
+            }
+        val targetGeneratedSourceRoot = Path.of("core/src/main/java/app/photofox/vipsffm")
+        targetGeneratedSourceRoot.resolve("VipsHelper.java").writeText(javaFile, Charsets.UTF_8)
     }
 
     private fun makeResultValidatorCodeBlock(vipsValidatorType: ClassName, methodName: String): CodeBlock? =

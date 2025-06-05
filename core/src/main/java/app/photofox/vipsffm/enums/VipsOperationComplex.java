@@ -1,26 +1,19 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See also: {@link app.photofox.vipsffm.VImage#complex}.</p>
- */
+/// See also: [VImage#complex].
 public enum VipsOperationComplex implements VNamedEnum {
-  /**
-   * <p>convert to polar coordinates</p>
-   */
+  /// convert to polar coordinates
   OPERATION_COMPLEX_POLAR("VIPS_OPERATION_COMPLEX_POLAR", "polar", 0),
 
-  /**
-   * <p>convert to rectangular coordinates</p>
-   */
+  /// convert to rectangular coordinates
   OPERATION_COMPLEX_RECT("VIPS_OPERATION_COMPLEX_RECT", "rect", 1),
 
-  /**
-   * <p>complex conjugate</p>
-   */
+  /// complex conjugate
   OPERATION_COMPLEX_CONJ("VIPS_OPERATION_COMPLEX_CONJ", "conj", 2),
 
   OPERATION_COMPLEX_LAST("VIPS_OPERATION_COMPLEX_LAST", "last", 3);

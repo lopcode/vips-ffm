@@ -8,11 +8,12 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-/**
- * Represents a VipsTarget
- * Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
- * Use its static helper methods to create new targets
- */
+
+/// Represents a VipsTarget
+///
+/// Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
+///
+/// Use its static helper methods to create new targets
 public sealed class VTarget permits VCustomTarget {
 
     final Arena arena;
@@ -39,9 +40,7 @@ public sealed class VTarget permits VCustomTarget {
         return address.hashCode();
     }
 
-    /**
-     * @deprecated See {@link #getUnsafeStructAddress}
-     */
+    /// @deprecated See [#getUnsafeStructAddress]
     @Deprecated(
         since = "0.5.10",
         forRemoval = true
@@ -50,59 +49,57 @@ public sealed class VTarget permits VCustomTarget {
         return this.getUnsafeStructAddress();
     }
 
-    /**
-     * Gets the raw {@link MemorySegment} (C pointer) for this VipsTarget struct
-     * The memory address' lifetime is bound to the scope of the arena that created it
-     * Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
-     * you need to use it with {@link VipsHelper}
-     */
+    /// Gets the raw [MemorySegment] (C pointer) for this VipsTarget struct
+    ///
+    /// The memory address' lifetime is bound to the scope of the arena that created it
+    ///
+    /// Usage of the memory address is strongly discouraged, but it is available if some functionality is missing, and
+    /// you need to use it with [VipsHelper]
     public MemorySegment getUnsafeStructAddress() {
         return this.address;
     }
 
-    /**
-     * Create a new target pointed at a file descriptor
-     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
-     */
+    /// Create a new target pointed at a file descriptor
+    ///
+    /// This target can be used with (for example) [VImage#writeToTarget]
     public static VTarget newToDescriptor(Arena arena, int descriptor) throws VipsError {
         var pointer = VipsHelper.target_new_to_descriptor(arena, descriptor);
         return new VTarget(arena, pointer);
     }
 
-    /**
-     * Create a new target pointed at an output file
-     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
-     */
+    /// Create a new target pointed at an output file
+    ///
+    /// This target can be used with (for example) [VImage#writeToTarget]
     public static VTarget newToFile(Arena arena, String filename) throws VipsError {
         var pointer = VipsHelper.target_new_to_file(arena, filename);
         return new VTarget(arena, pointer);
     }
 
-    /**
-     * Create a new memory-backed VipsTarget
-     * This target can be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
-     * After writing to this target, you can also retrieve the backing {@link VBlob} with {@link #getBlob()}
-     */
+    /// Create a new memory-backed VipsTarget
+    ///
+    /// This target can be used with (for example) [VImage#writeToTarget]
+    ///
+    /// After writing to this target, you can also retrieve the backing [VBlob] with [#getBlob()]
     public static VTarget newToMemory(Arena arena) throws VipsError {
         var pointer = VipsHelper.target_new_to_memory(arena);
         return new VTarget(arena, pointer);
     }
 
-    /**
-     * Only valid for memory-backed targets (eg via {@link #newToMemory(Arena)})
-     * Returns the contents of the backing VBlob
-     */
+    /// Only valid for memory-backed targets (eg via [#newToMemory(Arena)])
+    ///
+    /// Returns the contents of the backing VBlob
     public VBlob getBlob() throws VipsError {
         var blob = VipsTarget.blob(this.address);
         return new VBlob(arena, blob);
     }
 
-    /**
-     * Create a new VipsTarget pointed at a Java {@link OutputStream}
-     * The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends
-     * Note that you can directly write an image to an OutputStream using {@link VImage#writeToStream(OutputStream, String, VipsOption...)}
-     * This target can also be used with (for example) {@link VImage#writeToTarget(VTarget, String, VipsOption...)}
-     */
+    /// Create a new VipsTarget pointed at a Java [OutputStream]
+    ///
+    /// The provided OutputStream is coupled to the arena's lifetime, and closed when its scope ends
+    ///
+    /// Note that you can directly write an image to an OutputStream using [VImage#writeToStream]
+    ///
+    /// This target can also be used with (for example) [VImage#writeToTarget]
     public static VTarget newFromOutputStream(
         Arena arena,
         OutputStream stream

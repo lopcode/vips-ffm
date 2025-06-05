@@ -19,7 +19,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     size_t length;
  *     int n;
  *     int count;
- *     GMutex *lock;
+ *     GMutex lock;
  *     VipsCallbackFn free_fn;
  *     void *client;
  *     GType type;
@@ -38,7 +38,7 @@ public class _VipsArea {
         VipsRaw.C_LONG.withName("length"),
         VipsRaw.C_INT.withName("n"),
         VipsRaw.C_INT.withName("count"),
-        VipsRaw.C_POINTER.withName("lock"),
+        _GMutex.layout().withName("lock"),
         VipsRaw.C_POINTER.withName("free_fn"),
         VipsRaw.C_POINTER.withName("client"),
         VipsRaw.C_LONG.withName("type"),
@@ -228,15 +228,15 @@ public class _VipsArea {
         struct.set(count$LAYOUT, count$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout lock$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("lock"));
+    private static final GroupLayout lock$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("lock"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * GMutex *lock
+     * GMutex lock
      * }
      */
-    public static final AddressLayout lock$layout() {
+    public static final GroupLayout lock$layout() {
         return lock$LAYOUT;
     }
 
@@ -245,7 +245,7 @@ public class _VipsArea {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * GMutex *lock
+     * GMutex lock
      * }
      */
     public static final long lock$offset() {
@@ -255,21 +255,21 @@ public class _VipsArea {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * GMutex *lock
+     * GMutex lock
      * }
      */
     public static MemorySegment lock(MemorySegment struct) {
-        return struct.get(lock$LAYOUT, lock$OFFSET);
+        return struct.asSlice(lock$OFFSET, lock$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * GMutex *lock
+     * GMutex lock
      * }
      */
     public static void lock(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(lock$LAYOUT, lock$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, lock$OFFSET, lock$LAYOUT.byteSize());
     }
 
     private static final AddressLayout free_fn$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("free_fn"));

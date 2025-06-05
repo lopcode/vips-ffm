@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run samples" type="JetRunConfigurationType">
     <envs>
-      <env name="DYLD_LIBRARY_PATH" value="/opt/homebrew/lib" />
+      <env name="DYLD_LIBRARY_PATH" value="libvips/release/lib:/opt/homebrew/lib:$DYLD_LIBRARY_PATH" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="vipsffm.SampleRunner" />
     <module name="vips-ffm.sample.main" />

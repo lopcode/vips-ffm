@@ -1,21 +1,16 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See also: {@link app.photofox.vipsffm.VImage#complexget}.</p>
- */
+/// See also: [VImage#complexget].
 public enum VipsOperationComplexget implements VNamedEnum {
-  /**
-   * <p>get real component</p>
-   */
+  /// get real component
   OPERATION_COMPLEXGET_REAL("VIPS_OPERATION_COMPLEXGET_REAL", "real", 0),
 
-  /**
-   * <p>get imaginary component</p>
-   */
+  /// get imaginary component
   OPERATION_COMPLEXGET_IMAG("VIPS_OPERATION_COMPLEXGET_IMAG", "imag", 1),
 
   OPERATION_COMPLEXGET_LAST("VIPS_OPERATION_COMPLEXGET_LAST", "last", 2);

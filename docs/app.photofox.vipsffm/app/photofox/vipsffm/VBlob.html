@@ -90,9 +90,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">VBlob</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Represents a VipsBlob, which is backed by a contiguous area of off-heap memory
- Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API
- Use its static helper methods to create new blobs</div>
+<div class="block"><p>Represents a VipsBlob, which is backed by a contiguous area of off-heap memory</p>
+<p>Its constructor is package private to prevent leaking MemorySegments in to the vips-ffm API</p>
+<p>Use its static helper methods to create new blobs</p>
+</div>
 </div>
 </section>
 <section class="summary">
@@ -111,9 +112,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asArenaScopedByteBuffer()" class="member-name-link">asArenaScopedByteBuffer</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">ByteBuffer representation of the data in this blob
- Mapped to native memory via <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/DirectByteBuffer.html" title="class or interface in java.nio" class="external-link"><code>DirectByteBuffer</code></a>, hence does not make a copy, so the data has the
- same data lifetime as <code>arena</code></div>
+<div class="block">ByteBuffer representation of the data in this blob</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#asByteBuffer()" class="member-name-link">asByteBuffer</a>()</code></div>
@@ -125,8 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asClonedByteBuffer()" class="member-name-link">asClonedByteBuffer</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">ByteBuffer representation of the data in this blob
- A full copy of the data is taken, so that its contents are not coupled to the scope of <code>arena</code></div>
+<div class="block">ByteBuffer representation of the data in this blob</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#byteSize()" class="member-name-link">byteSize</a>()</code></div>
@@ -143,26 +141,18 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeDataAddress()" class="member-name-link">getUnsafeDataAddress</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Not recommended for use, use <a href="#asByteBuffer()"><code>asByteBuffer()</code></a> instead
- Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for the data in this blob
- Sliced to the length of the data, which isn't always null terminated</div>
+<div class="block">Not recommended for use, use <a href="#asByteBuffer()"><code>asByteBuffer()</code></a> instead</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeStructAddress()" class="member-name-link">getUnsafeStructAddress</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsBlob struct
- You might want the data address instead <a href="#getUnsafeDataAddress()"><code>getUnsafeDataAddress()</code></a>
- The memory address' lifetime is bound to the scope of the <code>arena</code>
- Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you
- need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsBlob struct</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  byte[]&nbsp;bytes)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Creates a new VBlob from a fixed array of bytes
- This must copy the data - it's generally more efficient to use <a href="VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>,
- <a href="VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromSource(Arena, VSource, String, VipsOption...)</code></a>, and friends</div>
+<div class="block">Creates a new VBlob from a fixed array of bytes</div>
 </div>
 </div>
 </div>
@@ -188,9 +178,9 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></span>&nbsp;<span class="element-name">newFromBytes</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  byte[]&nbsp;bytes)</span>
                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Creates a new VBlob from a fixed array of bytes
- This must copy the data - it's generally more efficient to use <a href="VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(Arena, String, VipsOption...)</code></a>,
- <a href="VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromSource(Arena, VSource, String, VipsOption...)</code></a>, and friends</div>
+<div class="block"><p>Creates a new VBlob from a fixed array of bytes</p>
+<p>This must copy the data - it's generally more efficient to use <a href="VImage.html#newFromFile(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromFile(java.lang.foreign.Arena, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, <a href="VImage.html#newFromSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.newFromSource(java.lang.foreign.Arena, app.photofox.vipsffm.VSource, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, and friends</p>
+</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>arena</code> - An arena constraining the lifetime of this blob</dd>
@@ -225,11 +215,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">getUnsafeStructAddress</span>()
                                      throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsBlob struct
- You might want the data address instead <a href="#getUnsafeDataAddress()"><code>getUnsafeDataAddress()</code></a>
- The memory address' lifetime is bound to the scope of the <code>arena</code>
- Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you
- need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block"><p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsBlob struct</p>
+<p>You might want the data address instead <a href="#getUnsafeDataAddress()"><code>getUnsafeDataAddress()</code></a></p>
+<p>The memory address' lifetime is bound to the scope of the <code>arena</code></p>
+<p>Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you
+need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -243,9 +234,10 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">getUnsafeDataAddress</span>()
                                    throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block">Not recommended for use, use <a href="#asByteBuffer()"><code>asByteBuffer()</code></a> instead
- Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for the data in this blob
- Sliced to the length of the data, which isn't always null terminated</div>
+<div class="block"><p>Not recommended for use, use <a href="#asByteBuffer()"><code>asByteBuffer()</code></a> instead</p>
+<p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for the data in this blob</p>
+<p>Sliced to the length of the data, which isn't always null terminated</p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
@@ -280,9 +272,10 @@ loadScripts(document, 'script');</script>
 <h3>asArenaScopedByteBuffer</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></span>&nbsp;<span class="element-name">asArenaScopedByteBuffer</span>()</div>
-<div class="block">ByteBuffer representation of the data in this blob
- Mapped to native memory via <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/DirectByteBuffer.html" title="class or interface in java.nio" class="external-link"><code>DirectByteBuffer</code></a>, hence does not make a copy, so the data has the
- same data lifetime as <code>arena</code></div>
+<div class="block"><p>ByteBuffer representation of the data in this blob</p>
+<p>Mapped to native memory via DirectByteBuffer, hence does not make a copy, so the data has the
+same data lifetime as <code>arena</code></p>
+</div>
 </div>
 </section>
 </li>
@@ -291,8 +284,9 @@ loadScripts(document, 'script');</script>
 <h3>asClonedByteBuffer</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></span>&nbsp;<span class="element-name">asClonedByteBuffer</span>()</div>
-<div class="block">ByteBuffer representation of the data in this blob
- A full copy of the data is taken, so that its contents are not coupled to the scope of <code>arena</code></div>
+<div class="block"><p>ByteBuffer representation of the data in this blob</p>
+<p>A full copy of the data is taken, so that its contents are not coupled to the scope of <code>arena</code></p>
+</div>
 </div>
 </section>
 </li>

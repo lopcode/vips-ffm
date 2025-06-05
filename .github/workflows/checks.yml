@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: 22
+          java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: 22
+          java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -68,7 +68,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: 22
+          java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -78,12 +78,12 @@ jobs:
       - name: Run samples
         shell: pwsh
         run: |
-          Invoke-WebRequest "https://github.com/libvips/build-win64-mxe/releases/download/v8.15.3/vips-dev-w64-web-8.15.3-static-ffi.zip" -OutFile "vips_w64.zip"
-          (Get-FileHash .\vips_w64.zip).Hash -eq "60500d990c6063a1e95f1ff29a540c5943537ccbed4dd55711947b68229774ee"
+          Invoke-WebRequest "https://github.com/libvips/build-win64-mxe/releases/download/v8.17.0-rc1/vips-dev-w64-web-8.17.0-rc1-static-ffi.zip" -OutFile "vips_w64.zip"
+          (Get-FileHash .\vips_w64.zip).Hash -eq "sha256:ffbea9b23d57a60ef85fd0761510949e66116799ad6c2878c17d31780bd93a8a"
           Expand-Archive vips_w64.zip
-          $env:Path = "$pwd\vips_w64\vips-dev-8.15;$pwd\vips_w64\vips-dev-8.15\bin;" + $env:Path 
+          $env:Path = "$pwd\vips_w64\vips-dev-8.17;$pwd\vips_w64\vips-dev-8.17\bin;" + $env:Path 
           Write-Output $env:Path
-          Get-ChildItem .\vips_w64\vips-dev-8.15
+          Get-ChildItem .\vips_w64\vips-dev-8.17
           .\gradlew.bat sample:clean sample:shadowJar
           java -jar sample/build/libs/sample-all.jar
 
@@ -97,7 +97,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: 22
+          java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3

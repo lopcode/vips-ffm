@@ -1,26 +1,19 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>How to combine values. See {@link app.photofox.vipsffm.VImage#compass}, for example.</p>
- */
+/// How to combine values. See [VImage#compass], for example.
 public enum VipsCombine implements VNamedEnum {
-  /**
-   * <p>take the maximum of the possible values</p>
-   */
+  /// take the maximum of the possible values
   COMBINE_MAX("VIPS_COMBINE_MAX", "max", 0),
 
-  /**
-   * <p>sum all the values</p>
-   */
+  /// sum all the values
   COMBINE_SUM("VIPS_COMBINE_SUM", "sum", 1),
 
-  /**
-   * <p>take the minimum value</p>
-   */
+  /// take the minimum value
   COMBINE_MIN("VIPS_COMBINE_MIN", "min", 2),
 
   COMBINE_LAST("VIPS_COMBINE_LAST", "last", 3);

@@ -112,10 +112,12 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
 <div class="block"><p>How sensitive loaders are to errors, from never stop (very insensitive), to
- stop on the smallest warning (very sensitive).</p>
-
- <p>Each one implies the ones before it, so <a href="#FAIL_ON_ERROR"><code>FAIL_ON_ERROR</code></a> implies
- <a href="#FAIL_ON_TRUNCATED"><code>FAIL_ON_TRUNCATED</code></a>.</p></div>
+stop on the smallest warning (very sensitive).</p>
+<ul>
+<li>Each one implies the ones before it, so <a href="#FAIL_ON_ERROR"><code>FAIL_ON_ERROR</code></a> implies
+<a href="#FAIL_ON_TRUNCATED"><code>FAIL_ON_TRUNCATED</code></a>.</li>
+</ul>
+</div>
 </div>
 </section>
 <section class="summary">
@@ -232,7 +234,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_NONE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_NONE</span></div>
-<div class="block"><p>never stop</p></div>
+<div class="block">never stop</div>
 </div>
 </section>
 </li>
@@ -241,7 +243,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_TRUNCATED</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_TRUNCATED</span></div>
-<div class="block"><p>stop on image truncated, nothing else</p></div>
+<div class="block">stop on image truncated, nothing else</div>
 </div>
 </section>
 </li>
@@ -250,7 +252,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_ERROR</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_ERROR</span></div>
-<div class="block"><p>stop on serious error or truncation</p></div>
+<div class="block">stop on serious error or truncation</div>
 </div>
 </section>
 </li>
@@ -259,7 +261,7 @@ the order they are declared.</div>
 <h3>FAIL_ON_WARNING</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsFailOn.html" title="enum class in app.photofox.vipsffm.enums">VipsFailOn</a></span>&nbsp;<span class="element-name">FAIL_ON_WARNING</span></div>
-<div class="block"><p>stop on anything, even warnings</p></div>
+<div class="block">stop on anything, even warnings</div>
 </div>
 </section>
 </li>

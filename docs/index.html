@@ -69,7 +69,7 @@ a star 🌟️!</p>
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.5.2&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.6.0&quot;)
 }
 </code></pre>
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
@@ -77,8 +77,8 @@ first, then use it through one of the helper classes (for example, <a href="http
 There are also lots of examples in the <a href="#samples">samples</a>.</p>
 <p>You must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you don't, you'll get a warning
 about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
-<p>As the project uses the Java FFM API, your target must also be JDK 22+. Bindings are currently generated from libvips
-<code>8.16.1</code> (but should be safe to use with different minor or patch versions).</p>
+<p>As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
+generated from libvips <code>8.17.0</code> (but should be safe to use with different minor or patch versions).</p>
 <blockquote>
 <p>[!NOTE]
 This library <strong>does not</strong> include <code>libvips</code> in the download, you must add it to the system/container you're building
@@ -133,7 +133,7 @@ Vips.shutdown()
 <p>To get set up to run samples (on macOS):</p>
 <ul>
 <li><code>brew install vips</code></li>
-<li><code>sdk use java 22-open</code></li>
+<li><code>sdk use java 23-open</code></li>
 <li>Then either:
 <ul>
 <li>Run <code>./run_samples.sh</code> in your terminal</li>
@@ -183,7 +183,7 @@ memory: high-water mark 151.24 MB
 <h3 id="detailed-usage-heading">Detailed usage</h3>
 <p>Most operations <strong>do not</strong> use the C API directly (as described in the <a href="https://www.libvips.org/API/current/binding.html">bindings docs</a>) - they
 should be safe to use with different libvips versions, assuming there haven't been major changes.</p>
-<p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html">Arena</a> to operations like
+<p>All libvips operations are exposed via helper classes, like <code>VImage</code>. You must provide an <a href="https://docs.oracle.com/en/java/javase/23/core/memory-segments-and-arenas.html">Arena</a> to operations like
 <code>VImage.newFromFile</code>, which constrains the lifetime of objects generated during usage. You can get an appropriate arena
 by using <code>Vips.run</code> as shown in the <a href="#thumbnail-sample">sample</a> below. <code>VImage</code> and associated enums have extensive
 Javadocs included, which are automatically generated from the same source that the libvips website uses, for ease of use.

@@ -1,91 +1,58 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>See also: {@link app.photofox.vipsffm.VImage#math}.</p>
- */
+/// See also: [VImage#math].
 public enum VipsOperationMath implements VNamedEnum {
-  /**
-   * <p>sin(), angles in degrees</p>
-   */
+  /// `sin()`, angles in degrees
   OPERATION_MATH_SIN("VIPS_OPERATION_MATH_SIN", "sin", 0),
 
-  /**
-   * <p>cos(), angles in degrees</p>
-   */
+  /// `cos()`, angles in degrees
   OPERATION_MATH_COS("VIPS_OPERATION_MATH_COS", "cos", 1),
 
-  /**
-   * <p>tan(), angles in degrees</p>
-   */
+  /// `tan()`, angles in degrees
   OPERATION_MATH_TAN("VIPS_OPERATION_MATH_TAN", "tan", 2),
 
-  /**
-   * <p>asin(), angles in degrees</p>
-   */
+  /// `asin()`, angles in degrees
   OPERATION_MATH_ASIN("VIPS_OPERATION_MATH_ASIN", "asin", 3),
 
-  /**
-   * <p>acos(), angles in degrees</p>
-   */
+  /// `acos()`, angles in degrees
   OPERATION_MATH_ACOS("VIPS_OPERATION_MATH_ACOS", "acos", 4),
 
-  /**
-   * <p>atan(), angles in degrees</p>
-   */
+  /// `atan()`, angles in degrees
   OPERATION_MATH_ATAN("VIPS_OPERATION_MATH_ATAN", "atan", 5),
 
-  /**
-   * <p>log base e</p>
-   */
+  /// log base e
   OPERATION_MATH_LOG("VIPS_OPERATION_MATH_LOG", "log", 6),
 
-  /**
-   * <p>log base 10</p>
-   */
+  /// log base 10
   OPERATION_MATH_LOG10("VIPS_OPERATION_MATH_LOG10", "log10", 7),
 
-  /**
-   * <p>e to the something</p>
-   */
+  /// e to the something
   OPERATION_MATH_EXP("VIPS_OPERATION_MATH_EXP", "exp", 8),
 
-  /**
-   * <p>10 to the something</p>
-   */
+  /// 10 to the something
   OPERATION_MATH_EXP10("VIPS_OPERATION_MATH_EXP10", "exp10", 9),
 
-  /**
-   * <p>sinh(), angles in radians</p>
-   */
+  /// `sinh()`, angles in radians
   OPERATION_MATH_SINH("VIPS_OPERATION_MATH_SINH", "sinh", 10),
 
-  /**
-   * <p>cosh(), angles in radians</p>
-   */
+  /// `cosh()`, angles in radians
   OPERATION_MATH_COSH("VIPS_OPERATION_MATH_COSH", "cosh", 11),
 
-  /**
-   * <p>tanh(), angles in radians</p>
-   */
+  /// `tanh()`, angles in radians
   OPERATION_MATH_TANH("VIPS_OPERATION_MATH_TANH", "tanh", 12),
 
-  /**
-   * <p>asinh(), angles in radians</p>
-   */
+  /// `asinh()`, angles in radians
   OPERATION_MATH_ASINH("VIPS_OPERATION_MATH_ASINH", "asinh", 13),
 
-  /**
-   * <p>acosh(), angles in radians</p>
-   */
+  /// `acosh()`, angles in radians
   OPERATION_MATH_ACOSH("VIPS_OPERATION_MATH_ACOSH", "acosh", 14),
 
-  /**
-   * <p>atanh(), angles in radians</p>
-   */
+  /// `atanh()`, angles in radians
   OPERATION_MATH_ATANH("VIPS_OPERATION_MATH_ATANH", "atanh", 15),
 
   OPERATION_MATH_LAST("VIPS_OPERATION_MATH_LAST", "last", 16);

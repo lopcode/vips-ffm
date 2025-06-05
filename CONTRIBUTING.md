@@ -23,7 +23,9 @@ Thank you for being enthusiastic about the project!
 ## Code changes
 
 You'll find it easiest to use [IntelliJ IDEA](https://www.jetbrains.com/idea/) to work on the project - there's a free
-version.
+version. The project is only developed on macOS, but in theory it should be possible to work in other Unix-like environments.
+
+Set up the libvips submodule, and create a build of it, by running `./setup_development.sh`. 
 
 The project uses Gradle, and is split into multiple modules:
 * `generator` uses the libvips operations API to generate most of the code in `core`

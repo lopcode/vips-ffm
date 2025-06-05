@@ -1,33 +1,24 @@
 package app.photofox.vipsffm.enums;
 
+import app.photofox.vipsffm.VImage;
 import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/**
- * <p>The SDF to generate,</p>
- *
- * <p>See also: {@link app.photofox.vipsffm.VImage#sdf}.</p>
- */
+/// The SDF to generate,
+///
+/// See also: [VImage#sdf]
 public enum VipsSdfShape implements VNamedEnum {
-  /**
-   * <p>a circle at {@code a}, radius {@code r}</p>
-   */
+  /// a circle at `a`, radius `r`
   SDF_SHAPE_CIRCLE("VIPS_SDF_SHAPE_CIRCLE", "circle", 0),
 
-  /**
-   * <p>a box from {@code a} to {@code b}</p>
-   */
+  /// a box from `a` to `b`
   SDF_SHAPE_BOX("VIPS_SDF_SHAPE_BOX", "box", 1),
 
-  /**
-   * <p>a box with rounded {@code corners} from {@code a} to {@code b}</p>
-   */
+  /// a box with rounded `corners` from `a` to `b`
   SDF_SHAPE_ROUNDED_BOX("VIPS_SDF_SHAPE_ROUNDED_BOX", "rounded-box", 2),
 
-  /**
-   * <p>a line from {@code a} to {@code b}</p>
-   */
+  /// a line from `a` to `b`
   SDF_SHAPE_LINE("VIPS_SDF_SHAPE_LINE", "line", 3),
 
   SDF_SHAPE_LAST("VIPS_SDF_SHAPE_LAST", "last", 4);
