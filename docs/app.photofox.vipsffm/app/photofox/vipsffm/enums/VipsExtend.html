@@ -114,21 +114,19 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="VipsExtend.html" title="enum class in app.photofox.vipsffm.enums">VipsExtend</a>&gt;
 implements <a href="../VNamedEnum.html" title="interface in app.photofox.vipsffm">VNamedEnum</a></span></div>
 <div class="block"><p>See <a href="../VImage.html#embed(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.embed(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a>, <a href="../VImage.html#conv(app.photofox.vipsffm.VImage,app.photofox.vipsffm.VipsOption...)"><code>VImage.conv(app.photofox.vipsffm.VImage, app.photofox.vipsffm.VipsOption...)</code></a>, <a href="../VImage.html#affine(java.util.List,app.photofox.vipsffm.VipsOption...)"><code>VImage.affine(java.util.List&lt;java.lang.Double&gt;, app.photofox.vipsffm.VipsOption...)</code></a> and so on.</p>
-<ul>
-<li>When the edges of an image are extended, you can specify
-how you want the extension done.</li>
-<li><a href="#EXTEND_BLACK"><code>EXTEND_BLACK</code></a> -- new pixels are black, ie. all bits are zero.</li>
-<li><a href="#EXTEND_COPY"><code>EXTEND_COPY</code></a> -- each new pixel takes the value of the nearest edge
-pixel</li>
-<li><a href="#EXTEND_REPEAT"><code>EXTEND_REPEAT</code></a> -- the image is tiled to fill the new area</li>
-<li><a href="#EXTEND_MIRROR"><code>EXTEND_MIRROR</code></a> -- the image is reflected and tiled to reduce hash
-edges</li>
-<li><a href="#EXTEND_WHITE"><code>EXTEND_WHITE</code></a> -- new pixels are white, ie. all bits are set</li>
-<li><a href="#EXTEND_BACKGROUND"><code>EXTEND_BACKGROUND</code></a> -- colour set from the <code>background</code> property</li>
-<li>We have to specify the exact value of each enum member since we have to
-keep these frozen for back compat with vips7.</li>
-<li>See also: <a href="../VImage.html#embed(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.embed(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a></li>
-</ul>
+<p>When the edges of an image are extended, you can specify
+how you want the extension done.</p>
+<p><a href="#EXTEND_BLACK"><code>EXTEND_BLACK</code></a> -- new pixels are black, ie. all bits are zero.</p>
+<p><a href="#EXTEND_COPY"><code>EXTEND_COPY</code></a> -- each new pixel takes the value of the nearest edge
+pixel</p>
+<p><a href="#EXTEND_REPEAT"><code>EXTEND_REPEAT</code></a> -- the image is tiled to fill the new area</p>
+<p><a href="#EXTEND_MIRROR"><code>EXTEND_MIRROR</code></a> -- the image is reflected and tiled to reduce hash
+edges</p>
+<p><a href="#EXTEND_WHITE"><code>EXTEND_WHITE</code></a> -- new pixels are white, ie. all bits are set</p>
+<p><a href="#EXTEND_BACKGROUND"><code>EXTEND_BACKGROUND</code></a> -- colour set from the <code>background</code> property</p>
+<p>We have to specify the exact value of each enum member since we have to
+keep these frozen for back compat with vips7.</p>
+<p>See also: <a href="../VImage.html#embed(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.embed(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a></p>
 </div>
 </div>
 </section>

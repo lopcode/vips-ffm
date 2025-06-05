@@ -7,8 +7,10 @@ import java.lang.foreign.MemorySegment;
 import java.util.List;
 
 /// Generated helpers to wrap [VipsRaw] JExtract definitions
-///  * Validation of input pointers is performed, but prefer usage of [VImage] and friends which do not expose raw pointers
-///  * **Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**
+///
+/// Validation of input pointers is performed, but prefer usage of [VImage] and friends which do not expose raw pointers
+///
+/// **Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**
 public final class VipsHelper {
   public static void init(Arena arena, boolean allowUntrusted) {
     var nameCString = arena.allocateFrom("vips-ffm");
