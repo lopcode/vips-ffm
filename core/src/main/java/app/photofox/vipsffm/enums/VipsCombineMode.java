@@ -6,10 +6,10 @@ import java.lang.Override;
 import java.lang.String;
 
 /// See [VImage#drawImage] and so on.
-/// 
+///
 /// Operations like [VImage#drawImage] need to be told how to combine images
 /// from two sources.
-/// 
+///
 /// See also: [VImage#join]
 public enum VipsCombineMode implements VNamedEnum {
   /// set pixels to the new value

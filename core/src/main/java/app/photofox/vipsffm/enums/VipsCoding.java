@@ -5,11 +5,11 @@ import java.lang.Override;
 import java.lang.String;
 
 /// How pixels are coded.
-/// 
+///
 /// Normally, pixels are uncoded and can be manipulated as you would expect.
 /// However some file formats code pixels for compression, and sometimes it's
 /// useful to be able to manipulate images in the coded format.
-/// 
+///
 /// The gaps in the numbering are historical and must be maintained. Allocate
 /// new numbers from the end.
 public enum VipsCoding implements VNamedEnum {

@@ -6,7 +6,7 @@ import java.lang.Override;
 import java.lang.String;
 
 /// More like hit-miss, really.
-/// 
+///
 /// See also: [VImage#morph]
 public enum VipsOperationMorphology implements VNamedEnum {
   /// true if all set

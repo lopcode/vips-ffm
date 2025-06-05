@@ -5,7 +5,7 @@ import java.lang.Override;
 import java.lang.String;
 
 /// The format used for each band element.
-/// 
+///
 /// Each corresponds to a native C type for the current machine. For example,
 /// [VipsBandFormat#FORMAT_USHORT] is `unsigned short`.
 public enum VipsBandFormat implements VNamedEnum {

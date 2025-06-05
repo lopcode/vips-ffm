@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.5.2")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.6.0")
 }
 ```
 
@@ -33,8 +33,8 @@ There are also lots of examples in the [samples](#samples).
 You must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you don't, you'll get a warning
 about "Restricted methods". In the future, the JVM will throw an error if you don't explicitly include this flag.
 
-As the project uses the Java FFM API, your target must also be JDK 22+. Bindings are currently generated from libvips
-`8.16.1` (but should be safe to use with different minor or patch versions).
+As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
+generated from libvips `8.17.0` (but should be safe to use with different minor or patch versions).
 
 > [!NOTE]
 > This library **does not** include `libvips` in the download, you must add it to the system/container you're building
@@ -92,7 +92,7 @@ Samples are included that show various usages of these bindings. They include va
 
 To get set up to run samples (on macOS):
 * `brew install vips`
-* `sdk use java 22-open`
+* `sdk use java 23-open`
 * Then either:
   * Run `./run_samples.sh` in your terminal
   * Use the included `Run samples` profile in IntelliJ
@@ -222,4 +222,4 @@ Thank you for being enthusiastic about the project!
   * And only after a GitHub Release is made
   * Run `./publish_release_to_maven_central.sh <version matching github release version, including v prefix>` 
 
-[1]: https://docs.oracle.com/en/java/javase/22/core/memory-segments-and-arenas.html
+[1]: https://docs.oracle.com/en/java/javase/23/core/memory-segments-and-arenas.html

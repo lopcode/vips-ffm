@@ -5,13 +5,13 @@ import java.lang.Override;
 import java.lang.String;
 
 /// The compression types supported by the tiff writer.
-/// 
+///
 /// Use `Q` to set the jpeg compression level, default 75.
-/// 
+///
 /// Use `predictor` to set the lzw or deflate prediction, default horizontal.
-/// 
+///
 /// Use `lossless` to set WEBP lossless compression.
-/// 
+///
 /// Use `level` to set webp and zstd compression level.
 public enum VipsForeignTiffCompression implements VNamedEnum {
   /// no compression

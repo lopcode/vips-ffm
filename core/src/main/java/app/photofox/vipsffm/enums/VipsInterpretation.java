@@ -7,10 +7,10 @@ import java.lang.String;
 /// How the values in an image should be interpreted. For example, a
 /// three-band float image of type [VipsInterpretation#INTERPRETATION_LAB] should have its
 /// pixels interpreted as coordinates in CIE Lab space.
-/// 
+///
 /// RGB and sRGB are treated in the same way. Use the colourspace functions if
 /// you want some other behaviour.
-/// 
+///
 /// The gaps in numbering are historical and must be maintained. Allocate
 /// new numbers from the end.
 public enum VipsInterpretation implements VNamedEnum {

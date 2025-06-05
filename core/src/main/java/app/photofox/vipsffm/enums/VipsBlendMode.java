@@ -7,10 +7,10 @@ import java.lang.String;
 
 /// The various Porter-Duff and PDF blend modes. See [VImage#composite],
 /// for example.
-/// 
+///
 /// The Cairo docs have [a nice explanation of all the blend
 /// modes](https://www.cairographics.org/operators).
-/// 
+///
 /// The non-separable modes are not implemented.
 public enum VipsBlendMode implements VNamedEnum {
   /// where the second object is drawn, the first is removed

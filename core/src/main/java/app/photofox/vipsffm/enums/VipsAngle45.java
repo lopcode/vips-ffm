@@ -6,9 +6,9 @@ import java.lang.Override;
 import java.lang.String;
 
 /// See [VImage#rot45] and so on.
-/// 
+///
 /// Fixed rotate angles.
-/// 
+///
 /// See also: [VImage#rot45]
 public enum VipsAngle45 implements VNamedEnum {
   /// no rotate

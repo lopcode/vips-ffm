@@ -5,7 +5,7 @@ import java.lang.Override;
 import java.lang.String;
 
 /// The compression format to use inside a HEIF container.
-/// 
+///
 /// This is assumed to use the same numbering as `heif_compression_format`.
 public enum VipsForeignHeifCompression implements VNamedEnum {
   /// x265

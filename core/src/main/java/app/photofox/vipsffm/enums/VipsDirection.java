@@ -6,10 +6,10 @@ import java.lang.Override;
 import java.lang.String;
 
 /// See [VImage#flip], [VImage#join] and so on.
-/// 
+///
 /// Operations like [VImage#flip] need to be told whether to flip left-right or
 /// top-bottom.
-/// 
+///
 /// See also: [VImage#flip], [VImage#join]
 public enum VipsDirection implements VNamedEnum {
   /// left-right

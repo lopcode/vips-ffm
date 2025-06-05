@@ -6,7 +6,7 @@ import java.lang.Override;
 import java.lang.String;
 
 /// The SDF to generate,
-/// 
+///
 /// See also: [VImage#sdf]
 public enum VipsSdfShape implements VNamedEnum {
   /// a circle at `a`, radius `r`

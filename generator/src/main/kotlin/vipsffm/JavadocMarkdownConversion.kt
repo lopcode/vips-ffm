@@ -4,7 +4,7 @@ object JavadocMarkdownConversion {
 
     private val startRegex = "[ \\t]*/\\*\\*[ \\t]*\n".toRegex() // /**
     private val endRegex = "[ \\t]*\\*/[ \\t]*\n".toRegex()// */
-    private val middleRegex = "([ \\t]+)\\*([ \\t]|\n)".toRegex() // *
+    private val middleRegex = "([\n^]\\s+)\\*".toRegex() // *
 
     // attempts to crudely convert a code block from old javadoc style to new markdown style
     fun convert(original: String): String {
@@ -17,8 +17,10 @@ object JavadocMarkdownConversion {
             .replace(endRegex, "")
             .replace(middleRegex) { match ->
                 val whitespace = match.groups[1]?.value ?: ""
-                val end = match.groups[2]?.value?.removeSuffix(" ") ?: ""
-                return@replace "${whitespace.removeSuffix(" ")}/// $end"
+                if (original.contains("need to be told whether to align images on the")) {
+                    val x = 1
+                }
+                return@replace "${whitespace.removeSuffix(" ")}///"
             }
     }
 }

@@ -14,9 +14,9 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up libvips..."
 
-/Users/sage/git/libvips/8.17-unreleased/bin/vips --version
+./libvips/release/bin/vips --version
 
-LIBVIPS_INCLUDES_PATH="/Users/sage/git/libvips/8.17-unreleased/include"
+LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
 LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
 if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
@@ -84,6 +84,6 @@ set -x
 
 ./gradlew clean generator:build generator:shadowJar
 
-DYLD_LIBRARY_PATH=/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -Dvipsffm.libpath.vips.override=/Users/sage/git/libvips/8.17-unreleased/lib/libvips.dylib -jar generator/build/libs/generator-all.jar
+DYLD_LIBRARY_PATH=$(readlink -f ./libvips)/release/lib:/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
 
 ./build_docs.sh

@@ -5,15 +5,15 @@ import java.lang.Override;
 import java.lang.String;
 
 /// The netpbm file format to save as.
-/// 
+///
 /// [VipsForeignPpmFormat#FOREIGN_PPM_FORMAT_PBM] images are single bit.
-/// 
+///
 /// [VipsForeignPpmFormat#FOREIGN_PPM_FORMAT_PGM] images are 8, 16, or 32-bits, one band.
-/// 
+///
 /// [VipsForeignPpmFormat#FOREIGN_PPM_FORMAT_PPM] images are 8, 16, or 32-bits, three bands.
-/// 
+///
 /// [VipsForeignPpmFormat#FOREIGN_PPM_FORMAT_PFM] images are 32-bit float pixels.
-/// 
+///
 /// [VipsForeignPpmFormat#FOREIGN_PPM_FORMAT_PNM] images are anymap images -- the image format
 /// is used to pick the saver.
 public enum VipsForeignPpmFormat implements VNamedEnum {

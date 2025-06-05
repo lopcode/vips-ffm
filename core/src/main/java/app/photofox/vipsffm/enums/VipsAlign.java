@@ -6,10 +6,10 @@ import java.lang.Override;
 import java.lang.String;
 
 /// See [VImage#join] and so on.
-/// 
+///
 /// Operations like [VImage#join] need to be told whether to align images on the
 /// low or high coordinate edge, or centre.
-/// 
+///
 /// See also: [VImage#join]
 public enum VipsAlign implements VNamedEnum {
   /// align low coordinate edge

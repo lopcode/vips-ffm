@@ -6,27 +6,27 @@ import java.lang.Override;
 import java.lang.String;
 
 /// See [VImage#embed], [VImage#conv], [VImage#affine] and so on.
-/// 
+///
 /// When the edges of an image are extended, you can specify
 /// how you want the extension done.
-/// 
+///
 /// [VipsExtend#EXTEND_BLACK] -- new pixels are black, ie. all bits are zero.
-/// 
+///
 /// [VipsExtend#EXTEND_COPY] -- each new pixel takes the value of the nearest edge
 /// pixel
-/// 
+///
 /// [VipsExtend#EXTEND_REPEAT] -- the image is tiled to fill the new area
-/// 
+///
 /// [VipsExtend#EXTEND_MIRROR] -- the image is reflected and tiled to reduce hash
 /// edges
-/// 
+///
 /// [VipsExtend#EXTEND_WHITE] -- new pixels are white, ie. all bits are set
-/// 
+///
 /// [VipsExtend#EXTEND_BACKGROUND] -- colour set from the `background` property
-/// 
+///
 /// We have to specify the exact value of each enum member since we have to
 /// keep these frozen for back compat with vips7.
-/// 
+///
 /// See also: [VImage#embed]
 public enum VipsExtend implements VNamedEnum {
   /// extend with black (all 0) pixels

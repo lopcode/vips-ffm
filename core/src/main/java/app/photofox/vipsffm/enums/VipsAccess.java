@@ -7,9 +7,9 @@ import java.lang.String;
 
 /// The type of access an operation has to supply. See [VImage#tilecache]
 /// and `Foreign`.
-/// 
+///
 /// [VipsAccess#ACCESS_RANDOM] means requests can come in any order.
-/// 
+///
 /// [VipsAccess#ACCESS_SEQUENTIAL] means requests will be top-to-bottom, but with some
 /// amount of buffering behind the read point for small non-local accesses.
 public enum VipsAccess implements VNamedEnum {

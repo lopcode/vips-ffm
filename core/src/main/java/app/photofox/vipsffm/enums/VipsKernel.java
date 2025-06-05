@@ -25,7 +25,13 @@ public enum VipsKernel implements VNamedEnum {
   /// Convolve with a three-lobe Lanczos kernel.
   KERNEL_LANCZOS3("VIPS_KERNEL_LANCZOS3", "lanczos3", 5),
 
-  KERNEL_LAST("VIPS_KERNEL_LAST", "last", 6);
+  /// Convolve with Magic Kernel Sharp 2013.
+  KERNEL_MKS2013("VIPS_KERNEL_MKS2013", "mks2013", 6),
+
+  /// Convolve with Magic Kernel Sharp 2021.
+  KERNEL_MKS2021("VIPS_KERNEL_MKS2021", "mks2021", 7),
+
+  KERNEL_LAST("VIPS_KERNEL_LAST", "last", 8);
 
   public static final String parentName = "VipsKernel";
 

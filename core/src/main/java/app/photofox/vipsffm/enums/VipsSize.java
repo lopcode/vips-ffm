@@ -7,7 +7,7 @@ import java.lang.String;
 
 /// Controls whether an operation should upsize, downsize, both up and
 /// downsize, or force a size.
-/// 
+///
 /// See also: [VImage#thumbnail]
 public enum VipsSize implements VNamedEnum {
   /// size both up and down

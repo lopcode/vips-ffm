@@ -8,11 +8,11 @@ import java.lang.String;
 /// Pick the algorithm vips uses to decide image "interestingness". This is used
 /// by [VImage#smartcrop], for example, to decide what parts of the image to
 /// keep.
-/// 
+///
 /// [VipsInteresting#INTERESTING_NONE] and [VipsInteresting#INTERESTING_LOW] mean the same -- the
 /// crop is positioned at the top or left. [VipsInteresting#INTERESTING_HIGH] positions at
 /// the bottom or right.
-/// 
+///
 /// See also: [VImage#smartcrop]
 public enum VipsInteresting implements VNamedEnum {
   /// do nothing

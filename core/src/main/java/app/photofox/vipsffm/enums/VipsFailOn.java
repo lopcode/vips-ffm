@@ -6,7 +6,7 @@ import java.lang.String;
 
 /// How sensitive loaders are to errors, from never stop (very insensitive), to
 /// stop on the smallest warning (very sensitive).
-/// 
+///
 /// Each one implies the ones before it, so [VipsFailOn#FAIL_ON_ERROR] implies
 /// [VipsFailOn#FAIL_ON_TRUNCATED].
 public enum VipsFailOn implements VNamedEnum {

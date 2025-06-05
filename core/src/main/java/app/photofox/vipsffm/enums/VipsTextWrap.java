@@ -7,7 +7,7 @@ import java.lang.String;
 
 /// Sets the word wrapping style for [VImage#text] when used with a maximum
 /// width.
-/// 
+///
 /// See also: [VImage#text]
 public enum VipsTextWrap implements VNamedEnum {
   /// wrap at word boundaries
