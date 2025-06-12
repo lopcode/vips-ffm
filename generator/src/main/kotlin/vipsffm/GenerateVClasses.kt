@@ -113,6 +113,10 @@ object GenerateVClasses {
                 logger.info("skipping \"${operation.nickname}\" - no image inputs or outputs")
                 return@mapNotNull null
             }
+            if (operation.isDeprecated) {
+                // skip
+                return@mapNotNull null
+            }
             buildOperationMethod(operation, operations, enums)
         }
 
@@ -147,18 +151,6 @@ object GenerateVClasses {
             .addStatement("if (!(o instanceof \$T vImage)) return false", vimageType)
             .addStatement("return Objects.equals(arena, vImage.arena) && Objects.equals(address, vImage.address)")
             .build()
-        val unsafeDeprecatedAddress = MethodSpec.methodBuilder("getUnsafeAddress")
-            .addJavadoc("@deprecated See [#getUnsafeStructAddress]")
-            .addStatement("return this.getUnsafeStructAddress()")
-            .returns(memorySegmentType)
-            .addModifiers(Modifier.PUBLIC)
-            .addAnnotation(
-                AnnotationSpec.builder(deprecatedAnnotationType)
-                    .addMember("since", "\"0.5.10\"")
-                    .addMember("forRemoval", "true")
-                    .build()
-            )
-            .build()
         val unsafeStructAddress = MethodSpec.methodBuilder("getUnsafeStructAddress")
             .addJavadoc("Gets the raw [MemorySegment] (C pointer) for this VipsImage struct")
             .addJavadoc("\nThe memory address' lifetime is bound to the scope of the [#arena]")
@@ -174,7 +166,6 @@ object GenerateVClasses {
             .addMethod(ctor)
             .addMethod(hashCode)
             .addMethod(equals)
-            .addMethod(unsafeDeprecatedAddress)
             .addMethod(unsafeStructAddress)
             .addMethods(operationMethods)
             .addMethods(imageMethods)
@@ -232,14 +223,6 @@ object GenerateVClasses {
         method.varargs(true)
         method.addException(vipsErrorType)
         method.addModifiers(Modifier.PUBLIC)
-
-        if (spec.isDeprecated) {
-            method.addAnnotation(
-                AnnotationSpec.builder(deprecatedAnnotationType)
-                    .addMember("forRemoval", "true")
-                    .build()
-            )
-        }
 
         var referencedSelf = false
         poetArguments.forEachIndexed { index, poetArg ->

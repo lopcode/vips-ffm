@@ -47,12 +47,6 @@ public final class VBlob {
         return new VBlob(arena, blobAddress);
     }
 
-    /// @deprecated Replaced by [#getUnsafeStructAddress()]
-    @Deprecated(since = "0.5.10", forRemoval = true)
-    public MemorySegment getUnsafeAddress() throws VipsError {
-        return this.getUnsafeStructAddress();
-    }
-
     /// Gets the raw [MemorySegment] (C pointer) for this VipsBlob struct
     ///
     /// You might want the data address instead [#getUnsafeDataAddress()]
@@ -89,12 +83,6 @@ public final class VBlob {
     /// Size of the data in this blob
     public long byteSize() {
         return VipsArea.length(this.address);
-    }
-
-    /// @deprecated Replaced by [#asArenaScopedByteBuffer()]
-    @Deprecated(since = "0.5.10", forRemoval = true)
-    public ByteBuffer asByteBuffer() {
-        return this.asArenaScopedByteBuffer();
     }
 
     /// ByteBuffer representation of the data in this blob

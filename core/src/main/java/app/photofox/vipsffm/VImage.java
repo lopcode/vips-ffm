@@ -43,7 +43,6 @@ import app.photofox.vipsffm.enums.VipsSize;
 import app.photofox.vipsffm.enums.VipsTextWrap;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -81,15 +80,6 @@ public final class VImage {
     if (this == o) return true;
     if (!(o instanceof VImage vImage)) return false;
     return Objects.equals(arena, vImage.arena) && Objects.equals(address, vImage.address);
-  }
-
-  /// @deprecated See [#getUnsafeStructAddress]
-  @Deprecated(
-      since = "0.5.10",
-      forRemoval = true
-  )
-  public MemorySegment getUnsafeAddress() {
-    return this.getUnsafeStructAddress();
   }
 
   /// Gets the raw [MemorySegment] (C pointer) for this VipsImage struct
@@ -633,34 +623,6 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Save image in AVIF format
-  /// @param target Target to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg Q [VipsOption.Int] Q factor
-  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
-  /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
-  /// @optionalArg compression [VipsOption.Enum] [VipsForeignHeifCompression] Compression format
-  /// @optionalArg effort [VipsOption.Int] CPU effort
-  /// @optionalArg subsample-mode [VipsOption.Enum] [VipsForeignSubsample] Select chroma subsample operation mode
-  /// @optionalArg speed [VipsOption.Int] CPU effort
-  /// @optionalArg encoder [VipsOption.Enum] [VipsForeignHeifEncoder] Select encoder to use
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void avifsaveTarget(VTarget target, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var targetOption = VipsOption.Target("target", target);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(targetOption);
-    VipsInvoker.invokeOperation(arena, "avifsave_target", callArgs);
-  }
-
   /// Perform various boolean operations across the bands of an image. For
   /// example, a three-band uchar image operated on with
   /// [VipsOperationBoolean#OPERATION_BOOLEAN_AND] will produce a one-band uchar image where each
@@ -962,24 +924,6 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "byteswap", callArgs);
-    return outOption.valueOrThrow();
-  }
-
-  /// Cache an image
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg max-tiles [VipsOption.Int] Maximum number of tiles to cache
-  /// @optionalArg tile-height [VipsOption.Int] Tile height in pixels
-  /// @optionalArg tile-width [VipsOption.Int] Tile width in pixels
-  @Deprecated(
-      forRemoval = true
-  )
-  public VImage cache(VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var outOption = VipsOption.Image("out");
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(outOption);
-    VipsInvoker.invokeOperation(arena, "cache", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -4720,56 +4664,6 @@ public final class VImage {
     VipsInvoker.invokeOperation(arena, "magicksave", callArgs);
   }
 
-  /// Save bmp image with ImageMagick
-  /// @param filename Filename to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.String] Format to save in
-  /// @optionalArg quality [VipsOption.Int] Quality to use
-  /// @optionalArg optimize-gif-frames [VipsOption.Boolean] Apply GIF frames optimization
-  /// @optionalArg optimize-gif-transparency [VipsOption.Boolean] Apply GIF transparency optimization
-  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void magicksaveBmp(String filename, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var filenameOption = VipsOption.String("filename", filename);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(filenameOption);
-    VipsInvoker.invokeOperation(arena, "magicksave_bmp", callArgs);
-  }
-
-  /// Save bmp image to magick buffer
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.String] Format to save in
-  /// @optionalArg quality [VipsOption.Int] Quality to use
-  /// @optionalArg optimize-gif-frames [VipsOption.Boolean] Apply GIF frames optimization
-  /// @optionalArg optimize-gif-transparency [VipsOption.Boolean] Apply GIF transparency optimization
-  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public VBlob magicksaveBmpBuffer(VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var bufferOption = VipsOption.Blob("buffer");
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(bufferOption);
-    VipsInvoker.invokeOperation(arena, "magicksave_bmp_buffer", callArgs);
-    return bufferOption.valueOrThrow();
-  }
-
   /// As [VImage#magicksave], but save to a memory buffer.
   ///
   /// The address of the buffer is returned in `obuf`, the length of the buffer in
@@ -6162,30 +6056,6 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Save image in pbm format
-  /// @param target Target to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.Enum] [VipsForeignPpmFormat] Format to save in
-  /// @optionalArg ascii [VipsOption.Boolean] Save as ascii
-  /// @optionalArg squash [VipsOption.Boolean] Save as one bit
-  /// @optionalArg bitdepth [VipsOption.Int] Set to 1 to write as a 1 bit image
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void pbmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var targetOption = VipsOption.Target("target", target);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(targetOption);
-    VipsInvoker.invokeOperation(arena, "pbmsave_target", callArgs);
-  }
-
   /// Render a PDF file into a VIPS image.
   ///
   /// The output image is always RGBA -- CMYK PDFs will be
@@ -6365,54 +6235,6 @@ public final class VImage {
     callArgs.add(heightOption);
     VipsInvoker.invokeOperation(arena, "perlin", callArgs);
     return outOption.valueOrThrow();
-  }
-
-  /// Save image in pfm format
-  /// @param target Target to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.Enum] [VipsForeignPpmFormat] Format to save in
-  /// @optionalArg ascii [VipsOption.Boolean] Save as ascii
-  /// @optionalArg squash [VipsOption.Boolean] Save as one bit
-  /// @optionalArg bitdepth [VipsOption.Int] Set to 1 to write as a 1 bit image
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void pfmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var targetOption = VipsOption.Target("target", target);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(targetOption);
-    VipsInvoker.invokeOperation(arena, "pfmsave_target", callArgs);
-  }
-
-  /// Save image in pgm format
-  /// @param target Target to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.Enum] [VipsForeignPpmFormat] Format to save in
-  /// @optionalArg ascii [VipsOption.Boolean] Save as ascii
-  /// @optionalArg squash [VipsOption.Boolean] Save as one bit
-  /// @optionalArg bitdepth [VipsOption.Int] Set to 1 to write as a 1 bit image
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void pgmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var targetOption = VipsOption.Target("target", target);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(targetOption);
-    VipsInvoker.invokeOperation(arena, "pgmsave_target", callArgs);
   }
 
   /// Convert the two input images to Fourier space, calculate phase-correlation,
@@ -6638,30 +6460,6 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(targetOption);
     VipsInvoker.invokeOperation(arena, "pngsave_target", callArgs);
-  }
-
-  /// Save image in pnm format
-  /// @param target Target to save to
-  /// @param args Array of VipsOption to apply to this operation
-  /// @optionalArg format [VipsOption.Enum] [VipsForeignPpmFormat] Format to save in
-  /// @optionalArg ascii [VipsOption.Boolean] Save as ascii
-  /// @optionalArg squash [VipsOption.Boolean] Save as one bit
-  /// @optionalArg bitdepth [VipsOption.Int] Set to 1 to write as a 1 bit image
-  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
-  /// @optionalArg background [VipsOption.ArrayDouble] Background value
-  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
-  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
-  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
-  @Deprecated(
-      forRemoval = true
-  )
-  public void pnmsaveTarget(VTarget target, VipsOption... args) throws VipsError {
-    var inOption = VipsOption.Image("in", this);
-    var targetOption = VipsOption.Target("target", target);
-    var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(inOption);
-    callArgs.add(targetOption);
-    VipsInvoker.invokeOperation(arena, "pnmsave_target", callArgs);
   }
 
   /// Read a PPM/PBM/PGM/PFM file into a VIPS image.
