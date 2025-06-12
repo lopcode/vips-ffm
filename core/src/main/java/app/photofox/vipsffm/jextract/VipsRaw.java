@@ -6650,6 +6650,122 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_set_progress {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_progress");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_progress$descriptor() {
+        return vips_image_set_progress.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+     * }
+     */
+    public static MethodHandle vips_image_set_progress$handle() {
+        return vips_image_set_progress.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+     * }
+     */
+    public static MemorySegment vips_image_set_progress$address() {
+        return vips_image_set_progress.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+     * }
+     */
+    public static void vips_image_set_progress(MemorySegment image, int progress) {
+        var mh$ = vips_image_set_progress.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_progress", image, progress);
+            }
+            mh$.invokeExact(image, progress);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_kill {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_kill");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_kill$descriptor() {
+        return vips_image_set_kill.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+     * }
+     */
+    public static MethodHandle vips_image_set_kill$handle() {
+        return vips_image_set_kill.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+     * }
+     */
+    public static MemorySegment vips_image_set_kill$address() {
+        return vips_image_set_kill.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+     * }
+     */
+    public static void vips_image_set_kill(MemorySegment image, int kill) {
+        var mh$ = vips_image_set_kill.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_kill", image, kill);
+            }
+            mh$.invokeExact(image, kill);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_filename_get_filename {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_POINTER,
@@ -6817,6 +6933,64 @@ public class VipsRaw {
                 traceDowncall("vips_image_new");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_delete_on_close {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_delete_on_close");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_delete_on_close$descriptor() {
+        return vips_image_set_delete_on_close.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+     * }
+     */
+    public static MethodHandle vips_image_set_delete_on_close$handle() {
+        return vips_image_set_delete_on_close.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+     * }
+     */
+    public static MemorySegment vips_image_set_delete_on_close$address() {
+        return vips_image_set_delete_on_close.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+     * }
+     */
+    public static void vips_image_set_delete_on_close(MemorySegment image, int delete_on_close) {
+        var mh$ = vips_image_set_delete_on_close.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_delete_on_close", image, delete_on_close);
+            }
+            mh$.invokeExact(image, delete_on_close);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9548,6 +9722,66 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_set_area {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_area");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_area$descriptor() {
+        return vips_image_set_area.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+     * }
+     */
+    public static MethodHandle vips_image_set_area$handle() {
+        return vips_image_set_area.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+     * }
+     */
+    public static MemorySegment vips_image_set_area$address() {
+        return vips_image_set_area.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+     * }
+     */
+    public static void vips_image_set_area(MemorySegment image, MemorySegment name, MemorySegment free_fn, MemorySegment data) {
+        var mh$ = vips_image_set_area.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_area", image, name, free_fn, data);
+            }
+            mh$.invokeExact(image, name, free_fn, data);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_get_area {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_INT,
@@ -9603,6 +9837,127 @@ public class VipsRaw {
                 traceDowncall("vips_image_get_area", image, name, data);
             }
             return (int)mh$.invokeExact(image, name, data);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_blob {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_blob");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_blob$descriptor() {
+        return vips_image_set_blob.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+     * }
+     */
+    public static MethodHandle vips_image_set_blob$handle() {
+        return vips_image_set_blob.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+     * }
+     */
+    public static MemorySegment vips_image_set_blob$address() {
+        return vips_image_set_blob.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+     * }
+     */
+    public static void vips_image_set_blob(MemorySegment image, MemorySegment name, MemorySegment free_fn, MemorySegment data, long length) {
+        var mh$ = vips_image_set_blob.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_blob", image, name, free_fn, data, length);
+            }
+            mh$.invokeExact(image, name, free_fn, data, length);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_blob_copy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_blob_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_blob_copy$descriptor() {
+        return vips_image_set_blob_copy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+     * }
+     */
+    public static MethodHandle vips_image_set_blob_copy$handle() {
+        return vips_image_set_blob_copy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+     * }
+     */
+    public static MemorySegment vips_image_set_blob_copy$address() {
+        return vips_image_set_blob_copy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+     * }
+     */
+    public static void vips_image_set_blob_copy(MemorySegment image, MemorySegment name, MemorySegment data, long length) {
+        var mh$ = vips_image_set_blob_copy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_blob_copy", image, name, data, length);
+            }
+            mh$.invokeExact(image, name, data, length);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9729,6 +10084,65 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_set_int {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_int");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_int$descriptor() {
+        return vips_image_set_int.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+     * }
+     */
+    public static MethodHandle vips_image_set_int$handle() {
+        return vips_image_set_int.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+     * }
+     */
+    public static MemorySegment vips_image_set_int$address() {
+        return vips_image_set_int.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+     * }
+     */
+    public static void vips_image_set_int(MemorySegment image, MemorySegment name, int i) {
+        var mh$ = vips_image_set_int.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_int", image, name, i);
+            }
+            mh$.invokeExact(image, name, i);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_get_double {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_INT,
@@ -9784,6 +10198,65 @@ public class VipsRaw {
                 traceDowncall("vips_image_get_double", image, name, out);
             }
             return (int)mh$.invokeExact(image, name, out);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_double {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_double");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_double$descriptor() {
+        return vips_image_set_double.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+     * }
+     */
+    public static MethodHandle vips_image_set_double$handle() {
+        return vips_image_set_double.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+     * }
+     */
+    public static MemorySegment vips_image_set_double$address() {
+        return vips_image_set_double.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+     * }
+     */
+    public static void vips_image_set_double(MemorySegment image, MemorySegment name, double d) {
+        var mh$ = vips_image_set_double.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_double", image, name, d);
+            }
+            mh$.invokeExact(image, name, d);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9849,6 +10322,65 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_set_string {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_string$descriptor() {
+        return vips_image_set_string.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+     * }
+     */
+    public static MethodHandle vips_image_set_string$handle() {
+        return vips_image_set_string.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+     * }
+     */
+    public static MemorySegment vips_image_set_string$address() {
+        return vips_image_set_string.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+     * }
+     */
+    public static void vips_image_set_string(MemorySegment image, MemorySegment name, MemorySegment str) {
+        var mh$ = vips_image_set_string.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_string", image, name, str);
+            }
+            mh$.invokeExact(image, name, str);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_get_image {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_INT,
@@ -9904,6 +10436,125 @@ public class VipsRaw {
                 traceDowncall("vips_image_get_image", image, name, out);
             }
             return (int)mh$.invokeExact(image, name, out);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_image {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_image");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_image$descriptor() {
+        return vips_image_set_image.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+     * }
+     */
+    public static MethodHandle vips_image_set_image$handle() {
+        return vips_image_set_image.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+     * }
+     */
+    public static MemorySegment vips_image_set_image$address() {
+        return vips_image_set_image.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+     * }
+     */
+    public static void vips_image_set_image(MemorySegment image, MemorySegment name, MemorySegment im) {
+        var mh$ = vips_image_set_image.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_image", image, name, im);
+            }
+            mh$.invokeExact(image, name, im);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_array_int {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_array_int");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_array_int$descriptor() {
+        return vips_image_set_array_int.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+     * }
+     */
+    public static MethodHandle vips_image_set_array_int$handle() {
+        return vips_image_set_array_int.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+     * }
+     */
+    public static MemorySegment vips_image_set_array_int$address() {
+        return vips_image_set_array_int.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+     * }
+     */
+    public static void vips_image_set_array_int(MemorySegment image, MemorySegment name, MemorySegment array, int n) {
+        var mh$ = vips_image_set_array_int.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_array_int", image, name, array, n);
+            }
+            mh$.invokeExact(image, name, array, n);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10026,6 +10677,66 @@ public class VipsRaw {
                 traceDowncall("vips_image_get_array_double", image, name, out, n);
             }
             return (int)mh$.invokeExact(image, name, out, n);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_set_array_double {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_set_array_double");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+     * }
+     */
+    public static FunctionDescriptor vips_image_set_array_double$descriptor() {
+        return vips_image_set_array_double.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+     * }
+     */
+    public static MethodHandle vips_image_set_array_double$handle() {
+        return vips_image_set_array_double.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+     * }
+     */
+    public static MemorySegment vips_image_set_array_double$address() {
+        return vips_image_set_array_double.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+     * }
+     */
+    public static void vips_image_set_array_double(MemorySegment image, MemorySegment name, MemorySegment array, int n) {
+        var mh$ = vips_image_set_array_double.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_set_array_double", image, name, array, n);
+            }
+            mh$.invokeExact(image, name, array, n);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
