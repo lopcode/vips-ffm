@@ -40,15 +40,6 @@ public sealed class VTarget permits VCustomTarget {
         return address.hashCode();
     }
 
-    /// @deprecated See [#getUnsafeStructAddress]
-    @Deprecated(
-        since = "0.5.10",
-        forRemoval = true
-    )
-    public MemorySegment getUnsafeAddress() {
-        return this.getUnsafeStructAddress();
-    }
-
     /// Gets the raw [MemorySegment] (C pointer) for this VipsTarget struct
     ///
     /// The memory address' lifetime is bound to the scope of the arena that created it
