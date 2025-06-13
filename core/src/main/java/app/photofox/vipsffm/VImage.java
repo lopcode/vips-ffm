@@ -9836,13 +9836,35 @@ public final class VImage {
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type blob from field: " + name);
     }
-    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(arena, VipsRaw::vips_area_unref);
+    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0);
     return new VBlob(arena, blobAddress);
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `blob`
   public VImage set(String name, VBlob value) {
     VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.address, value.byteSize());
+    return this;
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `image`
+  /// Returns null if not present
+  public VImage getImage(String name) {
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_image(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsHelper.error_clear();
+      return null;
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type image from field: " + name);
+    }
+    var imageAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(arena, VipsRaw::g_object_unref);
+    return new VImage(arena, imageAddress);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `image`
+  public VImage set(String name, VImage value) {
+    VipsHelper.image_set_image(arena, this.address, name, value.address);
     return this;
   }
 

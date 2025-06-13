@@ -24,6 +24,7 @@ object VImageGetSetSample: RunnableSample {
             .set("test-name-int", 1234)
             .set("test-name-double", 1234.0)
             .set("test-name-blob", VBlob.newFromBytes(arena, byteArrayOf(0x01, 0x02, 0x03, 0x04)))
+            .set("test-name-image", VImage.black(arena, 100, 100))
 
         val testStringValue = sourceImage.getString("test-name-string")
         if (testStringValue != "test-value") {
@@ -51,6 +52,13 @@ object VImageGetSetSample: RunnableSample {
             )
         }
 
+        val image = sourceImage.getImage("test-name-image")
+        if (image.width != 100 && image.height != 100) {
+            return Result.failure(
+                RuntimeException("unexpected value in metadata")
+            )
+        }
+
         val testKnownInvalidNameValue = sourceImage.getString("definitely-doesnt-exist")
         if (testKnownInvalidNameValue != null) {
             return Result.failure(
@@ -59,7 +67,7 @@ object VImageGetSetSample: RunnableSample {
         }
 
         val fieldNames = sourceImage.fields
-        if (!fieldNames.containsAll(listOf("test-name-string", "test-name-int", "test-name-double", "test-name-blob"))) {
+        if (!fieldNames.containsAll(listOf("test-name-string", "test-name-int", "test-name-double", "test-name-blob", "test-name-image"))) {
             return Result.failure(
                 RuntimeException("unexpected missing metadata entry in fields")
             )

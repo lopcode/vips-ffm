@@ -793,7 +793,7 @@ object GenerateVClasses {
 
         val methods = mutableListOf<MethodSpec>()
 
-        val types = listOf("string", "int", "double", "blob")
+        val types = listOf("string", "int", "double", "blob", "image")
         types.forEach { typeName ->
             val titlecasedTypename = typeName.replaceFirstChar { it.titlecaseChar() }
             val poetValueType = when (typeName) {
@@ -801,6 +801,7 @@ object GenerateVClasses {
                 "int" -> boxedIntType
                 "double" -> boxedDoubleType
                 "blob" -> vblobType
+                "image" -> vimageType
                 else -> throw RuntimeException("unexpected type")
             }
             val setMethod = MethodSpec.methodBuilder("set")
@@ -814,6 +815,12 @@ object GenerateVClasses {
                                 "\$T.image_set_$typeName(arena, this.address, name, \$T.NULL, value.address, value.byteSize())",
                                 vipsHelperType,
                                 memorySegmentType
+                            )
+                        }
+                        vimageType -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, value.address)",
+                                vipsHelperType
                             )
                         }
                         else -> {
@@ -882,8 +889,13 @@ object GenerateVClasses {
                         }
                         vblobType -> {
                             // void **
-                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::vips_area_unref)", vipsRawType, vipsRawType)
+                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
                             this.addStatement("return new VBlob(arena, blobAddress)")
+                        }
+                        vimageType -> {
+                            // VImage **
+                            this.addStatement("var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)", vipsRawType, vipsRawType)
+                            this.addStatement("return new VImage(arena, imageAddress)")
                         }
                         else -> throw RuntimeException("unexpected type")
                     }
