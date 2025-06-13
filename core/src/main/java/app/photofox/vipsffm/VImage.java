@@ -41,6 +41,7 @@ import app.photofox.vipsffm.enums.VipsRegionShrink;
 import app.photofox.vipsffm.enums.VipsSdfShape;
 import app.photofox.vipsffm.enums.VipsSize;
 import app.photofox.vipsffm.enums.VipsTextWrap;
+import app.photofox.vipsffm.jextract.VipsImageMapFn;
 import app.photofox.vipsffm.jextract.VipsRaw;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9824,21 +9825,16 @@ public final class VImage {
 
   /// Returns a list of all metadata entry names for this image
   public List<String> getFields() {
-    var fieldsPointer = VipsHelper.image_get_fields(this.address);
-    fieldsPointer = fieldsPointer.reinterpret(arena, VipsRaw::g_strfreev);
     var fieldNameStrings = new ArrayList<String>();
-    if (!VipsValidation.isValidPointer(fieldsPointer)) {
-      return fieldNameStrings;
-    }
-    var i = 0;
-    while (true) {
-      var namePointer = fieldsPointer.get(VipsRaw.C_POINTER, i * VipsRaw.C_POINTER.byteSize());
-      if (!VipsValidation.isValidPointer(namePointer)) {
-        break;
-      }
-      fieldNameStrings.add(namePointer.getString(0));
-      i++;
-    }
+    VipsImageMapFn.Function fn = (_, name, _, _) -> {
+          if (!VipsValidation.isValidPointer(name)) {
+            return MemorySegment.NULL;
+          }
+          fieldNameStrings.add(name.getString(0));
+          return MemorySegment.NULL;
+        };
+    var callbackPointer = VipsImageMapFn.allocate(fn, arena);
+    VipsRaw.vips_image_map(this.address, callbackPointer, MemorySegment.NULL);
     return fieldNameStrings;
   }
 }

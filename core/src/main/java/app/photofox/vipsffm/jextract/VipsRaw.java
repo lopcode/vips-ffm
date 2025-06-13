@@ -9721,6 +9721,66 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_map {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_map");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+     * }
+     */
+    public static FunctionDescriptor vips_image_map$descriptor() {
+        return vips_image_map.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+     * }
+     */
+    public static MethodHandle vips_image_map$handle() {
+        return vips_image_map.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+     * }
+     */
+    public static MemorySegment vips_image_map$address() {
+        return vips_image_map.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+     * }
+     */
+    public static MemorySegment vips_image_map(MemorySegment image, MemorySegment fn, MemorySegment a) {
+        var mh$ = vips_image_map.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_map", image, fn, a);
+            }
+            return (MemorySegment)mh$.invokeExact(image, fn, a);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_get_fields {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_POINTER,

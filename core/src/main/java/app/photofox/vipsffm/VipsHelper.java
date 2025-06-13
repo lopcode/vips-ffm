@@ -1561,6 +1561,26 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+  /// ```
+  public static MemorySegment image_map(Arena arena, MemorySegment image, MemorySegment fn,
+      MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_map", "image");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_image_map", "a");
+    }
+    var result = VipsRaw.vips_image_map(image, fn, a);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_map", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// gchar **vips_image_get_fields(VipsImage *image)
   /// ```
   public static MemorySegment image_get_fields(MemorySegment image) throws VipsError {

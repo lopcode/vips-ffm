@@ -66,6 +66,7 @@ object GenerateVClasses {
     private val inputStreamType = ClassName.get("java.io", "InputStream")
     private val outputStreamType = ClassName.get("java.io", "OutputStream")
     private val listStringType = ParameterizedTypeName.get(listType, stringType)
+    private val vipsImageMapFnType = ClassName.get("app.photofox.vipsffm.jextract", "VipsImageMapFn")
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -860,31 +861,27 @@ object GenerateVClasses {
             methods.add(setMethod)
         }
 
+        // javapoet doesn't natively support block lambdas, so we have to do some of this manually
+        // it's worth it to be able to use vips_image_map
+        val fieldsLambda = CodeBlock.builder()
+            .add("(_, name, _, _) -> {\n").indent()
+            .add("if (!\$T.isValidPointer(name)) {\n", vipsValidatorType).indent()
+            .add("return \$T.NULL;\n", memorySegmentType)
+            .unindent().add("}\n")
+            .add("fieldNameStrings.add(name.getString(0));\n")
+            .add("return \$T.NULL;\n", memorySegmentType)
+            .unindent().add("}")
+            .build()
+        val lambdaCall = CodeBlock.builder()
+            .addStatement("\$T.Function fn = \$L", vipsImageMapFnType, fieldsLambda)
+            .build()
         val fieldsMethod = MethodSpec.methodBuilder("getFields")
             .addModifiers(Modifier.PUBLIC)
             .returns(listStringType)
-            .addStatement("var fieldsPointer = \$T.image_get_fields(this.address)", vipsHelperType)
-            .addStatement(
-                "fieldsPointer = fieldsPointer.reinterpret(arena, \$T::g_strfreev)",
-                vipsRawType
-            )
             .addStatement("var fieldNameStrings = new ArrayList<String>()")
-            .addCode(
-                CodeBlock.builder()
-                    .beginControlFlow("if (!\$T.isValidPointer(fieldsPointer))", vipsValidatorType)
-                    .addStatement("return fieldNameStrings")
-                    .endControlFlow()
-                    .addStatement("var i = 0")
-                    .beginControlFlow("while (true)")
-                    .addStatement("var namePointer = fieldsPointer.get(\$T.C_POINTER, i * \$T.C_POINTER.byteSize())", vipsRawType, vipsRawType)
-                    .beginControlFlow("if (!\$T.isValidPointer(namePointer))", vipsValidatorType)
-                    .addStatement("break")
-                    .endControlFlow()
-                    .addStatement("fieldNameStrings.add(namePointer.getString(0))")
-                    .addStatement("i++")
-                    .endControlFlow()
-                    .build()
-            )
+            .addCode(lambdaCall)
+            .addStatement("var callbackPointer = \$T.allocate(fn, arena)", vipsImageMapFnType)
+            .addStatement("\$T.vips_image_map(this.address, callbackPointer, \$T.NULL)", vipsRawType, memorySegmentType)
             .addStatement("return fieldNameStrings")
             .addJavadoc("""
                 Returns a list of all metadata entry names for this image
