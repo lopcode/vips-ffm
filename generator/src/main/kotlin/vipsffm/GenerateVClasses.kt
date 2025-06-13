@@ -834,6 +834,8 @@ object GenerateVClasses {
                 .addStatement("return this")
                 .addJavadoc("""
                     Helper function to set the metadata stored at `name` on this image, of type `$typeName`
+                    
+                    See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
                 """.trimIndent())
                 .returns(vimageType)
                 .build()
@@ -856,6 +858,8 @@ object GenerateVClasses {
                 .addJavadoc("""
                     Helper function to get the metadata stored at `name` on this image, of type `$typeName`
                     Returns null if not present
+                    
+                    See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
                 """.trimIndent())
                 .addCode(
                     CodeBlock.builder()
@@ -929,6 +933,8 @@ object GenerateVClasses {
             .addStatement("return fieldNameStrings")
             .addJavadoc("""
                 Returns a list of all metadata entry names for this image
+                
+                See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
             """.trimIndent())
             .build()
 

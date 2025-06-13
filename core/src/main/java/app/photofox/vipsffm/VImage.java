@@ -9763,6 +9763,8 @@ public final class VImage {
 
   /// Helper function to get the metadata stored at `name` on this image, of type `string`
   /// Returns null if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public String getString(String name) {
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_string(arena, this.address, name, outPointer);
@@ -9778,6 +9780,8 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `string`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, String value) {
     VipsHelper.image_set_string(arena, this.address, name, value);
     return this;
@@ -9785,6 +9789,8 @@ public final class VImage {
 
   /// Helper function to get the metadata stored at `name` on this image, of type `int`
   /// Returns null if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public Integer getInt(String name) {
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_int(arena, this.address, name, outPointer);
@@ -9799,6 +9805,8 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `int`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, Integer value) {
     VipsHelper.image_set_int(arena, this.address, name, value);
     return this;
@@ -9806,6 +9814,8 @@ public final class VImage {
 
   /// Helper function to get the metadata stored at `name` on this image, of type `double`
   /// Returns null if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public Double getDouble(String name) {
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_double(arena, this.address, name, outPointer);
@@ -9820,6 +9830,8 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `double`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, Double value) {
     VipsHelper.image_set_double(arena, this.address, name, value);
     return this;
@@ -9827,6 +9839,8 @@ public final class VImage {
 
   /// Helper function to get the metadata stored at `name` on this image, of type `blob`
   /// Returns null if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VBlob getBlob(String name) {
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
@@ -9843,6 +9857,8 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `blob`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, VBlob value) {
     VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.address, value.byteSize());
     return this;
@@ -9850,6 +9866,8 @@ public final class VImage {
 
   /// Helper function to get the metadata stored at `name` on this image, of type `image`
   /// Returns null if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage getImage(String name) {
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_image(arena, this.address, name, outPointer);
@@ -9865,12 +9883,16 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `image`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, VImage value) {
     VipsHelper.image_set_image(arena, this.address, name, value.address);
     return this;
   }
 
   /// Returns a list of all metadata entry names for this image
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public List<String> getFields() {
     var fieldNameStrings = new ArrayList<String>();
     VipsImageMapFn.Function fn = (_, name, _, _) -> {
