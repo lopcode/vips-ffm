@@ -41,6 +41,8 @@ import app.photofox.vipsffm.enums.VipsRegionShrink;
 import app.photofox.vipsffm.enums.VipsSdfShape;
 import app.photofox.vipsffm.enums.VipsSize;
 import app.photofox.vipsffm.enums.VipsTextWrap;
+import app.photofox.vipsffm.jextract.VipsImageMapFn;
+import app.photofox.vipsffm.jextract.VipsRaw;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.Double;
@@ -83,7 +85,9 @@ public final class VImage {
   }
 
   /// Gets the raw [MemorySegment] (C pointer) for this VipsImage struct
+  ///
   /// The memory address' lifetime is bound to the scope of the [#arena]
+  ///
   /// Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]
   public MemorySegment getUnsafeStructAddress() {
     return this.address;
@@ -9755,5 +9759,166 @@ public final class VImage {
   public static VImage newImage(Arena arena) throws VipsError {
     var newImagePointer = VipsHelper.image_new(arena);
     return new VImage(arena, newImagePointer);
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `string`, or `null`
+  /// if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public String getString(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_string(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("image_get_string");
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type string from field: " + name);
+    }
+    var dereferenced = outPointer.get(VipsRaw.C_POINTER, 0);
+    return dereferenced.getString(0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `string`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage set(String name, String value) {
+    VipsHelper.image_set_string(arena, this.address, name, value);
+    return this;
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `int`, or `null`
+  /// if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public Integer getInt(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_int(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("image_get_int");
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type int from field: " + name);
+    }
+    return outPointer.get(VipsRaw.C_INT, 0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `int`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage set(String name, Integer value) {
+    VipsHelper.image_set_int(arena, this.address, name, value);
+    return this;
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `double`, or `null`
+  /// if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public Double getDouble(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_double(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("image_get_double");
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type double from field: " + name);
+    }
+    return outPointer.get(VipsRaw.C_DOUBLE, 0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `double`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage set(String name, Double value) {
+    VipsHelper.image_set_double(arena, this.address, name, value);
+    return this;
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `blob`, or `null`
+  /// if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VBlob getBlob(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
+    var result = VipsHelper.image_get_blob(arena, this.address, name, outPointer, outLengthPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("image_get_blob");
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type blob from field: " + name);
+    }
+    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0);
+    return new VBlob(arena, blobAddress);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `blob`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage set(String name, VBlob value) {
+    VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.address, value.byteSize());
+    return this;
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `image`, or `null`
+  /// if not present
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage getImage(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_image(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsValidation.throwVipsError("image_get_image");
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type image from field: " + name);
+    }
+    var imageAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(arena, VipsRaw::g_object_unref);
+    return new VImage(arena, imageAddress);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `image`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public VImage set(String name, VImage value) {
+    VipsHelper.image_set_image(arena, this.address, name, value.address);
+    return this;
+  }
+
+  /// Returns a list of all metadata entry names for this image
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public List<String> getFields() {
+    var fieldNameStrings = new ArrayList<String>();
+    VipsImageMapFn.Function fn = (_, name, _, _) -> {
+          if (!VipsValidation.isValidPointer(name)) {
+            return MemorySegment.NULL;
+          }
+          fieldNameStrings.add(name.getString(0));
+          return MemorySegment.NULL;
+        };
+    var callbackPointer = VipsImageMapFn.allocate(fn, arena);
+    VipsRaw.vips_image_map(this.address, callbackPointer, MemorySegment.NULL);
+    return fieldNameStrings;
   }
 }

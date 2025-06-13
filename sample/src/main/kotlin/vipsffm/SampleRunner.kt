@@ -3,6 +3,7 @@ package vipsffm
 import app.photofox.vipsffm.Vips
 import org.slf4j.LoggerFactory
 import vipsffm.sample.HelperGetVersionSample
+import vipsffm.sample.HelperGetSetMetadataSample
 import vipsffm.sample.RawGetVersionSample
 import vipsffm.sample.VBlobByteBufferSample
 import vipsffm.sample.VImageStreamSample
@@ -14,6 +15,7 @@ import vipsffm.sample.VImageCopyWriteSample
 import vipsffm.sample.VImageCreateThumbnailSample
 import vipsffm.sample.VImageFromBytesSample
 import vipsffm.sample.VImageGetPagesSample
+import vipsffm.sample.VImageGetSetSample
 import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VImageStaticThumbnailSample
 import vipsffm.sample.VOptionHyphenSample
@@ -47,7 +49,9 @@ object SampleRunner {
             VImageFromBytesSample,
             VImageStreamSample,
             VImageStaticThumbnailSample,
-            VImageGetPagesSample
+            VImageGetPagesSample,
+            HelperGetSetMetadataSample,
+            VImageGetSetSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

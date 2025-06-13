@@ -957,6 +957,31 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// void vips_image_set_progress(VipsImage *image, gboolean progress)
+  /// ```
+  public static void image_set_progress(MemorySegment image, boolean progressBoolean) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_progress", "image");
+    }
+    var progress = progressBoolean ? 1 : 0;
+    VipsRaw.vips_image_set_progress(image, progress);
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_kill(VipsImage *image, gboolean kill)
+  /// ```
+  public static void image_set_kill(MemorySegment image, boolean killBoolean) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_kill", "image");
+    }
+    var kill = killBoolean ? 1 : 0;
+    VipsRaw.vips_image_set_kill(image, kill);
+  }
+
+  /// Binding for:
+  /// ```c
   /// char *vips_filename_get_filename(const char *vips_filename)
   /// ```
   public static String filename_get_filename(Arena arena, String vips_filenameString) throws
@@ -994,6 +1019,19 @@ public final class VipsHelper {
     }
     result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+  /// ```
+  public static void image_set_delete_on_close(MemorySegment image, boolean delete_on_closeBoolean)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_delete_on_close", "image");
+    }
+    var delete_on_close = delete_on_closeBoolean ? 1 : 0;
+    VipsRaw.vips_image_set_delete_on_close(image, delete_on_close);
   }
 
   /// Binding for:
@@ -1523,6 +1561,26 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+  /// ```
+  public static MemorySegment image_map(Arena arena, MemorySegment image, MemorySegment fn,
+      MemorySegment a) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_map", "image");
+    }
+    if(!VipsValidation.isValidPointer(a)) {
+      VipsValidation.throwInvalidInputError("vips_image_map", "a");
+    }
+    var result = VipsRaw.vips_image_map(image, fn, a);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_map", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// gchar **vips_image_get_fields(VipsImage *image)
   /// ```
   public static MemorySegment image_get_fields(MemorySegment image) throws VipsError {
@@ -1534,6 +1592,22 @@ public final class VipsHelper {
       VipsValidation.throwInvalidOutputError("vips_image_get_fields", "result");
     }
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+  /// ```
+  public static void image_set_area(Arena arena, MemorySegment image, String nameString,
+      MemorySegment free_fn, MemorySegment data) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_area", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_area", "data");
+    }
+    VipsRaw.vips_image_set_area(image, name, free_fn, data);
   }
 
   /// Binding for:
@@ -1551,6 +1625,38 @@ public final class VipsHelper {
     }
     var result = VipsRaw.vips_image_get_area(image, name, data);
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+  /// ```
+  public static void image_set_blob(Arena arena, MemorySegment image, String nameString,
+      MemorySegment free_fn, MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob", "data");
+    }
+    VipsRaw.vips_image_set_blob(image, name, free_fn, data, length);
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+  /// ```
+  public static void image_set_blob_copy(Arena arena, MemorySegment image, String nameString,
+      MemorySegment data, long length) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob_copy", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_blob_copy", "data");
+    }
+    VipsRaw.vips_image_set_blob_copy(image, name, data, length);
   }
 
   /// Binding for:
@@ -1592,6 +1698,19 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// void vips_image_set_int(VipsImage *image, const char *name, int i)
+  /// ```
+  public static void image_set_int(Arena arena, MemorySegment image, String nameString, int i)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw.vips_image_set_int(image, name, i);
+  }
+
+  /// Binding for:
+  /// ```c
   /// int vips_image_get_double(const VipsImage *image, const char *name, double *out)
   /// ```
   public static int image_get_double(Arena arena, MemorySegment image, String nameString,
@@ -1605,6 +1724,19 @@ public final class VipsHelper {
     }
     var result = VipsRaw.vips_image_get_double(image, name, out);
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_double(VipsImage *image, const char *name, double d)
+  /// ```
+  public static void image_set_double(Arena arena, MemorySegment image, String nameString, double d)
+      throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    VipsRaw.vips_image_set_double(image, name, d);
   }
 
   /// Binding for:
@@ -1626,6 +1758,20 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+  /// ```
+  public static void image_set_string(Arena arena, MemorySegment image, String nameString,
+      String strString) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_string", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var str = arena.allocateFrom(strString);
+    VipsRaw.vips_image_set_string(image, name, str);
+  }
+
+  /// Binding for:
+  /// ```c
   /// int vips_image_get_image(const VipsImage *image, const char *name, VipsImage **out)
   /// ```
   public static int image_get_image(Arena arena, MemorySegment image, String nameString,
@@ -1639,6 +1785,38 @@ public final class VipsHelper {
     }
     var result = VipsRaw.vips_image_get_image(image, name, out);
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+  /// ```
+  public static void image_set_image(Arena arena, MemorySegment image, String nameString,
+      MemorySegment im) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_image", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(im)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_image", "im");
+    }
+    VipsRaw.vips_image_set_image(image, name, im);
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+  /// ```
+  public static void image_set_array_int(Arena arena, MemorySegment image, String nameString,
+      MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_int", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_int", "array");
+    }
+    VipsRaw.vips_image_set_array_int(image, name, array, n);
   }
 
   /// Binding for:
@@ -1679,6 +1857,22 @@ public final class VipsHelper {
     }
     var result = VipsRaw.vips_image_get_array_double(image, name, out, n);
     return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+  /// ```
+  public static void image_set_array_double(Arena arena, MemorySegment image, String nameString,
+      MemorySegment array, int n) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_double", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_set_array_double", "array");
+    }
+    VipsRaw.vips_image_set_array_double(image, name, array, n);
   }
 
   /// Binding for:

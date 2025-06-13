@@ -3,7 +3,6 @@ package vipsffm
 import app.photofox.vipsffm.jextract.GEnumClass
 import app.photofox.vipsffm.jextract.GEnumValue
 import app.photofox.vipsffm.jextract.VipsRaw
-import com.palantir.javapoet.AnnotationSpec
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
 import com.palantir.javapoet.CodeBlock
@@ -14,7 +13,6 @@ import com.palantir.javapoet.ParameterSpec
 import com.palantir.javapoet.ParameterizedTypeName
 import com.palantir.javapoet.TypeName
 import com.palantir.javapoet.TypeSpec
-import org.apache.commons.text.StringEscapeUtils
 import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
 import java.lang.foreign.Arena
@@ -62,10 +60,13 @@ object GenerateVClasses {
     private val vipsOptionInterpolateType = ClassName.get("app.photofox.vipsffm", "VipsOption.Interpolate")
     private val vipsOptionEnumType = ClassName.get("app.photofox.vipsffm", "VipsOption.Enum")
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm", "VipsValidation")
+    private val vipsRawType = ClassName.get("app.photofox.vipsffm.jextract", "VipsRaw")
     private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
     private val deprecatedAnnotationType = ClassName.get("java.lang", "Deprecated")
     private val inputStreamType = ClassName.get("java.io", "InputStream")
     private val outputStreamType = ClassName.get("java.io", "OutputStream")
+    private val listStringType = ParameterizedTypeName.get(listType, stringType)
+    private val vipsImageMapFnType = ClassName.get("app.photofox.vipsffm.jextract", "VipsImageMapFn")
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -153,8 +154,8 @@ object GenerateVClasses {
             .build()
         val unsafeStructAddress = MethodSpec.methodBuilder("getUnsafeStructAddress")
             .addJavadoc("Gets the raw [MemorySegment] (C pointer) for this VipsImage struct")
-            .addJavadoc("\nThe memory address' lifetime is bound to the scope of the [#arena]")
-            .addJavadoc("\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]")
+            .addJavadoc("\n\nThe memory address' lifetime is bound to the scope of the [#arena]")
+            .addJavadoc("\n\nUsage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]")
             .addStatement("return this.address")
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
@@ -422,65 +423,6 @@ object GenerateVClasses {
             }
             girDoc += "\nSee also: $references"
         }
-//
-//        girDoc = girDoc.replace("[%#@]([A-Za-z0-9-_]+)".toRegex()) { match ->
-//            val identifierName = match.groups[1]!!.value
-//            if (identifierName.startsWith("VIPS_")) {
-//                val matchedParentEnum = enums.firstOrNull {
-//                    it.values.any {
-//                        it.gir.cIdentifier == identifierName
-//                    }
-//                }
-//                val matchedValue = matchedParentEnum?.values?.first { it.gir.cIdentifier == identifierName }
-//                if (matchedValue != null) {
-//                    classReferences += ClassMatch(
-//                        ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name),
-//                        match.range.first
-//                    )
-//                    val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
-//                    return@replace "[$enumName]"
-//                }
-//            }
-//
-//            if (identifierName.isBlank()) {
-//                return@replace match.groups[0]!!.value
-//            }
-//
-//            if (!identifierName.startsWith("VIPS_")) {
-//                val operationMatch = operations.firstOrNull { it.nickname.fromSnakeToJavaStyle() == name }
-//                val optionMatch = operationMatch?.let {
-//                    val optionStyle = identifierName.replace("_", "-")
-//                    operationMatch.args.firstOrNull { it.name == optionStyle }
-//                }
-//                if (operationMatch != null && optionMatch != null) {
-//                    if (optionMatch.isRequired) {
-//                        return@replace "`${optionMatch.name.fromSnakeToJavaStyle()}`"
-//                    } else {
-//                        return@replace "`${optionMatch.name}`"
-//                    }
-//                }
-//            }
-//
-//            return@replace "`$identifierName`"
-//        }
-//
-//        girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
-//            val identifier = match.groups[1]!!.value
-//            if (operations.any { it.gir?.cIdentifier == "vips_$identifier" }) {
-//                val newName = identifier.removePrefix("image").fromSnakeToJavaStyle()
-//                if (newName == name) {
-//                    "`$name`"
-//                } else {
-//                    classReferences += ClassMatch(
-//                        vimageType,
-//                        match.range.first
-//                    )
-//                    "[\$T#$newName]"
-//                }
-//            } else {
-//                "`vips_$identifier`"
-//            }
-//        }
 
         val orderedClassReferences = classReferences.sortedBy { it.matchPosition }.map { it.className }
         return Pair(girDoc, orderedClassReferences)
@@ -821,6 +763,9 @@ object GenerateVClasses {
             .addStatement("var newImagePointer = \$T.image_new(arena)", vipsHelperType)
             .addStatement("return new \$T(arena, newImagePointer)", vimageType)
             .build()
+
+        val getSetMethods = buildImageGetSetMethods()
+
         return listOf(
             widthMethod,
             heightMethod,
@@ -837,7 +782,172 @@ object GenerateVClasses {
             writeToTargetMethod,
             writeToStreamMethod,
             newImageMethod
-        )
+        ) + getSetMethods
+    }
+
+    private fun buildImageGetSetMethods(): List<MethodSpec> {
+        // image_get_(string|int|double)
+        // image_set_(string|int|double)
+        // image_set_array_(string|int|double)
+        // image_set_array_(string|int|double)
+
+        val methods = mutableListOf<MethodSpec>()
+
+        val types = listOf("string", "int", "double", "blob", "image")
+        types.forEach { typeName ->
+            val titlecasedTypename = typeName.replaceFirstChar { it.titlecaseChar() }
+            val poetValueType = when (typeName) {
+                "string" -> stringType
+                "int" -> boxedIntType
+                "double" -> boxedDoubleType
+                "blob" -> vblobType
+                "image" -> vimageType
+                else -> throw RuntimeException("unexpected type")
+            }
+            val setMethod = MethodSpec.methodBuilder("set")
+                .addModifiers(Modifier.PUBLIC)
+                .addParameter(stringType, "name")
+                .addParameter(poetValueType, "value")
+                .apply {
+                    when (poetValueType) {
+                        vblobType -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, \$T.NULL, value.address, value.byteSize())",
+                                vipsHelperType,
+                                memorySegmentType
+                            )
+                        }
+                        vimageType -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, value.address)",
+                                vipsHelperType
+                            )
+                        }
+                        else -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, value)",
+                                vipsHelperType
+                            )
+                        }
+                    }
+                }
+                .addStatement("return this")
+                .addJavadoc("""
+                    Helper function to set the metadata stored at `name` on this image, of type `$typeName`
+                    
+                    See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+                """.trimIndent())
+                .returns(vimageType)
+                .build()
+            val getMethod = MethodSpec.methodBuilder("get$titlecasedTypename")
+                .addModifiers(Modifier.PUBLIC)
+                .addParameter(stringType, "name")
+                .returns(poetValueType)
+                .addStatement("var type = \$T.image_get_typeof(arena, this.address, name)", vipsHelperType)
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (type == 0)")
+                        .addStatement("return null")
+                        .endControlFlow()
+                        .build()
+                )
+                .addStatement("var outPointer = arena.allocate(\$T.C_POINTER)", vipsRawType)
+                .apply {
+                    when (poetValueType) {
+                        vblobType -> {
+                            this.addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
+                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)", vipsHelperType)
+                        }
+                        else -> {
+                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                        }
+                    }
+                }
+                .addJavadoc("""
+                    Helper function to get the metadata stored at `name` on this image, of type `$typeName`, or `null`
+                    if not present
+
+                    See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+                """.trimIndent())
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (!\$T.isValidResult(result))", vipsValidatorType)
+                        .addStatement("\$T.throwVipsError(\"image_get_$typeName\")", vipsValidatorType)
+                        .endControlFlow()
+                        .build()
+                )
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (!\$T.isValidPointer(outPointer))", vipsValidatorType)
+                        .addStatement("throw new VipsError(\"failed to read value of type $typeName from field: \" + name)")
+                        .endControlFlow()
+                        .build()
+                )
+                .apply {
+                    when (poetValueType) {
+                        stringType -> {
+                            // const char **
+                            this.addStatement("var dereferenced = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
+                            this.addStatement("return dereferenced.getString(0)")
+                        }
+                        boxedIntType -> {
+                            // int *
+                            this.addStatement("return outPointer.get(\$T.C_INT, 0)", vipsRawType)
+                        }
+                        boxedDoubleType -> {
+                            // double *
+                            this.addStatement("return outPointer.get(\$T.C_DOUBLE, 0)", vipsRawType)
+                        }
+                        vblobType -> {
+                            // void **
+                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
+                            this.addStatement("return new VBlob(arena, blobAddress)")
+                        }
+                        vimageType -> {
+                            // VImage **
+                            this.addStatement("var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)", vipsRawType, vipsRawType)
+                            this.addStatement("return new VImage(arena, imageAddress)")
+                        }
+                        else -> throw RuntimeException("unexpected type")
+                    }
+                }
+                .build()
+            methods.add(getMethod)
+            methods.add(setMethod)
+        }
+
+        // javapoet doesn't natively support block lambdas, so we have to do some of this manually
+        // it's worth it to be able to use vips_image_map
+        val fieldsLambda = CodeBlock.builder()
+            .add("(_, name, _, _) -> {\n").indent()
+            .add("if (!\$T.isValidPointer(name)) {\n", vipsValidatorType).indent()
+            .add("return \$T.NULL;\n", memorySegmentType)
+            .unindent().add("}\n")
+            .add("fieldNameStrings.add(name.getString(0));\n")
+            .add("return \$T.NULL;\n", memorySegmentType)
+            .unindent().add("}")
+            .build()
+        val lambdaCall = CodeBlock.builder()
+            .addStatement("\$T.Function fn = \$L", vipsImageMapFnType, fieldsLambda)
+            .build()
+        val fieldsMethod = MethodSpec.methodBuilder("getFields")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(listStringType)
+            .addStatement("var fieldNameStrings = new ArrayList<String>()")
+            .addCode(lambdaCall)
+            .addStatement("var callbackPointer = \$T.allocate(fn, arena)", vipsImageMapFnType)
+            .addStatement("\$T.vips_image_map(this.address, callbackPointer, \$T.NULL)", vipsRawType, memorySegmentType)
+            .addStatement("return fieldNameStrings")
+            .addJavadoc("""
+                Returns a list of all metadata entry names for this image
+                
+                See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+            """.trimIndent())
+            .build()
+
+        methods.add(fieldsMethod)
+
+        return methods
     }
 
     data class DiscoveredEnum(

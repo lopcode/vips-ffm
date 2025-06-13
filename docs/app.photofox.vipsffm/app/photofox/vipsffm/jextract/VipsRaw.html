@@ -84,6 +84,10 @@ loadScripts(document, 'script');</script>
 <li><a href="#g_free$handle()" tabindex="0">g_free$handle()</a></li>
 <li><a href="#g_free$address()" tabindex="0">g_free$address()</a></li>
 <li><a href="#g_free(java.lang.foreign.MemorySegment)" tabindex="0">g_free(MemorySegment)</a></li>
+<li><a href="#g_strfreev$descriptor()" tabindex="0">g_strfreev$descriptor()</a></li>
+<li><a href="#g_strfreev$handle()" tabindex="0">g_strfreev$handle()</a></li>
+<li><a href="#g_strfreev$address()" tabindex="0">g_strfreev$address()</a></li>
+<li><a href="#g_strfreev(java.lang.foreign.MemorySegment)" tabindex="0">g_strfreev(MemorySegment)</a></li>
 <li><a href="#g_string_free$descriptor()" tabindex="0">g_string_free$descriptor()</a></li>
 <li><a href="#g_string_free$handle()" tabindex="0">g_string_free$handle()</a></li>
 <li><a href="#g_string_free$address()" tabindex="0">g_string_free$address()</a></li>
@@ -565,6 +569,14 @@ loadScripts(document, 'script');</script>
 <li><a href="#vips_image_get_type$handle()" tabindex="0">vips_image_get_type$handle()</a></li>
 <li><a href="#vips_image_get_type$address()" tabindex="0">vips_image_get_type$address()</a></li>
 <li><a href="#vips_image_get_type()" tabindex="0">vips_image_get_type()</a></li>
+<li><a href="#vips_image_set_progress$descriptor()" tabindex="0">vips_image_set_progress$descriptor()</a></li>
+<li><a href="#vips_image_set_progress$handle()" tabindex="0">vips_image_set_progress$handle()</a></li>
+<li><a href="#vips_image_set_progress$address()" tabindex="0">vips_image_set_progress$address()</a></li>
+<li><a href="#vips_image_set_progress(java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_progress(MemorySegment, int)</a></li>
+<li><a href="#vips_image_set_kill$descriptor()" tabindex="0">vips_image_set_kill$descriptor()</a></li>
+<li><a href="#vips_image_set_kill$handle()" tabindex="0">vips_image_set_kill$handle()</a></li>
+<li><a href="#vips_image_set_kill$address()" tabindex="0">vips_image_set_kill$address()</a></li>
+<li><a href="#vips_image_set_kill(java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_kill(MemorySegment, int)</a></li>
 <li><a href="#vips_filename_get_filename$descriptor()" tabindex="0">vips_filename_get_filename$descriptor()</a></li>
 <li><a href="#vips_filename_get_filename$handle()" tabindex="0">vips_filename_get_filename$handle()</a></li>
 <li><a href="#vips_filename_get_filename$address()" tabindex="0">vips_filename_get_filename$address()</a></li>
@@ -577,6 +589,10 @@ loadScripts(document, 'script');</script>
 <li><a href="#vips_image_new$handle()" tabindex="0">vips_image_new$handle()</a></li>
 <li><a href="#vips_image_new$address()" tabindex="0">vips_image_new$address()</a></li>
 <li><a href="#vips_image_new()" tabindex="0">vips_image_new()</a></li>
+<li><a href="#vips_image_set_delete_on_close$descriptor()" tabindex="0">vips_image_set_delete_on_close$descriptor()</a></li>
+<li><a href="#vips_image_set_delete_on_close$handle()" tabindex="0">vips_image_set_delete_on_close$handle()</a></li>
+<li><a href="#vips_image_set_delete_on_close$address()" tabindex="0">vips_image_set_delete_on_close$address()</a></li>
+<li><a href="#vips_image_set_delete_on_close(java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_delete_on_close(MemorySegment, int)</a></li>
 <li><a href="#vips_image_write$descriptor()" tabindex="0">vips_image_write$descriptor()</a></li>
 <li><a href="#vips_image_write$handle()" tabindex="0">vips_image_write$handle()</a></li>
 <li><a href="#vips_image_write$address()" tabindex="0">vips_image_write$address()</a></li>
@@ -748,14 +764,30 @@ loadScripts(document, 'script');</script>
 <li><a href="#vips_image_get_typeof$handle()" tabindex="0">vips_image_get_typeof$handle()</a></li>
 <li><a href="#vips_image_get_typeof$address()" tabindex="0">vips_image_get_typeof$address()</a></li>
 <li><a href="#vips_image_get_typeof(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_typeof(MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_map$descriptor()" tabindex="0">vips_image_map$descriptor()</a></li>
+<li><a href="#vips_image_map$handle()" tabindex="0">vips_image_map$handle()</a></li>
+<li><a href="#vips_image_map$address()" tabindex="0">vips_image_map$address()</a></li>
+<li><a href="#vips_image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_map(MemorySegment, MemorySegment, MemorySegment)</a></li>
 <li><a href="#vips_image_get_fields$descriptor()" tabindex="0">vips_image_get_fields$descriptor()</a></li>
 <li><a href="#vips_image_get_fields$handle()" tabindex="0">vips_image_get_fields$handle()</a></li>
 <li><a href="#vips_image_get_fields$address()" tabindex="0">vips_image_get_fields$address()</a></li>
 <li><a href="#vips_image_get_fields(java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_fields(MemorySegment)</a></li>
+<li><a href="#vips_image_set_area$descriptor()" tabindex="0">vips_image_set_area$descriptor()</a></li>
+<li><a href="#vips_image_set_area$handle()" tabindex="0">vips_image_set_area$handle()</a></li>
+<li><a href="#vips_image_set_area$address()" tabindex="0">vips_image_set_area$address()</a></li>
+<li><a href="#vips_image_set_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_set_area(MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a></li>
 <li><a href="#vips_image_get_area$descriptor()" tabindex="0">vips_image_get_area$descriptor()</a></li>
 <li><a href="#vips_image_get_area$handle()" tabindex="0">vips_image_get_area$handle()</a></li>
 <li><a href="#vips_image_get_area$address()" tabindex="0">vips_image_get_area$address()</a></li>
 <li><a href="#vips_image_get_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_area(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_blob$descriptor()" tabindex="0">vips_image_set_blob$descriptor()</a></li>
+<li><a href="#vips_image_set_blob$handle()" tabindex="0">vips_image_set_blob$handle()</a></li>
+<li><a href="#vips_image_set_blob$address()" tabindex="0">vips_image_set_blob$address()</a></li>
+<li><a href="#vips_image_set_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)" tabindex="0">vips_image_set_blob(MemorySegment, MemorySegment, MemorySegment, MemorySegment, long)</a></li>
+<li><a href="#vips_image_set_blob_copy$descriptor()" tabindex="0">vips_image_set_blob_copy$descriptor()</a></li>
+<li><a href="#vips_image_set_blob_copy$handle()" tabindex="0">vips_image_set_blob_copy$handle()</a></li>
+<li><a href="#vips_image_set_blob_copy$address()" tabindex="0">vips_image_set_blob_copy$address()</a></li>
+<li><a href="#vips_image_set_blob_copy(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)" tabindex="0">vips_image_set_blob_copy(MemorySegment, MemorySegment, MemorySegment, long)</a></li>
 <li><a href="#vips_image_get_blob$descriptor()" tabindex="0">vips_image_get_blob$descriptor()</a></li>
 <li><a href="#vips_image_get_blob$handle()" tabindex="0">vips_image_get_blob$handle()</a></li>
 <li><a href="#vips_image_get_blob$address()" tabindex="0">vips_image_get_blob$address()</a></li>
@@ -764,18 +796,38 @@ loadScripts(document, 'script');</script>
 <li><a href="#vips_image_get_int$handle()" tabindex="0">vips_image_get_int$handle()</a></li>
 <li><a href="#vips_image_get_int$address()" tabindex="0">vips_image_get_int$address()</a></li>
 <li><a href="#vips_image_get_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_int(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_int$descriptor()" tabindex="0">vips_image_set_int$descriptor()</a></li>
+<li><a href="#vips_image_set_int$handle()" tabindex="0">vips_image_set_int$handle()</a></li>
+<li><a href="#vips_image_set_int$address()" tabindex="0">vips_image_set_int$address()</a></li>
+<li><a href="#vips_image_set_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_int(MemorySegment, MemorySegment, int)</a></li>
 <li><a href="#vips_image_get_double$descriptor()" tabindex="0">vips_image_get_double$descriptor()</a></li>
 <li><a href="#vips_image_get_double$handle()" tabindex="0">vips_image_get_double$handle()</a></li>
 <li><a href="#vips_image_get_double$address()" tabindex="0">vips_image_get_double$address()</a></li>
 <li><a href="#vips_image_get_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_double(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_double$descriptor()" tabindex="0">vips_image_set_double$descriptor()</a></li>
+<li><a href="#vips_image_set_double$handle()" tabindex="0">vips_image_set_double$handle()</a></li>
+<li><a href="#vips_image_set_double$address()" tabindex="0">vips_image_set_double$address()</a></li>
+<li><a href="#vips_image_set_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,double)" tabindex="0">vips_image_set_double(MemorySegment, MemorySegment, double)</a></li>
 <li><a href="#vips_image_get_string$descriptor()" tabindex="0">vips_image_get_string$descriptor()</a></li>
 <li><a href="#vips_image_get_string$handle()" tabindex="0">vips_image_get_string$handle()</a></li>
 <li><a href="#vips_image_get_string$address()" tabindex="0">vips_image_get_string$address()</a></li>
 <li><a href="#vips_image_get_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_string(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_string$descriptor()" tabindex="0">vips_image_set_string$descriptor()</a></li>
+<li><a href="#vips_image_set_string$handle()" tabindex="0">vips_image_set_string$handle()</a></li>
+<li><a href="#vips_image_set_string$address()" tabindex="0">vips_image_set_string$address()</a></li>
+<li><a href="#vips_image_set_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_set_string(MemorySegment, MemorySegment, MemorySegment)</a></li>
 <li><a href="#vips_image_get_image$descriptor()" tabindex="0">vips_image_get_image$descriptor()</a></li>
 <li><a href="#vips_image_get_image$handle()" tabindex="0">vips_image_get_image$handle()</a></li>
 <li><a href="#vips_image_get_image$address()" tabindex="0">vips_image_get_image$address()</a></li>
 <li><a href="#vips_image_get_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_image(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_image$descriptor()" tabindex="0">vips_image_set_image$descriptor()</a></li>
+<li><a href="#vips_image_set_image$handle()" tabindex="0">vips_image_set_image$handle()</a></li>
+<li><a href="#vips_image_set_image$address()" tabindex="0">vips_image_set_image$address()</a></li>
+<li><a href="#vips_image_set_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_set_image(MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_array_int$descriptor()" tabindex="0">vips_image_set_array_int$descriptor()</a></li>
+<li><a href="#vips_image_set_array_int$handle()" tabindex="0">vips_image_set_array_int$handle()</a></li>
+<li><a href="#vips_image_set_array_int$address()" tabindex="0">vips_image_set_array_int$address()</a></li>
+<li><a href="#vips_image_set_array_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_array_int(MemorySegment, MemorySegment, MemorySegment, int)</a></li>
 <li><a href="#vips_image_get_array_int$descriptor()" tabindex="0">vips_image_get_array_int$descriptor()</a></li>
 <li><a href="#vips_image_get_array_int$handle()" tabindex="0">vips_image_get_array_int$handle()</a></li>
 <li><a href="#vips_image_get_array_int$address()" tabindex="0">vips_image_get_array_int$address()</a></li>
@@ -784,6 +836,10 @@ loadScripts(document, 'script');</script>
 <li><a href="#vips_image_get_array_double$handle()" tabindex="0">vips_image_get_array_double$handle()</a></li>
 <li><a href="#vips_image_get_array_double$address()" tabindex="0">vips_image_get_array_double$address()</a></li>
 <li><a href="#vips_image_get_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">vips_image_get_array_double(MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a></li>
+<li><a href="#vips_image_set_array_double$descriptor()" tabindex="0">vips_image_set_array_double$descriptor()</a></li>
+<li><a href="#vips_image_set_array_double$handle()" tabindex="0">vips_image_set_array_double$handle()</a></li>
+<li><a href="#vips_image_set_array_double$address()" tabindex="0">vips_image_set_array_double$address()</a></li>
+<li><a href="#vips_image_set_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" tabindex="0">vips_image_set_array_double(MemorySegment, MemorySegment, MemorySegment, int)</a></li>
 <li><a href="#vips_image_get_history$descriptor()" tabindex="0">vips_image_get_history$descriptor()</a></li>
 <li><a href="#vips_image_get_history$handle()" tabindex="0">vips_image_get_history$handle()</a></li>
 <li><a href="#vips_image_get_history$address()" tabindex="0">vips_image_get_history$address()</a></li>
@@ -1796,6 +1852,49 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-g_signal_connect_data$handle()1"><code class="language-c">extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev(java.lang.foreign.MemorySegment)" class="member-name-link">g_strfreev</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str_array)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev(java.lang.foreign.MemorySegment)1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$address()" class="member-name-link">g_strfreev$address</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$address()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$descriptor()" class="member-name-link">g_strfreev$descriptor</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$descriptor()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$handle()" class="member-name-link">g_strfreev$handle</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$handle()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
 </code></pre>
 </div>
 </div>
@@ -9089,6 +9188,51 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </div>
 </div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_map</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;a)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_map$address()" class="member-name-link">vips_image_map$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$address()1"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_map$descriptor()" class="member-name-link">vips_image_map$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$descriptor()1"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_map$handle()" class="member-name-link">vips_image_map$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$handle()1"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#VIPS_IMAGE_MMAPIN()" class="member-name-link">VIPS_IMAGE_MMAPIN</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -9188,6 +9332,549 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-VIPS_IMAGE_PARTIAL()1"><code class="language-c">enum &lt;anonymous&gt;.VIPS_IMAGE_PARTIAL = 7
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_set_area</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;free_fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_area$address()" class="member-name-link">vips_image_set_area$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$address()1"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_area$descriptor()" class="member-name-link">vips_image_set_area$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$descriptor()1"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_area$handle()" class="member-name-link">vips_image_set_area$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$handle()1"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_array_double</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
+ int&nbsp;n)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_double$address()" class="member-name-link">vips_image_set_array_double$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$address()1"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_double$descriptor()" class="member-name-link">vips_image_set_array_double$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$descriptor()1"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_double$handle()" class="member-name-link">vips_image_set_array_double$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$handle()1"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_array_int</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
+ int&nbsp;n)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_int$address()" class="member-name-link">vips_image_set_array_int$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$address()1"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_int$descriptor()" class="member-name-link">vips_image_set_array_int$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$descriptor()1"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_array_int$handle()" class="member-name-link">vips_image_set_array_int$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$handle()1"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)" class="member-name-link">vips_image_set_blob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;free_fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;length)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)1"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob_copy(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)" class="member-name-link">vips_image_set_blob_copy</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;length)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)1"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob_copy$address()" class="member-name-link">vips_image_set_blob_copy$address</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$address()1"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob_copy$descriptor()" class="member-name-link">vips_image_set_blob_copy$descriptor</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$descriptor()1"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob_copy$handle()" class="member-name-link">vips_image_set_blob_copy$handle</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$handle()1"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob$address()" class="member-name-link">vips_image_set_blob$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$address()1"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob$descriptor()" class="member-name-link">vips_image_set_blob$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$descriptor()1"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_blob$handle()" class="member-name-link">vips_image_set_blob$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$handle()1"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_delete_on_close(java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_delete_on_close</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;delete_on_close)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close(java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_delete_on_close$address()" class="member-name-link">vips_image_set_delete_on_close$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$address()1"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_delete_on_close$descriptor()" class="member-name-link">vips_image_set_delete_on_close$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$descriptor()1"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_delete_on_close$handle()" class="member-name-link">vips_image_set_delete_on_close$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$handle()1"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,double)" class="member-name-link">vips_image_set_double</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ double&nbsp;d)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,double)1"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_double$address()" class="member-name-link">vips_image_set_double$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$address()1"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_double$descriptor()" class="member-name-link">vips_image_set_double$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$descriptor()1"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_double$handle()" class="member-name-link">vips_image_set_double$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$handle()1"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_set_image</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;im)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_image$address()" class="member-name-link">vips_image_set_image$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$address()1"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_image$descriptor()" class="member-name-link">vips_image_set_image$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$descriptor()1"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_image$handle()" class="member-name-link">vips_image_set_image$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$handle()1"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_int</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ int&nbsp;i)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_int$address()" class="member-name-link">vips_image_set_int$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$address()1"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_int$descriptor()" class="member-name-link">vips_image_set_int$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$descriptor()1"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_int$handle()" class="member-name-link">vips_image_set_int$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$handle()1"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_kill(java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_kill</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;kill)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill(java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_kill$address()" class="member-name-link">vips_image_set_kill$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$address()1"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_kill$descriptor()" class="member-name-link">vips_image_set_kill$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$descriptor()1"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_kill$handle()" class="member-name-link">vips_image_set_kill$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$handle()1"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_progress(java.lang.foreign.MemorySegment,int)" class="member-name-link">vips_image_set_progress</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;progress)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress(java.lang.foreign.MemorySegment,int)1"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_progress$address()" class="member-name-link">vips_image_set_progress$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$address()1"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_progress$descriptor()" class="member-name-link">vips_image_set_progress$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$descriptor()1"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_progress$handle()" class="member-name-link">vips_image_set_progress$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$handle()1"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_set_string</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)1"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_string$address()" class="member-name-link">vips_image_set_string$address</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$address()1"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_string$descriptor()" class="member-name-link">vips_image_set_string$descriptor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$descriptor()1"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#vips_image_set_string$handle()" class="member-name-link">vips_image_set_string$handle</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$handle()1"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
 </code></pre>
 </div>
 </div>
@@ -14198,6 +14885,65 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-g_free(java.lang.foreign.MemorySegment)2"><code class="language-c">extern void (g_free)(gpointer mem)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$descriptor()">
+<h3>g_strfreev$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">g_strfreev$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$descriptor()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$handle()">
+<h3>g_strfreev$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">g_strfreev$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$handle()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$address()">
+<h3>g_strfreev$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">g_strfreev$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$address()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev(java.lang.foreign.MemorySegment)">
+<h3>g_strfreev</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">g_strfreev</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str_array)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev(java.lang.foreign.MemorySegment)2"><code class="language-c">extern void g_strfreev(gchar **str_array)
 </code></pre>
 </div>
 </div>
@@ -21306,6 +22052,126 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </section>
 </li>
 <li>
+<section class="detail" id="vips_image_set_progress$descriptor()">
+<h3>vips_image_set_progress$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_progress$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$descriptor()2"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_progress$handle()">
+<h3>vips_image_set_progress$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_progress$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$handle()2"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_progress$address()">
+<h3>vips_image_set_progress$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_progress$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress$address()2"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_progress(java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_progress</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_progress</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;progress)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_progress(java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_progress(VipsImage *image, gboolean progress)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_kill$descriptor()">
+<h3>vips_image_set_kill$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_kill$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$descriptor()2"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_kill$handle()">
+<h3>vips_image_set_kill$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_kill$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$handle()2"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_kill$address()">
+<h3>vips_image_set_kill$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_kill$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill$address()2"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_kill(java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_kill</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_kill</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;kill)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_kill(java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_kill(VipsImage *image, gboolean kill)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="vips_filename_get_filename$descriptor()">
 <h3>vips_filename_get_filename$descriptor</h3>
 <div class="horizontal-scroll">
@@ -21476,6 +22342,66 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_new()2"><code class="language-c">extern VipsImage *vips_image_new()
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_delete_on_close$descriptor()">
+<h3>vips_image_set_delete_on_close$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_delete_on_close$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$descriptor()2"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_delete_on_close$handle()">
+<h3>vips_image_set_delete_on_close$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_delete_on_close$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$handle()2"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_delete_on_close$address()">
+<h3>vips_image_set_delete_on_close$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_delete_on_close$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close$address()2"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_delete_on_close(java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_delete_on_close</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_delete_on_close</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ int&nbsp;delete_on_close)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_delete_on_close(java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
 </code></pre>
 </div>
 </div>
@@ -24014,6 +24940,67 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </section>
 </li>
 <li>
+<section class="detail" id="vips_image_map$descriptor()">
+<h3>vips_image_map$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_map$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$descriptor()2"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_map$handle()">
+<h3>vips_image_map$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_map$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$handle()2"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_map$address()">
+<h3>vips_image_map$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_map$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map$address()2"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
+<h3>vips_image_map</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_map</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;a)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="vips_image_get_fields$descriptor()">
 <h3>vips_image_get_fields$descriptor</h3>
 <div class="horizontal-scroll">
@@ -24066,6 +25053,68 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_get_fields(java.lang.foreign.MemorySegment)2"><code class="language-c">extern gchar **vips_image_get_fields(VipsImage *image)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_area$descriptor()">
+<h3>vips_image_set_area$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_area$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$descriptor()2"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_area$handle()">
+<h3>vips_image_set_area$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_area$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$handle()2"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_area$address()">
+<h3>vips_image_set_area$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_area$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area$address()2"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
+<h3>vips_image_set_area</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_area</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;free_fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern void vips_image_set_area(VipsImage *image, const char *name, VipsCallbackFn free_fn, void *data)
 </code></pre>
 </div>
 </div>
@@ -24127,6 +25176,131 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_get_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern int vips_image_get_area(const VipsImage *image, const char *name, const void **data)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob$descriptor()">
+<h3>vips_image_set_blob$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_blob$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$descriptor()2"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob$handle()">
+<h3>vips_image_set_blob$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_blob$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$handle()2"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob$address()">
+<h3>vips_image_set_blob$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_blob$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob$address()2"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)">
+<h3>vips_image_set_blob</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_blob</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;free_fn,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;length)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)2"><code class="language-c">extern void vips_image_set_blob(VipsImage *image, const char *name, VipsCallbackFn free_fn, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob_copy$descriptor()">
+<h3>vips_image_set_blob_copy$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_blob_copy$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$descriptor()2"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob_copy$handle()">
+<h3>vips_image_set_blob_copy$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_blob_copy$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$handle()2"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob_copy$address()">
+<h3>vips_image_set_blob_copy$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_blob_copy$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy$address()2"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_blob_copy(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)">
+<h3>vips_image_set_blob_copy</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_blob_copy</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;length)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_blob_copy(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long)2"><code class="language-c">extern void vips_image_set_blob_copy(VipsImage *image, const char *name, const void *data, size_t length)
 </code></pre>
 </div>
 </div>
@@ -24257,6 +25431,67 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </section>
 </li>
 <li>
+<section class="detail" id="vips_image_set_int$descriptor()">
+<h3>vips_image_set_int$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_int$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$descriptor()2"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_int$handle()">
+<h3>vips_image_set_int$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_int$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$handle()2"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_int$address()">
+<h3>vips_image_set_int$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_int$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int$address()2"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_int</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_int</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ int&nbsp;i)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_int(VipsImage *image, const char *name, int i)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="vips_image_get_double$descriptor()">
 <h3>vips_image_get_double$descriptor</h3>
 <div class="horizontal-scroll">
@@ -24311,6 +25546,67 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_get_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern int vips_image_get_double(const VipsImage *image, const char *name, double *out)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_double$descriptor()">
+<h3>vips_image_set_double$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_double$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$descriptor()2"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_double$handle()">
+<h3>vips_image_set_double$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_double$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$handle()2"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_double$address()">
+<h3>vips_image_set_double$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_double$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double$address()2"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,double)">
+<h3>vips_image_set_double</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_double</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ double&nbsp;d)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,double)2"><code class="language-c">extern void vips_image_set_double(VipsImage *image, const char *name, double d)
 </code></pre>
 </div>
 </div>
@@ -24379,6 +25675,67 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </section>
 </li>
 <li>
+<section class="detail" id="vips_image_set_string$descriptor()">
+<h3>vips_image_set_string$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_string$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$descriptor()2"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_string$handle()">
+<h3>vips_image_set_string$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_string$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$handle()2"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_string$address()">
+<h3>vips_image_set_string$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_string$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string$address()2"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
+<h3>vips_image_set_string</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_string</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_string(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern void vips_image_set_string(VipsImage *image, const char *name, const char *str)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="vips_image_get_image$descriptor()">
 <h3>vips_image_get_image$descriptor</h3>
 <div class="horizontal-scroll">
@@ -24433,6 +25790,129 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_get_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern int vips_image_get_image(const VipsImage *image, const char *name, VipsImage **out)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_image$descriptor()">
+<h3>vips_image_set_image$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_image$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$descriptor()2"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_image$handle()">
+<h3>vips_image_set_image$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_image$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$handle()2"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_image$address()">
+<h3>vips_image_set_image$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_image$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image$address()2"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)">
+<h3>vips_image_set_image</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_image</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;im)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_image(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern void vips_image_set_image(VipsImage *image, const char *name, VipsImage *im)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_int$descriptor()">
+<h3>vips_image_set_array_int$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_array_int$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$descriptor()2"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_int$handle()">
+<h3>vips_image_set_array_int$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_array_int$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$handle()2"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_int$address()">
+<h3>vips_image_set_array_int$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_array_int$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int$address()2"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_array_int</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_array_int</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
+ int&nbsp;n)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_int(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_array_int(VipsImage *image, const char *name, const int *array, int n)
 </code></pre>
 </div>
 </div>
@@ -24557,6 +26037,68 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-vips_image_get_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)2"><code class="language-c">extern int vips_image_get_array_double(VipsImage *image, const char *name, double **out, int *n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_double$descriptor()">
+<h3>vips_image_set_array_double$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">vips_image_set_array_double$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$descriptor()2"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_double$handle()">
+<h3>vips_image_set_array_double$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">vips_image_set_array_double$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$handle()2"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_double$address()">
+<h3>vips_image_set_array_double$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">vips_image_set_array_double$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double$address()2"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="vips_image_set_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)">
+<h3>vips_image_set_array_double</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">vips_image_set_array_double</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;image,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;array,
+ int&nbsp;n)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_set_array_double(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int)2"><code class="language-c">extern void vips_image_set_array_double(VipsImage *image, const char *name, const double *array, int n)
 </code></pre>
 </div>
 </div>
