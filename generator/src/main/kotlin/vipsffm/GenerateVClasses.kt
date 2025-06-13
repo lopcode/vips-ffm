@@ -793,20 +793,37 @@ object GenerateVClasses {
 
         val methods = mutableListOf<MethodSpec>()
 
-        val types = listOf("string", "int", "double")
+        val types = listOf("string", "int", "double", "blob")
         types.forEach { typeName ->
             val titlecasedTypename = typeName.replaceFirstChar { it.titlecaseChar() }
             val poetValueType = when (typeName) {
                 "string" -> stringType
                 "int" -> boxedIntType
                 "double" -> boxedDoubleType
+                "blob" -> vblobType
                 else -> throw RuntimeException("unexpected type")
             }
             val setMethod = MethodSpec.methodBuilder("set")
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(stringType, "name")
                 .addParameter(poetValueType, "value")
-                .addStatement("\$T.image_set_$typeName(arena, this.address, name, value)", vipsHelperType)
+                .apply {
+                    when (poetValueType) {
+                        vblobType -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, \$T.NULL, value.address, value.byteSize())",
+                                vipsHelperType,
+                                memorySegmentType
+                            )
+                        }
+                        else -> {
+                            this.addStatement(
+                                "\$T.image_set_$typeName(arena, this.address, name, value)",
+                                vipsHelperType
+                            )
+                        }
+                    }
+                }
                 .addStatement("return this")
                 .addJavadoc("""
                     Helper function to set the metadata stored at `name` on this image, of type `$typeName`
@@ -818,7 +835,17 @@ object GenerateVClasses {
                 .addParameter(stringType, "name")
                 .returns(poetValueType)
                 .addStatement("var outPointer = arena.allocate(\$T.C_POINTER)", vipsRawType)
-                .addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                .apply {
+                    when (poetValueType) {
+                        vblobType -> {
+                            this.addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
+                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)", vipsHelperType)
+                        }
+                        else -> {
+                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                        }
+                    }
+                }
                 .addJavadoc("""
                     Helper function to get the metadata stored at `name` on this image, of type `$typeName`
                     Returns null if not present
@@ -852,6 +879,11 @@ object GenerateVClasses {
                         boxedDoubleType -> {
                             // double *
                             this.addStatement("return outPointer.get(\$T.C_DOUBLE, 0)", vipsRawType)
+                        }
+                        vblobType -> {
+                            // void **
+                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::vips_area_unref)", vipsRawType, vipsRawType)
+                            this.addStatement("return new VBlob(arena, blobAddress)")
                         }
                         else -> throw RuntimeException("unexpected type")
                     }

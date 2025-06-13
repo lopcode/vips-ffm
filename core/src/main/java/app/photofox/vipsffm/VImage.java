@@ -9823,6 +9823,29 @@ public final class VImage {
     return this;
   }
 
+  /// Helper function to get the metadata stored at `name` on this image, of type `blob`
+  /// Returns null if not present
+  public VBlob getBlob(String name) {
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
+    var result = VipsHelper.image_get_blob(arena, this.address, name, outPointer, outLengthPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsHelper.error_clear();
+      return null;
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type blob from field: " + name);
+    }
+    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(arena, VipsRaw::vips_area_unref);
+    return new VBlob(arena, blobAddress);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `blob`
+  public VImage set(String name, VBlob value) {
+    VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.address, value.byteSize());
+    return this;
+  }
+
   /// Returns a list of all metadata entry names for this image
   public List<String> getFields() {
     var fieldNameStrings = new ArrayList<String>();

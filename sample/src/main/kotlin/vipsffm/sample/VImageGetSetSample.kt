@@ -1,5 +1,6 @@
 package vipsffm.sample
 
+import app.photofox.vipsffm.VBlob
 import app.photofox.vipsffm.VImage
 import org.slf4j.LoggerFactory
 import vipsffm.RunnableSample
@@ -22,6 +23,7 @@ object VImageGetSetSample: RunnableSample {
             .set("test-name-string", "test-value")
             .set("test-name-int", 1234)
             .set("test-name-double", 1234.0)
+            .set("test-name-blob", VBlob.newFromBytes(arena, byteArrayOf(0x01, 0x02, 0x03, 0x04)))
 
         val testStringValue = sourceImage.getString("test-name-string")
         if (testStringValue != "test-value") {
@@ -42,6 +44,13 @@ object VImageGetSetSample: RunnableSample {
             )
         }
 
+        val bytes = sourceImage.getBlob("test-name-blob").asClonedByteBuffer()
+        if (!bytes.array().contentEquals(byteArrayOf(0x01, 0x02, 0x03, 0x04))) {
+            return Result.failure(
+                RuntimeException("unexpected value in metadata")
+            )
+        }
+
         val testKnownInvalidNameValue = sourceImage.getString("definitely-doesnt-exist")
         if (testKnownInvalidNameValue != null) {
             return Result.failure(
@@ -50,7 +59,7 @@ object VImageGetSetSample: RunnableSample {
         }
 
         val fieldNames = sourceImage.fields
-        if (!fieldNames.containsAll(listOf("test-name-string", "test-name-int", "test-name-double"))) {
+        if (!fieldNames.containsAll(listOf("test-name-string", "test-name-int", "test-name-double", "test-name-blob"))) {
             return Result.failure(
                 RuntimeException("unexpected missing metadata entry in fields")
             )

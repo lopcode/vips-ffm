@@ -5355,6 +5355,11 @@ distribution.</div>
 <dd>
 <div class="block">Only valid for memory-backed targets (eg via <a href="app.photofox.vipsffm/app/photofox/vipsffm/VTarget.html#newToMemory(java.lang.foreign.Arena)"><code>newToMemory(Arena)</code></a>)</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#getBlob(java.lang.String)" class="member-name-link">getBlob(String)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Helper function to get the metadata stored at <code>name</code> on this image, of type <code>blob</code>
+Returns null if not present</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#getDouble(java.lang.String)" class="member-name-link">getDouble(String)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Helper function to get the metadata stored at <code>name</code> on this image, of type <code>double</code>
@@ -9781,6 +9786,10 @@ minimum is zero.</div>
 <div class="block">This operation behaves rather like <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#copy(app.photofox.vipsffm.VipsOption...)"><code>VImage.copy(app.photofox.vipsffm.VipsOption...)</code></a> between images
 <code>in</code> and <code>out</code>, except that it checks that pixels on <code>in</code> are only requested
 top-to-bottom.</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#set(java.lang.String,app.photofox.vipsffm.VBlob)" class="member-name-link">set(String, VBlob)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Helper function to set the metadata stored at <code>name</code> on this image, of type <code>blob</code></div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#set(java.lang.String,java.lang.Double)" class="member-name-link">set(String, Double)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
