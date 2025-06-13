@@ -843,6 +843,14 @@ object GenerateVClasses {
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(stringType, "name")
                 .returns(poetValueType)
+                .addStatement("var type = \$T.image_get_typeof(arena, this.address, name)", vipsHelperType)
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (type == 0)")
+                        .addStatement("return null")
+                        .endControlFlow()
+                        .build()
+                )
                 .addStatement("var outPointer = arena.allocate(\$T.C_POINTER)", vipsRawType)
                 .apply {
                     when (poetValueType) {
@@ -856,16 +864,15 @@ object GenerateVClasses {
                     }
                 }
                 .addJavadoc("""
-                    Helper function to get the metadata stored at `name` on this image, of type `$typeName`
-                    Returns null if not present
-                    
+                    Helper function to get the metadata stored at `name` on this image, of type `$typeName`, or `null`
+                    if not present
+
                     See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
                 """.trimIndent())
                 .addCode(
                     CodeBlock.builder()
                         .beginControlFlow("if (!\$T.isValidResult(result))", vipsValidatorType)
-                        .addStatement("\$T.error_clear()", vipsHelperType)
-                        .addStatement("return null")
+                        .addStatement("\$T.throwVipsError(\"image_get_$typeName\")", vipsValidatorType)
                         .endControlFlow()
                         .build()
                 )

@@ -9761,16 +9761,19 @@ public final class VImage {
     return new VImage(arena, newImagePointer);
   }
 
-  /// Helper function to get the metadata stored at `name` on this image, of type `string`
-  /// Returns null if not present
+  /// Helper function to get the metadata stored at `name` on this image, of type `string`, or `null`
+  /// if not present
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public String getString(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_string(arena, this.address, name, outPointer);
     if (!VipsValidation.isValidResult(result)) {
-      VipsHelper.error_clear();
-      return null;
+      VipsValidation.throwVipsError("image_get_string");
     }
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type string from field: " + name);
@@ -9787,16 +9790,19 @@ public final class VImage {
     return this;
   }
 
-  /// Helper function to get the metadata stored at `name` on this image, of type `int`
-  /// Returns null if not present
+  /// Helper function to get the metadata stored at `name` on this image, of type `int`, or `null`
+  /// if not present
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public Integer getInt(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_int(arena, this.address, name, outPointer);
     if (!VipsValidation.isValidResult(result)) {
-      VipsHelper.error_clear();
-      return null;
+      VipsValidation.throwVipsError("image_get_int");
     }
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type int from field: " + name);
@@ -9812,16 +9818,19 @@ public final class VImage {
     return this;
   }
 
-  /// Helper function to get the metadata stored at `name` on this image, of type `double`
-  /// Returns null if not present
+  /// Helper function to get the metadata stored at `name` on this image, of type `double`, or `null`
+  /// if not present
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public Double getDouble(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_double(arena, this.address, name, outPointer);
     if (!VipsValidation.isValidResult(result)) {
-      VipsHelper.error_clear();
-      return null;
+      VipsValidation.throwVipsError("image_get_double");
     }
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type double from field: " + name);
@@ -9837,17 +9846,20 @@ public final class VImage {
     return this;
   }
 
-  /// Helper function to get the metadata stored at `name` on this image, of type `blob`
-  /// Returns null if not present
+  /// Helper function to get the metadata stored at `name` on this image, of type `blob`, or `null`
+  /// if not present
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VBlob getBlob(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
     var result = VipsHelper.image_get_blob(arena, this.address, name, outPointer, outLengthPointer);
     if (!VipsValidation.isValidResult(result)) {
-      VipsHelper.error_clear();
-      return null;
+      VipsValidation.throwVipsError("image_get_blob");
     }
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type blob from field: " + name);
@@ -9864,16 +9876,19 @@ public final class VImage {
     return this;
   }
 
-  /// Helper function to get the metadata stored at `name` on this image, of type `image`
-  /// Returns null if not present
+  /// Helper function to get the metadata stored at `name` on this image, of type `image`, or `null`
+  /// if not present
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage getImage(String name) {
+    var type = VipsHelper.image_get_typeof(arena, this.address, name);
+    if (type == 0) {
+      return null;
+    }
     var outPointer = arena.allocate(VipsRaw.C_POINTER);
     var result = VipsHelper.image_get_image(arena, this.address, name, outPointer);
     if (!VipsValidation.isValidResult(result)) {
-      VipsHelper.error_clear();
-      return null;
+      VipsValidation.throwVipsError("image_get_image");
     }
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type image from field: " + name);
