@@ -137,6 +137,63 @@ public class VipsRaw {
         }
     }
 
+    private static class g_strfreev {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("g_strfreev");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_strfreev(gchar **str_array)
+     * }
+     */
+    public static FunctionDescriptor g_strfreev$descriptor() {
+        return g_strfreev.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_strfreev(gchar **str_array)
+     * }
+     */
+    public static MethodHandle g_strfreev$handle() {
+        return g_strfreev.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_strfreev(gchar **str_array)
+     * }
+     */
+    public static MemorySegment g_strfreev$address() {
+        return g_strfreev.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_strfreev(gchar **str_array)
+     * }
+     */
+    public static void g_strfreev(MemorySegment str_array) {
+        var mh$ = g_strfreev.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_strfreev", str_array);
+            }
+            mh$.invokeExact(str_array);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class g_string_free {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_POINTER,

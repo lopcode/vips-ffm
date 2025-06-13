@@ -84,6 +84,10 @@ loadScripts(document, 'script');</script>
 <li><a href="#g_free$handle()" tabindex="0">g_free$handle()</a></li>
 <li><a href="#g_free$address()" tabindex="0">g_free$address()</a></li>
 <li><a href="#g_free(java.lang.foreign.MemorySegment)" tabindex="0">g_free(MemorySegment)</a></li>
+<li><a href="#g_strfreev$descriptor()" tabindex="0">g_strfreev$descriptor()</a></li>
+<li><a href="#g_strfreev$handle()" tabindex="0">g_strfreev$handle()</a></li>
+<li><a href="#g_strfreev$address()" tabindex="0">g_strfreev$address()</a></li>
+<li><a href="#g_strfreev(java.lang.foreign.MemorySegment)" tabindex="0">g_strfreev(MemorySegment)</a></li>
 <li><a href="#g_string_free$descriptor()" tabindex="0">g_string_free$descriptor()</a></li>
 <li><a href="#g_string_free$handle()" tabindex="0">g_string_free$handle()</a></li>
 <li><a href="#g_string_free$address()" tabindex="0">g_string_free$address()</a></li>
@@ -1844,6 +1848,49 @@ loadScripts(document, 'script');</script>
  
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-g_signal_connect_data$handle()1"><code class="language-c">extern gulong g_signal_connect_data(gpointer instance, const gchar *detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev(java.lang.foreign.MemorySegment)" class="member-name-link">g_strfreev</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str_array)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev(java.lang.foreign.MemorySegment)1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$address()" class="member-name-link">g_strfreev$address</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$address()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$descriptor()" class="member-name-link">g_strfreev$descriptor</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$descriptor()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#g_strfreev$handle()" class="member-name-link">g_strfreev$handle</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$handle()1"><code class="language-c">extern void g_strfreev(gchar **str_array)
 </code></pre>
 </div>
 </div>
@@ -14789,6 +14836,65 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-g_free(java.lang.foreign.MemorySegment)2"><code class="language-c">extern void (g_free)(gpointer mem)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$descriptor()">
+<h3>g_strfreev$descriptor</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/FunctionDescriptor.html" title="class or interface in java.lang.foreign" class="external-link">FunctionDescriptor</a></span>&nbsp;<span class="element-name">g_strfreev$descriptor</span>()</div>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$descriptor()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$handle()">
+<h3>g_strfreev$handle</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/MethodHandle.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandle</a></span>&nbsp;<span class="element-name">g_strfreev$handle</span>()</div>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$handle()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev$address()">
+<h3>g_strfreev$address</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">g_strfreev$address</span>()</div>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev$address()2"><code class="language-c">extern void g_strfreev(gchar **str_array)
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="g_strfreev(java.lang.foreign.MemorySegment)">
+<h3>g_strfreev</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">g_strfreev</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;str_array)</span></div>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-g_strfreev(java.lang.foreign.MemorySegment)2"><code class="language-c">extern void g_strfreev(gchar **str_array)
 </code></pre>
 </div>
 </div>

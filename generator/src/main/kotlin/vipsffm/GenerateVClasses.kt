@@ -3,7 +3,6 @@ package vipsffm
 import app.photofox.vipsffm.jextract.GEnumClass
 import app.photofox.vipsffm.jextract.GEnumValue
 import app.photofox.vipsffm.jextract.VipsRaw
-import com.palantir.javapoet.AnnotationSpec
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
 import com.palantir.javapoet.CodeBlock
@@ -14,7 +13,6 @@ import com.palantir.javapoet.ParameterSpec
 import com.palantir.javapoet.ParameterizedTypeName
 import com.palantir.javapoet.TypeName
 import com.palantir.javapoet.TypeSpec
-import org.apache.commons.text.StringEscapeUtils
 import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
 import java.lang.foreign.Arena
@@ -62,10 +60,12 @@ object GenerateVClasses {
     private val vipsOptionInterpolateType = ClassName.get("app.photofox.vipsffm", "VipsOption.Interpolate")
     private val vipsOptionEnumType = ClassName.get("app.photofox.vipsffm", "VipsOption.Enum")
     private val vipsValidatorType = ClassName.get("app.photofox.vipsffm", "VipsValidation")
+    private val vipsRawType = ClassName.get("app.photofox.vipsffm.jextract", "VipsRaw")
     private val vNamedEnumType = ClassName.get("app.photofox.vipsffm", "VNamedEnum")
     private val deprecatedAnnotationType = ClassName.get("java.lang", "Deprecated")
     private val inputStreamType = ClassName.get("java.io", "InputStream")
     private val outputStreamType = ClassName.get("java.io", "OutputStream")
+    private val listStringType = ParameterizedTypeName.get(listType, stringType)
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -422,65 +422,6 @@ object GenerateVClasses {
             }
             girDoc += "\nSee also: $references"
         }
-//
-//        girDoc = girDoc.replace("[%#@]([A-Za-z0-9-_]+)".toRegex()) { match ->
-//            val identifierName = match.groups[1]!!.value
-//            if (identifierName.startsWith("VIPS_")) {
-//                val matchedParentEnum = enums.firstOrNull {
-//                    it.values.any {
-//                        it.gir.cIdentifier == identifierName
-//                    }
-//                }
-//                val matchedValue = matchedParentEnum?.values?.first { it.gir.cIdentifier == identifierName }
-//                if (matchedValue != null) {
-//                    classReferences += ClassMatch(
-//                        ClassName.get("app.photofox.vipsffm.enums", matchedParentEnum.name),
-//                        match.range.first
-//                    )
-//                    val enumName = "\$T#${matchedValue.name.removePrefix("VIPS_")}"
-//                    return@replace "[$enumName]"
-//                }
-//            }
-//
-//            if (identifierName.isBlank()) {
-//                return@replace match.groups[0]!!.value
-//            }
-//
-//            if (!identifierName.startsWith("VIPS_")) {
-//                val operationMatch = operations.firstOrNull { it.nickname.fromSnakeToJavaStyle() == name }
-//                val optionMatch = operationMatch?.let {
-//                    val optionStyle = identifierName.replace("_", "-")
-//                    operationMatch.args.firstOrNull { it.name == optionStyle }
-//                }
-//                if (operationMatch != null && optionMatch != null) {
-//                    if (optionMatch.isRequired) {
-//                        return@replace "`${optionMatch.name.fromSnakeToJavaStyle()}`"
-//                    } else {
-//                        return@replace "`${optionMatch.name}`"
-//                    }
-//                }
-//            }
-//
-//            return@replace "`$identifierName`"
-//        }
-//
-//        girDoc = girDoc.replace("vips_([A-Za-z0-9-_]*)\\(\\)".toRegex()) { match ->
-//            val identifier = match.groups[1]!!.value
-//            if (operations.any { it.gir?.cIdentifier == "vips_$identifier" }) {
-//                val newName = identifier.removePrefix("image").fromSnakeToJavaStyle()
-//                if (newName == name) {
-//                    "`$name`"
-//                } else {
-//                    classReferences += ClassMatch(
-//                        vimageType,
-//                        match.range.first
-//                    )
-//                    "[\$T#$newName]"
-//                }
-//            } else {
-//                "`vips_$identifier`"
-//            }
-//        }
 
         val orderedClassReferences = classReferences.sortedBy { it.matchPosition }.map { it.className }
         return Pair(girDoc, orderedClassReferences)
@@ -821,6 +762,9 @@ object GenerateVClasses {
             .addStatement("var newImagePointer = \$T.image_new(arena)", vipsHelperType)
             .addStatement("return new \$T(arena, newImagePointer)", vimageType)
             .build()
+
+        val getSetMethods = buildImageGetSetMethods()
+
         return listOf(
             widthMethod,
             heightMethod,
@@ -837,7 +781,117 @@ object GenerateVClasses {
             writeToTargetMethod,
             writeToStreamMethod,
             newImageMethod
-        )
+        ) + getSetMethods
+    }
+
+    private fun buildImageGetSetMethods(): List<MethodSpec> {
+        // image_get_(string|int|double)
+        // image_set_(string|int|double)
+        // image_set_array_(string|int|double)
+        // image_set_array_(string|int|double)
+
+        val methods = mutableListOf<MethodSpec>()
+
+        val types = listOf("string", "int", "double")
+        types.forEach { typeName ->
+            val titlecasedTypename = typeName.replaceFirstChar { it.titlecaseChar() }
+            val poetValueType = when (typeName) {
+                "string" -> stringType
+                "int" -> boxedIntType
+                "double" -> boxedDoubleType
+                else -> throw RuntimeException("unexpected type")
+            }
+            val setMethod = MethodSpec.methodBuilder("set")
+                .addModifiers(Modifier.PUBLIC)
+                .addParameter(stringType, "name")
+                .addParameter(poetValueType, "value")
+                .addStatement("\$T.image_set_$typeName(arena, this.address, name, value)", vipsHelperType)
+                .addJavadoc("""
+                    Helper function to set the metadata stored at `name` on this image, of type `$typeName`
+                """.trimIndent())
+                .build()
+            val getMethod = MethodSpec.methodBuilder("get$titlecasedTypename")
+                .addModifiers(Modifier.PUBLIC)
+                .addParameter(stringType, "name")
+                .returns(poetValueType)
+                .addStatement("var outPointer = arena.allocate(\$T.C_POINTER)", vipsRawType)
+                .addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                .addJavadoc("""
+                    Helper function to get the metadata stored at `name` on this image, of type `$typeName`
+                    Returns null if not present
+                """.trimIndent())
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (!\$T.isValidResult(result))", vipsValidatorType)
+                        .addStatement("\$T.error_clear()", vipsHelperType)
+                        .addStatement("return null")
+                        .endControlFlow()
+                        .build()
+                )
+                .addCode(
+                    CodeBlock.builder()
+                        .beginControlFlow("if (!\$T.isValidPointer(outPointer))", vipsValidatorType)
+                        .addStatement("throw new VipsError(\"failed to read value of type $typeName from field: \" + name)")
+                        .endControlFlow()
+                        .build()
+                )
+                .apply {
+                    when (poetValueType) {
+                        stringType -> {
+                            // const char **
+                            this.addStatement("var dereferenced = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
+                            this.addStatement("return dereferenced.getString(0)")
+                        }
+                        boxedIntType -> {
+                            // int *
+                            this.addStatement("return outPointer.get(\$T.C_INT, 0)", vipsRawType)
+                        }
+                        boxedDoubleType -> {
+                            // double *
+                            this.addStatement("return outPointer.get(\$T.C_DOUBLE, 0)", vipsRawType)
+                        }
+                        else -> throw RuntimeException("unexpected type")
+                    }
+                }
+                .build()
+            methods.add(getMethod)
+            methods.add(setMethod)
+        }
+
+        val fieldsMethod = MethodSpec.methodBuilder("getFields")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(listStringType)
+            .addStatement("var fieldsPointer = \$T.image_get_fields(this.address)", vipsHelperType)
+            .addStatement(
+                "fieldsPointer = fieldsPointer.reinterpret(arena, \$T::g_strfreev)",
+                vipsRawType
+            )
+            .addStatement("var fieldNameStrings = new ArrayList<String>()")
+            .addCode(
+                CodeBlock.builder()
+                    .beginControlFlow("if (!\$T.isValidPointer(fieldsPointer))", vipsValidatorType)
+                    .addStatement("return fieldNameStrings")
+                    .endControlFlow()
+                    .addStatement("var i = 0")
+                    .beginControlFlow("while (true)")
+                    .addStatement("var namePointer = fieldsPointer.get(\$T.C_POINTER, i * \$T.C_POINTER.byteSize())", vipsRawType, vipsRawType)
+                    .beginControlFlow("if (!\$T.isValidPointer(namePointer))", vipsValidatorType)
+                    .addStatement("break")
+                    .endControlFlow()
+                    .addStatement("fieldNameStrings.add(namePointer.getString(0))")
+                    .addStatement("i++")
+                    .endControlFlow()
+                    .build()
+            )
+            .addStatement("return fieldNameStrings")
+            .addJavadoc("""
+                Returns a list of all metadata entry names for this image
+            """.trimIndent())
+            .build()
+
+        methods.add(fieldsMethod)
+
+        return methods
     }
 
     data class DiscoveredEnum(

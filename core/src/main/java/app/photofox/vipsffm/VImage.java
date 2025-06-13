@@ -41,6 +41,7 @@ import app.photofox.vipsffm.enums.VipsRegionShrink;
 import app.photofox.vipsffm.enums.VipsSdfShape;
 import app.photofox.vipsffm.enums.VipsSize;
 import app.photofox.vipsffm.enums.VipsTextWrap;
+import app.photofox.vipsffm.jextract.VipsRaw;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.Double;
@@ -9755,5 +9756,86 @@ public final class VImage {
   public static VImage newImage(Arena arena) throws VipsError {
     var newImagePointer = VipsHelper.image_new(arena);
     return new VImage(arena, newImagePointer);
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `string`
+  /// Returns null if not present
+  public String getString(String name) {
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_string(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsHelper.error_clear();
+      return null;
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type string from field: " + name);
+    }
+    var dereferenced = outPointer.get(VipsRaw.C_POINTER, 0);
+    return dereferenced.getString(0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `string`
+  public void set(String name, String value) {
+    VipsHelper.image_set_string(arena, this.address, name, value);
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `int`
+  /// Returns null if not present
+  public Integer getInt(String name) {
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_int(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsHelper.error_clear();
+      return null;
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type int from field: " + name);
+    }
+    return outPointer.get(VipsRaw.C_INT, 0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `int`
+  public void set(String name, Integer value) {
+    VipsHelper.image_set_int(arena, this.address, name, value);
+  }
+
+  /// Helper function to get the metadata stored at `name` on this image, of type `double`
+  /// Returns null if not present
+  public Double getDouble(String name) {
+    var outPointer = arena.allocate(VipsRaw.C_POINTER);
+    var result = VipsHelper.image_get_double(arena, this.address, name, outPointer);
+    if (!VipsValidation.isValidResult(result)) {
+      VipsHelper.error_clear();
+      return null;
+    }
+    if (!VipsValidation.isValidPointer(outPointer)) {
+      throw new VipsError("failed to read value of type double from field: " + name);
+    }
+    return outPointer.get(VipsRaw.C_DOUBLE, 0);
+  }
+
+  /// Helper function to set the metadata stored at `name` on this image, of type `double`
+  public void set(String name, Double value) {
+    VipsHelper.image_set_double(arena, this.address, name, value);
+  }
+
+  /// Returns a list of all metadata entry names for this image
+  public List<String> getFields() {
+    var fieldsPointer = VipsHelper.image_get_fields(this.address);
+    fieldsPointer = fieldsPointer.reinterpret(arena, VipsRaw::g_strfreev);
+    var fieldNameStrings = new ArrayList<String>();
+    if (!VipsValidation.isValidPointer(fieldsPointer)) {
+      return fieldNameStrings;
+    }
+    var i = 0;
+    while (true) {
+      var namePointer = fieldsPointer.get(VipsRaw.C_POINTER, i * VipsRaw.C_POINTER.byteSize());
+      if (!VipsValidation.isValidPointer(namePointer)) {
+        break;
+      }
+      fieldNameStrings.add(namePointer.getString(0));
+      i++;
+    }
+    return fieldNameStrings;
   }
 }

@@ -50,7 +50,7 @@ touch includes_filtered.txt
 
 {
   grep -E ' (vips_area_get|vips_area_copy|vips_area_unref|vips_foreign_find|vips_filename|vips_init|vips_nick|vips_source_(custom_)?new|vips_blob|vips_object_set_from_string|vips_object_unref_outputs|vips_block|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_image_(get|set)_|vips_image_has)[A-Za-z0-9_]*' includes.txt
+  grep -E ' (vips_image_(get|set)_|g_strfreev|vips_image_has)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_(source|image|target|array_int|array_double|array_image|image)_get_type|vips_image_new[ ]|vips_image_write[ ])[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_object_get_args|vips_object_get_description|vips_object_get_argument)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_source_new|vips_target_(custom_)?new)[A-Za-z0-9_]*' includes.txt

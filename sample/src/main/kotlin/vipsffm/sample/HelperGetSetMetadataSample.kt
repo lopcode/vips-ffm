@@ -2,24 +2,20 @@ package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
 import app.photofox.vipsffm.VipsHelper
-import app.photofox.vipsffm.VipsOption
 import app.photofox.vipsffm.VipsValidation
-import app.photofox.vipsffm.enums.VipsAccess
 import app.photofox.vipsffm.jextract.VipsRaw.C_POINTER
 import org.slf4j.LoggerFactory
 import vipsffm.RunnableSample
-import vipsffm.SampleHelper
 import java.lang.foreign.Arena
 import java.nio.file.Path
-import kotlin.io.path.absolutePathString
 
 /**
  * Sense checking basic metadata set and fetch functions in VipsHelper
  * Note that you shouldn't use these directly, use VImage::set functions instead
  */
-object HelperSetMetadataSample: RunnableSample {
+object HelperGetSetMetadataSample: RunnableSample {
 
-    val logger = LoggerFactory.getLogger(HelperSetMetadataSample::class.java)
+    val logger = LoggerFactory.getLogger(HelperGetSetMetadataSample::class.java)
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val sourceImage = VImage.newFromFile(
