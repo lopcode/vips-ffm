@@ -806,9 +806,11 @@ object GenerateVClasses {
                 .addParameter(stringType, "name")
                 .addParameter(poetValueType, "value")
                 .addStatement("\$T.image_set_$typeName(arena, this.address, name, value)", vipsHelperType)
+                .addStatement("return this")
                 .addJavadoc("""
                     Helper function to set the metadata stored at `name` on this image, of type `$typeName`
                 """.trimIndent())
+                .returns(vimageType)
                 .build()
             val getMethod = MethodSpec.methodBuilder("get$titlecasedTypename")
                 .addModifiers(Modifier.PUBLIC)

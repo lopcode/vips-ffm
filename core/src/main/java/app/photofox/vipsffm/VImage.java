@@ -9775,8 +9775,9 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `string`
-  public void set(String name, String value) {
+  public VImage set(String name, String value) {
     VipsHelper.image_set_string(arena, this.address, name, value);
+    return this;
   }
 
   /// Helper function to get the metadata stored at `name` on this image, of type `int`
@@ -9795,8 +9796,9 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `int`
-  public void set(String name, Integer value) {
+  public VImage set(String name, Integer value) {
     VipsHelper.image_set_int(arena, this.address, name, value);
+    return this;
   }
 
   /// Helper function to get the metadata stored at `name` on this image, of type `double`
@@ -9815,8 +9817,9 @@ public final class VImage {
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `double`
-  public void set(String name, Double value) {
+  public VImage set(String name, Double value) {
     VipsHelper.image_set_double(arena, this.address, name, value);
+    return this;
   }
 
   /// Returns a list of all metadata entry names for this image
