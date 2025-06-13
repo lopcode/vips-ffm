@@ -85,7 +85,9 @@ public final class VImage {
   }
 
   /// Gets the raw [MemorySegment] (C pointer) for this VipsImage struct
+  ///
   /// The memory address' lifetime is bound to the scope of the [#arena]
+  ///
   /// Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with [VipsHelper]
   public MemorySegment getUnsafeStructAddress() {
     return this.address;

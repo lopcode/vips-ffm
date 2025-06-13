@@ -1014,9 +1014,7 @@ Returns null if not present</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeStructAddress()" class="member-name-link">getUnsafeStructAddress</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsImage struct
-The memory address' lifetime is bound to the scope of the <code>arena</code>
-Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsImage struct</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWidth()" class="member-name-link">getWidth</a>()</code></div>
@@ -2724,9 +2722,10 @@ coordinate.</div>
 <h3>getUnsafeStructAddress</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">getUnsafeStructAddress</span>()</div>
-<div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsImage struct
-The memory address' lifetime is bound to the scope of the <code>arena</code>
-Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></div>
+<div class="block"><p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsImage struct</p>
+<p>The memory address' lifetime is bound to the scope of the <code>arena</code></p>
+<p>Usage of the memory address is strongly discouraged, but it is available if some functionality is missing and you need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsffm"><code>VipsHelper</code></a></p>
+</div>
 </div>
 </section>
 </li>
