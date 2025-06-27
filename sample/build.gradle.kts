@@ -22,8 +22,12 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(23))
+        languageVersion.set(JavaLanguageVersion.of(22))
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.release = 22 // intentionally kept at 22
 }
 
 testing {

@@ -18,7 +18,11 @@ public final class VipsHelper {
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_init");
     }
-    VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
+    try {
+      VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
+    } catch (UnsatisfiedLinkError e) {
+      // no-op for older libvips versions
+    }
   }
 
   /// Binding for:

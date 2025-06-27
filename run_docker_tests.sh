@@ -7,7 +7,7 @@ echo "building samples..."
 echo "running docker tests..."
 WORKSPACE_DIR="$PWD"
 
-docker_tests=("debian-12" "ubuntu-2404")
+docker_tests=("debian-12" "ubuntu-2404" "liberica-22")
 for docker_test in "${docker_tests[@]}"; do
   echo "testing \"$docker_test\""
   pushd "docker_tests/$docker_test"
