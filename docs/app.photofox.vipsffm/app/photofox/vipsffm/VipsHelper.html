@@ -139,6 +139,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#filename_get_filename(java.lang.foreign.Arena,java.lang.String)" tabindex="0">filename_get_filename(Arena, String)</a></li>
 <li><a href="#filename_get_options(java.lang.foreign.Arena,java.lang.String)" tabindex="0">filename_get_options(Arena, String)</a></li>
 <li><a href="#image_new(java.lang.foreign.Arena)" tabindex="0">image_new(Arena)</a></li>
+<li><a href="#image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" tabindex="0">image_new_from_memory(Arena, MemorySegment, long, int, int, int, int)</a></li>
+<li><a href="#image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" tabindex="0">image_new_from_memory_copy(Arena, MemorySegment, long, int, int, int, int)</a></li>
 <li><a href="#image_set_delete_on_close(java.lang.foreign.MemorySegment,boolean)" tabindex="0">image_set_delete_on_close(MemorySegment, boolean)</a></li>
 <li><a href="#image_write(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" tabindex="0">image_write(MemorySegment, MemorySegment)</a></li>
 <li><a href="#image_hasalpha(java.lang.foreign.MemorySegment)" tabindex="0">image_hasalpha(MemorySegment)</a></li>
@@ -996,6 +998,34 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">VipsImage *vips_image_new()
+</code></pre>
+</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" class="member-name-link">image_new_from_memory</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;size,
+ int&nbsp;width,
+ int&nbsp;height,
+ int&nbsp;bands,
+ int&nbsp;format)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+</code></pre>
+</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)" class="member-name-link">image_new_from_memory_copy</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;size,
+ int&nbsp;width,
+ int&nbsp;height,
+ int&nbsp;bands,
+ int&nbsp;format)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
 </code></pre>
 </div>
 </div>
@@ -3022,6 +3052,52 @@ loadScripts(document, 'script');</script>
                                throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">VipsImage *vips_image_new()
+</code></pre>
+</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="image_new_from_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)">
+<h3>image_new_from_memory</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_memory</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;size,
+ int&nbsp;width,
+ int&nbsp;height,
+ int&nbsp;bands,
+ int&nbsp;format)</span>
+                                           throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+</code></pre>
+</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="image_new_from_memory_copy(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,long,int,int,int,int)">
+<h3>image_new_from_memory_copy</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">image_new_from_memory_copy</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;size,
+ int&nbsp;width,
+ int&nbsp;height,
+ int&nbsp;bands,
+ int&nbsp;format)</span>
+                                                throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
 </code></pre>
 </div>
 <dl class="notes">

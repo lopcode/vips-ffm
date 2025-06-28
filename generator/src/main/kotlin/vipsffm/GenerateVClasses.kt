@@ -67,6 +67,7 @@ object GenerateVClasses {
     private val outputStreamType = ClassName.get("java.io", "OutputStream")
     private val listStringType = ParameterizedTypeName.get(listType, stringType)
     private val vipsImageMapFnType = ClassName.get("app.photofox.vipsffm.jextract", "VipsImageMapFn")
+    private val valueLayoutType = ClassName.get("java.lang.foreign", "ValueLayout")
 
     @JvmStatic fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
@@ -668,6 +669,28 @@ object GenerateVClasses {
             .addStatement("return newFromSource(arena, source, options)")
             .addJavadoc("See [VImage#newFromBytes]")
             .build()
+        val newFromMemoryMethod = MethodSpec.methodBuilder("newFromMemory")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(ArrayTypeName.of(TypeName.BYTE), "bytes")
+            .addParameter(TypeName.INT, "width")
+            .addParameter(TypeName.INT, "height")
+            .addParameter(TypeName.INT, "bands")
+            .addParameter(TypeName.INT, "format")
+            .returns(vimageType)
+            .addException(vipsErrorType)
+            .addStatement("var offHeapBytes = arena.allocateFrom(\$T.JAVA_BYTE, bytes)", valueLayoutType)
+            .addStatement("var imagePointer = \$T.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format)", vipsHelperType)
+            .addStatement("return new VImage(arena, imagePointer)")
+            .addJavadoc("""
+                Creates a new VImage from raw bytes, mapping directly to the `vips_image_new_from_memory` function, with some checks.
+
+                This is included for narrow use cases where you have image bytes representing partially supported image formats from another library (like DICOM), and you need a way to get them in to libvips without using the built-in source loaders.
+                Note that due to Java FFM limitations, a full copy to native memory must still be performed. 
+                
+                This is an advanced method - if possible, use [VImage#newFromFile] and friends instead. If you have bytes to load, you could use [VImage#newFromBytes].
+            """.trimIndent())
+            .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .addParameter(arenaType, "arena")
@@ -775,6 +798,7 @@ object GenerateVClasses {
             newFromSourceNoOptionsMethod,
             newFromBytesMethod,
             newFromBytesNoOptionsMethod,
+            newFromMemoryMethod,
             newFromStreamMethod,
             newFromStreamNoOptionsMethod,
             writeToFileMethod,
