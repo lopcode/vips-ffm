@@ -6995,6 +6995,132 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_new_from_memory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_new_from_memory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static FunctionDescriptor vips_image_new_from_memory$descriptor() {
+        return vips_image_new_from_memory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MethodHandle vips_image_new_from_memory$handle() {
+        return vips_image_new_from_memory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MemorySegment vips_image_new_from_memory$address() {
+        return vips_image_new_from_memory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MemorySegment vips_image_new_from_memory(MemorySegment data, long size, int width, int height, int bands, int format) {
+        var mh$ = vips_image_new_from_memory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_new_from_memory", data, size, width, height, bands, format);
+            }
+            return (MemorySegment)mh$.invokeExact(data, size, width, height, bands, format);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class vips_image_new_from_memory_copy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_LONG,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT,
+            VipsRaw.C_INT
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_new_from_memory_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static FunctionDescriptor vips_image_new_from_memory_copy$descriptor() {
+        return vips_image_new_from_memory_copy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MethodHandle vips_image_new_from_memory_copy$handle() {
+        return vips_image_new_from_memory_copy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MemorySegment vips_image_new_from_memory_copy$address() {
+        return vips_image_new_from_memory_copy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+     * }
+     */
+    public static MemorySegment vips_image_new_from_memory_copy(MemorySegment data, long size, int width, int height, int bands, int format) {
+        var mh$ = vips_image_new_from_memory_copy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_new_from_memory_copy", data, size, width, height, bands, format);
+            }
+            return (MemorySegment)mh$.invokeExact(data, size, width, height, bands, format);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_set_delete_on_close {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             VipsRaw.C_POINTER,

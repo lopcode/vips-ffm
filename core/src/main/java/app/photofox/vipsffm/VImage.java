@@ -52,6 +52,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9698,6 +9699,19 @@ public final class VImage {
       VipsError {
     var source = VSource.newFromBytes(arena, bytes);
     return newFromSource(arena, source, options);
+  }
+
+  /// Creates a new VImage from raw bytes, mapping directly to the `vips_image_new_from_memory` function, with some checks.
+  ///
+  /// This is included for narrow use cases where you have image bytes representing partially supported image formats from another library (like DICOM), and you need a way to get them in to libvips without using the built-in source loaders.
+  /// Note that due to Java FFM limitations, a full copy to native memory must still be performed. 
+  ///
+  /// This is an advanced method - if possible, use [VImage#newFromFile] and friends instead. If you have bytes to load, you could use [VImage#newFromBytes].
+  public static VImage newFromMemory(Arena arena, byte[] bytes, int width, int height, int bands,
+      int format) throws VipsError {
+    var offHeapBytes = arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes);
+    var imagePointer = VipsHelper.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format);
+    return new VImage(arena, imagePointer);
   }
 
   /// Creates a new VImage from an [InputStream]. This uses libvips' "custom streaming" feature and is

@@ -1023,6 +1023,40 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// VipsImage *vips_image_new_from_memory(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+  /// ```
+  public static MemorySegment image_new_from_memory(Arena arena, MemorySegment data, long size,
+      int width, int height, int bands, int format) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_memory", "data");
+    }
+    var result = VipsRaw.vips_image_new_from_memory(data, size, width, height, bands, format);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// VipsImage *vips_image_new_from_memory_copy(const void *data, size_t size, int width, int height, int bands, VipsBandFormat format)
+  /// ```
+  public static MemorySegment image_new_from_memory_copy(Arena arena, MemorySegment data, long size,
+      int width, int height, int bands, int format) throws VipsError {
+    if(!VipsValidation.isValidPointer(data)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_from_memory_copy", "data");
+    }
+    var result = VipsRaw.vips_image_new_from_memory_copy(data, size, width, height, bands, format);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_from_memory_copy", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
   /// ```
   public static void image_set_delete_on_close(MemorySegment image, boolean delete_on_closeBoolean)
