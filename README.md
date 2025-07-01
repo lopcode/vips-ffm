@@ -56,6 +56,8 @@ import app.photofox.vipsffm.enums.VipsAccess
 // ...
 
 // Call once to initialise libvips when your program starts, from any thread
+//   Note that by default this blocks untrusted operations (like loading PDFs)
+//   Use `Vips.init(true, ...)` to permit untrusted operations
 Vips.init()
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
