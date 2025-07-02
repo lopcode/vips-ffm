@@ -55,7 +55,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /// A generated wrapper representing a VipsImage. Do not edit.
@@ -504,8 +506,8 @@ public final class VImage {
     var matrixOption = VipsOption.ArrayDouble("matrix", matrix);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(matrixOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "affine", callArgs);
     return outOption.valueOrThrow();
   }
@@ -652,8 +654,8 @@ public final class VImage {
     var boolean1Option = VipsOption.Enum("boolean", boolean1);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(boolean1Option);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "bandbool", callArgs);
     return outOption.valueOrThrow();
   }
@@ -715,8 +717,8 @@ public final class VImage {
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(cOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "bandjoin_const", callArgs);
     return outOption.valueOrThrow();
   }
@@ -802,9 +804,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "black", callArgs);
     return outOption.valueOrThrow();
   }
@@ -840,8 +842,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
-    callArgs.add(outOption);
     callArgs.add(boolean1Option);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "boolean", callArgs);
     return outOption.valueOrThrow();
   }
@@ -870,9 +872,9 @@ public final class VImage {
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(boolean1Option);
     callArgs.add(cOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "boolean_const", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1007,8 +1009,8 @@ public final class VImage {
     var formatOption = VipsOption.Enum("format", format);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(formatOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "cast", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1050,8 +1052,8 @@ public final class VImage {
     var spaceOption = VipsOption.Enum("space", space);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(spaceOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "colourspace", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1075,8 +1077,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "compass", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1093,8 +1095,8 @@ public final class VImage {
     var cmplxOption = VipsOption.Enum("cmplx", cmplx);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(cmplxOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "complex", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1115,8 +1117,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
-    callArgs.add(outOption);
     callArgs.add(cmplxOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "complex2", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1159,8 +1161,8 @@ public final class VImage {
     var getOption = VipsOption.Enum("get", get);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(getOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "complexget", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1215,8 +1217,8 @@ public final class VImage {
     var modeOption = VipsOption.ArrayInt("mode", mode);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(modeOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "composite", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1239,8 +1241,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(baseOption);
     callArgs.add(overlayOption);
-    callArgs.add(outOption);
     callArgs.add(modeOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "composite2", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1298,8 +1300,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "conv", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1333,8 +1335,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "conva", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1367,8 +1369,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "convasep", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1394,8 +1396,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "convf", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1426,8 +1428,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "convi", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1453,8 +1455,8 @@ public final class VImage {
     var maskOption = VipsOption.Image("mask", mask);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "convsep", callArgs);
     return outOption.valueOrThrow();
   }
@@ -1506,8 +1508,8 @@ public final class VImage {
     var directionOption = VipsOption.Enum("direction", direction);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(nolinesOption);
     callArgs.add(directionOption);
+    callArgs.add(nolinesOption);
     VipsInvoker.invokeOperation(arena, "countlines", callArgs);
     return nolinesOption.valueOrThrow();
   }
@@ -1996,11 +1998,11 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(xOption);
     callArgs.add(yOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "embed", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2023,11 +2025,11 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inputOption);
-    callArgs.add(outOption);
     callArgs.add(leftOption);
     callArgs.add(topOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "extract_area", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2046,8 +2048,8 @@ public final class VImage {
     var bandOption = VipsOption.Int("band", band);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(bandOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "extract_band", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2073,9 +2075,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "eye", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2183,7 +2185,8 @@ public final class VImage {
   /// @optionalArg threshold [VipsOption.Double] Object threshold
   /// @optionalArg background [VipsOption.ArrayDouble] Color for background pixels
   /// @optionalArg line-art [VipsOption.Boolean] Enable line art mode
-  public int findTrim(VipsOption... args) throws VipsError {
+  public Map<String, VipsOption> findTrim(VipsOption... args) throws VipsError {
+    var callOutputArgs = new HashMap<String, VipsOption>();
     var inOption = VipsOption.Image("in", this);
     var leftOption = VipsOption.Int("left");
     var topOption = VipsOption.Int("top");
@@ -2191,12 +2194,13 @@ public final class VImage {
     var heightOption = VipsOption.Int("height");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(leftOption);
-    callArgs.add(topOption);
-    callArgs.add(widthOption);
-    callArgs.add(heightOption);
+    callOutputArgs.put("left", leftOption);
+    callOutputArgs.put("top", topOption);
+    callOutputArgs.put("width", widthOption);
+    callOutputArgs.put("height", heightOption);
+    callArgs.addAll(callOutputArgs.values());
     VipsInvoker.invokeOperation(arena, "find_trim", callArgs);
-    return leftOption.valueOrThrow();
+    return callOutputArgs;
   }
 
   /// Read a FITS image file into a VIPS image.
@@ -2311,8 +2315,8 @@ public final class VImage {
     var directionOption = VipsOption.Enum("direction", direction);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "flip", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2347,10 +2351,10 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var fractalDimensionOption = VipsOption.Double("fractal-dimension", fractalDimension);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(fractalDimensionOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "fractsurf", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2426,8 +2430,8 @@ public final class VImage {
     var sigmaOption = VipsOption.Double("sigma", sigma);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(sigmaOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "gaussblur", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2470,9 +2474,9 @@ public final class VImage {
     var sigmaOption = VipsOption.Double("sigma", sigma);
     var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(sigmaOption);
     callArgs.add(minAmplOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "gaussmat", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2497,9 +2501,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "gaussnoise", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2525,9 +2529,9 @@ public final class VImage {
     var yOption = VipsOption.Int("y", y);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outArrayOption);
     callArgs.add(xOption);
     callArgs.add(yOption);
+    callArgs.add(outArrayOption);
     VipsInvoker.invokeOperation(arena, "getpoint", callArgs);
     return outArrayOption.valueOrThrow();
   }
@@ -2802,10 +2806,10 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "gravity", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2830,9 +2834,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "grey", callArgs);
     return outOption.valueOrThrow();
   }
@@ -2862,10 +2866,10 @@ public final class VImage {
     var downOption = VipsOption.Int("down", down);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(tileHeightOption);
     callArgs.add(acrossOption);
     callArgs.add(downOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "grid", callArgs);
     return outOption.valueOrThrow();
   }
@@ -3247,9 +3251,9 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "hist_local", callArgs);
     return outOption.valueOrThrow();
   }
@@ -3472,8 +3476,8 @@ public final class VImage {
     var outputProfileOption = VipsOption.String("output-profile", outputProfile);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(outputProfileOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "icc_transform", callArgs);
     return outOption.valueOrThrow();
   }
@@ -3579,9 +3583,9 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(mainOption);
     callArgs.add(subOption);
-    callArgs.add(outOption);
     callArgs.add(xOption);
     callArgs.add(yOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "insert", callArgs);
     return outOption.valueOrThrow();
   }
@@ -3707,8 +3711,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(in1Option);
     callArgs.add(in2Option);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "join", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4447,9 +4451,9 @@ public final class VImage {
     var bOption = VipsOption.ArrayDouble("b", b);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(aOption);
     callArgs.add(bOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "linear", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4538,9 +4542,9 @@ public final class VImage {
     var sigmaOption = VipsOption.Double("sigma", sigma);
     var minAmplOption = VipsOption.Double("min-ampl", minAmpl);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(sigmaOption);
     callArgs.add(minAmplOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "logmat", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4741,8 +4745,8 @@ public final class VImage {
     var indexOption = VipsOption.Image("index", index);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(indexOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mapim", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4778,8 +4782,8 @@ public final class VImage {
     var lutOption = VipsOption.Image("lut", lut);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(lutOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "maplut", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4814,12 +4818,12 @@ public final class VImage {
     var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(orderOption);
     callArgs.add(frequencyCutoffOption);
     callArgs.add(amplitudeCutoffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_butterworth", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4858,7 +4862,6 @@ public final class VImage {
     var radiusOption = VipsOption.Double("radius", radius);
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(orderOption);
@@ -4866,6 +4869,7 @@ public final class VImage {
     callArgs.add(frequencyCutoffYOption);
     callArgs.add(radiusOption);
     callArgs.add(amplitudeCutoffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_butterworth_band", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4904,13 +4908,13 @@ public final class VImage {
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(orderOption);
     callArgs.add(frequencyCutoffOption);
     callArgs.add(amplitudeCutoffOption);
     callArgs.add(ringwidthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_butterworth_ring", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4937,10 +4941,10 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var fractalDimensionOption = VipsOption.Double("fractal-dimension", fractalDimension);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(fractalDimensionOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_fractal", callArgs);
     return outOption.valueOrThrow();
   }
@@ -4967,11 +4971,11 @@ public final class VImage {
     var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffOption);
     callArgs.add(amplitudeCutoffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_gaussian", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5004,13 +5008,13 @@ public final class VImage {
     var radiusOption = VipsOption.Double("radius", radius);
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffXOption);
     callArgs.add(frequencyCutoffYOption);
     callArgs.add(radiusOption);
     callArgs.add(amplitudeCutoffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_gaussian_band", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5040,12 +5044,12 @@ public final class VImage {
     var amplitudeCutoffOption = VipsOption.Double("amplitude-cutoff", amplitudeCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffOption);
     callArgs.add(amplitudeCutoffOption);
     callArgs.add(ringwidthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_gaussian_ring", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5090,10 +5094,10 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_ideal", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5123,12 +5127,12 @@ public final class VImage {
     var frequencyCutoffYOption = VipsOption.Double("frequency-cutoff-y", frequencyCutoffY);
     var radiusOption = VipsOption.Double("radius", radius);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffXOption);
     callArgs.add(frequencyCutoffYOption);
     callArgs.add(radiusOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_ideal_band", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5156,11 +5160,11 @@ public final class VImage {
     var frequencyCutoffOption = VipsOption.Double("frequency-cutoff", frequencyCutoff);
     var ringwidthOption = VipsOption.Double("ringwidth", ringwidth);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(frequencyCutoffOption);
     callArgs.add(ringwidthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mask_ideal_ring", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5203,7 +5207,6 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(refOption);
     callArgs.add(secOption);
-    callArgs.add(outOption);
     callArgs.add(xr1Option);
     callArgs.add(yr1Option);
     callArgs.add(xs1Option);
@@ -5212,6 +5215,7 @@ public final class VImage {
     callArgs.add(yr2Option);
     callArgs.add(xs2Option);
     callArgs.add(ys2Option);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "match", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5232,8 +5236,8 @@ public final class VImage {
     var mathOption = VipsOption.Enum("math", math);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(mathOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "math", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5271,8 +5275,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
-    callArgs.add(outOption);
     callArgs.add(math2Option);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "math2", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5305,9 +5309,9 @@ public final class VImage {
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(math2Option);
     callArgs.add(cOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "math2_const", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5582,9 +5586,9 @@ public final class VImage {
     var vOption = VipsOption.Int("v", v);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(hOption);
     callArgs.add(vOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "measure", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5631,10 +5635,10 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(refOption);
     callArgs.add(secOption);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
     callArgs.add(dxOption);
     callArgs.add(dyOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "merge", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5738,9 +5742,9 @@ public final class VImage {
     var morphOption = VipsOption.Enum("morph", morph);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(maskOption);
     callArgs.add(morphOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "morph", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5795,12 +5799,12 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(refOption);
     callArgs.add(secOption);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
     callArgs.add(xrefOption);
     callArgs.add(yrefOption);
     callArgs.add(xsecOption);
     callArgs.add(ysecOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mosaic", callArgs);
     return outOption.valueOrThrow();
   }
@@ -5866,7 +5870,6 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(refOption);
     callArgs.add(secOption);
-    callArgs.add(outOption);
     callArgs.add(directionOption);
     callArgs.add(xr1Option);
     callArgs.add(yr1Option);
@@ -5876,6 +5879,7 @@ public final class VImage {
     callArgs.add(yr2Option);
     callArgs.add(xs2Option);
     callArgs.add(ys2Option);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "mosaic1", callArgs);
     return outOption.valueOrThrow();
   }
@@ -6235,9 +6239,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "perlin", callArgs);
     return outOption.valueOrThrow();
   }
@@ -6495,7 +6499,9 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Load ppm from buffer
+  /// Exactly as [VImage#ppmload], but read from a memory source.
+  ///
+  /// See also: [VImage#ppmload]
   /// @param arena The arena that bounds resulting memory allocations during this operation
   /// @param buffer Buffer to load from
   /// @param args Array of VipsOption to apply to this operation
@@ -6666,16 +6672,18 @@ public final class VImage {
   ///
   /// See also: [VImage#project], [VImage#histFind]
   /// @param args Array of VipsOption to apply to this operation
-  public VImage profile(VipsOption... args) throws VipsError {
+  public Map<String, VipsOption> profile(VipsOption... args) throws VipsError {
+    var callOutputArgs = new HashMap<String, VipsOption>();
     var inOption = VipsOption.Image("in", this);
     var columnsOption = VipsOption.Image("columns");
     var rowsOption = VipsOption.Image("rows");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(columnsOption);
-    callArgs.add(rowsOption);
+    callOutputArgs.put("columns", columnsOption);
+    callOutputArgs.put("rows", rowsOption);
+    callArgs.addAll(callOutputArgs.values());
     VipsInvoker.invokeOperation(arena, "profile", callArgs);
-    return columnsOption.valueOrThrow();
+    return callOutputArgs;
   }
 
   /// Find the horizontal and vertical projections of an image, ie. the sum
@@ -6686,16 +6694,18 @@ public final class VImage {
   ///
   /// See also: [VImage#histFind], [VImage#profile]
   /// @param args Array of VipsOption to apply to this operation
-  public VImage project(VipsOption... args) throws VipsError {
+  public Map<String, VipsOption> project(VipsOption... args) throws VipsError {
+    var callOutputArgs = new HashMap<String, VipsOption>();
     var inOption = VipsOption.Image("in", this);
     var columnsOption = VipsOption.Image("columns");
     var rowsOption = VipsOption.Image("rows");
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(columnsOption);
-    callArgs.add(rowsOption);
+    callOutputArgs.put("columns", columnsOption);
+    callOutputArgs.put("rows", rowsOption);
+    callArgs.addAll(callOutputArgs.values());
     VipsInvoker.invokeOperation(arena, "project", callArgs);
-    return columnsOption.valueOrThrow();
+    return callOutputArgs;
   }
 
   /// Transform an image with a 0, 1, 2, or 3rd order polynomial.
@@ -6748,8 +6758,8 @@ public final class VImage {
     var coeffOption = VipsOption.Image("coeff", coeff);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(coeffOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "quadratic", callArgs);
     return outOption.valueOrThrow();
   }
@@ -6952,10 +6962,10 @@ public final class VImage {
     var indexOption = VipsOption.Int("index", index);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(indexOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "rank", callArgs);
     return outOption.valueOrThrow();
   }
@@ -6997,10 +7007,10 @@ public final class VImage {
     var bandsOption = VipsOption.Int("bands", bands);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(filenameOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(bandsOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "rawload", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7085,8 +7095,8 @@ public final class VImage {
     var mOption = VipsOption.Image("m", m);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(mOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "recomb", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7125,11 +7135,11 @@ public final class VImage {
     var vshrinkOption = VipsOption.Double("vshrink", vshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(xshrinkOption);
     callArgs.add(hshrinkOption);
     callArgs.add(yshrinkOption);
     callArgs.add(vshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "reduce", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7164,9 +7174,9 @@ public final class VImage {
     var hshrinkOption = VipsOption.Double("hshrink", hshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(xshrinkOption);
     callArgs.add(hshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "reduceh", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7201,9 +7211,9 @@ public final class VImage {
     var vshrinkOption = VipsOption.Double("vshrink", vshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(yshrinkOption);
     callArgs.add(vshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "reducev", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7243,8 +7253,8 @@ public final class VImage {
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(leftOption);
     callArgs.add(rightOption);
-    callArgs.add(outOption);
     callArgs.add(relationalOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "relational", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7273,9 +7283,9 @@ public final class VImage {
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(relationalOption);
     callArgs.add(cOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "relational_const", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7336,8 +7346,8 @@ public final class VImage {
     var cOption = VipsOption.ArrayDouble("c", c);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(cOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "remainder_const", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7364,9 +7374,9 @@ public final class VImage {
     var newStrOption = VipsOption.String("new-str", newStr);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(oldStrOption);
     callArgs.add(newStrOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "remosaic", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7384,9 +7394,9 @@ public final class VImage {
     var downOption = VipsOption.Int("down", down);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(acrossOption);
     callArgs.add(downOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "replicate", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7439,8 +7449,8 @@ public final class VImage {
     var scaleOption = VipsOption.Double("scale", scale);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(scaleOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "resize", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7459,8 +7469,8 @@ public final class VImage {
     var angleOption = VipsOption.Enum("angle", angle);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(angleOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "rot", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7504,8 +7514,8 @@ public final class VImage {
     var angleOption = VipsOption.Double("angle", angle);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(angleOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "rotate", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7527,8 +7537,8 @@ public final class VImage {
     var roundOption = VipsOption.Enum("round", round);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(roundOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "round", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7681,10 +7691,10 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var shapeOption = VipsOption.Enum("shape", shape);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     callArgs.add(shapeOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "sdf", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7810,11 +7820,11 @@ public final class VImage {
     var vshrinkOption = VipsOption.Double("vshrink", vshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(xshrinkOption);
     callArgs.add(hshrinkOption);
     callArgs.add(yshrinkOption);
     callArgs.add(vshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "shrink", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7841,9 +7851,9 @@ public final class VImage {
     var hshrinkOption = VipsOption.Int("hshrink", hshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(xshrinkOption);
     callArgs.add(hshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "shrinkh", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7871,9 +7881,9 @@ public final class VImage {
     var vshrinkOption = VipsOption.Int("vshrink", vshrink);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(yshrinkOption);
     callArgs.add(vshrinkOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "shrinkv", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7946,9 +7956,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "sines", callArgs);
     return outOption.valueOrThrow();
   }
@@ -7976,9 +7986,9 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inputOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "smartcrop", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8136,9 +8146,9 @@ public final class VImage {
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "stdif", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8165,9 +8175,9 @@ public final class VImage {
     var yfacOption = VipsOption.Int("yfac", yfac);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inputOption);
-    callArgs.add(outOption);
     callArgs.add(xfacOption);
     callArgs.add(yfacOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "subsample", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8469,8 +8479,8 @@ public final class VImage {
     var outOption = VipsOption.Image("out");
     var textOption = VipsOption.String("text", text);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(textOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "text", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8551,8 +8561,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(filenameOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "thumbnail", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8587,8 +8597,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(bufferOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "thumbnail_buffer", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8621,8 +8631,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "thumbnail_image", callArgs);
     return outOption.valueOrThrow();
   }
@@ -8658,8 +8668,8 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(sourceOption);
-    callArgs.add(outOption);
     callArgs.add(widthOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "thumbnail_source", callArgs);
     return outOption.valueOrThrow();
   }
@@ -9542,9 +9552,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "worley", callArgs);
     return outOption.valueOrThrow();
   }
@@ -9593,9 +9603,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "xyz", callArgs);
     return outOption.valueOrThrow();
   }
@@ -9616,9 +9626,9 @@ public final class VImage {
     var widthOption = VipsOption.Int("width", width);
     var heightOption = VipsOption.Int("height", height);
     var callArgs = new ArrayList<>(Arrays.asList(args));
-    callArgs.add(outOption);
     callArgs.add(widthOption);
     callArgs.add(heightOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "zone", callArgs);
     return outOption.valueOrThrow();
   }
@@ -9637,9 +9647,9 @@ public final class VImage {
     var yfacOption = VipsOption.Int("yfac", yfac);
     var callArgs = new ArrayList<>(Arrays.asList(args));
     callArgs.add(inputOption);
-    callArgs.add(outOption);
     callArgs.add(xfacOption);
     callArgs.add(yfacOption);
+    callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "zoom", callArgs);
     return outOption.valueOrThrow();
   }

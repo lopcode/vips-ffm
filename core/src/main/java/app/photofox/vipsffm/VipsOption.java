@@ -4,22 +4,37 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
-public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, VipsOption.Long, VipsOption.Boolean, VipsOption.String, VipsOption.Image, VipsOption.Source, VipsOption.Target, VipsOption.Blob, VipsOption.ArrayDouble, VipsOption.ArrayInt, VipsOption.ArrayImage, VipsOption.Interpolate, VipsOption.Enum {
+public sealed interface VipsOption<T> permits VipsOption.Int, VipsOption.Double, VipsOption.Long, VipsOption.Boolean, VipsOption.String, VipsOption.Image, VipsOption.Source, VipsOption.Target, VipsOption.Blob, VipsOption.ArrayDouble, VipsOption.ArrayInt, VipsOption.ArrayImage, VipsOption.Interpolate, VipsOption.Enum {
 
     java.lang.String key();
+
     boolean hasValue();
 
-    record Int(java.lang.String key, AtomicReference<Optional<Integer>> box) implements VipsOption {
+    Optional<T> value();
 
-        public int valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
-        }
+    /**
+     * Returns the value contained within the Optional, or throws a VipsError
+     * if the Optional is empty.
+     *
+     * @return The value of type T.
+     * @throws VipsError if the Optional is empty.
+     */
+    default T valueOrThrow() throws VipsError {
+        Optional<T> optionalValue = value();
+        return optionalValue.orElseThrow(
+                () -> new VipsError("Unexpected empty value from " + this.getClass().getSimpleName())
+        );
+    }
+
+    record Int(java.lang.String key, AtomicReference<Optional<Integer>> box) implements VipsOption<Integer> {
 
         public boolean hasValue() {
             return box.get().isPresent();
+        }
+
+        @Override
+        public Optional<Integer> value() {
+            return box.get();
         }
 
         void setValue(int value) {
@@ -27,13 +42,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Double(java.lang.String key, AtomicReference<Optional<java.lang.Double>> box) implements VipsOption {
+    record Double(java.lang.String key,
+                  AtomicReference<Optional<java.lang.Double>> box) implements VipsOption<java.lang.Double> {
 
-        public double valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<java.lang.Double> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -45,13 +59,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Long(java.lang.String key, AtomicReference<Optional<java.lang.Long>> box) implements VipsOption {
+    record Long(java.lang.String key,
+                AtomicReference<Optional<java.lang.Long>> box) implements VipsOption<java.lang.Long> {
 
-        public java.lang.Long valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<java.lang.Long> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -63,13 +76,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Boolean(java.lang.String key, AtomicReference<Optional<java.lang.Boolean>> box) implements VipsOption {
+    record Boolean(java.lang.String key,
+                   AtomicReference<Optional<java.lang.Boolean>> box) implements VipsOption<java.lang.Boolean> {
 
-        public boolean valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<java.lang.Boolean> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -81,13 +93,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record String(java.lang.String key, AtomicReference<Optional<java.lang.String>> box) implements VipsOption {
+    record String(java.lang.String key,
+                  AtomicReference<Optional<java.lang.String>> box) implements VipsOption<java.lang.String> {
 
-        public java.lang.String valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<java.lang.String> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -99,13 +110,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Image(java.lang.String key, AtomicReference<Optional<VImage>> box) implements VipsOption {
+    record Image(java.lang.String key, AtomicReference<Optional<VImage>> box) implements VipsOption<VImage> {
 
-        public VImage valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VImage> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -117,13 +126,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Source(java.lang.String key, AtomicReference<Optional<VSource>> box) implements VipsOption {
+    record Source(java.lang.String key, AtomicReference<Optional<VSource>> box) implements VipsOption<VSource> {
 
-        public VSource valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VSource> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -135,13 +142,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Target(java.lang.String key, AtomicReference<Optional<VTarget>> box) implements VipsOption {
+    record Target(java.lang.String key, AtomicReference<Optional<VTarget>> box) implements VipsOption<VTarget> {
 
-        public VTarget valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VTarget> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -153,13 +158,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Blob(java.lang.String key, AtomicReference<Optional<VBlob>> box) implements VipsOption {
+    record Blob(java.lang.String key, AtomicReference<Optional<VBlob>> box) implements VipsOption<VBlob> {
 
-        public VBlob valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VBlob> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -171,13 +174,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record ArrayDouble(java.lang.String key, AtomicReference<Optional<List<java.lang.Double>>> box) implements VipsOption {
+    record ArrayDouble(java.lang.String key,
+                       AtomicReference<Optional<List<java.lang.Double>>> box) implements VipsOption<List<java.lang.Double>> {
 
-        public List<java.lang.Double> valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<List<java.lang.Double>> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -189,13 +191,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record ArrayInt(java.lang.String key, AtomicReference<Optional<List<Integer>>> box) implements VipsOption {
+    record ArrayInt(java.lang.String key,
+                    AtomicReference<Optional<List<Integer>>> box) implements VipsOption<List<Integer>> {
 
-        public List<Integer> valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                    () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<List<Integer>> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -207,13 +208,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record ArrayImage(java.lang.String key, AtomicReference<Optional<List<VImage>>> box) implements VipsOption {
+    record ArrayImage(java.lang.String key,
+                      AtomicReference<Optional<List<VImage>>> box) implements VipsOption<List<VImage>> {
 
-        public List<VImage> valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<List<VImage>> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -225,13 +225,12 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Interpolate(java.lang.String key, AtomicReference<Optional<VInterpolate>> box) implements VipsOption {
+    record Interpolate(java.lang.String key,
+                       AtomicReference<Optional<VInterpolate>> box) implements VipsOption<VInterpolate> {
 
-        public VInterpolate valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VInterpolate> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
@@ -243,13 +242,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         }
     }
 
-    record Enum(java.lang.String key, AtomicReference<Optional<VEnum>> box) implements VipsOption {
+    record Enum(java.lang.String key, AtomicReference<Optional<VEnum>> box) implements VipsOption<VEnum> {
 
-        public VEnum valueOrThrow() throws VipsError {
-            var optionalValue = box.get();
-            return optionalValue.orElseThrow(
-                () -> new VipsError("unexpected empty value")
-            );
+        @Override
+        public Optional<VEnum> value() {
+            return box.get();
         }
 
         public boolean hasValue() {
