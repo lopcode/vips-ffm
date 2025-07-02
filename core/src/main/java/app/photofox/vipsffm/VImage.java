@@ -13,7 +13,9 @@ import app.photofox.vipsffm.enums.VipsCompassDirection;
 import app.photofox.vipsffm.enums.VipsDirection;
 import app.photofox.vipsffm.enums.VipsExtend;
 import app.photofox.vipsffm.enums.VipsFailOn;
+import app.photofox.vipsffm.enums.VipsForeignDzContainer;
 import app.photofox.vipsffm.enums.VipsForeignDzDepth;
+import app.photofox.vipsffm.enums.VipsForeignDzLayout;
 import app.photofox.vipsffm.enums.VipsForeignHeifCompression;
 import app.photofox.vipsffm.enums.VipsForeignHeifEncoder;
 import app.photofox.vipsffm.enums.VipsForeignPpmFormat;
@@ -1974,6 +1976,184 @@ public final class VImage {
     VipsInvoker.invokeOperation(arena, "draw_smudge", callArgs);
   }
 
+  /// Save an image as a set of tiles at various resolutions. By default dzsave
+  /// uses DeepZoom layout -- use `layout` to pick other conventions.
+  ///
+  /// [VImage#dzsave] creates a directory called `name` to hold the tiles.
+  /// If `name` ends `.zip`, [VImage#dzsave] will create a zip file called
+  /// `name` to hold the tiles. You can use `container` to force zip file output.
+  ///
+  /// Use `basename` to set the name of the image we are creating. The
+  /// default value is set from `name`.
+  ///
+  /// By default, tiles are written as JPEGs. Use `Q` set set the JPEG quality
+  /// factor.
+  ///
+  /// You can set `suffix` to something like `".png[bitdepth=4]"` to write tiles
+  /// in another format.
+  ///
+  /// In Google layout mode, edge tiles are expanded to `tile_size` by `tile_size`
+  /// pixels. Normally they are filled with white, but you can set another colour
+  /// with `background`. Images are usually placed at the top-left of the tile,
+  /// but you can have them centred by turning on `centre`.
+  ///
+  /// You can set the size and overlap of tiles with `tile_size` and `overlap`.
+  /// They default to the correct settings for the selected `layout`. The deepzoom
+  /// defaults produce 256x256 jpeg files for centre tiles, the most efficient
+  /// size.
+  ///
+  /// Use `depth` to control how low the pyramid goes. This defaults to the
+  /// correct setting for the `layout` you select.
+  ///
+  /// You can rotate the image during write with the `angle` argument. However,
+  /// this will only work for images which support random access, like openslide,
+  /// and not for things like JPEG. You'll need to rotate those images
+  /// yourself with [VImage#rot]. Note that the `autorotate` option to the loader
+  /// may do what you need.
+  ///
+  /// By default, all tiles are stripped since usually you do not want a copy of
+  /// all metadata in every tile. Set `keep` if you want to keep metadata.
+  ///
+  /// If `container` is set to `zip`, you can set a compression level from -1
+  /// (use zlib default), 0 (store, compression disabled) to 9 (max compression).
+  /// If no value is given, the default is to store files without compression.
+  ///
+  /// You can use `region_shrink` to control the method for shrinking each 2x2
+  /// region. This defaults to using the average of the 4 input pixels but you can
+  /// also use the median in cases where you want to preserve the range of values.
+  ///
+  /// If you set `skip_blanks` to a value greater than or equal to zero, tiles
+  /// which are all within that many pixel values to the background are skipped.
+  /// This can save a lot of space for some image types. This option defaults to
+  /// 5 in Google layout mode, -1 otherwise.
+  ///
+  /// In IIIF layout, you can set the base of the `id` property in `info.json`
+  /// with `id`. The default is `https://example.com/iiif`.
+  ///
+  /// Use `layout` [VipsForeignDzLayout#FOREIGN_DZ_LAYOUT_IIIF3] for IIIF v3 layout.
+  ///
+  /// See also: [VImage#tiffsave]
+  /// @param filename Filename to save to
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg dirname [VipsOption.String] Directory name to save to
+  /// @optionalArg imagename [VipsOption.String] Image name
+  /// @optionalArg layout [VipsOption.Enum] [VipsForeignDzLayout] Directory layout
+  /// @optionalArg suffix [VipsOption.String] Filename suffix for tiles
+  /// @optionalArg overlap [VipsOption.Int] Tile overlap in pixels
+  /// @optionalArg tile-size [VipsOption.Int] Tile size in pixels
+  /// @optionalArg tile-height [VipsOption.Int] Tile height in pixels
+  /// @optionalArg tile-width [VipsOption.Int] Tile width in pixels
+  /// @optionalArg centre [VipsOption.Boolean] Center image in tile
+  /// @optionalArg depth [VipsOption.Enum] [VipsForeignDzDepth] Pyramid depth
+  /// @optionalArg angle [VipsOption.Enum] [VipsAngle] Rotate image during save
+  /// @optionalArg container [VipsOption.Enum] [VipsForeignDzContainer] Pyramid container type
+  /// @optionalArg properties [VipsOption.Boolean] Write a properties file to the output directory
+  /// @optionalArg compression [VipsOption.Int] ZIP deflate compression level
+  /// @optionalArg region-shrink [VipsOption.Enum] [VipsRegionShrink] Method to shrink regions
+  /// @optionalArg skip-blanks [VipsOption.Int] Skip tiles which are nearly equal to the background
+  /// @optionalArg id [VipsOption.String] Resource ID
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg no-strip [VipsOption.Boolean] Don't strip tile metadata
+  /// @optionalArg basename [VipsOption.String] Base name to save to
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public void dzsave(String filename, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var filenameOption = VipsOption.String("filename", filename);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(filenameOption);
+    VipsInvoker.invokeOperation(arena, "dzsave", callArgs);
+  }
+
+  /// As [VImage#dzsave], but save to a memory buffer.
+  ///
+  /// Output is always in a zip container. Use `basename` to set the name of the
+  /// directory that the zip will create when unzipped.
+  ///
+  /// The address of the buffer is returned in `buf`, the length of the buffer in
+  /// `len`. You are responsible for freeing the buffer with `GLib.free` when you
+  /// are done with it.
+  ///
+  /// See also: [VImage#dzsave], `Image.write_to_file`
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg dirname [VipsOption.String] Directory name to save to
+  /// @optionalArg imagename [VipsOption.String] Image name
+  /// @optionalArg layout [VipsOption.Enum] [VipsForeignDzLayout] Directory layout
+  /// @optionalArg suffix [VipsOption.String] Filename suffix for tiles
+  /// @optionalArg overlap [VipsOption.Int] Tile overlap in pixels
+  /// @optionalArg tile-size [VipsOption.Int] Tile size in pixels
+  /// @optionalArg tile-height [VipsOption.Int] Tile height in pixels
+  /// @optionalArg tile-width [VipsOption.Int] Tile width in pixels
+  /// @optionalArg centre [VipsOption.Boolean] Center image in tile
+  /// @optionalArg depth [VipsOption.Enum] [VipsForeignDzDepth] Pyramid depth
+  /// @optionalArg angle [VipsOption.Enum] [VipsAngle] Rotate image during save
+  /// @optionalArg container [VipsOption.Enum] [VipsForeignDzContainer] Pyramid container type
+  /// @optionalArg properties [VipsOption.Boolean] Write a properties file to the output directory
+  /// @optionalArg compression [VipsOption.Int] ZIP deflate compression level
+  /// @optionalArg region-shrink [VipsOption.Enum] [VipsRegionShrink] Method to shrink regions
+  /// @optionalArg skip-blanks [VipsOption.Int] Skip tiles which are nearly equal to the background
+  /// @optionalArg id [VipsOption.String] Resource ID
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg no-strip [VipsOption.Boolean] Don't strip tile metadata
+  /// @optionalArg basename [VipsOption.String] Base name to save to
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public VBlob dzsaveBuffer(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var bufferOption = VipsOption.Blob("buffer");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(bufferOption);
+    VipsInvoker.invokeOperation(arena, "dzsave_buffer", callArgs);
+    return bufferOption.valueOrThrow();
+  }
+
+  /// As [VImage#dzsave], but save to a target.
+  ///
+  /// See also: [VImage#dzsave], `Image.write_to_target`
+  /// @param target Target to save to
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg dirname [VipsOption.String] Directory name to save to
+  /// @optionalArg imagename [VipsOption.String] Image name
+  /// @optionalArg layout [VipsOption.Enum] [VipsForeignDzLayout] Directory layout
+  /// @optionalArg suffix [VipsOption.String] Filename suffix for tiles
+  /// @optionalArg overlap [VipsOption.Int] Tile overlap in pixels
+  /// @optionalArg tile-size [VipsOption.Int] Tile size in pixels
+  /// @optionalArg tile-height [VipsOption.Int] Tile height in pixels
+  /// @optionalArg tile-width [VipsOption.Int] Tile width in pixels
+  /// @optionalArg centre [VipsOption.Boolean] Center image in tile
+  /// @optionalArg depth [VipsOption.Enum] [VipsForeignDzDepth] Pyramid depth
+  /// @optionalArg angle [VipsOption.Enum] [VipsAngle] Rotate image during save
+  /// @optionalArg container [VipsOption.Enum] [VipsForeignDzContainer] Pyramid container type
+  /// @optionalArg properties [VipsOption.Boolean] Write a properties file to the output directory
+  /// @optionalArg compression [VipsOption.Int] ZIP deflate compression level
+  /// @optionalArg region-shrink [VipsOption.Enum] [VipsRegionShrink] Method to shrink regions
+  /// @optionalArg skip-blanks [VipsOption.Int] Skip tiles which are nearly equal to the background
+  /// @optionalArg id [VipsOption.String] Resource ID
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg no-strip [VipsOption.Boolean] Don't strip tile metadata
+  /// @optionalArg basename [VipsOption.String] Base name to save to
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public void dzsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "dzsave_target", callArgs);
+  }
+
   /// The opposite of [VImage#extractArea]: embed `in` within an image of
   /// size `width` by `height` at position `x`, `y`.
   ///
@@ -2183,7 +2363,7 @@ public final class VImage {
   /// @optionalArg threshold [VipsOption.Double] Object threshold
   /// @optionalArg background [VipsOption.ArrayDouble] Color for background pixels
   /// @optionalArg line-art [VipsOption.Boolean] Enable line art mode
-  public int findTrim(VipsOption... args) throws VipsError {
+  public FindTrimOutput findTrim(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var leftOption = VipsOption.Int("left");
     var topOption = VipsOption.Int("top");
@@ -2196,7 +2376,7 @@ public final class VImage {
     callArgs.add(widthOption);
     callArgs.add(heightOption);
     VipsInvoker.invokeOperation(arena, "find_trim", callArgs);
-    return leftOption.valueOrThrow();
+    return new FindTrimOutput(leftOption.valueOrThrow(), topOption.valueOrThrow(), widthOption.valueOrThrow(), heightOption.valueOrThrow());
   }
 
   /// Read a FITS image file into a VIPS image.
@@ -6495,7 +6675,9 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Load ppm from buffer
+  /// Exactly as [VImage#ppmload], but read from a memory source.
+  ///
+  /// See also: [VImage#ppmload]
   /// @param arena The arena that bounds resulting memory allocations during this operation
   /// @param buffer Buffer to load from
   /// @param args Array of VipsOption to apply to this operation
@@ -6666,7 +6848,7 @@ public final class VImage {
   ///
   /// See also: [VImage#project], [VImage#histFind]
   /// @param args Array of VipsOption to apply to this operation
-  public VImage profile(VipsOption... args) throws VipsError {
+  public ProfileOutput profile(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var columnsOption = VipsOption.Image("columns");
     var rowsOption = VipsOption.Image("rows");
@@ -6675,7 +6857,7 @@ public final class VImage {
     callArgs.add(columnsOption);
     callArgs.add(rowsOption);
     VipsInvoker.invokeOperation(arena, "profile", callArgs);
-    return columnsOption.valueOrThrow();
+    return new ProfileOutput(columnsOption.valueOrThrow(), rowsOption.valueOrThrow());
   }
 
   /// Find the horizontal and vertical projections of an image, ie. the sum
@@ -6686,7 +6868,7 @@ public final class VImage {
   ///
   /// See also: [VImage#histFind], [VImage#profile]
   /// @param args Array of VipsOption to apply to this operation
-  public VImage project(VipsOption... args) throws VipsError {
+  public ProjectOutput project(VipsOption... args) throws VipsError {
     var inOption = VipsOption.Image("in", this);
     var columnsOption = VipsOption.Image("columns");
     var rowsOption = VipsOption.Image("rows");
@@ -6695,7 +6877,7 @@ public final class VImage {
     callArgs.add(columnsOption);
     callArgs.add(rowsOption);
     VipsInvoker.invokeOperation(arena, "project", callArgs);
-    return columnsOption.valueOrThrow();
+    return new ProjectOutput(columnsOption.valueOrThrow(), rowsOption.valueOrThrow());
   }
 
   /// Transform an image with a 0, 1, 2, or 3rd order polynomial.
@@ -9934,5 +10116,17 @@ public final class VImage {
     var callbackPointer = VipsImageMapFn.allocate(fn, arena);
     VipsRaw.vips_image_map(this.address, callbackPointer, MemorySegment.NULL);
     return fieldNameStrings;
+  }
+
+  /// Helper record to hold multiple outputs from the [VImage#findTrim] operation
+  public record FindTrimOutput(int left, int top, int width, int height) {
+  }
+
+  /// Helper record to hold multiple outputs from the [VImage#profile] operation
+  public record ProfileOutput(VImage columns, VImage rows) {
+  }
+
+  /// Helper record to hold multiple outputs from the [VImage#project] operation
+  public record ProjectOutput(VImage columns, VImage rows) {
   }
 }

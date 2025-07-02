@@ -17,9 +17,7 @@ import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
 import java.lang.foreign.Arena
 import java.nio.file.Path
-import java.util.Arrays
-import java.util.Locale
-import java.util.Objects
+import java.util.*
 import javax.lang.model.element.Modifier
 import kotlin.io.path.writeText
 
@@ -69,7 +67,8 @@ object GenerateVClasses {
     private val vipsImageMapFnType = ClassName.get("app.photofox.vipsffm.jextract", "VipsImageMapFn")
     private val valueLayoutType = ClassName.get("java.lang.foreign", "ValueLayout")
 
-    @JvmStatic fun main(args: Array<String>) {
+    @JvmStatic
+    fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
             DiscoverVipsOperations.run(it)
         }
@@ -161,7 +160,7 @@ object GenerateVClasses {
             .returns(memorySegmentType)
             .addModifiers(Modifier.PUBLIC)
             .build()
-        val vipsClass = TypeSpec.classBuilder(vimageType.topLevelClassName())
+        val vipsClassBuilder = TypeSpec.classBuilder(vimageType.topLevelClassName())
             .addJavadoc("A generated wrapper representing a VipsImage. Do not edit.")
             .addJavadoc("\n[libvips api docs](https://www.libvips.org/API/current/api-index-full.html)")
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
@@ -169,7 +168,15 @@ object GenerateVClasses {
             .addMethod(hashCode)
             .addMethod(equals)
             .addMethod(unsafeStructAddress)
-            .addMethods(operationMethods)
+
+        operationMethods.forEach {
+            vipsClassBuilder.addMethod(it.spec)
+            it.outputClass?.let { outputClassType ->
+                vipsClassBuilder.addType(outputClassType)
+            }
+        }
+
+        val vipsClass = vipsClassBuilder
             .addMethods(imageMethods)
             .addField(arenaType, "arena", Modifier.PRIVATE, Modifier.FINAL)
             .addField(memorySegmentType, "address", Modifier.FINAL)
@@ -184,11 +191,17 @@ object GenerateVClasses {
         targetGeneratedSourceRoot.resolve("VImage.java").writeText(javaFile, Charsets.UTF_8)
     }
 
+    data class OperationMethod(
+        val spec: MethodSpec,
+        // encapsulates multiple outputs from operations that produce them
+        val outputClass: TypeSpec?
+    )
+
     private fun buildOperationMethod(
         spec: VipsOperation,
         operations: List<VipsOperation>,
         enums: List<DiscoveredEnum>
-    ): MethodSpec {
+    ): OperationMethod {
         logger.info("building operation $spec")
         val requiredArguments = spec.args.filter { it.isRequired }
         val methodName = spec.nickname.fromSnakeToJavaStyle()
@@ -215,12 +228,34 @@ object GenerateVClasses {
             keepArg
         }
 
-        val firstOutput = poetArguments.filterIndexed { index, poetArg ->
+        val outputArguments = poetArguments.filterIndexed { index, poetArg ->
             val argSpec = requiredArguments[index]
-            argSpec.isOutput && argSpec.isRequired
-        }.firstOrNull()
+            if (argSpec.isOutput && !argSpec.isRequired) {
+                throw RuntimeException("optional output arguments not yet supported")
+            }
+            argSpec.isOutput
+        }
 
-        val returnType = firstOutput?.type() ?: TypeName.VOID
+        val outputTypeSpec = when {
+            outputArguments.size > 1 -> {
+                val outputClassName = "${methodName.capitalizeVipsText()}Output"
+                TypeSpec.recordBuilder(outputClassName)
+                    .addModifiers(Modifier.PUBLIC)
+                    .recordConstructor(
+                        MethodSpec.constructorBuilder()
+                            .addParameters(outputArguments)
+                            .build()
+                    )
+                    .addJavadoc("Helper record to hold multiple outputs from the [VImage#${methodName}] operation")
+                    .build()
+            }
+            else -> null
+        }
+        val returnType = when {
+            outputTypeSpec != null -> ClassName.get("app.photofox.vipsffm.VImage", outputTypeSpec.name())
+            outputArguments.isEmpty() -> TypeName.VOID
+            else -> outputArguments.first().type()
+        }
         method.returns(returnType)
         method.varargs(true)
         method.addException(vipsErrorType)
@@ -256,11 +291,19 @@ object GenerateVClasses {
             val argSpec = requiredArguments[index]
             method.addStatement("callArgs.add(${poetArg.name()}Option)")
         }
-        method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType);
-        if (returnType != TypeName.VOID) {
-            method.addStatement("return ${firstOutput!!.name()}Option.valueOrThrow()")
-        }
 
+        method.addStatement("\$T.invokeOperation(arena, \"${spec.nickname}\", callArgs)", vipsInvokerType)
+
+        when {
+            outputTypeSpec != null -> {
+                method.addStatement(
+                   "return new ${outputTypeSpec.name()}(${outputArguments.joinToString { "${it.name()}Option.valueOrThrow()" }})"
+                )
+            }
+            outputArguments.size == 1 -> {
+                method.addStatement("return ${outputArguments.first().name()}Option.valueOrThrow()")
+            }
+        }
         generateMethodJavadoc(method, methodName, spec, operations, enums)
         if (!referencedSelf) {
             method.addJavadoc("\n@param arena The arena that bounds resulting memory allocations during this operation")
@@ -274,7 +317,10 @@ object GenerateVClasses {
             if (argSpec.isEnum) {
                 val enumName = (argSpec.type as GValueType.Unknown).rawName
                 argNameSection += " [\$T]"
-                method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+                method.addJavadoc(
+                    "\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}",
+                    ClassName.get("app.photofox.vipsffm.enums", enumName)
+                )
             } else {
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
             }
@@ -284,13 +330,17 @@ object GenerateVClasses {
             if (it.isRequired || it.name == "nickname" || it.name == "description") {
                 return@forEach
             }
-            val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
+            val poetType =
+                mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
             var optionName = "[${vipsOptionType.simpleNames().first()}]"
             if (it.isEnum) {
                 val enumName = (it.type as GValueType.Unknown).rawName
                 optionName += " [\$T]"
-                method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+                method.addJavadoc(
+                    "\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}",
+                    ClassName.get("app.photofox.vipsffm.enums", enumName)
+                )
             } else {
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
             }
@@ -305,7 +355,10 @@ object GenerateVClasses {
         method.addParameters(filteredPoetArgs)
         method.addParameter(vipsOptionVarargType, "args")
 
-        return method.build()
+        return OperationMethod(
+            method.build(),
+            outputTypeSpec
+        )
     }
 
     private fun generateMethodJavadoc(
@@ -378,6 +431,7 @@ object GenerateVClasses {
                         else -> throw RuntimeException("unknown tip type: $tipName")
                     }
                 }
+
                 sectionName == "seealso" -> {
                     // expect a comma separated list of references
                     val seeAlsos = sectionDetail
@@ -389,6 +443,7 @@ object GenerateVClasses {
                     }
                     seeAlsoReferences.addAll(seeAlsos)
                 }
+
                 else -> throw RuntimeException("unexpected section type: $sectionName")
             }
             "" // always remove sections
@@ -496,6 +551,7 @@ object GenerateVClasses {
                 }
                 "`$matchName`" // fallback
             }
+
             "class" -> "`$matchName`"
             "struct" -> "`$matchName`"
             "const" -> "`$matchName`"
@@ -702,13 +758,15 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
             .addStatement("return newFromSource(arena, source, optionString, options)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Creates a new VImage from an [InputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
                 file.
-                """.trimIndent())
+                """.trimIndent()
+            )
             .build()
         val newFromStreamNoOptionsMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -770,13 +828,15 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var target = \$T.newFromOutputStream(arena, stream)", vtargetType)
             .addStatement("this.writeToTarget(target, suffix, options)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Writes this VImage to an [OutputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
                 file.
-            """.trimIndent())
+            """.trimIndent()
+            )
             .build()
         val newImageMethod = MethodSpec.methodBuilder("newImage")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -841,12 +901,14 @@ object GenerateVClasses {
                                 memorySegmentType
                             )
                         }
+
                         vimageType -> {
                             this.addStatement(
                                 "\$T.image_set_$typeName(arena, this.address, name, value.address)",
                                 vipsHelperType
                             )
                         }
+
                         else -> {
                             this.addStatement(
                                 "\$T.image_set_$typeName(arena, this.address, name, value)",
@@ -856,11 +918,13 @@ object GenerateVClasses {
                     }
                 }
                 .addStatement("return this")
-                .addJavadoc("""
+                .addJavadoc(
+                    """
                     Helper function to set the metadata stored at `name` on this image, of type `$typeName`
                     
                     See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-                """.trimIndent())
+                """.trimIndent()
+                )
                 .returns(vimageType)
                 .build()
             val getMethod = MethodSpec.methodBuilder("get$titlecasedTypename")
@@ -880,19 +944,28 @@ object GenerateVClasses {
                     when (poetValueType) {
                         vblobType -> {
                             this.addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
-                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)", vipsHelperType)
+                            this.addStatement(
+                                "var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)",
+                                vipsHelperType
+                            )
                         }
+
                         else -> {
-                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                            this.addStatement(
+                                "var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)",
+                                vipsHelperType
+                            )
                         }
                     }
                 }
-                .addJavadoc("""
+                .addJavadoc(
+                    """
                     Helper function to get the metadata stored at `name` on this image, of type `$typeName`, or `null`
                     if not present
 
                     See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-                """.trimIndent())
+                """.trimIndent()
+                )
                 .addCode(
                     CodeBlock.builder()
                         .beginControlFlow("if (!\$T.isValidResult(result))", vipsValidatorType)
@@ -914,24 +987,33 @@ object GenerateVClasses {
                             this.addStatement("var dereferenced = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
                             this.addStatement("return dereferenced.getString(0)")
                         }
+
                         boxedIntType -> {
                             // int *
                             this.addStatement("return outPointer.get(\$T.C_INT, 0)", vipsRawType)
                         }
+
                         boxedDoubleType -> {
                             // double *
                             this.addStatement("return outPointer.get(\$T.C_DOUBLE, 0)", vipsRawType)
                         }
+
                         vblobType -> {
                             // void **
                             this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
                             this.addStatement("return new VBlob(arena, blobAddress)")
                         }
+
                         vimageType -> {
                             // VImage **
-                            this.addStatement("var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)", vipsRawType, vipsRawType)
+                            this.addStatement(
+                                "var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)",
+                                vipsRawType,
+                                vipsRawType
+                            )
                             this.addStatement("return new VImage(arena, imageAddress)")
                         }
+
                         else -> throw RuntimeException("unexpected type")
                     }
                 }
@@ -962,11 +1044,13 @@ object GenerateVClasses {
             .addStatement("var callbackPointer = \$T.allocate(fn, arena)", vipsImageMapFnType)
             .addStatement("\$T.vips_image_map(this.address, callbackPointer, \$T.NULL)", vipsRawType, memorySegmentType)
             .addStatement("return fieldNameStrings")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Returns a list of all metadata entry names for this image
                 
                 See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-            """.trimIndent())
+            """.trimIndent()
+            )
             .build()
 
         methods.add(fieldsMethod)
@@ -999,7 +1083,7 @@ object GenerateVClasses {
 
         val girEnum = enums.first { it.gir.cType == parentName }
 
-        val values = (0 ..< numValues).map { index ->
+        val values = (0..<numValues).map { index ->
             val enumValuePointer = valuesPointer.asSlice(index * GEnumValue.layout().byteSize())
             val enumValueName = GEnumValue.value_name(enumValuePointer).getString(0)
             val enumValueRawValue = GEnumValue.value(enumValuePointer)
@@ -1088,7 +1172,7 @@ object GenerateVClasses {
                     .build()
             )
         spec.values.forEach {
-            val constantSpec = TypeSpec.anonymousClassBuilder("\$S, \$S, \$L",it.name, it.nickname, it.rawValue)
+            val constantSpec = TypeSpec.anonymousClassBuilder("\$S, \$S, \$L", it.name, it.nickname, it.rawValue)
             generateEnumJavadoc(constantSpec, it.name, it.gir.doc, operations, enums)
             enumClassBuilder.addEnumConstant(
                 it.name.removePrefix("VIPS_"),

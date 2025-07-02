@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-LIBVIPS_VERSION="8.17.0"
+LIBVIPS_VERSION="8.17.1"
 
 echo "Fetching libvips submodule..."
 # Grab correct version of libvips in submodule, if not already fetched
-git submodule foreach git reset --hard
 git submodule set-branch --branch "tags/v$LIBVIPS_VERSION" -- libvips
-git submodule update --init --recursive
+git submodule sync
+pushd libvips
+git checkout "tags/v$LIBVIPS_VERSION"
+popd
+git add libvips
 
 # If on macOS, grab latest version available in Homebrew for best-effort dependencies
 if [ "$(uname -sr)" == "Darwin*" ]; then
@@ -22,13 +25,21 @@ git submodule status libvips
 pushd libvips
 
 echo "Building libvips..."
-mkdir -p release
-meson setup build --reconfigure --prefix "$(pwd)/release"
+echo "Clearing build cache..."
+rm -rf release && mkdir -p release
+rm -rf build && mkdir -p build
 
-pushd build
-meson compile
-meson install
-popd
+echo "Setting up Meson build..."
+PREFIX_PATH=$(realpath "release")
+echo "Prefix path: $PREFIX_PATH"
+
+meson setup --wipe build
+meson setup build --prefix $PREFIX_PATH
+
+echo "Compiling..."
+meson compile -C $BUILD_PATH
+echo "Installing..."
+meson install -C $BUILD_PATH
 
 (release/bin/vips --version | grep $LIBVIPS_VERSION) || (echo "libvips version not as expected" && exit 1)
 popd
