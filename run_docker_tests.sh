@@ -2,18 +2,11 @@
 set -eou pipefail
 
 echo "building samples..."
-./gradlew sample:clean sample:shadowJar
+./gradlew sample:shadowJar
 
-echo "running docker tests..."
-WORKSPACE_DIR="$PWD"
+echo "running all docker tests..."
 
-docker_tests=("debian-12" "ubuntu-2404")
+docker_tests=("ubuntu-2404-jemalloc" "debian-12" "ubuntu-2404")
 for docker_test in "${docker_tests[@]}"; do
-  echo "testing \"$docker_test\""
-  pushd "docker_tests/$docker_test"
-  cp -r "$WORKSPACE_DIR"/sample .
-  cp "$WORKSPACE_DIR"/run_samples.sh .
-  docker build -t "vips-ffm-$docker_test-test" .
-  docker run "vips-ffm-$docker_test-test"
-  popd
+  ./run_single_docker_tests.sh "$docker_test" || (echo "test failed" && exit 1)
 done

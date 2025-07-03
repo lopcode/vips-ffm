@@ -15,6 +15,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib"
 fi
 
+if test -f /usr/local/lib/libjemalloc.so; then
+  echo "found jemalloc - using it"
+  export LD_PRELOAD=/usr/local/lib/libjemalloc.so
+fi
+
 echo "running samples..."
 java $JAVA_PATH_OPTS -jar sample/build/libs/sample-all.jar 2>&1 | tee sample_output.log
 

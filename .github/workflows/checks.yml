@@ -87,8 +87,11 @@ jobs:
           .\gradlew.bat sample:clean sample:shadowJar
           java -jar sample/build/libs/sample-all.jar
 
-  docker-checks:
+  docker-checks-matrix:
     runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        variant: ["debian-12", "ubuntu-2404", "ubuntu-2404-jemalloc"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -105,4 +108,11 @@ jobs:
           gradle-version: 8.14
 
       - name: Run checks
-        run: ./run_docker_tests.sh
+        run: ./run_single_docker_tests.sh ${{ matrix.variant }}
+
+  docker-checks:
+    runs-on: ubuntu-24.04
+    name: Verify all Docker checks passed
+    needs: [docker-checks-matrix]
+    steps:
+      - run: exit 0
