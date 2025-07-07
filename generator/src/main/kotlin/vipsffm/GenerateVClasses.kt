@@ -17,9 +17,7 @@ import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
 import java.lang.foreign.Arena
 import java.nio.file.Path
-import java.util.Arrays
-import java.util.Locale
-import java.util.Objects
+import java.util.*
 import javax.lang.model.element.Modifier
 import kotlin.io.path.writeText
 
@@ -69,7 +67,8 @@ object GenerateVClasses {
     private val vipsImageMapFnType = ClassName.get("app.photofox.vipsffm.jextract", "VipsImageMapFn")
     private val valueLayoutType = ClassName.get("java.lang.foreign", "ValueLayout")
 
-    @JvmStatic fun main(args: Array<String>) {
+    @JvmStatic
+    fun main(args: Array<String>) {
         val discoveredOperations = Arena.ofConfined().use {
             DiscoverVipsOperations.run(it)
         }
@@ -274,7 +273,10 @@ object GenerateVClasses {
             if (argSpec.isEnum) {
                 val enumName = (argSpec.type as GValueType.Unknown).rawName
                 argNameSection += " [\$T]"
-                method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+                method.addJavadoc(
+                    "\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}",
+                    ClassName.get("app.photofox.vipsffm.enums", enumName)
+                )
             } else {
                 method.addJavadoc("\n@param $argNameSection ${argSpec.blurb.capitalizeVipsText()}")
             }
@@ -284,13 +286,17 @@ object GenerateVClasses {
             if (it.isRequired || it.name == "nickname" || it.name == "description") {
                 return@forEach
             }
-            val poetType = mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
+            val poetType =
+                mapArgSpecToPoetType(it) ?: throw RuntimeException("unexpected null poet type for arg spec: $it")
             val vipsOptionType = mapPoetTypeToVipsOptionType(poetType, it)
             var optionName = "[${vipsOptionType.simpleNames().first()}]"
             if (it.isEnum) {
                 val enumName = (it.type as GValueType.Unknown).rawName
                 optionName += " [\$T]"
-                method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}", ClassName.get("app.photofox.vipsffm.enums", enumName))
+                method.addJavadoc(
+                    "\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}",
+                    ClassName.get("app.photofox.vipsffm.enums", enumName)
+                )
             } else {
                 method.addJavadoc("\n@optionalArg ${it.name} $optionName ${it.blurb.capitalizeVipsText()}")
             }
@@ -378,6 +384,7 @@ object GenerateVClasses {
                         else -> throw RuntimeException("unknown tip type: $tipName")
                     }
                 }
+
                 sectionName == "seealso" -> {
                     // expect a comma separated list of references
                     val seeAlsos = sectionDetail
@@ -389,6 +396,7 @@ object GenerateVClasses {
                     }
                     seeAlsoReferences.addAll(seeAlsos)
                 }
+
                 else -> throw RuntimeException("unexpected section type: $sectionName")
             }
             "" // always remove sections
@@ -496,6 +504,7 @@ object GenerateVClasses {
                 }
                 "`$matchName`" // fallback
             }
+
             "class" -> "`$matchName`"
             "struct" -> "`$matchName`"
             "const" -> "`$matchName`"
@@ -680,16 +689,21 @@ object GenerateVClasses {
             .returns(vimageType)
             .addException(vipsErrorType)
             .addStatement("var offHeapBytes = arena.allocateFrom(\$T.JAVA_BYTE, bytes)", valueLayoutType)
-            .addStatement("var imagePointer = \$T.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format)", vipsHelperType)
+            .addStatement(
+                "var imagePointer = \$T.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format)",
+                vipsHelperType
+            )
             .addStatement("return new VImage(arena, imagePointer)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Creates a new VImage from raw bytes, mapping directly to the `vips_image_new_from_memory` function, with some checks.
 
                 This is included for narrow use cases where you have image bytes representing partially supported image formats from another library (like DICOM), and you need a way to get them in to libvips without using the built-in source loaders.
                 Note that due to Java FFM limitations, a full copy to native memory must still be performed. 
                 
                 This is an advanced method - if possible, use [VImage#newFromFile] and friends instead. If you have bytes to load, you could use [VImage#newFromBytes].
-            """.trimIndent())
+            """.trimIndent()
+            )
             .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -702,13 +716,15 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var source = \$T.newFromInputStream(arena, stream)", vsourceType)
             .addStatement("return newFromSource(arena, source, optionString, options)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Creates a new VImage from an [InputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
                 file.
-                """.trimIndent())
+                """.trimIndent()
+            )
             .build()
         val newFromStreamNoOptionsMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -770,13 +786,44 @@ object GenerateVClasses {
             .addException(vipsErrorType)
             .addStatement("var target = \$T.newFromOutputStream(arena, stream)", vtargetType)
             .addStatement("this.writeToTarget(target, suffix, options)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Writes this VImage to an [OutputStream]. This uses libvips' "custom streaming" feature and is
                 therefore quite efficient, avoiding the need to make extra full copies of the image's data.
                 You could, for example, use this function to create an image directly from an API call, thumbnail it,
                 and then upload directly to an S3-compatible API efficiently in memory - all without creating a local
                 file.
-            """.trimIndent())
+            """.trimIndent()
+            )
+            .build()
+        val writeToMemoryMethod: MethodSpec = MethodSpec.methodBuilder("writeToMemory")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(ByteArray::class.java)
+            .addException(vipsErrorType)
+            .addStatement("\$T imageMemory = null", memorySegmentType)
+            .beginControlFlow("try")
+            .addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
+            .addStatement(
+                "imageMemory = \$T.image_write_to_memory(this.address, outLengthPointer)",
+                vipsHelperType
+            )
+            .addStatement("var sizeOfImage = outLengthPointer.get(\$T.C_LONG, 0)", vipsRawType)
+            .addStatement("byte[] imageRawBytes = new byte[(int) sizeOfImage]")
+            .addStatement("imageMemory.asSlice(0, sizeOfImage).asByteBuffer().get(imageRawBytes)")
+            .addStatement("return imageRawBytes")
+            .nextControlFlow("finally")
+            .beginControlFlow("if (imageMemory != null)")
+            .addStatement("\$T.g_free(imageMemory)", vipsRawType)
+            .endControlFlow()
+            .endControlFlow()
+            .addJavadoc(
+                """
+                Writes this VImage raw pixel values to the flatten byte[] with following pixel order: RGBRGBRGB etc.
+                It involves full memory copy of the image and thus is thread-safe and independent from other
+                VImage operations. In performance-critical scenarios where you need to avoid memory copies and you
+                are sure about the image's state and lifetime - prefer [VipsRaw.vips_image_get_data] instead.
+            """.trimIndent()
+            )
             .build()
         val newImageMethod = MethodSpec.methodBuilder("newImage")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -805,6 +852,7 @@ object GenerateVClasses {
             writeToImageMethod,
             writeToTargetMethod,
             writeToStreamMethod,
+            writeToMemoryMethod,
             newImageMethod
         ) + getSetMethods
     }
@@ -841,12 +889,14 @@ object GenerateVClasses {
                                 memorySegmentType
                             )
                         }
+
                         vimageType -> {
                             this.addStatement(
                                 "\$T.image_set_$typeName(arena, this.address, name, value.address)",
                                 vipsHelperType
                             )
                         }
+
                         else -> {
                             this.addStatement(
                                 "\$T.image_set_$typeName(arena, this.address, name, value)",
@@ -856,11 +906,13 @@ object GenerateVClasses {
                     }
                 }
                 .addStatement("return this")
-                .addJavadoc("""
+                .addJavadoc(
+                    """
                     Helper function to set the metadata stored at `name` on this image, of type `$typeName`
                     
                     See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-                """.trimIndent())
+                """.trimIndent()
+                )
                 .returns(vimageType)
                 .build()
             val getMethod = MethodSpec.methodBuilder("get$titlecasedTypename")
@@ -880,19 +932,28 @@ object GenerateVClasses {
                     when (poetValueType) {
                         vblobType -> {
                             this.addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
-                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)", vipsHelperType)
+                            this.addStatement(
+                                "var result = \$T.image_get_$typeName(arena, this.address, name, outPointer, outLengthPointer)",
+                                vipsHelperType
+                            )
                         }
+
                         else -> {
-                            this.addStatement("var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)", vipsHelperType)
+                            this.addStatement(
+                                "var result = \$T.image_get_$typeName(arena, this.address, name, outPointer)",
+                                vipsHelperType
+                            )
                         }
                     }
                 }
-                .addJavadoc("""
+                .addJavadoc(
+                    """
                     Helper function to get the metadata stored at `name` on this image, of type `$typeName`, or `null`
                     if not present
 
                     See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-                """.trimIndent())
+                """.trimIndent()
+                )
                 .addCode(
                     CodeBlock.builder()
                         .beginControlFlow("if (!\$T.isValidResult(result))", vipsValidatorType)
@@ -914,24 +975,33 @@ object GenerateVClasses {
                             this.addStatement("var dereferenced = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
                             this.addStatement("return dereferenced.getString(0)")
                         }
+
                         boxedIntType -> {
                             // int *
                             this.addStatement("return outPointer.get(\$T.C_INT, 0)", vipsRawType)
                         }
+
                         boxedDoubleType -> {
                             // double *
                             this.addStatement("return outPointer.get(\$T.C_DOUBLE, 0)", vipsRawType)
                         }
+
                         vblobType -> {
                             // void **
                             this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
                             this.addStatement("return new VBlob(arena, blobAddress)")
                         }
+
                         vimageType -> {
                             // VImage **
-                            this.addStatement("var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)", vipsRawType, vipsRawType)
+                            this.addStatement(
+                                "var imageAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(arena, \$T::g_object_unref)",
+                                vipsRawType,
+                                vipsRawType
+                            )
                             this.addStatement("return new VImage(arena, imageAddress)")
                         }
+
                         else -> throw RuntimeException("unexpected type")
                     }
                 }
@@ -962,11 +1032,13 @@ object GenerateVClasses {
             .addStatement("var callbackPointer = \$T.allocate(fn, arena)", vipsImageMapFnType)
             .addStatement("\$T.vips_image_map(this.address, callbackPointer, \$T.NULL)", vipsRawType, memorySegmentType)
             .addStatement("return fieldNameStrings")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Returns a list of all metadata entry names for this image
                 
                 See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
-            """.trimIndent())
+            """.trimIndent()
+            )
             .build()
 
         methods.add(fieldsMethod)
@@ -999,7 +1071,7 @@ object GenerateVClasses {
 
         val girEnum = enums.first { it.gir.cType == parentName }
 
-        val values = (0 ..< numValues).map { index ->
+        val values = (0..<numValues).map { index ->
             val enumValuePointer = valuesPointer.asSlice(index * GEnumValue.layout().byteSize())
             val enumValueName = GEnumValue.value_name(enumValuePointer).getString(0)
             val enumValueRawValue = GEnumValue.value(enumValuePointer)
@@ -1088,7 +1160,7 @@ object GenerateVClasses {
                     .build()
             )
         spec.values.forEach {
-            val constantSpec = TypeSpec.anonymousClassBuilder("\$S, \$S, \$L",it.name, it.nickname, it.rawValue)
+            val constantSpec = TypeSpec.anonymousClassBuilder("\$S, \$S, \$L", it.name, it.nickname, it.rawValue)
             generateEnumJavadoc(constantSpec, it.name, it.gir.doc, operations, enums)
             enumClassBuilder.addEnumConstant(
                 it.name.removePrefix("VIPS_"),

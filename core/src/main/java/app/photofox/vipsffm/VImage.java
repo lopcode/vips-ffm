@@ -6495,7 +6495,9 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Load ppm from buffer
+  /// Exactly as [VImage#ppmload], but read from a memory source.
+  ///
+  /// See also: [VImage#ppmload]
   /// @param arena The arena that bounds resulting memory allocations during this operation
   /// @param buffer Buffer to load from
   /// @param args Array of VipsOption to apply to this operation
@@ -9768,6 +9770,26 @@ public final class VImage {
       VipsError {
     var target = VTarget.newFromOutputStream(arena, stream);
     this.writeToTarget(target, suffix, options);
+  }
+
+  /// Writes this VImage raw pixel values to the flatten byte[] with following pixel order: RGBRGBRGB etc.
+  /// It involves full memory copy of the image and thus is thread-safe and independent from other
+  /// VImage operations. In performance-critical scenarios where you need to avoid memory copies and you
+  /// are sure about the image's state and lifetime - prefer [VipsRaw.vips_image_get_data] instead.
+  public byte[] writeToMemory() throws VipsError {
+    MemorySegment imageMemory = null;
+    try {
+      var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
+      imageMemory = VipsHelper.image_write_to_memory(this.address, outLengthPointer);
+      var sizeOfImage = outLengthPointer.get(VipsRaw.C_LONG, 0);
+      byte[] imageRawBytes = new byte[(int) sizeOfImage];
+      imageMemory.asSlice(0, sizeOfImage).asByteBuffer().get(imageRawBytes);
+      return imageRawBytes;
+    } finally {
+      if (imageMemory != null) {
+        VipsRaw.g_free(imageMemory);
+      }
+    }
   }
 
   public static VImage newImage(Arena arena) throws VipsError {

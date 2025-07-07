@@ -159,7 +159,7 @@ object GenerateVipsHelperClass {
         val arenaArg = ParameterSpec.builder(arenaType, "arena").build()
         val methodBuilder = MethodSpec.methodBuilder(newName)
             .addJavadoc(
-            """
+                """
                 Binding for:
                 ```c
                 ${externMetadata.rawExternDefinition}
@@ -179,11 +179,18 @@ object GenerateVipsHelperClass {
         args.forEachIndexed { index, parameter ->
             val externArgMetadata = externMetadata.arguments[index]
             if (externArgMetadata.type == "gboolean" && parameter.type() == TypeName.BOOLEAN) {
-                methodBuilder.addStatement("var ${parameter.name().removeSuffix("Boolean")} = ${parameter.name()} ? 1 : 0")
+                methodBuilder.addStatement(
+                    "var ${
+                        parameter.name().removeSuffix("Boolean")
+                    } = ${parameter.name()} ? 1 : 0"
+                )
             } else if (externArgMetadata.pointerDepth >= 1) {
                 if (parameter.type() == listStringType) {
                     val newName = parameter.name().removeSuffix("StringArray")
-                    methodBuilder.addStatement("var $newName = \$T.makeCharStarArray(arena, ${newName}StringArray)", vipsInvokerType)
+                    methodBuilder.addStatement(
+                        "var $newName = \$T.makeCharStarArray(arena, ${newName}StringArray)",
+                        vipsInvokerType
+                    )
                     usedArena = true
                 } else if (parameter.type() == stringType) {
                     val newName = parameter.name().removeSuffix("String")
@@ -226,7 +233,12 @@ object GenerateVipsHelperClass {
 
             args.forEachIndexed { index, parameterSpec ->
                 val externArgMetadata = externMetadata.arguments[index]
-                val deallocUsedArena = addDeallocCodeblockIfOutType(externArgMetadata, parameterSpec.type(), parameterSpec.name(), methodBuilder)
+                val deallocUsedArena = addDeallocCodeblockIfOutType(
+                    externArgMetadata,
+                    parameterSpec.type(),
+                    parameterSpec.name(),
+                    methodBuilder
+                )
                 if (deallocUsedArena) {
                     usedArena = true
                 }
@@ -335,7 +347,9 @@ object GenerateVipsHelperClass {
         }
 
         // newly allocated return types have a depth of 1
-        val isNewReturnAlloc = (externType.name.isBlank() && externType.pointerDepth == 1 && externType.type != "char")
+        val isNewReturnAlloc =
+            (externType.name.isBlank() &&
+                    externType.pointerDepth == 1 && externType.type != "char" && externType.raw != "void *")
 
         if (isNewReturnAlloc) {
             methodBuilder.addCode(
@@ -380,7 +394,10 @@ object GenerateVipsHelperClass {
             .addMethods(simpleMethods)
             .addMethods(variadicMethods)
             .addJavadoc("Generated helpers to wrap [\$T] JExtract definitions", vipsRawType)
-            .addJavadoc("\n\nValidation of input pointers is performed, but prefer usage of [\$T] and friends which do not expose raw pointers", vImageType)
+            .addJavadoc(
+                "\n\nValidation of input pointers is performed, but prefer usage of [\$T] and friends which do not expose raw pointers",
+                vImageType
+            )
             .addJavadoc("\n\n**Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**")
             .build()
         val javaFile = JavaFile.builder("app.photofox.vipsffm", vipsClass)
@@ -575,7 +592,7 @@ object GenerateVipsHelperClass {
             .split('_')
             .filterNot { it.isBlank() }
         val hasMultipleParts = split.size > 1
-        val candidate = if(hasMultipleParts) {
+        val candidate = if (hasMultipleParts) {
             split.joinToString("") { it.replaceFirstChar { it.uppercase(Locale.ENGLISH) } }
                 .replaceFirstChar { it.lowercase(Locale.ENGLISH) }
         } else {
