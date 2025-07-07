@@ -14,9 +14,10 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up libvips..."
 
-./libvips/release/bin/vips --version
+vips --version
 
-LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
+#LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
+LIBVIPS_INCLUDES_PATH="/opt/homebrew/include"
 LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
 if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
@@ -51,7 +52,7 @@ touch includes_filtered.txt
 {
   grep -E ' (vips_area_get|vips_area_copy|vips_area_unref|vips_foreign_find|vips_filename|vips_init|vips_nick|vips_source_(custom_)?new|vips_blob|vips_object_set_from_string|vips_object_unref_outputs|vips_block|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_image_(get|set)_|g_strfreev|vips_image_map|VipsImageMapFn|vips_image_has)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_(source|image|target|array_int|array_double|array_image|image)_get_type|vips_image_new[ ]|vips_image_new_from_memory|vips_image_write[ ])[A-Za-z0-9_]*' includes.txt
+  grep -E ' (vips_(source|image|target|array_int|array_double|array_image|image)_get_type|vips_image_new[ ]|vips_image_new_from_memory|vips_image_write[ ]|vips_image_write_to_memory)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_object_get_args|vips_object_get_description|vips_object_get_argument)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_source_new|vips_target_(custom_)?new)[A-Za-z0-9_]*' includes.txt
   grep -E ' (vips_cache_set|vips_block_operation|vips_cache_operation_build|vips_operation_new|vips_operation_get_flags)[A-Za-z0-9_]*' includes.txt
