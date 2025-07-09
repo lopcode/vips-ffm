@@ -15,6 +15,10 @@ library is already used by some larger businesses (which is cool!), and I care a
 Please discuss any bigger changes with me **before** submitting a Pull Request - I can help you refine your idea better
 that way, and I don't want to waste anybody's time: [Discussions](https://github.com/lopcode/vips-ffm/discussions).
 
+As part of a pull request I will probably edit commits on the branch, and will squash them down, but will be careful to
+retain your contributor metadata so you're named appropriately as a contributor on GitHub. GitHub Actions workflows to
+run the project's tests require approval - I'll do this when I'm reviewing the PR. 
+
 I haven't currently defined a code of conduct for this project specifically, but please refer to the CoC [in libvips](https://github.com/libvips/libvips/blob/master/CODE_OF_CONDUCT.md)
 for guidance on expected behaviour.
 
