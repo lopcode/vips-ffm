@@ -494,7 +494,7 @@ loadScripts(document, 'script');</script>
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#area_get_data(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">area_get_data(Arena, MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#area_get_data(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">area_get_data(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_area_get_data(VipsArea *area, size_t *length, int *n, GType *type, size_t *sizeof_type)
@@ -6369,7 +6369,7 @@ image <code>in2</code>.</div>
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_map(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_map(Arena, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_map(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_map(MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
@@ -6485,6 +6485,13 @@ image <code>in2</code>.</div>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">int vips_image_write(VipsImage *image, VipsImage *out)
+</code></pre>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_write_to_memory(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_write_to_memory(MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dd>
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">void *vips_image_write_to_memory(VipsImage *in, size_t *size)
 </code></pre>
 </div>
 </dd>
@@ -9015,7 +9022,7 @@ back to real space.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmloadBuffer(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadBuffer(Arena, VBlob, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">Load ppm from buffer</div>
+<div class="block">Exactly as <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.ppmload(java.lang.foreign.Arena, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a memory source.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmloadSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadSource(Arena, VSource, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -10593,14 +10600,14 @@ levels.</div>
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#type_map(java.lang.foreign.Arena,long,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">type_map(Arena, long, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#type_map(long,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">type_map(long, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_type_map(GType base, VipsTypeMap2Fn fn, void *a, void *b)
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#type_map_all(java.lang.foreign.Arena,long,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">type_map_all(Arena, long, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#type_map_all(long,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">type_map_all(long, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_type_map_all(GType base, VipsTypeMapFn fn, void *a)
@@ -11017,14 +11024,14 @@ levels.</div>
 </div>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_area(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_area(Arena, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_area(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_area(MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_value_get_area(const GValue *value, size_t *length)
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_array(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_array(Arena, MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_array(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_array(MemorySegment, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_value_get_array(const GValue *value, int *n, GType *type, size_t *sizeof_type)
@@ -11059,7 +11066,7 @@ levels.</div>
 </code></pre>
 </div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_blob(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_blob(Arena, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#value_get_blob(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">value_get_blob(MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
 <pre><code class="language-c">void *vips_value_get_blob(const GValue *value, size_t *length)
@@ -17697,6 +17704,45 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 </div>
 </div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_write_to_memory(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_write_to_memory(MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_write_to_memory(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)3"><code class="language-c">extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_write_to_memory$address()" class="member-name-link">vips_image_write_to_memory$address()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_write_to_memory$address()3"><code class="language-c">extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_write_to_memory$descriptor()" class="member-name-link">vips_image_write_to_memory$descriptor()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_write_to_memory$descriptor()3"><code class="language-c">extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_write_to_memory$handle()" class="member-name-link">vips_image_write_to_memory$handle()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_write_to_memory$handle()3"><code class="language-c">extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+</code></pre>
+</div>
+</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_write$address()" class="member-name-link">vips_image_write$address()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
 <dd>
 <div class="block">Address for:
@@ -22481,6 +22527,10 @@ at 0, 0 is now at <code>x</code>, <code>y</code>.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#writeToFile(java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToFile(String, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#writeToMemory()" class="member-name-link">writeToMemory()</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Writes this VImage raw pixel values to the flatten byte[] with following pixel order: RGBRGBRGB etc.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#writeToStream(java.io.OutputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">writeToStream(OutputStream, String, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Writes this VImage to an <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/OutputStream.html" title="class or interface in java.io" class="external-link"><code>OutputStream</code></a>.</div>

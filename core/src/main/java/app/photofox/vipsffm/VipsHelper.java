@@ -203,7 +203,7 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_type_map(GType base, VipsTypeMap2Fn fn, void *a, void *b)
   /// ```
-  public static MemorySegment type_map(Arena arena, long base, MemorySegment fn, MemorySegment a,
+  public static MemorySegment type_map(long base, MemorySegment fn, MemorySegment a,
       MemorySegment b) throws VipsError {
     if(!VipsValidation.isValidPointer(a)) {
       VipsValidation.throwInvalidInputError("vips_type_map", "a");
@@ -215,7 +215,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_type_map", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -223,8 +222,8 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_type_map_all(GType base, VipsTypeMapFn fn, void *a)
   /// ```
-  public static MemorySegment type_map_all(Arena arena, long base, MemorySegment fn,
-      MemorySegment a) throws VipsError {
+  public static MemorySegment type_map_all(long base, MemorySegment fn, MemorySegment a) throws
+      VipsError {
     if(!VipsValidation.isValidPointer(a)) {
       VipsValidation.throwInvalidInputError("vips_type_map_all", "a");
     }
@@ -232,7 +231,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_type_map_all", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -326,7 +324,7 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_area_get_data(VipsArea *area, size_t *length, int *n, GType *type, size_t *sizeof_type)
   /// ```
-  public static MemorySegment area_get_data(Arena arena, MemorySegment area, MemorySegment length,
+  public static MemorySegment area_get_data(MemorySegment area, MemorySegment length,
       MemorySegment n, MemorySegment type, MemorySegment sizeof_type) throws VipsError {
     if(!VipsValidation.isValidPointer(area)) {
       VipsValidation.throwInvalidInputError("vips_area_get_data", "area");
@@ -347,7 +345,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_area_get_data", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -484,8 +481,8 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_value_get_area(const GValue *value, size_t *length)
   /// ```
-  public static MemorySegment value_get_area(Arena arena, MemorySegment value, MemorySegment length)
-      throws VipsError {
+  public static MemorySegment value_get_area(MemorySegment value, MemorySegment length) throws
+      VipsError {
     if(!VipsValidation.isValidPointer(value)) {
       VipsValidation.throwInvalidInputError("vips_value_get_area", "value");
     }
@@ -496,7 +493,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_value_get_area", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -564,8 +560,8 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_value_get_blob(const GValue *value, size_t *length)
   /// ```
-  public static MemorySegment value_get_blob(Arena arena, MemorySegment value, MemorySegment length)
-      throws VipsError {
+  public static MemorySegment value_get_blob(MemorySegment value, MemorySegment length) throws
+      VipsError {
     if(!VipsValidation.isValidPointer(value)) {
       VipsValidation.throwInvalidInputError("vips_value_get_blob", "value");
     }
@@ -576,7 +572,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_value_get_blob", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -626,7 +621,7 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_value_get_array(const GValue *value, int *n, GType *type, size_t *sizeof_type)
   /// ```
-  public static MemorySegment value_get_array(Arena arena, MemorySegment value, MemorySegment n,
+  public static MemorySegment value_get_array(MemorySegment value, MemorySegment n,
       MemorySegment type, MemorySegment sizeof_type) throws VipsError {
     if(!VipsValidation.isValidPointer(value)) {
       VipsValidation.throwInvalidInputError("vips_value_get_array", "value");
@@ -644,7 +639,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_value_get_array", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
@@ -1080,6 +1074,25 @@ public final class VipsHelper {
       VipsValidation.throwInvalidInputError("vips_image_write", "out");
     }
     var result = VipsRaw.vips_image_write(image, out);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+  /// ```
+  public static MemorySegment image_write_to_memory(MemorySegment in, MemorySegment size) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(in)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_to_memory", "in");
+    }
+    if(!VipsValidation.isValidPointer(size)) {
+      VipsValidation.throwInvalidInputError("vips_image_write_to_memory", "size");
+    }
+    var result = VipsRaw.vips_image_write_to_memory(in, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_write_to_memory", "result");
+    }
     return result;
   }
 
@@ -1597,8 +1610,8 @@ public final class VipsHelper {
   /// ```c
   /// void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
   /// ```
-  public static MemorySegment image_map(Arena arena, MemorySegment image, MemorySegment fn,
-      MemorySegment a) throws VipsError {
+  public static MemorySegment image_map(MemorySegment image, MemorySegment fn, MemorySegment a)
+      throws VipsError {
     if(!VipsValidation.isValidPointer(image)) {
       VipsValidation.throwInvalidInputError("vips_image_map", "image");
     }
@@ -1609,7 +1622,6 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_map", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
     return result;
   }
 
