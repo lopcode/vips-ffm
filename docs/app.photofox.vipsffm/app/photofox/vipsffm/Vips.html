@@ -74,6 +74,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#init(boolean,boolean)" tabindex="0">init(boolean, boolean)</a></li>
 <li><a href="#run(app.photofox.vipsffm.VipsRunnable)" tabindex="0">run(VipsRunnable)</a></li>
 <li><a href="#shutdown()" tabindex="0">shutdown()</a></li>
+<li><a href="#allowUntrustedOperations()" tabindex="0">allowUntrustedOperations()</a></li>
+<li><a href="#disableOperationCache()" tabindex="0">disableOperationCache()</a></li>
 </ol>
 </li>
 </ol>
@@ -123,6 +125,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#allowUntrustedOperations()" class="member-name-link">allowUntrustedOperations</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Permits untrusted operations, such as loading PDFs</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#disableOperationCache()" class="member-name-link">disableOperationCache</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Disables the libvips operations cache</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#init()" class="member-name-link">init</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
@@ -131,7 +143,9 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#run(app.photofox.vipsffm.VipsRunnable)" class="member-name-link">run</a><wbr>(<a href="VipsRunnable.html" title="interface in app.photofox.vipsffm">VipsRunnable</a>&nbsp;runnable)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Provides a scoped arena to provide a memory boundary for running libvips operations</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#shutdown()" class="member-name-link">shutdown</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
@@ -190,6 +204,9 @@ loadScripts(document, 'script');</script>
 <h3>run</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span><wbr><span class="parameters">(<a href="VipsRunnable.html" title="interface in app.photofox.vipsffm">VipsRunnable</a>&nbsp;runnable)</span></div>
+<div class="block"><p>Provides a scoped arena to provide a memory boundary for running libvips operations</p>
+<p>After the scope has ended, any memory allocated whilst using libvips within it will be freed</p>
+</div>
 </div>
 </section>
 </li>
@@ -198,6 +215,31 @@ loadScripts(document, 'script');</script>
 <h3>shutdown</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">shutdown</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="allowUntrustedOperations()">
+<h3>allowUntrustedOperations</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">allowUntrustedOperations</span>()</div>
+<div class="block"><p>Permits untrusted operations, such as loading PDFs</p>
+<p>vips-ffm blocks these by default - see the <a href="https://www.libvips.org/API/8.17/func.block_untrusted_set.html">libvips docs</a>
+for guidance</p>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="disableOperationCache()">
+<h3>disableOperationCache</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableOperationCache</span>()</div>
+<div class="block"><p>Disables the libvips operations cache</p>
+<p>At the time of writing libvips caches 100 operations by default, which might not be useful in long-running
+applications (like servers).</p>
+<p>See also: <a href="https://www.libvips.org/API/8.17/how-it-works.html#operation-cache">libvips docs</a></p>
+</div>
 </div>
 </section>
 </li>

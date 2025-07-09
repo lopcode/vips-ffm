@@ -67,6 +67,8 @@ loadScripts(document, 'script');</script>
 <ol class="toc-list">
 <li><a href="#key()" tabindex="0">key()</a></li>
 <li><a href="#hasValue()" tabindex="0">hasValue()</a></li>
+<li><a href="#value()" tabindex="0">value()</a></li>
+<li><a href="#valueOrThrow()" tabindex="0">valueOrThrow()</a></li>
 <li><a href="#Int(java.lang.String,java.lang.Integer)" tabindex="0">Int(String, Integer)</a></li>
 <li><a href="#Int(java.lang.String)" tabindex="0">Int(String)</a></li>
 <li><a href="#Double(java.lang.String,java.lang.Double)" tabindex="0">Double(String, Double)</a></li>
@@ -103,7 +105,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<h1 title="Interface VipsOption" class="title">Interface VipsOption</h1>
+<h1 title="Interface VipsOption" class="title">Interface VipsOption&lt;T&gt;</h1>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
@@ -112,7 +114,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a></code>, <code><a href="VipsOption.ArrayImage.html" title="class in app.photofox.vipsffm">VipsOption.ArrayImage</a></code>, <code><a href="VipsOption.ArrayInt.html" title="class in app.photofox.vipsffm">VipsOption.ArrayInt</a></code>, <code><a href="VipsOption.Blob.html" title="class in app.photofox.vipsffm">VipsOption.Blob</a></code>, <code><a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm">VipsOption.Boolean</a></code>, <code><a href="VipsOption.Double.html" title="class in app.photofox.vipsffm">VipsOption.Double</a></code>, <code><a href="VipsOption.Enum.html" title="class in app.photofox.vipsffm">VipsOption.Enum</a></code>, <code><a href="VipsOption.Image.html" title="class in app.photofox.vipsffm">VipsOption.Image</a></code>, <code><a href="VipsOption.Int.html" title="class in app.photofox.vipsffm">VipsOption.Int</a></code>, <code><a href="VipsOption.Interpolate.html" title="class in app.photofox.vipsffm">VipsOption.Interpolate</a></code>, <code><a href="VipsOption.Long.html" title="class in app.photofox.vipsffm">VipsOption.Long</a></code>, <code><a href="VipsOption.Source.html" title="class in app.photofox.vipsffm">VipsOption.Source</a></code>, <code><a href="VipsOption.String.html" title="class in app.photofox.vipsffm">VipsOption.String</a></code>, <code><a href="VipsOption.Target.html" title="class in app.photofox.vipsffm">VipsOption.Target</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public sealed interface </span><span class="element-name type-name-label">VipsOption</span>
+<div class="type-signature"><span class="modifiers">public sealed interface </span><span class="element-name type-name-label">VipsOption&lt;T&gt;</span>
 <span class="permits">permits <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm">VipsOption.Int</a>, <a href="VipsOption.Double.html" title="class in app.photofox.vipsffm">VipsOption.Double</a>, <a href="VipsOption.Long.html" title="class in app.photofox.vipsffm">VipsOption.Long</a>, <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm">VipsOption.Boolean</a>, <a href="VipsOption.String.html" title="class in app.photofox.vipsffm">VipsOption.String</a>, <a href="VipsOption.Image.html" title="class in app.photofox.vipsffm">VipsOption.Image</a>, <a href="VipsOption.Source.html" title="class in app.photofox.vipsffm">VipsOption.Source</a>, <a href="VipsOption.Target.html" title="class in app.photofox.vipsffm">VipsOption.Target</a>, <a href="VipsOption.Blob.html" title="class in app.photofox.vipsffm">VipsOption.Blob</a>, <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a>, <a href="VipsOption.ArrayInt.html" title="class in app.photofox.vipsffm">VipsOption.ArrayInt</a>, <a href="VipsOption.ArrayImage.html" title="class in app.photofox.vipsffm">VipsOption.ArrayImage</a>, <a href="VipsOption.Interpolate.html" title="class in app.photofox.vipsffm">VipsOption.Interpolate</a>, <a href="VipsOption.Enum.html" title="class in app.photofox.vipsffm">VipsOption.Enum</a></span></div>
 </div>
 </section>
@@ -177,7 +179,7 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button><button id="method-summary-table-tab5" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab5', 3)" class="table-tab">Default Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
@@ -291,6 +293,15 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1"><code><a href="#Target(java.lang.String,app.photofox.vipsffm.VTarget)" class="member-name-link">Target</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;key,
  <a href="VTarget.html" title="class in app.photofox.vipsffm">VTarget</a>&nbsp;value)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a><wbr>&lt;<a href="VipsOption.html" title="type parameter in VipsOption">T</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#value()" class="member-name-link">value</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="VipsOption.html" title="type parameter in VipsOption">T</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#valueOrThrow()" class="member-name-link">valueOrThrow</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Returns the value contained within the Optional, or throws a VipsError
+ if the Optional is empty.</div>
+</div>
 </div>
 </div>
 </div>
@@ -318,6 +329,31 @@ loadScripts(document, 'script');</script>
 <h3>hasValue</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">hasValue</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="value()">
+<h3>value</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="VipsOption.html" title="type parameter in VipsOption">T</a>&gt;</span>&nbsp;<span class="element-name">value</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="valueOrThrow()">
+<h3>valueOrThrow</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="VipsOption.html" title="type parameter in VipsOption">T</a></span>&nbsp;<span class="element-name">valueOrThrow</span>()
+                throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block">Returns the value contained within the Optional, or throws a VipsError
+ if the Optional is empty.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The value of type T.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code> - if the Optional is empty.</dd>
+</dl>
 </div>
 </section>
 </li>

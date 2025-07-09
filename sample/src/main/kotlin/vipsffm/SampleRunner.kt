@@ -13,6 +13,7 @@ import vipsffm.sample.VImageCachingSample
 import vipsffm.sample.VImageChainSample
 import vipsffm.sample.VImageCopyWriteSample
 import vipsffm.sample.VImageCreateThumbnailSample
+import vipsffm.sample.VImageFindTrimSample
 import vipsffm.sample.VImageFromBytesSample
 import vipsffm.sample.VImageFromMemorySample
 import vipsffm.sample.VImageGetPagesSample
@@ -53,7 +54,8 @@ object SampleRunner {
             VImageGetPagesSample,
             HelperGetSetMetadataSample,
             VImageGetSetSample,
-            VImageFromMemorySample
+            VImageFromMemorySample,
+            VImageFindTrimSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

@@ -353,6 +353,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Allocate an array of size <code>elementCount</code> using <code>allocator</code>.</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#allowUntrustedOperations()" class="member-name-link">allowUntrustedOperations()</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
+<dd>
+<div class="block">Permits untrusted operations, such as loading PDFs</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#analyzeload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">analyzeload(Arena, String, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Load an Analyze 6.0 file.</div>
@@ -2248,6 +2252,10 @@ direction of an image.</div>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsDirection.html#DIRECTION_VERTICAL" class="member-name-link">DIRECTION_VERTICAL</a> - Enum constant in enum class app.photofox.vipsffm.enums.<a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsDirection.html" title="enum class in app.photofox.vipsffm.enums">VipsDirection</a></dt>
 <dd>
 <div class="block">top-bottom</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#disableOperationCache()" class="member-name-link">disableOperationCache()</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
+<dd>
+<div class="block">Disables the libvips operations cache</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.html#dispatch_properties_changed(java.lang.foreign.MemorySegment)" class="member-name-link">dispatch_properties_changed(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.html" title="class in app.photofox.vipsffm.jextract">_GObjectClass</a></dt>
 <dd>
@@ -9015,7 +9023,7 @@ back to real space.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmloadBuffer(java.lang.foreign.Arena,app.photofox.vipsffm.VBlob,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadBuffer(Arena, VBlob, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
-<div class="block">Load ppm from buffer</div>
+<div class="block">Exactly as <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.ppmload(java.lang.foreign.Arena, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a>, but read from a memory source.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#ppmloadSource(java.lang.foreign.Arena,app.photofox.vipsffm.VSource,app.photofox.vipsffm.VipsOption...)" class="member-name-link">ppmloadSource(Arena, VSource, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -9750,7 +9758,9 @@ for the affine transform from <code>scale</code> and <code>angle</code>.</div>
 <div class="block">Round to an integral value.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#run(app.photofox.vipsffm.VipsRunnable)" class="member-name-link">run(VipsRunnable)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Provides a scoped arena to provide a memory boundary for running libvips operations</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsRunnable.html#run(java.lang.foreign.Arena)" class="member-name-link">run(Arena)</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsRunnable.html" title="interface in app.photofox.vipsffm">VipsRunnable</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -10997,6 +11007,36 @@ levels.</div>
 </div>
 </div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html" title="class in app.photofox.vipsffm">VipsOption.ArrayImage</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayInt.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayInt.html" title="class in app.photofox.vipsffm">VipsOption.ArrayInt</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Blob.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Blob.html" title="class in app.photofox.vipsffm">VipsOption.Blob</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Boolean.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Boolean.html" title="class in app.photofox.vipsffm">VipsOption.Boolean</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Double.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Double.html" title="class in app.photofox.vipsffm">VipsOption.Double</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Enum.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Enum.html" title="class in app.photofox.vipsffm">VipsOption.Enum</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Image.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Image.html" title="class in app.photofox.vipsffm">VipsOption.Image</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Int.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Int.html" title="class in app.photofox.vipsffm">VipsOption.Int</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Interpolate.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Interpolate.html" title="class in app.photofox.vipsffm">VipsOption.Interpolate</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Long.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Long.html" title="class in app.photofox.vipsffm">VipsOption.Long</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Source.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Source.html" title="class in app.photofox.vipsffm">VipsOption.Source</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.String.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.String.html" title="class in app.photofox.vipsffm">VipsOption.String</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Target.html#value()" class="member-name-link">value()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Target.html" title="class in app.photofox.vipsffm">VipsOption.Target</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html#value()" class="member-name-link">value()</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GEnumValue.html#value(java.lang.foreign.MemorySegment)" class="member-name-link">value(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GEnumValue.html" title="class in app.photofox.vipsffm.jextract">_GEnumValue</a></dt>
 <dd>
 <div class="block">Getter for field:
@@ -11476,34 +11516,11 @@ levels.</div>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html" title="class in app.photofox.vipsffm">VipsOption.ArrayImage</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayInt.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayInt.html" title="class in app.photofox.vipsffm">VipsOption.ArrayInt</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Blob.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Blob.html" title="class in app.photofox.vipsffm">VipsOption.Blob</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Boolean.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Boolean.html" title="class in app.photofox.vipsffm">VipsOption.Boolean</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Double.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Double.html" title="class in app.photofox.vipsffm">VipsOption.Double</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Enum.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Enum.html" title="class in app.photofox.vipsffm">VipsOption.Enum</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Image.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Image.html" title="class in app.photofox.vipsffm">VipsOption.Image</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Int.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Int.html" title="class in app.photofox.vipsffm">VipsOption.Int</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Interpolate.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Interpolate.html" title="class in app.photofox.vipsffm">VipsOption.Interpolate</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Long.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Long.html" title="class in app.photofox.vipsffm">VipsOption.Long</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Source.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Source.html" title="class in app.photofox.vipsffm">VipsOption.Source</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.String.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.String.html" title="class in app.photofox.vipsffm">VipsOption.String</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Target.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.Target.html" title="class in app.photofox.vipsffm">VipsOption.Target</a></dt>
-<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html#valueOrThrow()" class="member-name-link">valueOrThrow()</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a></dt>
+<dd>
+<div class="block">Returns the value contained within the Optional, or throws a VipsError
+ if the Optional is empty.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsAccess.html#values()" class="member-name-link">values()</a> - Static method in enum class app.photofox.vipsffm.enums.<a href="app.photofox.vipsffm/app/photofox/vipsffm/enums/VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
@@ -22238,7 +22255,7 @@ stop on the smallest warning (very sensitive).</div>
 <dd>
 <div class="block">See also: <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#round(app.photofox.vipsffm.enums.VipsOperationRound,app.photofox.vipsffm.VipsOption...)"><code>VImage.round(app.photofox.vipsffm.enums.VipsOperationRound, app.photofox.vipsffm.VipsOption...)</code></a>.</div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html" class="type-name-link" title="interface in app.photofox.vipsffm">VipsOption</a> - Interface in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html" class="type-name-link" title="interface in app.photofox.vipsffm">VipsOption&lt;T&gt;</a> - Interface in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html" class="type-name-link" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a> - Record Class in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
 <dd>&nbsp;</dd>

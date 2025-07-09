@@ -20,6 +20,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.slf4j.LoggerFactory
+import java.lang.System.getenv
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.nio.file.Files
@@ -132,7 +133,7 @@ fun main() {
 
 object DiscoverVipsOperations {
 
-    private val girPath = Path.of("/Users/sage/git/libvips/8.17-unreleased/share/gir-1.0/Vips-8.0.gir")
+    private val girPath = Path.of("libvips/release/share/gir-1.0/Vips-8.0.gir")
 
     fun run(arena: Arena): DiscoveredOperations {
         VipsRaw.vips_init(arena.allocateFrom("vips-ffm"))
