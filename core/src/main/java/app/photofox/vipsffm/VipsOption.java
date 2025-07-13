@@ -18,6 +18,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public Integer valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -34,6 +39,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             return optionalValue.orElseThrow(
                 () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public java.lang.Double valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {
@@ -54,6 +64,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public java.lang.Long valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -70,6 +85,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             return optionalValue.orElseThrow(
                 () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public java.lang.Boolean valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {
@@ -90,6 +110,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public java.lang.String valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -106,6 +131,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             return optionalValue.orElseThrow(
                 () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public VImage valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {
@@ -126,6 +156,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public VSource valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -142,6 +177,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             return optionalValue.orElseThrow(
                 () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public VTarget valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {
@@ -162,6 +202,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public VBlob valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -180,6 +225,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public List<java.lang.Double> valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -194,8 +244,13 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
         public List<Integer> valueOrThrow() throws VipsError {
             var optionalValue = box.get();
             return optionalValue.orElseThrow(
-                    () -> new VipsError("unexpected empty value")
+                () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public List<java.lang.Integer> valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {
@@ -216,6 +271,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public List<VImage> valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -234,6 +294,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             );
         }
 
+        public VInterpolate valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
+        }
+
         public boolean hasValue() {
             return box.get().isPresent();
         }
@@ -250,6 +315,11 @@ public sealed interface VipsOption permits VipsOption.Int, VipsOption.Double, Vi
             return optionalValue.orElseThrow(
                 () -> new VipsError("unexpected empty value")
             );
+        }
+
+        public VEnum valueOrNull() {
+            var optionalValue = box.get();
+            return optionalValue.orElse(null);
         }
 
         public boolean hasValue() {

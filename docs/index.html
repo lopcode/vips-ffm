@@ -56,7 +56,8 @@ loadScripts(document, 'script');</script>
 <p>Fast, safe, complete <a href="https://github.com/libvips/libvips">libvips</a> bindings for image processing in Java / JVM projects.</p>
 <p>Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced &quot;vips (like zips)
 eff-eff-emm&quot;. The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
-(Ubuntu 24.04, Debian 12.1). Should work on any architecture you can use libvips and Java on (arm64/amd64/etc).</p>
+(Ubuntu 24.04, Debian 12.1, with and without jemalloc). Should work on any architecture you can use libvips and
+Java on (arm64/amd64/etc).</p>
 <p>Uses the &quot;Foreign Function &amp; Memory API&quot; (<a href="https://openjdk.org/jeps/454">JEP 454</a>), and the &quot;Class-File API&quot; (<a href="https://openjdk.org/jeps/457">JEP 457</a>) released in JDK 22.
 Built in such a way that it's usually the fastest image processing library available for Java.</p>
 <p>Used the library? I'd love to hear from more users - let me know in <a href="https://github.com/lopcode/vips-ffm/discussions">Discussions</a>. Please also give <a href="https://github.com/lopcode/vips-ffm">the repo</a>
@@ -68,7 +69,7 @@ a star 🌟️!</p>
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.7.1&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.8.0&quot;)
 }
 </code></pre>
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
@@ -98,6 +99,8 @@ import app.photofox.vipsffm.enums.VipsAccess
 // ...
 
 // Call once to initialise libvips when your program starts, from any thread
+//   Note that by default this blocks untrusted operations (like loading PDFs)
+//   See the &quot;Allowing untrusted operations&quot; section below to read about permitting untrusted operations
 Vips.init()
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
@@ -229,6 +232,47 @@ like Android where it's hard to set the system library path), you can do so usin
 <li>glib: <code>vipsffm.libpath.glib.override</code></li>
 <li>gobject: <code>vipsffm.libpath.gobject.override</code></li>
 </ul>
+<h2 id="operationalisation-heading">Operationalisation</h2>
+<p>libvips maintain <a href="https://www.libvips.org/API/8.17/developer-checklist.html">a checklist</a> of things to be aware of when
+using the library. Of particular note for vips-ffm is memory usage - especially if the library is used for long-running
+application (like a server).</p>
+<h3 id="operation-cache-heading">Operation cache</h3>
+<p>At the time of writing, libvips maintains a cache of the 100 most recent operations (<a href="https://www.libvips.org/API/8.17/how-it-works.html#operation-cache">see docs</a>).
+If running an image proxy, or something that processes lots of different images, you won't see any benefit, and can
+disable it:</p>
+<pre><code class="language-java">Vips.init();
+Vips.disableOperationCache();
+</code></pre>
+<h3 id="memory-allocation-heading">Memory allocation</h3>
+<p>On glibc-based Linux systems (e.g. Debian, Red Hat), the default memory allocator performs poorly for long-running,
+multithreaded processes with frequent small allocations. Using an alternative allocator like jemalloc can reduce the
+off-heap footprint of the JVM when using libvips.</p>
+<p>Note that the jemalloc project is going through <a href="https://jasone.github.io/2025/06/12/jemalloc-postmortem/">some turbulence</a>
+at the moment. Facebook have <a href="https://github.com/facebook/jemalloc">forked it</a>, though its maintenance status is
+currently unknown.</p>
+<p>An example of using jemalloc on Ubuntu:</p>
+<ol>
+<li>Install jemalloc
+<pre><code class="language-sh">apt install libjemalloc2
+</code></pre>
+</li>
+<li>Set the <code>LD_PRELOAD</code> environment variable before running your application.
+<pre><code class="language-sh">ln -sT &quot;$(readlink -e /usr/lib/*/libjemalloc.so.2)&quot; /usr/local/lib/libjemalloc.so # symlink jemalloc to a standard location
+export LD_PRELOAD=/usr/local/lib/libjemalloc.so
+java -jar ...
+</code></pre>
+</li>
+</ol>
+<h3 id="allowing-untrusted-operations-heading">Allowing untrusted operations</h3>
+<p>By default, vips-ffm sets the &quot;block untrusted operations&quot; flag in libvips, in an attempt to be &quot;secure by default&quot;.
+This includes blocking things like the imagemagick and PDF loaders. If you get an error relating to &quot;operation is
+blocked&quot;, then the operation you're trying to use is marked as untrusted in libvips.</p>
+<p>If you need to work with operations and formats that are marked as &quot;untrusted&quot; in libvips, you can permit them
+explicitly:</p>
+<pre><code class="language-java">Vips.allowUntrustedOperations();
+</code></pre>
+<p>See the <a href="https://www.libvips.org/API/8.17/func.block_untrusted_set.html">libvips docs</a> for guidance on figuring out what
+loaders and operations are marked as trusted or untrusted.</p>
 <h2 id="project-goals-heading">Project goals</h2>
 <p>Ideas and suggestions are welcome, but please make sure they fit in to these goals, or you have a good argument about
 why a goal should change!</p>
