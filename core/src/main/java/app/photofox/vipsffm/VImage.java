@@ -54,7 +54,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9886,13 +9885,12 @@ public final class VImage {
   /// Creates a new VImage from raw bytes, mapping directly to the `vips_image_new_from_memory` function, with some checks.
   ///
   /// This is included for narrow use cases where you have image bytes representing partially supported image formats from another library (like DICOM), and you need a way to get them in to libvips without using the built-in source loaders.
-  /// Note that due to Java FFM limitations, a full copy to native memory must still be performed. 
+  /// Note that this uses the Java FFM [MemorySegment] API to avoid an unnecessary copy. 
   ///
   /// This is an advanced method - if possible, use [VImage#newFromFile] and friends instead. If you have bytes to load, you could use [VImage#newFromBytes].
-  public static VImage newFromMemory(Arena arena, byte[] bytes, int width, int height, int bands,
-      int format) throws VipsError {
-    var offHeapBytes = arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes);
-    var imagePointer = VipsHelper.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format);
+  public static VImage newFromMemory(Arena arena, MemorySegment memorySegment, int width,
+      int height, int bands, int format) throws VipsError {
+    var imagePointer = VipsHelper.image_new_from_memory(arena, memorySegment, memorySegment.byteSize(), width, height, bands, format);
     return new VImage(arena, imagePointer);
   }
 
@@ -9950,6 +9948,22 @@ public final class VImage {
       VipsError {
     var target = VTarget.newFromOutputStream(arena, stream);
     this.writeToTarget(target, suffix, options);
+  }
+
+  /// Writes this VImage's raw pixel values to a [MemorySegment], in the following pixel order: RGBRGBRGB etc.
+  /// It performs a full memory copy of the image, and so provides an image copying option that is thread-safe
+  /// and independent of other VImage operations.
+  ///
+  /// In performance-critical scenarios where you need to avoid memory copies, and you are sure about the image's
+  /// state and lifetime, prefer [VipsHelper#image_get_data] instead.
+  public MemorySegment writeToMemory() throws VipsError {
+    var outLengthPointer = arena.allocate(VipsRaw.C_LONG);
+    var imageMemory = VipsHelper.image_write_to_memory(this.address, outLengthPointer);
+    var sizeOfImage = outLengthPointer.get(VipsRaw.C_LONG, 0);
+    if (sizeOfImage < 0) {
+      throw new VipsError("unexpected image size after write");
+    }
+    return imageMemory.reinterpret(arena, VipsRaw::g_free).asSlice(0, sizeOfImage);
   }
 
   public static VImage newImage(Arena arena) throws VipsError {

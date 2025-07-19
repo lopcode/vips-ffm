@@ -16,6 +16,7 @@ import com.palantir.javapoet.TypeSpec
 import org.slf4j.LoggerFactory
 import vipsffm.GenerateVipsHelperClass.fromSnakeToJavaStyle
 import java.lang.foreign.Arena
+import java.lang.foreign.MemorySegment
 import java.nio.file.Path
 import java.util.*
 import javax.lang.model.element.Modifier
@@ -728,24 +729,28 @@ object GenerateVClasses {
         val newFromMemoryMethod = MethodSpec.methodBuilder("newFromMemory")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .addParameter(arenaType, "arena")
-            .addParameter(ArrayTypeName.of(TypeName.BYTE), "bytes")
+            .addParameter(memorySegmentType, "memorySegment")
             .addParameter(TypeName.INT, "width")
             .addParameter(TypeName.INT, "height")
             .addParameter(TypeName.INT, "bands")
             .addParameter(TypeName.INT, "format")
             .returns(vimageType)
             .addException(vipsErrorType)
-            .addStatement("var offHeapBytes = arena.allocateFrom(\$T.JAVA_BYTE, bytes)", valueLayoutType)
-            .addStatement("var imagePointer = \$T.image_new_from_memory(arena, offHeapBytes, offHeapBytes.byteSize(), width, height, bands, format)", vipsHelperType)
+            .addStatement(
+                "var imagePointer = \$T.image_new_from_memory(arena, memorySegment, memorySegment.byteSize(), width, height, bands, format)",
+                vipsHelperType
+            )
             .addStatement("return new VImage(arena, imagePointer)")
-            .addJavadoc("""
+            .addJavadoc(
+                """
                 Creates a new VImage from raw bytes, mapping directly to the `vips_image_new_from_memory` function, with some checks.
 
                 This is included for narrow use cases where you have image bytes representing partially supported image formats from another library (like DICOM), and you need a way to get them in to libvips without using the built-in source loaders.
-                Note that due to Java FFM limitations, a full copy to native memory must still be performed. 
+                Note that this uses the Java FFM [MemorySegment] API to avoid an unnecessary copy. 
                 
                 This is an advanced method - if possible, use [VImage#newFromFile] and friends instead. If you have bytes to load, you could use [VImage#newFromBytes].
-            """.trimIndent())
+            """.trimIndent()
+            )
             .build()
         val newFromStreamMethod = MethodSpec.methodBuilder("newFromStream")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -795,6 +800,31 @@ object GenerateVClasses {
             .addStatement("callArgs.add(filenameOption)")
             .addStatement("callArgs.add(inOption)")
             .addStatement("\$T.invokeOperation(arena, loader, filenameOptions, callArgs)", vipsInvokerType)
+            .build()
+        val writeToMemoryMethod = MethodSpec.methodBuilder("writeToMemory")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(MemorySegment::class.java)
+            .addException(vipsErrorType)
+            .addStatement("var outLengthPointer = arena.allocate(\$T.C_LONG)", vipsRawType)
+            .addStatement("var imageMemory = \$T.image_write_to_memory(this.address, outLengthPointer)", vipsHelperType)
+            .addStatement("var sizeOfImage = outLengthPointer.get(\$T.C_LONG, 0)", vipsRawType)
+            .beginControlFlow("if (sizeOfImage < 0)")
+            .addStatement(
+                "throw new \$T(\"unexpected image size after write\")",
+                vipsErrorType
+            )
+            .endControlFlow()
+            .addStatement("return imageMemory.reinterpret(arena, \$T::g_free).asSlice(0, sizeOfImage)", vipsRawType)
+            .addJavadoc(
+                """
+                Writes this VImage's raw pixel values to a [MemorySegment], in the following pixel order: RGBRGBRGB etc.
+                It performs a full memory copy of the image, and so provides an image copying option that is thread-safe
+                and independent of other VImage operations.
+                
+                In performance-critical scenarios where you need to avoid memory copies, and you are sure about the image's
+                state and lifetime, prefer [VipsHelper#image_get_data] instead.
+            """.trimIndent()
+            )
             .build()
         val writeToImageMethod = MethodSpec.methodBuilder("write")
             .addModifiers(Modifier.PUBLIC)
@@ -865,6 +895,7 @@ object GenerateVClasses {
             writeToImageMethod,
             writeToTargetMethod,
             writeToStreamMethod,
+            writeToMemoryMethod,
             newImageMethod
         ) + getSetMethods
     }

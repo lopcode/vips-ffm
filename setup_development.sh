@@ -26,20 +26,21 @@ pushd libvips
 
 echo "Building libvips..."
 echo "Clearing build cache..."
-rm -rf release && mkdir -p release
 rm -rf build && mkdir -p build
 
 echo "Setting up Meson build..."
 PREFIX_PATH=$(realpath "release")
 echo "Prefix path: $PREFIX_PATH"
 
-meson setup --wipe build
+export CC=clang
+export CXX=clang++
+
 meson setup build --prefix $PREFIX_PATH
 
 echo "Compiling..."
-meson compile -C $BUILD_PATH
+meson compile -C build
 echo "Installing..."
-meson install -C $BUILD_PATH
+meson install -C build
 
 (release/bin/vips --version | grep $LIBVIPS_VERSION) || (echo "libvips version not as expected" && exit 1)
 popd

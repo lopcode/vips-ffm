@@ -7238,6 +7238,65 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_write_to_memory {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_write_to_memory");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+     * }
+     */
+    public static FunctionDescriptor vips_image_write_to_memory$descriptor() {
+        return vips_image_write_to_memory.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+     * }
+     */
+    public static MethodHandle vips_image_write_to_memory$handle() {
+        return vips_image_write_to_memory.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+     * }
+     */
+    public static MemorySegment vips_image_write_to_memory$address() {
+        return vips_image_write_to_memory.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void *vips_image_write_to_memory(VipsImage *in, size_t *size)
+     * }
+     */
+    public static MemorySegment vips_image_write_to_memory(MemorySegment in, MemorySegment size) {
+        var mh$ = vips_image_write_to_memory.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_write_to_memory", in, size);
+            }
+            return (MemorySegment)mh$.invokeExact(in, size);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_hasalpha {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_INT,
