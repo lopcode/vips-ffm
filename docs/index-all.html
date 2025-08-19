@@ -457,6 +457,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.close_async.Function.html#apply(java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, int, MemorySegment, MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.close_async.Function.html" title="interface in app.photofox.vipsffm.jextract">_GInputStreamClass.close_async.Function</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.Function.html#apply(java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, long, int, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.Function.html" title="interface in app.photofox.vipsffm.jextract">CustomStreamSeekCallback.Function</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip_async.Function.html#apply(java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, long, int, MemorySegment, MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip_async.Function.html" title="interface in app.photofox.vipsffm.jextract">_GInputStreamClass.skip_async.Function</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip.Function.html#apply(java.lang.foreign.MemorySegment,long,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, long, MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip.Function.html" title="interface in app.photofox.vipsffm.jextract">_GInputStreamClass.skip.Function</a></dt>
@@ -464,8 +466,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.notify.Function.html#apply(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GObjectClass.notify.Function.html" title="interface in app.photofox.vipsffm.jextract">_GObjectClass.notify.Function</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamEndCallback.Function.html#apply(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamEndCallback.Function.html" title="interface in app.photofox.vipsffm.jextract">CustomStreamEndCallback.Function</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.Function.html#apply(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, MemorySegment, int, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.Function.html" title="interface in app.photofox.vipsffm.jextract">CustomStreamSeekCallback.Function</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.read_async.Function.html#apply(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">apply(MemorySegment, MemorySegment, long, int, MemorySegment, MemorySegment, MemorySegment)</a> - Method in interface app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.read_async.Function.html" title="interface in app.photofox.vipsffm.jextract">_GInputStreamClass.read_async.Function</a></dt>
 <dd>&nbsp;</dd>
@@ -1742,7 +1742,7 @@ direction of an image.</div>
 <dd>
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-app.photofox.vipsffm.jextract.CustomStreamSeekCallback4"><code class="language-c">typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, void *, int, void *)
+<pre class="snippet" id="snippet-app.photofox.vipsffm.jextract.CustomStreamSeekCallback4"><code class="language-c">typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, gint64, int, void *)
 </code></pre>
 </div>
 </div>
@@ -3261,6 +3261,8 @@ remaining channels with <code>background</code>.</div>
 <dd>
 <div class="block">Multiply <code>in</code> by <code>mask</code> in Fourier space.</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#fromValue(int)" class="member-name-link">fromValue(int)</a> - Static method in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#fwfft(app.photofox.vipsffm.VipsOption...)" class="member-name-link">fwfft(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">Transform an image to Fourier space.</div>
@@ -5730,6 +5732,8 @@ if not present</div>
 <dd>
 <div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsTarget struct</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#getValue()" class="member-name-link">getValue()</a> - Method in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#getWidth()" class="member-name-link">getWidth()</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#gifload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">gifload(Arena, String, VipsOption...)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
@@ -6845,6 +6849,10 @@ will map reals to targets.</div>
 <dd>
 <div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.html#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment)" class="member-name-link">invoke(MemorySegment, MemorySegment, long, int, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.html" title="class in app.photofox.vipsffm.jextract">CustomStreamSeekCallback</a></dt>
+<dd>
+<div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip_async.html#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">invoke(MemorySegment, MemorySegment, long, int, MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.skip_async.html" title="class in app.photofox.vipsffm.jextract">_GInputStreamClass.skip_async</a></dt>
 <dd>
 <div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
@@ -6858,10 +6866,6 @@ will map reals to targets.</div>
 <div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamEndCallback.html#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">invoke(MemorySegment, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamEndCallback.html" title="class in app.photofox.vipsffm.jextract">CustomStreamEndCallback</a></dt>
-<dd>
-<div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
-</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.html#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" class="member-name-link">invoke(MemorySegment, MemorySegment, MemorySegment, int, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/CustomStreamSeekCallback.html" title="class in app.photofox.vipsffm.jextract">CustomStreamSeekCallback</a></dt>
 <dd>
 <div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
 </dd>
@@ -9408,7 +9412,9 @@ metadata.</div>
 <div class="block">Returns the value of the <code>rawValue</code> record component.</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.ReadCallback.html#read(java.lang.foreign.MemorySegment,long)" class="member-name-link">read(MemorySegment, long)</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.ReadCallback.html" title="interface in app.photofox.vipsffm">VCustomSource.ReadCallback</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Read data from the input and write it to the provided memory segment</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.html#read_async(java.lang.foreign.MemorySegment)" class="member-name-link">read_async(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GInputStreamClass.html" title="class in app.photofox.vipsffm.jextract">_GInputStreamClass</a></dt>
 <dd>
 <div class="block">Getter for field:
@@ -9889,8 +9895,22 @@ minimum is zero.</div>
 <dd>
 <div class="block">a box with rounded <code>corners</code> from <code>a</code> to <code>b</code></div>
 </dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekCallback.html#seek(int)" class="member-name-link">seek(int)</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekCallback.html" title="interface in app.photofox.vipsffm">VCustomSource.SeekCallback</a></dt>
-<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekCallback.html#seek(long,app.photofox.vipsffm.VCustomSource.SeekWhence)" class="member-name-link">seek(long, VCustomSource.SeekWhence)</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekCallback.html" title="interface in app.photofox.vipsffm">VCustomSource.SeekCallback</a></dt>
+<dd>
+<div class="block">Seek to a specific position in the input</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#SEEK_CUR" class="member-name-link">SEEK_CUR</a> - Enum constant in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>
+<div class="block">Seek from the current position in the input</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#SEEK_END" class="member-name-link">SEEK_END</a> - Enum constant in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>
+<div class="block">Seek from the end of the input</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#SEEK_SET" class="member-name-link">SEEK_SET</a> - Enum constant in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>
+<div class="block">Seek from the beginning of the input</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#sequential(app.photofox.vipsffm.VipsOption...)" class="member-name-link">sequential(VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block">This operation behaves rather like <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#copy(app.photofox.vipsffm.VipsOption...)"><code>VImage.copy(app.photofox.vipsffm.VipsOption...)</code></a> between images
@@ -11581,6 +11601,10 @@ levels.</div>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html#valueOrNull()" class="member-name-link">valueOrNull()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm">VipsOption.ArrayDouble</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html#valueOrNull()" class="member-name-link">valueOrNull()</a> - Method in record class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.ArrayImage.html" title="class in app.photofox.vipsffm">VipsOption.ArrayImage</a></dt>
@@ -11852,6 +11876,11 @@ the order they are declared.</div>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html#values()" class="member-name-link">values()</a> - Static method in enum class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GEnumClass.html#values(java.lang.foreign.MemorySegment)" class="member-name-link">values(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_GEnumClass.html" title="class in app.photofox.vipsffm.jextract">_GEnumClass</a></dt>
 <dd>
 <div class="block">Getter for field:
@@ -11907,6 +11936,8 @@ the order they are declared.</div>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.ReadCallback.html" class="type-name-link" title="interface in app.photofox.vipsffm">VCustomSource.ReadCallback</a> - Interface in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekCallback.html" class="type-name-link" title="interface in app.photofox.vipsffm">VCustomSource.SeekCallback</a> - Interface in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomSource.SeekWhence.html" class="type-name-link" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a> - Enum Class in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomTarget.html" class="type-name-link" title="class in app.photofox.vipsffm">VCustomTarget</a> - Class in <a href="app.photofox.vipsffm/app/photofox/vipsffm/package-summary.html">app.photofox.vipsffm</a></dt>
 <dd>

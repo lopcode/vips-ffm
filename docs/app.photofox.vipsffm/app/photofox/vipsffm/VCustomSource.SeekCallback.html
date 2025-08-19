@@ -65,7 +65,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-summary" tabindex="0">Method Summary</a></li>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
-<li><a href="#seek(int)" tabindex="0">seek(int)</a></li>
+<li><a href="#seek(long,app.photofox.vipsffm.VCustomSource.SeekWhence)" tabindex="0">seek(long, VCustomSource.SeekWhence)</a></li>
 </ol>
 </li>
 </ol>
@@ -104,8 +104,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>long</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#seek(int)" class="member-name-link">seek</a><wbr>(int&nbsp;whence)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#seek(long,app.photofox.vipsffm.VCustomSource.SeekWhence)" class="member-name-link">seek</a><wbr>(long&nbsp;offset,
+ <a href="VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a>&nbsp;whence)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Seek to a specific position in the input</div>
+</div>
 </div>
 </div>
 </div>
@@ -121,10 +124,19 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="seek(int)">
+<section class="detail" id="seek(long,app.photofox.vipsffm.VCustomSource.SeekWhence)">
 <h3>seek</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name">seek</span><wbr><span class="parameters">(int&nbsp;whence)</span></div>
+<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name">seek</span><wbr><span class="parameters">(long&nbsp;offset,
+ <a href="VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm">VCustomSource.SeekWhence</a>&nbsp;whence)</span></div>
+<div class="block">Seek to a specific position in the input</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>offset</code> - Relative offset in bytes from the position specified by <code>whence</code></dd>
+<dd><code>whence</code> - Where to seek from, one of <a href="VCustomSource.SeekWhence.html" title="enum class in app.photofox.vipsffm"><code>VCustomSource.SeekWhence</code></a></dd>
+<dt>Returns:</dt>
+<dd>the new position in the input, or -1 on error</dd>
+</dl>
 </div>
 </section>
 </li>
