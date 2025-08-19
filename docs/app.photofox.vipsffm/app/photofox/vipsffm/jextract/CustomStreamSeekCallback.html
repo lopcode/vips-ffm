@@ -67,7 +67,7 @@ loadScripts(document, 'script');</script>
 <ol class="toc-list">
 <li><a href="#descriptor()" tabindex="0">descriptor()</a></li>
 <li><a href="#allocate(app.photofox.vipsffm.jextract.CustomStreamSeekCallback.Function,java.lang.foreign.Arena)" tabindex="0">allocate(CustomStreamSeekCallback.Function, Arena)</a></li>
-<li><a href="#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" tabindex="0">invoke(MemorySegment, MemorySegment, MemorySegment, int, MemorySegment)</a></li>
+<li><a href="#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment)" tabindex="0">invoke(MemorySegment, MemorySegment, long, int, MemorySegment)</a></li>
 </ol>
 </li>
 </ol>
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="../../../../../resource-files/copy.svg" alt="Copy snippet"></button>
-<pre class="snippet" id="snippet-app.photofox.vipsffm.jextract.CustomStreamSeekCallback1"><code class="language-c">typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, void *, int, void *)
+<pre class="snippet" id="snippet-app.photofox.vipsffm.jextract.CustomStreamSeekCallback1"><code class="language-c">typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, gint64, int, void *)
 </code></pre>
 </div>
 </div>
@@ -135,9 +135,9 @@ loadScripts(document, 'script');</script>
 <div class="block">The descriptor of this function pointer</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)" class="member-name-link">invoke</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;funcPtr,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment)" class="member-name-link">invoke</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;funcPtr,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;source,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;offset,
  int&nbsp;whence,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;handle)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -181,12 +181,12 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,int,java.lang.foreign.MemorySegment)">
+<section class="detail" id="invoke(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment,long,int,java.lang.foreign.MemorySegment)">
 <h3>invoke</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">invoke</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;funcPtr,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;source,
- <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;data,
+ long&nbsp;offset,
  int&nbsp;whence,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;handle)</span></div>
 <div class="block">Invoke the upcall stub <code>funcPtr</code>, with given parameters</div>
