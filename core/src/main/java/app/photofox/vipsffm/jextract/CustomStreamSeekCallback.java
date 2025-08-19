@@ -31,9 +31,9 @@ public class CustomStreamSeekCallback {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        VipsRaw.C_LONG,
+        VipsRaw.C_LONG_LONG,
         VipsRaw.C_POINTER,
-        VipsRaw.C_LONG,
+        VipsRaw.C_LONG_LONG,
         VipsRaw.C_INT,
         VipsRaw.C_POINTER
     );
