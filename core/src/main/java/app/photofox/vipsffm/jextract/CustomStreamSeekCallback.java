@@ -14,7 +14,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, void *, int, void *)
+ * typedef gint64 (*CustomStreamSeekCallback)(VipsSourceCustom *, gint64, int, void *)
  * }
  */
 public class CustomStreamSeekCallback {
@@ -27,13 +27,13 @@ public class CustomStreamSeekCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        long apply(MemorySegment source, MemorySegment data, int whence, MemorySegment handle);
+        long apply(MemorySegment source, long offset, int whence, MemorySegment handle);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
         VipsRaw.C_LONG_LONG,
         VipsRaw.C_POINTER,
-        VipsRaw.C_POINTER,
+        VipsRaw.C_LONG_LONG,
         VipsRaw.C_INT,
         VipsRaw.C_POINTER
     );
@@ -60,9 +60,9 @@ public class CustomStreamSeekCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static long invoke(MemorySegment funcPtr,MemorySegment source, MemorySegment data, int whence, MemorySegment handle) {
+    public static long invoke(MemorySegment funcPtr,MemorySegment source, long offset, int whence, MemorySegment handle) {
         try {
-            return (long) DOWN$MH.invokeExact(funcPtr, source, data, whence, handle);
+            return (long) DOWN$MH.invokeExact(funcPtr, source, offset, whence, handle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

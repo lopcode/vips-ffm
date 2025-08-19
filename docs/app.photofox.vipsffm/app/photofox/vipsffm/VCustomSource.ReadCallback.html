@@ -106,7 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#read(java.lang.foreign.MemorySegment,long)" class="member-name-link">read</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;dataPointer,
  long&nbsp;length)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Read data from the input and write it to the provided memory segment</div>
+</div>
 </div>
 </div>
 </div>
@@ -127,6 +129,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name">read</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a>&nbsp;dataPointer,
  long&nbsp;length)</span></div>
+<div class="block">Read data from the input and write it to the provided memory segment</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>dataPointer</code> - Pointer to the memory segment where the data should be written</dd>
+<dd><code>length</code> - The maximum number of bytes to read</dd>
+<dt>Returns:</dt>
+<dd>The number of bytes actually read, or -1 on error</dd>
+</dl>
 </div>
 </section>
 </li>
