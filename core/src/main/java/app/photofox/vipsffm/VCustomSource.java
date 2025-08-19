@@ -16,13 +16,55 @@ public final class VCustomSource extends VSource {
     @FunctionalInterface
     public interface ReadCallback {
 
+        /**
+         * Read data from the input and write it to the provided memory segment
+         *
+         * @param dataPointer Pointer to the memory segment where the data should be written
+         * @param length      The maximum number of bytes to read
+         * @return The number of bytes actually read, or -1 on error
+         */
         long read(MemorySegment dataPointer, long length);
     }
 
     @FunctionalInterface
     public interface SeekCallback {
 
-        long seek(int whence);
+        /**
+         * Seek to a specific position in the input
+         *
+         * @param offset Relative offset in bytes from the position specified by {@code whence}
+         * @param whence Where to seek from, one of {@link SeekWhence}
+         * @return the new position in the input, or -1 on error
+         */
+        long seek(long offset, SeekWhence whence);
+    }
+
+    public enum SeekWhence {
+        /** Seek from the beginning of the input */
+        SEEK_SET(0),
+        /** Seek from the current position in the input */
+        SEEK_CUR(1),
+        /** Seek from the end of the input */
+        SEEK_END(2);
+
+        private final int value;
+
+        public static SeekWhence fromValue(int value) {
+            return switch (value) {
+                case 0 -> SEEK_SET;
+                case 1 -> SEEK_CUR;
+                case 2 -> SEEK_END;
+                default -> throw new IllegalArgumentException("Unknown seek whence value: " + value);
+            };
+        }
+
+        SeekWhence(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     private final VCustomSource.ReadCallback readCallback;
@@ -39,7 +81,7 @@ public final class VCustomSource extends VSource {
 
         attachReadSignal(arena, this);
         if (seekCallback != null) {
-            attachSeekSignal(arena, this, seekCallback);
+            attachSeekSignal(arena, this);
         }
     }
 
@@ -78,17 +120,17 @@ public final class VCustomSource extends VSource {
         }
     }
 
-    private void attachSeekSignal(Arena arena, VSource source, SeekCallback seekCallback) {
+    private void attachSeekSignal(Arena arena, VSource source) {
         var callback = new CustomStreamSeekCallback.Function() {
 
             @Override
             public long apply(
                 MemorySegment source,
-                MemorySegment data,
+                long offset,
                 int whence,
                 MemorySegment handle
             ) {
-                return seekCallback.seek(whence);
+                return seekCallback.seek(offset, SeekWhence.fromValue(whence));
             }
         };
         var callbackPointer = CustomStreamSeekCallback.allocate(callback, arena);
