@@ -33,6 +33,7 @@ public class VipsInvoker {
         String stringOptions,
         List<? extends VipsOption> args
     ) throws VipsError {
+        Vips.checkWasInitialized();
         // https://www.libvips.org/API/current/binding.html
         var operation = VipsRaw.vips_operation_new(arena.allocateFrom(nickname));
         if (!VipsValidation.isValidPointer(operation)) {

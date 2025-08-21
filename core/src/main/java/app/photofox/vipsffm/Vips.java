@@ -7,14 +7,26 @@ import java.lang.foreign.Arena;
 /// Blocks untrusted operations by default
 public class Vips {
 
+    private static boolean isInitialized = false;
+
     public static void init() {
         init(false, false);
     }
 
     public static void init(boolean allowUntrusted, boolean detectLeaks) {
+        if (isInitialized) {
+            throw new IllegalStateException("Vips has already been initialized!");
+        }
         var arena = Arena.global();
         VipsHelper.init(arena, allowUntrusted);
         VipsHelper.leak_set(detectLeaks);
+        isInitialized = true;
+    }
+
+    public static void checkWasInitialized() {
+        if (!isInitialized) {
+            throw new IllegalStateException("Vips has not been initialized. Call Vips.init() first!");
+        }
     }
 
     /// Provides a scoped arena to provide a memory boundary for running libvips operations
