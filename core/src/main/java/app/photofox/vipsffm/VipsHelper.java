@@ -12,13 +12,16 @@ import java.util.List;
 ///
 /// **Nothing in this class is guaranteed to stay the same across minor versions - use at your own risk!**
 public final class VipsHelper {
-  public static void init(Arena arena, boolean allowUntrusted) {
+  {
+    Vips.autoInit();
+  }
+
+  public static void init(Arena arena) {
     var nameCString = arena.allocateFrom("vips-ffm");
     var result = VipsRaw.vips_init(nameCString);
     if (!VipsValidation.isValidResult(result)) {
       VipsValidation.throwVipsError("vips_init");
     }
-    VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1);
   }
 
   /// Binding for:

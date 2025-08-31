@@ -19,6 +19,10 @@ import static app.photofox.vipsffm.jextract.VipsRaw.*;
 /// a new version of libvips. You can find examples of how to use it in [VImage]
 public class VipsInvoker {
 
+    static {
+        Vips.autoInit();
+    }
+
     public static void invokeOperation(
         Arena arena,
         String nickname,

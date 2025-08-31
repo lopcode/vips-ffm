@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run samples" type="JetRunConfigurationType">
+    <option name="ALTERNATIVE_JRE_PATH" value="24" />
     <envs>
       <env name="DYLD_LIBRARY_PATH" value="libvips/release/lib:/opt/homebrew/lib:$DYLD_LIBRARY_PATH" />
     </envs>

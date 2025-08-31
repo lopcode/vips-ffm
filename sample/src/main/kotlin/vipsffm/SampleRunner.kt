@@ -67,7 +67,7 @@ object SampleRunner {
         Files.deleteIfExists(sampleParentRunPath)
         Files.createDirectory(sampleParentRunPath)
 
-        Vips.init(false, true)
+        Vips.enableLeakDetection()
         samples.forEach { sample ->
             Vips.run { arena ->
                 val sampleName = sample::class.simpleName!!
