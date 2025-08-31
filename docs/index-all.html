@@ -29,6 +29,7 @@ loadScripts(document, 'script');</script>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
 <li><a href="index.html">Overview</a></li>
 <li><a href="overview-tree.html">Tree</a></li>
+<li><a href="deprecated-list.html">Deprecated</a></li>
 <li class="nav-bar-cell1-rev">Index</li>
 <li><a href="search.html">Search</a></li>
 <li><a href="help-doc.html#index">Help</a></li>
@@ -2404,6 +2405,10 @@ direction of an image.</div>
 <dd>
 <div class="block">The opposite of <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#extractArea(int,int,int,int,app.photofox.vipsffm.VipsOption...)"><code>VImage.extractArea(int, int, int, int, app.photofox.vipsffm.VipsOption...)</code></a>: embed <code>in</code> within an image of
 size <code>width</code> by <code>height</code> at position <code>x</code>, <code>y</code>.</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#enableLeakDetection()" class="member-name-link">enableLeakDetection()</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
+<dd>
+<div class="block">Enables leak detection</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomTarget.EndCallback.html#end()" class="member-name-link">end()</a> - Method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VCustomTarget.EndCallback.html" title="interface in app.photofox.vipsffm">VCustomTarget.EndCallback</a></dt>
 <dd>&nbsp;</dd>
@@ -6560,10 +6565,18 @@ image <code>in2</code>.</div>
 </div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#init()" class="member-name-link">init()</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Note that you do not usually need to call <a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#init()"><code>Vips.init()</code></a> yourself, as initialisation is performed
+automatically when vips-ffm classes are used</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#init(boolean,boolean)" class="member-name-link">init(boolean, boolean)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html" title="class in app.photofox.vipsffm">Vips</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#init(java.lang.foreign.Arena,boolean)" class="member-name-link">init(Arena, boolean)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dd>
+<div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Please migrate to using <a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#allowUntrustedOperations()"><code>Vips.allowUntrustedOperations()</code></a> and <a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#enableLeakDetection()"><code>Vips.enableLeakDetection()</code></a>, and note
+that calling <a href="app.photofox.vipsffm/app/photofox/vipsffm/Vips.html#init()"><code>Vips.init()</code></a> is no longer required</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#init(java.lang.foreign.Arena)" class="member-name-link">init(Arena)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#init(java.lang.foreign.Arena,java.lang.String)" class="member-name-link">init(Arena, String)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>

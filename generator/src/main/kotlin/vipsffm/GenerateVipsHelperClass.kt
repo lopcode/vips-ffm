@@ -39,6 +39,7 @@ object GenerateVipsHelperClass {
     private val listType = ClassName.get("java.util", "List")
     private val listStringType = ParameterizedTypeName.get(listType, stringType)
     private val vipsOptionArrayType = ArrayTypeName.of(vipsOptionType)
+    private val vipsClassType = ClassName.get("app.photofox.vipsffm", "Vips")
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -376,8 +377,7 @@ object GenerateVipsHelperClass {
             .returns(TypeName.VOID)
             .addParameters(
                 listOf(
-                    ParameterSpec.builder(arenaType, "arena").build(),
-                    ParameterSpec.builder(TypeName.BOOLEAN, "allowUntrusted").build()
+                    ParameterSpec.builder(arenaType, "arena").build()
                 )
             )
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -386,10 +386,14 @@ object GenerateVipsHelperClass {
             .addCode(
                 makeResultValidatorCodeBlock(vipsValidatorType, "vips_init")
             )
-            .addStatement("VipsRaw.vips_block_untrusted_set(allowUntrusted ? 0 : 1)")
             .build()
         val vipsClass = TypeSpec.classBuilder("VipsHelper")
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
+            .addInitializerBlock(
+                CodeBlock.builder()
+                    .addStatement("\$T.autoInit()", vipsClassType)
+                    .build()
+            )
             .addMethod(initHelper)
             .addMethods(simpleMethods)
             .addMethods(variadicMethods)

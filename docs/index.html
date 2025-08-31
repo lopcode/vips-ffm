@@ -29,6 +29,7 @@ loadScripts(document, 'script');</script>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
 <li class="nav-bar-cell1-rev">Overview</li>
 <li><a href="overview-tree.html">Tree</a></li>
+<li><a href="deprecated-list.html">Deprecated</a></li>
 <li><a href="index-all.html">Index</a></li>
 <li><a href="search.html">Search</a></li>
 <li><a href="help-doc.html#overview">Help</a></li>
@@ -69,7 +70,7 @@ a star 🌟️!</p>
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.0&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.1&quot;)
 }
 </code></pre>
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
@@ -97,11 +98,6 @@ import app.photofox.vipsffm.VipsOption
 import app.photofox.vipsffm.enums.VipsAccess
 
 // ...
-
-// Call once to initialise libvips when your program starts, from any thread
-//   Note that by default this blocks untrusted operations (like loading PDFs)
-//   See the &quot;Allowing untrusted operations&quot; section below to read about permitting untrusted operations
-Vips.init()
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 // Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
@@ -200,7 +196,13 @@ functions are difficult to use without accidentally causing memory leaks, or eve
 available in <code>VImage</code> and other <code>V</code>-prefixed classes, use those instead. If you notice something missing, please open
 a GitHub Issue.</p>
 </blockquote>
-<h3 id="docker-checks-heading">Docker checks</h3>
+<h2 id="initialisation-heading">Initialisation</h2>
+<p>Initialisation of libvips is performed automatically the first time the <code>Vips</code>, <code>VipsHelper</code>, or <code>VipsInvoker</code> classes
+are initialised (which will cover almost all normal usage of vips-ffm). Previous versions of vips-ffm required users to
+call <code>Vips.init</code> manually, but this is no longer required.</p>
+<p>If you'd like to disable auto-initialisation of libvips, set the system property <code>vipsffm.autoinit</code> to the string value
+<code>false</code>.</p>
+<h2 id="docker-checks-heading">Docker checks</h2>
 <p>These samples are also run in Docker containers, to verify behaviour on specific Linux distributions. They're useful to
 look at if you're deploying <code>libvips</code> and <code>vips-ffm</code> workloads using containers.</p>
 <p>You can find them in the <a href="docker_tests"><code>docker_tests</code></a> folder.</p>
@@ -240,8 +242,7 @@ application (like a server).</p>
 <p>At the time of writing, libvips maintains a cache of the 100 most recent operations (<a href="https://www.libvips.org/API/8.17/how-it-works.html#operation-cache">see docs</a>).
 If running an image proxy, or something that processes lots of different images, you won't see any benefit, and can
 disable it:</p>
-<pre><code class="language-java">Vips.init();
-Vips.disableOperationCache();
+<pre><code class="language-java">Vips.disableOperationCache();
 </code></pre>
 <h3 id="memory-allocation-heading">Memory allocation</h3>
 <p>On glibc-based Linux systems (e.g. Debian, Red Hat), the default memory allocator performs poorly for long-running,

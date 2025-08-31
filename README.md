@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.0")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.1")
 }
 ```
 
@@ -55,11 +55,6 @@ import app.photofox.vipsffm.VipsOption
 import app.photofox.vipsffm.enums.VipsAccess
 
 // ...
-
-// Call once to initialise libvips when your program starts, from any thread
-//   Note that by default this blocks untrusted operations (like loading PDFs)
-//   See the "Allowing untrusted operations" section below to read about permitting untrusted operations
-Vips.init()
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 // Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
@@ -162,7 +157,16 @@ which isn't present in `vips-ffm`, you can use `VipsOption.Enum(rawValue)` or `V
 > available in `VImage` and other `V`-prefixed classes, use those instead. If you notice something missing, please open
 > a GitHub Issue.
 
-### Docker checks
+## Initialisation
+
+Initialisation of libvips is performed automatically the first time the `Vips`, `VipsHelper`, or `VipsInvoker` classes
+are initialised (which will cover almost all normal usage of vips-ffm). Previous versions of vips-ffm required users to
+call `Vips.init` manually, but this is no longer required.
+
+If you'd like to disable auto-initialisation of libvips, set the system property `vipsffm.autoinit` to the string value
+`false`.
+
+## Docker checks
 
 These samples are also run in Docker containers, to verify behaviour on specific Linux distributions. They're useful to
 look at if you're deploying `libvips` and `vips-ffm` workloads using containers.
@@ -207,7 +211,6 @@ If running an image proxy, or something that processes lots of different images,
 disable it:
 
 ```java
-Vips.init();
 Vips.disableOperationCache();
 ```
 
