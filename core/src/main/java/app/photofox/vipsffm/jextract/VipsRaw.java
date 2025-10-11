@@ -9906,6 +9906,65 @@ public class VipsRaw {
         }
     }
 
+    private static class vips_image_remove {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            VipsRaw.C_INT,
+            VipsRaw.C_POINTER,
+            VipsRaw.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = VipsRaw.findOrThrow("vips_image_remove");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gboolean vips_image_remove(VipsImage *image, const char *name)
+     * }
+     */
+    public static FunctionDescriptor vips_image_remove$descriptor() {
+        return vips_image_remove.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gboolean vips_image_remove(VipsImage *image, const char *name)
+     * }
+     */
+    public static MethodHandle vips_image_remove$handle() {
+        return vips_image_remove.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gboolean vips_image_remove(VipsImage *image, const char *name)
+     * }
+     */
+    public static MemorySegment vips_image_remove$address() {
+        return vips_image_remove.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gboolean vips_image_remove(VipsImage *image, const char *name)
+     * }
+     */
+    public static int vips_image_remove(MemorySegment image, MemorySegment name) {
+        var mh$ = vips_image_remove.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("vips_image_remove", image, name);
+            }
+            return (int)mh$.invokeExact(image, name);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class vips_image_map {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             VipsRaw.C_POINTER,

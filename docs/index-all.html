@@ -6466,6 +6466,13 @@ image <code>in2</code>.</div>
 </code></pre>
 </div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_remove(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String)" class="member-name-link">image_remove(Arena, MemorySegment, String)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dd>
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">gboolean vips_image_remove(VipsImage *image, const char *name)
+</code></pre>
+</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_set_area(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">image_set_area(Arena, MemorySegment, String, MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
@@ -9821,6 +9828,10 @@ and writes the result to <code>out</code>.</div>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#remosaic(java.lang.String,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">remosaic(String, String, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
 <div class="block"><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#remosaic(java.lang.String,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>VImage.remosaic(java.lang.String, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a> works rather as <a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#globalbalance(app.photofox.vipsffm.VipsOption...)"><code>VImage.globalbalance(app.photofox.vipsffm.VipsOption...)</code></a>.</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#remove(java.lang.String)" class="member-name-link">remove(String)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Helper function to remove the metadata stored at <code>name</code> on this image</div>
 </dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#replicate(int,int,app.photofox.vipsffm.VipsOption...)" class="member-name-link">replicate(int, int, VipsOption...)</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
 <dd>
@@ -17387,6 +17398,45 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-VIPS_IMAGE_PARTIAL()3"><code class="language-c">enum &lt;anonymous&gt;.VIPS_IMAGE_PARTIAL = 7
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_remove(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_remove(MemorySegment, MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_remove(java.lang.foreign.MemorySegment,java.lang.foreign.MemorySegment)3"><code class="language-c">extern gboolean vips_image_remove(VipsImage *image, const char *name)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_remove$address()" class="member-name-link">vips_image_remove$address()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_remove$address()3"><code class="language-c">extern gboolean vips_image_remove(VipsImage *image, const char *name)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_remove$descriptor()" class="member-name-link">vips_image_remove$descriptor()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_remove$descriptor()3"><code class="language-c">extern gboolean vips_image_remove(VipsImage *image, const char *name)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_remove$handle()" class="member-name-link">vips_image_remove$handle()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_remove$handle()3"><code class="language-c">extern gboolean vips_image_remove(VipsImage *image, const char *name)
 </code></pre>
 </div>
 </div>

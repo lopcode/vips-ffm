@@ -1083,8 +1083,24 @@ object GenerateVClasses {
             """.trimIndent()
             )
             .build()
-
         methods.add(fieldsMethod)
+
+        val removeMethod = MethodSpec.methodBuilder("remove")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(TypeName.BOOLEAN)
+            .addParameter(stringType, "name")
+            .addStatement("return \$T.image_remove(arena, this.address, name)", vipsHelperType)
+            .addJavadoc(
+                """
+                Helper function to remove the metadata stored at `name` on this image
+                
+                Returns false if there was no metadata entry at `name`
+                
+                See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+            """.trimIndent()
+            )
+            .build()
+        methods.add(removeMethod)
 
         return methods
     }
