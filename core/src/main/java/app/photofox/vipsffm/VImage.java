@@ -10132,6 +10132,15 @@ public final class VImage {
     return fieldNameStrings;
   }
 
+  /// Helper function to remove the metadata stored at `name` on this image
+  ///
+  /// Returns false if there was no metadata entry at `name`
+  ///
+  /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
+  public boolean remove(String name) {
+    return VipsHelper.image_remove(arena, this.address, name);
+  }
+
   /// Helper record to hold multiple outputs from the [VImage#findTrim] operation
   public record FindTrimOutput(int left, int top, int width, int height) {
   }

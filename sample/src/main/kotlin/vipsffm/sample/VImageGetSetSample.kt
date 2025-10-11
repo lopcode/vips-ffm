@@ -25,6 +25,7 @@ object VImageGetSetSample: RunnableSample {
             .set("test-name-double", 1234.0)
             .set("test-name-blob", VBlob.newFromBytes(arena, byteArrayOf(0x01, 0x02, 0x03, 0x04)))
             .set("test-name-image", VImage.black(arena, 100, 100))
+            .set("test-name-remove", "test-value-to-be-removed")
 
         val testStringValue = sourceImage.getString("test-name-string")
         if (testStringValue != "test-value") {
@@ -52,8 +53,8 @@ object VImageGetSetSample: RunnableSample {
             )
         }
 
-        val image = sourceImage.getImage("test-name-image")
-        if (image.width != 100 && image.height != 100) {
+        val imageFromMetadata = sourceImage.getImage("test-name-image")
+        if (imageFromMetadata.width != 100 && imageFromMetadata.height != 100) {
             return Result.failure(
                 RuntimeException("unexpected value in metadata")
             )
@@ -66,10 +67,23 @@ object VImageGetSetSample: RunnableSample {
             )
         }
 
+        val removedEntry = sourceImage.remove("test-name-remove")
+        if (!removedEntry) {
+            return Result.failure(
+                RuntimeException("should have removed entry")
+            )
+        }
+
         val fieldNames = sourceImage.fields
         if (!fieldNames.containsAll(listOf("test-name-string", "test-name-int", "test-name-double", "test-name-blob", "test-name-image"))) {
             return Result.failure(
                 RuntimeException("unexpected missing metadata entry in fields")
+            )
+        }
+
+        if (fieldNames.contains("test-name-remove")) {
+            return Result.failure(
+                RuntimeException("unexpected entry that should have been removed")
             )
         }
 

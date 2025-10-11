@@ -1611,6 +1611,20 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// gboolean vips_image_remove(VipsImage *image, const char *name)
+  /// ```
+  public static boolean image_remove(Arena arena, MemorySegment image, String nameString) throws
+      VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_remove", "image");
+    }
+    var name = arena.allocateFrom(nameString);
+    var result = VipsRaw.vips_image_remove(image, name);
+    return result == 1;
+  }
+
+  /// Binding for:
+  /// ```c
   /// void *vips_image_map(VipsImage *image, VipsImageMapFn fn, void *a)
   /// ```
   public static MemorySegment image_map(MemorySegment image, MemorySegment fn, MemorySegment a)
