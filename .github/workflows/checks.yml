@@ -42,8 +42,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
-          java-version: 23
+          distribution: "corretto"
+          java-version: 25 # run a newer version on macOS to work around libzip linking issues
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
