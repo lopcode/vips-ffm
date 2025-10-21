@@ -20,6 +20,7 @@ import vipsffm.sample.VImageGetPagesSample
 import vipsffm.sample.VImageGetSetSample
 import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VImageFromMemoryToMemorySample
+import vipsffm.sample.VImageGetPointSample
 import vipsffm.sample.VImageStaticThumbnailSample
 import vipsffm.sample.VOptionHyphenSample
 import vipsffm.sample.VSourceTargetSample
@@ -53,6 +54,7 @@ object SampleRunner {
             VImageStreamSample,
             VImageStaticThumbnailSample,
             VImageGetPagesSample,
+            VImageGetPointSample,
             HelperGetSetMetadataSample,
             VImageGetSetSample,
             VImageFindTrimSample,

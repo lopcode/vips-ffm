@@ -187,7 +187,8 @@ public class VipsInvoker {
                 var valuesPointer = VipsRaw.vips_value_get_array_double(gvaluePointer, numberOfValuesPointer);
                 var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
                 var list = new ArrayList<Double>();
-                for (int i = 0; i < numberOfElements; i++) {
+                var alignment = C_DOUBLE.byteAlignment();
+                for (long i = 0; i < numberOfElements * alignment; i += alignment) {
                     var value = valuesPointer.get(C_DOUBLE, i);
                     list.add(value);
                 }
