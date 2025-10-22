@@ -70,7 +70,7 @@ a star 🌟️!</p>
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.2&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.3&quot;)
 }
 </code></pre>
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
@@ -79,7 +79,7 @@ There are also lots of examples in the <a href="#samples">samples</a>.</p>
 <p>You must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you don't, you'll get a warning
 about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
 <p>As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
-generated from libvips <code>8.17.0</code> (but should be safe to use with different minor or patch versions).</p>
+generated from libvips <code>8.17.2</code> (but should be safe to use with different minor or patch versions).</p>
 <blockquote>
 <p>[!NOTE]
 This library <strong>does not</strong> include <code>libvips</code> in the download, you must add it to the system/container you're building

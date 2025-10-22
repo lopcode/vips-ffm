@@ -83,8 +83,13 @@ set -x
 @includes_filtered.txt \
 "jextract_entry/entrypoint.h"
 
+./gradlew clean generator:run --args="bootstrap"
 ./gradlew clean generator:build generator:shadowJar
 
-DYLD_LIBRARY_PATH=$(readlink -f ./libvips)/release/lib:/opt/homebrew/lib java --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
+export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib \
+  -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib \
+  -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib"
+
+java $JAVA_PATH_OPTS --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
 
 ./build_docs.sh
