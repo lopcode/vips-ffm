@@ -11028,8 +11028,8 @@ range of possible values.</p>
                       throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
 <div class="block"><p>Render a SVG file into a VIPS image.</p>
 <p>Rendering uses the librsvg library and should be fast.</p>
-<p>Use <code>dpi</code> to set the rendering resolution. The default is 72. You can also
-scale the rendering by <code>scale</code>.</p>
+<p>Use <code>dpi</code> to set the rendering resolution. The default is 72. Additionally,
+you can scale by setting <code>scale</code>. If you set both, they combine.</p>
 <p>This function only reads the image header and does not render any pixel
 data. Rendering occurs when pixels are accessed.</p>
 <p>SVGs larger than 10MB are normally blocked for security. Set <code>unlimited</code> to
@@ -11373,7 +11373,7 @@ bioformats-style image pyramids.</p>
 <p>Use <code>fail_on</code> to set the type of error that will cause load to fail. By
 default, loaders are permissive, that is, <a href="enums/VipsFailOn.html#FAIL_ON_NONE"><code>VipsFailOn.FAIL_ON_NONE</code></a>.</p>
 <p>When using libtiff 4.7.0+, the TIFF loader will limit memory allocation
-for tag processing to 20MB to prevent denial of service attacks.
+for decoding each input file to 50MB to prevent denial of service attacks.
 Set <code>unlimited</code> to remove this limit.</p>
 <p>Any ICC profile is read and attached to the VIPS image as
 <code>META_ICC_NAME</code>. Any XMP metadata is read and attached to the image

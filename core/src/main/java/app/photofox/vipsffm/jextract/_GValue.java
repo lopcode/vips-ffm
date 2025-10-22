@@ -123,7 +123,7 @@ public class _GValue {
             VipsRaw.C_FLOAT.withName("v_float"),
             VipsRaw.C_DOUBLE.withName("v_double"),
             VipsRaw.C_POINTER.withName("v_pointer")
-        ).withName("$anon$119:3");
+        ).withName("$anon$137:3");
 
         /**
          * The layout of this union

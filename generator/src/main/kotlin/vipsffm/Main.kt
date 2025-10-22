@@ -1,7 +1,10 @@
 package vipsffm
 
 fun main(args: Array<String>) {
-    ReplaceVipsLoader.main(args)
+    if (args.firstOrNull() == "bootstrap") {
+        ReplaceVipsLoader.main(args)
+        return
+    }
     GenerateVipsHelperClass.main(args)
     GenerateVClasses.main(args)
 }

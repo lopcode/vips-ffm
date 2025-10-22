@@ -8452,8 +8452,8 @@ public final class VImage {
   ///
   /// Rendering uses the librsvg library and should be fast.
   ///
-  /// Use `dpi` to set the rendering resolution. The default is 72. You can also
-  /// scale the rendering by `scale`.
+  /// Use `dpi` to set the rendering resolution. The default is 72. Additionally,
+  /// you can scale by setting `scale`. If you set both, they combine.
   ///
   /// This function only reads the image header and does not render any pixel
   /// data. Rendering occurs when pixels are accessed.
@@ -8882,7 +8882,7 @@ public final class VImage {
   /// default, loaders are permissive, that is, [VipsFailOn#FAIL_ON_NONE].
   ///
   /// When using libtiff 4.7.0+, the TIFF loader will limit memory allocation
-  /// for tag processing to 20MB to prevent denial of service attacks.
+  /// for decoding each input file to 50MB to prevent denial of service attacks.
   /// Set `unlimited` to remove this limit.
   ///
   /// Any ICC profile is read and attached to the VIPS image as

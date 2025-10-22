@@ -18,12 +18,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "corretto"
-          java-version: 25 # run a newer version on macOS to work around libzip linking issues
+          java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.14
+          gradle-version: 9.1.0
 
       - name: Run checks
         run: ./gradlew build check shadowJar
@@ -34,7 +34,7 @@ jobs:
           ./run_samples.sh
 
   macos-sense-check:
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,13 +42,13 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
+          distribution: "corretto"
           java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.14
+          gradle-version: 9.1.0
 
       - name: Run checks
         run: ./gradlew build check shadowJar
@@ -67,13 +67,13 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
+          distribution: "corretto"
           java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.14
+          gradle-version: 9.1.0
 
       - name: Run samples
         shell: pwsh
@@ -99,13 +99,13 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
+          distribution: "corretto"
           java-version: 23
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.14
+          gradle-version: 9.1.0
 
       - name: Run checks
         run: ./run_single_docker_tests.sh ${{ matrix.variant }}

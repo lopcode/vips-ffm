@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.2")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.3")
 }
 ```
 
@@ -35,7 +35,7 @@ You must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments.
 about "Restricted methods". In the future, the JVM will throw an error if you don't explicitly include this flag.
 
 As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
-generated from libvips `8.17.0` (but should be safe to use with different minor or patch versions).
+generated from libvips `8.17.2` (but should be safe to use with different minor or patch versions).
 
 > [!NOTE]
 > This library **does not** include `libvips` in the download, you must add it to the system/container you're building

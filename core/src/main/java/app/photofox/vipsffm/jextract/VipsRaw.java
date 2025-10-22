@@ -15177,25 +15177,25 @@ public class VipsRaw {
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION "8.17.1"
+     * #define VIPS_VERSION "8.17.2"
      * }
      */
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.1");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.2");
         }
         return Holder.VIPS_VERSION;
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION_STRING "8.17.1"
+     * #define VIPS_VERSION_STRING "8.17.2"
      * }
      */
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.1");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.17.2");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -15217,10 +15217,10 @@ public class VipsRaw {
     public static int VIPS_MINOR_VERSION() {
         return VIPS_MINOR_VERSION;
     }
-    private static final int VIPS_MICRO_VERSION = (int)1L;
+    private static final int VIPS_MICRO_VERSION = (int)2L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MICRO_VERSION 1
+     * #define VIPS_MICRO_VERSION 2
      * }
      */
     public static int VIPS_MICRO_VERSION() {
@@ -15235,10 +15235,10 @@ public class VipsRaw {
     public static int VIPS_LIBRARY_CURRENT() {
         return VIPS_LIBRARY_CURRENT;
     }
-    private static final int VIPS_LIBRARY_REVISION = (int)1L;
+    private static final int VIPS_LIBRARY_REVISION = (int)2L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_REVISION 1
+     * #define VIPS_LIBRARY_REVISION 2
      * }
      */
     public static int VIPS_LIBRARY_REVISION() {

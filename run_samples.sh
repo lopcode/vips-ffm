@@ -10,9 +10,11 @@ fi
 
 export JAVA_PATH_OPTS=""
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export DYLD_LIBRARY_PATH=/opt/homebrew/lib
-  # this tests the library path override feature
-  export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib"
+  # newer versions of libzip cause problems with jar loading, so we use the override feature to point
+  # directly at dylibs
+  export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib \
+  -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib \
+  -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib"
 fi
 
 if test -f /usr/local/lib/libjemalloc.so; then
