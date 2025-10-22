@@ -175,7 +175,7 @@ public class VipsInvoker {
                 var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
                 var list = new ArrayList<Integer>();
                 for (int i = 0; i < numberOfElements; i++) {
-                    var value = valuesPointer.get(C_INT, i);
+                    var value = valuesPointer.get(C_INT, i * C_INT.byteSize());
                     list.add(value);
                 }
                 o.setValue(list);
@@ -188,7 +188,7 @@ public class VipsInvoker {
                 var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
                 var list = new ArrayList<Double>();
                 for (int i = 0; i < numberOfElements; i++) {
-                    var value = valuesPointer.get(C_DOUBLE, i);
+                    var value = valuesPointer.get(C_DOUBLE, i * C_DOUBLE.byteSize());
                     list.add(value);
                 }
                 o.setValue(list);
@@ -201,7 +201,7 @@ public class VipsInvoker {
                 var numberOfElements = numberOfValuesPointer.get(C_INT, 0);
                 var list = new ArrayList<VImage>();
                 for (int i = 0; i < numberOfElements; i++) {
-                    var pointer = valuesPointer.get(C_POINTER, i);
+                    var pointer = valuesPointer.get(C_POINTER, i * C_POINTER.byteSize());
                     pointer = refGObjectToArenaScope(arena, pointer);
                     var value = new VImage(arena, pointer);
                     list.add(value);
