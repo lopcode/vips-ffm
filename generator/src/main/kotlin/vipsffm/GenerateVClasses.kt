@@ -877,6 +877,45 @@ object GenerateVClasses {
             .addStatement("return new \$T(arena, newImagePointer)", vimageType)
             .build()
 
+        val newMatrixMethod = MethodSpec.methodBuilder("newMatrix")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(TypeName.INT, "width")
+            .addParameter(TypeName.INT, "height")
+            .addException(vipsErrorType)
+            .returns(vimageType)
+            .addStatement("var newImagePointer = \$T.image_new_matrix(arena, width, height)", vipsHelperType)
+            .addStatement("return new \$T(arena, newImagePointer)", vimageType)
+            .addJavadoc(
+                """
+                A convenience function for creating a new matrix image: a one-band image storing doubles.
+                
+                See also: [libvips new_matrix docs](https://www.libvips.org/API/8.17/ctor.Image.new_matrix.html)
+            """.trimIndent()
+            )
+            .build()
+
+        val newMatrixFromArrayMethod = MethodSpec.methodBuilder("newMatrixFromArray")
+            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+            .addParameter(arenaType, "arena")
+            .addParameter(TypeName.INT, "width")
+            .addParameter(TypeName.INT, "height")
+            .addParameter(ArrayTypeName.of(TypeName.DOUBLE), "array")
+            .addException(vipsErrorType)
+            .returns(vimageType)
+            .addStatement("var segment = arena.allocateFrom(\$T.JAVA_DOUBLE, array)", valueLayoutType)
+            .addStatement("var newImagePointer = \$T.image_new_matrix_from_array(arena, width, height, segment, array.length)", vipsHelperType)
+            .addStatement("return new \$T(arena, newImagePointer)", vimageType)
+            .addJavadoc(
+                """
+                A convenience function for creating a new matrix image: a one-band image storing doubles.
+                Also initialises the image with the provided double values, copying them to native memory in the process.
+                
+                See also: [VImage#newMatrix]
+            """.trimIndent()
+            )
+            .build()
+
         val getSetMethods = buildImageGetSetMethods()
 
         return listOf(
@@ -891,6 +930,8 @@ object GenerateVClasses {
             newFromMemoryMethod,
             newFromStreamMethod,
             newFromStreamNoOptionsMethod,
+            newMatrixMethod,
+            newMatrixFromArrayMethod,
             writeToFileMethod,
             writeToImageMethod,
             writeToTargetMethod,

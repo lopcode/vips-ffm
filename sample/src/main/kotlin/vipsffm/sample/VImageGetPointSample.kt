@@ -9,6 +9,8 @@ import java.nio.file.Path
 
 /**
  * Sample to get the color values at a specific point in an image
+ *
+ * Note that getPoint is not fast in libvips, and so not suitable to loop over an entire image
  */
 object VImageGetPointSample: RunnableSample {
 
