@@ -35,6 +35,11 @@ tasks.withType<Javadoc> {
     // note that warnings are still printed during the build
     (options as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
 
+    doFirst {
+        delete("../docs")
+        mkdir("../docs")
+    }
+
     doLast {
         copy {
             from("build/docs/javadoc")
