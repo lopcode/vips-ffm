@@ -21,6 +21,7 @@ import vipsffm.sample.VImageGetSetSample
 import vipsffm.sample.VImageJoinSample
 import vipsffm.sample.VImageFromMemoryToMemorySample
 import vipsffm.sample.VImageGetPointSample
+import vipsffm.sample.VImageMatrixSample
 import vipsffm.sample.VImageStaticThumbnailSample
 import vipsffm.sample.VOptionHyphenSample
 import vipsffm.sample.VSourceTargetSample
@@ -59,7 +60,8 @@ object SampleRunner {
             VImageGetSetSample,
             VImageFindTrimSample,
             VImageFromMemoryToMemorySample,
-            VImageCustomSourceTargetSample
+            VImageCustomSourceTargetSample,
+            VImageMatrixSample
         )
         val sampleParentRunPath = Paths.get("sample_run")
         if (Files.exists(sampleParentRunPath)) {

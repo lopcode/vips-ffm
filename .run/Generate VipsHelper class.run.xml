@@ -1,10 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Generate VipsHelper class" type="JetRunConfigurationType">
-    <envs>
-      <env name="DYLD_LIBRARY_PATH" value="libvips/release/lib:/opt/homebrew/lib:$DYLD_LIBRARY_PATH" />
-    </envs>
     <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVipsHelperClass" />
     <module name="vips-ffm.generator.main" />
+    <option name="PROGRAM_PARAMETERS" value="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib" />
     <shortenClasspath name="NONE" />
     <option name="VM_PARAMETERS" value="--enable-preview --enable-native-access=ALL-UNNAMED" />
     <method v="2">

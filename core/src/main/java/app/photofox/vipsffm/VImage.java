@@ -54,6 +54,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9910,6 +9911,25 @@ public final class VImage {
       VipsError {
     var source = VSource.newFromInputStream(arena, stream);
     return newFromSource(arena, source, options);
+  }
+
+  /// A convenience function for creating a new matrix image: a one-band image storing doubles.
+  ///
+  /// See also: [libvips new_matrix docs](https://www.libvips.org/API/8.17/ctor.Image.new_matrix.html)
+  public static VImage newMatrix(Arena arena, int width, int height) throws VipsError {
+    var newImagePointer = VipsHelper.image_new_matrix(arena, width, height);
+    return new VImage(arena, newImagePointer);
+  }
+
+  /// A convenience function for creating a new matrix image: a one-band image storing doubles.
+  /// Also initialises the image with the provided double values, copying them to native memory in the process.
+  ///
+  /// See also: [VImage#newMatrix]
+  public static VImage newMatrixFromArray(Arena arena, int width, int height, double[] array) throws
+      VipsError {
+    var segment = arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array);
+    var newImagePointer = VipsHelper.image_new_matrix_from_array(arena, width, height, segment, array.length);
+    return new VImage(arena, newImagePointer);
   }
 
   public void writeToFile(String path, VipsOption... options) throws VipsError {

@@ -1054,6 +1054,37 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// VipsImage *vips_image_new_matrix(int width, int height)
+  /// ```
+  public static MemorySegment image_new_matrix(Arena arena, int width, int height) throws
+      VipsError {
+    var result = VipsRaw.vips_image_new_matrix(width, height);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_matrix", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// VipsImage *vips_image_new_matrix_from_array(int width, int height, const double *array, int size)
+  /// ```
+  public static MemorySegment image_new_matrix_from_array(Arena arena, int width, int height,
+      MemorySegment array, int size) throws VipsError {
+    if(!VipsValidation.isValidPointer(array)) {
+      VipsValidation.throwInvalidInputError("vips_image_new_matrix_from_array", "array");
+    }
+    var result = VipsRaw.vips_image_new_matrix_from_array(width, height, array, size);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_new_matrix_from_array", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// void vips_image_set_delete_on_close(VipsImage *image, gboolean delete_on_close)
   /// ```
   public static void image_set_delete_on_close(MemorySegment image, boolean delete_on_closeBoolean)

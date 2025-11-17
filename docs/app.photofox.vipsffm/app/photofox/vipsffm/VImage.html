@@ -393,6 +393,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#newFromMemory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,int,int,int,int)" tabindex="0">newFromMemory(Arena, MemorySegment, int, int, int, int)</a></li>
 <li><a href="#newFromStream(java.lang.foreign.Arena,java.io.InputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromStream(Arena, InputStream, String, VipsOption...)</a></li>
 <li><a href="#newFromStream(java.lang.foreign.Arena,java.io.InputStream,app.photofox.vipsffm.VipsOption...)" tabindex="0">newFromStream(Arena, InputStream, VipsOption...)</a></li>
+<li><a href="#newMatrix(java.lang.foreign.Arena,int,int)" tabindex="0">newMatrix(Arena, int, int)</a></li>
+<li><a href="#newMatrixFromArray(java.lang.foreign.Arena,int,int,double%5B%5D)" tabindex="0">newMatrixFromArray(Arena, int, int, double[])</a></li>
 <li><a href="#writeToFile(java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">writeToFile(String, VipsOption...)</a></li>
 <li><a href="#write(app.photofox.vipsffm.VImage)" tabindex="0">write(VImage)</a></li>
 <li><a href="#writeToTarget(app.photofox.vipsffm.VTarget,java.lang.String,app.photofox.vipsffm.VipsOption...)" tabindex="0">writeToTarget(VTarget, String, VipsOption...)</a></li>
@@ -1924,6 +1926,21 @@ significant byte.</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newImage(java.lang.foreign.Arena)" class="member-name-link">newImage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newMatrix(java.lang.foreign.Arena,int,int)" class="member-name-link">newMatrix</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ int&nbsp;width,
+ int&nbsp;height)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">A convenience function for creating a new matrix image: a one-band image storing doubles.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newMatrixFromArray(java.lang.foreign.Arena,int,int,double%5B%5D)" class="member-name-link">newMatrixFromArray</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ int&nbsp;width,
+ int&nbsp;height,
+ double[]&nbsp;array)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">A convenience function for creating a new matrix image: a one-band image storing doubles.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#openexrload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)" class="member-name-link">openexrload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename,
@@ -12307,6 +12324,44 @@ file.</div>
  <a href="VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a>...&nbsp;options)</span>
                             throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
 <div class="block">See <a href="#newFromStream(java.lang.foreign.Arena,java.io.InputStream,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>newFromStream(java.lang.foreign.Arena, java.io.InputStream, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newMatrix(java.lang.foreign.Arena,int,int)">
+<h3>newMatrix</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">newMatrix</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ int&nbsp;width,
+ int&nbsp;height)</span>
+                        throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block"><p>A convenience function for creating a new matrix image: a one-band image storing doubles.</p>
+<p>See also: <a href="https://www.libvips.org/API/8.17/ctor.Image.new_matrix.html">libvips new_matrix docs</a></p>
+</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="newMatrixFromArray(java.lang.foreign.Arena,int,int,double[])">
+<h3>newMatrixFromArray</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="VImage.html" title="class in app.photofox.vipsffm">VImage</a></span>&nbsp;<span class="element-name">newMatrixFromArray</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+ int&nbsp;width,
+ int&nbsp;height,
+ double[]&nbsp;array)</span>
+                                 throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
+<div class="block"><p>A convenience function for creating a new matrix image: a one-band image storing doubles.
+Also initialises the image with the provided double values, copying them to native memory in the process.</p>
+<p>See also: <a href="#newMatrix(java.lang.foreign.Arena,int,int)"><code>newMatrix(java.lang.foreign.Arena, int, int)</code></a></p>
+</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
