@@ -70,7 +70,7 @@ a star 🌟️!</p>
 }
 
 dependencies {
-    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.4&quot;)
+    implementation(&quot;app.photofox.vips-ffm:vips-ffm-core:1.9.5&quot;)
 }
 </code></pre>
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
@@ -79,7 +79,7 @@ There are also lots of examples in the <a href="#samples">samples</a>.</p>
 <p>You must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you don't, you'll get a warning
 about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
 <p>As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
-generated from libvips <code>8.17.2</code> (but should be safe to use with different minor or patch versions).</p>
+generated from libvips <code>8.18.0</code> (but should be safe to use with different minor or patch versions).</p>
 <blockquote>
 <p>[!NOTE]
 This library <strong>does not</strong> include <code>libvips</code> in the download, you must add it to the system/container you're building
@@ -102,24 +102,18 @@ import app.photofox.vipsffm.enums.VipsAccess
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 // Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
 Vips.run { arena -&gt;
-    val sourceImage = VImage.newFromFile(
+    val thumbnail = VImage.thumbnail(
       arena,
-      &quot;sample/src/main/resources/sample_images/rabbit.jpg&quot;
-    )
-    val sourceWidth = sourceImage.width
-    val sourceHeight = sourceImage.height
-    logger.info(&quot;source image size: $sourceWidth x $sourceHeight&quot;)
-
-    val outputPath = workingDirectory.resolve(&quot;rabbit_copy.jpg&quot;)
-    sourceImage.writeToFile(outputPath.absolutePathString())
-
-    val thumbnail = sourceImage.thumbnailImage(
+      &quot;sample/src/main/resources/sample_images/rabbit.jpg&quot;,
       400,
       VipsOption.Boolean(&quot;auto-rotate&quot;, true) // example of an option
     )
     val thumbnailWidth = thumbnail.width
     val thumbnailHeight = thumbnail.height
     logger.info(&quot;thumbnail image size: $thumbnailWidth x $thumbnailHeight&quot;)
+
+    val outputPath = workingDirectory.resolve(&quot;rabbit_thumbnail.jpg&quot;)
+    thumbnail.writeToFile(outputPath.absolutePathString())
 }
 
 // Optionally call at the end of your program, for memory leak detection, from any thread

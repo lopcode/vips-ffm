@@ -22,9 +22,7 @@ public enum VipsCoding implements VNamedEnum {
   CODING_LABQ("VIPS_CODING_LABQ", "labq", 2),
 
   /// pixels encode 3 float RGB as 4 uchar (Radiance coding)
-  CODING_RAD("VIPS_CODING_RAD", "rad", 6),
-
-  CODING_LAST("VIPS_CODING_LAST", "last", 7);
+  CODING_RAD("VIPS_CODING_RAD", "rad", 6);
 
   public static final String parentName = "VipsCoding";
 

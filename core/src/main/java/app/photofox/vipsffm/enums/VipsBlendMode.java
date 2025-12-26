@@ -86,9 +86,7 @@ public enum VipsBlendMode implements VNamedEnum {
   BLEND_MODE_DIFFERENCE("VIPS_BLEND_MODE_DIFFERENCE", "difference", 23),
 
   /// somewhat like DIFFERENCE, but lower-contrast
-  BLEND_MODE_EXCLUSION("VIPS_BLEND_MODE_EXCLUSION", "exclusion", 24),
-
-  BLEND_MODE_LAST("VIPS_BLEND_MODE_LAST", "last", 25);
+  BLEND_MODE_EXCLUSION("VIPS_BLEND_MODE_EXCLUSION", "exclusion", 24);
 
   public static final String parentName = "VipsBlendMode";
 

@@ -18,9 +18,7 @@ public enum VipsForeignHeifCompression implements VNamedEnum {
   FOREIGN_HEIF_COMPRESSION_JPEG("VIPS_FOREIGN_HEIF_COMPRESSION_JPEG", "jpeg", 3),
 
   /// aom
-  FOREIGN_HEIF_COMPRESSION_AV1("VIPS_FOREIGN_HEIF_COMPRESSION_AV1", "av1", 4),
-
-  FOREIGN_HEIF_COMPRESSION_LAST("VIPS_FOREIGN_HEIF_COMPRESSION_LAST", "last", 5);
+  FOREIGN_HEIF_COMPRESSION_AV1("VIPS_FOREIGN_HEIF_COMPRESSION_AV1", "av1", 4);
 
   public static final String parentName = "VipsForeignHeifCompression";
 

@@ -21,9 +21,7 @@ public enum VipsIntent implements VNamedEnum {
   INTENT_ABSOLUTE("VIPS_INTENT_ABSOLUTE", "absolute", 3),
 
   /// the rendering intent that the profile suggests
-  INTENT_AUTO("VIPS_INTENT_AUTO", "auto", 32),
-
-  INTENT_LAST("VIPS_INTENT_LAST", "last", 33);
+  INTENT_AUTO("VIPS_INTENT_AUTO", "auto", 32);
 
   public static final String parentName = "VipsIntent";
 

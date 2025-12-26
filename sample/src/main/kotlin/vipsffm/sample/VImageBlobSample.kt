@@ -14,11 +14,11 @@ object VImageBlobSample: RunnableSample {
     // which incorrectly caused a gobject refcount on VipsBlob
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val outputPath = workingDirectory.resolve("rabbit_blob.jpg")
-        val imageBlob = VImage.newFromFile(
+        val imageBlob = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400
         )
-            .thumbnailImage(400)
             .jpegsaveBuffer()
 
         VImage

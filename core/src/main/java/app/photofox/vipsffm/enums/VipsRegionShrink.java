@@ -5,6 +5,12 @@ import java.lang.Override;
 import java.lang.String;
 
 /// How to calculate the output pixels when shrinking a 2x2 region.
+///
+/// Images with alpha (see `Image.hasalpha`) always shrink with
+/// [VipsRegionShrink#REGION_SHRINK_MEAN] and pixels scaled by alpha to avoid fringing.
+///
+/// Set the image interpretation to [VipsInterpretation#INTERPRETATION_MULTIBAND] to
+/// treat all bands equally.
 public enum VipsRegionShrink implements VNamedEnum {
   /// use the average
   REGION_SHRINK_MEAN("VIPS_REGION_SHRINK_MEAN", "mean", 0),
@@ -22,9 +28,7 @@ public enum VipsRegionShrink implements VNamedEnum {
   REGION_SHRINK_MIN("VIPS_REGION_SHRINK_MIN", "min", 4),
 
   /// use the top-left pixel
-  REGION_SHRINK_NEAREST("VIPS_REGION_SHRINK_NEAREST", "nearest", 5),
-
-  REGION_SHRINK_LAST("VIPS_REGION_SHRINK_LAST", "last", 6);
+  REGION_SHRINK_NEAREST("VIPS_REGION_SHRINK_NEAREST", "nearest", 5);
 
   public static final String parentName = "VipsRegionShrink";
 

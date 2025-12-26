@@ -20,9 +20,7 @@ public enum VipsOperationBoolean implements VNamedEnum {
   OPERATION_BOOLEAN_LSHIFT("VIPS_OPERATION_BOOLEAN_LSHIFT", "lshift", 3),
 
   /// `<<`
-  OPERATION_BOOLEAN_RSHIFT("VIPS_OPERATION_BOOLEAN_RSHIFT", "rshift", 4),
-
-  OPERATION_BOOLEAN_LAST("VIPS_OPERATION_BOOLEAN_LAST", "last", 5);
+  OPERATION_BOOLEAN_RSHIFT("VIPS_OPERATION_BOOLEAN_RSHIFT", "rshift", 4);
 
   public static final String parentName = "VipsOperationBoolean";
 

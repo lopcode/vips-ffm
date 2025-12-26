@@ -71,7 +71,6 @@ loadScripts(document, 'script');</script>
 <li><a href="#ACCESS_RANDOM" tabindex="0">ACCESS_RANDOM</a></li>
 <li><a href="#ACCESS_SEQUENTIAL" tabindex="0">ACCESS_SEQUENTIAL</a></li>
 <li><a href="#ACCESS_SEQUENTIAL_UNBUFFERED" tabindex="0">ACCESS_SEQUENTIAL_UNBUFFERED</a></li>
-<li><a href="#ACCESS_LAST" tabindex="0">ACCESS_LAST</a></li>
 </ol>
 </li>
 <li><a href="#field-detail" tabindex="0">Field Details</a>
@@ -140,18 +139,18 @@ amount of buffering behind the read point for small non-local accesses.</p>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Enum Constant</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code><a href="#ACCESS_LAST" class="member-name-link">ACCESS_LAST</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code><a href="#ACCESS_RANDOM" class="member-name-link">ACCESS_RANDOM</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code><a href="#ACCESS_RANDOM" class="member-name-link">ACCESS_RANDOM</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">can read anywhere</div>
 </div>
-<div class="col-first even-row-color"><code><a href="#ACCESS_SEQUENTIAL" class="member-name-link">ACCESS_SEQUENTIAL</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#ACCESS_SEQUENTIAL" class="member-name-link">ACCESS_SEQUENTIAL</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">top-to-bottom reading only, but with a small buffer</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#ACCESS_SEQUENTIAL_UNBUFFERED" class="member-name-link">ACCESS_SEQUENTIAL_UNBUFFERED</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code><a href="#ACCESS_SEQUENTIAL_UNBUFFERED" class="member-name-link">ACCESS_SEQUENTIAL_UNBUFFERED</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">deprecated, use <a href="#ACCESS_SEQUENTIAL"><code>ACCESS_SEQUENTIAL</code></a> instead</div>
+</div>
 </div>
 </section>
 </li>
@@ -244,14 +243,7 @@ the order they are declared.</div>
 <h3>ACCESS_SEQUENTIAL_UNBUFFERED</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a></span>&nbsp;<span class="element-name">ACCESS_SEQUENTIAL_UNBUFFERED</span></div>
-</div>
-</section>
-</li>
-<li>
-<section class="detail" id="ACCESS_LAST">
-<h3>ACCESS_LAST</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsAccess.html" title="enum class in app.photofox.vipsffm.enums">VipsAccess</a></span>&nbsp;<span class="element-name">ACCESS_LAST</span></div>
+<div class="block">deprecated, use <a href="#ACCESS_SEQUENTIAL"><code>ACCESS_SEQUENTIAL</code></a> instead</div>
 </div>
 </section>
 </li>

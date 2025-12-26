@@ -45,9 +45,7 @@ public enum VipsExtend implements VNamedEnum {
   EXTEND_WHITE("VIPS_EXTEND_WHITE", "white", 4),
 
   /// extend with colour from the `background` property
-  EXTEND_BACKGROUND("VIPS_EXTEND_BACKGROUND", "background", 5),
-
-  EXTEND_LAST("VIPS_EXTEND_LAST", "last", 6);
+  EXTEND_BACKGROUND("VIPS_EXTEND_BACKGROUND", "background", 5);
 
   public static final String parentName = "VipsExtend";
 

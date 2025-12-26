@@ -11,9 +11,7 @@ public enum VipsOperationComplexget implements VNamedEnum {
   OPERATION_COMPLEXGET_REAL("VIPS_OPERATION_COMPLEXGET_REAL", "real", 0),
 
   /// get imaginary component
-  OPERATION_COMPLEXGET_IMAG("VIPS_OPERATION_COMPLEXGET_IMAG", "imag", 1),
-
-  OPERATION_COMPLEXGET_LAST("VIPS_OPERATION_COMPLEXGET_LAST", "last", 2);
+  OPERATION_COMPLEXGET_IMAG("VIPS_OPERATION_COMPLEXGET_IMAG", "imag", 1);
 
   public static final String parentName = "VipsOperationComplexget";
 

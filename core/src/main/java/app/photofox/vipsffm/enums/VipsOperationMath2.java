@@ -14,9 +14,7 @@ public enum VipsOperationMath2 implements VNamedEnum {
   OPERATION_MATH2_WOP("VIPS_OPERATION_MATH2_WOP", "wop", 1),
 
   /// `atan2(left, right)`
-  OPERATION_MATH2_ATAN2("VIPS_OPERATION_MATH2_ATAN2", "atan2", 2),
-
-  OPERATION_MATH2_LAST("VIPS_OPERATION_MATH2_LAST", "last", 3);
+  OPERATION_MATH2_ATAN2("VIPS_OPERATION_MATH2_ATAN2", "atan2", 2);
 
   public static final String parentName = "VipsOperationMath2";
 

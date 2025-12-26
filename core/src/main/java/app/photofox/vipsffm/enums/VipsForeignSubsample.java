@@ -13,9 +13,7 @@ public enum VipsForeignSubsample implements VNamedEnum {
   FOREIGN_SUBSAMPLE_ON("VIPS_FOREIGN_SUBSAMPLE_ON", "on", 1),
 
   /// never perform subsampling
-  FOREIGN_SUBSAMPLE_OFF("VIPS_FOREIGN_SUBSAMPLE_OFF", "off", 2),
-
-  FOREIGN_SUBSAMPLE_LAST("VIPS_FOREIGN_SUBSAMPLE_LAST", "last", 3);
+  FOREIGN_SUBSAMPLE_OFF("VIPS_FOREIGN_SUBSAMPLE_OFF", "off", 2);
 
   public static final String parentName = "VipsForeignSubsample";
 

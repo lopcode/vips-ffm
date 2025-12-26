@@ -73,7 +73,11 @@ public enum VipsInterpretation implements VNamedEnum {
   /// pixels are HSV
   INTERPRETATION_HSV("VIPS_INTERPRETATION_HSV", "hsv", 29),
 
-  INTERPRETATION_LAST("VIPS_INTERPRETATION_LAST", "last", 30);
+  /// pixels are in Oklab colourspace
+  INTERPRETATION_OKLAB("VIPS_INTERPRETATION_OKLAB", "oklab", 30),
+
+  /// pixels are in Oklch colourspace
+  INTERPRETATION_OKLCH("VIPS_INTERPRETATION_OKLCH", "oklch", 31);
 
   public static final String parentName = "VipsInterpretation";
 

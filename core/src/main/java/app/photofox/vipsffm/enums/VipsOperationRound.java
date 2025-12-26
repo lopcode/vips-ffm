@@ -14,9 +14,7 @@ public enum VipsOperationRound implements VNamedEnum {
   OPERATION_ROUND_CEIL("VIPS_OPERATION_ROUND_CEIL", "ceil", 1),
 
   /// largest integral value not greater than
-  OPERATION_ROUND_FLOOR("VIPS_OPERATION_ROUND_FLOOR", "floor", 2),
-
-  OPERATION_ROUND_LAST("VIPS_OPERATION_ROUND_LAST", "last", 3);
+  OPERATION_ROUND_FLOOR("VIPS_OPERATION_ROUND_FLOOR", "floor", 2);
 
   public static final String parentName = "VipsOperationRound";
 

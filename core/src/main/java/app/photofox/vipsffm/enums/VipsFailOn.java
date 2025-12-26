@@ -20,9 +20,7 @@ public enum VipsFailOn implements VNamedEnum {
   FAIL_ON_ERROR("VIPS_FAIL_ON_ERROR", "error", 2),
 
   /// stop on anything, even warnings
-  FAIL_ON_WARNING("VIPS_FAIL_ON_WARNING", "warning", 3),
-
-  FAIL_ON_LAST("VIPS_FAIL_ON_LAST", "last", 4);
+  FAIL_ON_WARNING("VIPS_FAIL_ON_WARNING", "warning", 3);
 
   public static final String parentName = "VipsFailOn";
 

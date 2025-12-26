@@ -32,9 +32,7 @@ public enum VipsCompassDirection implements VNamedEnum {
   COMPASS_DIRECTION_SOUTH_WEST("VIPS_COMPASS_DIRECTION_SOUTH_WEST", "south-west", 7),
 
   /// north-west
-  COMPASS_DIRECTION_NORTH_WEST("VIPS_COMPASS_DIRECTION_NORTH_WEST", "north-west", 8),
-
-  COMPASS_DIRECTION_LAST("VIPS_COMPASS_DIRECTION_LAST", "last", 9);
+  COMPASS_DIRECTION_NORTH_WEST("VIPS_COMPASS_DIRECTION_NORTH_WEST", "north-west", 8);
 
   public static final String parentName = "VipsCompassDirection";
 

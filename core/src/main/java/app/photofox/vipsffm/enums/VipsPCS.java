@@ -13,9 +13,7 @@ public enum VipsPCS implements VNamedEnum {
   PCS_LAB("VIPS_PCS_LAB", "lab", 0),
 
   /// use XYZ as the Profile Connection Space
-  PCS_XYZ("VIPS_PCS_XYZ", "xyz", 1),
-
-  PCS_LAST("VIPS_PCS_LAST", "last", 2);
+  PCS_XYZ("VIPS_PCS_XYZ", "xyz", 1);
 
   public static final String parentName = "VipsPCS";
 

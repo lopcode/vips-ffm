@@ -4,7 +4,7 @@ import app.photofox.vipsffm.VNamedEnum;
 import java.lang.Override;
 import java.lang.String;
 
-/// How many pyramid layers to create.
+/// What container format to use.
 public enum VipsForeignDzContainer implements VNamedEnum {
   /// write tiles to the filesystem
   FOREIGN_DZ_CONTAINER_FS("VIPS_FOREIGN_DZ_CONTAINER_FS", "fs", 0),
@@ -13,9 +13,7 @@ public enum VipsForeignDzContainer implements VNamedEnum {
   FOREIGN_DZ_CONTAINER_ZIP("VIPS_FOREIGN_DZ_CONTAINER_ZIP", "zip", 1),
 
   /// write to a szi file
-  FOREIGN_DZ_CONTAINER_SZI("VIPS_FOREIGN_DZ_CONTAINER_SZI", "szi", 2),
-
-  FOREIGN_DZ_CONTAINER_LAST("VIPS_FOREIGN_DZ_CONTAINER_LAST", "last", 3);
+  FOREIGN_DZ_CONTAINER_SZI("VIPS_FOREIGN_DZ_CONTAINER_SZI", "szi", 2);
 
   public static final String parentName = "VipsForeignDzContainer";
 

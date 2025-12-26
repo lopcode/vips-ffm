@@ -34,9 +34,7 @@ public enum VipsInteresting implements VNamedEnum {
   INTERESTING_HIGH("VIPS_INTERESTING_HIGH", "high", 5),
 
   /// everything is interesting
-  INTERESTING_ALL("VIPS_INTERESTING_ALL", "all", 6),
-
-  INTERESTING_LAST("VIPS_INTERESTING_LAST", "last", 7);
+  INTERESTING_ALL("VIPS_INTERESTING_ALL", "all", 6);
 
   public static final String parentName = "VipsInteresting";
 

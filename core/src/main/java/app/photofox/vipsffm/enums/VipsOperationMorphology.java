@@ -13,9 +13,7 @@ public enum VipsOperationMorphology implements VNamedEnum {
   OPERATION_MORPHOLOGY_ERODE("VIPS_OPERATION_MORPHOLOGY_ERODE", "erode", 0),
 
   /// true if one set
-  OPERATION_MORPHOLOGY_DILATE("VIPS_OPERATION_MORPHOLOGY_DILATE", "dilate", 1),
-
-  OPERATION_MORPHOLOGY_LAST("VIPS_OPERATION_MORPHOLOGY_LAST", "last", 2);
+  OPERATION_MORPHOLOGY_DILATE("VIPS_OPERATION_MORPHOLOGY_DILATE", "dilate", 1);
 
   public static final String parentName = "VipsOperationMorphology";
 

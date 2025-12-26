@@ -33,9 +33,7 @@ public enum VipsAngle45 implements VNamedEnum {
   ANGLE45_D270("VIPS_ANGLE45_D270", "d270", 6),
 
   /// 45 degrees anti-clockwise
-  ANGLE45_D315("VIPS_ANGLE45_D315", "d315", 7),
-
-  ANGLE45_LAST("VIPS_ANGLE45_LAST", "last", 8);
+  ANGLE45_D315("VIPS_ANGLE45_D315", "d315", 7);
 
   public static final String parentName = "VipsAngle45";
 

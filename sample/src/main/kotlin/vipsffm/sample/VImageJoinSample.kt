@@ -14,16 +14,16 @@ import kotlin.io.path.absolutePathString
 object VImageJoinSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
-        val sourceImage = VImage.newFromFile(
+        val sourceImage = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            500
         )
-        .thumbnailImage(500)
-        val joinImage = VImage.newFromFile(
+        val joinImage = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/fox.jpg"
+            "sample/src/main/resources/sample_images/fox.jpg",
+            500
         )
-        .thumbnailImage(500)
         val outputPath = workingDirectory.resolve("rabbit_fox_joined.jpg")
         sourceImage.join(joinImage, VipsDirection.DIRECTION_HORIZONTAL)
             .writeToFile(outputPath.absolutePathString())

@@ -13,12 +13,12 @@ object VOptionHyphenSample: RunnableSample {
     // tests a vips operation with a hyphenated option name ("output-profile") in icc_transform
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val outputPath = workingDirectory.resolve("rabbit_chain.jpg")
-        val image = VImage.newFromFile(
+        val image = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400
         )
-            .thumbnailImage(400)
-            .iccTransform("cmyk")
+        .iccTransform("cmyk")
 
         image.writeToFile(outputPath.absolutePathString())
 

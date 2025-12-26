@@ -19,11 +19,11 @@ import kotlin.io.path.absolutePathString
 object VImageMatrixSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
-        val image = VImage.newFromFile(
+        val image = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400
         )
-        .thumbnailImage(400)
 
         val mask = VImage.newMatrixFromArray(
             arena,

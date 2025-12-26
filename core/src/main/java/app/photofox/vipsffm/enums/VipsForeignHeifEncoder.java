@@ -21,9 +21,7 @@ public enum VipsForeignHeifEncoder implements VNamedEnum {
   FOREIGN_HEIF_ENCODER_SVT("VIPS_FOREIGN_HEIF_ENCODER_SVT", "svt", 3),
 
   /// x265
-  FOREIGN_HEIF_ENCODER_X265("VIPS_FOREIGN_HEIF_ENCODER_X265", "x265", 4),
-
-  FOREIGN_HEIF_ENCODER_LAST("VIPS_FOREIGN_HEIF_ENCODER_LAST", "last", 5);
+  FOREIGN_HEIF_ENCODER_X265("VIPS_FOREIGN_HEIF_ENCODER_X265", "x265", 4);
 
   public static final String parentName = "VipsForeignHeifEncoder";
 
