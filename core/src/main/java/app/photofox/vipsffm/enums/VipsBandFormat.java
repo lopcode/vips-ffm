@@ -40,9 +40,7 @@ public enum VipsBandFormat implements VNamedEnum {
   FORMAT_DOUBLE("VIPS_FORMAT_DOUBLE", "double", 8),
 
   /// double complex (two double) format
-  FORMAT_DPCOMPLEX("VIPS_FORMAT_DPCOMPLEX", "dpcomplex", 9),
-
-  FORMAT_LAST("VIPS_FORMAT_LAST", "last", 10);
+  FORMAT_DPCOMPLEX("VIPS_FORMAT_DPCOMPLEX", "dpcomplex", 9);
 
   public static final String parentName = "VipsBandFormat";
 

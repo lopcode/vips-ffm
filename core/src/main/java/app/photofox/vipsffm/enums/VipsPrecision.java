@@ -13,9 +13,7 @@ public enum VipsPrecision implements VNamedEnum {
   PRECISION_FLOAT("VIPS_PRECISION_FLOAT", "float", 1),
 
   /// approximate integer output
-  PRECISION_APPROXIMATE("VIPS_PRECISION_APPROXIMATE", "approximate", 2),
-
-  PRECISION_LAST("VIPS_PRECISION_LAST", "last", 3);
+  PRECISION_APPROXIMATE("VIPS_PRECISION_APPROXIMATE", "approximate", 2);
 
   public static final String parentName = "VipsPrecision";
 

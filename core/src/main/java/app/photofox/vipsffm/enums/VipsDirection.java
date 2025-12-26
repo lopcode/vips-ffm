@@ -16,9 +16,7 @@ public enum VipsDirection implements VNamedEnum {
   DIRECTION_HORIZONTAL("VIPS_DIRECTION_HORIZONTAL", "horizontal", 0),
 
   /// top-bottom
-  DIRECTION_VERTICAL("VIPS_DIRECTION_VERTICAL", "vertical", 1),
-
-  DIRECTION_LAST("VIPS_DIRECTION_LAST", "last", 2);
+  DIRECTION_VERTICAL("VIPS_DIRECTION_VERTICAL", "vertical", 1);
 
   public static final String parentName = "VipsDirection";
 

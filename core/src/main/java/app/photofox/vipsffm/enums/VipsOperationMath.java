@@ -53,9 +53,7 @@ public enum VipsOperationMath implements VNamedEnum {
   OPERATION_MATH_ACOSH("VIPS_OPERATION_MATH_ACOSH", "acosh", 14),
 
   /// `atanh()`, angles in radians
-  OPERATION_MATH_ATANH("VIPS_OPERATION_MATH_ATANH", "atanh", 15),
-
-  OPERATION_MATH_LAST("VIPS_OPERATION_MATH_LAST", "last", 16);
+  OPERATION_MATH_ATANH("VIPS_OPERATION_MATH_ATANH", "atanh", 15);
 
   public static final String parentName = "VipsOperationMath";
 

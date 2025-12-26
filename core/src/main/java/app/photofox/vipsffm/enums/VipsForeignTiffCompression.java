@@ -39,9 +39,7 @@ public enum VipsForeignTiffCompression implements VNamedEnum {
   FOREIGN_TIFF_COMPRESSION_ZSTD("VIPS_FOREIGN_TIFF_COMPRESSION_ZSTD", "zstd", 7),
 
   /// JP2K compression
-  FOREIGN_TIFF_COMPRESSION_JP2K("VIPS_FOREIGN_TIFF_COMPRESSION_JP2K", "jp2k", 8),
-
-  FOREIGN_TIFF_COMPRESSION_LAST("VIPS_FOREIGN_TIFF_COMPRESSION_LAST", "last", 9);
+  FOREIGN_TIFF_COMPRESSION_JP2K("VIPS_FOREIGN_TIFF_COMPRESSION_JP2K", "jp2k", 8);
 
   public static final String parentName = "VipsForeignTiffCompression";
 

@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.4")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.5")
 }
 ```
 
@@ -35,7 +35,7 @@ You must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments.
 about "Restricted methods". In the future, the JVM will throw an error if you don't explicitly include this flag.
 
 As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
-generated from libvips `8.17.2` (but should be safe to use with different minor or patch versions).
+generated from libvips `8.18.0` (but should be safe to use with different minor or patch versions).
 
 > [!NOTE]
 > This library **does not** include `libvips` in the download, you must add it to the system/container you're building
@@ -59,24 +59,18 @@ import app.photofox.vipsffm.enums.VipsAccess
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 // Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
 Vips.run { arena ->
-    val sourceImage = VImage.newFromFile(
+    val thumbnail = VImage.thumbnail(
       arena,
-      "sample/src/main/resources/sample_images/rabbit.jpg"
-    )
-    val sourceWidth = sourceImage.width
-    val sourceHeight = sourceImage.height
-    logger.info("source image size: $sourceWidth x $sourceHeight")
-
-    val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
-    sourceImage.writeToFile(outputPath.absolutePathString())
-
-    val thumbnail = sourceImage.thumbnailImage(
+      "sample/src/main/resources/sample_images/rabbit.jpg",
       400,
       VipsOption.Boolean("auto-rotate", true) // example of an option
     )
     val thumbnailWidth = thumbnail.width
     val thumbnailHeight = thumbnail.height
     logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
+
+    val outputPath = workingDirectory.resolve("rabbit_thumbnail.jpg")
+    thumbnail.writeToFile(outputPath.absolutePathString())
 }
 
 // Optionally call at the end of your program, for memory leak detection, from any thread

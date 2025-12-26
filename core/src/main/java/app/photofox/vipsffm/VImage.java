@@ -18,6 +18,7 @@ import app.photofox.vipsffm.enums.VipsForeignDzDepth;
 import app.photofox.vipsffm.enums.VipsForeignDzLayout;
 import app.photofox.vipsffm.enums.VipsForeignHeifCompression;
 import app.photofox.vipsffm.enums.VipsForeignHeifEncoder;
+import app.photofox.vipsffm.enums.VipsForeignPdfPageBox;
 import app.photofox.vipsffm.enums.VipsForeignPpmFormat;
 import app.photofox.vipsffm.enums.VipsForeignSubsample;
 import app.photofox.vipsffm.enums.VipsForeignTiffCompression;
@@ -305,6 +306,42 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
+  /// Turn Oklab to Oklch.
+  /// @param args Array of VipsOption to apply to this operation
+  public VImage Oklab2Oklch(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "Oklab2Oklch", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Transform Oklab to XYZ using D65 illuminant.
+  /// @param args Array of VipsOption to apply to this operation
+  public VImage Oklab2XYZ(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "Oklab2XYZ", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Turn Oklch to Oklab.
+  /// @param args Array of VipsOption to apply to this operation
+  public VImage Oklch2Oklab(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "Oklch2Oklab", callArgs);
+    return outOption.valueOrThrow();
+  }
+
   /// Turn XYZ to CMYK.
   ///
   /// Conversion is from D65 XYZ with relative intent. If you need more control
@@ -332,6 +369,18 @@ public final class VImage {
     callArgs.add(inOption);
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "XYZ2Lab", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Transform XYZ to Oklab assuming D65 illuminant.
+  /// @param args Array of VipsOption to apply to this operation
+  public VImage XYZ2Oklab(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "XYZ2Oklab", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -1696,6 +1745,91 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
+  /// Read a RAW camera file using LibRaw.
+  ///
+  /// This loader supports the most RAW formats, including
+  /// ARW, CR2, CR3, CRW, DNG, NEF, NRW, ORF, PEF, RAF, RAW, RW2, SRW, X3F, and
+  /// many others.
+  ///
+  /// The loader applies demosaicing and basic processing to produce an RGB or
+  /// grayscale image suitable for further processing. It attaches XMP and ICC
+  /// metadata, if present.
+  ///
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param filename Filename to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage dcrawload(Arena arena, String filename, VipsOption... args) throws
+      VipsError {
+    var filenameOption = VipsOption.String("filename", filename);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(filenameOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "dcrawload", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Exactly as [VImage#dcrawload], but read from a buffer.
+  ///
+  /// See also: [VImage#dcrawload]
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param buffer Buffer to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage dcrawloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
+    var bufferOption = VipsOption.Blob("buffer", buffer);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(bufferOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "dcrawload_buffer", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Exactly as [VImage#dcrawload], but read from a source.
+  ///
+  /// See also: [VImage#dcrawload]
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param source Source to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg bitdepth [VipsOption.Int] Number of bits per pixel
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage dcrawloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
+    var sourceOption = VipsOption.Source("source", source);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(sourceOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "dcrawload_source", callArgs);
+    return outOption.valueOrThrow();
+  }
+
   /// This operation finds the standard deviation of all pixels in `in`. It
   /// operates on all bands of the input image: use [VImage#stats] if you need
   /// to calculate an average for each band.
@@ -2687,13 +2821,16 @@ public final class VImage {
   /// Reads a single pixel on an image.
   ///
   /// The pixel values are returned in `vector`, the length of the
-  /// array in `n`. You must free the array with `GLib.free` when you are done with
-  /// it.
+  /// array in `n`. You must free the array with `GLib.free` when you are
+  /// done with it.
   ///
   /// The result array has an element for each band. If `unpack_complex` is set,
   /// pixels in complex images are returned as double-length arrays.
   ///
-  /// See also: `Image.draw_point`
+  /// This operation is slow. If you want to read many points, use
+  /// `Image.write_to_memory`.
+  ///
+  /// See also: `Image.draw_point`, `Image.write_to_memory`
   /// @param x Point to read
   /// @param y Point to read
   /// @param args Array of VipsOption to apply to this operation
@@ -3169,8 +3306,8 @@ public final class VImage {
   ///
   /// Set `lossless` `TRUE` to switch to lossless compression.
   ///
-  /// Use `compression` to set the compression format e.g. HEVC, AVC, AV1 to use. It defaults to AV1
-  /// if the target filename ends with ".avif", otherwise HEVC.
+  /// Use `compression` to set the compression format e.g. HEVC, AVC, AV1 to use.
+  /// It defaults to AV1 if the target filename ends with ".avif", otherwise HEVC.
   ///
   /// Use `effort` to control the CPU effort spent improving compression.
   /// This is currently only applicable to AV1 encoders. Defaults to 4, 0 is
@@ -3184,6 +3321,9 @@ public final class VImage {
   ///
   /// Use `encoder` to set the encode library to use, e.g. aom, SVT-AV1, rav1e etc.
   ///
+  /// Use `tune` to pass a set of tuning parameters to the encoder, see the
+  /// libheif documentation.
+  ///
   /// See also: `Image.write_to_file`, [VImage#heifload]
   /// @param filename Filename to save to
   /// @param args Array of VipsOption to apply to this operation
@@ -3195,6 +3335,7 @@ public final class VImage {
   /// @optionalArg subsample-mode [VipsOption.Enum] [VipsForeignSubsample] Select chroma subsample operation mode
   /// @optionalArg speed [VipsOption.Int] CPU effort
   /// @optionalArg encoder [VipsOption.Enum] [VipsForeignHeifEncoder] Select encoder to use
+  /// @optionalArg tune [VipsOption.String] Tuning parameters
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -3225,6 +3366,7 @@ public final class VImage {
   /// @optionalArg subsample-mode [VipsOption.Enum] [VipsForeignSubsample] Select chroma subsample operation mode
   /// @optionalArg speed [VipsOption.Int] CPU effort
   /// @optionalArg encoder [VipsOption.Enum] [VipsForeignHeifEncoder] Select encoder to use
+  /// @optionalArg tune [VipsOption.String] Tuning parameters
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -3253,6 +3395,7 @@ public final class VImage {
   /// @optionalArg subsample-mode [VipsOption.Enum] [VipsForeignSubsample] Select chroma subsample operation mode
   /// @optionalArg speed [VipsOption.Int] CPU effort
   /// @optionalArg encoder [VipsOption.Enum] [VipsForeignHeifEncoder] Select encoder to use
+  /// @optionalArg tune [VipsOption.String] Tuning parameters
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -4487,10 +4630,9 @@ public final class VImage {
     return outOption.valueOrThrow();
   }
 
-  /// Write a VIPS image to a file in JPEG-XL format.
-  ///
-  /// The JPEG-XL loader and saver are experimental features and may change
-  /// in future libvips versions.
+  /// Write a VIPS image to a file in JPEG-XL format. The image can be unsigned
+  /// 8 or 16-bit integer, or float. Use `bitdepth` for fine control of the image
+  /// bitdepth.
   ///
   /// `tier` sets the overall decode speed the encoder will target. Minimum is 0
   /// (highest quality), and maximum is 4 (lowest quality). Default is 0.
@@ -4502,6 +4644,10 @@ public final class VImage {
   /// As a convenience, you can also use `Q` to set `distance`. `Q` uses
   /// approximately the same scale as regular JPEG.
   ///
+  /// `bitdepth` sets the bitdepth to save at. It defaults to the full range of
+  /// the image numeric type, but can be set lower. It has no effect on float
+  /// images.
+  ///
   /// Set `lossless` to enable lossless compression.
   ///
   /// @param filename Filename to save to
@@ -4511,6 +4657,7 @@ public final class VImage {
   /// @optionalArg effort [VipsOption.Int] Encoding effort
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
   /// @optionalArg Q [VipsOption.Int] Quality factor
+  /// @optionalArg bitdepth [VipsOption.Int] Bit depth
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -4534,6 +4681,7 @@ public final class VImage {
   /// @optionalArg effort [VipsOption.Int] Encoding effort
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
   /// @optionalArg Q [VipsOption.Int] Quality factor
+  /// @optionalArg bitdepth [VipsOption.Int] Bit depth
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -4559,6 +4707,7 @@ public final class VImage {
   /// @optionalArg effort [VipsOption.Int] Encoding effort
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
   /// @optionalArg Q [VipsOption.Int] Quality factor
+  /// @optionalArg bitdepth [VipsOption.Int] Bit depth
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -4805,6 +4954,35 @@ public final class VImage {
     callArgs.add(bufferOption);
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "magickload_buffer", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Exactly as [VImage#magickload], but read from a source.
+  ///
+  /// See also: [VImage#magickload]
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param source Source to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg density [VipsOption.String] Canvas resolution for rendering vector formats like SVG
+  /// @optionalArg page [VipsOption.Int] First page to load
+  /// @optionalArg n [VipsOption.Int] Number of pages to load, -1 for all
+  /// @optionalArg all-frames [VipsOption.Boolean] Read all frames from an image
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage magickloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
+    var sourceOption = VipsOption.Source("source", source);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(sourceOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "magickload_source", callArgs);
     return outOption.valueOrThrow();
   }
 
@@ -6262,6 +6440,9 @@ public final class VImage {
   ///
   /// Use `password` to supply a decryption password.
   ///
+  /// When using pdfium, the region of a page to render can be selected with
+  /// `page_box`, defaulting to the crop box.
+  ///
   /// The operation fills a number of header fields with metadata, for example
   /// "pdf-author". They may be useful.
   ///
@@ -6278,6 +6459,7 @@ public final class VImage {
   /// @optionalArg scale [VipsOption.Double] Factor to scale by
   /// @optionalArg background [VipsOption.ArrayDouble] Background colour
   /// @optionalArg password [VipsOption.String] Password to decrypt with
+  /// @optionalArg page-box [VipsOption.Enum] [VipsForeignPdfPageBox] The region of the page to render
   /// @optionalArg flags [VipsOption.Int] Flags for this file
   /// @optionalArg memory [VipsOption.Boolean] Force open via memory
   /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
@@ -6312,6 +6494,7 @@ public final class VImage {
   /// @optionalArg scale [VipsOption.Double] Factor to scale by
   /// @optionalArg background [VipsOption.ArrayDouble] Background colour
   /// @optionalArg password [VipsOption.String] Password to decrypt with
+  /// @optionalArg page-box [VipsOption.Enum] [VipsForeignPdfPageBox] The region of the page to render
   /// @optionalArg flags [VipsOption.Int] Flags for this file
   /// @optionalArg memory [VipsOption.Boolean] Force open via memory
   /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
@@ -6343,6 +6526,7 @@ public final class VImage {
   /// @optionalArg scale [VipsOption.Double] Factor to scale by
   /// @optionalArg background [VipsOption.ArrayDouble] Background colour
   /// @optionalArg password [VipsOption.String] Password to decrypt with
+  /// @optionalArg page-box [VipsOption.Enum] [VipsForeignPdfPageBox] The region of the page to render
   /// @optionalArg flags [VipsOption.Int] Flags for this file
   /// @optionalArg memory [VipsOption.Boolean] Force open via memory
   /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
@@ -6566,7 +6750,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg compression [VipsOption.Int] Compression factor
   /// @optionalArg interlace [VipsOption.Boolean] Interlace image
-  /// @optionalArg filter [VipsOption.Int] Libspng row filter flag(s)
+  /// @optionalArg filter [VipsOption.Int] Libpng row filter flag(s)
   /// @optionalArg palette [VipsOption.Boolean] Quantise to 8bpp palette
   /// @optionalArg colours [VipsOption.Int] Max number of palette colours
   /// @optionalArg Q [VipsOption.Int] Quantisation quality
@@ -6597,7 +6781,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg compression [VipsOption.Int] Compression factor
   /// @optionalArg interlace [VipsOption.Boolean] Interlace image
-  /// @optionalArg filter [VipsOption.Int] Libspng row filter flag(s)
+  /// @optionalArg filter [VipsOption.Int] Libpng row filter flag(s)
   /// @optionalArg palette [VipsOption.Boolean] Quantise to 8bpp palette
   /// @optionalArg colours [VipsOption.Int] Max number of palette colours
   /// @optionalArg Q [VipsOption.Int] Quantisation quality
@@ -6626,7 +6810,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg compression [VipsOption.Int] Compression factor
   /// @optionalArg interlace [VipsOption.Boolean] Interlace image
-  /// @optionalArg filter [VipsOption.Int] Libspng row filter flag(s)
+  /// @optionalArg filter [VipsOption.Int] Libpng row filter flag(s)
   /// @optionalArg palette [VipsOption.Boolean] Quantise to 8bpp palette
   /// @optionalArg colours [VipsOption.Int] Max number of palette colours
   /// @optionalArg Q [VipsOption.Int] Quantisation quality
@@ -8986,16 +9170,15 @@ public final class VImage {
 
   /// Write a VIPS image to a file as TIFF.
   ///
-  /// If `in` has the `META_PAGE_HEIGHT` metadata item, this is assumed to be a
-  /// "toilet roll" image. It will be
-  /// written as series of pages, each `META_PAGE_HEIGHT` pixels high.
+  /// If `in` has the `META_PAGE_HEIGHT` metadata item, this is assumed to
+  /// be a "toilet roll" image. It will be written as series of pages, each
+  /// `META_PAGE_HEIGHT` pixels high.
   ///
   /// Use `compression` to set the tiff compression. Currently jpeg, packbits,
   /// fax4, lzw, none, deflate, webp and zstd are supported. The default is no
-  /// compression.
-  /// JPEG compression is a good lossy compressor for photographs, packbits is
-  /// good for 1-bit images, and deflate is the best lossless compression TIFF
-  /// can do.
+  /// compression. JPEG compression is a good lossy compressor for photographs,
+  /// packbits is good for 1-bit images, and deflate is the best lossless
+  /// compression TIFF can do.
   ///
   /// XYZ images are automatically saved as libtiff LOGLUV with SGILOG compression.
   /// Float LAB images are saved as float CIELAB. Set `bitdepth` to save as 8-bit
@@ -9003,8 +9186,9 @@ public final class VImage {
   ///
   /// Use `Q` to set the JPEG compression factor. Default 75.
   ///
-  /// User `level` to set the ZSTD (1-22) or Deflate (1-9) compression level. Use `lossless` to
-  /// set WEBP lossless mode on. Use `Q` to set the WEBP compression level.
+  /// User `level` to set the ZSTD (1-22) or Deflate (1-9) compression level.
+  /// Use `lossless` to set WEBP lossless mode on. Use `Q` to set the WEBP
+  /// compression level.
   ///
   /// Use `predictor` to set the predictor for lzw, deflate and zstd compression.
   /// It defaults to [VipsForeignTiffPredictor#FOREIGN_TIFF_PREDICTOR_HORIZONTAL], meaning horizontal
@@ -9025,11 +9209,13 @@ public final class VImage {
   /// a single layer.
   ///
   /// Set `bitdepth` to save 8-bit uchar images as 1, 2 or 4-bit TIFFs.
+  ///
   /// In case of depth 1: Values >128 are written as white, values <=128 as black.
   /// Normally vips will write MINISBLACK TIFFs where black is a 0 bit, but if you
   /// set `miniswhite`, it will use 0 for a white bit. Many pre-press applications
   /// only work with images which use this sense. `miniswhite` only affects one-bit
   /// images, it does nothing for greyscale images.
+  ///
   /// In case of depth 2: The same holds but values < 64 are written as black.
   /// For 64 <= values < 128 they are written as dark grey, for 128 <= values < 192
   /// they are written as light gray and values above are written as white.
@@ -9037,11 +9223,9 @@ public final class VImage {
   /// In case of depth 4: values < 16 are written as black, and so on for the
   /// lighter shades. In case `miniswhite` is set to true this behavior is inverted.
   ///
-  /// Use `resunit` to override the default resolution unit.
-  /// The default
-  /// resolution unit is taken from the header field
-  /// `META_RESOLUTION_UNIT`. If this field is not set, then
-  /// VIPS defaults to cm.
+  /// Use `resunit` to override the default resolution unit. The default
+  /// resolution unit is taken from the header field `META_RESOLUTION_UNIT`.
+  /// If this field is not set, then VIPS defaults to cm.
   ///
   /// Use `xres` and `yres` to override the default horizontal and vertical
   /// resolutions. By default these values are taken from the VIPS image header.
@@ -9054,12 +9238,11 @@ public final class VImage {
   /// xml. If `properties` is not set, the value of `META_IMAGEDESCRIPTION` is
   /// used instead.
   ///
-  /// The value of `META_XMP_NAME` is written to
-  /// the XMP tag. `META_ORIENTATION` (if set) is used to set the value of
-  /// the orientation
-  /// tag. `META_IPTC_NAME` (if set) is used to set the value of the IPTC tag.
-  /// `META_PHOTOSHOP_NAME` (if set) is used to set the value of the PHOTOSHOP
-  /// tag.
+  /// The value of `META_XMP_NAME` is written to the XMP tag.
+  /// `META_ORIENTATION` (if set) is used to set the value of the
+  /// orientation tag. `META_IPTC_NAME` (if set) is used to set the
+  /// value of the IPTC tag. `META_PHOTOSHOP_NAME` (if set) is used to
+  /// set the value of the PHOTOSHOP tag.
   ///
   /// By default, pyramid layers are saved as consecutive pages.
   /// Set `subifd` to save pyramid layers as sub-directories of the main image.
@@ -9293,6 +9476,175 @@ public final class VImage {
     callArgs.add(outOption);
     VipsInvoker.invokeOperation(arena, "transpose3d", callArgs);
     return outOption.valueOrThrow();
+  }
+
+  /// Transform a uhdr image (three band sRGB with an attached gainmap) to
+  /// scRGB.
+  /// @param args Array of VipsOption to apply to this operation
+  public VImage uhdr2scRGB(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "uhdr2scRGB", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Read an UltraHDR image.
+  ///
+  /// The UltraHDR image is decoded as a tone-mapped SDR base image
+  /// plus a gainmap attached as image metadata.
+  ///
+  /// Either process the SDR image and update the gainmap if necessary, or use
+  /// [VImage#uhdr2scRGB] to convert the SDR + gainmap image to full scRGB
+  /// HDR.
+  ///
+  /// [VImage#uhdrsave] can write both scRGB HDR and SDR plus gainmap
+  /// images.
+  ///
+  /// Set `shrink` to shrink the returned image by an integer factor during load.
+  ///
+  /// See also: `Image.new_from_file`, [VImage#uhdr2scRGB]
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param filename Filename to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg shrink [VipsOption.Int] Shrink factor on load
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage uhdrload(Arena arena, String filename, VipsOption... args) throws VipsError {
+    var filenameOption = VipsOption.String("filename", filename);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(filenameOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "uhdrload", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Exactly as [VImage#uhdrload], but read from a buffer.
+  ///
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param buffer Buffer to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg shrink [VipsOption.Int] Shrink factor on load
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage uhdrloadBuffer(Arena arena, VBlob buffer, VipsOption... args) throws
+      VipsError {
+    var bufferOption = VipsOption.Blob("buffer", buffer);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(bufferOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "uhdrload_buffer", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Exactly as [VImage#uhdrload], but read from a source.
+  ///
+  /// @param arena The arena that bounds resulting memory allocations during this operation
+  /// @param source Source to load from
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg shrink [VipsOption.Int] Shrink factor on load
+  /// @optionalArg flags [VipsOption.Int] Flags for this file
+  /// @optionalArg memory [VipsOption.Boolean] Force open via memory
+  /// @optionalArg access [VipsOption.Enum] [VipsAccess] Required access pattern for this file
+  /// @optionalArg fail-on [VipsOption.Enum] [VipsFailOn] Error level to fail on
+  /// @optionalArg revalidate [VipsOption.Boolean] Don't use a cached result for this operation
+  /// @optionalArg sequential [VipsOption.Boolean] Sequential read only
+  /// @optionalArg fail [VipsOption.Boolean] Fail on first warning
+  /// @optionalArg disc [VipsOption.Boolean] Open to disc
+  public static VImage uhdrloadSource(Arena arena, VSource source, VipsOption... args) throws
+      VipsError {
+    var sourceOption = VipsOption.Source("source", source);
+    var outOption = VipsOption.Image("out");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(sourceOption);
+    callArgs.add(outOption);
+    VipsInvoker.invokeOperation(arena, "uhdrload_source", callArgs);
+    return outOption.valueOrThrow();
+  }
+
+  /// Save an image as UltraHDR.
+  ///
+  /// If an image is sRGB and has a gainmap, it will be saved as UltraHDR with no
+  /// gainmap recomputation.
+  ///
+  /// If the image is scRGB and has a gainmap, a base image will be computed
+  /// and it will be saved as UltraHDR.
+  ///
+  /// If the image is scRGB and has no gainmap, one will be computed.
+  /// This is slow and takes a lot of memory.
+  ///
+  /// See also: `Image.write_to_file`, [VImage#uhdrload]
+  /// @param filename Filename to save to
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public void uhdrsave(String filename, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var filenameOption = VipsOption.String("filename", filename);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(filenameOption);
+    VipsInvoker.invokeOperation(arena, "uhdrsave", callArgs);
+  }
+
+  /// As [VImage#uhdrsave], but save to a memory buffer.
+  ///
+  /// See also: [VImage#uhdrsave], `Image.write_to_file`
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public VBlob uhdrsaveBuffer(VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var bufferOption = VipsOption.Blob("buffer");
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(bufferOption);
+    VipsInvoker.invokeOperation(arena, "uhdrsave_buffer", callArgs);
+    return bufferOption.valueOrThrow();
+  }
+
+  /// As [VImage#uhdrsave], but save to a target.
+  ///
+  /// See also: [VImage#uhdrsave], `Image.write_to_target`
+  /// @param target Target to save to
+  /// @param args Array of VipsOption to apply to this operation
+  /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg keep [VipsOption.Int] Which metadata to retain
+  /// @optionalArg background [VipsOption.ArrayDouble] Background value
+  /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
+  /// @optionalArg profile [VipsOption.String] Filename of ICC profile to embed
+  /// @optionalArg strip [VipsOption.Boolean] Strip all metadata from image
+  public void uhdrsaveTarget(VTarget target, VipsOption... args) throws VipsError {
+    var inOption = VipsOption.Image("in", this);
+    var targetOption = VipsOption.Target("target", target);
+    var callArgs = new ArrayList<>(Arrays.asList(args));
+    callArgs.add(inOption);
+    callArgs.add(targetOption);
+    VipsInvoker.invokeOperation(arena, "uhdrsave_target", callArgs);
   }
 
   /// Unpremultiplies any alpha channel.
@@ -9555,6 +9907,10 @@ public final class VImage {
   /// with `Q` 80, 60, 40 or 20 to apply increasing amounts of preprocessing
   /// which improves the near-lossless compression ratio by up to 50%.
   ///
+  /// Set `exact` to preserve the color data in transparent pixels. This can
+  /// reduce compression efficiency, but is generally required when working with
+  /// images as data.
+  ///
   /// For animated webp output, `min_size` will try to optimize for minimum size.
   ///
   /// For animated webp output, `kmax` sets the maximum number of frames between
@@ -9573,6 +9929,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
+  /// @optionalArg exact [VipsOption.Boolean] Preserve color values from transparent pixels
   /// @optionalArg preset [VipsOption.Enum] [VipsForeignWebpPreset] Preset for lossy compression
   /// @optionalArg smart-subsample [VipsOption.Boolean] Enable high quality chroma subsampling
   /// @optionalArg near-lossless [VipsOption.Boolean] Enable preprocessing in lossless mode (uses Q)
@@ -9610,6 +9967,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
+  /// @optionalArg exact [VipsOption.Boolean] Preserve color values from transparent pixels
   /// @optionalArg preset [VipsOption.Enum] [VipsForeignWebpPreset] Preset for lossy compression
   /// @optionalArg smart-subsample [VipsOption.Boolean] Enable high quality chroma subsampling
   /// @optionalArg near-lossless [VipsOption.Boolean] Enable preprocessing in lossless mode (uses Q)
@@ -9644,6 +10002,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
+  /// @optionalArg exact [VipsOption.Boolean] Preserve color values from transparent pixels
   /// @optionalArg preset [VipsOption.Enum] [VipsForeignWebpPreset] Preset for lossy compression
   /// @optionalArg smart-subsample [VipsOption.Boolean] Enable high quality chroma subsampling
   /// @optionalArg near-lossless [VipsOption.Boolean] Enable preprocessing in lossless mode (uses Q)
@@ -9676,6 +10035,7 @@ public final class VImage {
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
   /// @optionalArg lossless [VipsOption.Boolean] Enable lossless compression
+  /// @optionalArg exact [VipsOption.Boolean] Preserve color values from transparent pixels
   /// @optionalArg preset [VipsOption.Enum] [VipsForeignWebpPreset] Preset for lossy compression
   /// @optionalArg smart-subsample [VipsOption.Boolean] Enable high quality chroma subsampling
   /// @optionalArg near-lossless [VipsOption.Boolean] Enable preprocessing in lossless mode (uses Q)

@@ -38,7 +38,6 @@ public class BenchmarkTests {
 
         @Setup(Level.Trial)
         public void init() throws VipsError {
-            Vips.init(false, true);
             VipsHelper.cache_set_max(0);
 
             sourceImage = VSource.newFromFile(
@@ -73,8 +72,7 @@ public class BenchmarkTests {
             var insertSize = 512;
             var paddingSize = 100;
             var finalImageSize = insertSize + paddingSize;
-            var backgroundImage = VImage.newImage(arena)
-                .black(finalImageSize, finalImageSize);
+            var backgroundImage = VImage.black(arena, finalImageSize, finalImageSize);
             var insertImage = image
                 .thumbnailImage(
                     insertSize,

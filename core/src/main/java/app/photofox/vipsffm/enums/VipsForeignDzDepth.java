@@ -13,9 +13,7 @@ public enum VipsForeignDzDepth implements VNamedEnum {
   FOREIGN_DZ_DEPTH_ONETILE("VIPS_FOREIGN_DZ_DEPTH_ONETILE", "onetile", 1),
 
   /// only create a single layer
-  FOREIGN_DZ_DEPTH_ONE("VIPS_FOREIGN_DZ_DEPTH_ONE", "one", 2),
-
-  FOREIGN_DZ_DEPTH_LAST("VIPS_FOREIGN_DZ_DEPTH_LAST", "last", 3);
+  FOREIGN_DZ_DEPTH_ONE("VIPS_FOREIGN_DZ_DEPTH_ONE", "one", 2);
 
   public static final String parentName = "VipsForeignDzDepth";
 

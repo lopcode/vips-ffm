@@ -19,9 +19,7 @@ public enum VipsSdfShape implements VNamedEnum {
   SDF_SHAPE_ROUNDED_BOX("VIPS_SDF_SHAPE_ROUNDED_BOX", "rounded-box", 2),
 
   /// a line from `a` to `b`
-  SDF_SHAPE_LINE("VIPS_SDF_SHAPE_LINE", "line", 3),
-
-  SDF_SHAPE_LAST("VIPS_SDF_SHAPE_LAST", "last", 4);
+  SDF_SHAPE_LINE("VIPS_SDF_SHAPE_LINE", "line", 3);
 
   public static final String parentName = "VipsSdfShape";
 

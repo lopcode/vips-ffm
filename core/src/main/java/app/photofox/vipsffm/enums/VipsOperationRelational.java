@@ -23,9 +23,7 @@ public enum VipsOperationRelational implements VNamedEnum {
   OPERATION_RELATIONAL_MORE("VIPS_OPERATION_RELATIONAL_MORE", "more", 4),
 
   /// `>=`
-  OPERATION_RELATIONAL_MOREEQ("VIPS_OPERATION_RELATIONAL_MOREEQ", "moreeq", 5),
-
-  OPERATION_RELATIONAL_LAST("VIPS_OPERATION_RELATIONAL_LAST", "last", 6);
+  OPERATION_RELATIONAL_MOREEQ("VIPS_OPERATION_RELATIONAL_MOREEQ", "moreeq", 5);
 
   public static final String parentName = "VipsOperationRelational";
 

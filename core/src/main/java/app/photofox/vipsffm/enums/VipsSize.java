@@ -20,9 +20,7 @@ public enum VipsSize implements VNamedEnum {
   SIZE_DOWN("VIPS_SIZE_DOWN", "down", 2),
 
   /// force size, that is, break aspect ratio
-  SIZE_FORCE("VIPS_SIZE_FORCE", "force", 3),
-
-  SIZE_LAST("VIPS_SIZE_LAST", "last", 4);
+  SIZE_FORCE("VIPS_SIZE_FORCE", "force", 3);
 
   public static final String parentName = "VipsSize";
 

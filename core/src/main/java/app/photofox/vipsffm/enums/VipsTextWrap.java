@@ -20,9 +20,7 @@ public enum VipsTextWrap implements VNamedEnum {
   TEXT_WRAP_WORD_CHAR("VIPS_TEXT_WRAP_WORD_CHAR", "word-char", 2),
 
   /// no wrapping
-  TEXT_WRAP_NONE("VIPS_TEXT_WRAP_NONE", "none", 3),
-
-  TEXT_WRAP_LAST("VIPS_TEXT_WRAP_LAST", "last", 4);
+  TEXT_WRAP_NONE("VIPS_TEXT_WRAP_NONE", "none", 3);
 
   public static final String parentName = "VipsTextWrap";
 

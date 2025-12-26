@@ -16,9 +16,7 @@ public enum VipsCombineMode implements VNamedEnum {
   COMBINE_MODE_SET("VIPS_COMBINE_MODE_SET", "set", 0),
 
   /// add pixels
-  COMBINE_MODE_ADD("VIPS_COMBINE_MODE_ADD", "add", 1),
-
-  COMBINE_MODE_LAST("VIPS_COMBINE_MODE_LAST", "last", 2);
+  COMBINE_MODE_ADD("VIPS_COMBINE_MODE_ADD", "add", 1);
 
   public static final String parentName = "VipsCombineMode";
 

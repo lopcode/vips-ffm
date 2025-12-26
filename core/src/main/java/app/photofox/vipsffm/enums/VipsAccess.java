@@ -19,9 +19,8 @@ public enum VipsAccess implements VNamedEnum {
   /// top-to-bottom reading only, but with a small buffer
   ACCESS_SEQUENTIAL("VIPS_ACCESS_SEQUENTIAL", "sequential", 1),
 
-  ACCESS_SEQUENTIAL_UNBUFFERED("VIPS_ACCESS_SEQUENTIAL_UNBUFFERED", "sequential-unbuffered", 2),
-
-  ACCESS_LAST("VIPS_ACCESS_LAST", "last", 3);
+  /// deprecated, use [VipsAccess#ACCESS_SEQUENTIAL] instead
+  ACCESS_SEQUENTIAL_UNBUFFERED("VIPS_ACCESS_SEQUENTIAL_UNBUFFERED", "sequential-unbuffered", 2);
 
   public static final String parentName = "VipsAccess";
 

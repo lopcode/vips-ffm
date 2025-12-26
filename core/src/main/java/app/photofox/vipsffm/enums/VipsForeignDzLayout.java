@@ -19,9 +19,7 @@ public enum VipsForeignDzLayout implements VNamedEnum {
   FOREIGN_DZ_LAYOUT_IIIF("VIPS_FOREIGN_DZ_LAYOUT_IIIF", "iiif", 3),
 
   /// use IIIF v3 directory layout
-  FOREIGN_DZ_LAYOUT_IIIF3("VIPS_FOREIGN_DZ_LAYOUT_IIIF3", "iiif3", 4),
-
-  FOREIGN_DZ_LAYOUT_LAST("VIPS_FOREIGN_DZ_LAYOUT_LAST", "last", 5);
+  FOREIGN_DZ_LAYOUT_IIIF3("VIPS_FOREIGN_DZ_LAYOUT_IIIF3", "iiif3", 4);
 
   public static final String parentName = "VipsForeignDzLayout";
 

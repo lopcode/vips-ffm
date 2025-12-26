@@ -14,9 +14,7 @@ public enum VipsCombine implements VNamedEnum {
   COMBINE_SUM("VIPS_COMBINE_SUM", "sum", 1),
 
   /// take the minimum value
-  COMBINE_MIN("VIPS_COMBINE_MIN", "min", 2),
-
-  COMBINE_LAST("VIPS_COMBINE_LAST", "last", 3);
+  COMBINE_MIN("VIPS_COMBINE_MIN", "min", 2);
 
   public static final String parentName = "VipsCombine";
 

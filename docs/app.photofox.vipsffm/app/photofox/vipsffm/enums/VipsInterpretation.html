@@ -88,7 +88,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#INTERPRETATION_MATRIX" tabindex="0">INTERPRETATION_MATRIX</a></li>
 <li><a href="#INTERPRETATION_scRGB" tabindex="0">INTERPRETATION_scRGB</a></li>
 <li><a href="#INTERPRETATION_HSV" tabindex="0">INTERPRETATION_HSV</a></li>
-<li><a href="#INTERPRETATION_LAST" tabindex="0">INTERPRETATION_LAST</a></li>
+<li><a href="#INTERPRETATION_OKLAB" tabindex="0">INTERPRETATION_OKLAB</a></li>
+<li><a href="#INTERPRETATION_OKLCH" tabindex="0">INTERPRETATION_OKLCH</a></li>
 </ol>
 </li>
 <li><a href="#field-detail" tabindex="0">Field Details</a>
@@ -201,42 +202,48 @@ new numbers from the end.</p>
 <div class="col-last even-row-color">
 <div class="block">CIE LAB coded as three signed 16-bit values</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_LAST" class="member-name-link">INTERPRETATION_LAST</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code><a href="#INTERPRETATION_LCH" class="member-name-link">INTERPRETATION_LCH</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_LCH" class="member-name-link">INTERPRETATION_LCH</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">pixels are in CIE LCh space</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_MATRIX" class="member-name-link">INTERPRETATION_MATRIX</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code><a href="#INTERPRETATION_MATRIX" class="member-name-link">INTERPRETATION_MATRIX</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">a matrix</div>
 </div>
-<div class="col-first even-row-color"><code><a href="#INTERPRETATION_MULTIBAND" class="member-name-link">INTERPRETATION_MULTIBAND</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_MULTIBAND" class="member-name-link">INTERPRETATION_MULTIBAND</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">generic many-band image</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_RGB" class="member-name-link">INTERPRETATION_RGB</a></code></div>
+<div class="col-first even-row-color"><code><a href="#INTERPRETATION_OKLAB" class="member-name-link">INTERPRETATION_OKLAB</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">pixels are in Oklab colourspace</div>
+</div>
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_OKLCH" class="member-name-link">INTERPRETATION_OKLCH</a></code></div>
 <div class="col-last odd-row-color">
+<div class="block">pixels are in Oklch colourspace</div>
+</div>
+<div class="col-first even-row-color"><code><a href="#INTERPRETATION_RGB" class="member-name-link">INTERPRETATION_RGB</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">generic RGB space</div>
 </div>
-<div class="col-first even-row-color"><code><a href="#INTERPRETATION_RGB16" class="member-name-link">INTERPRETATION_RGB16</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_RGB16" class="member-name-link">INTERPRETATION_RGB16</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">generic 16-bit RGB</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_scRGB" class="member-name-link">INTERPRETATION_scRGB</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code><a href="#INTERPRETATION_scRGB" class="member-name-link">INTERPRETATION_scRGB</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">pixels are scRGB</div>
 </div>
-<div class="col-first even-row-color"><code><a href="#INTERPRETATION_sRGB" class="member-name-link">INTERPRETATION_sRGB</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_sRGB" class="member-name-link">INTERPRETATION_sRGB</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">pixels are sRGB</div>
 </div>
-<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_XYZ" class="member-name-link">INTERPRETATION_XYZ</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code><a href="#INTERPRETATION_XYZ" class="member-name-link">INTERPRETATION_XYZ</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">the first three bands are CIE XYZ</div>
 </div>
-<div class="col-first even-row-color"><code><a href="#INTERPRETATION_YXY" class="member-name-link">INTERPRETATION_YXY</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code><a href="#INTERPRETATION_YXY" class="member-name-link">INTERPRETATION_YXY</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">pixels are CIE Yxy</div>
 </div>
 </div>
@@ -488,10 +495,20 @@ the order they are declared.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="INTERPRETATION_LAST">
-<h3>INTERPRETATION_LAST</h3>
+<section class="detail" id="INTERPRETATION_OKLAB">
+<h3>INTERPRETATION_OKLAB</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_LAST</span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_OKLAB</span></div>
+<div class="block">pixels are in Oklab colourspace</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="INTERPRETATION_OKLCH">
+<h3>INTERPRETATION_OKLCH</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="VipsInterpretation.html" title="enum class in app.photofox.vipsffm.enums">VipsInterpretation</a></span>&nbsp;<span class="element-name">INTERPRETATION_OKLCH</span></div>
+<div class="block">pixels are in Oklch colourspace</div>
 </div>
 </section>
 </li>

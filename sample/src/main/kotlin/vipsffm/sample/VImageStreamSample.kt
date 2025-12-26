@@ -1,6 +1,7 @@
 package vipsffm.sample
 
 import app.photofox.vipsffm.VImage
+import app.photofox.vipsffm.VSource
 import vipsffm.RunnableSample
 import vipsffm.SampleHelper
 import java.lang.foreign.Arena
@@ -16,11 +17,14 @@ object VImageStreamSample: RunnableSample {
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val outputPath = workingDirectory.resolve("fox_copy.jpg")
         val inputStream = ClassLoader.getSystemResourceAsStream("sample_images/fox.jpg")
-        val image = VImage.newFromStream(arena, inputStream)
+        val image = VImage.thumbnailSource(
+            arena,
+            VSource.newFromInputStream(arena, inputStream),
+            800
+        )
 
         val outputStream = Files.newOutputStream(outputPath)
-        image.thumbnailImage(800)
-            .writeToStream(outputStream, ".jpg")
+        image.writeToStream(outputStream, ".jpg")
 
         return SampleHelper.validate(
             outputPath,

@@ -17,14 +17,12 @@ object VImageChainSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val outputPath = workingDirectory.resolve("rabbit_chain.jpg")
-        val image = VImage.newFromFile(
+        val image = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400,
+            VipsOption.Boolean("no_rotate", true) // image doesn't have rotation exif data - so no effect
         )
-            .thumbnailImage(
-                400,
-                VipsOption.Boolean("no_rotate", true) // image doesn't have rotation exif data - so no effect
-            )
             .invert()
             .rotate(90.0)
             .colourspace(VipsInterpretation.INTERPRETATION_CMYK)

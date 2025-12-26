@@ -15,11 +15,11 @@ object VBlobByteBufferSample: RunnableSample {
     // https://github.com/lopcode/vips-ffm/issues/72
     // provide a way to get bytes out of a VBlob without raw pointers
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
-        val image = VImage.newFromFile(
+        val image = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400
         )
-        .thumbnailImage(400)
 
         val blob = image.jpegsaveBuffer()
         val bytes = blob.asClonedByteBuffer()

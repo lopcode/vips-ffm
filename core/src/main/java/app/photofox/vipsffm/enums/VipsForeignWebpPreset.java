@@ -22,9 +22,7 @@ public enum VipsForeignWebpPreset implements VNamedEnum {
   FOREIGN_WEBP_PRESET_ICON("VIPS_FOREIGN_WEBP_PRESET_ICON", "icon", 4),
 
   /// text-like
-  FOREIGN_WEBP_PRESET_TEXT("VIPS_FOREIGN_WEBP_PRESET_TEXT", "text", 5),
-
-  FOREIGN_WEBP_PRESET_LAST("VIPS_FOREIGN_WEBP_PRESET_LAST", "last", 6);
+  FOREIGN_WEBP_PRESET_TEXT("VIPS_FOREIGN_WEBP_PRESET_TEXT", "text", 5);
 
   public static final String parentName = "VipsForeignWebpPreset";
 

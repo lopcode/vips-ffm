@@ -30,9 +30,7 @@ public enum VipsForeignPpmFormat implements VNamedEnum {
   FOREIGN_PPM_FORMAT_PFM("VIPS_FOREIGN_PPM_FORMAT_PFM", "pfm", 3),
 
   /// portable anymap
-  FOREIGN_PPM_FORMAT_PNM("VIPS_FOREIGN_PPM_FORMAT_PNM", "pnm", 4),
-
-  FOREIGN_PPM_FORMAT_LAST("VIPS_FOREIGN_PPM_FORMAT_LAST", "last", 5);
+  FOREIGN_PPM_FORMAT_PNM("VIPS_FOREIGN_PPM_FORMAT_PNM", "pnm", 4);
 
   public static final String parentName = "VipsForeignPpmFormat";
 

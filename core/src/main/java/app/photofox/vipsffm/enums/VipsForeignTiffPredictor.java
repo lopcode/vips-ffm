@@ -14,9 +14,7 @@ public enum VipsForeignTiffPredictor implements VNamedEnum {
   FOREIGN_TIFF_PREDICTOR_HORIZONTAL("VIPS_FOREIGN_TIFF_PREDICTOR_HORIZONTAL", "horizontal", 2),
 
   /// float predictor
-  FOREIGN_TIFF_PREDICTOR_FLOAT("VIPS_FOREIGN_TIFF_PREDICTOR_FLOAT", "float", 3),
-
-  FOREIGN_TIFF_PREDICTOR_LAST("VIPS_FOREIGN_TIFF_PREDICTOR_LAST", "last", 4);
+  FOREIGN_TIFF_PREDICTOR_FLOAT("VIPS_FOREIGN_TIFF_PREDICTOR_FLOAT", "float", 3);
 
   public static final String parentName = "VipsForeignTiffPredictor";
 

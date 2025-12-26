@@ -8,9 +8,7 @@ import java.lang.String;
 /// See also: [VImage#complex2].
 public enum VipsOperationComplex2 implements VNamedEnum {
   /// convert to polar coordinates
-  OPERATION_COMPLEX2_CROSS_PHASE("VIPS_OPERATION_COMPLEX2_CROSS_PHASE", "cross-phase", 0),
-
-  OPERATION_COMPLEX2_LAST("VIPS_OPERATION_COMPLEX2_LAST", "last", 1);
+  OPERATION_COMPLEX2_CROSS_PHASE("VIPS_OPERATION_COMPLEX2_CROSS_PHASE", "cross-phase", 0);
 
   public static final String parentName = "VipsOperationComplex2";
 

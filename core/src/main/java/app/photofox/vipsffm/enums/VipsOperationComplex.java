@@ -14,9 +14,7 @@ public enum VipsOperationComplex implements VNamedEnum {
   OPERATION_COMPLEX_RECT("VIPS_OPERATION_COMPLEX_RECT", "rect", 1),
 
   /// complex conjugate
-  OPERATION_COMPLEX_CONJ("VIPS_OPERATION_COMPLEX_CONJ", "conj", 2),
-
-  OPERATION_COMPLEX_LAST("VIPS_OPERATION_COMPLEX_LAST", "last", 3);
+  OPERATION_COMPLEX_CONJ("VIPS_OPERATION_COMPLEX_CONJ", "conj", 2);
 
   public static final String parentName = "VipsOperationComplex";
 

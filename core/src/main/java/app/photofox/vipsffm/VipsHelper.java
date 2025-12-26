@@ -1595,6 +1595,46 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// int vips_image_get_tile_width(VipsImage *image)
+  /// ```
+  public static int image_get_tile_width(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_tile_width", "image");
+    }
+    var result = VipsRaw.vips_image_get_tile_width(image);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// int vips_image_get_tile_height(VipsImage *image)
+  /// ```
+  public static int image_get_tile_height(MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_tile_height", "image");
+    }
+    var result = VipsRaw.vips_image_get_tile_height(image);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
+  /// VipsImage *vips_image_get_gainmap(VipsImage *image)
+  /// ```
+  public static MemorySegment image_get_gainmap(Arena arena, MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_get_gainmap", "image");
+    }
+    var result = VipsRaw.vips_image_get_gainmap(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_get_gainmap", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// const void *vips_image_get_data(VipsImage *image)
   /// ```
   public static MemorySegment image_get_data(Arena arena, MemorySegment image) throws VipsError {

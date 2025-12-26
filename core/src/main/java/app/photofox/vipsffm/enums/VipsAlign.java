@@ -19,9 +19,7 @@ public enum VipsAlign implements VNamedEnum {
   ALIGN_CENTRE("VIPS_ALIGN_CENTRE", "centre", 1),
 
   /// align high coordinate edge
-  ALIGN_HIGH("VIPS_ALIGN_HIGH", "high", 2),
-
-  ALIGN_LAST("VIPS_ALIGN_LAST", "last", 3);
+  ALIGN_HIGH("VIPS_ALIGN_HIGH", "high", 2);
 
   public static final String parentName = "VipsAlign";
 

@@ -16,11 +16,11 @@ object VImageArrayJoinSample: RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val outputPath = workingDirectory.resolve("rabbit_two.jpg")
-        val image = VImage.newFromFile(
+        val image = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
+            "sample/src/main/resources/sample_images/rabbit.jpg",
+            400
         )
-        .thumbnailImage(400)
 
         VImage.arrayjoin(
             arena,
