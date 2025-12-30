@@ -16,11 +16,11 @@ object VImageCachingSample: RunnableSample {
         val outputPath = workingDirectory.resolve("rabbit_chain.jpg")
 
         (0 ..< 3).forEach { _ ->
-            val image = VImage.newFromFile(
+            val image = VImage.thumbnail(
                 arena,
-                "sample/src/main/resources/sample_images/rabbit.jpg"
+                "sample/src/main/resources/sample_images/rabbit.jpg",
+                400
             )
-                .thumbnailImage(400)
                 .flip(VipsDirection.DIRECTION_VERTICAL)
                 .autorot()
 

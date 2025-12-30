@@ -18,18 +18,9 @@ object VImageCreateThumbnailSample: RunnableSample {
     val logger = LoggerFactory.getLogger(VImageCreateThumbnailSample::class.java)
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
-        val sourceImage = VImage.newFromFile(
+        val thumbnail = VImage.thumbnail(
             arena,
-            "sample/src/main/resources/sample_images/rabbit.jpg"
-        )
-        val sourceWidth = sourceImage.width
-        val sourceHeight = sourceImage.height
-        logger.info("source image size: $sourceWidth x $sourceHeight")
-
-        val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
-        sourceImage.writeToFile(outputPath.absolutePathString())
-
-        val thumbnail = sourceImage.thumbnailImage(
+            "sample/src/main/resources/sample_images/rabbit.jpg",
             400,
             VipsOption.Boolean("auto-rotate", true) // example of an option
         )
