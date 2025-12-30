@@ -18,7 +18,7 @@ object VImageFromBytesSample: RunnableSample {
         val path = Path.of("sample/src/main/resources/sample_images/rabbit.jpg")
         val bytes = Files.readAllBytes(path)
         val image = VImage.newFromBytes(arena, bytes)
-            .thumbnailImage(400)
+            .thumbnailImage(400) // prefer VImage.thumbnail if possible
 
         val outputPath = workingDirectory.resolve("rabbit_copy.jpg")
         image.writeToFile(outputPath.absolutePathString())

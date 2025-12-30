@@ -19,8 +19,11 @@ object VImageFromMemoryToMemorySample : RunnableSample {
 
     override fun run(arena: Arena, workingDirectory: Path): Result<Unit> {
         val path = Path.of("sample/src/main/resources/sample_images/rabbit.jpg")
-        val image = VImage.newFromFile(arena, path.absolutePathString())
-            .thumbnailImage(400)
+        val image = VImage.thumbnail(
+            arena,
+            path.absolutePathString(),
+            400
+        )
 
         val bands = VipsHelper.image_get_bands(image.unsafeStructAddress)
         val width = image.width
