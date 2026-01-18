@@ -5,13 +5,13 @@ Fast, safe, complete [libvips](https://github.com/libvips/libvips) bindings for 
 Supports a vast range of image formats, including HEIC, JXL, WebP, PNG, JPEG, and more. Pronounced "vips (like zips)
 eff-eff-emm". The project is relatively new, but aims to be production ready. Tested on macOS 14, Windows 11, and Linux
 (Ubuntu 24.04, Debian 12.1, with and without jemalloc). Should work on any architecture you can use libvips and
-Java on (arm64/amd64/etc).
-
-Uses the "Foreign Function & Memory API" ([JEP 454](https://openjdk.org/jeps/454)), and the "Class-File API" ([JEP 457](https://openjdk.org/jeps/457)) released in JDK 22.
-Built in such a way that it's usually the fastest image processing library available for Java.
+Java on (arm64/amd64/etc). Built in such a way that it's usually the fastest image processing library available for Java,
+by using the "Foreign Function & Memory API" ([JEP 454](https://openjdk.org/jeps/454)) and code generation.
 
 Used the library? I'd love to hear from more users - let me know in [Discussions](https://github.com/lopcode/vips-ffm/discussions). Please also give [the repo](https://github.com/lopcode/vips-ffm)
 a star 🌟️!
+
+Made in the EU 🇪🇺🇸🇪
 
 ## Usage
 
