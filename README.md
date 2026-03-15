@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.5")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.6")
 }
 ```
 
@@ -171,14 +171,14 @@ You can find them in the [`docker_tests`](docker_tests) folder.
 
 This library requires the `libvips`, `glib`, and `gobject` native libraries to be present in your library path:
 * On macOS: `DYLD_LIBRARY_PATH` (installed with `brew install vips`)
-* On Linux: `LD_LIBRARY_PATH` (installed with `apt install libvips-dev` on Debian / Ubuntu)
+* On Linux: `LD_LIBRARY_PATH` (installed with `apt install libvips42` on Debian / Ubuntu)
 * On Windows: `PATH`
 
 The naming conventions of these libraries are not consistent across operating systems, so vips-ffm attempts to load each
 in the following order:
-* `vips`, `vips.{abiNumber}`, `libvips-{abiNumber}` 
-* `glib-2.0`, `glib-2.0.{abiNumber}`, `libglib-2.0-{abiNumber}`
-* `gobject-2.0`, `gobject-2.0.{abiNumber}`, `libgobject-2.0-{abiNumber}`
+* `vips`, `vips.{abiNumber}`, `libvips.so.{abiNumber}`, `libvips-{abiNumber}`
+* `glib-2.0`, `glib-2.0.{abiNumber}`, `libglib-2.0.so.{abiNumber}`, `libglib-2.0-{abiNumber}`
+* `gobject-2.0`, `gobject-2.0.{abiNumber}`, `libgobject-2.0.so.{abiNumber}`, `libgobject-2.0-{abiNumber}`
 
 Override properties are provided to set your own "ABI number", but note that vips-ffm might not support that version
 yet (which could manifest as crashes/segfaults):

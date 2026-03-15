@@ -33,9 +33,10 @@ public class VipsLibLookup {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.vips.override"))
             .orElse("42");
         var names = List.of(
-            "vips", // default unix-like
-            "vips." + abiNumber, // some linux systems don't symlink and need abi number
-            "libvips-" + abiNumber // windows needs everything
+            new SymbolLookupSpec("vips", true), // default unix-like
+            new SymbolLookupSpec("vips." + abiNumber, true), // some linux systems don't symlink and need abi number
+            new SymbolLookupSpec("libvips.so." + abiNumber, false), // some linux runtime libs use the lib.so.abiNumber format
+            new SymbolLookupSpec("libvips-" + abiNumber, true) // windows needs everything
         );
         return findFirstSymbolLookup(arena, names);
     }
@@ -48,9 +49,10 @@ public class VipsLibLookup {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.glib.override"))
             .orElse("0");
         var names = List.of(
-            "glib-2.0", // default unix-like
-            "glib-2.0." + abiNumber, // some linux systems don't symlink and need abi number
-            "libglib-2.0-" + abiNumber // windows needs everything
+            new SymbolLookupSpec("glib-2.0", true), // default unix-like
+            new SymbolLookupSpec("glib-2.0." + abiNumber, true), // some linux systems don't symlink and need abi number
+            new SymbolLookupSpec("libglib-2.0.so." + abiNumber, false), // some linux runtime libs use the lib.so.abiNumber format
+            new SymbolLookupSpec("libglib-2.0-" + abiNumber, true) // windows needs everything
         );
         return findFirstSymbolLookup(arena, names);
     }
@@ -63,19 +65,25 @@ public class VipsLibLookup {
         var abiNumber = Optional.ofNullable(System.getProperty("vipsffm.abinumber.gobject.override"))
             .orElse("0");
         var names = List.of(
-            "gobject-2.0", // default unix-like
-            "gobject-2.0." + abiNumber, // some linux systems don't symlink and need abi number
-            "libgobject-2.0-" + abiNumber // windows needs everything
+            new SymbolLookupSpec("gobject-2.0", true), // default unix-like
+            new SymbolLookupSpec("gobject-2.0." + abiNumber, true), // some linux systems don't symlink and need abi number
+            new SymbolLookupSpec("libgobject-2.0.so." + abiNumber, false), // some linux runtime libs use the lib.so.abiNumber format
+            new SymbolLookupSpec("libgobject-2.0-" + abiNumber, true) // windows needs everything
         );
         return findFirstSymbolLookup(arena, names);
     }
 
+    private record SymbolLookupSpec(
+        String name,
+        boolean mapToSystemName
+    ) {}
+
     private static SymbolLookup findFirstSymbolLookup(
         Arena arena,
-        List<String> names
+        List<SymbolLookupSpec> specs
     ) {
-        for (var name : names) {
-            var attempt = attemptLibraryLookup(name, arena);
+        for (var spec : specs) {
+            var attempt = attemptLibraryLookup(spec.name, arena, spec.mapToSystemName);
             if (attempt.isPresent()) {
                 return attempt.get();
             }
@@ -83,10 +91,14 @@ public class VipsLibLookup {
         return null;
     }
 
-    static Optional<SymbolLookup> attemptLibraryLookup(String name, Arena arena) {
+    static Optional<SymbolLookup> attemptLibraryLookup(String name, Arena arena, boolean useSystemNaming) {
+        var libraryName = name;
+        if (useSystemNaming) {
+            libraryName = System.mapLibraryName(libraryName);
+        }
         try {
             return Optional.of(
-                SymbolLookup.libraryLookup(System.mapLibraryName(name), arena)
+                SymbolLookup.libraryLookup(libraryName, arena)
             );
         } catch (IllegalArgumentException _) {
             return Optional.empty();
