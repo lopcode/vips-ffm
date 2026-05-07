@@ -19,7 +19,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.21.3")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.3")
     implementation("org.apache.commons:commons-text:1.15.0")
-    implementation("com.palantir.javapoet:javapoet:0.10.0")
+    implementation("com.palantir.javapoet:javapoet:0.15.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
