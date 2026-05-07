@@ -71,6 +71,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#byteSize()" tabindex="0">byteSize()</a></li>
 <li><a href="#asArenaScopedByteBuffer()" tabindex="0">asArenaScopedByteBuffer()</a></li>
 <li><a href="#asClonedByteBuffer()" tabindex="0">asClonedByteBuffer()</a></li>
+<li><a href="#getBytes()" tabindex="0">getBytes()</a></li>
 </ol>
 </li>
 </ol>
@@ -122,26 +123,25 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Size of the data in this blob</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeDataAddress()" class="member-name-link">getUnsafeDataAddress</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>byte[]</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBytes()" class="member-name-link">getBytes</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block"><p>Not recommended for use, use</p>
-<details class="invalid-tag">
-<summary>invalid reference</summary>
-<pre><code>#asByteBuffer()</code></pre>
-</details>
- instead
-</div>
+<div class="block">byte[] representation of the data in this VipsBlob</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeStructAddress()" class="member-name-link">getUnsafeStructAddress</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeDataAddress()" class="member-name-link">getUnsafeDataAddress</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Not recommended for use, use <a href="#asArenaScopedByteBuffer()"><code>asArenaScopedByteBuffer()</code></a> or <a href="#asClonedByteBuffer()"><code>asClonedByteBuffer()</code></a> instead</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnsafeStructAddress()" class="member-name-link">getUnsafeStructAddress</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for this VipsBlob struct</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="VBlob.html" title="class in app.photofox.vipsffm">VBlob</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newFromBytes(java.lang.foreign.Arena,byte%5B%5D)" class="member-name-link">newFromBytes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/Arena.html" title="class or interface in java.lang.foreign" class="external-link">Arena</a>&nbsp;arena,
  byte[]&nbsp;bytes)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a new VBlob from a fixed array of bytes</div>
 </div>
 </div>
@@ -206,12 +206,7 @@ need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsf
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link">MemorySegment</a></span>&nbsp;<span class="element-name">getUnsafeDataAddress</span>()
                                    throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
-<div class="block"><p>Not recommended for use, use</p>
-<details class="invalid-tag">
-<summary>invalid reference</summary>
-<pre><code>#asByteBuffer()</code></pre>
-</details>
- instead
+<div class="block"><p>Not recommended for use, use <a href="#asArenaScopedByteBuffer()"><code>asArenaScopedByteBuffer()</code></a> or <a href="#asClonedByteBuffer()"><code>asClonedByteBuffer()</code></a> instead</p>
 <p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for the data in this blob</p>
 <p>Sliced to the length of the data, which isn't always null terminated</p>
 </div>
@@ -239,6 +234,9 @@ need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsf
 <div class="block"><p>ByteBuffer representation of the data in this blob</p>
 <p>Mapped to native memory via DirectByteBuffer, hence does not make a copy, so the data has the
 same data lifetime as <code>arena</code></p>
+<p>Note that because this is backed by native memory, you cannot use the <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html#array()" title="class or interface in java.nio" class="external-link"><code>ByteBuffer.array()</code></a>
+method on the resulting buffer. Use <a href="#asClonedByteBuffer()"><code>asClonedByteBuffer()</code></a> or <a href="#getBytes()"><code>getBytes()</code></a> if you're
+looking for a full copy of the data.</p>
 </div>
 </div>
 </section>
@@ -250,6 +248,18 @@ same data lifetime as <code>arena</code></p>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a></span>&nbsp;<span class="element-name">asClonedByteBuffer</span>()</div>
 <div class="block"><p>ByteBuffer representation of the data in this blob</p>
 <p>A full copy of the data is taken, so that its contents are not coupled to the scope of <code>arena</code></p>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getBytes()">
+<h3>getBytes</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name">getBytes</span>()</div>
+<div class="block"><p>byte[] representation of the data in this VipsBlob</p>
+<p>Useful if you're working with metadata stored on an image, like an ICC profile</p>
+<p>Note that a full copy of the data is taken</p>
 </div>
 </div>
 </section>

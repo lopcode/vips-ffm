@@ -968,7 +968,7 @@ object GenerateVClasses {
                     when (poetValueType) {
                         vblobType -> {
                             this.addStatement(
-                                "\$T.image_set_$typeName(arena, this.address, name, \$T.NULL, value.address, value.byteSize())",
+                                "\$T.image_set_$typeName(arena, this.address, name, \$T.NULL, value.getUnsafeDataAddress(), value.byteSize())",
                                 vipsHelperType,
                                 memorySegmentType
                             )
@@ -1087,8 +1087,8 @@ object GenerateVClasses {
                                     .endControlFlow()
                                     .build()
                             )
-                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(blobLength)", vipsRawType)
-                            this.addStatement("return new VBlob(arena, blobAddress)")
+                            this.addStatement("var dataSegment = outPointer.get(\$T.C_POINTER, 0).reinterpret(blobLength)", vipsRawType)
+                            this.addStatement("return VBlob.newFromDataSegment(arena, dataSegment)")
                         }
 
                         vimageType -> {

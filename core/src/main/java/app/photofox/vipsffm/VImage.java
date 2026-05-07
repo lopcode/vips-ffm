@@ -10465,15 +10465,15 @@ public final class VImage {
     if (blobLength <= 0) {
       throw new VipsError("failed to read length of type blob from field: " + name);
     }
-    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(blobLength);
-    return new VBlob(arena, blobAddress);
+    var dataSegment = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(blobLength);
+    return VBlob.newFromDataSegment(arena, dataSegment);
   }
 
   /// Helper function to set the metadata stored at `name` on this image, of type `blob`
   ///
   /// See also: [libvips header docs](https://www.libvips.org/API/current/libvips-header.html)
   public VImage set(String name, VBlob value) {
-    VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.address, value.byteSize());
+    VipsHelper.image_set_blob(arena, this.address, name, MemorySegment.NULL, value.getUnsafeDataAddress(), value.byteSize());
     return this;
   }
 
