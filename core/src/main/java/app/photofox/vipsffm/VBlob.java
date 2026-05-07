@@ -39,7 +39,11 @@ public final class VBlob {
     /// @param bytes The bytes to wrap
     public static VBlob newFromBytes(Arena arena, byte[] bytes) throws VipsError {
         var offHeapSegment = arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes);
-        var blobAddress = VipsRaw.vips_blob_new(MemorySegment.NULL, offHeapSegment, offHeapSegment.byteSize());
+        return newFromDataSegment(arena, offHeapSegment);
+    }
+
+    static VBlob newFromDataSegment(Arena arena, MemorySegment dataSegment) throws VipsError {
+        var blobAddress = VipsRaw.vips_blob_new(MemorySegment.NULL, dataSegment, dataSegment.byteSize());
         if (!VipsValidation.isValidPointer(blobAddress)) {
             throw new VipsError("invalid blob returned from libvips");
         }
@@ -59,20 +63,20 @@ public final class VBlob {
         return this.address;
     }
 
-    /// Not recommended for use, use [#asByteBuffer()] instead
+    /// Not recommended for use, use [#asArenaScopedByteBuffer()] or [#asClonedByteBuffer()] instead
     ///
     /// Gets the raw [MemorySegment] (C pointer) for the data in this blob
     ///
     /// Sliced to the length of the data, which isn't always null terminated
     public MemorySegment getUnsafeDataAddress() throws VipsError {
         var lengthOutPointer = arena.allocate(C_LONG);
-        var dataPointer = VipsRaw.vips_area_get_data(
+        var dataPointer = VipsRaw.vips_blob_get(
             this.address,
-            lengthOutPointer,
-            MemorySegment.NULL,
-            MemorySegment.NULL,
-            MemorySegment.NULL
+            lengthOutPointer
         );
+        if (!VipsValidation.isValidPointer(dataPointer)) {
+            throw new VipsError("unexpected vblob bad data pointer");
+        }
         var length = lengthOutPointer.get(C_LONG, 0);
         if (length < 0) {
             throw new VipsError("unexpected length of vblob data " + length);
@@ -89,6 +93,10 @@ public final class VBlob {
     ///
     /// Mapped to native memory via DirectByteBuffer, hence does not make a copy, so the data has the
     /// same data lifetime as [#arena]
+    ///
+    /// Note that because this is backed by native memory, you cannot use the [ByteBuffer#array()]
+    /// method on the resulting buffer. Use [#asClonedByteBuffer()] or [#getBytes()] if you're
+    /// looking for a full copy of the data.
     public ByteBuffer asArenaScopedByteBuffer() {
         return this.getUnsafeDataAddress().asByteBuffer();
     }
@@ -106,5 +114,14 @@ public final class VBlob {
         newBuffer.put(buffer);
         newBuffer.rewind();
         return newBuffer;
+    }
+
+    /// byte[] representation of the data in this VipsBlob
+    ///
+    /// Useful if you're working with metadata stored on an image, like an ICC profile
+    ///
+    /// Note that a full copy of the data is taken
+    public byte[] getBytes() {
+        return this.getUnsafeDataAddress().toArray(ValueLayout.JAVA_BYTE);
     }
 }

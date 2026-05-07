@@ -4,7 +4,10 @@ import app.photofox.vipsffm.VBlob
 import app.photofox.vipsffm.VImage
 import org.slf4j.LoggerFactory
 import vipsffm.RunnableSample
+import java.awt.color.ColorSpace
+import java.awt.color.ICC_Profile
 import java.lang.foreign.Arena
+import java.lang.foreign.ValueLayout
 import java.nio.file.Path
 
 /**
@@ -46,10 +49,18 @@ object VImageGetSetSample: RunnableSample {
             )
         }
 
-        val bytes = sourceImage.getBlob("test-name-blob").asClonedByteBuffer()
-        if (!bytes.array().contentEquals(byteArrayOf(0x01, 0x02, 0x03, 0x04))) {
+        val bytes = sourceImage.getBlob("test-name-blob").bytes
+        if (!bytes.contentEquals(byteArrayOf(0x01, 0x02, 0x03, 0x04))) {
             return Result.failure(
                 RuntimeException("unexpected value in metadata")
+            )
+        }
+
+        val iccBytes = sourceImage.getBlob("icc-profile-data").asClonedByteBuffer()
+        val profile = ICC_Profile.getInstance(iccBytes.array())
+        if (profile.majorVersion != 2 || profile.colorSpaceType != ColorSpace.TYPE_RGB) {
+            return Result.failure(
+                RuntimeException("unexpected icc profile values")
             )
         }
 
