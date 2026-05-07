@@ -35,7 +35,7 @@ jobs:
 
       - name: Run samples
         run: |
-          vips --version || (sudo apt update && sudo apt install libvips-dev)
+          vips --version || (sudo apt update && sudo apt install --no-install-recommends --yes libvips42 libvips-tools libjemalloc2)
           ./run_samples.sh
 
       - name: Publish to GitHub Packages
