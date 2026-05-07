@@ -12073,7 +12073,8 @@ images.</p>
 gainmap recomputation.</p>
 <p>If the image is scRGB and has a gainmap, a base image will be computed
 and it will be saved as UltraHDR.</p>
-<p>If the image is scRGB and has no gainmap, one will be computed.
+<p>If the image is scRGB and has no gainmap, one will be computed at a
+<code>gainmap_scale_factor</code> of the base image.
 This is slow and takes a lot of memory.</p>
 <p>See also: <code>Image.write_to_file</code>, <a href="#uhdrload(java.lang.foreign.Arena,java.lang.String,app.photofox.vipsffm.VipsOption...)"><code>uhdrload(java.lang.foreign.Arena, java.lang.String, app.photofox.vipsffm.VipsOption...)</code></a></p>
 </div>
@@ -12084,7 +12085,7 @@ This is slow and takes a lot of memory.</p>
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
 <dt>Optional arguments:</dt>
-<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
+<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, gainmap-scale-factor <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> The scale factor of base image to gainmap image, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
 </dl>
 </div>
 </section>
@@ -12104,7 +12105,7 @@ This is slow and takes a lot of memory.</p>
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
 <dt>Optional arguments:</dt>
-<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
+<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, gainmap-scale-factor <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> The scale factor of base image to gainmap image, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
 </dl>
 </div>
 </section>
@@ -12126,7 +12127,7 @@ This is slow and takes a lot of memory.</p>
 <dt>Throws:</dt>
 <dd><code><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></code></dd>
 <dt>Optional arguments:</dt>
-<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
+<dd>Q <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Q factor, gainmap-scale-factor <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> The scale factor of base image to gainmap image, keep <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Which metadata to retain, background <a href="VipsOption.ArrayDouble.html" title="class in app.photofox.vipsffm"><code>VipsOption.ArrayDouble</code></a> Background value, page-height <a href="VipsOption.Int.html" title="class in app.photofox.vipsffm"><code>VipsOption.Int</code></a> Set page height for multipage save, profile <a href="VipsOption.String.html" title="class in app.photofox.vipsffm"><code>VipsOption.String</code></a> Filename of ICC profile to embed, strip <a href="VipsOption.Boolean.html" title="class in app.photofox.vipsffm"><code>VipsOption.Boolean</code></a> Strip all metadata from image</dd>
 </dl>
 </div>
 </section>

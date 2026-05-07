@@ -9586,13 +9586,15 @@ public final class VImage {
   /// If the image is scRGB and has a gainmap, a base image will be computed
   /// and it will be saved as UltraHDR.
   ///
-  /// If the image is scRGB and has no gainmap, one will be computed.
+  /// If the image is scRGB and has no gainmap, one will be computed at a
+  /// `gainmap_scale_factor` of the base image.
   /// This is slow and takes a lot of memory.
   ///
   /// See also: `Image.write_to_file`, [VImage#uhdrload]
   /// @param filename Filename to save to
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg gainmap-scale-factor [VipsOption.Int] The scale factor of base image to gainmap image
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -9612,6 +9614,7 @@ public final class VImage {
   /// See also: [VImage#uhdrsave], `Image.write_to_file`
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg gainmap-scale-factor [VipsOption.Int] The scale factor of base image to gainmap image
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
@@ -9633,6 +9636,7 @@ public final class VImage {
   /// @param target Target to save to
   /// @param args Array of VipsOption to apply to this operation
   /// @optionalArg Q [VipsOption.Int] Q factor
+  /// @optionalArg gainmap-scale-factor [VipsOption.Int] The scale factor of base image to gainmap image
   /// @optionalArg keep [VipsOption.Int] Which metadata to retain
   /// @optionalArg background [VipsOption.ArrayDouble] Background value
   /// @optionalArg page-height [VipsOption.Int] Set page height for multipage save
