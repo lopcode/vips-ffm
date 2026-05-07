@@ -1072,7 +1072,22 @@ object GenerateVClasses {
 
                         vblobType -> {
                             // void **
-                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0)", vipsRawType)
+                            this.addCode(
+                                CodeBlock.builder()
+                                    .beginControlFlow("if (!\$T.isValidPointer(outLengthPointer))", vipsValidatorType)
+                                    .addStatement("throw new VipsError(\"failed to read length pointer of type $typeName from field: \" + name)")
+                                    .endControlFlow()
+                                    .build()
+                            )
+                            this.addStatement("var blobLength = outLengthPointer.get(\$T.C_LONG, 0)", vipsRawType)
+                            this.addCode(
+                                CodeBlock.builder()
+                                    .beginControlFlow("if (blobLength <= 0)")
+                                    .addStatement("throw new VipsError(\"failed to read length of type $typeName from field: \" + name)")
+                                    .endControlFlow()
+                                    .build()
+                            )
+                            this.addStatement("var blobAddress = outPointer.get(\$T.C_POINTER, 0).reinterpret(blobLength)", vipsRawType)
                             this.addStatement("return new VBlob(arena, blobAddress)")
                         }
 
