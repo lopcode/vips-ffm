@@ -10454,7 +10454,14 @@ public final class VImage {
     if (!VipsValidation.isValidPointer(outPointer)) {
       throw new VipsError("failed to read value of type blob from field: " + name);
     }
-    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0);
+    if (!VipsValidation.isValidPointer(outLengthPointer)) {
+      throw new VipsError("failed to read length pointer of type blob from field: " + name);
+    }
+    var blobLength = outLengthPointer.get(VipsRaw.C_LONG, 0);
+    if (blobLength <= 0) {
+      throw new VipsError("failed to read length of type blob from field: " + name);
+    }
+    var blobAddress = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(blobLength);
     return new VBlob(arena, blobAddress);
   }
 
