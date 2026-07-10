@@ -51,11 +51,11 @@ tasks.withType<Javadoc> {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.21")
+            useJUnitJupiter()
         }
 
         register<JvmTestSuite>("integrationTest") {
-            useKotlinTest("2.1.21")
+            useJUnitJupiter()
 
             dependencies {
                 implementation(project(":core"))
