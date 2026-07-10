@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm")
+    java
     id("com.gradleup.shadow") version "9.4.1"
     application
 }
@@ -29,7 +29,7 @@ java {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.21")
+            useJUnitJupiter()
         }
     }
 }

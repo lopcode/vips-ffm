@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm")
+    java
     id("com.gradleup.shadow") version "9.4.1"
     application
 }
@@ -17,7 +17,6 @@ dependencies {
     implementation(project(":core"))
     implementation(platform("org.slf4j:slf4j-bom:2.0.17"))
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.21.3")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.3")
     implementation("org.apache.commons:commons-text:1.15.0")
     implementation("com.palantir.javapoet:javapoet:0.15.0")
     implementation("org.slf4j:slf4j-api")
@@ -26,14 +25,15 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(23))
+        // the generator uses the Class-File API, which was finalised in JDK 24
+        languageVersion.set(JavaLanguageVersion.of(24))
     }
 }
 
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useKotlinTest("2.1.21")
+            useJUnitJupiter()
         }
     }
 }
@@ -53,9 +53,8 @@ tasks.withType<Jar>().configureEach {
 }
 
 application {
-    mainClass = "vipsffm.MainKt"
+    mainClass = "vipsffm.Main"
     applicationDefaultJvmArgs = listOf(
-        "--enable-preview",
         "--enable-native-access=ALL-UNNAMED"
     )
     tasks.run.get().workingDir = rootProject.projectDir

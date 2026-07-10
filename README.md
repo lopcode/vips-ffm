@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.8")
+    implementation("app.photofox.vips-ffm:vips-ffm-core:1.9.9")
 }
 ```
 
@@ -43,35 +43,34 @@ generated from libvips `8.18.2` (but should be safe to use with different minor 
 
 ### Thumbnail sample
 
-To get a feeling for the bindings, here's an indicative sample written in Kotlin (using the Java bindings) that:
+To get a feeling for the bindings, here's an indicative sample written in Java that:
 * Loads an original JPEG image from disk
 * Writes a copy of it to disk
 * Creates a 400px thumbnail from the original, and writes that to disk
 
-```kotlin
-import app.photofox.vipsffm.Vips
-import app.photofox.vipsffm.VImage
-import app.photofox.vipsffm.VipsOption
-import app.photofox.vipsffm.enums.VipsAccess
+```java
+import app.photofox.vipsffm.Vips;
+import app.photofox.vipsffm.VImage;
+import app.photofox.vipsffm.VipsOption;
 
 // ...
 
 // Use `Vips.run` to wrap your usage of the API, and get an arena with an appropriate lifetime to use
 // Usage of the API, arena, and resulting V-Objects must be done from the thread that called `Vips.run`
-Vips.run { arena ->
-    val thumbnail = VImage.thumbnail(
-      arena,
-      "sample/src/main/resources/sample_images/rabbit.jpg",
-      400,
-      VipsOption.Boolean("auto-rotate", true) // example of an option
-    )
-    val thumbnailWidth = thumbnail.width
-    val thumbnailHeight = thumbnail.height
-    logger.info("thumbnail image size: $thumbnailWidth x $thumbnailHeight")
+Vips.run(arena -> {
+    var thumbnail = VImage.thumbnail(
+        arena,
+        "sample/src/main/resources/sample_images/rabbit.jpg",
+        400,
+        VipsOption.Boolean("auto-rotate", true) // example of an option
+    );
+    var thumbnailWidth = thumbnail.getWidth();
+    var thumbnailHeight = thumbnail.getHeight();
+    logger.info("thumbnail image size: {} x {}", thumbnailWidth, thumbnailHeight);
 
-    val outputPath = workingDirectory.resolve("rabbit_thumbnail.jpg")
-    thumbnail.writeToFile(outputPath.absolutePathString())
-}
+    var outputPath = workingDirectory.resolve("rabbit_thumbnail.jpg");
+    thumbnail.writeToFile(outputPath.toAbsolutePath().toString());
+});
 
 // Optionally call at the end of your program, for memory leak detection, from any thread
 Vips.shutdown()
@@ -80,7 +79,7 @@ Vips.shutdown()
 ## Samples
 
 Samples are included that show various usages of these bindings. They include validations, and run on GitHub Actions as
-"end-to-end tests" during development. You can find them all listed [here](https://github.com/lopcode/vips-ffm/tree/main/sample/src/main/kotlin/vipsffm/sample).
+"end-to-end tests" during development. You can find them all listed [here](https://github.com/lopcode/vips-ffm/tree/main/sample/src/main/java/vipsffm/sample).
 
 To get set up to run samples (on macOS):
 * `brew install vips`

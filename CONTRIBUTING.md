@@ -6,7 +6,7 @@ There are a few things I'm open to help with, but that I'd like to discuss first
 * Investigating whether we could offer a build of libvips in another module, to make integration easier
   * I'd definitely like X86 and ARM64 support for this
   * It should continue to work with cutting-edge versions of Java - not becoming a blocker to users upgrading their JVM
-* Refactoring the [generator](https://github.com/lopcode/vips-ffm/tree/main/generator/src/main/kotlin/vipsffm) classes
+* Refactoring the [generator](https://github.com/lopcode/vips-ffm/tree/main/generator/src/main/java/vipsffm) classes
   to make them a little less scrappy, and easier to reason about, without introducing too many "design patterns"
 
 Any change must be tested, either by using unit tests, or by improving the existing [samples](README.md#samples). The
