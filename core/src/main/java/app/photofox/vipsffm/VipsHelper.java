@@ -410,7 +410,7 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_blob_get", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, null);
     return result;
   }
 
@@ -1645,7 +1645,7 @@ public final class VipsHelper {
     if(!VipsValidation.isValidPointer(result)) {
       VipsValidation.throwInvalidOutputError("vips_image_get_data", "result");
     }
-    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    result = result.reinterpret(arena, null);
     return result;
   }
 

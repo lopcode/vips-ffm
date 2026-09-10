@@ -1110,7 +1110,7 @@ public class GenerateVClasses {
                         .endControlFlow()
                         .build()
                 );
-                getMethodBuilder.addStatement("var dataSegment = outPointer.get($T.C_POINTER, 0).reinterpret(blobLength)", vipsRawType);
+                getMethodBuilder.addStatement("var dataSegment = outPointer.get($T.C_POINTER, 0).reinterpret(blobLength, arena, null)", vipsRawType);
                 getMethodBuilder.addStatement("return VBlob.newFromDataSegment(arena, dataSegment)");
             } else if (poetValueType.equals(vimageType)) {
                 // VImage **
