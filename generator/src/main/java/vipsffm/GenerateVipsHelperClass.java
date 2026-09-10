@@ -358,10 +358,21 @@ public class GenerateVipsHelperClass {
             return true;
         }
 
+        var isReturnType = externType.name().isBlank() && externType.pointerDepth() == 1;
+
+        // const data pointers are borrowed from the object that owns them, so they are bound to the arena but never freed
+        if (isReturnType && externType.type().equals("void") && externType.isConst()) {
+            methodBuilder.addCode(
+                CodeBlock.builder()
+                    .addStatement(name + " = " + name + ".reinterpret(arena, null)")
+                    .build()
+            );
+            return true;
+        }
+
         // newly allocated return types have a depth of 1
         var isNewReturnAlloc =
-            (externType.name().isBlank() &&
-                externType.pointerDepth() == 1 && !externType.type().equals("char") && !externType.raw().equals("void *"));
+            (isReturnType && !externType.type().equals("char") && !externType.type().equals("void"));
 
         if (isNewReturnAlloc) {
             methodBuilder.addCode(

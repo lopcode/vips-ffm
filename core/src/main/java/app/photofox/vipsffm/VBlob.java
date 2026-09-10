@@ -67,7 +67,7 @@ public final class VBlob {
     ///
     /// Gets the raw [MemorySegment] (C pointer) for the data in this blob
     ///
-    /// Sliced to the length of the data, which isn't always null terminated
+    /// Sized to the length of the data, which isn't always null terminated, and scoped to this blob's arena
     public MemorySegment getUnsafeDataAddress() throws VipsError {
         var lengthOutPointer = arena.allocate(C_LONG);
         var dataPointer = VipsRaw.vips_blob_get(
@@ -81,7 +81,9 @@ public final class VBlob {
         if (length < 0) {
             throw new VipsError("unexpected length of vblob data " + length);
         }
-        return dataPointer.asSlice(0, length);
+        // Downcall pointers have global scope; slicing alone does not bind their lifetime to the arena.
+        // The blob already owns cleanup, so this view must not register another deallocator.
+        return dataPointer.reinterpret(length, arena, null);
     }
 
     /// Size of the data in this blob

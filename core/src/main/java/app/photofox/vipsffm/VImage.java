@@ -10465,7 +10465,7 @@ public final class VImage {
     if (blobLength <= 0) {
       throw new VipsError("failed to read length of type blob from field: " + name);
     }
-    var dataSegment = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(blobLength);
+    var dataSegment = outPointer.get(VipsRaw.C_POINTER, 0).reinterpret(blobLength, arena, null);
     return VBlob.newFromDataSegment(arena, dataSegment);
   }
 
