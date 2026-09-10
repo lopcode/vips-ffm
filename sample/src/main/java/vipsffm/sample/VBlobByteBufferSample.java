@@ -28,6 +28,10 @@ public class VBlobByteBufferSample implements RunnableSample {
         var rawDataSegment = blob.getUnsafeDataAddress();
         var rawByteSize = (int) blob.byteSize();
 
+        if (!rawDataSegment.scope().equals(arena.scope())) {
+            throw new RuntimeException("blob data view is not scoped to its arena");
+        }
+
         var remainingBytes = bytes.remaining();
         if (remainingBytes < 50000L || remainingBytes > 100000L) {
             throw new RuntimeException("number of bytes in buffer out of range " + remainingBytes);
