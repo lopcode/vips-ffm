@@ -208,7 +208,7 @@ need to use it with <a href="VipsHelper.html" title="class in app.photofox.vipsf
                                    throws <span class="exceptions"><a href="VipsError.html" title="class in app.photofox.vipsffm">VipsError</a></span></div>
 <div class="block"><p>Not recommended for use, use <a href="#asArenaScopedByteBuffer()"><code>asArenaScopedByteBuffer()</code></a> or <a href="#asClonedByteBuffer()"><code>asClonedByteBuffer()</code></a> instead</p>
 <p>Gets the raw <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html" title="class or interface in java.lang.foreign" class="external-link"><code>MemorySegment</code></a> (C pointer) for the data in this blob</p>
-<p>Sliced to the length of the data, which isn't always null terminated</p>
+<p>Sized to the length of the data, which isn't always null terminated, and scoped to this blob's arena</p>
 </div>
 <dl class="notes">
 <dt>Throws:</dt>
