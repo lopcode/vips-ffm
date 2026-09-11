@@ -5,7 +5,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     java
-    id("com.gradleup.shadow") version "9.5.1"
+    id("com.gradleup.shadow") version "9.6.1"
     application
 }
 
@@ -16,9 +16,9 @@ repositories {
 dependencies {
     implementation(project(":core"))
     implementation(platform("org.slf4j:slf4j-bom:2.0.18"))
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.21.3")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.22.2")
     implementation("org.apache.commons:commons-text:1.15.0")
-    implementation("com.palantir.javapoet:javapoet:0.17.0")
+    implementation("com.palantir.javapoet:javapoet:0.19.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
