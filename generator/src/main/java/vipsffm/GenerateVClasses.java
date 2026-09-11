@@ -874,6 +874,25 @@ public class GenerateVClasses {
                 state and lifetime, prefer [VipsHelper#image_get_data] instead."""
             )
             .build();
+        var copyMemoryMethod = MethodSpec.methodBuilder("copyMemory")
+            .addModifiers(Modifier.PUBLIC)
+            .returns(vimageType)
+            .addException(vipsErrorType)
+            .addStatement("var imagePointer = $T.image_copy_memory(arena, this.address)", vipsHelperType)
+            .addStatement("return new VImage(arena, imagePointer)")
+            .addJavadoc(
+                """
+                Renders this VImage into a single contiguous memory buffer and returns a new VImage backed by it,
+                mapping directly to the `vips_image_copy_memory` function. If this image is already a plain memory
+                image, libvips returns a new reference to it instead of copying.
+
+                Use this before the draw operations ([VImage#drawRect], [VImage#drawLine] and friends), which modify
+                pixels in place and need a private memory image. It is also useful for caching an intermediate image
+                that is reused by several later operations, at the cost of holding all of its pixels in memory.
+
+                To copy metadata without materialising pixels, use [VImage#copy] instead."""
+            )
+            .build();
         var writeToImageMethod = MethodSpec.methodBuilder("write")
             .addModifiers(Modifier.PUBLIC)
             .addParameter(vimageType, "out")
@@ -982,6 +1001,7 @@ public class GenerateVClasses {
             writeToTargetMethod,
             writeToStreamMethod,
             writeToMemoryMethod,
+            copyMemoryMethod,
             newImageMethod
         ));
         methods.addAll(getSetMethods);

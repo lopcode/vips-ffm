@@ -16,6 +16,7 @@ import vipsffm.sample.VImageCreateThumbnailSample;
 import vipsffm.sample.VImageCustomSourceTargetSample;
 import vipsffm.sample.VImageFindTrimSample;
 import vipsffm.sample.VImageFromBytesSample;
+import vipsffm.sample.VImageCopyMemorySample;
 import vipsffm.sample.VImageFromMemoryToMemorySample;
 import vipsffm.sample.VImageGetPagesSample;
 import vipsffm.sample.VImageGetPointSample;
@@ -62,6 +63,7 @@ public class SampleRunner {
             new VImageGetSetSample(),
             new VImageFindTrimSample(),
             new VImageFromMemoryToMemorySample(),
+            new VImageCopyMemorySample(),
             new VImageCustomSourceTargetSample(),
             new VImageMatrixSample()
         );

@@ -1144,6 +1144,22 @@ public final class VipsHelper {
 
   /// Binding for:
   /// ```c
+  /// VipsImage *vips_image_copy_memory(VipsImage *image)
+  /// ```
+  public static MemorySegment image_copy_memory(Arena arena, MemorySegment image) throws VipsError {
+    if(!VipsValidation.isValidPointer(image)) {
+      VipsValidation.throwInvalidInputError("vips_image_copy_memory", "image");
+    }
+    var result = VipsRaw.vips_image_copy_memory(image);
+    if(!VipsValidation.isValidPointer(result)) {
+      VipsValidation.throwInvalidOutputError("vips_image_copy_memory", "result");
+    }
+    result = result.reinterpret(arena, VipsRaw::g_object_unref);
+    return result;
+  }
+
+  /// Binding for:
+  /// ```c
   /// VipsImage **vips_value_get_array_image(const GValue *value, int *n)
   /// ```
   public static MemorySegment value_get_array_image(MemorySegment value, MemorySegment n) throws

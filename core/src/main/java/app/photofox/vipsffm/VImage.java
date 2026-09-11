@@ -10350,6 +10350,20 @@ public final class VImage {
     return imageMemory.reinterpret(arena, VipsRaw::g_free).asSlice(0, sizeOfImage);
   }
 
+  /// Renders this VImage into a single contiguous memory buffer and returns a new VImage backed by it,
+  /// mapping directly to the `vips_image_copy_memory` function. If this image is already a plain memory
+  /// image, libvips returns a new reference to it instead of copying.
+  ///
+  /// Use this before the draw operations ([VImage#drawRect], [VImage#drawLine] and friends), which modify
+  /// pixels in place and need a private memory image. It is also useful for caching an intermediate image
+  /// that is reused by several later operations, at the cost of holding all of its pixels in memory.
+  ///
+  /// To copy metadata without materialising pixels, use [VImage#copy] instead.
+  public VImage copyMemory() throws VipsError {
+    var imagePointer = VipsHelper.image_copy_memory(arena, this.address);
+    return new VImage(arena, imagePointer);
+  }
+
   public static VImage newImage(Arena arena) throws VipsError {
     var newImagePointer = VipsHelper.image_new(arena);
     return new VImage(arena, newImagePointer);

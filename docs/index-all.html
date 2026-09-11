@@ -1635,6 +1635,11 @@ each time.</div>
 <dd>
 <div class="block">Copy an image, optionally modifying the header.</div>
 </dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html#copyMemory()" class="member-name-link">copyMemory()</a> - Method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VImage.html" title="class in app.photofox.vipsffm">VImage</a></dt>
+<dd>
+<div class="block">Renders this VImage into a single contiguous memory buffer and returns a new VImage backed by it,
+mapping directly to the <code>vips_image_copy_memory</code> function.</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_VipsArea.html#count(java.lang.foreign.MemorySegment)" class="member-name-link">count(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/_VipsArea.html" title="class in app.photofox.vipsffm.jextract">_VipsArea</a></dt>
 <dd>
 <div class="block">Getter for field:
@@ -6176,6 +6181,13 @@ image <code>in2</code>.</div>
 <dd>&nbsp;</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html#Image(java.lang.String,app.photofox.vipsffm.VImage)" class="member-name-link">Image(String, VImage)</a> - Static method in interface app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsOption.html" title="interface in app.photofox.vipsffm">VipsOption</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_copy_memory(java.lang.foreign.Arena,java.lang.foreign.MemorySegment)" class="member-name-link">image_copy_memory(Arena, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
+<dd>
+<div class="block"><p>Binding for:</p>
+<pre><code class="language-c">VipsImage *vips_image_copy_memory(VipsImage *image)
+</code></pre>
+</div>
+</dd>
 <dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html#image_get_area(java.lang.foreign.Arena,java.lang.foreign.MemorySegment,java.lang.String,java.lang.foreign.MemorySegment)" class="member-name-link">image_get_area(Arena, MemorySegment, String, MemorySegment)</a> - Static method in class app.photofox.vipsffm.<a href="app.photofox.vipsffm/app/photofox/vipsffm/VipsHelper.html" title="class in app.photofox.vipsffm">VipsHelper</a></dt>
 <dd>
 <div class="block"><p>Binding for:</p>
@@ -15881,6 +15893,45 @@ Magick load/save with MagickCore: true (dynamic module: true)"
 <div class="block">
 <div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
 <pre class="snippet" id="snippet-VIPS_FORMAT_USHORT()3"><code class="language-c">enum &lt;anonymous&gt;.VIPS_FORMAT_USHORT = 2
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_copy_memory(java.lang.foreign.MemorySegment)" class="member-name-link">vips_image_copy_memory(MemorySegment)</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_copy_memory(java.lang.foreign.MemorySegment)3"><code class="language-c">extern VipsImage *vips_image_copy_memory(VipsImage *image)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_copy_memory$address()" class="member-name-link">vips_image_copy_memory$address()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Address for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_copy_memory$address()3"><code class="language-c">extern VipsImage *vips_image_copy_memory(VipsImage *image)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_copy_memory$descriptor()" class="member-name-link">vips_image_copy_memory$descriptor()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Function descriptor for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_copy_memory$descriptor()3"><code class="language-c">extern VipsImage *vips_image_copy_memory(VipsImage *image)
+</code></pre>
+</div>
+</div>
+</dd>
+<dt><a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html#vips_image_copy_memory$handle()" class="member-name-link">vips_image_copy_memory$handle()</a> - Static method in class app.photofox.vipsffm.jextract.<a href="app.photofox.vipsffm/app/photofox/vipsffm/jextract/VipsRaw.html" title="class in app.photofox.vipsffm.jextract">VipsRaw</a></dt>
+<dd>
+<div class="block">Downcall method handle for:
+ 
+<div class="snippet-container"><button class="copy snippet-copy" aria-label="Copy snippet" onclick="copySnippet(this)"><span data-copied="Copied!">Copy</span><img src="resource-files/copy.svg" alt="Copy snippet"></button>
+<pre class="snippet" id="snippet-vips_image_copy_memory$handle()3"><code class="language-c">extern VipsImage *vips_image_copy_memory(VipsImage *image)
 </code></pre>
 </div>
 </div>
