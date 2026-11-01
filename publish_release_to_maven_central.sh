@@ -15,14 +15,22 @@ git describe --exact-match --tags
 
 SIGNING_KEY_ID=$(op read "op://Private/Sonatype GPG/key id") \
 SIGNING_KEY_PASSPHRASE=$(op read "op://Private/Sonatype GPG/password") \
-./gradlew clean core:compileJava core:packageMavenCentralRelease
+./gradlew clean core:compileJava core:packageMavenCentralRelease core:packageMavenCentralRelocation
 
 MAVEN_CENTRAL_USER=$(op read "op://Private/New Maven Central Portal Publish/username")
 MAVEN_CENTRAL_TOKEN=$(op read "op://Private/New Maven Central Portal Publish/password")
 BEARER_TOKEN=$(echo "$MAVEN_CENTRAL_USER:$MAVEN_CENTRAL_TOKEN" | base64)
 
-curl --request POST \
-  --verbose \
-  --header "Authorization: Bearer $BEARER_TOKEN" \
-  --form bundle=@core/build/repos/release-"$GITHUB_VERSION".zip \
-  https://central.sonatype.com/api/v1/publisher/upload?name="$GITHUB_VERSION"\&publishingType=USER_MANAGED
+# Maven Central accepts one namespace per deployment, so each bundle is uploaded separately
+upload_bundle() {
+  echo "Uploading $1 as deployment \"$2\"..."
+  curl --request POST \
+    --fail-with-body \
+    --header "Authorization: Bearer $BEARER_TOKEN" \
+    --form bundle=@"$1" \
+    https://central.sonatype.com/api/v1/publisher/upload?name="$2"\&publishingType=USER_MANAGED
+  echo
+}
+
+upload_bundle core/build/repos/release-"$GITHUB_VERSION".zip "$GITHUB_VERSION"
+upload_bundle core/build/repos/relocation-"$GITHUB_VERSION".zip "$GITHUB_VERSION-relocation"
