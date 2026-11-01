@@ -23,9 +23,12 @@ repositories {
 }
 
 dependencies {
-    implementation("app.photofox.vips-ffm:vips-ffm-core:1.10.0")
+    implementation("com.lopcode.vips-ffm:vips-ffm-core:1.11.0")
 }
 ```
+
+Please note that the package has relocated from `app.photofox.vips-ffm` to `com.lopcode.vips-ffm`. New versions will
+be published to `com.lopcode` and relocation packages will be published to `app.photofox` for at least 12 months.
 
 Figure out what you're trying to do by looking at the [libvips documentation](https://www.libvips.org/API/current/)
 first, then use it through one of the helper classes (for example, [VImage](https://vipsffm.photofox.app/app.photofox.vipsffm/app/photofox/vipsffm/VImage.html)).
