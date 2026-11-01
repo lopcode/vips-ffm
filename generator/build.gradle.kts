@@ -15,10 +15,10 @@ repositories {
 
 dependencies {
     implementation(project(":core"))
-    implementation(platform("org.slf4j:slf4j-bom:2.0.18"))
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.22.2")
+    implementation(platform("org.slf4j:slf4j-bom:2.0.20"))
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.22.4")
     implementation("org.apache.commons:commons-text:1.15.0")
-    implementation("com.palantir.javapoet:javapoet:0.19.0")
+    implementation("com.palantir.javapoet:javapoet:0.22.0")
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
@@ -32,7 +32,7 @@ java {
 
 testing {
     suites {
-        val test by getting(JvmTestSuite::class) {
+        getByName<JvmTestSuite>("test") {
             useJUnitJupiter()
         }
     }

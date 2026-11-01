@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     implementation(project(":core"))
-    implementation(platform("org.slf4j:slf4j-bom:2.0.18"))
+    implementation(platform("org.slf4j:slf4j-bom:2.0.20"))
     implementation("org.slf4j:slf4j-api")
     implementation("org.slf4j:slf4j-simple")
 }
@@ -28,7 +28,7 @@ java {
 
 testing {
     suites {
-        val test by getting(JvmTestSuite::class) {
+        getByName<JvmTestSuite>("test") {
             useJUnitJupiter()
         }
     }
