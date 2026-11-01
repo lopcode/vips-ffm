@@ -123,6 +123,7 @@ dependencies {}
 val githubVersion = System.getenv("GITHUB_VERSION") ?: null
 val mavenVersion = githubVersion?.removePrefix("v") ?: "local"
 val releasePath = "repos/release-${githubVersion}"
+val relocationReleasePath = "repos/relocation-${githubVersion}"
 
 val coreGroupId = "com.lopcode.vips-ffm"
 val coreArtifactId = "vips-ffm-core"
@@ -198,6 +199,11 @@ publishing {
             name = "Local"
             url = uri(layout.buildDirectory.dir(releasePath))
         }
+        // Maven Central rejects a deployment containing more than one namespace
+        maven {
+            name = "LocalRelocation"
+            url = uri(layout.buildDirectory.dir(relocationReleasePath))
+        }
     }
 }
 
@@ -216,13 +222,13 @@ if (!signingKey.isNullOrBlank()) {
 }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
-    onlyIf("relocation POMs are only published to Maven Central") {
-        publication.name != "relocation" || repository.name == "Local"
+    onlyIf("relocation POMs are only published to their own Maven Central bundle") {
+        (publication.name == "relocation") == (repository.name == "LocalRelocation")
     }
 }
 
 tasks.register<Zip>("packageMavenCentralRelease") {
-    dependsOn("publishMavenJavaPublicationToLocalRepository", "publishRelocationPublicationToLocalRepository")
+    dependsOn("publishMavenJavaPublicationToLocalRepository")
 
     archiveFileName.set("release-${githubVersion}.zip")
     destinationDirectory.set(layout.buildDirectory.dir("repos"))
@@ -231,4 +237,16 @@ tasks.register<Zip>("packageMavenCentralRelease") {
     exclude("*/.*")
 
     from(layout.buildDirectory.dir(releasePath))
+}
+
+tasks.register<Zip>("packageMavenCentralRelocation") {
+    dependsOn("publishRelocationPublicationToLocalRelocationRepository")
+
+    archiveFileName.set("relocation-${githubVersion}.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("repos"))
+
+    // exclude hidden files
+    exclude("*/.*")
+
+    from(layout.buildDirectory.dir(relocationReleasePath))
 }

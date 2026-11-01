@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.lopcode.vips-ffm:vips-ffm-core:1.11.0")
+    implementation("com.lopcode.vips-ffm:vips-ffm-core:1.11.1")
 }
 ```
 
