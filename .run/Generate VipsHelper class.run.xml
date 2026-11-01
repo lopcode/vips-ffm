@@ -2,9 +2,8 @@
   <configuration default="false" name="Generate VipsHelper class" type="JetRunConfigurationType">
     <option name="MAIN_CLASS_NAME" value="vipsffm.GenerateVipsHelperClass" />
     <module name="vips-ffm.generator.main" />
-    <option name="PROGRAM_PARAMETERS" value="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib" />
     <shortenClasspath name="NONE" />
-    <option name="VM_PARAMETERS" value="--enable-preview --enable-native-access=ALL-UNNAMED" />
+    <option name="VM_PARAMETERS" value="--enable-preview --enable-native-access=ALL-UNNAMED -Dvipsffm.libpath.vips.override=$PROJECT_DIR$/libvips/release/lib/libvips.dylib -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib" />
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="Gradle.BeforeRunTask" enabled="true" tasks="" />

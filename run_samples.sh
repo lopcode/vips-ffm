@@ -9,7 +9,10 @@ else
 fi
 
 export JAVA_PATH_OPTS=""
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ -x libvips/release/bin/vips ] && [ -f scripts/libvips_env.sh ]; then
+  echo "using libvips submodule build..."
+  source scripts/libvips_env.sh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
   # newer versions of libzip cause problems with jar loading, so we use the override feature to point
   # directly at dylibs
   export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib \

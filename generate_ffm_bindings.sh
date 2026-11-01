@@ -14,14 +14,15 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up libvips..."
 
-vips --version
+source scripts/libvips_env.sh
 
-#LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
-LIBVIPS_INCLUDES_PATH="/opt/homebrew/include"
+"$LIBVIPS_BIN" --version
+
 LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
 if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
   echo "Failed to find libvips headers at \"$LIBVIPS_ENTRY_PATH\""
+  exit 1
 fi
 
 echo "Found libvips headers at \"$LIBVIPS_INCLUDES_PATH\"..."
@@ -38,8 +39,7 @@ echo "Dumping all discovered includes..."
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
 --include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
 --include-dir "$LIBVIPS_INCLUDES_PATH" \
---include-dir "/opt/homebrew/include/glib-2.0" \
---include-dir "/opt/homebrew/lib/glib-2.0/include" \
+"${GLIB_INCLUDE_ARGS[@]}" \
 --library "vips" \
 --dump-includes includes.txt \
 "jextract_entry/entrypoint.h"
@@ -62,7 +62,8 @@ touch includes_filtered.txt
   grep -E ' (vips_interpolate_new)[A-Za-z0-9_]*' includes.txt
   grep -E ' (g_signal_connect_data)[A-Za-z0-9_]*' includes.txt
   grep -E ' g_object_(un)?ref|g_free[ ]|g_type_check_instance_is_a|g_type_from_name|g_type_class_ref|g_type_name|g_param_spec_get_blurb|g_param_spec_types|g_object_(get|set)_property|g_value_(init|unset)[ ]|g_value_(set|get)_(int|long|string|object|boolean|boxed|double)[ ]' includes.txt
-  grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
+  # VIPS_CONFIG describes the libvips used for generation, not the one loaded at runtime
+  grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt | grep -v ' VIPS_CONFIG '
   grep -E ' (_)?(CustomStream(.*)Callback)' includes.txt
   grep -E ' (_)?(VipsArea[ ]|VipsTarget[ ]|VipsConnection[ ]|VipsObject[ ])' includes.txt
   grep -E ' (_)?(GClass[ ]|GEnum(Class|Value)?[ ]|GObject[ ]|GObjectClass[ ]|GInputStream[ ]|GInputStreamClass[ ]|GTypeInstance[ ]|GTypeClass[ ]|GValue[ ]|GParamSpec[ ]|GMutex[ ]|G_TYPE)' includes.txt
@@ -74,8 +75,7 @@ set -x
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
 --include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
 --include-dir "$LIBVIPS_INCLUDES_PATH" \
---include-dir "/opt/homebrew/include/glib-2.0" \
---include-dir "/opt/homebrew/lib/glib-2.0/include" \
+"${GLIB_INCLUDE_ARGS[@]}" \
 --include-dir "custom_defs" \
 --output core/src/main/java \
 --target-package "app.photofox.vipsffm.jextract" \
@@ -87,10 +87,6 @@ set -x
 ./gradlew clean generator:run --args="bootstrap"
 ./gradlew clean generator:build generator:shadowJar
 
-export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib \
-  -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib \
-  -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib"
-
-java $JAVA_PATH_OPTS --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
+java $JAVA_PATH_OPTS -Dvipsffm.gir.path="$LIBVIPS_GIR_PATH" --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
 
 ./build_docs.sh

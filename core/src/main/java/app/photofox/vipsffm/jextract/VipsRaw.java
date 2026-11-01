@@ -15547,25 +15547,25 @@ public class VipsRaw {
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION "8.18.2"
+     * #define VIPS_VERSION "8.18.7"
      * }
      */
     public static MemorySegment VIPS_VERSION() {
         class Holder {
             static final MemorySegment VIPS_VERSION
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.18.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.18.7");
         }
         return Holder.VIPS_VERSION;
     }
     /**
      * {@snippet lang=c :
-     * #define VIPS_VERSION_STRING "8.18.2"
+     * #define VIPS_VERSION_STRING "8.18.7"
      * }
      */
     public static MemorySegment VIPS_VERSION_STRING() {
         class Holder {
             static final MemorySegment VIPS_VERSION_STRING
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.18.2");
+                = VipsRaw.LIBRARY_ARENA.allocateFrom("8.18.7");
         }
         return Holder.VIPS_VERSION_STRING;
     }
@@ -15587,10 +15587,10 @@ public class VipsRaw {
     public static int VIPS_MINOR_VERSION() {
         return VIPS_MINOR_VERSION;
     }
-    private static final int VIPS_MICRO_VERSION = (int)2L;
+    private static final int VIPS_MICRO_VERSION = (int)7L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_MICRO_VERSION 2
+     * #define VIPS_MICRO_VERSION 7
      * }
      */
     public static int VIPS_MICRO_VERSION() {
@@ -15605,10 +15605,10 @@ public class VipsRaw {
     public static int VIPS_LIBRARY_CURRENT() {
         return VIPS_LIBRARY_CURRENT;
     }
-    private static final int VIPS_LIBRARY_REVISION = (int)2L;
+    private static final int VIPS_LIBRARY_REVISION = (int)7L;
     /**
      * {@snippet lang=c :
-     * #define VIPS_LIBRARY_REVISION 2
+     * #define VIPS_LIBRARY_REVISION 7
      * }
      */
     public static int VIPS_LIBRARY_REVISION() {
@@ -15622,52 +15622,6 @@ public class VipsRaw {
      */
     public static int VIPS_LIBRARY_AGE() {
         return VIPS_LIBRARY_AGE;
-    }
-    /**
-     * {@snippet lang=c :
-     * #define VIPS_CONFIG "enable debug: false
-     * enable deprecated: true
-     * enable modules: true
-     * enable C++ binding: true
-     * enable RAD load/save: true
-     * enable Analyze7 load: true
-     * enable PPM load/save: true
-     * enable GIF load: true
-     * FFTs with fftw3: true
-     * SIMD support with libhwy: true
-     * ICC profile support with lcms2: true
-     * deflate compression with zlib: true
-     * text rendering with pangocairo: true
-     * font file support with fontconfig: true
-     * EXIF metadata support with libexif: true
-     * JPEG load/save with libjpeg: true
-     * UHDR load/save with libuhdr: true
-     * JXL load/save with libjxl: true (dynamic module: true)
-     * JPEG2000 load/save with libopenjp2: true
-     * PNG load/save with libpng: true
-     * image quantisation with imagequant: true
-     * TIFF load/save with libtiff-4: true
-     * image pyramid save with libarchive: true
-     * HEIC/AVIF load/save with libheif: true (dynamic module: true)
-     * WebP load/save with libwebp: true
-     * PDF load with poppler-glib: true (dynamic module: true)
-     * SVG load with librsvg-2.0: true
-     * EXR load with OpenEXR: true
-     * WSI load with openslide: true (dynamic module: true)
-     * Matlab load with matio: true
-     * NIfTI load/save with libnifti: false
-     * FITS load/save with cfitsio: true
-     * GIF save with cgif: true
-     * RAW load with libraw_r: true
-     * Magick load/save with MagickCore: true (dynamic module: true)"
-     * }
-     */
-    public static MemorySegment VIPS_CONFIG() {
-        class Holder {
-            static final MemorySegment VIPS_CONFIG
-                = VipsRaw.LIBRARY_ARENA.allocateFrom("enable debug: false\nenable deprecated: true\nenable modules: true\nenable C++ binding: true\nenable RAD load/save: true\nenable Analyze7 load: true\nenable PPM load/save: true\nenable GIF load: true\nFFTs with fftw3: true\nSIMD support with libhwy: true\nICC profile support with lcms2: true\ndeflate compression with zlib: true\ntext rendering with pangocairo: true\nfont file support with fontconfig: true\nEXIF metadata support with libexif: true\nJPEG load/save with libjpeg: true\nUHDR load/save with libuhdr: true\nJXL load/save with libjxl: true (dynamic module: true)\nJPEG2000 load/save with libopenjp2: true\nPNG load/save with libpng: true\nimage quantisation with imagequant: true\nTIFF load/save with libtiff-4: true\nimage pyramid save with libarchive: true\nHEIC/AVIF load/save with libheif: true (dynamic module: true)\nWebP load/save with libwebp: true\nPDF load with poppler-glib: true (dynamic module: true)\nSVG load with librsvg-2.0: true\nEXR load with OpenEXR: true\nWSI load with openslide: true (dynamic module: true)\nMatlab load with matio: true\nNIfTI load/save with libnifti: false\nFITS load/save with cfitsio: true\nGIF save with cgif: true\nRAW load with libraw_r: true\nMagick load/save with MagickCore: true (dynamic module: true)");
-        }
-        return Holder.VIPS_CONFIG;
     }
     private static final int VIPS_SPARE = (int)8L;
     /**
