@@ -50,7 +50,7 @@ tasks.withType<Javadoc> {
 
 testing {
     suites {
-        val test by getting(JvmTestSuite::class) {
+        val test = getByName<JvmTestSuite>("test") {
             useJUnitJupiter()
         }
 
@@ -67,6 +67,28 @@ testing {
                 all {
                     testTask.configure {
                         shouldRunAfter(test)
+                        // JMH generates subclasses of benchmark classes, which inherit their @Test methods
+                        exclude("**/jmh_generated/**")
+
+                        val libvipsPrefix = rootProject.layout.projectDirectory.dir("libvips/release")
+                        if (libvipsPrefix.file("bin/vips").asFile.exists()) {
+                            val libvipsPkgConfigPath = listOfNotNull(
+                                libvipsPrefix.dir("lib/pkgconfig").asFile.path,
+                                System.getenv("PKG_CONFIG_PATH")
+                            ).joinToString(File.pathSeparator)
+                            val glibLibDir = providers.exec {
+                                commandLine("pkg-config", "--variable=libdir", "glib-2.0")
+                                environment("PKG_CONFIG_PATH", libvipsPkgConfigPath)
+                            }.standardOutput.asText.map { it.trim() }
+
+                            jvmArgumentProviders.add(CommandLineArgumentProvider {
+                                listOf(
+                                    "-Dvipsffm.libpath.vips.override=${libvipsPrefix.asFile}/lib/${System.mapLibraryName("vips")}",
+                                    "-Dvipsffm.libpath.glib.override=${glibLibDir.get()}/${System.mapLibraryName("glib-2.0")}",
+                                    "-Dvipsffm.libpath.gobject.override=${glibLibDir.get()}/${System.mapLibraryName("gobject-2.0")}"
+                                )
+                            })
+                        }
                     }
                 }
             }
