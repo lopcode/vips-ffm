@@ -34,7 +34,9 @@ import static app.photofox.vipsffm.jextract.VipsRaw.VIPS_ARGUMENT_REQUIRED;
 public class DiscoverVipsOperations {
 
     private static final Logger logger = LoggerFactory.getLogger(DiscoverVipsOperations.class);
-    private static final Path girPath = Path.of("/opt/homebrew/share/gir-1.0/Vips-8.0.gir");
+    private static final Path girPath = Path.of(
+        System.getProperty("vipsffm.gir.path", "libvips/release/share/gir-1.0/Vips-8.0.gir")
+    );
 
     public static void main(String[] args) throws Exception {
         DiscoveredOperations discoveredOperations;

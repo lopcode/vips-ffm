@@ -1,4 +1,3 @@
 [submodule "libvips"]
 	path = libvips
 	url = https://github.com/libvips/libvips/
-	branch = tags/v8.17.1

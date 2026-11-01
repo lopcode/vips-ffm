@@ -14,14 +14,15 @@ JEXTRACT_DOWNLOAD_PATH=jextract-22
 
 echo "Setting up libvips..."
 
-vips --version
+source scripts/libvips_env.sh
 
-#LIBVIPS_INCLUDES_PATH="$(readlink -f ./libvips/release/include)"
-LIBVIPS_INCLUDES_PATH="/opt/homebrew/include"
+"$LIBVIPS_BIN" --version
+
 LIBVIPS_ENTRY_PATH="$LIBVIPS_INCLUDES_PATH"/vips/vips.h
 
 if [ ! -f "$LIBVIPS_ENTRY_PATH" ]; then
   echo "Failed to find libvips headers at \"$LIBVIPS_ENTRY_PATH\""
+  exit 1
 fi
 
 echo "Found libvips headers at \"$LIBVIPS_INCLUDES_PATH\"..."
@@ -38,35 +39,64 @@ echo "Dumping all discovered includes..."
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
 --include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
 --include-dir "$LIBVIPS_INCLUDES_PATH" \
---include-dir "/opt/homebrew/include/glib-2.0" \
---include-dir "/opt/homebrew/lib/glib-2.0/include" \
+"${GLIB_INCLUDE_ARGS[@]}" \
 --library "vips" \
 --dump-includes includes.txt \
 "jextract_entry/entrypoint.h"
 
 echo "Filtering includes..."
 
-rm includes_filtered.txt || true
-touch includes_filtered.txt
+# each entry is a regex matched against a whole symbol name
+INCLUDED_SYMBOLS=(
+  # libvips functions
+  'vips_(area_get|area_copy|area_unref|blob|block|enum|error|filename|foreign_find|init|interpolate|leak|nick|shut|type|value|version)[A-Za-z0-9_]*'
+  'vips_(source_(custom_)?new|target_(custom_)?new|object_set_from_string|object_unref_outputs)[A-Za-z0-9_]*'
+  'vips_object_get_(args|description|argument)[A-Za-z0-9_]*'
+  'vips_(cache_set|cache_operation_build|operation_new|operation_get_flags)[A-Za-z0-9_]*'
+  'vips_(source|image|target|array_int|array_double|array_image)_get_type[A-Za-z0-9_]*'
+  'vips_image_((get|set)_|map|has|remove|new_from_memory|write_to_memory|copy_memory)[A-Za-z0-9_]*'
+  'vips_image_(new|write|new_matrix|new_matrix_from_array)'
+  # glib functions
+  'g_(strfreev|signal_connect_data)[A-Za-z0-9_]*'
+  'g_(free|object_(un)?ref|object_(get|set)_property|param_spec_get_blurb|param_spec_types)'
+  'g_type_(check_instance_is_a|from_name|class_ref|name)'
+  'g_value_(init|unset|(set|get)_(int|long|string|object|boolean|boxed|double))'
+  # callbacks
+  'VipsImageMapFn[A-Za-z0-9_]*'
+  'VipsTypeMap2Fn[A-Za-z0-9_]*'
+  '_?CustomStream[A-Za-z0-9_]*Callback[A-Za-z0-9_]*'
+  # constants
+  '_?VIPS_[A-Za-z0-9_]*'
+  '_?G_TYPE[A-Za-z0-9_]*'
+  # structs and typedefs
+  '_?(VipsArea|VipsConnection|VipsObject|VipsTarget)'
+  '_?(GClass|GEnum|GEnumClass|GEnumValue|GInputStream|GInputStreamClass|GMutex|GObject|GObjectClass|GParamSpec|GTypeClass|GTypeInstance|GValue)'
+)
 
-{
-  grep -E ' (vips_area_get|vips_area_copy|vips_area_unref|vips_foreign_find|vips_filename|vips_init|vips_nick|vips_source_(custom_)?new|vips_blob|vips_object_set_from_string|vips_object_unref_outputs|vips_block|vips_type|vips_error|vips_version|vips_leak|vips_shut|vips_value|vips_enum|vips_interpolate)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_image_(get|set)_|g_strfreev|vips_image_map|VipsImageMapFn|vips_image_has|vips_image_remove)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_(source|image|target|array_int|array_double|array_image|image)_get_type|vips_image_new[ ]|vips_image_new_from_memory|vips_image_write[ ]|vips_image_write_to_memory|vips_image_copy_memory)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_image_new_matrix|vips_image_new_matrix_from_array)[ ]' includes.txt
-  grep -E ' (vips_object_get_args|vips_object_get_description|vips_object_get_argument)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_source_new|vips_target_(custom_)?new)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_cache_set|vips_block_operation|vips_cache_operation_build|vips_operation_new|vips_operation_get_flags)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_foreign_find|vips_filename_get)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_init|vips_leak|vips_shutdown|vips_version|vips_version_string|vips_block)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (vips_interpolate_new)[A-Za-z0-9_]*' includes.txt
-  grep -E ' (g_signal_connect_data)[A-Za-z0-9_]*' includes.txt
-  grep -E ' g_object_(un)?ref|g_free[ ]|g_type_check_instance_is_a|g_type_from_name|g_type_class_ref|g_type_name|g_param_spec_get_blurb|g_param_spec_types|g_object_(get|set)_property|g_value_(init|unset)[ ]|g_value_(set|get)_(int|long|string|object|boolean|boxed|double)[ ]' includes.txt
-  grep -E ' (_)?(VIPS_|VipsTypeMap2Fn)' includes.txt
-  grep -E ' (_)?(CustomStream(.*)Callback)' includes.txt
-  grep -E ' (_)?(VipsArea[ ]|VipsTarget[ ]|VipsConnection[ ]|VipsObject[ ])' includes.txt
-  grep -E ' (_)?(GClass[ ]|GEnum(Class|Value)?[ ]|GObject[ ]|GObjectClass[ ]|GInputStream[ ]|GInputStreamClass[ ]|GTypeInstance[ ]|GTypeClass[ ]|GValue[ ]|GParamSpec[ ]|GMutex[ ]|G_TYPE)' includes.txt
-} >> includes_filtered.txt
+EXCLUDED_SYMBOLS=(
+  # describe the libvips used for generation, not the one loaded at runtime
+  'VIPS_(CONFIG|EXEEXT|PATH_MAX|ENABLE_DEPRECATED)'
+  'VIPS_(VERSION|VERSION_STRING|MAJOR_VERSION|MINOR_VERSION|MICRO_VERSION|LIBRARY_CURRENT|LIBRARY_REVISION|LIBRARY_AGE)'
+  # libvips and glib internals
+  'VIPS__[A-Z_]+'
+  'VIPS_(MAGIC_[A-Z]+|SIZEOF_HEADER|SBUF_BUFFER_SIZE|TARGET_(CUSTOM_)?BUFFER_SIZE|VECTOR_SOURCE_MAX|SPARE|INTERPOLATE_(SCALE|SHIFT))'
+  'VIPS_IMAGE_(ERROR|NONE|SETBUF|SETBUF_FOREIGN|OPENIN|MMAPIN|MMAPINRW|OPENOUT|PARTIAL)'
+  'VIPS_REGION_(NONE|BUFFER|OTHER_REGION|OTHER_IMAGE|WINDOW)'
+  'VIPS_TOKEN_[A-Z]+'
+  'G_TYPE_(DEBUG|RESERVED|FLAG)_[A-Z_]+'
+  'G_TYPE_FUNDAMENTAL_(MAX|SHIFT)'
+  # enum sentinels, which change between libvips versions
+  '[A-Z0-9_]+_LAST'
+)
+
+symbols_pattern() {
+  local IFS='|'
+  echo "^--include-[a-z]+ ($*)( |$)"
+}
+
+grep -E "$(symbols_pattern "${INCLUDED_SYMBOLS[@]}")" includes.txt \
+  | grep -vE "$(symbols_pattern "${EXCLUDED_SYMBOLS[@]}")" \
+  > includes_filtered.txt
 
 echo "Running jextract..."
 
@@ -74,8 +104,7 @@ set -x
 "$JEXTRACT_DOWNLOAD_PATH"/bin/jextract \
 --include-dir "$LIBVIPS_INCLUDES_PATH/vips/" \
 --include-dir "$LIBVIPS_INCLUDES_PATH" \
---include-dir "/opt/homebrew/include/glib-2.0" \
---include-dir "/opt/homebrew/lib/glib-2.0/include" \
+"${GLIB_INCLUDE_ARGS[@]}" \
 --include-dir "custom_defs" \
 --output core/src/main/java \
 --target-package "app.photofox.vipsffm.jextract" \
@@ -87,10 +116,6 @@ set -x
 ./gradlew clean generator:run --args="bootstrap"
 ./gradlew clean generator:build generator:shadowJar
 
-export JAVA_PATH_OPTS="-Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib \
-  -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib \
-  -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib"
-
-java $JAVA_PATH_OPTS --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
+java $JAVA_PATH_OPTS -Dvipsffm.gir.path="$LIBVIPS_GIR_PATH" --enable-native-access=ALL_UNNAMED -jar generator/build/libs/generator-all.jar
 
 ./build_docs.sh

@@ -5,7 +5,7 @@
     <option name="MAIN_CLASS_NAME" value="vipsffm.SampleRunner" />
     <module name="vips-ffm.sample.main" />
     <shortenClasspath name="NONE" />
-    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED -Dvipsffm.libpath.vips.override=/opt/homebrew/lib/libvips.dylib -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib" />
+    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED -Dvipsffm.libpath.vips.override=$PROJECT_DIR$/libvips/release/lib/libvips.dylib -Dvipsffm.libpath.glib.override=/opt/homebrew/lib/libglib-2.0.dylib -Dvipsffm.libpath.gobject.override=/opt/homebrew/lib/libgobject-2.0.dylib" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
