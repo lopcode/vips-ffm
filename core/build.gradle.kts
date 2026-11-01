@@ -124,35 +124,63 @@ val githubVersion = System.getenv("GITHUB_VERSION") ?: null
 val mavenVersion = githubVersion?.removePrefix("v") ?: "local"
 val releasePath = "repos/release-${githubVersion}"
 
+val coreGroupId = "com.lopcode.vips-ffm"
+val coreArtifactId = "vips-ffm-core"
+val relocatedFromGroupId = "app.photofox.vips-ffm"
+
+fun MavenPom.configureCommonMetadata() {
+    name = coreArtifactId
+    description = "libvips for JVM projects, using JDK 22's FFM and Class-File APIs to generate complete, safe, and fast bindings for image manipulation"
+    url = "https://github.com/lopcode/vips-ffm"
+    licenses {
+        license {
+            name = "Apache License, Version 2.0"
+            url = "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    }
+    developers {
+        developer {
+            name = "lopcode"
+            url = "https://github.com/lopcode"
+        }
+    }
+    scm {
+        connection = "scm:git:git://github.com/lopcode/vips-ffm.git"
+        developerConnection = "scm:git:https://github.com:lopcode/vips-ffm.git"
+        url = "https://github.com/lopcode/vips-ffm/tree/main"
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            groupId = "app.photofox.vips-ffm"
-            artifactId = "vips-ffm-core"
+            groupId = coreGroupId
+            artifactId = coreArtifactId
             version = mavenVersion
 
             from(components["java"])
 
             pom {
-                name = "vips-ffm-core"
-                description = "libvips for JVM projects, using JDK 22's FFM and Class-File APIs to generate complete, safe, and fast bindings for image manipulation"
-                url = "https://github.com/lopcode/vips-ffm"
-                licenses {
-                    license {
-                        name = "Apache License, Version 2.0"
-                        url = "https://www.apache.org/licenses/LICENSE-2.0"
+                configureCommonMetadata()
+            }
+        }
+
+        // points consumers of the old coordinates at the same version under the new ones
+        create<MavenPublication>("relocation") {
+            groupId = relocatedFromGroupId
+            artifactId = coreArtifactId
+            version = mavenVersion
+
+            pom {
+                packaging = "pom"
+                configureCommonMetadata()
+                distributionManagement {
+                    relocation {
+                        groupId = coreGroupId
+                        artifactId = coreArtifactId
+                        version = mavenVersion
+                        message = "vips-ffm has moved to $coreGroupId:$coreArtifactId"
                     }
-                }
-                developers {
-                    developer {
-                        name = "lopcode"
-                        url = "https://github.com/lopcode"
-                    }
-                }
-                scm {
-                    connection = "scm:git:git://github.com/lopcode/vips-ffm.git"
-                    developerConnection = "scm:git:https://github.com:lopcode/vips-ffm.git"
-                    url = "https://github.com/lopcode/vips-ffm/tree/main"
                 }
             }
         }
@@ -187,8 +215,14 @@ if (!signingKey.isNullOrBlank()) {
     }
 }
 
+tasks.withType<PublishToMavenRepository>().configureEach {
+    onlyIf("relocation POMs are only published to Maven Central") {
+        publication.name != "relocation" || repository.name == "Local"
+    }
+}
+
 tasks.register<Zip>("packageMavenCentralRelease") {
-    dependsOn("publishMavenJavaPublicationToLocalRepository")
+    dependsOn("publishMavenJavaPublicationToLocalRepository", "publishRelocationPublicationToLocalRepository")
 
     archiveFileName.set("release-${githubVersion}.zip")
     destinationDirectory.set(layout.buildDirectory.dir("repos"))
