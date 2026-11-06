@@ -78,8 +78,19 @@ be published to <code>com.lopcode</code> and relocation packages will be publish
 <p>Figure out what you're trying to do by looking at the <a href="https://www.libvips.org/API/current/">libvips documentation</a>
 first, then use it through one of the helper classes (for example, <a href="https://vipsffm.photofox.app/app.photofox.vipsffm/app/photofox/vipsffm/VImage.html">VImage</a>).
 There are also lots of examples in the <a href="#samples">samples</a>.</p>
-<p>You must add <code>--enable-native-access=ALL-UNNAMED</code> to your JVM runtime arguments. If you don't, you'll get a warning
-about &quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
+<p>You must enable native access for vips-ffm in your JVM runtime arguments. If you don't, you'll get a warning about
+&quot;Restricted methods&quot;. In the future, the JVM will throw an error if you don't explicitly include this flag.</p>
+<p>vips-ffm is a named module, <code>app.photofox.vipsffm</code>. If your application is modular (has a <code>module-info.java</code> with
+<code>requires app.photofox.vipsffm;</code>), it runs on the module path and you can grant access to vips-ffm alone:</p>
+<pre><code>--enable-native-access=app.photofox.vipsffm
+</code></pre>
+<p>With Gradle's <code>application</code> plugin, set <code>mainModule</code> alongside <code>mainClass</code> so that <code>run</code> and the generated start
+scripts use the module path. The <a href="https://github.com/lopcode/vips-ffm/tree/main/sample">sample</a> project is set up this way.</p>
+<p>If vips-ffm is on the class path instead (no <code>module-info.java</code>, or a fat/shaded jar), it is part of the unnamed
+module, and the module name above is ignored with an &quot;Unknown module&quot; warning. Use this instead:</p>
+<pre><code>--enable-native-access=ALL-UNNAMED
+</code></pre>
+<p>For an executable jar, you can put <code>Enable-Native-Access: ALL-UNNAMED</code> in the manifest rather than passing the flag.</p>
 <p>As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
 generated from libvips <code>8.18.7</code> (but should be safe to use with different minor or patch versions).</p>
 <blockquote>

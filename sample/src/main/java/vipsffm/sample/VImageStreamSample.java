@@ -18,7 +18,7 @@ public class VImageStreamSample implements RunnableSample {
     @Override
     public void run(Arena arena, Path workingDirectory) throws Exception {
         var outputPath = workingDirectory.resolve("fox_copy.jpg");
-        var inputStream = ClassLoader.getSystemResourceAsStream("sample_images/fox.jpg");
+        var inputStream = VImageStreamSample.class.getResourceAsStream("/sample_images/fox.jpg");
         var image = VImage.thumbnailSource(
             arena,
             VSource.newFromInputStream(arena, inputStream),
