@@ -85,7 +85,7 @@ public class VImageCustomSourceTargetSample implements RunnableSample {
         // First, convert the fox image to a TIFF file, as TIFF uses seeking on the input and
         // is a good format for testing our custom source implementation
         var inputPath = workingDirectory.resolve("fox_input.tif");
-        VImage.newFromStream(arena, ClassLoader.getSystemResourceAsStream("sample_images/fox.jpg"))
+        VImage.newFromStream(arena, VImageCustomSourceTargetSample.class.getResourceAsStream("/sample_images/fox.jpg"))
             .writeToFile(inputPath.toString());
 
         var src = new FileChannelSource(inputPath);

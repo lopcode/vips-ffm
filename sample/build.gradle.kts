@@ -46,13 +46,15 @@ tasks.withType<JavaExec>().configureEach {
     javaLauncher.set(project.javaToolchains.launcherFor(java.toolchain))
 }
 
-tasks.withType<Jar>().configureEach {
+// a fat jar runs on the class path, where every class is in the unnamed module
+tasks.shadowJar {
     manifest {
         attributes("Enable-Native-Access" to "ALL-UNNAMED")
     }
 }
 
 application {
+    mainModule = "vipsffm.sample"
     mainClass = "vipsffm.SampleRunner"
-    applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
+    applicationDefaultJvmArgs = listOf("--enable-native-access=app.photofox.vipsffm")
 }

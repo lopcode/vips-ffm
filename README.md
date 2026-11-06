@@ -34,8 +34,27 @@ Figure out what you're trying to do by looking at the [libvips documentation](ht
 first, then use it through one of the helper classes (for example, [VImage](https://vipsffm.photofox.app/app.photofox.vipsffm/app/photofox/vipsffm/VImage.html)).
 There are also lots of examples in the [samples](#samples).
 
-You must add `--enable-native-access=ALL-UNNAMED` to your JVM runtime arguments. If you don't, you'll get a warning
-about "Restricted methods". In the future, the JVM will throw an error if you don't explicitly include this flag.
+You must enable native access for vips-ffm in your JVM runtime arguments. If you don't, you'll get a warning about
+"Restricted methods". In the future, the JVM will throw an error if you don't explicitly include this flag.
+
+vips-ffm is a named module, `app.photofox.vipsffm`. If your application is modular (has a `module-info.java` with
+`requires app.photofox.vipsffm;`), it runs on the module path and you can grant access to vips-ffm alone:
+
+```
+--enable-native-access=app.photofox.vipsffm
+```
+
+With Gradle's `application` plugin, set `mainModule` alongside `mainClass` so that `run` and the generated start
+scripts use the module path. The [sample](https://github.com/lopcode/vips-ffm/tree/main/sample) project is set up this way.
+
+If vips-ffm is on the class path instead (no `module-info.java`, or a fat/shaded jar), it is part of the unnamed
+module, and the module name above is ignored with an "Unknown module" warning. Use this instead:
+
+```
+--enable-native-access=ALL-UNNAMED
+```
+
+For an executable jar, you can put `Enable-Native-Access: ALL-UNNAMED` in the manifest rather than passing the flag.
 
 As the project uses the Java FFM API, and Markdown comments, your target must also be JDK 23+. Bindings are currently
 generated from libvips `8.18.7` (but should be safe to use with different minor or patch versions).
